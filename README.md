@@ -1,7 +1,7 @@
 ﻿Singularity
 ===========
 
-Descentralized AI expert repository and app interface (As now just the taxonomy and the fractal machine are implemented)
+Descentralized AI expert repository and app interface (As now just the taxonomy and the fractal machine are barely implemented, lots of corrections to make)
 
 Singularity node with 8 operation modes and their requirements:
 
