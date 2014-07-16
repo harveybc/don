@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>&lt; El tipo de experto, IDataType y ODataType son los tiposd de entrada del experto para sus entradas y salidas de entrenamiento.  
+<p>&lt; Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento.  
  <a href="class_expert.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_expert_8h_source.html">Expert.h</a>&gt;</code></p>
@@ -111,7 +111,6 @@ Inheritance diagram for Expert&lt; ExpertType, IDataType, ODataType &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_expert_1_1evolution__ledger.html">evolution_ledger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Experto de inteligencia artificial.  <a href="struct_expert_1_1evolution__ledger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_expert_1_1expert__data__cell.html">expert_data_cell</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,18 +174,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#af6346b03caaf4f14a3752c852075c38e">get_connection</a> (<a class="el" href="structtx__connection.html">tx_connection</a> conn_id)</td></tr>
 <tr class="memdesc:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una conexión existente.  <a href="#af6346b03caaf4f14a3752c852075c38e">More...</a><br /></td></tr>
 <tr class="separator:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e4fccd2fc8a0bd81ece7de3da704671 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a6e4fccd2fc8a0bd81ece7de3da704671">addTag</a> (std::string new_tag)</td></tr>
-<tr class="memdesc:a6e4fccd2fc8a0bd81ece7de3da704671 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a6e4fccd2fc8a0bd81ece7de3da704671">More...</a><br /></td></tr>
-<tr class="separator:a6e4fccd2fc8a0bd81ece7de3da704671 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25c4497d5d5225e16b6e0b1fb6c19d54 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a25c4497d5d5225e16b6e0b1fb6c19d54">removeTag</a> (std::string tag)</td></tr>
-<tr class="memdesc:a25c4497d5d5225e16b6e0b1fb6c19d54 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a25c4497d5d5225e16b6e0b1fb6c19d54">More...</a><br /></td></tr>
-<tr class="separator:a25c4497d5d5225e16b6e0b1fb6c19d54 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b19b88596302f0ca5bde93a5fa71cea inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a9b19b88596302f0ca5bde93a5fa71cea">clearTags</a> ()</td></tr>
-<tr class="memdesc:a9b19b88596302f0ca5bde93a5fa71cea inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a9b19b88596302f0ca5bde93a5fa71cea">More...</a><br /></td></tr>
-<tr class="separator:a9b19b88596302f0ca5bde93a5fa71cea inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a763f5f0a55162e470945f8700dde8bde inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a763f5f0a55162e470945f8700dde8bde">getTags</a> (std::set&lt; std::string &gt; &amp;output)</td></tr>
-<tr class="memdesc:a763f5f0a55162e470945f8700dde8bde inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene los tags actuales.  <a href="#a763f5f0a55162e470945f8700dde8bde">More...</a><br /></td></tr>
-<tr class="separator:a763f5f0a55162e470945f8700dde8bde inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d9966b13afea87276669e48cd97a6b inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a96d9966b13afea87276669e48cd97a6b">add_tag</a> (std::string new_tag)</td></tr>
+<tr class="memdesc:a96d9966b13afea87276669e48cd97a6b inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a96d9966b13afea87276669e48cd97a6b">More...</a><br /></td></tr>
+<tr class="separator:a96d9966b13afea87276669e48cd97a6b inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b62702aead72d0e7198504f73418901 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a6b62702aead72d0e7198504f73418901">remove_tag</a> (std::string tag)</td></tr>
+<tr class="memdesc:a6b62702aead72d0e7198504f73418901 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a6b62702aead72d0e7198504f73418901">More...</a><br /></td></tr>
+<tr class="separator:a6b62702aead72d0e7198504f73418901 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115f03ca78252a4a19a2a71d7a9aec7e inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a115f03ca78252a4a19a2a71d7a9aec7e">clear_tags</a> ()</td></tr>
+<tr class="memdesc:a115f03ca78252a4a19a2a71d7a9aec7e inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a115f03ca78252a4a19a2a71d7a9aec7e">More...</a><br /></td></tr>
+<tr class="separator:a115f03ca78252a4a19a2a71d7a9aec7e inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c4937a630824870682b3f97882f67c inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a69c4937a630824870682b3f97882f67c">get_tags</a> (std::set&lt; std::string &gt; &amp;output)</td></tr>
+<tr class="memdesc:a69c4937a630824870682b3f97882f67c inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene los tags actuales.  <a href="#a69c4937a630824870682b3f97882f67c">More...</a><br /></td></tr>
+<tr class="separator:a69c4937a630824870682b3f97882f67c inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01777522c192e281266fa5e044230edd inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a01777522c192e281266fa5e044230edd">Taxon</a> ()</td></tr>
 <tr class="separator:a01777522c192e281266fa5e044230edd inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade090a8dd940b49ce46cae1fee3a6c67 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ade090a8dd940b49ce46cae1fee3a6c67">Taxon</a> (const <a class="el" href="class_taxon.html">Taxon</a> &amp;orig)</td></tr>
@@ -198,7 +197,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;class ExpertType, class IDataType, class ODataType&gt;<br />
 class Expert&lt; ExpertType, IDataType, ODataType &gt;</h3>
 
-<p>&lt; El tipo de experto, IDataType y ODataType son los tiposd de entrada del experto para sus entradas y salidas de entrenamiento. </p>
+<p>&lt; Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1779d8e693fd03a5b13ffc6b17e12f0e"></a>
 <div class="memitem">
@@ -400,7 +399,7 @@ template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 03:55:40 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 12:56:22 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

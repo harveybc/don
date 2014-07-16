@@ -38,8 +38,8 @@
 #include "Taxon.h"
 #include "FractalMachine.h"
 
-template <class ExpertType, class IDataType,class ODataType> ///< El tipo de experto, IDataType y ODataType son los tiposd de entrada del experto para sus entradas y salidas de entrenamiento.
-class Expert: public Taxon<ODataType>{ ///< Experto de inteligencia artificial.
+template <class ExpertType, class IDataType,class ODataType> ///< Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento.
+class Expert: public Taxon<ODataType>{ 
 public:
     struct evolution_ledger{ ///< Estructura base para elmacenar el historial de evolución de los expertos.
         ExpertType past_expert; ///< Función de transferencia del experto (algoritmo, imágen, the actual ANN,etc..)

@@ -87,18 +87,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_fractal_machine-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">FractalMachine&lt; MessageClass &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Máquina de turing paramanejo de estructura jerárquica de objetos (fractal).  
+ <a href="class_fractal_machine.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_fractal_machine_8h_source.html">FractalMachine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2cee37297ac794cb9df9dfd03e5c9729"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html#a2cee37297ac794cb9df9dfd03e5c9729">run</a> (<a class="el" href="class_fractal_tape.html">FractalTape</a> tape)</td></tr>
-<tr class="memdesc:a2cee37297ac794cb9df9dfd03e5c9729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura jerárquica de categorías.  <a href="#a2cee37297ac794cb9df9dfd03e5c9729">More...</a><br /></td></tr>
+<tr class="memdesc:a2cee37297ac794cb9df9dfd03e5c9729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cinta de instrucciones de la máquina.  <a href="#a2cee37297ac794cb9df9dfd03e5c9729">More...</a><br /></td></tr>
 <tr class="separator:a2cee37297ac794cb9df9dfd03e5c9729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3255631ca9ef98d6db218b9df0ce97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html#a0c3255631ca9ef98d6db218b9df0ce97">reset</a> ()</td></tr>
 <tr class="memdesc:a0c3255631ca9ef98d6db218b9df0ce97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borra todos los objetos del estado.  <a href="#a0c3255631ca9ef98d6db218b9df0ce97">More...</a><br /></td></tr>
@@ -118,8 +122,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2c8c15690c6817627533170d43a713f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27f33d41d68d12679c5ba2987e0e5715"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html#a27f33d41d68d12679c5ba2987e0e5715">~FractalMachine</a> ()</td></tr>
 <tr class="separator:a27f33d41d68d12679c5ba2987e0e5715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:af2bfcae57240f3a3c9ca74116b6d528b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fractal_tape.html">FractalTape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html#af2bfcae57240f3a3c9ca74116b6d528b">fractal_tape</a></td></tr>
+<tr class="separator:af2bfcae57240f3a3c9ca74116b6d528b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class MessageClass&gt;<br />
+class FractalMachine&lt; MessageClass &gt;</h3>
+
+<p>Máquina de turing paramanejo de estructura jerárquica de objetos (fractal). </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aacc1e538c534bef287e04f6d51ab7c4e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +313,7 @@ template&lt;class MessageClass &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Estructura jerárquica de categorías. </p>
+<p>Cinta de instrucciones de la máquina. </p>
 <p>Ejecuta la cinta de instrucciones </p>
 <p>&lt; Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas</p>
 <p>&lt; Comienza decodificación de instrucciones: 0=NOP,1=CREATE_NODE,2=REPLACE_NODE,3=DELETE_NODE,4=CREATE_CONNECTION,5=REPLACE_CONNECTION,6=DELETE_CONNECTION,7=WRITE_INSTRUCTION</p>
@@ -315,6 +329,21 @@ template&lt;class MessageClass &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af2bfcae57240f3a3c9ca74116b6d528b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class MessageClass&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fractal_tape.html">FractalTape</a> <a class="el" href="class_fractal_machine.html">FractalMachine</a>&lt; MessageClass &gt;::fractal_tape</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_fractal_machine_8h_source.html">FractalMachine.h</a></li>
 <li><a class="el" href="_fractal_machine_8cpp.html">FractalMachine.cpp</a></li>
@@ -322,7 +351,7 @@ template&lt;class MessageClass &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 03:55:40 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 12:56:22 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

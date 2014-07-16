@@ -58,10 +58,10 @@ public:
     int modify_connection(int conn_id, tx_connection new_conn); ///< Modifica una conexión existente
     int erase_connection(int conn_id); ///< Elimina una conexión
     int get_connection(tx_connection conn_id); ///< Obtiene una conexión existente
-    int addTag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
-    int removeTag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
-    int clearTags(); ///< Configura las Tags (palabras clave) para búsqueda
-    int getTags(std::set<std::string> & output); ///< Obtiene los tags actuales
+    int add_tag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
+    int remove_tag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
+    int clear_tags(); ///< Configura las Tags (palabras clave) para búsqueda
+    int get_tags(std::set<std::string> & output); ///< Obtiene los tags actuales
     Taxon(); 
     Taxon(const Taxon& orig);
     virtual ~Taxon();
@@ -69,7 +69,7 @@ private:
     typedef std::queue <MessageClass> msg_buffer; ///< Tipo de datos para un buffer de mensajes 
     std::vector<msg_buffer> input_interfaces; ///< Mapa de interfaces de entrada
     std::vector<msg_buffer> output_interfaces; ///< Mapa de interfaces de salida
-    std::set<tx_connection> connections; ///< Conexiones del taxón
+    std::vector<tx_connection> connections; ///< Conexiones del taxón
     std::set<std::string> tags; ///< Lista de tags para búsqueda
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
     int parent_id; ///< Indentificación del taxón que creó al actual.

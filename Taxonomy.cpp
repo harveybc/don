@@ -7,8 +7,9 @@
 
 #include "Taxonomy.h"
 
-int get_taxonomy(FractalMachine <TaxonClass> &output){ ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
-    if (taxons.getSize()>0){
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::get_taxonomy(FractalMachine <TaxonClass> &output){ ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
+    if (taxons.get_size()>0){
         output=taxons;
         return 1;
     }
@@ -16,38 +17,50 @@ int get_taxonomy(FractalMachine <TaxonClass> &output){ ///< Crea el estado de un
         return 0;
 }
 
-int get_taxon(int fractal_coords,TaxonClass &output){ ///< Obtiene un taxón
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::get_taxon(int fractal_coords,TaxonClass &output){ ///< Obtiene un taxón
     return taxons.get_state(fractal_coords, output);
 }
 
-int add_taxons(int fractal_coords_base, TaxonClass taxon, int quantity){///< Agrega un taxón completo a la taxonomía
-    std::queue <double> params;
-    params.push((double)fractal_coords_base);
-    params.push((double)quantity);
-    FractalTape instruction ('C',params); ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
-    return taxons.run(instruction); ///< Ejecuta la instrucción en la máquina
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::add_taxons(int fractal_coords_base, TaxonClass taxon, int quantity){///< Agrega un taxón completo a la taxonomía
+    int i=0;
+    std::queue <int> params;
+    params.push(fractal_coords_base);
+    params.push(quantity);
+    fractal_instruction instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
+    instruction.id='C';
+    instruction.parameters=params;
+    taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
+    return 1;
 }
 
-int remove_taxon(int fractal_coords){ ///< Borra un taxón
-    std::queue <double> params;
-    params.push((double)fractal_coords);
-    FractalTape instruction ('D',params); ///< Operación: D (delete), parámetros: id de objeto
-    return taxons.run(instruction); ///< Ejecuta la instrucción en la máquina
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::remove_taxon(int fractal_coords){ ///< Borra un taxón
+    std::queue <int> params;
+    params.push(fractal_coords);
+    fractal_instruction instruction; ///< Operación: D (delete), parámetros: id de objeto
+    instruction.id='D';
+    instruction.parameters=params;
+    taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
+    return 1;
 }
 
-int replace_taxon(int fractal_coords, TaxonClass taxon){ ///< Reemplaza el taxón por el objeto especificado
-    return taxons.replaceState(taxon, fractal_coords); ///< Ejecuta la instrucción en la máquina
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::replace_taxon(int fractal_coords, TaxonClass taxon){ ///< Reemplaza el taxón por el objeto especificado
+    return taxons.replace_state(taxon, fractal_coords); ///< Ejecuta la instrucción en la máquina
 }
     // Singularity engine: ANN(Taxonomy) <- Expert <- Species <- Category <- Taxonomy
-template <class TaxonClass,class InstructionsClass> 
-Taxonomy<TaxonClass, InstructionsClass>::Taxonomy() {
+
+template <class TaxonClass> 
+Taxonomy<TaxonClass>::Taxonomy() {
 }
 
-template <class TaxonClass,class InstructionsClass> 
-Taxonomy<TaxonClass, InstructionsClass>::Taxonomy(const Taxonomy& orig) {
+template <class TaxonClass> 
+Taxonomy<TaxonClass>::Taxonomy(const Taxonomy& orig) {
 }
 
-template <class TaxonClass,class InstructionsClass> 
-Taxonomy<TaxonClass, InstructionsClass>::~Taxonomy() {
+template <class TaxonClass> 
+Taxonomy<TaxonClass>::~Taxonomy() {
 }
 

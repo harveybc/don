@@ -33,7 +33,18 @@ int Taxon<MessageClass>::push_msg(MessageClass msg, int interface_id){ ///> colo
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::pending_msgs(int interface_id){  ///< Retorna el número de mensajes pendientes en un buffer
+int Taxon<MessageClass>::pop_msg(MessageClass &msg, int interface_id){ ///< Saca el msg de una interface de entrada.
+    if (input_interfaces.size()>interface_id){
+        msg=input_interfaces[interface_id].front();
+                input_interfaces[interface_id].pop();
+        return 1;
+    }
+    else 
+        return 0;
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::pending_msgs_in(int interface_id){  ///< Retorna el número de mensajes pendientes en un buffer de entrada
     if (input_interfaces.size()>interface_id){
         return input_interfaces[interface_id].size();
     }
@@ -42,51 +53,66 @@ int Taxon<MessageClass>::pending_msgs(int interface_id){  ///< Retorna el númer
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::readMessage(int interface_id){ ///< Extrae un mensaje de una interfaz
-    if (input_interfaces.size()>interface_id){
-        return input_interfaces[interface_id].pop();
+int Taxon<MessageClass>::pending_msgs_out(int interface_id){  ///< Retorna el número de mensajes pendientes en un buffer de salida
+    if (output_interfaces.size()>interface_id){
+        return output_interfaces[interface_id].size();
     }
     else 
         return 0;
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::addTag(std::string new_tag){ ///< Configura las Tags (palabras clave) para búsqueda
+
+int Taxon<MessageClass>::add_connection(tx_connection conn){ ///< Coloca el msg en una interface de salida.
+    connections.push_back(conn);
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::modify_connection(int conn_id, tx_connection new_conn){ ///< Coloca el msg en una interface de salida.
+    if (connections.size()>conn_id){
+        connections[conn_id]=new_conn;
+        return 1;
+    }
+    return 0;
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::erase_connection(int conn_id){
+    return connections.erase(connections.begin()+conn_id);
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::add_tag(std::string new_tag){ ///< Configura las Tags (palabras clave) para búsqueda
     return tags.insert(new_tag);
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::removeTag(std::string tag){ ///< Configura las Tags (palabras clave) para búsqueda
+int Taxon<MessageClass>::remove_tag(std::string tag){ ///< Configura las Tags (palabras clave) para búsqueda
     return tags.erase(tag);
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::getTags(std::set<std::string> &output){ ///< Obtiene los tags actuales
+int Taxon<MessageClass>::clear_tags(){ ///< Configura las Tags (palabras clave) para búsqueda
+    tags.clear();
+    return 1;
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::get_tags(std::set<std::string> &output){ ///< Obtiene los tags actuales
     return tags;
 }
 
-template <class MessageClass>
-int Taxon<MessageClass>::dd_connection(Connection conn, int interface_id){ ///< Coloca el msg en una interface de salida.
-    connections.insert(conn);
-}
+
 
 template <class MessageClass>
-int Taxon<MessageClass>::modify_connection(Connection old_conn, Connection new_conn){ ///< Coloca el msg en una interface de salida.
-    connections.erase(old_conn);
-    connections.insert(new_conn);
+Taxon<MessageClass>::Taxon() {
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::erase_connection(Connection conn){
-    connections.erase(conn);
+Taxon<MessageClass>::Taxon(const Taxon& orig) {
 }
 
-Taxon::Taxon() {
-}
-
-Taxon::Taxon(const Taxon& orig) {
-}
-
-Taxon::~Taxon() {
+template <class MessageClass>
+Taxon<MessageClass>::~Taxon() {
 }
 

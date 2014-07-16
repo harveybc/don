@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['last_5fefficiency_5fvariation',['last_efficiency_variation',['../struct_expert_1_1expert__struct.html#ae64b3624268992a8f926f516314c8a5f',1,'Expert::expert_struct']]],
-  ['local_5finterface',['local_interface',['../structtaxon__synapse.html#a1a0faf6b79be0567657c35b959f79891',1,'taxon_synapse']]]
+  ['id',['id',['../structfractal__instruction.html#a27c564f26576c7be5550665bea8f9af2',1,'fractal_instruction']]],
+  ['input',['input',['../struct_expert_1_1expert__struct.html#ae1d797fd21bdc68c0f0204033cdbda78',1,'Expert::expert_struct']]],
+  ['inputs',['inputs',['../struct_expert_1_1expert__data__cell.html#a9d9152b4d67dcc38707659c27f5297c2',1,'Expert::expert_data_cell']]]
 ];

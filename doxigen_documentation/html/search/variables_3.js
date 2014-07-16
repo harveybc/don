@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['history',['history',['../struct_expert_1_1expert__struct.html#af763326a90b083e36ac0cd6f451951f8',1,'Expert::expert_struct']]]
+  ['fractal_5ftape',['fractal_tape',['../class_fractal_machine.html#af2bfcae57240f3a3c9ca74116b6d528b',1,'FractalMachine']]]
 ];
