@@ -1,5 +1,4 @@
 /** 
- * @mainpage
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
  * @brief       Fractal machine class template to manage a hierarchical tree of objects (taxonomy)
  * @par Description @parblock 
@@ -38,19 +37,20 @@
 #include "FractalTape.h"
 #include "Taxon.h"
 
+template <class MessageClass>
 class FractalMachine { /// Estructura jerárquica de categorías
 public:
     int run(FractalTape tape); ///< Ejecuta la cinta de instrucciones
     int reset(); ///< Borra todos los objetos del estado
     int get_size(); ///< Obtiene el número de objetos en el estado de la máquina
-    int get_state(int position,Taxon &output); ///< Obtiene el objeto de la posición indicada
-    int replace_state(Taxon <double> new_object, int position); ///< Reemplaza el objeto de la posición indicada on el nuevo objeto, double para mensajes entre neuronas
+    int get_state(int position,Taxon <MessageClass> &output); ///< Obtiene el objeto de la posición indicada
+    int replace_state(Taxon <MessageClass> new_object, int position); ///< Reemplaza el objeto de la posición indicada on el nuevo objeto, double para mensajes entre neuronas
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
 private:
-    std::vector <Taxon> fractal_machine_state; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
-    std::vector <Taxon> taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
+    std::vector <Taxon <MessageClass> > fractal_machine_state; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
+    std::vector <Taxon <MessageClass> > taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <tx_connection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
 };
 

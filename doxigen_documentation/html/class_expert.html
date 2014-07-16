@@ -122,13 +122,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d75e464a463e34404d5708c51c82d11"><td class="memTemplParams" colspan="2">template&lt;class ExpertType , class IDataType , class ODataType &gt; </td></tr>
-<tr class="memitem:a3d75e464a463e34404d5708c51c82d11"><td class="memTemplItemLeft" align="right" valign="top">struct <a class="el" href="struct_expert_1_1expert__dataset.html">Expert::expert_dataset</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_expert.html#a3d75e464a463e34404d5708c51c82d11">getExpert</a> ()</td></tr>
-<tr class="memdesc:a3d75e464a463e34404d5708c51c82d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el experto con mejor fitness entre las instancias de entrenamiento.  <a href="#a3d75e464a463e34404d5708c51c82d11">More...</a><br /></td></tr>
-<tr class="separator:a3d75e464a463e34404d5708c51c82d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72254147f4c6f8d18ddd9b08f9560d59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expert.html#a72254147f4c6f8d18ddd9b08f9560d59">TrainIteration</a> ()</td></tr>
-<tr class="memdesc:a72254147f4c6f8d18ddd9b08f9560d59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entrena el experto con el dataset (buscando aumentar la eficiencia en cualquiera de las training instances)  <a href="#a72254147f4c6f8d18ddd9b08f9560d59">More...</a><br /></td></tr>
-<tr class="separator:a72254147f4c6f8d18ddd9b08f9560d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f48c68d9369c124097f8a0713fe27b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expert.html#a7f48c68d9369c124097f8a0713fe27b7">getExpert</a> (<a class="el" href="struct_expert_1_1expert__struct.html">expert_struct</a> &amp;output)</td></tr>
+<tr class="memdesc:a7f48c68d9369c124097f8a0713fe27b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el experto con mejor fitness entre las instancias de entrenamiento.  <a href="#a7f48c68d9369c124097f8a0713fe27b7">More...</a><br /></td></tr>
+<tr class="separator:a7f48c68d9369c124097f8a0713fe27b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expert.html#aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce">TrainIteration</a> (double &amp;efficiency_out, <a class="el" href="struct_expert_1_1expert__struct.html">expert_struct</a> &amp;output)</td></tr>
+<tr class="memdesc:aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entrena el experto con el dataset (buscando aumentar la eficiencia en cualquiera de las training instances)  <a href="#aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce">More...</a><br /></td></tr>
+<tr class="separator:aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fc6ed1cd46936edd9834e97f88852c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expert.html#a68fc6ed1cd46936edd9834e97f88852c">Evaluate</a> (<a class="el" href="struct_expert_1_1expert__dataset.html">expert_dataset</a> input_dataset, std::queue&lt; ODataType &gt; prev_state, <a class="el" href="struct_expert_1_1expert__dataset.html">expert_dataset</a> &amp;output_dataset, std::queue&lt; ODataType &gt; new_state)</td></tr>
 <tr class="memdesc:a68fc6ed1cd46936edd9834e97f88852c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evalúa el experto con un dataset (puede o no contener salidas para calcular eficiencia)  <a href="#a68fc6ed1cd46936edd9834e97f88852c">More...</a><br /></td></tr>
 <tr class="separator:a68fc6ed1cd46936edd9834e97f88852c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,11 +144,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a607123567bf97714726e0441712723af"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expert.html#a607123567bf97714726e0441712723af">~Expert</a> ()</td></tr>
 <tr class="separator:a607123567bf97714726e0441712723af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_taxon"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_taxon')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_taxon.html">Taxon&lt; ODataType &gt;</a></td></tr>
-<tr class="memitem:a19f0b45158bcaa09895a54f14f6e3eb6 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a19f0b45158bcaa09895a54f14f6e3eb6">get_id</a> ()</td></tr>
-<tr class="memdesc:a19f0b45158bcaa09895a54f14f6e3eb6 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el atributo id de este Taxón (único,generado durante creación)  <a href="#a19f0b45158bcaa09895a54f14f6e3eb6">More...</a><br /></td></tr>
-<tr class="separator:a19f0b45158bcaa09895a54f14f6e3eb6 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78ac38d0c8b767c0ed13ae3a9a7ed56f inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">unsigned long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a78ac38d0c8b767c0ed13ae3a9a7ed56f">get_parent_id</a> ()</td></tr>
-<tr class="separator:a78ac38d0c8b767c0ed13ae3a9a7ed56f inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e0c0b2b1ff8c615ce045671597e809 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a72e0c0b2b1ff8c615ce045671597e809">get_id</a> ()</td></tr>
+<tr class="memdesc:a72e0c0b2b1ff8c615ce045671597e809 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el atributo id de este Taxón (único,generado durante creación)  <a href="#a72e0c0b2b1ff8c615ce045671597e809">More...</a><br /></td></tr>
+<tr class="separator:a72e0c0b2b1ff8c615ce045671597e809 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12971fa7c5bb4774134812597310115 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ae12971fa7c5bb4774134812597310115">get_parent_id</a> ()</td></tr>
+<tr class="separator:ae12971fa7c5bb4774134812597310115 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3220a19e9592a01a58d74937e315ec6 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ae3220a19e9592a01a58d74937e315ec6">get_description</a> (std::string &amp;output)</td></tr>
 <tr class="separator:ae3220a19e9592a01a58d74937e315ec6 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d2534c240d5856123f428e4664d088f inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a7d2534c240d5856123f428e4664d088f">push_msg</a> (ODataTypemsg, int interface_id)</td></tr>
@@ -164,16 +163,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8972607d470b6a9e851711c44a17998 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ae8972607d470b6a9e851711c44a17998">pending_msgs_out</a> (int interface_id)</td></tr>
 <tr class="memdesc:ae8972607d470b6a9e851711c44a17998 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el número de mensajes pendientes en una interfaz de salida.  <a href="#ae8972607d470b6a9e851711c44a17998">More...</a><br /></td></tr>
 <tr class="separator:ae8972607d470b6a9e851711c44a17998 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b311b93e85e95ad9ebd6e0914d740ca inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a9b311b93e85e95ad9ebd6e0914d740ca">add_connection</a> (tx_connection conn)</td></tr>
+<tr class="memitem:a9b311b93e85e95ad9ebd6e0914d740ca inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a9b311b93e85e95ad9ebd6e0914d740ca">add_connection</a> (<a class="el" href="structtx__connection.html">tx_connection</a> conn)</td></tr>
 <tr class="memdesc:a9b311b93e85e95ad9ebd6e0914d740ca inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una nueva conexión.  <a href="#a9b311b93e85e95ad9ebd6e0914d740ca">More...</a><br /></td></tr>
 <tr class="separator:a9b311b93e85e95ad9ebd6e0914d740ca inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b128fea3f39d1817fc3806d6c4e4a39 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a5b128fea3f39d1817fc3806d6c4e4a39">modify_connection</a> (int conn_id, tx_connection new_conn)</td></tr>
+<tr class="memitem:a5b128fea3f39d1817fc3806d6c4e4a39 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a5b128fea3f39d1817fc3806d6c4e4a39">modify_connection</a> (int conn_id, <a class="el" href="structtx__connection.html">tx_connection</a> new_conn)</td></tr>
 <tr class="memdesc:a5b128fea3f39d1817fc3806d6c4e4a39 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifica una conexión existente.  <a href="#a5b128fea3f39d1817fc3806d6c4e4a39">More...</a><br /></td></tr>
 <tr class="separator:a5b128fea3f39d1817fc3806d6c4e4a39 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa01121f0a74d6ed0de673d6ca2154563 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#aa01121f0a74d6ed0de673d6ca2154563">erase_connection</a> (int conn_id)</td></tr>
 <tr class="memdesc:aa01121f0a74d6ed0de673d6ca2154563 inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina una conexión.  <a href="#aa01121f0a74d6ed0de673d6ca2154563">More...</a><br /></td></tr>
 <tr class="separator:aa01121f0a74d6ed0de673d6ca2154563 inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#af6346b03caaf4f14a3752c852075c38e">get_connection</a> (tx_connection conn_id)</td></tr>
+<tr class="memitem:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#af6346b03caaf4f14a3752c852075c38e">get_connection</a> (<a class="el" href="structtx__connection.html">tx_connection</a> conn_id)</td></tr>
 <tr class="memdesc:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una conexión existente.  <a href="#af6346b03caaf4f14a3752c852075c38e">More...</a><br /></td></tr>
 <tr class="separator:af6346b03caaf4f14a3752c852075c38e inherit pub_methods_class_taxon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4fccd2fc8a0bd81ece7de3da704671 inherit pub_methods_class_taxon"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a6e4fccd2fc8a0bd81ece7de3da704671">addTag</a> (std::string new_tag)</td></tr>
@@ -324,18 +323,17 @@ template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3d75e464a463e34404d5708c51c82d11"></a>
+<a class="anchor" id="a7f48c68d9369c124097f8a0713fe27b7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
-<div class="memtemplate">
-template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="struct_expert_1_1expert__dataset.html">Expert::expert_dataset</a> <a class="el" href="class_expert.html">Expert</a>&lt; ExpertType, IDataType, ODataType &gt;::getExpert </td>
+          <td class="memname">int <a class="el" href="class_expert.html">Expert</a>&lt; ExpertType, IDataType, ODataType &gt;::getExpert </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_expert_1_1expert__struct.html">expert_struct</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -365,17 +363,28 @@ template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a72254147f4c6f8d18ddd9b08f9560d59"></a>
+<a class="anchor" id="aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_expert.html">Expert</a>&lt; ExpertType, IDataType, ODataType &gt;::TrainIteration </td>
+          <td class="memname">int <a class="el" href="class_expert.html">Expert</a>&lt; ExpertType, IDataType, ODataType &gt;::TrainIteration </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>efficiency_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="struct_expert_1_1expert__struct.html">expert_struct</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -391,7 +400,7 @@ template&lt;class ExpertType , class IDataType , class ODataType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 10 2014 02:30:39 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 03:55:40 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

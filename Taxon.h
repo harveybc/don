@@ -1,5 +1,4 @@
 /** 
- * @mainpage
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
  * @brief       Taxon class template
  * @par Description @parblock 
@@ -34,20 +33,22 @@
 #include <string>
 #include <set> 
 
+/// Typedefs y Structs
+struct taxon_synapse{ ///< Tipo base para conexión
+    int remote_id; ///< id del taxón remoto
+    int local_interface; ///< interface en el taxón remoto
+    int remote_interface; ///< interface en el taxón remoto
+};
+struct tx_connection{
+    int conn_type; ///< Tipo de conexión: entrada(0), salida(1), duplex (2) o de pertenencia a grupo >3
+    std::queue <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
+};
+
 template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje que se envía a otro taxón
 class Taxon{
 public:
-    struct taxon_synapse{ ///< Tipo base para conexión
-        int remote_id; ///< id del taxón remoto
-        int local_interface; ///< interface en el taxón remoto
-        int remote_interface; ///< interface en el taxón remoto
-    };
-    struct tx_connection{
-        int conn_type; ///< Tipo de conexión: entrada(0), salida(1), duplex (2) o de pertenencia a grupo >3
-        std::queue <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
-    };
-    unsigned long int get_id(); ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
-    unsigned long int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
+    int get_id(); ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
+    int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
     int get_description(std::string &output); //< Obtiene el atributo descripción
     int push_msg(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de salida.
     int pop_msg(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de entrada.
@@ -70,8 +71,8 @@ private:
     std::vector<msg_buffer> output_interfaces; ///< Mapa de interfaces de salida
     std::set<tx_connection> connections; ///< Conexiones del taxón
     std::set<std::string> tags; ///< Lista de tags para búsqueda
-    unsigned long int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
-    unsigned long int parent_id; ///< Indentificación del taxón que creó al actual.
+    int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
+    int parent_id; ///< Indentificación del taxón que creó al actual.
     std::string description; ///< Descripción del taxón
 };
 

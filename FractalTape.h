@@ -1,5 +1,4 @@
 /** 
- * @mainpage
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
  * @brief       Fractaltape class
  * @par Description @parblock 
@@ -29,26 +28,28 @@
 
 #ifndef FRACTALTAPE_H
 #define	FRACTALTAPE_H
+#include <vector>
 #include <queue>
+#include <string>
+
+struct fractal_instruction{ 
+    char id; ///< La instrucción a ejecutar (para versión de 8 bits)
+    std::vector <int> parameters; ///< Parámetros de la instrucción ///TODO: cambiar a UINT64
+};
 
 class FractalTape {
 public:
-    struct fractal_instruction{ 
-        char id; ///< La instrucción a ejecutar (para versión de 8 bits)
-        std::queue <double> parameters; ///< Parámetros de la instrucción
-    };
-    int pushInstruction(fractal_instruction instr);  ///< Adiciona una instrucción al final de la cinta
-    int popInstruction(fractal_instruction &output);  ///< Adiciona una instrucción al final de la cinta
-    int getTape(std::queue <fractal_instruction> &output_tape); ///< Obtiene la cinta de instrucciones
-    int getSize(); ///< Obtiene el número de instrucciones en la cinta.
-    int Export(std::string file_path); ///< Exporta la cinta a un archivo en el formato JSON
-    int Import(std::string file_path); ///< Importa la cinta desde un archivo JSON   
-    FractalTape(char instruction_id, std::queue <int> parameters);
+    int push_instruction(fractal_instruction instr);  ///< Adiciona una instrucción al final de la cinta
+    int pop_instruction(fractal_instruction &output);  ///< Adiciona una instrucción al final de la cinta
+    int get_tape(std::queue <fractal_instruction> &output_tape); ///< Obtiene la cinta de instrucciones
+    int get_size(); ///< Obtiene el número de instrucciones en la cinta.
+    int file_export(std::string file_path); ///< Exporta la cinta a un archivo en el formato JSON
+    int file_import(std::string file_path); ///< Importa la cinta desde un archivo JSON   
+    FractalTape();
     FractalTape(const FractalTape& orig);
     virtual ~FractalTape();
 private:
     std::queue <fractal_instruction> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
-
 };
 
 #endif	/* FRACTALTAPE_H */

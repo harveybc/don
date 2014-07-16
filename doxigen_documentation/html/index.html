@@ -81,17 +81,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Singularity Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Experto de IA </p><dl class="section author"><dt>Author</dt><dd>Harvey D. Bastidas C. <a href="#" onclick="location.href='mai'+'lto:'+'har'+'ve'+'ybc'+'@i'+'nge'+'ni'+'-us'+'.c'+'om'; return false;">harve<span style="display: none;">.nosp@m.</span>ybc@<span style="display: none;">.nosp@m.</span>ingen<span style="display: none;">.nosp@m.</span>i-us<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
-<dl class="section user"><dt>Description  </dt><dd>Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento. </dd></dl>
+<div class="textblock"><p>Nodo de Singularity. </p><dl class="section author"><dt>Author</dt><dd>Harvey D. Bastidas C. <a href="#" onclick="location.href='mai'+'lto:'+'har'+'ve'+'ybc'+'@i'+'nge'+'ni'+'-us'+'.c'+'om'; return false;">harve<span style="display: none;">.nosp@m.</span>ybc@<span style="display: none;">.nosp@m.</span>ingen<span style="display: none;">.nosp@m.</span>i-us<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section user"><dt>Description  </dt><dd>Nodo de la red de inteligencia artificial descentralizada Singularity, con tres modos de funcionamiento: <pre class="fragment">Minero: Genera Singularity entrenado expertos de IA.
+
+Cliente: Descarga o evalúa gratuitamente expertos de IA.
+
+Híbrido: Gasta Singularity en entrenamiento no supervisado local/remoto.
+</pre> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd><p class="startdd">This file is part of Singularity.</p>
 <p>Singularity is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3, or (at your option) any later version.</p>
 <p>Singularity is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p class="enddd">You should have received a copy of the GNU General Public License along with GCC; see the file COPYING3. If not see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Usage: singularity [operation mode] [mode_specific_configuration] <br />
+ [operation_mode] options: <ul>
+<li>0 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON. </li>
+<li>1 = Download expert: Requiere Libtorrent </li>
+<li>2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog </li>
+<li>3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo </li>
+<li>4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval. </li>
+<li>5 = Singularity Miner: Requiere mecanismo de entrenamiento </li>
+<li>6 = Paid non-supervised training, don't mine: Requiere generación de PoW o pago a los mineros </li>
+<li>7 = On-demand non-supervised training, mine to pay for training </li>
+<li>8 = On-demand non-supervised training and mining, mine excess CPU for profit </li>
+</ul>
+</dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 10 2014 02:30:39 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 03:55:43 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

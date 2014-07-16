@@ -8,12 +8,15 @@
 #include "Expert.h"
 
 
-Expert::Expert() {
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::Expert() {
 }
 
-Expert::Expert(const Expert& orig) {
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::Expert(const Expert& orig) {
 }
 
-Expert::~Expert() {
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::~Expert() {
 }
 

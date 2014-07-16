@@ -1,5 +1,4 @@
 /** 
- * @mainpage
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
  * @brief       Experto de IA 
  * @par Description @parblock 
@@ -55,7 +54,6 @@ public:
         double efficiency; ///< Fitness(value) para los datasets del experto
         double last_efficiency_variation; ///< Ultima variación de eficiencia
         std::queue <evolution_ledger> history; ///< Historial de ANNs con sus eficiencias y el hash del bloque que las genero
-        std::queue <std::string> history; ///< Lista de hashes (keys) de instancias de entrenamiento de los expertos (variaciones con diferente eficiencia)
     };
     struct expert_data_cell{ ///< Dato base de entrenamiento
         std::queue<IDataType> inputs; ///< Entradas del dato base de entrenamiento
@@ -64,9 +62,9 @@ public:
     struct expert_dataset{ ///< Conjunto de datos de entrenamiento
         std::queue<expert_data_cell> dataset; ///< El dataset es un buffer de data_cells
         double dataset_efficiency; ///< Eficiencia del expert in the dataset.
-    }
-    expert_struct getExpert();  ///< Obtiene el experto con mejor fitness entre las instancias de entrenamiento.
-    TrainIteration();  ///< Entrena el experto con el dataset (buscando aumentar la eficiencia en cualquiera de las training instances)
+    };
+    int getExpert( expert_struct &output);  ///< Obtiene el experto con mejor fitness entre las instancias de entrenamiento.
+    int TrainIteration(double& efficiency_out, expert_struct& output);  ///< Entrena el experto con el dataset (buscando aumentar la eficiencia en cualquiera de las training instances)
     double Evaluate(expert_dataset input_dataset, std::queue <ODataType> prev_state ,expert_dataset &output_dataset,std::queue <ODataType> new_state); ///< Evalúa el experto con un dataset (puede o no contener salidas para calcular eficiencia)
     int ExportExpert(std::string file_path); ///< Guarda el experto
     int ImportExpert(std::string file_path); ///< Carga un experto desde un archivo
@@ -77,6 +75,7 @@ private:
     std::queue <expert_struct> training_experts; ///< Training instances
     std::queue <expert_dataset> datasets;//< Datasets de entrenamiento, el Merkletree root of the datasets is the expert storage KEY (Fractalmachine Taxons<>)
 };
+
 
 #endif	/* EXPERT_H */
 

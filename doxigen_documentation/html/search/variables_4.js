@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['history',['history',['../struct_expert_1_1expert__struct.html#af763326a90b083e36ac0cd6f451951f8',1,'Expert::expert_struct::history()'],['../struct_expert_1_1expert__struct.html#a6c9f92a07c2435cf060e86020321eec2',1,'Expert::expert_struct::history()']]]
+  ['id',['id',['../structfractal__instruction.html#a27c564f26576c7be5550665bea8f9af2',1,'fractal_instruction']]],
+  ['input',['input',['../struct_expert_1_1expert__struct.html#ae1d797fd21bdc68c0f0204033cdbda78',1,'Expert::expert_struct']]],
+  ['inputs',['inputs',['../struct_expert_1_1expert__data__cell.html#a9d9152b4d67dcc38707659c27f5297c2',1,'Expert::expert_data_cell']]]
 ];

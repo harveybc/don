@@ -7,31 +7,28 @@
 
 #include "FractalTape.h"
 
-pushInstruction(fractal_instruction instr){  ///< Adiciona una instrucción al final de la cinta
+int FractalTape::push_instruction(fractal_instruction instr){  ///< Adiciona una instrucción al final de la cinta
     full_tape.push(instr);
 }
 
-popInstruction(fractal_instruction &output){  ///< Adiciona una instrucción al final de la cinta
+int FractalTape::pop_instruction(fractal_instruction &output){  ///< Adiciona una instrucción al final de la cinta
     output=full_tape.front();
 }
 
-int getTape(std::queue <tape_cell> &output_tape){ ///< Obtiene la cinta de instrucciones
-    output=full_tape;
+int FractalTape::get_tape(std::queue <fractal_instruction> &output_tape){ ///< Obtiene la cinta de instrucciones
+    output_tape=full_tape;
 }
 
-int getSize(){ ///< Obtiene el número de instrucciones en la cinta.
-    return fulltape.size();
+int FractalTape::get_size(){ ///< Obtiene el número de instrucciones en la cinta.
+    return full_tape.size();
 }
 
-template <class InstructionClass> 
-FractalTape<InstructionClass>::FractalTape() {
+FractalTape::FractalTape() {
 }
 
-template <class InstructionClass> 
-FractalTape<InstructionClass>::FractalTape(const FractalTape& orig) {
+FractalTape::FractalTape(const FractalTape& orig) {
 }
 
-template <class InstructionClass> 
-FractalTape<InstructionClass>::~FractalTape() {
+FractalTape::~FractalTape() {
 }
 

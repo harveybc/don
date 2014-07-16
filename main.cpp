@@ -32,16 +32,15 @@
  * @note @parblock Usage:
  *     singularity [operation mode] [mode_specific_configuration] @n
  *     [operation_mode] options: 
- *      @li 0 = Search expert by tag, description or position in taxónomy (string or file)
- *      @li 1 = Download expert
- *      @li 2 = Upload expert
- *      @li 3 = Download expert and evaluate it locally
- *      @li 4 = Evaluate expert remotely 
- *      @li 5 = Singularity Miner
- *      @li 6 = Paid non-supervised training, don't mine
+ *      @li 0 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
+ *      @li 1 = Download expert: Requiere Libtorrent
+ *      @li 2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
+ *      @li 3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
+ *      @li 4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
+ *      @li 5 = Singularity Miner: Requiere mecanismo de entrenamiento
+ *      @li 6 = Paid non-supervised training, don't mine: Requiere generación de PoW o pago a los  mineros
  *      @li 7 = On-demand non-supervised training, mine to pay for training
  *      @li 8 = On-demand non-supervised training and mining, mine excess CPU for profit
- *      @par [mode_specific_configuration] options depend on the mode.
  * @endparblock
  * @file        main.cpp
  * @version     0.1

@@ -84,12 +84,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">FractalMachine.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Experto de IA.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;map&gt;</code><br />
 <code>#include &quot;<a class="el" href="_fractal_tape_8h_source.html">FractalTape.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_taxon_8h_source.html">Taxon.h</a>&quot;</code><br />
@@ -98,38 +100,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html">FractalMachine</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fractal_machine.html">FractalMachine&lt; MessageClass &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a1ee502086cec64f0c95e8d15dc80be56"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="class_fractal_machine.html">FractalMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_fractal_machine_8h.html#a1ee502086cec64f0c95e8d15dc80be56">getExpert</a></td></tr>
-<tr class="separator:a1ee502086cec64f0c95e8d15dc80be56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<div class="textblock"><p>Experto de IA. </p>
+<p>Fractaltape class.</p>
+<p>Fractal machine class template to manage a hierarchical tree of objects (taxonomy)</p>
+<dl class="section author"><dt>Author</dt><dd>Harvey D. Bastidas C. <a href="#" onclick="location.href='mai'+'lto:'+'har'+'ve'+'ybc'+'@i'+'nge'+'ni'+'-us'+'.c'+'om'; return false;">harve<span style="display: none;">.nosp@m.</span>ybc@<span style="display: none;">.nosp@m.</span>ingen<span style="display: none;">.nosp@m.</span>i-us<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section user"><dt>Description  </dt><dd>Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd><p class="startdd">This file is part of Singularity.</p>
+<p>Singularity is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3, or (at your option) any later version.</p>
+<p>Singularity is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p class="enddd">You should have received a copy of the GNU General Public License along with GCC; see the file COPYING3. If not see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
+</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>26 de junio de 2014, 04:16 AM</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Harvey D. Bastidas C. <a href="#" onclick="location.href='mai'+'lto:'+'har'+'ve'+'ybc'+'@i'+'nge'+'ni'+'-us'+'.c'+'om'; return false;">harve<span style="display: none;">.nosp@m.</span>ybc@<span style="display: none;">.nosp@m.</span>ingen<span style="display: none;">.nosp@m.</span>i-us<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section user"><dt>Description  </dt><dd>Máquina de turing que en cada iteración, lee y ejecuta una celda de una cinta de instrucciones que ejecuta sobre su estado. Está compuesta por: -Un registro de estado descrito por un fractal de objetos (máquinas de turing) con conexiones jerárquicas -Una cinta compuesta de celdas de instrucciones (<a class="el" href="_fractal_tape_8h.html">FractalTape.h</a>) -Un cabezal que lee(y escribe) las celdas de instrucciones (<a class="el" href="_fractal_tape_8h.html">FractalTape.h</a>) -Una tabla de instrucciones que ejecutan los objetos del estado </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd><p class="startdd">This file is part of Singularity.</p>
+<p>Singularity is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3, or (at your option) any later version.</p>
+<p>Singularity is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p class="enddd">You should have received a copy of the GNU General Public License along with GCC; see the file COPYING3. If not see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
+</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>20 de junio de 2014, 08:37 PM</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Harvey D. Bastidas C. <a href="#" onclick="location.href='mai'+'lto:'+'har'+'ve'+'ybc'+'@i'+'nge'+'ni'+'-us'+'.c'+'om'; return false;">harve<span style="display: none;">.nosp@m.</span>ybc@<span style="display: none;">.nosp@m.</span>ingen<span style="display: none;">.nosp@m.</span>i-us<span style="display: none;">.nosp@m.</span>.com</a> </dd></dl>
+<dl class="section user"><dt>Description  </dt><dd>Cinta compuesta por instrucciones que ejecutan los objetos del fractal. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd><p class="startdd">This file is part of Singularity.</p>
+<p>Singularity is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3, or (at your option) any later version.</p>
+<p>Singularity is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p class="enddd">You should have received a copy of the GNU General Public License along with GCC; see the file COPYING3. If not see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
+</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>23 de junio de 2014, 01:12 AM </dd></dl>
-</div><h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a1ee502086cec64f0c95e8d15dc80be56"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">class <a class="el" href="class_fractal_machine.html">FractalMachine</a> getExpert</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 10 2014 02:30:39 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 16 2014 03:55:40 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
