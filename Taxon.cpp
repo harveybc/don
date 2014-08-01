@@ -13,6 +13,16 @@ int Taxon<MessageClass>::get_id(){ ///< Obtiene el atributo id de este Taxón (�
 }
 
 template <class MessageClass>
+int num_connections(){
+    return connections.size();
+}
+
+template <class MessageClass>
+int Taxon<MessageClass>::is_active(){ ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
+    return active_taxon;
+}
+
+template <class MessageClass>
 int Taxon<MessageClass>::get_parent_id(){ //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
     return parent_id;
 }    

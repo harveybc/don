@@ -48,6 +48,7 @@ template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje q
 class Taxon{
 public:
     int get_id(); ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
+    int is_active(); ///< retona el valor de active_taxon
     int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
     int get_description(std::string &output); //< Obtiene el atributo descripción
     int push_msg(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de salida.
@@ -58,6 +59,7 @@ public:
     int modify_connection(int conn_id, tx_connection new_conn); ///< Modifica una conexión existente
     int erase_connection(int conn_id); ///< Elimina una conexión
     int get_connection(tx_connection conn_id); ///< Obtiene una conexión existente
+    int num_connections(); ///< Obtiene el número de conexiones
     int add_tag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
     int remove_tag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
     int clear_tags(); ///< Configura las Tags (palabras clave) para búsqueda
@@ -73,6 +75,7 @@ private:
     std::set<std::string> tags; ///< Lista de tags para búsqueda
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
     int parent_id; ///< Indentificación del taxón que creó al actual.
+    bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
     std::string description; ///< Descripción del taxón
 };
 

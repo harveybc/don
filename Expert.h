@@ -66,8 +66,8 @@ public:
     int getExpert( expert_struct &output);  ///< Obtiene el experto con mejor fitness entre las instancias de entrenamiento.
     int TrainIteration(double& efficiency_out, expert_struct& output);  ///< Entrena el experto con el dataset (buscando aumentar la eficiencia en cualquiera de las training instances)
     double Evaluate(expert_dataset input_dataset, std::queue <ODataType> prev_state ,expert_dataset &output_dataset,std::queue <ODataType> new_state); ///< Evalúa el experto con un dataset (puede o no contener salidas para calcular eficiencia)
-    int ExportExpert(std::string file_path); ///< Guarda el experto
-    int ImportExpert(std::string file_path); ///< Carga un experto desde un archivo
+    int export_expert(std::string file_path); ///< Guarda el experto
+    int import_expert(std::string file_path); ///< Carga un experto desde un archivo
     Expert();
     Expert(const Expert& orig);
     virtual ~Expert();
