@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['parameters',['parameters',['../structfractal__instruction.html#a6bf1ab3aba125a1376e517539da0c49e',1,'fractal_instruction']]],
-  ['past_5fexpert',['past_expert',['../struct_expert_1_1evolution__ledger.html#ad6bb9ce8ff64361badb8fa7a71c47d0e',1,'Expert::evolution_ledger']]],
-  ['pending_5fmsgs_5fin',['pending_msgs_in',['../class_taxon.html#a2f873e52fec3bba663f01cf507799f04',1,'Taxon']]],
-  ['pending_5fmsgs_5fout',['pending_msgs_out',['../class_taxon.html#ae8972607d470b6a9e851711c44a17998',1,'Taxon']]],
-  ['pop_5finstruction',['pop_instruction',['../class_fractal_tape.html#aadc14ce3e47449004dbfd92b2c2da75f',1,'FractalTape']]],
-  ['pop_5fmsg',['pop_msg',['../class_taxon.html#ad2a0b184cd22a6db411707f7905814ea',1,'Taxon']]],
-  ['push_5finstruction',['push_instruction',['../class_fractal_tape.html#ae3c5ccf4ee37efc1a9f19bec2d644e9f',1,'FractalTape']]],
-  ['push_5fmsg',['push_msg',['../class_taxon.html#a7d2534c240d5856123f428e4664d088f',1,'Taxon']]]
+  ['output',['output',['../struct_expert_1_1expert__struct.html#adb341d25d038e21259d31cbc1c0b743b',1,'Expert::expert_struct']]],
+  ['outputs',['outputs',['../struct_expert_1_1expert__data__cell.html#ac5b221979cf81bd9568f5c82cb745db3',1,'Expert::expert_data_cell']]]
 ];

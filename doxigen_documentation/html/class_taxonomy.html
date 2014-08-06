@@ -115,11 +115,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a197ced9464f8bd434de742d74adada"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#a3a197ced9464f8bd434de742d74adada">replace_taxon</a> (int fractal_coords, TaxonClass taxon)</td></tr>
 <tr class="memdesc:a3a197ced9464f8bd434de742d74adada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega una categoría a la taxonomía como hija de la categoría especificada.  <a href="#a3a197ced9464f8bd434de742d74adada">More...</a><br /></td></tr>
 <tr class="separator:a3a197ced9464f8bd434de742d74adada"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef610347e52005dd3e33407667b1a4d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#aef610347e52005dd3e33407667b1a4d6">Export</a> (<a class="el" href="class_fractal_tape.html">FractalTape</a> fractal_coords, std::string file_path)</td></tr>
-<tr class="memdesc:aef610347e52005dd3e33407667b1a4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporta la taxonomía a un archivo JSON o XML.  <a href="#aef610347e52005dd3e33407667b1a4d6">More...</a><br /></td></tr>
-<tr class="separator:aef610347e52005dd3e33407667b1a4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72b41c936609dc5bde6e366ad804095"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#af72b41c936609dc5bde6e366ad804095">Import</a> (<a class="el" href="class_fractal_tape.html">FractalTape</a> fractal_coords, std::string file_path)</td></tr>
-<tr class="separator:af72b41c936609dc5bde6e366ad804095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde83ce8aa50c9403a4c7cbf2864d3fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#abde83ce8aa50c9403a4c7cbf2864d3fc">export_taxonomy</a> (int fractal_coords, std::string file_path)</td></tr>
+<tr class="memdesc:abde83ce8aa50c9403a4c7cbf2864d3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporta la taxonomía a un archivo JSON o XML.  <a href="#abde83ce8aa50c9403a4c7cbf2864d3fc">More...</a><br /></td></tr>
+<tr class="separator:abde83ce8aa50c9403a4c7cbf2864d3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701258fd3b41869285be4df7bab5314e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#a701258fd3b41869285be4df7bab5314e">import_taxonomy</a> (int fractal_coords, std::string file_path)</td></tr>
+<tr class="separator:a701258fd3b41869285be4df7bab5314e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259aa0f79c29a71a99ca74ab69d386ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#a259aa0f79c29a71a99ca74ab69d386ba">Taxonomy</a> ()</td></tr>
 <tr class="separator:a259aa0f79c29a71a99ca74ab69d386ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5d7cf69cb867789c2aa41ffeb1b50db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxonomy.html#ae5d7cf69cb867789c2aa41ffeb1b50db">Taxonomy</a> (const <a class="el" href="class_taxonomy.html">Taxonomy</a> &amp;orig)</td></tr>
@@ -234,16 +234,16 @@ template&lt;class TaxonClass &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aef610347e52005dd3e33407667b1a4d6"></a>
+<a class="anchor" id="abde83ce8aa50c9403a4c7cbf2864d3fc"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class TaxonClass &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_taxonomy.html">Taxonomy</a>&lt; TaxonClass &gt;::Export </td>
+          <td class="memname">int <a class="el" href="class_taxonomy.html">Taxonomy</a>&lt; TaxonClass &gt;::export_taxonomy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_fractal_tape.html">FractalTape</a>&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>fractal_coords</em>, </td>
         </tr>
         <tr>
@@ -318,16 +318,16 @@ template&lt;class TaxonClass &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="af72b41c936609dc5bde6e366ad804095"></a>
+<a class="anchor" id="a701258fd3b41869285be4df7bab5314e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class TaxonClass &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_taxonomy.html">Taxonomy</a>&lt; TaxonClass &gt;::Import </td>
+          <td class="memname">int <a class="el" href="class_taxonomy.html">Taxonomy</a>&lt; TaxonClass &gt;::import_taxonomy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_fractal_tape.html">FractalTape</a>&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>fractal_coords</em>, </td>
         </tr>
         <tr>
@@ -410,7 +410,7 @@ template&lt;class TaxonClass &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 12:56:22 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 6 2014 04:45:18 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

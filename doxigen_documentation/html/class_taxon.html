@@ -103,6 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72e0c0b2b1ff8c615ce045671597e809"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a72e0c0b2b1ff8c615ce045671597e809">get_id</a> ()</td></tr>
 <tr class="memdesc:a72e0c0b2b1ff8c615ce045671597e809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el atributo id de este Taxón (único,generado durante creación)  <a href="#a72e0c0b2b1ff8c615ce045671597e809">More...</a><br /></td></tr>
 <tr class="separator:a72e0c0b2b1ff8c615ce045671597e809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a553073f7ea772e71872bc6d9eec3e592"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a553073f7ea772e71872bc6d9eec3e592">is_active</a> ()</td></tr>
+<tr class="memdesc:a553073f7ea772e71872bc6d9eec3e592"><td class="mdescLeft">&#160;</td><td class="mdescRight">retona el valor de active_taxon  <a href="#a553073f7ea772e71872bc6d9eec3e592">More...</a><br /></td></tr>
+<tr class="separator:a553073f7ea772e71872bc6d9eec3e592"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae12971fa7c5bb4774134812597310115"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ae12971fa7c5bb4774134812597310115">get_parent_id</a> ()</td></tr>
 <tr class="separator:ae12971fa7c5bb4774134812597310115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3220a19e9592a01a58d74937e315ec6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#ae3220a19e9592a01a58d74937e315ec6">get_description</a> (std::string &amp;output)</td></tr>
@@ -131,6 +134,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6346b03caaf4f14a3752c852075c38e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#af6346b03caaf4f14a3752c852075c38e">get_connection</a> (<a class="el" href="structtx__connection.html">tx_connection</a> conn_id)</td></tr>
 <tr class="memdesc:af6346b03caaf4f14a3752c852075c38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene una conexión existente.  <a href="#af6346b03caaf4f14a3752c852075c38e">More...</a><br /></td></tr>
 <tr class="separator:af6346b03caaf4f14a3752c852075c38e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accfbd686d2f6b4630c550d797fadc9f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#accfbd686d2f6b4630c550d797fadc9f5">num_connections</a> ()</td></tr>
+<tr class="memdesc:accfbd686d2f6b4630c550d797fadc9f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el número de conexiones.  <a href="#accfbd686d2f6b4630c550d797fadc9f5">More...</a><br /></td></tr>
+<tr class="separator:accfbd686d2f6b4630c550d797fadc9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d9966b13afea87276669e48cd97a6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_taxon.html#a96d9966b13afea87276669e48cd97a6b">add_tag</a> (std::string new_tag)</td></tr>
 <tr class="memdesc:a96d9966b13afea87276669e48cd97a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configura las Tags (palabras clave) para búsqueda.  <a href="#a96d9966b13afea87276669e48cd97a6b">More...</a><br /></td></tr>
 <tr class="separator:a96d9966b13afea87276669e48cd97a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -395,6 +401,26 @@ template&lt;class MessageClass &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a553073f7ea772e71872bc6d9eec3e592"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class MessageClass &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_taxon.html">Taxon</a>&lt; MessageClass &gt;::is_active </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>retona el valor de active_taxon </p>
+<p>&lt; Obtiene el atributo id de este Taxón (único,generado durante creación) </p>
+
+</div>
+</div>
 <a class="anchor" id="a5b128fea3f39d1817fc3806d6c4e4a39"></a>
 <div class="memitem">
 <div class="memproto">
@@ -423,6 +449,25 @@ template&lt;class MessageClass &gt; </div>
 
 <p>Modifica una conexión existente. </p>
 <p>&lt; Coloca el msg en una interface de salida. </p>
+
+</div>
+</div>
+<a class="anchor" id="accfbd686d2f6b4630c550d797fadc9f5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class MessageClass&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_taxon.html">Taxon</a>&lt; MessageClass &gt;::num_connections </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el número de conexiones. </p>
 
 </div>
 </div>
@@ -560,7 +605,7 @@ template&lt;class MessageClass &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 16 2014 12:56:22 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 6 2014 04:45:18 for Singularity by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

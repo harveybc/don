@@ -11,6 +11,6 @@ var searchData=
   ['expert_5fdataset',['expert_dataset',['../struct_expert_1_1expert__dataset.html',1,'Expert']]],
   ['expert_5fstruct',['expert_struct',['../struct_expert_1_1expert__struct.html',1,'Expert']]],
   ['expert_5ftf',['expert_tf',['../struct_expert_1_1expert__struct.html#abc9dfb634149dad04dbbae9a8cd4b1a6',1,'Expert::expert_struct']]],
-  ['export',['Export',['../class_taxonomy.html#aef610347e52005dd3e33407667b1a4d6',1,'Taxonomy']]],
-  ['exportexpert',['ExportExpert',['../class_expert.html#abc95006e937be8701acf175020f5c2e4',1,'Expert']]]
+  ['export_5fexpert',['export_expert',['../class_expert.html#ab1a0650dfbbbec2e3f287502d987a328',1,'Expert']]],
+  ['export_5ftaxonomy',['export_taxonomy',['../class_taxonomy.html#abde83ce8aa50c9403a4c7cbf2864d3fc',1,'Taxonomy']]]
 ];

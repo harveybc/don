@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['_7eblockchain',['~BlockChain',['../class_block_chain.html#a671e66ac51d33a75495a09398a0f764e',1,'BlockChain']]],
-  ['_7eexpert',['~Expert',['../class_expert.html#a607123567bf97714726e0441712723af',1,'Expert']]],
-  ['_7efractalmachine',['~FractalMachine',['../class_fractal_machine.html#a27f33d41d68d12679c5ba2987e0e5715',1,'FractalMachine']]],
-  ['_7efractaltape',['~FractalTape',['../class_fractal_tape.html#a78d4eb473d048be7ad68280a1be765b4',1,'FractalTape']]],
-  ['_7etaxon',['~Taxon',['../class_taxon.html#a0a90255ad06fc2f903b774fd31e08a86',1,'Taxon']]],
-  ['_7etaxonomy',['~Taxonomy',['../class_taxonomy.html#a040f6727ce7007ce8f628dc2047a5383',1,'Taxonomy']]]
+  ['tape_5fposition',['tape_position',['../class_fractal_machine.html#ac45fd26fc20425a62a22b7764d36dea8',1,'FractalMachine']]],
+  ['taxon',['Taxon',['../class_taxon.html#a01777522c192e281266fa5e044230edd',1,'Taxon::Taxon()'],['../class_taxon.html#ade090a8dd940b49ce46cae1fee3a6c67',1,'Taxon::Taxon(const Taxon &amp;orig)']]],
+  ['taxon_5fregister_5fload',['taxon_register_load',['../class_fractal_machine.html#a1b93d13a36a1a678677bd66fe5ffcd9f',1,'FractalMachine']]],
+  ['taxonomy',['Taxonomy',['../class_taxonomy.html#a259aa0f79c29a71a99ca74ab69d386ba',1,'Taxonomy::Taxonomy()'],['../class_taxonomy.html#ae5d7cf69cb867789c2aa41ffeb1b50db',1,'Taxonomy::Taxonomy(const Taxonomy &amp;orig)']]],
+  ['trainiteration',['TrainIteration',['../class_expert.html#aa51dd7b6e8c07a0e7a32e8b5dd6ec5ce',1,'Expert']]]
 ];

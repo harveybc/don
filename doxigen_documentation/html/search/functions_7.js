@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
-  ['modify_5fconnection',['modify_connection',['../class_taxon.html#a5b128fea3f39d1817fc3806d6c4e4a39',1,'Taxon']]]
+  ['load_5ftape',['load_tape',['../class_fractal_machine.html#aa9df1a6e7193e556e8797eb25322a3ab',1,'FractalMachine']]]
 ];
