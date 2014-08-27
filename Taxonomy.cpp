@@ -53,11 +53,12 @@ int Taxonomy<TaxonClass>::replace_taxon(int fractal_coords, TaxonClass taxon){ /
     // Singularity engine: ANN(Taxonomy) <- Expert <- Species <- Category <- Taxonomy
 
 template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::Export(FractalTape fractal_coords, std::string file_path){ ///< Exporta la taxonomía a un archivo JSON o XML
+int Taxonomy<TaxonClass>::export_taxonomy(FractalTape fractal_coords, std::string file_path){ ///< Exporta la taxonomía a un archivo JSON o XML
     
 }
 
-int Import(FractalTape fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
+template <class TaxonClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass>::import_taxonomy(FractalTape fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
 
 template <class TaxonClass> 
 Taxonomy<TaxonClass>::Taxonomy() {
