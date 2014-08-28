@@ -79,5 +79,37 @@ private:
     std::string description; ///< Descripción del taxón
 };
 
+/**
+ * struct taxon_synapse{ ///< Tipo base para conexión
+    int remote_id; ///< id del taxón remoto
+    int local_interface; ///< interface en el taxón remoto
+    int remote_interface; ///< interface en el taxón remoto
+};
+struct tx_connection{
+    int conn_type; ///< Tipo de conexión: entrada(0), salida(1), duplex (2) o de pertenencia a grupo >3
+    std::queue <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
+};
+ * 
+ *  Taxon JSON:
+ * { 
+ *  "id" : "1",
+ *  "parent_id" : "0",
+ *  "active_taxon" :"0",
+ *  "description" : "taxonomía inicial",
+ *  "msg_buffer" :[{"value" : "0"}],
+ *  "input_interfaces" : [{"value":[{"value" : "0"}]}],
+ *  "output_interfaces" : [{"value":[{"value" : "0"}]}],
+ *  "input_interfaces" : [{"value":[{"value" : "0"}]}],
+ *  "connections" : ["value":{
+ *      "conn_type": "0",
+ *      "conn_members":[{"value":{
+ *          "remote_id":"0",
+ *          "local_interface":"0",
+ *          "remote_interface":"0"
+ * }}] }]
+ * }
+ * 
+ */
+
 #endif	/* TAXON_H */
 

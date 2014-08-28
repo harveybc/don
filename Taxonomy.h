@@ -32,9 +32,10 @@
 #include <string>
 #include "FractalMachine.h"
 #include "FractalTape.h"
+#include "Taxon.h"
 
 template <class TaxonClass> ///< para IA, taxonClass=Expert
-class Taxonomy{  
+class Taxonomy : public Taxon{  
 public:
     int get_taxonomy(FractalMachine <TaxonClass> &output); ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
     int get_taxon(int fractal_coords, TaxonClass &output); ///< Obtiene un taxón
@@ -49,6 +50,7 @@ public:
 private:
     FractalMachine <TaxonClass> taxons;  ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
 };
+
 
 #endif	/* TAXONOMY_H */
 
