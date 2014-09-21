@@ -106,7 +106,8 @@ struct tx_connection{
  *          "remote_id":"0",
  *          "local_interface":"0",
  *          "remote_interface":"0"
- * }}] }]
+ * }}] }],
+ * "tags" :[{"value" : "0"}] 
  * }
  * 
  */

@@ -51,7 +51,11 @@ private:
     FractalMachine <TaxonClass> taxons;  ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
 };
 
-
+/*** Taxonomy JSON
+ * {
+ *  "taxons": <FractalaAchine>
+ * }
+ */
 #endif	/* TAXONOMY_H */
 
 

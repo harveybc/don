@@ -62,3 +62,11 @@ private:
 
 #endif	/* FRACTALMACHINE_H */
 
+/*** FractalMachine JSON
+ * {
+ *  "fractal_tape": <FractalaTape>,
+ *  "fractal_machine_state": [<Taxon<NodeClass>>],
+ *  "taxon_register": [<Taxon<NodeClass>>],
+ *  "conn_register": [<tx_connection>]
+ * }
+ */

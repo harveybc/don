@@ -51,6 +51,10 @@ public:
 private:
     std::queue <fractal_instruction> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
 };
-
+/*** FractalTape JSON
+ * {
+ *  "full_tape": [{"id":0,"parameters":[{"value":0}]}]
+ * }
+ */
 #endif	/* FRACTALTAPE_H */
 

@@ -30,10 +30,11 @@
  *    <http://www.gnu.org/licenses/>. 
  * @endparblock
  * @note @parblock Usage:
- *     singularity [operation mode] [mode_specific_configuration] @n
+ *     singularity [taxonomy] [operation mode] [mode_specific_configuration] @n
+ *     [taxonomy] : path to the taxonomy filename: TODO: requiere taxonomía inicial (ej:neuralzoo) en formato JSON
  *     [operation_mode] options: 
  *      @li 0 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
- *      @li 1 = Download expert: Requiere Libtorrent
+ *      @li 1 = Download expert: Requiere Libtorrent y hacer experto
  *      @li 2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
  *      @li 3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
  *      @li 4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
