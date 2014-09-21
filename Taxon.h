@@ -36,11 +36,14 @@
 /// Typedefs y Structs
 struct taxon_synapse{ ///< Tipo base para conexión
     int remote_id; ///< id del taxón remoto
-    int local_interface; ///< interface en el taxón remoto
+    int length; //< largo de la conexión (buscar promedio en artículo de spinal cord)
+    int radius; //< radio de la conexión (regula la velocidad de la señal)
+    int ; //< radio de la conexión (regula la velocidad de la señal)
+    int local_interface; ///< interface en el taxón local
     int remote_interface; ///< interface en el taxón remoto
 };
 struct tx_connection{
-    int conn_type; ///< Tipo de conexión: entrada(0), salida(1), duplex (2) o de pertenencia a grupo >3
+    int conn_type; ///<  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
     std::queue <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
 };
 
