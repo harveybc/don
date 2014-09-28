@@ -54,11 +54,19 @@ int Taxonomy<TaxonClass>::replace_taxon(int fractal_coords, TaxonClass taxon){ /
 
 template <class TaxonClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass>::export_taxonomy(FractalTape fractal_coords, std::string file_path){ ///< Exporta la taxonomía a un archivo JSON o XML
-    
+    //Abre o crea archivo JSON
+    //escribe taxons
 }
 
 template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::import_taxonomy(FractalTape fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
+int Taxonomy<TaxonClass>::import_taxonomy(FractalTape fractal_coords, std::string file_path){
+  //Abre archivo JSON
+    //carga archivo en memoria
+    //lee en buffer hasta próximo  símbolo
+    //leer símbolo
+    //procesar fin de símbolo
+    //lee taxons
+} // < Importa la taxonomía desde un archivo JSON o XML
 
 template <class TaxonClass> 
 Taxonomy<TaxonClass>::Taxonomy() {

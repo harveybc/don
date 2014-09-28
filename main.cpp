@@ -30,12 +30,11 @@
  *    <http://www.gnu.org/licenses/>. 
  * @endparblock
  * @note @parblock Usage:
- *     singularity [taxonomy] [operation mode] [mode_specific_configuration] @n
- *     [taxonomy] : path to the taxonomy filename: TODO: requiere taxonomía inicial (ej:neuralzoo) en formato JSON
+ *     singularity [operation mode] [mode_specific_configuration] @n
  *     [operation_mode] options: 
- *      @li 0 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
- *      @li 1 = Download expert: Requiere Libtorrent y hacer experto
- *      @li 2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
+ *      @li 0 = Download expert: Requiere Libtorrent y hacer experto
+ *      @li 1 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
+ *      @li 2 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
  *      @li 3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
  *      @li 4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
  *      @li 5 = Singularity Miner: Requiere mecanismo de entrenamiento
@@ -62,11 +61,13 @@ using namespace std;
 
 /**
  * Crea un nodo de Singularity con la funcionalidad especificada.
- * @param[in]   op_mode Operation mode
+ *     singularity [operation mode] [mode_specific_configuration] @n
+ *     [operation_mode] options: 
+ *  * @param[in]   op_mode Operation mode
  * @par <op_mode> @parblock 
- *      @li 0 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
- *      @li 1 = Download expert: Requiere Libtorrent
- *      @li 2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
+ *      @li 0 = Download expert: Requiere Libtorrent y hacer experto
+ *      @li 1 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
+ *      @li 2 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
  *      @li 3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
  *      @li 4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
  *      @li 5 = Singularity Miner: Requiere mecanismo de entrenamiento
@@ -84,8 +85,9 @@ int main(int argc, char** argv) {
         // Selecciona modo de operación (se pueden agregar más modos de operación)
         if (argc>0){
             switch (atoi(argv[1])){
-                case 0:
-                    clog<<"Modo de operación 0: Descarga de expertos" << "\n";
+                case 0: // Search:0 []
+                    clog<<"Modo de operación 0: Búsqueda de experto en taxonomía" << "\n";
+                    
                     //Expert expert_download(path);
                     // llama a método de descarga con los demás parámetros        
                     break;
