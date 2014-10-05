@@ -103,6 +103,22 @@ int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones
                 }
                 fractal_tape.push_instruction(tmp_instr); // Inserta la instrucción al final de la cinta.
             } 
+            /// instruction 8 = jump , params: shift (relative to start of tape).
+            /// instruction 9 = routine, params: start_pos, end_pos posiciones en la cinta, , [num nodes, nodes] ejecuta en los nodos indicados como root el segmento de cinta fractal la cinta fractal.
+            /// instruction 10 = nop con información, params: information size, information (stores info in the tape))
+
+                        /// instruction 8 = jump to position relative to start of tape, params: shift
+
+            if (instruction.id=='7'){
+                if (instruction.parameters.size()<3) return 0; // Verifica si el número de params es > 3
+                tmp_instr.id=instruction.id;
+                for (i=0;i<(instruction.parameters.size()-1);i++){
+                    tmp_instr.parameters.push_back(instruction.parameters[i+1]);
+                }
+                fractal_tape.push_instruction(tmp_instr); // Inserta la instrucción al final de la cinta.
+            } 
+
+            
         }
     }
 }
