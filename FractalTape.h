@@ -41,7 +41,7 @@ class FractalTape {
 public:
     int push_instruction(fractal_instruction instr);  ///< Adiciona una instrucción al final de la cinta
     int pop_instruction(fractal_instruction &output);  ///< Adiciona una instrucción al final de la cinta
-    int get_tape(std::queue <fractal_instruction> &output_tape); ///< Obtiene la cinta de instrucciones
+    int get_tape(std::deque <fractal_instruction> &output_tape); ///< Obtiene la cinta de instrucciones
     int get_size(); ///< Obtiene el número de instrucciones en la cinta.
     int file_export(std::string file_path); ///< Exporta la cinta a un archivo en el formato JSON
     int file_import(std::string file_path); ///< Importa la cinta desde un archivo JSON   
@@ -49,7 +49,7 @@ public:
     FractalTape(const FractalTape& orig);
     virtual ~FractalTape();
 private:
-    std::queue <fractal_instruction> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
+    std::deque <fractal_instruction> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
 };
 /*** FractalTape JSON
  * {

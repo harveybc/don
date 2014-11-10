@@ -47,12 +47,13 @@ public:
     int tape_position(bool absolute_pos, int shift); /// Coloca el cabezal de la máquina en la posición especificada de la cinta
     int get_size(); ///< Obtiene el número de objetos en el estado de la máquina
     int get_state(int position,Taxon <NodeClass> &output); ///< Obtiene el objeto de la posición indicada
+    int replace_state(Taxon <NodeClass> new_object, int position);
     int taxon_register_load(std::vector <Taxon <NodeClass> > taxon_register);
     int conn_register_load(std::vector <tx_connection> conn_register);
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
-private:
+protected:
     FractalTape fractal_tape; /// Cinta de instrucciones de la máquina (Ledger de transacciones con la máquina)
     std::vector <Taxon <NodeClass> > fractal_machine_state; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
     std::vector <Taxon <NodeClass> > taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 

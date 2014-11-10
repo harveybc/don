@@ -12,8 +12,8 @@ int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones
     int counter=0;
     int i=0;
     fractal_instruction instruction, tmp_instr;
-    while (tape.get_size()>0){ //Hace fetch de instrucciones, saca una a una las celdas de la cinta
-        if (tape.pop_instruction(instruction)){ ///< Comienza decodificación de instrucciones: 0=NOP,1=CREATE_NODE,2=REPLACE_NODE,3=DELETE_NODE,4=CREATE_CONNECTION,5=REPLACE_CONNECTION,6=DELETE_CONNECTION,7=WRITE_INSTRUCTION
+    while (fractal_tape.get_size()>0){ //Hace fetch de instrucciones, saca una a una las celdas de la cinta
+        if (fractal_tape.pop_instruction(instruction)){ ///< Comienza decodificación de instrucciones: 0=NOP,1=CREATE_NODE,2=REPLACE_NODE,3=DELETE_NODE,4=CREATE_CONNECTION,5=REPLACE_CONNECTION,6=DELETE_CONNECTION,7=WRITE_INSTRUCTION
             /// instruction 1 = Create objects, params: base node id, usa taxon_register como los nuevos
             if (instruction.id=='1'){ /// TODO: COLOCAR COMO PARAM EL HASH DEL DATASET DEL EXPERTO
                 if (instruction.parameters.size()>32){  // Si el comando contiene uno o varios hashes, y no existen como archivos,  los descarga en el taxon_register, sino toma el último almacenado en el taxon_register 
@@ -109,7 +109,7 @@ int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones
 
                         /// instruction 8 = jump to position relative to start of tape, params: shift
 
-            if (instruction.id=='7'){
+            if (instruction.id=='8'){//Thanks @jasper
                 if (instruction.parameters.size()<3) return 0; // Verifica si el número de params es > 3
                 tmp_instr.id=instruction.id;
                 for (i=0;i<(instruction.parameters.size()-1);i++){

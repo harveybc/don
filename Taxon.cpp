@@ -13,7 +13,7 @@ int Taxon<MessageClass>::get_id(){ ///< Obtiene el atributo id de este TaxÃ³n (Ã
 }
 
 template <class MessageClass>
-int num_connections(){
+int Taxon<MessageClass>::num_connections(){
     return connections.size();
 }
 

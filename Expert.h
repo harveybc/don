@@ -38,7 +38,7 @@
 #include "Taxon.h"
 #include "FractalMachine.h"
 
-template <class ExpertType, class IDataType,class ODataType> ///< Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento.
+template <class ExpertType, class IDataType, class ODataType> ///< Es un objeto que al ser evaluado con un dataset de entradas y salidas esperadas como "ejemplos" de entrenamiento, produce una eficiencia en la tarea de imitar las salidas esperadas para algún patrón de entradas que haya aprendido desde un ejemplo (patrón en el dataset) durante el entrenamiento.
 class Expert: public Taxon<ODataType>{ 
 public:
     struct evolution_ledger{ ///< Estructura base para elmacenar el historial de evolución de los expertos.

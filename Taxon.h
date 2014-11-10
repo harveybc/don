@@ -1,4 +1,4 @@
-/** 
+ /** 
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
  * @brief       Taxon class template
  * @par Description @parblock 
@@ -39,13 +39,13 @@ struct taxon_synapse{ ///< Tipo base para conexión
     double length; //< largo de la conexión, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
     // axones
     double radius; //< vol_neurona/100 Regula la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-    double Sensitivity; //< Equivalente al peso de la conexión de entrada 
+    double sensitivity; //< Equivalente al peso de la conexión de entrada 
     int local_interface; ///< interface en el taxón local
     int remote_interface; ///< interface en el taxón remoto
 };
 struct tx_connection{
     int conn_type; ///<  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-    std::queue <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
+    std::deque <taxon_synapse> conn_members; ///< Sinápsis que pertenecen a la conexión
 };
 
 template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje que se envía a otro taxón
@@ -71,8 +71,8 @@ public:
     Taxon(); 
     Taxon(const Taxon& orig);
     virtual ~Taxon();
-private:
-    typedef std::queue <MessageClass> msg_buffer; ///< Tipo de datos para un buffer de mensajes 
+protected:
+    typedef std::deque <MessageClass> msg_buffer; ///< Tipo de datos para un buffer de mensajes 
     std::vector<msg_buffer> input_interfaces; ///< Mapa de interfaces de entrada
     std::vector<msg_buffer> output_interfaces; ///< Mapa de interfaces de salida
     std::vector<tx_connection> connections; ///< Conexiones del taxón

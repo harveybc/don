@@ -30,24 +30,27 @@
 #ifndef TAXONOMY_H
 #define	TAXONOMY_H
 #include <string>
+#include <fstream>
+#include <iostream>
 #include "FractalMachine.h"
 #include "FractalTape.h"
 #include "Taxon.h"
 
+
 template <class TaxonClass> ///< para IA, taxonClass=Expert
-class Taxonomy : public Taxon {
+class Taxonomy: public Taxon<TaxonClass> {
 public:
     int get_taxonomy(FractalMachine <TaxonClass> &output); ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
     int get_taxon(int fractal_coords, TaxonClass &output); ///< Obtiene un taxón
     int add_taxons(int fractal_coords, TaxonClass taxon, int quantity); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int remove_taxon(int fractal_coords); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int replace_taxon(int fractal_coords, TaxonClass taxon); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
-    int export_taxonomy(int fractal_coords, std::string file_path); ///< Exporta la taxonomía a un archivo JSON o XML
-    int import_taxonomy(int fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
+    int export_taxonomy(FractalTape fractal_coords, std::string file_path); ///< Exporta la taxonomía a un archivo JSON o XML
+    int import_taxonomy(FractalTape fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
     virtual ~Taxonomy();
-private:
+protected:
     FractalMachine <TaxonClass> taxons; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
 };
 
@@ -60,59 +63,41 @@ private:
 #endif	/* TAXONOMY_H */
 /* Taxonomia en JSON:
 {
-    "id" : "1",
-    "parent_id" : "0",
-    "active_taxon" : "0",
+    "id" : 1,
+    "parent_id" : 0,
+    "active_taxon" : 0,
     "description" : "taxonomía inicial",
     "input_interfaces" : [
-    {
-        "value" : [
-        {
-            "value" : "0"
-        }
-        ]
-    }
+        []
     ],
     "output_interfaces" : [
-    {
-        "value" : [
-        {
-            "value" : "0"
-        }
-        ]
-    }
+        []
     ],
     "connections" : [
-    {
-        "value" :
-        {
-            "conn_type" : "0",
+ *      {
+            "conn_type" : 0,
             "conn_members" : [
-            {
-                "value" :
                 {
-                    "remote_id" : "0",
-                    "local_interface" : "0",
-                    "remote_interface" : "0"
+                    "remote_id" : 0,
+                    "local_interface" : 0,
+                    "length" : 0,
+                    "radius" : 0,
+                    "sensitivity" : 0,
+                    "local_interface" : 0,
+                    "remote_interface" : 0,
                 }
-            }
             ]
         }
-    }
     ],
     "tags" : [
-    {
-        "value" : "0"
-    }
+        "tag0"
     ],
     "taxons" :
     {
         "fractal_tape" : [
         {
             "id" : 0, "parameters" : [
-            {
-                "value" : 0
-            }
+            
             ]
         }
         ],
@@ -242,4 +227,4 @@ private:
 
 
 
-*/
+ */
