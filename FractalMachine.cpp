@@ -84,7 +84,7 @@ int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones
                 if (instruction.parameters.size()<2) return 0; // Verifica si el número de params es al menos 2
                 if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
                 if (conn_register.size()=0) return 0; //Verifica si el registro de conexiones está vacío
-                if (fractal_machine_state[instruction.parameters[0]].size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
+                if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
                 fractal_machine_state[instruction.parameters[0]].modify_connection(instruction.parameters[1],conn_register[0]);/// ejecuta comando 5: reemplazar
             } 
             /// instruction 6 = delete connections, params: base node id, conn_id

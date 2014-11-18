@@ -35,7 +35,7 @@
 #include "FractalMachine.h"
 #include "FractalTape.h"
 #include "Taxon.h"
-
+#include "Expert.h"
 
 template <class TaxonClass> ///< para IA, taxonClass=Expert
 class Taxonomy: public Taxon<TaxonClass> {
@@ -45,8 +45,8 @@ public:
     int add_taxons(int fractal_coords, TaxonClass taxon, int quantity); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int remove_taxon(int fractal_coords); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int replace_taxon(int fractal_coords, TaxonClass taxon); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
-    int export_taxonomy(FractalTape fractal_coords, std::string file_path); ///< Exporta la taxonomía a un archivo JSON o XML
-    int import_taxonomy(FractalTape fractal_coords, std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
+    int export_taxonomy(std::string file_path); ///< Exporta la taxonomía a un archivo JSON o XML
+    int import_taxonomy(std::string file_path); // < Importa la taxonomía desde un archivo JSON o XML
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
     virtual ~Taxonomy();

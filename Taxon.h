@@ -37,7 +37,6 @@
 struct taxon_synapse{ ///< Tipo base para conexión
     int remote_id; ///< id del taxón remoto
     double length; //< largo de la conexión, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-    // axones
     double radius; //< vol_neurona/100 Regula la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
     double sensitivity; //< Equivalente al peso de la conexión de entrada 
     int local_interface; ///< interface en el taxón local
