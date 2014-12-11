@@ -7,8 +7,9 @@
 
 #include "FractalMachine.h"
 #include "FractalTape.h"
-template <class NodeClass> 
-int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
+
+template <class NodeClass,class MessageClass> 
+int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
     int counter=0;
     int i=0;
     fractal_instruction instruction, tmp_instr;
@@ -123,37 +124,37 @@ int FractalMachine<NodeClass>::iterate(){ ///< Ejecuta la cinta de instrucciones
     }
 }
 
-template <class NodeClass> 
-int FractalMachine<NodeClass>::reset(){ ///< Borra todos los objetos del estado
+template <class NodeClass,class MessageClass> 
+int FractalMachine<NodeClass,MessageClass>::reset(){ ///< Borra todos los objetos del estado
     fractal_machine_state.clear();
 }
 
-template <class NodeClass> 
-int FractalMachine<NodeClass>::get_size(){ ///< Obtiene el número de objetos en el estado de la máquina
+template <class NodeClass,class MessageClass> 
+int FractalMachine<NodeClass,MessageClass>::get_size(){ ///< Obtiene el número de objetos en el estado de la máquina
     fractal_machine_state.size();
 }
 
-template <class NodeClass> 
-int FractalMachine<NodeClass>::get_state(int position, Taxon <NodeClass> &output){ ///< Obtiene el objeto de la posición indicada
+template <class NodeClass,class MessageClass> 
+int FractalMachine<NodeClass,MessageClass>::get_state(int position, Taxon <NodeClass> &output){ ///< Obtiene el objeto de la posición indicada
     if (fractal_machine_state.size()>position) return 0;
     output=fractal_machine_state[position];
     return 1;
 }
 
-template <class NodeClass> 
-int FractalMachine<NodeClass>::replace_state(Taxon <NodeClass> new_object, int position){ ///< Reemplaza el objeto de la posición indicada on el nuevo objeto
+template <class NodeClass,class MessageClass> 
+int FractalMachine<NodeClass,MessageClass>::replace_state(Taxon <NodeClass> new_object, int position){ ///< Reemplaza el objeto de la posición indicada on el nuevo objeto
     if (fractal_machine_state.size()>position) return 0;
     fractal_machine_state[position]=new_object;
     return 1;
 }    
     
-template <class NodeClass> 
-FractalMachine<NodeClass>::FractalMachine() {
+template <class NodeClass,class MessageClass> 
+FractalMachine<NodeClass,MessageClass>::FractalMachine() {
 }
-template <class NodeClass> 
-FractalMachine<NodeClass>::FractalMachine(const FractalMachine& orig) {
+template <class NodeClass,class MessageClass> 
+FractalMachine<NodeClass,MessageClass>::FractalMachine(const FractalMachine& orig) {
 }
-template <class NodeClass> 
-FractalMachine<NodeClass>::~FractalMachine() {
+template <class NodeClass,class MessageClass> 
+FractalMachine<NodeClass,MessageClass>::~FractalMachine() {
 }
 

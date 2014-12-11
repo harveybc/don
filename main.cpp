@@ -57,6 +57,8 @@
 #include <string>
 #include <cstdlib>
 #include "Taxonomy.h"
+#include "Expert.h"
+
 using namespace std;
 
 /**
@@ -81,18 +83,31 @@ using namespace std;
  */
 int main(int argc, char** argv) {
         int operation_mode=0;  
-
+        int i;
+        /*
+        Taxonomy<Expert<int,double,double>,double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
+        Expert<int,double,double> tmp_expert;
         // Selecciona modo de operación (se pueden agregar más modos de operación)
         if (argc>0){
             switch (atoi(argv[1])){
-                case 0: // Search:0 []
-                    clog<<"Modo de operación 0: Búsqueda de experto en taxonomía" << "\n";
+                case 0: // Read taxonomy from file
+                    clog<<"Operation mode 0: read taxonomy from file" << "\n";
+                    
+                    //Expert expert_download(path);
+                    // llama a método de descarga con los demás parámetros        
+                    break;
+                case 1: // Write taxonomy to file
+                    clog<<"Operation mode 1: write taxonomy to file" << "\n";
+                    
+                    i=main_taxonomy.add_taxons(0, tmp_expert, 1);
+                    
+                    i=main_taxonomy.export_taxonomy(argv[2]);
                     
                     //Expert expert_download(path);
                     // llama a método de descarga con los demás parámetros        
                     break;
                 default:
-                    cerr<<"Modo de operación no encontrado" << "\n";
+                    cerr<<"Operation mode not found" << "\n";
                     // llama a método de descarga con los demás parámetros        
                     break;
             }
@@ -100,6 +115,7 @@ int main(int argc, char** argv) {
         else{
             cerr<<"Faltan parámetros" << "\n";       
         }
+         */
     return 0;
 }
 // Feet fail me not because this may be the only oportunity i got.....

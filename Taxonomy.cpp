@@ -7,22 +7,22 @@
 
 #include "Taxonomy.h"
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::get_taxonomy(FractalMachine <TaxonClass> &output) { ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
-    if (taxons.get_size() > 0) {
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output) { ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
+    if (this->taxons.get_size() > 0) {
         output = taxons;
         return 1;
     } else
         return 0;
 }
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::get_taxon(int fractal_coords, TaxonClass &output) { ///< Obtiene un taxón
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::get_taxon(int fractal_coords, TaxonClass &output) { ///< Obtiene un taxón
     return taxons.get_state(fractal_coords, output);
 }
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::add_taxons(int fractal_coords_base, TaxonClass taxon, int quantity) {///< Agrega un taxón completo a la taxonomía
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, TaxonClass taxon, int quantity) {///< Agrega un taxón completo a la taxonomía
     int i = 0;
     std::queue <int> params;
     params.push(fractal_coords_base);
@@ -35,8 +35,8 @@ int Taxonomy<TaxonClass>::add_taxons(int fractal_coords_base, TaxonClass taxon, 
     return 1;
 }
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::remove_taxon(int fractal_coords) { ///< Borra un taxón
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::remove_taxon(int fractal_coords) { ///< Borra un taxón
     std::queue <int> params;
     params.push(fractal_coords);
     fractal_instruction instruction; ///< Operación: D (delete), parámetros: id de objeto
@@ -46,14 +46,14 @@ int Taxonomy<TaxonClass>::remove_taxon(int fractal_coords) { ///< Borra un taxó
     return 1;
 }
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::replace_taxon(int fractal_coords, TaxonClass taxon) { ///< Reemplaza el taxón por el objeto especificado
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::replace_taxon(int fractal_coords, TaxonClass taxon) { ///< Reemplaza el taxón por el objeto especificado
     return taxons.replace_state(taxon, fractal_coords); ///< Ejecuta la instrucción en la máquina
 }
 // Singularity engine: ANN(Taxonomy) <- Expert <- Species <- Category <- Taxonomy
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::export_taxonomy(std::string file_path) { ///< Exporta la taxonomía a un archivo JSON o XML
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { ///< Exporta la taxonomía a un archivo JSON o XML
     //Abre o crea archivo JSON :)
     //TODO: If the file  exists, if the quiet flag is not set, shows an overwriting alert, if the Interractive mode is set, shows a prompt before overwriting
     int i, j, k; //counter
@@ -262,8 +262,8 @@ int Taxonomy<TaxonClass>::export_taxonomy(std::string file_path) { ///< Exporta 
     //escribe taxons
 }
 
-template <class TaxonClass> ///< para IA, taxonClass=Expert
-int Taxonomy<TaxonClass>::import_taxonomy(std::string file_path) {
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::import_taxonomy(std::string file_path) {
     //Abre archivo JSON
     //carga archivo en memoria
     //lee en buffer hasta próximo  símbolo
@@ -272,15 +272,15 @@ int Taxonomy<TaxonClass>::import_taxonomy(std::string file_path) {
     //lee taxons
 } // < Importa la taxonomía desde un archivo JSON o XML
 
-template <class TaxonClass>
-Taxonomy<TaxonClass>::Taxonomy() {
+template <class TaxonClass,class MessageClass>
+Taxonomy<TaxonClass,MessageClass>::Taxonomy() {
 }
 
-template <class TaxonClass>
-Taxonomy<TaxonClass>::Taxonomy(const Taxonomy& orig) {
+template <class TaxonClass,class MessageClass>
+Taxonomy<TaxonClass,MessageClass>::Taxonomy(const Taxonomy& orig) {
 }
 
-template <class TaxonClass>
-Taxonomy<TaxonClass>::~Taxonomy() {
+template <class TaxonClass,class MessageClass>
+Taxonomy<TaxonClass,MessageClass>::~Taxonomy() {
 }
 
