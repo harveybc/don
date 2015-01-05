@@ -52,70 +52,48 @@
  *           Cliente: Evalúa expertos de SingularityNet gratuitos o los descarga.
  *           Híbrido: Gasta Singularity con entrenamiento no supervisado local/remoto.
  * @endparblock
-*/
+ */
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include "Taxonomy.h"
 #include "Expert.h"
 
-using namespace std;
-
-/**
- * Crea un nodo de Singularity con la funcionalidad especificada.
- *     singularity [operation mode] [mode_specific_configuration] @n
- *     [operation_mode] options: 
- *  * @param[in]   op_mode Operation mode
- * @par <op_mode> @parblock 
- *      @li 0 = Download expert: Requiere Libtorrent y hacer experto
- *      @li 1 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
- *      @li 2 = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
- *      @li 3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
- *      @li 4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
- *      @li 5 = Singularity Miner: Requiere mecanismo de entrenamiento
- *      @li 6 = Paid non-supervised training, don't mine: Requiere generación de PoW o pago a los  mineros
- *      @li 7 = On-demand non-supervised training, mine to pay for training
- *      @li 8 = On-demand non-supervised training and mining, mine excess CPU for profit
- * @endparblock
- * @param[in]   mode_config Node working mode configuration
- * 
- * @return  program status
- */
 int main(int argc, char** argv) {
-        int operation_mode=0;  
-        int i;
-        /*
-        Taxonomy<Expert<int,double,double>,double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
-        Expert<int,double,double> tmp_expert;
-        // Selecciona modo de operación (se pueden agregar más modos de operación)
-        if (argc>0){
-            switch (atoi(argv[1])){
-                case 0: // Read taxonomy from file
-                    clog<<"Operation mode 0: read taxonomy from file" << "\n";
-                    
-                    //Expert expert_download(path);
-                    // llama a método de descarga con los demás parámetros        
-                    break;
-                case 1: // Write taxonomy to file
-                    clog<<"Operation mode 1: write taxonomy to file" << "\n";
-                    
-                    i=main_taxonomy.add_taxons(0, tmp_expert, 1);
-                    
-                    i=main_taxonomy.export_taxonomy(argv[2]);
-                    
-                    //Expert expert_download(path);
-                    // llama a método de descarga con los demás parámetros        
-                    break;
-                default:
-                    cerr<<"Operation mode not found" << "\n";
-                    // llama a método de descarga con los demás parámetros        
-                    break;
-            }
+    using namespace std;
+    int operation_mode = 0;
+    int i;
+    
+    Taxonomy<Expert<int, double, double>, double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
+    Expert<int, double, double> tmp_expert;
+    // Selecciona modo de operación (se pueden agregar más modos de operación)
+    if (argc > 0) {
+        switch (atoi(argv[1])) {
+            case 0: // Read taxonomy from file
+                clog << "Operation mode 0: read taxonomy from file" << "\n";
+
+                //Expert expert_download(path);
+                // llama a método de descarga con los demás parámetros        
+                break;
+            case 1: // Write taxonomy to file
+                clog << "Operation mode 1: write taxonomy to file" << "\n";
+
+                i = main_taxonomy.add_taxons(0, tmp_expert, 1);
+
+                i = main_taxonomy.export_taxonomy(argv[2]);
+
+                //Expert expert_download(path);
+                // llama a método de descarga con los demás parámetros        
+                break;
+            default:
+                cerr << "Operation mode not found" << "\n";
+                // llama a método de descarga con los demás parámetros        
+                break;
         }
-        else{
-            cerr<<"Faltan parámetros" << "\n";       
-        }
-         */
+    } else {
+        cerr << "Faltan parámetros" << "\n";
+    }
+
     return 0;
 }
 // Feet fail me not because this may be the only oportunity i got.....

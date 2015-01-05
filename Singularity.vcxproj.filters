@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Expert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FractalMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FractalTape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Taxon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Taxonomy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Expert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FractalMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FractalTape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Taxon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Taxonomy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="consoleapplication1\consoleapplication1\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="consoleapplication1\consoleapplication1\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\allocators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\document.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\encodedstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\encodings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\filereadstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\filestream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\filewritestream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\memorybuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\memorystream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\prettywriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\rapidjson.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\stringbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\writer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\error\en.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\error\error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\dtoa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\itoa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\meta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\pow10.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\internal\strfunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\msinttypes\inttypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidjson\msinttypes\stdint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".dep.inc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="doxigen_documentation\html\annotated.html" />
+    <None Include="doxigen_documentation\html\classes.html" />
+    <None Include="doxigen_documentation\html\class_block_chain-members.html" />
+    <None Include="doxigen_documentation\html\class_block_chain.html" />
+    <None Include="doxigen_documentation\html\class_expert-members.html" />
+    <None Include="doxigen_documentation\html\class_expert.html" />
+    <None Include="doxigen_documentation\html\class_fractal_machine-members.html" />
+    <None Include="doxigen_documentation\html\class_fractal_machine.html" />
+    <None Include="doxigen_documentation\html\class_fractal_tape-members.html" />
+    <None Include="doxigen_documentation\html\class_fractal_tape.html" />
+    <None Include="doxigen_documentation\html\class_taxon-members.html" />
+    <None Include="doxigen_documentation\html\class_taxon.html" />
+    <None Include="doxigen_documentation\html\class_taxonomy-members.html" />
+    <None Include="doxigen_documentation\html\class_taxonomy.html" />
+    <None Include="doxigen_documentation\html\files.html" />
+    <None Include="doxigen_documentation\html\functions.html" />
+    <None Include="doxigen_documentation\html\functions_func.html" />
+    <None Include="doxigen_documentation\html\functions_vars.html" />
+    <None Include="doxigen_documentation\html\globals.html" />
+    <None Include="doxigen_documentation\html\globals_func.html" />
+    <None Include="doxigen_documentation\html\globals_vars.html" />
+    <None Include="doxigen_documentation\html\hierarchy.html" />
+    <None Include="doxigen_documentation\html\index.html" />
+    <None Include="doxigen_documentation\html\main_8cpp.html" />
+    <None Include="doxigen_documentation\html\md__r_e_a_d_m_e.html" />
+    <None Include="doxigen_documentation\html\pages.html" />
+    <None Include="doxigen_documentation\html\structfractal__instruction-members.html" />
+    <None Include="doxigen_documentation\html\structfractal__instruction.html" />
+    <None Include="doxigen_documentation\html\structtaxon__synapse-members.html" />
+    <None Include="doxigen_documentation\html\structtaxon__synapse.html" />
+    <None Include="doxigen_documentation\html\structtx__connection-members.html" />
+    <None Include="doxigen_documentation\html\structtx__connection.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1evolution__ledger-members.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1evolution__ledger.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__dataset-members.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__dataset.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__data__cell-members.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__data__cell.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__struct-members.html" />
+    <None Include="doxigen_documentation\html\struct_expert_1_1expert__struct.html" />
+    <None Include="doxigen_documentation\html\struct_fractal_tape_1_1fractal__instruction-members.html" />
+    <None Include="doxigen_documentation\html\struct_fractal_tape_1_1fractal__instruction.html" />
+    <None Include="doxigen_documentation\html\struct_taxon_1_1taxon__synapse-members.html" />
+    <None Include="doxigen_documentation\html\struct_taxon_1_1taxon__synapse.html" />
+    <None Include="doxigen_documentation\html\struct_taxon_1_1tx__connection-members.html" />
+    <None Include="doxigen_documentation\html\struct_taxon_1_1tx__connection.html" />
+    <None Include="doxigen_documentation\html\_8dep_8inc.html" />
+    <None Include="doxigen_documentation\html\_block_chain_8cpp.html" />
+    <None Include="doxigen_documentation\html\_block_chain_8h.html" />
+    <None Include="doxigen_documentation\html\_block_chain_8h_source.html" />
+    <None Include="doxigen_documentation\html\_expert_8cpp.html" />
+    <None Include="doxigen_documentation\html\_expert_8h.html" />
+    <None Include="doxigen_documentation\html\_expert_8h_source.html" />
+    <None Include="doxigen_documentation\html\_fractal_machine_8cpp.html" />
+    <None Include="doxigen_documentation\html\_fractal_machine_8h.html" />
+    <None Include="doxigen_documentation\html\_fractal_machine_8h_source.html" />
+    <None Include="doxigen_documentation\html\_fractal_tape_8cpp.html" />
+    <None Include="doxigen_documentation\html\_fractal_tape_8h.html" />
+    <None Include="doxigen_documentation\html\_fractal_tape_8h_source.html" />
+    <None Include="doxigen_documentation\html\_r_e_a_d_m_e_8md.html" />
+    <None Include="doxigen_documentation\html\_taxonomy_8cpp.html" />
+    <None Include="doxigen_documentation\html\_taxonomy_8h.html" />
+    <None Include="doxigen_documentation\html\_taxonomy_8h_source.html" />
+    <None Include="doxigen_documentation\html\_taxon_8cpp.html" />
+    <None Include="doxigen_documentation\html\_taxon_8h.html" />
+    <None Include="doxigen_documentation\html\_taxon_8h_source.html" />
+    <None Include="doxigen_documentation\html\search\all_0.html" />
+    <None Include="doxigen_documentation\html\search\all_1.html" />
+    <None Include="doxigen_documentation\html\search\all_10.html" />
+    <None Include="doxigen_documentation\html\search\all_11.html" />
+    <None Include="doxigen_documentation\html\search\all_12.html" />
+    <None Include="doxigen_documentation\html\search\all_2.html" />
+    <None Include="doxigen_documentation\html\search\all_3.html" />
+    <None Include="doxigen_documentation\html\search\all_4.html" />
+    <None Include="doxigen_documentation\html\search\all_5.html" />
+    <None Include="doxigen_documentation\html\search\all_6.html" />
+    <None Include="doxigen_documentation\html\search\all_7.html" />
+    <None Include="doxigen_documentation\html\search\all_8.html" />
+    <None Include="doxigen_documentation\html\search\all_9.html" />
+    <None Include="doxigen_documentation\html\search\all_a.html" />
+    <None Include="doxigen_documentation\html\search\all_b.html" />
+    <None Include="doxigen_documentation\html\search\all_c.html" />
+    <None Include="doxigen_documentation\html\search\all_d.html" />
+    <None Include="doxigen_documentation\html\search\all_e.html" />
+    <None Include="doxigen_documentation\html\search\all_f.html" />
+    <None Include="doxigen_documentation\html\search\classes_0.html" />
+    <None Include="doxigen_documentation\html\search\classes_1.html" />
+    <None Include="doxigen_documentation\html\search\classes_2.html" />
+    <None Include="doxigen_documentation\html\search\classes_3.html" />
+    <None Include="doxigen_documentation\html\search\files_0.html" />
+    <None Include="doxigen_documentation\html\search\files_1.html" />
+    <None Include="doxigen_documentation\html\search\files_2.html" />
+    <None Include="doxigen_documentation\html\search\files_3.html" />
+    <None Include="doxigen_documentation\html\search\files_4.html" />
+    <None Include="doxigen_documentation\html\search\files_5.html" />
+    <None Include="doxigen_documentation\html\search\functions_0.html" />
+    <None Include="doxigen_documentation\html\search\functions_1.html" />
+    <None Include="doxigen_documentation\html\search\functions_2.html" />
+    <None Include="doxigen_documentation\html\search\functions_3.html" />
+    <None Include="doxigen_documentation\html\search\functions_4.html" />
+    <None Include="doxigen_documentation\html\search\functions_5.html" />
+    <None Include="doxigen_documentation\html\search\functions_6.html" />
+    <None Include="doxigen_documentation\html\search\functions_7.html" />
+    <None Include="doxigen_documentation\html\search\functions_8.html" />
+    <None Include="doxigen_documentation\html\search\functions_9.html" />
+    <None Include="doxigen_documentation\html\search\functions_a.html" />
+    <None Include="doxigen_documentation\html\search\functions_b.html" />
+    <None Include="doxigen_documentation\html\search\functions_c.html" />
+    <None Include="doxigen_documentation\html\search\functions_d.html" />
+    <None Include="doxigen_documentation\html\search\functions_e.html" />
+    <None Include="doxigen_documentation\html\search\nomatches.html" />
+    <None Include="doxigen_documentation\html\search\pages_0.html" />
+    <None Include="doxigen_documentation\html\search\variables_0.html" />
+    <None Include="doxigen_documentation\html\search\variables_1.html" />
+    <None Include="doxigen_documentation\html\search\variables_2.html" />
+    <None Include="doxigen_documentation\html\search\variables_3.html" />
+    <None Include="doxigen_documentation\html\search\variables_4.html" />
+    <None Include="doxigen_documentation\html\search\variables_5.html" />
+    <None Include="doxigen_documentation\html\search\variables_6.html" />
+    <None Include="doxigen_documentation\html\search\variables_7.html" />
+    <None Include="doxigen_documentation\html\search\variables_8.html" />
+    <None Include="doxigen_documentation\html\search\variables_9.html" />
+    <None Include="doxigen_documentation\html\search\variables_a.html" />
+  </ItemGroup>
+</Project>

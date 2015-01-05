@@ -35,11 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Expert.o \
 	${OBJECTDIR}/FractalMachine.o \
 	${OBJECTDIR}/FractalTape.o \
 	${OBJECTDIR}/Taxon.o \
-	${OBJECTDIR}/Taxonomy.o \
 	${OBJECTDIR}/main.o
 
 
@@ -67,11 +65,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Expert.o: Expert.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert.o Expert.cpp
-
 ${OBJECTDIR}/FractalMachine.o: FractalMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -86,11 +79,6 @@ ${OBJECTDIR}/Taxon.o: Taxon.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxon.o Taxon.cpp
-
-${OBJECTDIR}/Taxonomy.o: Taxonomy.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxonomy.o Taxonomy.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

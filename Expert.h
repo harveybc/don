@@ -76,6 +76,16 @@ private:
     std::queue <expert_dataset> datasets;//< Datasets de entrenamiento, el Merkletree root of the datasets is the expert storage KEY (Fractalmachine Taxons<>)
 };
 
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::Expert() {
+}
 
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::Expert(const Expert& orig) {
+}
+
+template<class ExpertType, class IDataType,class ODataType>
+Expert<ExpertType,IDataType,ODataType>::~Expert() {
+}
 #endif	/* EXPERT_H */
 

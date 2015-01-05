@@ -53,8 +53,8 @@ public:
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
-protected:
     FractalTape fractal_tape; /// Cinta de instrucciones de la máquina (Ledger de transacciones con la máquina)
+protected:
     std::vector <Taxon <MessageClass> > fractal_machine_state; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
     std::vector <Taxon <MessageClass> > taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <tx_connection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 

@@ -1,0 +1,17 @@
+﻿Build started 30/12/2014 4:52:31 p. m..
+     1>Project "D:\Dropbox\Singularity\Singularity.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Expert.cpp FractalMachine.cpp FractalTape.cpp main.cpp Taxon.cpp Taxonomy.cpp
+         Taxonomy.cpp
+         Taxon.cpp
+         main.cpp
+     1>main.cpp(61): fatal error C1083: Cannot open include file: 'stdafx.h': No such file or directory
+         FractalTape.cpp
+         FractalMachine.cpp
+         Expert.cpp
+         Generating Code...
+     1>Done Building Project "D:\Dropbox\Singularity\Singularity.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.24
