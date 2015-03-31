@@ -57,13 +57,13 @@
 #include <string>
 #include <cstdlib>
 #include "Taxonomy.h"
-#include "Expert.h"
+#include "Expert_ant.h"
 
 int main(int argc, char** argv) {
     using namespace std;
     int operation_mode = 0;
     int i;
-    
+/*    
     Taxonomy<Expert<int, double, double>, double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
     Expert<int, double, double> tmp_expert;
     // Selecciona modo de operación (se pueden agregar más modos de operación)
@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
     } else {
         cerr << "Faltan parámetros" << "\n";
     }
-
+*/
     return 0;
 }
 // Feet fail me not because this may be the only oportunity i got.....

@@ -38,7 +38,7 @@
 #include "Taxon.h"
 
 template <class NodeClass,class MessageClass> /// Máquina de turing paramanejo de estructura jerárquica de objetos (fractal).
-class FractalMachine { 
+class FractalMachine: Taxon<MessageClass> { 
 public:
     int reset(); ///< Borra todos los objetos del estado (no borra la cinta)
     int iterate(); ///< Ejecuta la instrucción leída por el cabezal de la cinta, procesa todos los mensajes de los taxones y avanza la cinta una celda

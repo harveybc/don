@@ -7,6 +7,7 @@
 
 #include "FractalMachine.h"
 #include "FractalTape.h"
+#include "Expert.h"
 
 template <class NodeClass,class MessageClass> 
 int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
@@ -27,7 +28,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
                 }
                 if (instruction.parameters.size()<1) return 0; // Verifica si el número de params es al menos 1
                 if (get_size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (taxon_register.size()=0) return 0; //Verifica si el registro de taxones está vacío
+                if (taxon_register.size()==0) return 0; //Verifica si el registro de taxones está vacío
                 for (i=0;i<taxon_register.size();i++){ // Ejecución de comando 1: crear nodo
                     fractal_machine_state.push_back(taxon_register[i]); 
                 }
@@ -43,7 +44,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
                 }
                 if (get_size()<1) return 0; // Si el fractal no contiene ningún elemento, retona 0
                 if (get_size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (taxon_register.size()=0) return 0; //Verifica si el registro de taxones está vacío
+                if (taxon_register.size()==0) return 0; //Verifica si el registro de taxones está vacío
                 fractal_machine_state[instruction.parameters[0]]=taxon_register[0];// Ejecución de comando 2: reemplazar nodo
             }            
             ///< TODO: instruction 3 = delete object (todos sus hijos se pasan al parent y se coloca su estado como inactivo), params: base node id
@@ -69,7 +70,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
                 }
                 if (instruction.parameters.size()<1) return 0; // Verifica si el número de params es al menos1
                 if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (conn_register.size()=0) return 0; //Verifica si el registro de conexiones está vacío
+                if (conn_register.size()==0) return 0; //Verifica si el registro de conexiones está vacío
                 for (i=0;i<conn_register.size();i++){ // Ejecución de comando 4: crear conex
                     fractal_machine_state[instruction.parameters[0]].add_connection(conn_register[i]); /// Adiciona una conex al objeto
                 }
@@ -84,7 +85,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
                 }
                 if (instruction.parameters.size()<2) return 0; // Verifica si el número de params es al menos 2
                 if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (conn_register.size()=0) return 0; //Verifica si el registro de conexiones está vacío
+                if (conn_register.size()==0) return 0; //Verifica si el registro de conexiones está vacío
                 if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
                 fractal_machine_state[instruction.parameters[0]].modify_connection(instruction.parameters[1],conn_register[0]);/// ejecuta comando 5: reemplazar
             } 
@@ -92,7 +93,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
             if (instruction.id=='6'){
                 if (instruction.parameters.size()<2) return 0; // Verifica si el número de params es 1
                 if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (conn_register.size()=0) return 0; //Verifica si el registro de conexiones está vacío
+                if (conn_register.size()==0) return 0; //Verifica si el registro de conexiones está vacío
                 fractal_machine_state[instruction.parameters[0]].erase_connection(instruction.parameters[1]);/// ejecuta comando 6: borrar conexión
             } 
             /// instruction 7 = add instruction to tape, params: instruction id, instruction params
@@ -117,6 +118,7 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
                     tmp_instr.parameters.push_back(instruction.parameters[i+1]);
                 }
                 fractal_tape.push_instruction(tmp_instr); // Inserta la instrucción al final de la cinta.
+                
             } 
 
             
@@ -158,3 +160,4 @@ template <class NodeClass,class MessageClass>
 FractalMachine<NodeClass,MessageClass>::~FractalMachine() {
 }
 
+//template class FractalMachine<Expert<double >,double >;
