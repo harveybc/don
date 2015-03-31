@@ -36,7 +36,7 @@
 #include "FractalTape.h"
 #include "Taxon.h"
 #include "Expert.h"
-#include "rapidjson/document.h"
+//#include "rapidjson/document.h"
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 class Taxonomy: public Taxon<MessageClass> { // Se puede cambiar double por un vector para Complex-value ANNs
@@ -136,10 +136,5 @@ Taxonomy<TaxonClass,MessageClass>::Taxonomy(const Taxonomy& orig) {
 template <class TaxonClass,class MessageClass>
 Taxonomy<TaxonClass,MessageClass>::~Taxonomy() {
 }
-//template class Taxonomy<Expert<double>,double >;
+template class Taxonomy<Expert<double>,double >;
 #endif	/* TAXONOMY_H */
-// I told you nigga it´s a rap, fool!!!
-// You clam you a dog, but nigga am the vet!!!!
-// They said Fuck you yuoung nigga, fuck you young nigga,
-// I know some girls in the club right now that want to fuck this young nigga!!!
-// Wiz Khalifa.
