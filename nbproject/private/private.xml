@@ -7,10 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Dropbox/Singularity/Singularity/FractalTape.cpp</file>
+            <file>file:/D:/Dropbox/Singularity/Singularity/Neuron.h</file>
+            <file>file:/D:/Dropbox/Singularity/Singularity/Taxon.h</file>
+            <file>file:/D:/Dropbox/Singularity/Singularity/Neuron_d.h</file>
+            <file>file:/D:/Dropbox/Singularity/Singularity/images/ClassConnectionDiagram_20150327.png</file>
             <file>file:/D:/Dropbox/Singularity/Singularity/Taxonomy.h</file>
-            <file>file:/D:/Dropbox/Singularity/Singularity/FractalTape.h</file>
             <file>file:/D:/Dropbox/Singularity/Singularity/main.cpp</file>
+            <file>file:/D:/Dropbox/Singularity/Singularity/Neuron_d.cpp</file>
         </group>
     </open-files>
 </project-private>

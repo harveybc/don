@@ -12,6 +12,7 @@
 template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje que se envía a otra neurona
 class Neuron: public Taxon<MessageClass> {
 public:
+    virtual void activationFcn();
     Neuron();
     Neuron(const Neuron& orig);
     virtual ~Neuron();

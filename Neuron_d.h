@@ -11,11 +11,14 @@
 
 class Neuron_d: public Neuron<double> {
 public:
+    void activationFcn();
+    void evaluate();
     Neuron_d();
     Neuron_d(const Neuron_d& orig);
     virtual ~Neuron_d();
 private:
-
+    double fSigma(double v_X, double coef_a);  //NO OPTIMA//TODO: usar INLINE si es posible
+    double threshold; //
 };
 
 #endif	/* NEURON_D_H */
