@@ -7,15 +7,5 @@
 
 #include "Expert.h"
 
-template <class MessageClass> ///< para IA, MessageClass=double
-Expert<MessageClass>::Expert() {
-}
 
-template <class MessageClass> ///< para IA, MessageClass=double
-Expert<MessageClass>::Expert(const Expert& orig) {
-}
-
-template <class MessageClass> ///< para IA, MessageClass=double
-Expert<MessageClass>::~Expert() {
-}
 

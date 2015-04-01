@@ -26,7 +26,7 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, Taxon
     std::queue <int> params;
     params.push(fractal_coords_base);
     params.push(quantity);
-    fractal_instruction instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
+    FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
     instruction.id = 'C';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
@@ -38,7 +38,7 @@ template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::remove_taxon(int fractal_coords) { ///< Borra un taxón
     std::queue <int> params;
     params.push(fractal_coords);
-    fractal_instruction instruction; ///< Operación: D (delete), parámetros: id de objeto
+    FractalCmd instruction; ///< Operación: D (delete), parámetros: id de objeto
     instruction.id = 'D';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina

@@ -33,17 +33,11 @@
 #include <string>
 #include "Taxon.h"
 
-
-struct fractal_instruction{ 
-    char id; ///< La instrucción a ejecutar (para versión de 8 bits)
-    std::vector <int> parameters; ///< Parámetros de la instrucción ///TODO: cambiar a UINT64
-};
-
-class FractalTape: public Taxon<fractal_instruction> {
+class FractalTape: public Taxon<FractalCmd> {
 public:
-    int push_instruction(fractal_instruction instr);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
-    int pop_instruction(fractal_instruction &output);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
-    int get_tape(std::deque <fractal_instruction> &output_tape); ///< Obtiene la cinta de instrucciones, retorna el número de instrucciones leídas
+    int push_instruction(FractalCmd instr);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
+    int pop_instruction(FractalCmd &output);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
+    int get_tape(std::deque <FractalCmd> &output_tape); ///< Obtiene la cinta de instrucciones, retorna el número de instrucciones leídas
     int get_size(); ///< Obtiene el número de instrucciones en la cinta.
     int file_export(std::string file_path); ///< Exporta la cinta a un archivo en el formato JSON
     int file_import(std::string file_path); ///< Importa la cinta desde un archivo JSON   
@@ -51,7 +45,7 @@ public:
     FractalTape(const FractalTape& orig);
     virtual ~FractalTape();
 private:
-    std::deque <fractal_instruction> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
+    std::deque <FractalCmd> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
 };
 /*** FractalTape JSON
  * {

@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Dataset.h</itemPath>
       <itemPath>Expert.h</itemPath>
       <itemPath>Expert_SANN.h</itemPath>
       <itemPath>Expert_Simple.h</itemPath>
@@ -27,6 +28,7 @@
                    displayName="Source Files"
                    projectFiles="true"
                    kind="ROOT">
+      <itemPath>Dataset.cpp</itemPath>
       <itemPath>Expert.cpp</itemPath>
       <itemPath>Expert_SANN.cpp</itemPath>
       <itemPath>Expert_Simple.cpp</itemPath>
@@ -51,6 +53,8 @@
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>images/ClassConnectionDiagram_20150327.png</itemPath>
+      <itemPath>images/Logo.png</itemPath>
       <itemPath>Makefile</itemPath>
       <itemPath>README.md</itemPath>
     </logicalFolder>
@@ -73,6 +77,10 @@
           </incDir>
         </ccTool>
       </compileType>
+      <item path="Dataset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dataset.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Expert.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Expert.h" ex="false" tool="3" flavor2="0">
@@ -150,6 +158,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Dataset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dataset.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Expert.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Expert.h" ex="false" tool="3" flavor2="0">

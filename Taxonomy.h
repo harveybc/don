@@ -36,6 +36,9 @@
 #include "FractalTape.h"
 #include "Taxon.h"
 #include "Expert.h"
+#include "Expert_SANN.h"
+#include "Expert_Simple.h"
+#include "Neuron_d.h"
 //#include "rapidjson/document.h"
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
@@ -75,7 +78,7 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, Taxon
     std::vector <int> params;
     params.push_back(fractal_coords_base);
     params.push_back(quantity);
-    fractal_instruction instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
+    FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
     instruction.id = 'C';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
@@ -85,9 +88,9 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, Taxon
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::remove_taxon(int fractal_coords) { ///< Borra un taxón
-    std::queue <int> params;
-    params.push(fractal_coords);
-    fractal_instruction instruction; ///< Operación: D (delete), parámetros: id de objeto
+    std::vector <int> params;
+    params.push_back(fractal_coords);
+    FractalCmd instruction; ///< Operación: D (delete), parámetros: id de objeto
     instruction.id = 'D';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
@@ -136,5 +139,9 @@ Taxonomy<TaxonClass,MessageClass>::Taxonomy(const Taxonomy& orig) {
 template <class TaxonClass,class MessageClass>
 Taxonomy<TaxonClass,MessageClass>::~Taxonomy() {
 }
-template class Taxonomy<Expert<double>,double >;
+template class Taxonomy<Expert_SANN,double >;
+template class Taxonomy<Expert_Simple,double >;
+template class Taxonomy<Neuron_d,double >;
+
+
 #endif	/* TAXONOMY_H */

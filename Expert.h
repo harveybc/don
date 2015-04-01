@@ -18,6 +18,19 @@ public:
 private:
 
 };
+template <class MessageClass> ///< para IA, MessageClass=double
+Expert<MessageClass>::Expert() {
+}
+
+template <class MessageClass> ///< para IA, MessageClass=double
+Expert<MessageClass>::Expert(const Expert& orig) {
+}
+
+template <class MessageClass> ///< para IA, MessageClass=double
+Expert<MessageClass>::~Expert() {
+}
+
+template class Expert<double>; //TODO : Implementación de experto de Complex ANNs
 
 #endif	/* EXPERT_H */
 
