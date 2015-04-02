@@ -62,20 +62,7 @@ int main(int argc, char** argv) {
     using namespace std;
     int operation_mode = 0;
     int i,result;
-    /* Prueba de Neuron_d (que usa mensajes tipo double) */
-    // Se crea una neurona de x entradas e y salidas.
-    Neuron_d neurona;
-    // Coloca 2 interfaces de entrada y 1 de salida
-    neurona.add_interfaces_in(2);
-    neurona.add_interfaces_out(1);
-    // Se colocan valores double en las interfaces de entrada de la neurona
-    result=neurona.push_msg_in(0.01, 0);
-    result=neurona.push_msg_in(0.01, 1);
-    // Se evalúa
-    
-    // Se extraen los valores de las salidas de la neurona
-    // Se imprimen ls valores leídos
-    /* fin Prueba de Neuron_d*/
+
 /*    
     Taxonomy<Expert<int, double, double>, double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
     Expert<int, double, double> tmp_expert;

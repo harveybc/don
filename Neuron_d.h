@@ -11,8 +11,9 @@
 
 class Neuron_d: public Neuron<double> {
 public:
-    void activationFcn();
-    void evaluate();
+    
+    void activationFcn(); 
+    void evaluate(); 
     Neuron_d();
     Neuron_d(const Neuron_d& orig);
     virtual ~Neuron_d();

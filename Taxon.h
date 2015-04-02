@@ -34,17 +34,15 @@
 #include <set> 
 
 /// Typedefs y Structs
-struct TaxonSynapse{ ///< Tipo base para conexión
+struct TaxonConnection{ //Al crear una conex Out, verifica si para la misma salida ya existe un buffer lo suficientemente largo, sino lo alarga
+    int conn_type; ///<  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
     int remote_id; ///< id del taxón remoto
+    int local_out_interface; /// < interface en el taxón local
+    int remote_in_interface; ///< interface en el taxón remoto
     double length; //< largo de la conexión, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
     double radius; //< vol_neurona/100 Regula la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
     double sensitivity; //< Equivalente al peso de la conexión de entrada 
-    int local_interface; ///< interface en el taxón local
-    int remote_interface; ///< interface en el taxón remoto
-};
-struct TaxonConnection{
-    int conn_type; ///<  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-    std::deque <TaxonSynapse> conn_members; ///< Sinápsis que pertenecen a la conexión
+    int interface_pointer;//< Index del buffer desde donde debe leer una conex de entrada
 };
 struct FractalCmd{ 
     char id; ///< La instrucción a ejecutar (para versión de 8 bits)
@@ -68,28 +66,28 @@ public:
     int get_description(std::string &output); //< Obtiene el atributo descripción
     int read_msg_in(MessageClass &msg, int interface_id); ///< lee el msg en una interface de entrada.
     int read_msg_out(MessageClass &msg, int interface_id); ///< lee el msg en una interface de entrada.
-    int push_msg_in(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de entrada.
     int pending_msgs_in(int interface_id);  ///< Retorna el número de mensajes pendientes en una interfaz de entrada
     int pending_msgs_out(int interface_id);  ///< Retorna el número de mensajes pendientes en una interfaz de salida
-    int add_connection(TaxonConnection conn); ///< Crea una nueva conexión
-    int modify_connection(int conn_id, TaxonConnection new_conn); ///< Modifica una conexión existente
-    int erase_connection(int conn_id); ///< Elimina una conexión
-    int get_connection(TaxonConnection conn_id); ///< Obtiene una conexión existente
     int num_connections(); ///< Obtiene el número de conexiones
-    void add_interfaces_in(int num); ///< Agrega interfaces de entrada al taxón
-    void add_interfaces_out(int num); ///< Agrega interfaces de salida al taxón
     void add_tag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
     void remove_tag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
     void clear_tags(); ///< Configura las Tags (palabras clave) para búsqueda
     void get_tags(std::set<std::string> & output); ///< Obtiene los tags actuales
+    void add_interfaces_in(int num); ///< Agrega interfaces de entrada al taxón
+    void add_interfaces_out(int num); ///< Agrega interfaces de salida al taxón
+    int add_connection(TaxonConnection conn); ///< Crea una nueva conexión
+    int modify_connection(int conn_id, TaxonConnection new_conn); ///< Modifica una conexión existente
+    int erase_connection(int conn_id); ///< Elimina una conexión
+    int get_connection(TaxonConnection conn_id); ///< Obtiene una conexión existente
+    int push_msg_in(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de entrada.
+    int push_msg_out(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de salida.
+    int pop_msg_in(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de entrada.    
+    int pop_msg_out(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de salida.
     virtual void evaluate();
     Taxon(); 
     Taxon(const Taxon& orig);
     virtual ~Taxon();
 protected:
-    int push_msg_out(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de salida.
-    int pop_msg_in(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de entrada.    
-    int pop_msg_out(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de salida.
     typedef std::deque <MessageClass> msg_buffer; ///< Tipo de datos para un buffer de mensajes 
     std::vector<msg_buffer> input_interfaces; ///< Mapa de interfaces de entrada
     std::vector<msg_buffer> output_interfaces; ///< Mapa de interfaces de salida
@@ -126,6 +124,7 @@ template <class MessageClass>
 int Taxon<MessageClass>::get_description(std::string &output){ //< Obtiene el atributo descripción
     output=description;
 }    
+
 
 template <class MessageClass>
 void Taxon<MessageClass>::add_interfaces_in(int num){ ///< Agrega interfaces de entrada al taxón
