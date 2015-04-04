@@ -41,6 +41,7 @@
 #include "Neuron_d.h"
 //#include "rapidjson/document.h"
 
+
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 class Taxonomy: public Taxon<MessageClass> { // Se puede cambiar double por un vector para Complex-value ANNs
 public:
@@ -51,12 +52,14 @@ public:
     int replace_taxon(int fractal_coords, TaxonClass taxon); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int export_taxonomy(char* file_path); ///< Exporta la taxonomía a un archivo JSON o XML
     int import_taxonomy(char* file_path); // < Importa la taxonomía desde un archivo JSON o XML
+
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
     virtual ~Taxonomy();
 protected:
     FractalMachine <TaxonClass,MessageClass> taxons; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
 };
+
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output) { ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
@@ -79,11 +82,39 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, Taxon
     params.push_back(fractal_coords_base);
     params.push_back(quantity);
     FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
-    instruction.id = 'C';
+    instruction.id = '1';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
     taxons.iterate();
     return 1;
+}
+
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::add_connection(int taxon_id, TaxonConnection conn) { ///< Agrega la conexión al taxón y recalcula el tamaño 
+    int i = 0;
+    std::vector <int> params;
+    params.push_back(fractal_coords_base);
+    params.push_back(quantity);
+    FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
+    instruction.id = '4';
+    instruction.parameters = params;
+    taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
+    taxons.iterate();
+    return 1;
+}
+
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::modify_connection(int conn_id, TaxonConnection new_conn) { ///< Coloca el msg en una interface de salida.
+    if (connections.size() > conn_id) {
+        connections[conn_id] = new_conn;
+        return 1;
+    }
+    return 0;
+}
+
+template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
+int Taxonomy<TaxonClass,MessageClass>::erase_connection(int conn_id) {
+    return (connections.erase(connections.begin() + conn_id) == connections.end() ? 0 : 1);
 }
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert

@@ -40,6 +40,10 @@
 #include "Expert_Simple.h"
 #include "Neuron_d.h"
 
+// Typedefs y structs
+typedef std::vector<TaxonConnection> v_connections; ///< Conexiones de cada taxón
+typedef std::deque <MessageClass> msg_buffer; ///< Tipo de datos para un buffer de mensajes 
+
 template <class NodeClass,class MessageClass> /// Máquina de turing paramanejo de estructura jerárquica de objetos (fractal).
 class FractalMachine: Taxon<MessageClass> { 
 public:
@@ -53,16 +57,24 @@ public:
     int replace_state(NodeClass new_object, int position);
     int taxon_register_load(std::vector <NodeClass> taxon_register);
     int conn_register_load(std::vector <TaxonConnection> conn_register);
+    void add_connection(TaxonConnection conn); ///< Crea una nueva conexión
+    int modify_connection(int conn_id, TaxonConnection new_conn); ///< Modifica una conexión existente
+    int erase_connection(int conn_id); ///< Elimina una conexión
+    int get_connection(TaxonConnection conn_id); ///< Obtiene una conexión existente
+
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
     FractalTape fractal_tape; /// Cinta de instrucciones de la máquina (Ledger de transacciones con la máquina)
-protected:
     std::vector <NodeClass> fractal_machine_state; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
+    std::vector <v_connections> connections; ///< Conexiones de todos los taxones
+    std::vector<msg_buffer> input_interfaces; ///< Mapa de interfaces de entrada
+    std::vector<msg_buffer> output_interfaces; ///< Mapa de interfaces de salida
+
+protected:
     std::vector <NodeClass> taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <TaxonConnection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
 };
-
 
 template <class NodeClass,class MessageClass> 
 int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
@@ -116,18 +128,28 @@ int FractalMachine<NodeClass,MessageClass>::iterate(){ ///< Ejecuta la cinta de 
             /// instruction 4 = create connections, params: base node id, usa conn register 
             if (instruction.id=='4'){
                 if (instruction.parameters.size()>32){  // Si el comando contiene uno o varios hashes, y no existen como archivos,  los descarga en el taxon_register, sino toma el último almacenado en el taxon_register 
-                    /// vacía el conn_register
+                    /// vacía el taxon_register
                     /// Para cada 32 bytes (un hash de 256 bits)
                         /// TODO: Si no existe el archivo con Key=HASH en el path de trabajo, lo descarga
-                        /// Abre el archivo para lectura (nomenclatura nombre=HASH.c)
-                        /// Carga el archivo y verifica el encabezado (Tipo: singularity_connection,version)
+                        /// Abre el archivo para lectura(nomenclatura nombre=HASH.t)
+                        /// Carga el archivo y verifica el encabezado (Tipo: singularity_taxonomy,version)
                         /// Carga el contenido del experto en el taxon_register
                 }
-                if (instruction.parameters.size()<1) return 0; // Verifica si el número de params es al menos1
-                if (fractal_machine_state.size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
-                if (conn_register.size()==0) return 0; //Verifica si el registro de conexiones está vacío
-                for (i=0;i<conn_register.size();i++){ // Ejecución de comando 4: crear conex
-                    fractal_machine_state[instruction.parameters[0]].add_connection(conn_register[i]); /// Adiciona una conex al objeto
+                if (instruction.parameters.size()<1) return 0; // Verifica si el número de params es al menos 1
+                if (get_size()>instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
+                if (connections.size()==0) return 0; //Verifica si el registro de taxones está vacío
+                for (i=0;i<connections.size();i++){ // Ejecución de comando 1: crear nodo
+                    connections.push_back(taxon_register[i]); 
+                }///< TODO: Administra el tamaño de las interfaces de cada nodo
+                    
+                    // si la conexión es de entrada, calcula el segmento
+    if (conn.conn_type==1){ //1=entrada,2=salida,0=duplex
+        conn.segment=floor(conn.length/(3000*conn.radius)); // el tamaño de la interfaz para la conex es floor (L/3000r) + 1, 
+        // si el tamaño de la interfaz es menor a el length, hace más grande la interfaz
+        if (taxons.fractal_machine_state[taxon_id]. )
+        //TODO: si es el mayor segmento de todas las conex a la interfaz remota, cambia el tamaño eoliminando los últimos
+    }
+    connections.push_back(conn);
                 }
             } 
             /// instruction 5 = replace connections, params: base node id, conn_id, usa conn register 
