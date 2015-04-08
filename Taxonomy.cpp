@@ -77,13 +77,13 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { 
             myfile << "]\n";
         }
         myfile << "],";
-        myfile << "\"output_interfaces\" : [";
-        for (i = 0; i<this->output_interfaces.size(); i++) {
+        myfile << "\"interfaces\" : [";
+        for (i = 0; i<this->interfaces.size(); i++) {
             if (i != 0) myfile << ",";
             myfile << "[\n";
-            for (j = 0; j<this->output_interfaces[i].size(); j++) {
+            for (j = 0; j<this->interfaces[i].size(); j++) {
                 if (j != 0) myfile << ",";
-                myfile << this->output_interfaces[i][j];
+                myfile << this->interfaces[i][j];
             }
             myfile << "]\n";
         }
@@ -124,55 +124,55 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { 
             myfile << "]\n}";
         }
         myfile << "\n],";
-        myfile << "\n\"fractal_machine_state\" : [\n";
-        for (i = 0; i < taxons.fractal_machine_state.size(); i++) {
-            myfile << "{\n\"id\":" + taxons.fractal_machine_state[i].id +
-                    ",\n\"parent_id\":" + taxons.fractal_machine_state[i].parent_id +
-                    ",\n\"active_taxon\":" + taxons.fractal_machine_state[i].active_taxon +
-                    ",\n\"description\":\"" + taxons.fractal_machine_state[i].description + "\",";
+        myfile << "\n\"nodes\" : [\n";
+        for (i = 0; i < taxons.nodes.size(); i++) {
+            myfile << "{\n\"id\":" + taxons.nodes[i].id +
+                    ",\n\"parent_id\":" + taxons.nodes[i].parent_id +
+                    ",\n\"active_taxon\":" + taxons.nodes[i].active_taxon +
+                    ",\n\"description\":\"" + taxons.nodes[i].description + "\",";
             myfile << "\"input_interfaces\" : [";
-            for (j = 0; j<taxons.fractal_machine_state[i].input_interfaces.size(); j++) {
+            for (j = 0; j<taxons.nodes[i].input_interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.fractal_machine_state[i].input_interfaces[j].size(); k++) {
+                for (k = 0; k<taxons.nodes[i].input_interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.fractal_machine_state[i].input_interfaces[j][k];
+                    myfile << taxons.nodes[i].input_interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],";
-            myfile << "\"output_interfaces\" : [";
-            for (j = 0; j<taxons.fractal_machine_state[i].output_interfaces.size(); j++) {
+            myfile << "\"interfaces\" : [";
+            for (j = 0; j<taxons.nodes[i].interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.fractal_machine_state[i].output_interfaces[j].size(); k++) {
+                for (k = 0; k<taxons.nodes[i].interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.fractal_machine_state[i].output_interfaces[j][k];
+                    myfile << taxons.nodes[i].interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],\n";
             myfile << "\"connections\" : [";
-            for (j = 0; j<taxons.fractal_machine_state[i].connections.size(); j++) {
+            for (j = 0; j<taxons.nodes[i].connections.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "{\n";
-                myfile << "\"conn_type\" : " + taxons.fractal_machine_state[i].connections[j].conn_type + ",\n";
+                myfile << "\"conn_type\" : " + taxons.nodes[i].connections[j].conn_type + ",\n";
                 myfile << "\"conn_members\" : [\n";
-                for (k = 0; k<taxons.fractal_machine_state[i].connections[j].conn_members.size(); k++) {
-                    myfile << "{\n \"remote_id\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].remote_id;
-                    myfile << "\n \"length\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].length;
-                    myfile << "\n \"radius\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].radius;
-                    myfile << "\n \"sensitivity\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].sensitivity;
-                    myfile << "{\n \"local_interface\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].local_interface;
-                    myfile << "{\n \"remote_interface\" : " + taxons.fractal_machine_state[i].connections[j].conn_members[k].remote_interface;
+                for (k = 0; k<taxons.nodes[i].connections[j].conn_members.size(); k++) {
+                    myfile << "{\n \"remote_id\" : " + taxons.nodes[i].connections[j].conn_members[k].remote_id;
+                    myfile << "\n \"length\" : " + taxons.nodes[i].connections[j].conn_members[k].length;
+                    myfile << "\n \"radius\" : " + taxons.nodes[i].connections[j].conn_members[k].radius;
+                    myfile << "\n \"sensitivity\" : " + taxons.nodes[i].connections[j].conn_members[k].sensitivity;
+                    myfile << "{\n \"local_interface\" : " + taxons.nodes[i].connections[j].conn_members[k].local_interface;
+                    myfile << "{\n \"remote_interface\" : " + taxons.nodes[i].connections[j].conn_members[k].remote_interface;
                     myfile << "\n}\n";
                 }
                 myfile << "]";
                 myfile << "}\n";
             }
             myfile << "],\n\"tags\" : [";
-            for (std::set<std::string>::iterator it = taxons.fractal_machine_state[i].tags.begin(); it != taxons.fractal_machine_state[i].tags.end(); ++it) {
-                if (it != taxons.fractal_machine_state[i].tags.begin()) myfile << ",";
+            for (std::set<std::string>::iterator it = taxons.nodes[i].tags.begin(); it != taxons.nodes[i].tags.end(); ++it) {
+                if (it != taxons.nodes[i].tags.begin()) myfile << ",";
                 myfile << "\"" + *it + "\"";
             }
             myfile << "]";
@@ -195,13 +195,13 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { 
                 myfile << "]\n";
             }
             myfile << "],";
-            myfile << "\"output_interfaces\" : [";
-            for (j = 0; j<taxons.taxon_register[i].output_interfaces.size(); j++) {
+            myfile << "\"interfaces\" : [";
+            for (j = 0; j<taxons.taxon_register[i].interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.taxon_register[i].output_interfaces[j].size(); k++) {
+                for (k = 0; k<taxons.taxon_register[i].interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.taxon_register[i].output_interfaces[j][k];
+                    myfile << taxons.taxon_register[i].interfaces[j][k];
                 }
                 myfile << "]\n";
             }

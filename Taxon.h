@@ -35,16 +35,7 @@
 
 /// Typedefs y Structs
 
-struct TaxonConnection { //Al crear una conex Out, verifica si para la misma salida ya existe un buffer lo suficientemente largo, sino lo alarga
-    int conn_type; ///<  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-    int remote_id; ///< id del taxón remoto: -1 si es un taxón de entrada o salida
-    int local_interface; /// < interface en el taxón local, 
-    int remote_interface; ///< interface en el taxón remoto, -1 para entradas o salidas
-    double length; ///< largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-    double radius; ///< radio en um, aprox vol_neurona/100. Equiv al peso de la conex in y la velocidad de salida V=aprox 5xRadius (0.2um)0.5m/s a (20um)120m/s La suma de los radios da tamaño a neurona)
-    int segment; ///< Calculado durante creación de conex para para inputs, se calcula como floor(length/(3000 x radius)) el segmento del la interfaz de salida el que está conectada la entrada
-    double weight; //< sensibilidad de la conex de entrada (peso para neurona)
-};
+
 
 struct FractalCmd {
     char id; ///< La instrucción a ejecutar (para versión de 8 bits)
@@ -67,21 +58,10 @@ public:
     int is_active(); ///< retona el valor de active_taxon
     int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
     int get_description(std::string &output); //< Obtiene el atributo descripción
-    int read_msg_in(MessageClass &msg, int interface_id); ///< lee el msg en una interface de entrada.
-    int read_msg_out(MessageClass &msg, int interface_id); ///< lee el msg en una interface de entrada.
-    int pending_msgs_in(int interface_id); ///< Retorna el número de mensajes pendientes en una interfaz de entrada
-    int pending_msgs_out(int interface_id); ///< Retorna el número de mensajes pendientes en una interfaz de salida
-    int num_connections(); ///< Obtiene el número de conexiones
     void add_tag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
     void remove_tag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
     void clear_tags(); ///< Configura las Tags (palabras clave) para búsqueda
     void get_tags(std::set<std::string> & output); ///< Obtiene los tags actuales
-    void add_interfaces_in(int num); ///< Agrega interfaces de entrada al taxón
-    void add_interfaces_out(int num); ///< Agrega interfaces de salida al taxón
-    void push_msg_in(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de entrada.
-    void push_msg_out(MessageClass msg, int interface_id); ///< Coloca el msg en una interface de salida.
-    int pop_msg_in(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de entrada.    
-    int pop_msg_out(MessageClass &msg, int interface_id); ///< Saca el msg de una interface de salida.
     virtual void evaluate();
     Taxon();
     Taxon(const Taxon& orig);
@@ -89,6 +69,7 @@ public:
 protected:
     std::set<std::string> tags; ///< Lista de tags para búsqueda
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
+    int parent_id; ///< Identificación del taxón padre si existe, al ser creado en una taxonomía fractal es lineal.
     bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
     std::string description; ///< Descripción del taxón
 };
@@ -99,8 +80,8 @@ int Taxon<MessageClass>::get_id() { ///< Obtiene el atributo id de este Taxón (
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::num_connections() {
-    return connections.size();
+int Taxon<MessageClass>::get_parent_id() { //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
+    return parent_id;
 }
 
 template <class MessageClass>
@@ -109,89 +90,9 @@ int Taxon<MessageClass>::is_active() { ///< Obtiene el atributo id de este Taxó
 }
 
 template <class MessageClass>
-int Taxon<MessageClass>::get_parent_id() { //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
-    return parent_id;
-}
-
-template <class MessageClass>
 int Taxon<MessageClass>::get_description(std::string &output) { //< Obtiene el atributo descripción
     output = description;
 }
-
-template <class MessageClass>
-void Taxon<MessageClass>::add_interfaces_in(int num) { ///< Agrega interfaces de entrada al taxón
-    msg_buffer tmp;
-    for (int i = 0; i < num; i++)
-        input_interfaces.push_back(tmp);
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::add_interfaces_out(int num) { ///< Agrega interfaces de salida al taxón
-    msg_buffer tmp;
-    for (int i = 0; i < num; i++)
-        output_interfaces.push_back(tmp);
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::read_msg_in(MessageClass &msg, int interface_id) { ///< lee el msg en una interface de entrada.
-    if (input_interfaces.size() > interface_id) {
-        msg = input_interfaces[interface_id][0];
-        return 1;
-    } else
-        return 0;
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::read_msg_out(MessageClass &msg, int interface_id) { ///< lee el msg en una interface de entrada.
-    if (output_interfaces.size() > interface_id) {
-        msg = output_interfaces[interface_id][0];
-        return 1;
-    } else
-        return 0;
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::push_msg_in(MessageClass msg, int interface_id) { ///> coloca el msg en la interface especificada de salida.
-    if (input_interfaces.size() > interface_id) {
-        input_interfaces[interface_id].push_back(msg);
-        return 1;
-    } else
-        return 0;
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::pop_msg_in(MessageClass &msg, int interface_id) { ///< Saca el msg de una interface de entrada.
-    msg = input_interfaces[interface_id].front();
-    input_interfaces[interface_id].pop_front();
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::push_msg_out(MessageClass msg, int interface_id) { ///> coloca el msg en la interface especificada de salida.
-    output_interfaces[interface_id].push_back(msg);
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::pop_msg_out(MessageClass &msg, int interface_id) { ///< Saca el msg de una interface de entrada.
-    msg = output_interfaces[interface_id].front();
-    output_interfaces[interface_id].pop_front();
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::pending_msgs_in(int interface_id) { ///< Retorna el número de mensajes pendientes en un buffer de entrada
-    if (input_interfaces.size() > interface_id) {
-        return input_interfaces[interface_id].size();
-    } else
-        return 0;
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::pending_msgs_out(int interface_id) { ///< Retorna el número de mensajes pendientes en un buffer de salida
-    if (output_interfaces.size() > interface_id) {
-        return output_interfaces[interface_id].size();
-    } else
-        return 0;
-}
-
 
 template <class MessageClass>
 void Taxon<MessageClass>::add_tag(std::string new_tag) { ///< Configura las Tags (palabras clave) para búsqueda
