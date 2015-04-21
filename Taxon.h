@@ -33,24 +33,6 @@
 #include <string>
 #include <set> 
 
-/// Typedefs y Structs
-
-
-
-struct FractalCmd {
-    char id; ///< La instrucción a ejecutar (para versión de 8 bits)
-    std::vector <int> parameters; ///< Parámetros de la instrucción ///TODO: cambiar a UINT64
-};
-
-struct TrainingData { ///< TODO: Cambiar, este es  de Synaapse
-    int remote_id; ///< id del taxón remoto
-    double length; //< largo de la conexión, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-    double radius; //< vol_neurona/100 Regula la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-    double sensitivity; //< Equivalente al peso de la conexión de entrada 
-    int local_interface; ///< interface en el taxón local
-    int remote_interface; ///< interface en el taxón remoto
-};
-
 template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje que se envía a otro taxón
 class Taxon {
 public:
@@ -71,7 +53,9 @@ protected:
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
     int parent_id; ///< Identificación del taxón padre si existe, al ser creado en una taxonomía fractal es lineal.
     bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
+    bool evaluated; ///< Es TRUE si el taxón ha sido evaluado
     std::string description; ///< Descripción del taxón
+    
 };
 
 template <class MessageClass>
@@ -125,9 +109,6 @@ Taxon<MessageClass>::Taxon(const Taxon& orig) {
 template <class MessageClass>
 Taxon<MessageClass>::~Taxon() {
 }
-
-template class Taxon<TrainingData>;
-template class Taxon<FractalCmd>;
 
 #endif	/* TAXON_H */
 

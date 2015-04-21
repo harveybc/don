@@ -7,7 +7,7 @@
 
 #ifndef SINGULARITY_H
 #define	SINGULARITY_H
-#include "Taxon.h"
+#include "taxon.h"
 
 class Singularity: Taxon<double> {
 public:

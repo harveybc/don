@@ -69,14 +69,14 @@ int main(int argc, char** argv) {
     // Selecciona modo de operación (se pueden agregar más modos de operación)
     if (argc > 0) {
         switch (atoi(argv[1])) {
-            case 0: // Read taxonomy from file
-                clog << "Operation mode 0: read taxonomy from file" << "\n";
+            case 0: // Read Taxonomy from file
+                clog << "Operation mode 0: read Taxonomy from file" << "\n";
 
                 //Expert expert_download(path);
                 // llama a método de descarga con los demás parámetros        
                 break;
-            case 1: // Write taxonomy to file
-                clog << "Operation mode 1: write taxonomy to file" << "\n";
+            case 1: // Write Taxonomy to file
+                clog << "Operation mode 1: write Taxonomy to file" << "\n";
 
                 i = main_taxonomy.add_taxons(0, tmp_expert, 1);
 

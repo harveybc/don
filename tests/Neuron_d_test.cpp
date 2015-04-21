@@ -7,7 +7,8 @@
 
 #include <stdlib.h>
 #include <iostream>
-#include "Neuron_d.h"
+#include <memory>
+#include "neural_network.h"
 
 /*
  * Simple C++ Test Suite
@@ -17,48 +18,15 @@
 void test1(double input_0, double input_1) {
     int tmp_int=0;
     double tmp_double;
-    // Se crea una neurona 
-    Neuron_d neurona;
-    // Crea 2 conexiones de entrada
-    TaxonConnection conn = { 
-        1, //  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-        -1, // id del taxón remoto, -1 si es de entrada
-        0, // interface en el taxón local
-        -1, // interface en el taxón remoto
-        0, // largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-        1, // radio n y la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-        0, // segmento, calculado automáticamente al crear la conex
-        1  // peso de la conexión, sensnibilidad de la conex de entrada.
-    };
-    neurona.add_connection(conn); 
-    conn = { 
-        1, //  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-        -1, // id del taxón remoto, -1 si es de entrada o salida
-        1, // interface en el taxón local
-        -1, // interface en el taxón remoto, -1 si es entrada o salida
-        0, // largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-        1, // radio en um aprox vol_neurona/100. Equiv al peso de la conex in y la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-        0, // segmento, calculado automáticamente al crear la conex
-        1  // peso de la conexión, sensnibilidad de la conex de entrada.
-    };
-    neurona.add_connection(conn);
-    // crea una conexión de salida
-    conn = { 
-        2, //  Tipo de conexión: duplex (0), entrada(1), salida(2) o de pertenencia a grupo >2
-        -1, // id del taxón remoto, -1 si es de entrada o salida
-        0, // interface en el taxón local
-        -1, // interface en el taxón remoto, -1 si es entrada o salida
-        0, // largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-        1, // radio en um aprox vol_neurona/100. Equiv al peso de la conex in y la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-        1  // peso de la conexión, sensibilidad de la conex de entrada.
-    };
-    // Se colocan valores double en las interfaces de entrada de la neurona
-    tmp_int=neurona.push_msg_in(input_0,0);
-    tmp_int=neurona.push_msg_in(input_1,1);
-    // Se evalúa
-    neurona.evaluate();
-    // Se extrae el valor de la salida en tmp_double
-    tmp_int=neurona.pop_msg_out(tmp_double,0);
+    // Se crea una red neuronal con dos entradas y una salida (1 neurona/salida)
+    std::unique_ptr<neural_network > swann(new Neural_network(2,1));         
+    // Se colocan valores double en las entradas de la red neuronal
+    swann->push_input(0,0); // coloca 1 en el fin de la cola de entrada 0 y descarta
+    swann->push_input(0,1); // coloca 1 en el fin de la cola de entrada 1
+    // Se evalúa la red neuronal
+    swann->evaluate();
+    // Se extrae el valor de la salida  en tmp_double
+    tmp_int=swann->read_output(tmp_double,0); // extrae el valor de la neurona 0
     //Se imprime resultado
     std::cout << "Input 0  = " << input_0 << std::endl;
     std::cout << "Input 1  = " << input_1 << std::endl;

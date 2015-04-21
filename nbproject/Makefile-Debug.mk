@@ -35,22 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Dataset.o \
-	${OBJECTDIR}/Expert.o \
-	${OBJECTDIR}/Expert_SANN.o \
-	${OBJECTDIR}/Expert_Simple.o \
 	${OBJECTDIR}/FractalMachine.o \
-	${OBJECTDIR}/FractalTape.o \
-	${OBJECTDIR}/Neuron.o \
-	${OBJECTDIR}/Neuron_d.o \
-	${OBJECTDIR}/Neuron_d_in.o \
-	${OBJECTDIR}/Singularity.o \
-	${OBJECTDIR}/TX_Expert_Simple.o \
-	${OBJECTDIR}/TX_Neuron_d.o \
-	${OBJECTDIR}/TX_SANN.o \
-	${OBJECTDIR}/Taxon.o \
+	${OBJECTDIR}/NeuralNetwork.o \
 	${OBJECTDIR}/Taxonomy.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/dataset.o \
+	${OBJECTDIR}/expert.o \
+	${OBJECTDIR}/fractal_tape.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/neuron.o \
+	${OBJECTDIR}/singularity.o \
+	${OBJECTDIR}/taxon.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -83,85 +77,55 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Dataset.o: Dataset.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Dataset.o Dataset.cpp
-
-${OBJECTDIR}/Expert.o: Expert.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert.o Expert.cpp
-
-${OBJECTDIR}/Expert_SANN.o: Expert_SANN.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert_SANN.o Expert_SANN.cpp
-
-${OBJECTDIR}/Expert_Simple.o: Expert_Simple.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert_Simple.o Expert_Simple.cpp
-
 ${OBJECTDIR}/FractalMachine.o: FractalMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine.o FractalMachine.cpp
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine.o FractalMachine.cpp
 
-${OBJECTDIR}/FractalTape.o: FractalTape.cpp 
+${OBJECTDIR}/NeuralNetwork.o: NeuralNetwork.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalTape.o FractalTape.cpp
-
-${OBJECTDIR}/Neuron.o: Neuron.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron.o Neuron.cpp
-
-${OBJECTDIR}/Neuron_d.o: Neuron_d.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron_d.o Neuron_d.cpp
-
-${OBJECTDIR}/Neuron_d_in.o: Neuron_d_in.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron_d_in.o Neuron_d_in.cpp
-
-${OBJECTDIR}/Singularity.o: Singularity.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Singularity.o Singularity.cpp
-
-${OBJECTDIR}/TX_Expert_Simple.o: TX_Expert_Simple.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_Expert_Simple.o TX_Expert_Simple.cpp
-
-${OBJECTDIR}/TX_Neuron_d.o: TX_Neuron_d.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_Neuron_d.o TX_Neuron_d.cpp
-
-${OBJECTDIR}/TX_SANN.o: TX_SANN.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_SANN.o TX_SANN.cpp
-
-${OBJECTDIR}/Taxon.o: Taxon.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxon.o Taxon.cpp
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NeuralNetwork.o NeuralNetwork.cpp
 
 ${OBJECTDIR}/Taxonomy.o: Taxonomy.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxonomy.o Taxonomy.cpp
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxonomy.o Taxonomy.cpp
+
+${OBJECTDIR}/dataset.o: dataset.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dataset.o dataset.cpp
+
+${OBJECTDIR}/expert.o: expert.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/expert.o expert.cpp
+
+${OBJECTDIR}/fractal_tape.o: fractal_tape.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fractal_tape.o fractal_tape.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/neuron.o: neuron.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/neuron.o neuron.cpp
+
+${OBJECTDIR}/singularity.o: singularity.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/singularity.o singularity.cpp
+
+${OBJECTDIR}/taxon.o: taxon.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/taxon.o taxon.cpp
 
 # Subprojects
 .build-subprojects:
@@ -176,60 +140,8 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/Neuron_d_test.o ${OBJECTFILES:%.o=%_no
 ${TESTDIR}/tests/Neuron_d_test.o: tests/Neuron_d_test.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Neuron_d_test.o tests/Neuron_d_test.cpp
+	$(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -I. -std=c++11 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Neuron_d_test.o tests/Neuron_d_test.cpp
 
-
-${OBJECTDIR}/Dataset_nomain.o: ${OBJECTDIR}/Dataset.o Dataset.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Dataset.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Dataset_nomain.o Dataset.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Dataset.o ${OBJECTDIR}/Dataset_nomain.o;\
-	fi
-
-${OBJECTDIR}/Expert_nomain.o: ${OBJECTDIR}/Expert.o Expert.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Expert.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert_nomain.o Expert.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Expert.o ${OBJECTDIR}/Expert_nomain.o;\
-	fi
-
-${OBJECTDIR}/Expert_SANN_nomain.o: ${OBJECTDIR}/Expert_SANN.o Expert_SANN.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Expert_SANN.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert_SANN_nomain.o Expert_SANN.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Expert_SANN.o ${OBJECTDIR}/Expert_SANN_nomain.o;\
-	fi
-
-${OBJECTDIR}/Expert_Simple_nomain.o: ${OBJECTDIR}/Expert_Simple.o Expert_Simple.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Expert_Simple.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Expert_Simple_nomain.o Expert_Simple.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Expert_Simple.o ${OBJECTDIR}/Expert_Simple_nomain.o;\
-	fi
 
 ${OBJECTDIR}/FractalMachine_nomain.o: ${OBJECTDIR}/FractalMachine.o FractalMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -239,126 +151,22 @@ ${OBJECTDIR}/FractalMachine_nomain.o: ${OBJECTDIR}/FractalMachine.o FractalMachi
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine_nomain.o FractalMachine.cpp;\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine_nomain.o FractalMachine.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/FractalMachine.o ${OBJECTDIR}/FractalMachine_nomain.o;\
 	fi
 
-${OBJECTDIR}/FractalTape_nomain.o: ${OBJECTDIR}/FractalTape.o FractalTape.cpp 
+${OBJECTDIR}/NeuralNetwork_nomain.o: ${OBJECTDIR}/NeuralNetwork.o NeuralNetwork.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/FractalTape.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/NeuralNetwork.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalTape_nomain.o FractalTape.cpp;\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NeuralNetwork_nomain.o NeuralNetwork.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/FractalTape.o ${OBJECTDIR}/FractalTape_nomain.o;\
-	fi
-
-${OBJECTDIR}/Neuron_nomain.o: ${OBJECTDIR}/Neuron.o Neuron.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Neuron.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron_nomain.o Neuron.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Neuron.o ${OBJECTDIR}/Neuron_nomain.o;\
-	fi
-
-${OBJECTDIR}/Neuron_d_nomain.o: ${OBJECTDIR}/Neuron_d.o Neuron_d.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Neuron_d.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron_d_nomain.o Neuron_d.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Neuron_d.o ${OBJECTDIR}/Neuron_d_nomain.o;\
-	fi
-
-${OBJECTDIR}/Neuron_d_in_nomain.o: ${OBJECTDIR}/Neuron_d_in.o Neuron_d_in.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Neuron_d_in.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Neuron_d_in_nomain.o Neuron_d_in.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Neuron_d_in.o ${OBJECTDIR}/Neuron_d_in_nomain.o;\
-	fi
-
-${OBJECTDIR}/Singularity_nomain.o: ${OBJECTDIR}/Singularity.o Singularity.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Singularity.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Singularity_nomain.o Singularity.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Singularity.o ${OBJECTDIR}/Singularity_nomain.o;\
-	fi
-
-${OBJECTDIR}/TX_Expert_Simple_nomain.o: ${OBJECTDIR}/TX_Expert_Simple.o TX_Expert_Simple.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/TX_Expert_Simple.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_Expert_Simple_nomain.o TX_Expert_Simple.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/TX_Expert_Simple.o ${OBJECTDIR}/TX_Expert_Simple_nomain.o;\
-	fi
-
-${OBJECTDIR}/TX_Neuron_d_nomain.o: ${OBJECTDIR}/TX_Neuron_d.o TX_Neuron_d.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/TX_Neuron_d.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_Neuron_d_nomain.o TX_Neuron_d.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/TX_Neuron_d.o ${OBJECTDIR}/TX_Neuron_d_nomain.o;\
-	fi
-
-${OBJECTDIR}/TX_SANN_nomain.o: ${OBJECTDIR}/TX_SANN.o TX_SANN.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/TX_SANN.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TX_SANN_nomain.o TX_SANN.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/TX_SANN.o ${OBJECTDIR}/TX_SANN_nomain.o;\
-	fi
-
-${OBJECTDIR}/Taxon_nomain.o: ${OBJECTDIR}/Taxon.o Taxon.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Taxon.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxon_nomain.o Taxon.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Taxon.o ${OBJECTDIR}/Taxon_nomain.o;\
+	    ${CP} ${OBJECTDIR}/NeuralNetwork.o ${OBJECTDIR}/NeuralNetwork_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Taxonomy_nomain.o: ${OBJECTDIR}/Taxonomy.o Taxonomy.cpp 
@@ -369,9 +177,48 @@ ${OBJECTDIR}/Taxonomy_nomain.o: ${OBJECTDIR}/Taxonomy.o Taxonomy.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxonomy_nomain.o Taxonomy.cpp;\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Taxonomy_nomain.o Taxonomy.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Taxonomy.o ${OBJECTDIR}/Taxonomy_nomain.o;\
+	fi
+
+${OBJECTDIR}/dataset_nomain.o: ${OBJECTDIR}/dataset.o dataset.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/dataset.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dataset_nomain.o dataset.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/dataset.o ${OBJECTDIR}/dataset_nomain.o;\
+	fi
+
+${OBJECTDIR}/expert_nomain.o: ${OBJECTDIR}/expert.o expert.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/expert.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/expert_nomain.o expert.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/expert.o ${OBJECTDIR}/expert_nomain.o;\
+	fi
+
+${OBJECTDIR}/fractal_tape_nomain.o: ${OBJECTDIR}/fractal_tape.o fractal_tape.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/fractal_tape.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fractal_tape_nomain.o fractal_tape.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/fractal_tape.o ${OBJECTDIR}/fractal_tape_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
@@ -382,9 +229,48 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cpp;\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
+	fi
+
+${OBJECTDIR}/neuron_nomain.o: ${OBJECTDIR}/neuron.o neuron.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/neuron.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/neuron_nomain.o neuron.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/neuron.o ${OBJECTDIR}/neuron_nomain.o;\
+	fi
+
+${OBJECTDIR}/singularity_nomain.o: ${OBJECTDIR}/singularity.o singularity.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/singularity.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/singularity_nomain.o singularity.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/singularity.o ${OBJECTDIR}/singularity_nomain.o;\
+	fi
+
+${OBJECTDIR}/taxon_nomain.o: ${OBJECTDIR}/taxon.o taxon.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/taxon.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -I/D/Dropbox/Singularity/Singularity -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/taxon_nomain.o taxon.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/taxon.o ${OBJECTDIR}/taxon_nomain.o;\
 	fi
 
 # Run Test Targets
