@@ -39,23 +39,20 @@ public:
     int get_id(); ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
     int is_active(); ///< retona el valor de active_taxon
     int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
-    int get_description(std::string &output); //< Obtiene el atributo descripción
-    void add_tag(std::string new_tag); ///< Configura las Tags (palabras clave) para búsqueda
-    void remove_tag(std::string tag); ///< Configura las Tags (palabras clave) para búsqueda
-    void clear_tags(); ///< Configura las Tags (palabras clave) para búsqueda
-    void get_tags(std::set<std::string> & output); ///< Obtiene los tags actuales
     virtual void evaluate();
     Taxon();
     Taxon(const Taxon& orig);
     virtual ~Taxon();
 protected:
-    std::set<std::string> tags; ///< Lista de tags para búsqueda
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
     int parent_id; ///< Identificación del taxón padre si existe, al ser creado en una taxonomía fractal es lineal.
     bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
     bool evaluated; ///< Es TRUE si el taxón ha sido evaluado
-    std::string description; ///< Descripción del taxón
-    
+    double x;
+    double y;
+    double z;
+    double r;
+    double threshold;
 };
 
 template <class MessageClass>

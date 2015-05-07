@@ -76,17 +76,20 @@ protected:
 
 // add_taxons
 template <class TaxonClass,class MessageClass> 
-int Taxonomy<TaxonClass,MessageClass>::add_taxons(int taxon_id_base, TaxonClass taxon, int quantity) {///< Agrega un taxón completo a la taxonomía
+int Taxonomy<TaxonClass,MessageClass>::add_taxons(int taxon_id_base, Taxon taxon, int quantity) {///< Agrega un taxón completo a la taxonomía
     int i = 0;
     // TODO: coloca el taxón en el registro de taxones usando la instrucción 13: LoadTaxonRegister
     // TODO: usar clase Taxon en fractalmachine y manejar paralelamente el TaxonClass en Taxonomy para eval 
-    std::vector <TaxonClass> tmp_taxon_register;
-    tmp_taxon_register.push_back(taxon);
+    // std::vector <TaxonClass> tmp_taxon_register;
+    // tmp_taxon_register.push_back(taxon);
+    
     std::vector <int> params;
     params.push_back(taxon_id_base);
     params.push_back(quantity);
-    FractalMachine::FractalCmd instruction; ///< Operación: 1 (crear), parámetros: id de padre, número de objetos a crear
-    instruction.id = '1';
+    FractalMachine::FractalCmd instruction; ///< Operación 13: LoadTaxonRagister
+    instruction.id = '13';
+    // Coloca como parámetro de la instrucción, los params del constructor de Taxon
+    
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
     // ejecuta le intrucción 13: LoadTaxonRegister
@@ -99,7 +102,7 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int taxon_id_base, TaxonClass 
     instruction.id = '1';
     instruction.parameters = params;
     taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
-    // ejecuta le intrucción
+    // ejecuta le intrucción 1: create node
     taxons.iterate();
     return 1;
 }
