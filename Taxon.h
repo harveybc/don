@@ -33,13 +33,11 @@
 #include <string>
 #include <set> 
 
-template <class MessageClass> ///< La clase MessageClass es el tipo de mensaje que se envía a otro taxón
 class Taxon {
 public:
     int get_id(); ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
     int is_active(); ///< retona el valor de active_taxon
     int get_parent_id(); //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
-    virtual void evaluate();
     Taxon();
     Taxon(const Taxon& orig);
     virtual ~Taxon();
@@ -48,64 +46,16 @@ protected:
     int parent_id; ///< Identificación del taxón padre si existe, al ser creado en una taxonomía fractal es lineal.
     bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
     bool evaluated; ///< Es TRUE si el taxón ha sido evaluado
-    double x;
+   /* double x;
     double y;
     double z;
     double r;
-    double threshold;
+    double colorR;
+    double colorG;
+    double colorB;
+    double alpha;
+    double threshold;*/
 };
-
-template <class MessageClass>
-int Taxon<MessageClass>::get_id() { ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
-    return id;
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::get_parent_id() { //< btiene el id del taxón que creó el actual, para el taxón raíz, retorna 0.
-    return parent_id;
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::is_active() { ///< Obtiene el atributo id de este Taxón (único,generado durante creación)
-    return active_taxon;
-}
-
-template <class MessageClass>
-int Taxon<MessageClass>::get_description(std::string &output) { //< Obtiene el atributo descripción
-    output = description;
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::add_tag(std::string new_tag) { ///< Configura las Tags (palabras clave) para búsqueda
-    tags.insert(tags.begin(), new_tag);
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::remove_tag(std::string tag) { ///< Configura las Tags (palabras clave) para búsqueda
-    tags.erase(tag);
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::clear_tags() { ///< Configura las Tags (palabras clave) para búsqueda
-    tags.clear();
-}
-
-template <class MessageClass>
-void Taxon<MessageClass>::get_tags(std::set<std::string> &output) { ///< Obtiene los tags actuales
-    output = tags;
-}
-
-template <class MessageClass>
-Taxon<MessageClass>::Taxon() {
-}
-
-template <class MessageClass>
-Taxon<MessageClass>::Taxon(const Taxon& orig) {
-}
-
-template <class MessageClass>
-Taxon<MessageClass>::~Taxon() {
-}
 
 #endif	/* TAXON_H */
 

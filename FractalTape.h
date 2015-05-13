@@ -31,10 +31,14 @@
 #include <vector>
 #include <queue>
 #include <string>
-#include "Taxon.h"
-
-class FractalTape: public Taxon<FractalCmd> {
+class FractalTape {
 public:
+    // Typedefs y structs
+    // instrucción fractal
+    struct FractalCmd {
+        char id; ///< La instrucción a ejecutar (para versión de 8 bits)
+        std::vector <int> parameters; ///< Parámetros de la instrucción ///TODO: cambiar a UINT64
+    };
     int push_instruction(FractalCmd instr);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
     int pop_instruction(FractalCmd &output);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
     int get_tape(std::deque <FractalCmd> &output_tape); ///< Obtiene la cinta de instrucciones, retorna el número de instrucciones leídas

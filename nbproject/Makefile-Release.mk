@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/FractalMachine.o \
 	${OBJECTDIR}/NeuralNetwork.o \
 	${OBJECTDIR}/Taxonomy.o \
 	${OBJECTDIR}/dataset.o \
 	${OBJECTDIR}/expert.o \
+	${OBJECTDIR}/fractal_machine.o \
 	${OBJECTDIR}/fractal_tape.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/neuron.o \
@@ -77,11 +77,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/singularity ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/FractalMachine.o: FractalMachine.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine.o FractalMachine.cpp
-
 ${OBJECTDIR}/NeuralNetwork.o: NeuralNetwork.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -101,6 +96,11 @@ ${OBJECTDIR}/expert.o: expert.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/expert.o expert.cpp
+
+${OBJECTDIR}/fractal_machine.o: fractal_machine.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fractal_machine.o fractal_machine.cpp
 
 ${OBJECTDIR}/fractal_tape.o: fractal_tape.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -142,19 +142,6 @@ ${TESTDIR}/tests/Neuron_d_test.o: tests/Neuron_d_test.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/Neuron_d_test.o tests/Neuron_d_test.cpp
 
-
-${OBJECTDIR}/FractalMachine_nomain.o: ${OBJECTDIR}/FractalMachine.o FractalMachine.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/FractalMachine.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FractalMachine_nomain.o FractalMachine.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/FractalMachine.o ${OBJECTDIR}/FractalMachine_nomain.o;\
-	fi
 
 ${OBJECTDIR}/NeuralNetwork_nomain.o: ${OBJECTDIR}/NeuralNetwork.o NeuralNetwork.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -206,6 +193,19 @@ ${OBJECTDIR}/expert_nomain.o: ${OBJECTDIR}/expert.o expert.cpp
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/expert_nomain.o expert.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/expert.o ${OBJECTDIR}/expert_nomain.o;\
+	fi
+
+${OBJECTDIR}/fractal_machine_nomain.o: ${OBJECTDIR}/fractal_machine.o fractal_machine.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/fractal_machine.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fractal_machine_nomain.o fractal_machine.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/fractal_machine.o ${OBJECTDIR}/fractal_machine_nomain.o;\
 	fi
 
 ${OBJECTDIR}/fractal_tape_nomain.o: ${OBJECTDIR}/fractal_tape.o fractal_tape.cpp 

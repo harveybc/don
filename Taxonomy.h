@@ -49,9 +49,9 @@ public:
     int get_taxon(int taxon_id, TaxonClass &output); ///< Obtiene un taxón
     // connection management
     int add_connection(int remote_id, int remote_interface, double length, double radius, double weight); ///< Crea una nueva conexión
-    int modify_connection(int taxon_id, int conn_id, FractalMachine::NodeConnection new_conn); ///< Modifica una conexión existente
+    int modify_connection(int taxon_id, int conn_id, FractalMachine<TaxonClass,MessageClass>::NodeConnection new_conn); ///< Modifica una conexión existente
     int erase_connection(int taxon_id, int conn_id); ///< Elimina una conexión
-    int get_connection(int taxon_id, FractalMachine::NodeConnection &conn_id); ///< Obtiene una conexión existente
+    int get_connection(int taxon_id, FractalMachine<TaxonClass,MessageClass>::NodeConnection &conn_id); ///< Obtiene una conexión existente
     // interfaces management
     int add_interfaces(int taxon_id, int num); ///< Agrega interfaces de salida al taxón
     int erase_interface(int taxon_id, int conn_id); ///< Elimina una interface
@@ -64,12 +64,15 @@ public:
     int export_taxonomy(char* file_path); ///< Exporta la taxonomía a un archivo JSON o XML
     void get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output); ///< 
     int import_taxonomy(char* file_path); // < Importa la taxonomía desde un archivo JSON o XML
+    // interfaces
+    virtual void evaluate();
     // constructors
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
     virtual ~Taxonomy();
 protected:
-    FractalMachine <TaxonClass,MessageClass> taxons; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
+    FractalMachine <Taxon> fractal; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
+    std::vector <TaxonClass> taxons; 
 };
 
 // taxon management
@@ -87,13 +90,13 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int taxon_id_base, Taxon taxon
     params.push_back(taxon_id_base);
     params.push_back(quantity);
     FractalMachine::FractalCmd instruction; ///< Operación 13: LoadTaxonRagister
-    instruction.id = '13';
+    instruction.id = 13;
     // Coloca como parámetro de la instrucción, los params del constructor de Taxon
     
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
+    fractal.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
     // ejecuta le intrucción 13: LoadTaxonRegister
-    taxons.iterate();
+    fractal.iterate();
     // coloca el comando y sus parámetros en la cinta
     std::vector <int> params;
     params.push_back(taxon_id_base);
@@ -101,9 +104,9 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int taxon_id_base, Taxon taxon
     FractalMachine::FractalCmd instruction; ///< Operación: 1 (crear), parámetros: id de padre, número de objetos a crear
     instruction.id = '1';
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
+    fractal.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
     // ejecuta le intrucción 1: create node
-    taxons.iterate();
+    fractal.iterate();
     return 1;
 }
 // remove_taxon
@@ -114,18 +117,18 @@ int Taxonomy<TaxonClass,MessageClass>::remove_taxon(int taxon_id) { ///< Borra u
     FractalCmd instruction; ///< Operación: D (delete), parámetros: id de objeto
     instruction.id = '3';
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
+    fractal.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
     return 1;
 }
 // replace_taxon
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::replace_taxon(int taxon_id, TaxonClass taxon) { ///< Reemplaza el taxón por el objeto especificado
-    return taxons.replace_state(taxon, taxon_id); ///< Ejecuta la instrucción en la máquina
+    return fractal.replace_state(taxon, taxon_id); ///< Ejecuta la instrucción en la máquina
 }
 //get_taxon
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::get_taxon(int taxon_id, TaxonClass &output) { ///< Obtiene un taxón
-    return taxons.get_state(taxon_id, output);
+    return fractal.get_state(taxon_id, output);
 }
 
 
@@ -133,8 +136,8 @@ int Taxonomy<TaxonClass,MessageClass>::get_taxon(int taxon_id, TaxonClass &outpu
 ///< get Taxonomy
 template <class TaxonClass,class MessageClass> 
 int Taxonomy<TaxonClass,MessageClass>::get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output) { ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
-    if (this->taxons.get_size() > 0) {
-        output = taxons;
+    if (this->fractal.get_size() > 0) {
+        output = fractal;
         return 1;
     } else
         return 0;
@@ -149,15 +152,15 @@ template <class MessageClass>
 void Taxonomy<MessageClass>::add_interfaces(int taxon_id, int num) { 
     msg_buffer tmp;
     for (int i = 0; i < num; i++)
-        taxons.interfaces[taxon_id].push_back(tmp);
+        fractal.interfaces[taxon_id].push_back(tmp);
 }
 
 
 
 template <class MessageClass>
 int Taxonomy<MessageClass>::read_msg(MessageClass &msg, int taxon_id, int interface_id) { ///< lee el msg en una interface de entrada.
-    if (taxons.interfaces[taxon_id].size() > interface_id) {
-        msg = taxons.interfaces[interface_id][0];
+    if (fractal.interfaces[taxon_id].size() > interface_id) {
+        msg = fractal.interfaces[interface_id][0];
         return 1;
     } else
         return 0;
@@ -165,13 +168,13 @@ int Taxonomy<MessageClass>::read_msg(MessageClass &msg, int taxon_id, int interf
 
 template <class MessageClass>
 void Taxonomy<MessageClass>::push_msg(MessageClass msg, int taxon_id, int interface_id) { ///> coloca el msg en la interface especificada de salida.
-    taxons.interfaces[interface_id].push_back(msg);
+    fractal.interfaces[interface_id].push_back(msg);
 }
 
 template <class MessageClass>
 void Taxonomy<MessageClass>::pop_msg(MessageClass &msg, int taxon_id, int interface_id) { ///< Saca el msg de una interface de entrada.
-    msg = taxons.interfaces[interface_id].front();
-    taxons.interfaces[interface_id].pop_front();
+    msg = fractal.interfaces[interface_id].front();
+    fractal.interfaces[interface_id].pop_front();
 }
 
 template <class MessageClass>
@@ -184,8 +187,8 @@ int Taxonomy<MessageClass>::pending_msgs_in(int taxon_id, int interface_id) { //
 
 template <class MessageClass>
 int Taxonomy<MessageClass>::pending_msgs(int taxon_id, int interface_id) { ///< Retorna el número de mensajes pendientes en un buffer de salida
-    if (taxons.interfaces[taxon_id].size() > interface_id) {
-        return taxons.interfaces[interface_id].size();
+    if (fractal.interfaces[taxon_id].size() > interface_id) {
+        return fractal.interfaces[interface_id].size();
     } else
         return 0;
 }
@@ -199,14 +202,14 @@ int Taxonomy<TaxonClass,MessageClass>::add_connection(int taxon_id, NodeConnecti
     FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
     instruction.id = '4';
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
-    taxons.iterate();
+    fractal.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
+    fractal.iterate();
     return 1;
 }
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::modify_connection(int conn_id, NodeConnection new_conn) { ///< Coloca el msg en una interface de salida.
-    if (taxons.connections[taxon_id].size() > conn_id) {
+    if (fractal.connections[taxon_id].size() > conn_id) {
         connections[conn_id] = new_conn;
         return 1;
     }
@@ -215,7 +218,7 @@ int Taxonomy<TaxonClass,MessageClass>::modify_connection(int conn_id, NodeConnec
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::erase_connection(int conn_id) {
-    return (taxons.connections[taxon_id].erase(taxons.connections[taxon_id].begin() + conn_id) == taxons.connections[taxon_id].end() ? 0 : 1);
+    return (fractal.connections[taxon_id].erase(fractal.connections[taxon_id].begin() + conn_id) == fractal.connections[taxon_id].end() ? 0 : 1);
 }
 
 
@@ -231,7 +234,7 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(char* file_path) { ///< E
     if (myfile_file.is_open()) {
         ///TODO: eexptortar
     } else std::cout << "Unable to open file";
-    //escribe taxons
+    //escribe fractal
 }
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
@@ -241,7 +244,7 @@ int Taxonomy<TaxonClass,MessageClass>::import_taxonomy(char* file_path) {
     //lee en buffer hasta próximo  símbolo
     //leer símbolo
     //procesar fin de símbolo
-    //lee taxons
+    //lee fractal
 } // < Importa la taxonomía desde un archivo JSON o XML
 
 template <class TaxonClass,class MessageClass>

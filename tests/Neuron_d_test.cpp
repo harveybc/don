@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <memory>
-#include "neural_network.h"
+#include "NeuralNetwork.h"
 
 /*
  * Simple C++ Test Suite

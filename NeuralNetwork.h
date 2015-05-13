@@ -13,19 +13,15 @@
 #define	NEURALNETWORK_H
 #include "Taxonomy.h"
 
-class NeuralNetwork: public Taxonomy<Taxon, double> {
+//Es una taxonomía
+template <class MessageClass>
+class NeuralNetwork: public Taxonomy<Taxon, MessageClass> {
 public:
-    void push_input(int input_id, double msj_in); // descarta el mensaje más antiguo(front) e introduce el msj el el fin de la cola de entrada.
-    void read_output(int output_id, double &msg_out); // obtiene el valor más nuevo de la interfaz de salida
-    void evaluate(); // aplica la función de transferencia de la función de transferencia     
-    void evaluateNode(int node_id); // marca un nodo como evaluado y evalúa el nodo
     NeuralNetwork(int num_inputs, int num_outputs); // params: número de entradas y número de neuronas de salida 
     NeuralNetwork(const NeuralNetwork& orig);
     virtual ~NeuralNetwork();
 private:
-    int num_inputs; // número de entradas
-    int num_outputs; // número de salidas
-    double activationFcn(double x); // Función de activación seleccionada ejecuta: Salida = activationFcn(transferFcn(Conex(Intefaces(Segments))))
+    double activationFcn(MessageClass x); // Función de activación seleccionada ejecuta: Salida = activationFcn(transferFcn(Conex(Intefaces(Segments))))
     double transferFcn(int node_id); // Función de transferencia
 };
 #endif	/* NEURALNETWORK_H */

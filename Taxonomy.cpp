@@ -10,15 +10,15 @@
 /*
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output) { ///< Crea el estado de una máquina fractal desde una cinta de instrucciones
-    if (this->taxons.get_size() > 0) {
-        output = taxons;
+    if (this->fractal.get_size() > 0) {
+        output = fractal;
         return 1;
     } else
         return 0;
 }
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::get_taxon(int fractal_coords, TaxonClass &output) { ///< Obtiene un taxón
-   return taxons.get_state(fractal_coords, output);
+   return fractal.get_state(fractal_coords, output);
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, TaxonClass taxon, int quantity) {///< Agrega un taxón completo a la taxonomía
@@ -29,8 +29,8 @@ int Taxonomy<TaxonClass,MessageClass>::add_taxons(int fractal_coords_base, Taxon
     FractalCmd instruction; ///< Operación: C (crear), parámetros: id de padre, número de objetos a crear
     instruction.id = 'C';
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
-    taxons.iterate();
+    fractal.fractal_tape.push_instruction(instruction); ///< Inserta instrucción en la cinta
+    fractal.iterate();
     return 1;
 }
 
@@ -41,13 +41,13 @@ int Taxonomy<TaxonClass,MessageClass>::remove_taxon(int fractal_coords) { ///< B
     FractalCmd instruction; ///< Operación: D (delete), parámetros: id de objeto
     instruction.id = 'D';
     instruction.parameters = params;
-    taxons.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
+    fractal.fractal_tape.push_instruction(instruction); ///< Ejecuta la instrucción en la máquina
     return 1;
 }
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
 int Taxonomy<TaxonClass,MessageClass>::replace_taxon(int fractal_coords, TaxonClass taxon) { ///< Reemplaza el taxón por el objeto especificado
-    return taxons.replace_state(taxon, fractal_coords); ///< Ejecuta la instrucción en la máquina
+    return fractal.replace_state(taxon, fractal_coords); ///< Ejecuta la instrucción en la máquina
 }
 // Singularity engine: ANN(Taxonomy) <- Expert <- Species <- Category <- Taxonomy
 
@@ -111,140 +111,140 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { 
             if (it != this->tags.begin()) myfile << ",";
             myfile << "\"" + *it + "\"";
         }
-        myfile << "],\n\"taxons\" : {";
+        myfile << "],\n\"fractal\" : {";
         myfile << "\n\"fractal_tape\" : [\n";
-        for (i = 0; i < taxons.fractal_tape.size(); i++) {
+        for (i = 0; i < fractal.fractal_tape.size(); i++) {
             if (i != 0) myfile << ",";
-            myfile << "{\"id\" : " + taxons.fractal_tape[i].id;
+            myfile << "{\"id\" : " + fractal.fractal_tape[i].id;
             myfile << ",\n\"parameters\" : [";
-            for (j = 0; j < taxons.fractal_tape[i].parameters.size(); j++) {
+            for (j = 0; j < fractal.fractal_tape[i].parameters.size(); j++) {
                 if (j != 0) myfile << ",";
-                myfile << "\n" + taxons.fractal_tape[i].parameters[j];
+                myfile << "\n" + fractal.fractal_tape[i].parameters[j];
             }
             myfile << "]\n}";
         }
         myfile << "\n],";
         myfile << "\n\"nodes\" : [\n";
-        for (i = 0; i < taxons.nodes.size(); i++) {
-            myfile << "{\n\"id\":" + taxons.nodes[i].id +
-                    ",\n\"parent_id\":" + taxons.nodes[i].parent_id +
-                    ",\n\"active_taxon\":" + taxons.nodes[i].active_taxon +
-                    ",\n\"description\":\"" + taxons.nodes[i].description + "\",";
+        for (i = 0; i < fractal.nodes.size(); i++) {
+            myfile << "{\n\"id\":" + fractal.nodes[i].id +
+                    ",\n\"parent_id\":" + fractal.nodes[i].parent_id +
+                    ",\n\"active_taxon\":" + fractal.nodes[i].active_taxon +
+                    ",\n\"description\":\"" + fractal.nodes[i].description + "\",";
             myfile << "\"input_interfaces\" : [";
-            for (j = 0; j<taxons.nodes[i].input_interfaces.size(); j++) {
+            for (j = 0; j<fractal.nodes[i].input_interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.nodes[i].input_interfaces[j].size(); k++) {
+                for (k = 0; k<fractal.nodes[i].input_interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.nodes[i].input_interfaces[j][k];
+                    myfile << fractal.nodes[i].input_interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],";
             myfile << "\"interfaces\" : [";
-            for (j = 0; j<taxons.nodes[i].interfaces.size(); j++) {
+            for (j = 0; j<fractal.nodes[i].interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.nodes[i].interfaces[j].size(); k++) {
+                for (k = 0; k<fractal.nodes[i].interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.nodes[i].interfaces[j][k];
+                    myfile << fractal.nodes[i].interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],\n";
             myfile << "\"connections\" : [";
-            for (j = 0; j<taxons.nodes[i].connections.size(); j++) {
+            for (j = 0; j<fractal.nodes[i].connections.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "{\n";
-                myfile << "\"conn_type\" : " + taxons.nodes[i].connections[j].conn_type + ",\n";
+                myfile << "\"conn_type\" : " + fractal.nodes[i].connections[j].conn_type + ",\n";
                 myfile << "\"conn_members\" : [\n";
-                for (k = 0; k<taxons.nodes[i].connections[j].conn_members.size(); k++) {
-                    myfile << "{\n \"remote_id\" : " + taxons.nodes[i].connections[j].conn_members[k].remote_id;
-                    myfile << "\n \"length\" : " + taxons.nodes[i].connections[j].conn_members[k].length;
-                    myfile << "\n \"radius\" : " + taxons.nodes[i].connections[j].conn_members[k].radius;
-                    myfile << "\n \"sensitivity\" : " + taxons.nodes[i].connections[j].conn_members[k].sensitivity;
-                    myfile << "{\n \"local_interface\" : " + taxons.nodes[i].connections[j].conn_members[k].local_interface;
-                    myfile << "{\n \"remote_interface\" : " + taxons.nodes[i].connections[j].conn_members[k].remote_interface;
+                for (k = 0; k<fractal.nodes[i].connections[j].conn_members.size(); k++) {
+                    myfile << "{\n \"remote_id\" : " + fractal.nodes[i].connections[j].conn_members[k].remote_id;
+                    myfile << "\n \"length\" : " + fractal.nodes[i].connections[j].conn_members[k].length;
+                    myfile << "\n \"radius\" : " + fractal.nodes[i].connections[j].conn_members[k].radius;
+                    myfile << "\n \"sensitivity\" : " + fractal.nodes[i].connections[j].conn_members[k].sensitivity;
+                    myfile << "{\n \"local_interface\" : " + fractal.nodes[i].connections[j].conn_members[k].local_interface;
+                    myfile << "{\n \"remote_interface\" : " + fractal.nodes[i].connections[j].conn_members[k].remote_interface;
                     myfile << "\n}\n";
                 }
                 myfile << "]";
                 myfile << "}\n";
             }
             myfile << "],\n\"tags\" : [";
-            for (std::set<std::string>::iterator it = taxons.nodes[i].tags.begin(); it != taxons.nodes[i].tags.end(); ++it) {
-                if (it != taxons.nodes[i].tags.begin()) myfile << ",";
+            for (std::set<std::string>::iterator it = fractal.nodes[i].tags.begin(); it != fractal.nodes[i].tags.end(); ++it) {
+                if (it != fractal.nodes[i].tags.begin()) myfile << ",";
                 myfile << "\"" + *it + "\"";
             }
             myfile << "]";
         }
         myfile << "\n],";
         myfile << "\n\"taxon_register\" : [\n";
-        for (i = 0; i < taxons.taxon_register.size(); i++) {
-            myfile << "{\n\"id\":" + taxons.taxon_register[i].id +
-                    ",\n\"parent_id\":" + taxons.taxon_register[i].parent_id +
-                    ",\n\"active_taxon\":" + taxons.taxon_register[i].active_taxon +
-                    ",\n\"description\":\"" + taxons.taxon_register[i].description + "\",";
+        for (i = 0; i < fractal.taxon_register.size(); i++) {
+            myfile << "{\n\"id\":" + fractal.taxon_register[i].id +
+                    ",\n\"parent_id\":" + fractal.taxon_register[i].parent_id +
+                    ",\n\"active_taxon\":" + fractal.taxon_register[i].active_taxon +
+                    ",\n\"description\":\"" + fractal.taxon_register[i].description + "\",";
             myfile << "\"input_interfaces\" : [";
-            for (j = 0; j<taxons.taxon_register[i].input_interfaces.size(); j++) {
+            for (j = 0; j<fractal.taxon_register[i].input_interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.taxon_register[i].input_interfaces[j].size(); k++) {
+                for (k = 0; k<fractal.taxon_register[i].input_interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.taxon_register[i].input_interfaces[j][k];
+                    myfile << fractal.taxon_register[i].input_interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],";
             myfile << "\"interfaces\" : [";
-            for (j = 0; j<taxons.taxon_register[i].interfaces.size(); j++) {
+            for (j = 0; j<fractal.taxon_register[i].interfaces.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "[\n";
-                for (k = 0; k<taxons.taxon_register[i].interfaces[j].size(); k++) {
+                for (k = 0; k<fractal.taxon_register[i].interfaces[j].size(); k++) {
                     if (k != 0) myfile << ",";
-                    myfile << taxons.taxon_register[i].interfaces[j][k];
+                    myfile << fractal.taxon_register[i].interfaces[j][k];
                 }
                 myfile << "]\n";
             }
             myfile << "],\n";
             myfile << "\"connections\" : [";
-            for (j = 0; j<taxons.taxon_register[i].connections.size(); j++) {
+            for (j = 0; j<fractal.taxon_register[i].connections.size(); j++) {
                 if (j != 0) myfile << ",";
                 myfile << "{\n";
-                myfile << "\"conn_type\" : " + taxons.taxon_register[i].connections[j].conn_type + ",\n";
+                myfile << "\"conn_type\" : " + fractal.taxon_register[i].connections[j].conn_type + ",\n";
                 myfile << "\"conn_members\" : [\n";
-                for (k = 0; k<taxons.taxon_register[i].connections[j].conn_members.size(); k++) {
-                    myfile << "{\n \"remote_id\" : " + taxons.taxon_register[i].connections[j].conn_members[k].remote_id;
-                    myfile << "\n \"length\" : " + taxons.taxon_register[i].connections[j].conn_members[k].length;
-                    myfile << "\n \"radius\" : " + taxons.taxon_register[i].connections[j].conn_members[k].radius;
-                    myfile << "\n \"sensitivity\" : " + taxons.taxon_register[i].connections[j].conn_members[k].sensitivity;
-                    myfile << "{\n \"local_interface\" : " + taxons.taxon_register[i].connections[j].conn_members[k].local_interface;
-                    myfile << "{\n \"remote_interface\" : " + taxons.taxon_register[i].connections[j].conn_members[k].remote_interface;
+                for (k = 0; k<fractal.taxon_register[i].connections[j].conn_members.size(); k++) {
+                    myfile << "{\n \"remote_id\" : " + fractal.taxon_register[i].connections[j].conn_members[k].remote_id;
+                    myfile << "\n \"length\" : " + fractal.taxon_register[i].connections[j].conn_members[k].length;
+                    myfile << "\n \"radius\" : " + fractal.taxon_register[i].connections[j].conn_members[k].radius;
+                    myfile << "\n \"sensitivity\" : " + fractal.taxon_register[i].connections[j].conn_members[k].sensitivity;
+                    myfile << "{\n \"local_interface\" : " + fractal.taxon_register[i].connections[j].conn_members[k].local_interface;
+                    myfile << "{\n \"remote_interface\" : " + fractal.taxon_register[i].connections[j].conn_members[k].remote_interface;
                     myfile << "\n}\n";
                 }
                 myfile << "]";
                 myfile << "}\n";
             }
             myfile << "],\n\"tags\" : [";
-            for (std::set<std::string>::iterator it = taxons.taxon_register[i].tags.begin(); it != taxons.taxon_register[i].tags.end(); ++it) {
-                if (it != taxons.taxon_register[i].tags.begin()) myfile << ",";
+            for (std::set<std::string>::iterator it = fractal.taxon_register[i].tags.begin(); it != fractal.taxon_register[i].tags.end(); ++it) {
+                if (it != fractal.taxon_register[i].tags.begin()) myfile << ",";
                 myfile << "\"" + *it + "\"";
             }
             myfile << "]";
         }
         myfile << "\n],";
         myfile << "\"connections\" : [";
-        for (i = 0; i<taxons.conn_register.size(); i++) {
+        for (i = 0; i<fractal.conn_register.size(); i++) {
             if (i != 0) myfile << ",";
             myfile << "{\n";
-            myfile << "\"conn_type\" : " + taxons.conn_register[i].conn_type + ",\n";
+            myfile << "\"conn_type\" : " + fractal.conn_register[i].conn_type + ",\n";
             myfile << "\"conn_members\" : [\n";
-            for (j = 0; j<taxons.conn_register[i].conn_members.size(); j++) {
-                myfile << "{\n \"remote_id\" : " + taxons.conn_register[i].conn_members[j].remote_id;
-                myfile << "\n \"length\" : " + taxons.conn_register[i].conn_members[j].length;
-                myfile << "\n \"radius\" : " + taxons.conn_register[i].conn_members[j].radius;
-                myfile << "\n \"sensitivity\" : " + taxons.conn_register[i].conn_members[j].sensitivity;
-                myfile << "{\n \"local_interface\" : " + taxons.conn_register[i].conn_members[j].local_interface;
-                myfile << "{\n \"remote_interface\" : " + taxons.conn_register[i].conn_members[j].remote_interface;
+            for (j = 0; j<fractal.conn_register[i].conn_members.size(); j++) {
+                myfile << "{\n \"remote_id\" : " + fractal.conn_register[i].conn_members[j].remote_id;
+                myfile << "\n \"length\" : " + fractal.conn_register[i].conn_members[j].length;
+                myfile << "\n \"radius\" : " + fractal.conn_register[i].conn_members[j].radius;
+                myfile << "\n \"sensitivity\" : " + fractal.conn_register[i].conn_members[j].sensitivity;
+                myfile << "{\n \"local_interface\" : " + fractal.conn_register[i].conn_members[j].local_interface;
+                myfile << "{\n \"remote_interface\" : " + fractal.conn_register[i].conn_members[j].remote_interface;
                 myfile << "\n}\n";
             }
             myfile << "]";
@@ -258,7 +258,7 @@ int Taxonomy<TaxonClass,MessageClass>::export_taxonomy(std::string file_path) { 
         
 
     } else std::cout << "Unable to open file";
-    //escribe taxons
+    //escribe fractal
 }
 
 template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
@@ -268,7 +268,7 @@ int Taxonomy<TaxonClass,MessageClass>::import_taxonomy(std::string file_path) {
     //lee en buffer hasta próximo  símbolo
     //leer símbolo
     //procesar fin de símbolo
-    //lee taxons
+    //lee fractal
 } // < Importa la taxonomía desde un archivo JSON o XML
 
 template <class TaxonClass,class MessageClass>
