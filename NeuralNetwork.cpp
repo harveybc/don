@@ -10,9 +10,9 @@
 // descarta el mensaje más antiguo(front) e introduce el msj el el fin de la cola de entrada.
 void push_input(int input_id, double msg_in){
     // saca el mensaje más viejo de la interfaz del nodo 0(general input)
-    fractal.interfaces[0][input_id].pop_front();
+    Taxonomy::pop_msg(input_id,0);
     // introduce el nuevo mensaje en la interfaz
-    fractal.interfaces[0][input_id].push_back(msg_in);
+    Taxonomy::
 }
  
 // obtiene el valor más nuevo de una interfaz de salida

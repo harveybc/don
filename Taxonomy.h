@@ -1,32 +1,40 @@
 /**
- * @mainpage
- * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
- * @brief       Taxonomy class template
+ * ***************************************************************************** 
+ * @brief       Taxonomy Class Template
+ * ***************************************************************************** 
  * @par Description @parblock
- *      Crea una estructura jerárquica de objetos(taxones) en el estado de una
- *      máquina de Turing fractal desde una cinta de Turing.
- * @endparblock
- * @copyright @parblock
- *    This file is part of Singularity.
+ *      
+ *      Behaviour:  Plantilla de clase para manejar una FractalMachine,
+ *                  introducir y leer datos desde sus interfaces. 
+ *   
+ *      Structure:  Atributos para la FractalMachine (fractal) y para objetos
+ *                  representados por cada nodo del fractal (taxons) 
+ * 
+ *      Interface:  Métodos para ejecutar comandos en la FractalMachine, 
+ *                  introducir y leer datos de sus interfaces e import/export la 
+ *                  taxonomía en JSON
  *
- *    Singularity is free software; you can redistribute it and/or modify it under
- *    the terms of the GNU General Public License as published by the Free
- *    Software Foundation; either version 3, or (at your option) any later
- *    version.
- *
- *    Singularity is distributed in the hope that it will be useful, but WITHOUT ANY
- *    WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- *    for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with GCC; see the file COPYING3.  If not see
- *    <http://www.gnu.org/licenses/>.
+ *  Extended information at:
+ *  <http://singularityproject.co>
+ * 
+ *  @endparblock
+ *  @copyright @parblock
+ *  This file is part of Singularity.
+ *  Singularity is free software; you can redistribute it and/or modify it under
+ *  the terms of the GNU General Public License as published by the Free
+ *  Software Foundation; either version 3, or (at your option) any later
+ *  version. Singularity is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ *  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ *  for more details. You should have received a copy of the GNU General Public 
+ *  License along with GCC; see the file COPYING3.  If not see
+ *  <http://www.gnu.org/licenses/>. 
  * @endparblock
  * @file        Taxonomy.h
  * @version     0.1
  * @date        22 de mayo de 2014, 10:18 PM
- */
+ * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
+ **/
 #ifndef TAXONOMY_H
 #define	TAXONOMY_H
 #include <string>
@@ -64,8 +72,6 @@ public:
     int export_taxonomy(char* file_path); ///< Exporta la taxonomía a un archivo JSON o XML
     void get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output); ///< 
     int import_taxonomy(char* file_path); // < Importa la taxonomía desde un archivo JSON o XML
-    // interfaces
-    virtual void evaluate();
     // constructors
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
@@ -172,8 +178,7 @@ void Taxonomy<MessageClass>::push_msg(MessageClass msg, int taxon_id, int interf
 }
 
 template <class MessageClass>
-void Taxonomy<MessageClass>::pop_msg(MessageClass &msg, int taxon_id, int interface_id) { ///< Saca el msg de una interface de entrada.
-    msg = fractal.interfaces[interface_id].front();
+void Taxonomy<MessageClass>::pop_msg(int taxon_id, int interface_id) { ///< Saca el msg de una interface de entrada.
     fractal.interfaces[interface_id].pop_front();
 }
 

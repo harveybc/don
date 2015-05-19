@@ -8,23 +8,21 @@
       <itemPath>FractalMachine.h</itemPath>
       <itemPath>FractalTape.h</itemPath>
       <itemPath>NeuralNetwork.h</itemPath>
+      <itemPath>Singularity.h</itemPath>
       <itemPath>Taxon.h</itemPath>
       <itemPath>Taxonomy.h</itemPath>
       <itemPath>dataset.h</itemPath>
       <itemPath>neuron.h</itemPath>
-      <itemPath>singularity.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="f1"
-                   displayName="Source Files"
-                   projectFiles="true"
-                   kind="ROOT">
+    <logicalFolder name="f1" displayName="Source Files" projectFiles="true">
+      <itemPath>Expert.cpp</itemPath>
+      <itemPath>NeuralNetwork.cpp</itemPath>
       <itemPath>Taxonomy.cpp</itemPath>
       <itemPath>dataset.cpp</itemPath>
-      <itemPath>expert.cpp</itemPath>
       <itemPath>fractal_machine.cpp</itemPath>
       <itemPath>fractal_tape.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -52,8 +50,6 @@
       <itemPath>Makefile</itemPath>
       <itemPath>README.md</itemPath>
     </logicalFolder>
-    <itemPath>NeuralNetwork.cpp</itemPath>
-    <itemPath>neural_network.cpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
@@ -74,6 +70,8 @@
           </incDir>
         </ccTool>
       </compileType>
+      <item path="Expert.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Expert.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="FractalMachine.h" ex="false" tool="3" flavor2="0">
@@ -84,6 +82,8 @@
       </item>
       <item path="NeuralNetwork.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Singularity.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Taxon.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Taxonomy.cpp" ex="false" tool="1" flavor2="0">
@@ -93,8 +93,6 @@
       <item path="dataset.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="dataset.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="expert.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -122,8 +120,6 @@
       <item path="neuron.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="singularity.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="singularity.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="taxon.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -150,6 +146,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Expert.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Expert.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="FractalMachine.h" ex="false" tool="3" flavor2="0">
@@ -160,6 +158,8 @@
       </item>
       <item path="NeuralNetwork.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Singularity.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Taxon.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Taxonomy.cpp" ex="false" tool="1" flavor2="0">
@@ -169,8 +169,6 @@
       <item path="dataset.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="dataset.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="expert.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -198,8 +196,6 @@
       <item path="neuron.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="singularity.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="singularity.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="taxon.cpp" ex="false" tool="1" flavor2="0">
       </item>

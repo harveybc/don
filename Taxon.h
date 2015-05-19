@@ -1,30 +1,39 @@
-/** 
- * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
- * @brief       Taxon class template
+/**
+ * ***************************************************************************** 
+ * @brief       Singularity Taxon Class Template
+ * *****************************************************************************
  * @par Description @parblock 
- *      Interfaz de comunicaciones para un taxón.
- * @endparblock
- * @copyright @parblock
- *    This file is part of Singularity.
+ *      
+ *      Behaviour:  Plantilla de clase para manejo de información de taxón en 
+ *                  una taxonomía de Singularity.
  * 
- *    Singularity is free software; you can redistribute it and/or modify it under
- *    the terms of the GNU General Public License as published by the Free
- *    Software Foundation; either version 3, or (at your option) any later
- *    version.
+ *      Structure:  Atributos para identificación de nodo (id), jerarquía en una
+ *                  taxonomía (parent_id) y estado del nodo (active, evaluated).
  * 
- *    Singularity is distributed in the hope that it will be useful, but WITHOUT ANY
- *    WARRANTY; without even the implied warranty of MERCHANTABILITY or
- *    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- *    for more details.
+ *      Interface:  Métodos públicos para leer atributos y protegidos para 
+ *                  escribirlos desde la plantilla de clase FractalMachine.
+ *
+ *  Extended information at:
+ *  <http://singularityproject.co>
  * 
- *    You should have received a copy of the GNU General Public License
- *    along with GCC; see the file COPYING3.  If not see
- *    <http://www.gnu.org/licenses/>. 
+ *  @endparblock
+ *  @copyright @parblock
+ *  This file is part of Singularity.
+ *  Singularity is free software; you can redistribute it and/or modify it under
+ *  the terms of the GNU General Public License as published by the Free
+ *  Software Foundation; either version 3, or (at your option) any later
+ *  version. Singularity is distributed in the hope that it will be useful, but 
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ *  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ *  for more details. You should have received a copy of the GNU General Public 
+ *  License along with GCC; see the file COPYING3.  If not see
+ *  <http://www.gnu.org/licenses/>. 
  * @endparblock
  * @file        Taxon.h
  * @version     0.1
  * @date        22 de mayo de 2014, 11:58 PM
- */
+ * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
+ **/
 
 #ifndef TAXON_H
 #define	TAXON_H

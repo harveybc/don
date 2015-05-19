@@ -5,7 +5,7 @@
  * Created on 29 de marzo de 2015, 05:56 PM
  */
 
-#include "singularity.h"
+#include "Singularity.h"
 
 Singularity::Singularity() {
 }
