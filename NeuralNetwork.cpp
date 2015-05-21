@@ -8,20 +8,7 @@
 #include "NeuralNetwork.h"
 
 // descarta el mensaje más antiguo(front) e introduce el msj el el fin de la cola de entrada.
-void push_input(int input_id, double msg_in){
-    // saca el mensaje más viejo de la interfaz del nodo 0(general input)
-    Taxonomy::pop_msg(input_id,0);
-    // introduce el nuevo mensaje en la interfaz
-    Taxonomy::
-}
- 
-// obtiene el valor más nuevo de una interfaz de salida
-void read_output(int node_id, interface_id, double &msg_out){
-    // si existe un mensaje, lo retorna, sino, retorna 0.
-    msg_out=fractal.interfaces[node_id][interface_id][0];
-}
-
-// evalúa los nodos de salida y recursivamente todos los demás
+// TODO: Incluir conex a otras taxonomías.
 void evaluate(){
     int i;
     double tmp_out;

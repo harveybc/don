@@ -20,7 +20,7 @@
  *                  Cryptocoin.
  *
  *  Extended information at:
- *  <http://singularityproject.co>
+ *  <http://singularityproject.co>|/
  * 
  *  @endparblock
  *  @copyright @parblock
@@ -49,7 +49,7 @@
 class NeuralNetwork: Expert {
 public:
     void evaluate();
-    NeuralNetwork(int num_inputs, int num_outputs); // params: número de entradas y número de neuronas de salida 
+    NeuralNetwork(int num_inputs_b, int num_outputs_b, int num_inputs_d, int num_outputs_d, int num_inputs_wd, int num_outputs_wd); // params: número de entradas y número de neuronas de salida apra cada tipo de taxonomía.
     NeuralNetwork(const NeuralNetwork& orig);
     virtual ~NeuralNetwork();
 private:

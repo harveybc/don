@@ -45,8 +45,8 @@
 #include "Taxon.h"
 #include "Expert.h"
 
-template <class TaxonClass,class MessageClass> ///< para IA, taxonClass=Expert
-class Taxonomy: public Taxon<MessageClass> { // Se puede cambiar double por un vector para Complex-value ANNs
+template <class TaxonClass,class MessageClass>
+class Taxonomy: public Taxon { 
 public:
     // structs y typedefs
     typedef std::deque <MessageClass> msg_buffer;
@@ -57,9 +57,9 @@ public:
     int get_taxon(int taxon_id, TaxonClass &output); ///< Obtiene un taxón
     // connection management
     int add_connection(int remote_id, int remote_interface, double length, double radius, double weight); ///< Crea una nueva conexión
-    int modify_connection(int taxon_id, int conn_id, FractalMachine<TaxonClass,MessageClass>::NodeConnection new_conn); ///< Modifica una conexión existente
+    int modify_connection(int taxon_id, int conn_id, FractalMachine::NodeConnection new_conn); ///< Modifica una conexión existente
     int erase_connection(int taxon_id, int conn_id); ///< Elimina una conexión
-    int get_connection(int taxon_id, FractalMachine<TaxonClass,MessageClass>::NodeConnection &conn_id); ///< Obtiene una conexión existente
+    int get_connection(int taxon_id, FractalMachine<MessageClass>::NodeConnection &conn_id); ///< Obtiene una conexión existente
     // interfaces management
     int add_interfaces(int taxon_id, int num); ///< Agrega interfaces de salida al taxón
     int erase_interface(int taxon_id, int conn_id); ///< Elimina una interface
@@ -79,6 +79,7 @@ public:
 protected:
     FractalMachine <Taxon> fractal; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
     std::vector <TaxonClass> taxons; 
+    std::vector<std::vector <std::deque <MessageClass> > > interfaces; ///< Matriz 3D de interfaces de salida [taxon_id][interface_id][message_id]
 };
 
 // taxon management

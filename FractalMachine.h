@@ -42,10 +42,10 @@
 #ifndef FRACTALMACHINE_H
 #define	FRACTALMACHINE_H
 #include <map>
+#include <cmath>
 #include "Taxon.h"
 #include "FractalTape.h"
 
-template <class MessageClass> /// Máquina de turing paramanejo de estructura jerárquica de objetos (fractal).
 class FractalMachine {
 public:
     // Typedefs y structs
@@ -62,7 +62,7 @@ public:
     struct NodeConnection { //Al crear una conex Out, verifica si para la misma salida ya existe un buffer lo suficientemente largo, sino lo alarga
         int remote_taxonomy_type; //Tipo de datos de la taxonomía remota (definida en Expert.h)
         int remote_taxonomy_id; // Id de la taxonomía en el arreglo de taxonomy_type del experto
-        int remote_id; ///< id del taxón remoto: -1 si es un taxón de entrada o salida
+        int remote_taxon_id; ///< id del taxón remoto: -1 si es un taxón de entrada o salida
         int remote_interface; ///< interface en el taxón remoto, -1 para entradas o salidas
         double length; ///< largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
         double radius; ///< radio en um, aprox vol_neurona/100, Lambda?, la velocidad de salida V=aprox 5xRadius (0.2um)0.5m/s a (20um)120m/s
@@ -88,22 +88,19 @@ public:
     std::vector <Taxon> nodes; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
     std::vector <int> parent_node; ///< Taxon ID del nodo que creó el nodo 
     std::vector <std::vector<NodeConnection> > connections; ///< Conexiones[taxon_id][conn_id] de todos los taxones
-    std::vector<std::vector <std::deque <MessageClass> > > interfaces; ///< Matriz 3D de interfaces de salida [taxon_id][interface_id][message_id]
 protected:
     std::vector <Taxon> taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <NodeConnection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <bool> nodes_eval; ///< usado para establecer el orden de evaluación
 };
 
-template <class MessageClass>
-int FractalMachine<MessageClass>::iterate() { ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
+int FractalMachine::iterate() { ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
     int counter = 0;
     int i = 0;
     int j=0;
     int aux_counter=0;
     int aux_counter2=0;
     FractalTape::FractalCmd instruction, tmp_instr;
-    MessageClass tmp_message;
     while (fractal_tape.get_size() > 0) { //Hace fetch de instrucciones, saca una a una las celdas de la cinta
         /// TODO: instruction 0 =  nop con información, params: information size, information (stores info in the tape)        
         if (fractal_tape.pop_instruction(instruction)) { ///< 
@@ -170,9 +167,10 @@ int FractalMachine<MessageClass>::iterate() { ///< Ejecuta la cinta de instrucci
                 if (instruction.parameters.size() < 1) return 0; // Verifica si el número de params es al menos 1
                 if (get_size() > instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
                 if (connections.size() == 0) return 0; //Verifica si el registro de taxones está vacío
-                for (i = 0; i < conn_register.size(); i++) { // Ejecución de comando 1: crear nodo
-                    // si la conexión es de entrada, calcula el segmento
-                    if (conn_register[i].conn_type == 1) { //1=entrada,2=salida,0=duplex
+                for (i = 0; i < conn_register.size(); i++) { // Ejecución de comando 4: create connections
+                    /* // TODO: esto va en Taxonomy antes de crear la conex
+                     * // y cargar el conn register con la instrucción 12
+                     * // calcula el segmento en la interfaz remota y cambia tamaño de interfaz
                         conn_register[i].segment = floor(conn_register[i].length / (3000 * conn_register[i].radius)); // el tamaño de la interfaz para la conex es floor (L/3000r) + 1, 
                         if (interfaces[conn_register[i].remote_id].size()<=conn_register[i].remote_interface) return 0; //no existe la interfaz
                         // si el tamaño de la interfaz es menor al segment, hace más grande la interfaz
@@ -201,7 +199,7 @@ int FractalMachine<MessageClass>::iterate() { ///< Ejecuta la cinta de instrucci
                                 interfaces[conn_register[i].remote_id][conn_register[i].remote_interface].pop_front();
                             }
                         }
-                    }
+                    */
                     connections[conn_register[i].remote_id].push_back(conn_register[i]);
                 }
             }
@@ -320,40 +318,33 @@ int FractalMachine<MessageClass>::iterate() { ///< Ejecuta la cinta de instrucci
     }
 }
 
-template <class MessageClass>
-int FractalMachine<MessageClass>::reset() { ///< Borra todos los objetos del estado
+int FractalMachine::reset() { ///< Borra todos los objetos del estado
     nodes.clear();
 }
 
-template <class MessageClass>
-int FractalMachine<MessageClass>::get_size() { ///< Obtiene el número de objetos en el estado de la máquina
+int FractalMachine::get_size() { ///< Obtiene el número de objetos en el estado de la máquina
     nodes.size();
 }
 
-template <class MessageClass>
-int FractalMachine<MessageClass>::get_state(int position, Taxon &output) { ///< Obtiene el objeto de la posición indicada
+int FractalMachine::get_state(int position, Taxon &output) { ///< Obtiene el objeto de la posición indicada
     if (nodes.size() > position) return 0;
     output = nodes[position];
     return 1;
 }
 
-template <class MessageClass>
-int FractalMachine<MessageClass>::replace_state(Taxon new_object, int position) { ///< Reemplaza el objeto de la posición indicada on el nuevo objeto
+int FractalMachine::replace_state(Taxon new_object, int position) { ///< Reemplaza el objeto de la posición indicada on el nuevo objeto
     if (nodes.size() > position) return 0;
     nodes[position] = new_object;
     return 1;
 }
 
-template <class MessageClass>
-FractalMachine<MessageClass>::FractalMachine() {
+FractalMachine::FractalMachine() {
 }
 
-template <class MessageClass>
-FractalMachine<MessageClass>::FractalMachine(const FractalMachine& orig) {
+FractalMachine::FractalMachine(const FractalMachine& orig) {
 }
 
-template <class MessageClass>
-FractalMachine<MessageClass>::~FractalMachine() {
+FractalMachine::~FractalMachine() {
 }
 
 
