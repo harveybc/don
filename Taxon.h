@@ -53,9 +53,13 @@ public:
 protected:
     int id; ///< Identificación numérica de el taxón, al ser creado en una taxonomía fractal es lineal.
     int parent_id; ///< Identificación del taxón padre si existe, al ser creado en una taxonomía fractal es lineal.
-    bool active_taxon; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
+    bool active; ///< Es TRUE al crear el taxon, se vuelve FALSE al borrarlo, se puede reactivar usando la instrucción replace (en FractalMachine.cpp)
     bool evaluated; ///< Es TRUE si el taxón ha sido evaluado
-   /* double x;
+    // La velocidad v=segment_length/segment_time, si el segment_time es
+    // constante, segment_length es proporcional a la velocidad
+    // TODO: esto va en taxonomy double segment_length; ///< Largo del segmento en micrometros, determina la velocidad (segment_len/segment_time)
+    //double segment_time; ///< Tiempo desde el último dato (igual al periodo del reloj para las taxonomías síncronas)
+    /* double x;
     double y;
     double z;
     double r;

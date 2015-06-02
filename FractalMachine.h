@@ -3,7 +3,18 @@
  * @brief       Fractal Machine Class Template
  * ***************************************************************************** 
  * @par Description @parblock 
- *      
+ * 
+ * A sequence of instructions called "fractal tape" is used to create a
+ * connection graph that has some nodes marked as not-evaluated and they are
+ * used as origin node for running again the fractal tape or parts of it, to
+ * generate a connection pattern of increasing complexity every time the 
+ * fractal tape is iterated in the non-evaluated nodes. We call Fractals to 
+ * these connection structures of variable complexity. The fractals are used 
+ * in this program to create a CPPN (Connectivity Pattern Producing Networks)
+ * for use in scalble Neural Networks as the fractals can be resolved to any 
+ * resolution (millions of neurons) potencially taking making feasible the 
+ * usability of pre-trained experts.
+ *       
  *      Behaviour:  Plantilla de clase implementando una máquina de Turing para
  *                  programar la generación de patrones de conectividad que se 
  *                  pueden resolver en cualquier resolución (fractales).
@@ -43,85 +54,114 @@
 #define	FRACTALMACHINE_H
 #include <map>
 #include <cmath>
+#include <chrono>
+#include <thread>
+#include <iostream>
 #include "Taxon.h"
-#include "FractalTape.h"
+#include "FractalProgram.h"
 
 class FractalMachine {
 public:
-    // Typedefs y structs
-    // datos de entrenamiento
-    struct TrainingData { ///< TODO: Cambiar, este es  de Synaapse
-    int remote_id; ///< id del taxón remoto
-        double length; //< largo de la conexión, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-        double radius; //< vol_neurona/100 Regula la velocidad de salida V=(2.8-9.7m/s)myelinated, V=(max:C0=176m/s) La suma de los radios da tamaño a neurona)
-        double sensitivity; //< Equivalente al peso de la conexión de entrada 
-        int local_interface; ///< interface en el taxón local
-        int remote_interface; ///< interface en el taxón remoto
+    // Structs and Typedefs
+    struct Node{
+        int id;         ///< Identification number of the node
+        int source_id;  ///< Parent node identification number
+        int evaluated;  ///< TRUE when the node is evaluated
+        bool active;    ///< FALSE when the node is deleted
     };
-    // conexión entre nodos
-    struct NodeConnection { //Al crear una conex Out, verifica si para la misma salida ya existe un buffer lo suficientemente largo, sino lo alarga
-        //int remote_taxonomy_type; //Tipo de datos de la taxonomía remota (definida en Expert.h)
-        //int remote_taxonomy_id; // Id de la taxonomía en el arreglo de taxonomy_type del experto
-        int remote_id; ///< id del taxón remoto: -1 si es un taxón de entrada o salida
-        //int remote_interface; ///< interface en el taxón remoto, -1 para entradas o salidas
-        double length; ///< largo de la conexión en um, , T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-        double radius; ///< radio en um, aprox vol_neurona/100,  la velocidad de salida V=aprox 5xRadius (0.2um)0.5m/s a (20um)120m/s
-        int segment; ///< calculado durante creación de conex para para inputs, se calcula como floor(length/(3000 x radius)) el segmento del la interfaz de salida el que está conectada la entrada
-        double weight; //< sensibilidad de la conex de entrada (peso para neurona)
-    };
-    // métodos
-    int reset(); ///< Borra todos los objetos del estado (no borra la cinta)
-    int iterate(); ///< Ejecuta la instrucción leída por el cabezal de la cinta, procesa todos los mensajes de los taxones y avanza la cinta una celda
-    int load_tape(); /// Carga una cinta en la máquina y coloca el cabezal en en inicio de la cinta 
-    int append_tape(); /// Adiciona una cinta a la cinta existente en la máquina
-    int tape_position(bool absolute_pos, int shift); /// Coloca el cabezal de la máquina en la posición especificada de la cinta
-    int get_size(); ///< Obtiene el número de objetos en el estado de la máquina
-    int get_state(int position, Taxon &output); ///< Obtiene el objeto de la posición indicada
-    int replace_state(Taxon new_object, int position);
-    
-    int taxon_register_load(std::vector <Taxon> taxon_register);
-    int conn_register_load(std::vector <NodeConnection> conn_register);
+    struct Connection { 
+        int id;         ///< Identification number of the connection
+        int source_id;  ///< Remote taxon identification
+        double length;  ///< Taxon length
+        bool active;    ///< FALSE when the node is deleted
+   };
+    struct Instance { 
+        int id;                     ///< Program instance identification
+        int base_node_id;           ///< Id of the base node for the instance
+        int program_id;             ///< Id of the program of the instance
+        int program_counter;        ///< Points the instruction to be executed
+        std::vector<bool> vars_b;   ///< Program´s boolean variables
+        std::vector<int> vars_i;    ///< Program´s int variables
+        std::vector<double> vars_d; ///< Program´s double variables
+   };
+    // Methods
+    int reset();                        ///< Erases all nodes an conex from the machine state a
+    int iterate(int node, int instance);///< Executes next instruction in program
+    int load_program();                 ///< Carga un programa
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
-    FractalTape fractal_tape; /// Cinta de instrucciones de la máquina (Ledger de transacciones con la máquina)
-    std::vector <Taxon> nodes; ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
-    std::vector <int> parent_node; ///< Taxon ID del nodo que creó el nodo 
-    std::vector <std::vector<NodeConnection> > connections; ///< Conexiones[taxon_id][conn_id] de todos los taxones
+    std::vector <Node> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
+    std::vector <std::vector<Connection> > connections; ///< Conexiones[taxon_id][conn_id] de todos los taxones
+    std::vector <Instance> instances;       ///< Instancias de programas ejecutándose en nodos
+    std::vector <FractalProgram> programs;  ///< Cintas de instrucciones de la máquina
 protected:
-    std::vector <Taxon> taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
-    std::vector <NodeConnection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
+    std::vector <Node> taxon_register; ///< Taxones usados como registros temporales para operaciones realizadas con taxones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
+    std::vector <Connection> conn_register; ///< Conexiones usadas como registros temporales para operaciones realizadas con conexiones por las instrucciones. TODO: para funcionamiento en paralelo requiere un vector de registros de taxones 
     std::vector <bool> nodes_eval; ///< usado para establecer el orden de evaluación
 };
-
-int FractalMachine::iterate() { ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
+// Ejecuta un comando de la cinta en cada base_id marcado como no-evaluado,
+// por defecto los nodos se marcan como evaluados.  Los nodos que se marcan como
+// no-evaluados, se adicionan a una lista de parámetros(b,i,d) del programa 
+// (cinta) para cada base_id marcado como no evaluado.
+// Esta lista de no-evaluados contiene un program_id, el program_counter en
+// ese programa, sus variables y/o sus parámetros de inicio.
+// TODO: EN TAXONOMY?
+int FractalMachine::iterate(int node, int program, int program_counter) { ///< Ejecuta la cinta de instrucciones, retorna el número de instrucciones ejecutadas
     int counter = 0;
     int i = 0;
     int j=0;
     int aux_counter=0;
     int aux_counter2=0;
-    FractalTape::FractalCmd instruction, tmp_instr;
-    while (fractal_tape.get_size() > 0) { //Hace fetch de instrucciones, saca una a una las celdas de la cinta
-        /// TODO: instruction 0 =  nop con información, params: information size, information (stores info in the tape)        
-        if (fractal_tape.pop_instruction(instruction)) { ///< 
-            if (instruction.id == 0) { // nop con información, params: information size, information (stores info in the tape))
-                if (instruction.parameters.size() < 3) return 0; // Verifica si el número de params es > 3
-                tmp_instr.id = 0;
-                for (i = 0; i < (instruction.parameters.size() - 1); i++) {
-                    tmp_instr.parameters.push_back(instruction.parameters[i + 1]);
-                }
-                fractal_tape.push_instruction(tmp_instr); // Inserta la instrucción al final de la cinta.
+    FractalProgram::FractalCmd instruction, tmp_instr;
+    /// Fetch instructions from tape and executes them
+    while (programs[program].get_size() > 0) { 
+        if (fractal_tape.pop_instruction(instruction)) { 
+            switch (instruction.id) {
+                case 0: /// Wait(milliseconds)
+                    std::this_thread::sleep_for(std::chrono::milliseconds(instruction.parameters_i[0]));
+                break;
+                case 1: /// CreateNode(source_id, distance_from_source)
+                
+                break;
+                case 2: /// CreateNodeFromConnection(conn_id, len_source,len_target)
+                
+                break;
+                case 3: /// NodeSwitchActive(node_id)
+                                
+                break;
+                case 4: /// SwitchEvaluated(node_id)
+                    
+                
+                break;
+                case 5: /// NodeChangeSource(node_id, new_source_id)
+                                
+                break;
+                case 6: /// CreateConnection(node_id_source, node_id_target, length)
+                
+                break;
+                case 7: /// ConnectionChangeSource(conn_id, new_source_id)
+                
+                break;
+                case 8: /// ConnectionChangeLength(conn_id, length)
+                
+                break;
+                case 9: /// ConnectionSwitchActive(conn_id)
+                                    
+                break;
+                case 10: ///  *//     int id;                     ///< Program identification
+        FractalTape instructions;   ///< Sequence of instructions
+        int program_counter;        ///< Points the instruction to be executed
+        std::vector[bool] vars_b;   ///< Program´s boolean variables
+        std::vector[int] vars_i;    ///< Program´s int variables
+        std::vector[double] vars_d; ///< Program´s double variablesConnectionSwitchActive(conn_id)
+                           */         
+                break;
+                default:
+                break;
             }
-            /// instruction 1 = Create objects, params: base node id, usa taxon_register como los nuevos
-            if (instruction.id == 1) { /// TODO: COLOCAR COMO PARAM EL HASH DEL DATASET DEL EXPERTO
-                if (instruction.parameters.size() > 32) { // Si el comando contiene uno o varios hashes, y no existen como archivos,  los descarga en el taxon_register, sino toma el último almacenado en el taxon_register 
-                    /// vacía el taxon_register
-                    /// Para cada 32 bytes (un hash de 256 bits)
-                    /// TODO: Si no existe el archivo con Key=HASH en el path de trabajo, lo descarga
-                    /// Abre el archivo para lectura(nomenclatura nombre=HASH.t)
-                    /// Carga el archivo y verifica el encabezado (Tipo: singularity_taxonomy,version)
-                    /// Carga el contenido del experto en el taxon_register
-                }
+
+            if (instruction.id == 1) { 
                 if (instruction.parameters.size() < 1) return 0; // Verifica si el número de params es al menos 1
                 if (nodes.size() > instruction.parameters[0]) return 0; // Verifica si el fractal coord base existe
                 if (taxon_register.size() == 0) return 0; //Verifica si el registro de taxones está vacío

@@ -34,10 +34,10 @@
 class FractalTape {
 public:
     // Typedefs y structs
-    // instrucción fractal
     struct FractalCmd {
-        char id; ///< La instrucción a ejecutar (para versión de 8 bits)
-        std::vector <int> parameters; ///< Parámetros de la instrucción ///TODO: cambiar a UINT64
+        char id;                            ///< La instrucción a ejecutar 
+        std::vector <int> parameters_i;     ///< Parámetros enteros
+        std::vector <double> parameters_d;  ///< Parámetros double
     };
     int push_instruction(FractalCmd instr);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
     int pop_instruction(FractalCmd &output);  ///< Adiciona una instrucción al final de la cinta, retorna el tamaño de la cinta
@@ -49,7 +49,7 @@ public:
     FractalTape(const FractalTape& orig);
     virtual ~FractalTape();
 private:
-    std::deque <FractalCmd> full_tape; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
+    std::deque <FractalCmd> instructions; ///< Una cinta fractal es una cola FIFO de caldas de instrucciones que se ejecutan en cada iteración en el estado de la máquina.
 };
 /*** FractalTape JSON
  * {

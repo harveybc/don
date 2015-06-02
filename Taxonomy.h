@@ -48,6 +48,14 @@
 template <class TaxonClass,class MessageClass>
 class Taxonomy: public Taxon { 
 public:
+            //int remote_taxonomy_type; //Tipo de datos de la taxonomía remota (definida en Expert.h)
+        //int remote_taxonomy_id; // Id de la taxonomía en el arreglo de taxonomy_type del experto
+        //int remote_interface; ///< interface en el taxón remoto, -1 para entradas o salidas
+        //TODO: colocar esto en Taxonomy double segment_length; ///< Largo del segmento en micrometros,si se usa modo 1, es el mismo del taxón determina la velocidad (segment_len/segment_time)
+        //double segment_time; ///< Tiempo desde el último dato (igual al periodo del reloj para las taxonomías síncronas)
+        //double radius; ///< radio en um, afecta la amplitud de la onda, similar a peso, aprox vol_neurona/100 y controla su velocidad de salida V=aprox 5xRadius (0.2um)0.5m/s a (20um)120m/s
+        //int segment; ///< calculado durante creación de conex para para inputs, se calcula como floor(length/(3000 x radius)) el segmento del la interfaz de salida el que está conectada la entrada
+ //conn_len, afecta la fase de la onda, T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
     // structs y typedefs
     typedef std::deque <MessageClass> msg_buffer;
     // taxon management
