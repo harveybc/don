@@ -44,6 +44,13 @@
 #include "FractalTape.h"
 #include "Taxon.h"
 #include "Expert.h"
+// Ejecuta un comando de la cinta en cada base_id marcado como no-evaluado,
+// por defecto los nodos se marcan como evaluados.  Los nodos que se marcan como
+// no-evaluados, se adicionan a una lista de parámetros(b,i,d) del programa 
+// (cinta) para cada base_id marcado como no evaluado.
+// Esta lista de no-evaluados contiene un program_id, el program_counter en
+// ese programa, sus variables y/o sus parámetros de inicio.
+// TODO: EN TAXONOMY?
 
 template <class TaxonClass,class MessageClass>
 class Taxonomy: public Taxon { 
