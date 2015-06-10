@@ -48,6 +48,7 @@
  * @version     0.1
  * @date        20 de junio de 2014, 08:37 PM
  * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
+ * COMPLETE
  **/
 
 #ifndef FRACTALMACHINE_H
@@ -58,12 +59,15 @@
 #include <thread>
 #include <iostream>
 #include "Taxon.h"
-#include "FractalNode.h"
-#include "FractalConnection.h"
-#include "FractalInstance.h"
+#include "Node.h"
+#include "Connection.h"
+#include "Instance.h"
 
 class FractalMachine {
 public:
+    void add_instruction(FractalInstruction instr);
+    void run_instruction(FractalInstruction instr);
+    void run_program(FractalProgram program);
     void reset();        ///< Erases all nodes, conex and instances
     void iterate();      ///< Executes next instruction from the instance's queue
     // constructors
@@ -71,9 +75,9 @@ public:
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
 private:
-    int connection_counter;
+    std::vector<FractalConnection> connections;
     std::vector <FractalNode> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
-    std::vector <std::vector<FractalConnection> > connections; ///< Conexiones[taxon_id][conn_id] de todos los taxones
+    std::vector <std::vector<int> > conn_index; ///< connection[target_id][0..n] index in conn queue for evaluation order
     std::deque <FractalInstance> instances;       ///< Instancias de programas ejecutándose en nodos
 };
 #endif	/* FRACTALMACHINE_H */

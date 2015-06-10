@@ -12,8 +12,8 @@
 void FractalProgram::push_instruction(FractalInstruction instr){  ///< Adiciona una instrucción al final de la cinta
     instructions.push_back(instr);
 }
-void FractalProgram::pop_instruction(FractalInstruction &output){  ///< Adiciona una instrucción al final de la cinta
-    output=instructions.front();
+void FractalProgram::get_instruction(int index){  ///< Adiciona una instrucción al final de la cinta
+    output=instructions[index];
 }
 
 int FractalProgram::get_size(){ ///< Obtiene el número de instrucciones en la cinta.

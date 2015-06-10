@@ -11,8 +11,7 @@
  *                  representados por cada nodo del fractal (taxons) 
  * 
  *      Interface:  Métodos para ejecutar comandos en la FractalMachine, 
- *                  introducir y leer datos de sus interfaces e import/export la 
- *                  taxonomía en JSON
+ *                  introducir y leer datos de sus interfaces 
  *
  *  Extended information at:
  *  <http://singularityproject.co>
@@ -44,28 +43,11 @@
 #include "FractalTape.h"
 #include "Taxon.h"
 #include "Expert.h"
-// Ejecuta un comando de la cinta en cada base_id marcado como no-evaluado,
-// por defecto los nodos se marcan como evaluados.  Los nodos que se marcan como
-// no-evaluados, se adicionan a una lista de parámetros(b,i,d) del programa 
-// (cinta) para cada base_id marcado como no evaluado.
-// Esta lista de no-evaluados contiene un program_id, el program_counter en
-// ese programa, sus variables y/o sus parámetros de inicio.
-// TODO: EN TAXONOMY?
 
 template <class TaxonClass,class MessageClass>
-class Taxonomy: public Taxon { 
+class Taxonomy{ 
 public:
-            //int remote_taxonomy_type; //Tipo de datos de la taxonomía remota (definida en Expert.h)
-        //int remote_taxonomy_id; // Id de la taxonomía en el arreglo de taxonomy_type del experto
-        //int remote_interface; ///< interface en el taxón remoto, -1 para entradas o salidas
-        //TODO: colocar esto en Taxonomy double segment_length; ///< Largo del segmento en micrometros,si se usa modo 1, es el mismo del taxón determina la velocidad (segment_len/segment_time)
-        //double segment_time; ///< Tiempo desde el último dato (igual al periodo del reloj para las taxonomías síncronas)
-        //double radius; ///< radio en um, afecta la amplitud de la onda, similar a peso, aprox vol_neurona/100 y controla su velocidad de salida V=aprox 5xRadius (0.2um)0.5m/s a (20um)120m/s
-        //int segment; ///< calculado durante creación de conex para para inputs, se calcula como floor(length/(3000 x radius)) el segmento del la interfaz de salida el que está conectada la entrada
- //conn_len, afecta la fase de la onda, T=1.5ms, Lambda=4-17mm, r_neurona=(5E-6,1.5E-3m)
-    // structs y typedefs
-    typedef std::deque <MessageClass> msg_buffer;
-    // taxon management
+    // node management
     void add_taxons(int quantity); ///< Agrega una categoría a la taxonomía como hija de la categoría especificada
     int remove_taxon(int taxon_id); ///< Elimina un taxón
     int replace_taxon(int taxon_id, TaxonClass taxon); ///< Reemplaza el taxón
@@ -84,9 +66,7 @@ public:
     void push_msg(MessageClass msg, int taxon_id, int interface_id); ///< Coloca el msg en una interface de salida.
     void pop_msg(MessageClass &msg, int taxon_id, int interface_id); ///< Saca el msg de una interface de salida.
     // Taxonomy management
-    int export_taxonomy(char* file_path); ///< Exporta la taxonomía a un archivo JSON o XML
-    void get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output); ///< 
-    int import_taxonomy(char* file_path); // < Importa la taxonomía desde un archivo JSON o XML
+     void get_taxonomy(FractalMachine <TaxonClass,MessageClass> &output); ///< 
     // constructors
     Taxonomy();
     Taxonomy(const Taxonomy& orig);
@@ -94,7 +74,9 @@ public:
 protected:
     FractalMachine <Taxon> fractal; ///< Una taxonomía es el estado de una m´qauina fractal de taxones decrito por una cinta de turing que contiene instrucciones para cada objeto existente en una iteración
     std::vector <TaxonClass> taxons; 
-    std::vector<std::vector <std::deque <MessageClass> > > interfaces; ///< Matriz 3D de interfaces de salida [taxon_id][interface_id][message_id]
+    ///< Matriz 3D de interfaces de salida [taxon_id][interface_id][message_id]
+    std::vector<std::vector <std::deque <MessageClass> > > interfaces; 
+
 };
 
 // taxon management

@@ -3,7 +3,7 @@
  * Author: harveybc
  *
  * Executes the following instruction from a program from an instance, from a 
- * instances deque. If the program ends execution, it´s instance is removed 
+ * instances deque. If the program ends execution, itÂ´s instance is removed 
  * from the deque.
  * 
  * Created on 22 de junio de 2014, 08:37 PM
@@ -13,89 +13,154 @@
 #include "FractalTape.h"
 #include "Expert.h"
 
-int FractalMachine::reset() { ///< Erases all nodes, conex and instances
+void FractalMachine::add_instruction(FractalInstruction instr){
+    instances.front().add_instruction(instr);
+}
+
+void FractalMachine::run_instruction(FractalInstruction instr){
+    instances.front().add_instruction(instr);
+    iterate();
+}
+
+void FractalMachine::run_program(FractalProgram program){
+    while (!instances.empty())
+        iterate();
+}
+    
+void FractalMachine::reset() { ///< Erases all nodes, conex and instances, create instance 0
+    FractalInstance tmp_instance(0,0);
+    // clears all nodes, conex and instances
     nodes.clear();
     connections.clear();
     instances.clear();
+    // adds a new instance
+    instances.push_back(tmp_instance);
+    /// add instruction 1: CreateNode(int source_id, int recursive, bool evaluated, bool active, double distance_from_source)
+    std::vector <bool> parameters_b(2,true);// evaluated, active
+    std::vector <int> parameters_i(2,0);    // source=0, recursive=0 times
+    std::vector <double> parameters_d(1,0);      // double parameters (none)
+    FractalInstruction tmp_instruction(1, parameters_b, parameters_i
+            , parameters_d);   ///< create node 0 active and non-evaluated
+    instances[0].add_instruction(tmp_instruction);
+    // sets program counter to 0
+    instances[0].set_program_counter(0);
 }
 
-int FractalMachine::iterate() { ///< Executes next instruction from the instance's queue
+void FractalMachine::iterate() { ///< Executes next instruction from the instance's queue
     FractalNode tmp_node;
+    FractalInstruction tmp_instruction;
     FractalConnection tmp_connection;
-    std::vector<FractalConnection> tmp_connections;
     std::deque <FractalInstruction> tmp_instructions;
-    std::deque<FractalInstance>::iterator it_instance=instances.begin();
-    std::deque<FractalInstruction>::iterator it_instructions;
-    // TODO: Create threads for each pending instance
-    // TODO: Logging and parameter verification of each instruction
-    while (it_instance!=instances.end()) {
-        // Sets the instances program counter to 0
-        it_instance->set_program_counter(0);
-        // puts the instructions iterator in the beninning
-        it_instance->get_program().get_instructions(tmp_instructions);
-        it_instructions = tmp_instructions.begin();
+    FractalInstance tmp_instance(0,0);
+    std::vector <int> tmp_conn_index;
+    tmp_conn_index.push_back(0); // adds an element to tmp_conn_index
+    
+    if (instances.size() > 0) {
         // Executes every command in the tape,later it is removed from instances         
-        while (it_instructions!=tmp_instructions.end()) { 
-                switch (it_instructions->id) {
-                    case 0: /// Wait(milliseconds)
-                        std::this_thread::sleep_for(std::chrono::milliseconds(it_instructions->parameters_i[0]));
-                    break;
-                    case 1: /// CreateNode(int source_id, int evaluated, bool active, double distance_from_source)
-                        tmp_node.set_node(
-                            nodes.size(),                        // id
-                            it_instructions->parameters_i[0],    // source_id  
-                            it_instructions->parameters_i[1],    // evaluated
-                            it_instructions->parameters_b[0]     // active
-                        );
-                        // adds the node
-                        nodes.push_back(tmp_node);
-                        // adds a connection from the source node
-                        tmp_connection.set_conn(
-                            connection_counter++,               // connid
-                            it_instructions->parameters_i[0],   // source_id 
-                            nodes.size(),                       // target_id
-                            it_instructions->parameters_d[0],   // length
-                            it_instructions->parameters_b[0]    // active
-                        );
-                        tmp_connections.push_back(tmp_connection);
-                        connections.push_back(tmp_connections);
-                    break;
-                    case 2: /// NodeSetActive(int node_id, bool act)
-                        nodes[it_instructions->parameters_i[0]].set_active(it_instructions->parameters_b[0]);
-                    break;
-                    case 3: /// NodeSetEvaluated(int node_id, int evaluated)
-                        nodes[it_instructions->parameters_i[0]].set_evaluated(it_instructions->parameters_i[1]);
-                    break;
-                    case 4: /// CreateConnection(node_id_source, node_id_target, length)
-                        connections.
-                    break;
-                    case 5: /// ConnectionSetSource(conn_id, new_source_id)
-
-                    break;
-                    case 6: /// ConnectionSetTarget(conn_id, new_target_id)
-
-                    break;
-                    case 7: /// ConnectionSetLength(conn_id, length)
-
-                    break;
-                    case 8: /// ConnectionSetActive(conn_id)
-
-                    break;
-                    default:
-                    break;
-                }
-            it_instruction++;            
+        if (instances.front().fetch(tmp_instruction)) { 
+            switch (tmp_instruction->id) {
+                case 0: /// Wait(milliseconds)
+                    std::this_thread::sleep_for(std::chrono::milliseconds(tmp_instruction->parameters_i[0]));
+                break;
+                case 1: /// CreateNode(int source_id, int recursive, int interfaces, bool evaluated, bool active, double distance_from_source)
+                    tmp_node.set_node(
+                        nodes.size(),                        // id
+                        tmp_instruction->parameters_i[0],    // source_id  
+                        tmp_instruction->parameters_i[1],    // recursive  
+                        tmp_instruction->parameters_i[2],     // interfaces
+                        tmp_instruction->parameters_b[0],    // evaluated
+                        tmp_instruction->parameters_b[1]     // active
+                    );
+                    // adds the node
+                    nodes.push_back(tmp_node);
+                    // adds a connection from the source node interface 0
+                    tmp_connection.set_conn(
+                        connections.size(),                 // connid
+                        tmp_instruction->parameters_i[0],   // source_id 
+                        nodes.size(),                       // target_id
+                        0,                                  // source_interface 
+                        tmp_instruction->parameters_d[0],   // length
+                        tmp_instruction->parameters_b[0]    // active
+                    );
+                    // if node is recursive, a new instance is added
+                    if (tmp_instruction->parameters_i[1] > 0){ // 0 evaluations
+                        tmp_instance.set_instance(instances.size(), tmp_instruction->parameters_i[0]);
+                        instances.push_back(tmp_instance);
+                    }
+                    // adds the conn_index for easy ANN evaluation
+                    tmp_conn_index[0] = connections.size(); // conn counter
+                    conn_index.push_back(tmp_conn_index);   // adds target index
+                    // adds connection to deque
+                    connections.push_back(tmp_connection);
+                break;
+                case 2: /// NodeSetActive(int node_id, bool act)
+                    nodes[tmp_instruction->parameters_i[0]].set_active(tmp_instruction->parameters_b[0]);
+                break;
+                case 3: /// NodeSetEvaluated(int node_id, bool evaluated)
+                    nodes[tmp_instruction->parameters_i[0]].set_evaluated(tmp_instruction->parameters_b[0]);
+                break;
+                case 4: /// NodeAddInterface(int node_id, int num, double init_val)
+                    nodes[tmp_instruction->parameters_i[0]].add_interface(tmp_instruction->parameters_i[1],
+                            tmp_instruction->parameters_d[0]);
+                break;
+                case 5: /// NodeSetRecursive(int node_id, int recursive)
+                    // if node is not-evaluated, a new instance is added
+                    if (tmp_instruction->parameters_i[1] > 0){ // >0 evaluations
+                        // if the previous recursive was 0, adds an instance
+                        if (nodes[tmp_instruction->parameters_i[0]].get_recursive()==0){
+                            tmp_instance.set_instance(instances.size(), tmp_instruction->parameters_i[0]);
+                            instances.push_back(tmp_instance);
+                        }
+                    }
+                    nodes[tmp_instruction->parameters_i[0]].set_recursive(tmp_instruction->parameters_i[1]);
+                    
+                break;
+                case 6: /// CreateConnection(node_id_source, node_id_target, src_if, length,active)
+                    tmp_connection.set_conn(
+                        connections.size(),                 // connid
+                        tmp_instruction->parameters_i[0],   // source_id (remote)
+                        tmp_instruction->parameters_i[1],   // target_id (local)
+                        tmp_instruction->parameters_i[2],   // source interface
+                        tmp_instruction->parameters_d[0],   // length
+                        tmp_instruction->parameters_b[0]    // active
+                    );
+                    // adds the conn_index for easy ANN evaluation
+                    conn_index[tmp_instruction->parameters_i[1]].push_back(connections.size());
+                    connections.push_back(tmp_connection);
+                break;
+                case 7: /// ConnectionSetLength(conn_id, length)
+                    connections[tmp_instruction->parameters_i[0]].set_length(tmp_instruction->parameters_d[0]);
+                break;
+                case 8: /// ConnectionSetActive(conn_id)
+                    connections[tmp_instruction->parameters_i[0]].set_active(tmp_instruction->parameters_b[0]);
+                break;
+                default:
+                break;
+            }
         }
-        it_instance++;
+        else{
+            // if the front instance's base node has recursive > 0, 
+            if (nodes[instances.front().get_base_node_id()].get_recursive()>0)
+            // decreases recursive
+            nodes[instances.front().get_base_node_id()].set_recursive(nodes[instances.front().get_base_node_id()].get_recursive()-1);    
+            // sets front instance's program counter to 0
+            instances.front().set_program_counter(0);
+            // push the instance in the back of the deque
+            instances.push_back(instances.front());
+            // pop instance from front
+            instances.pop_front();
+            if (instances.size() > 0) {
+                instances.front().set_program_counter(0);
+            }
+        }
     }
 }
 
 FractalMachine::FractalMachine() {
-    // Creates the first node
-    FractalNode tmp_node(0, 0, 0, true);
-    // Adds the first node 
-    nodes.clear();
-    nodes.push_back(tmp_node);
+    /// reset
+    reset();
+    /// iterate to run the first instruction
+    iterate();
 }
 
 FractalMachine::FractalMachine(const FractalMachine& orig) {
