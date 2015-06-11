@@ -1,26 +1,25 @@
-﻿Singularity
+﻿Singularity 
 ===========
 
+ *    This file is part of Singularity, the descentralized multi-agent AI 
+ *    training platform.
+ * 
+ *    Singularity is free software, hardware and data; you can redistribute it 
+ *    and/or modify it under the terms of the GNU General Public License as 
+ *    published by the Free Software Foundation; either version 3, or (at your 
+ *    option) any later version.
+ * 
+ *    Singularity is distributed in the hope that it will be useful, but WITHOUT
+ *    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ *    for more details.
+ * 
+ *    You should have received a copy of the GNU General Public License
+ *    along with GCC; see the file COPYING3.  If not see
+ *    <http://www.gnu.org/licenses/>. 
+
+Basado en el la discución en Blog de Ethereum:
+https://forum.ethereum.org/discussion/882/congratulations-humanity-you-have-reached-singularity
+
 Descentralized AI expert repository and app interface (As now just the taxonomy and the fractal machine are barely implemented, lots of corrections to make)
-
-Singularity node with 8 operation modes and their requirements:
-
-0 (almost implemented) = Search AI expert: Requiere guardar y cargar taxonomía y experto en formato JSON.
-
-1 = Download expert: Requiere Libtorrent.
-
-2 = Upload expert: Requiere Formato de ANN de: ES-HyperNEAT o Encog
-
-3 = Download expert and evaluate it locally provided dataset and previous neuron state (outptus) : Requiere motor de evaluación externo
-
-4 = Evaluate expert remotely provided dataset and previous neuron state: Requiere mecanismo de publicación y retrieval.
-
-5 = Singularity Miner: Requiere mecanismo de entrenamiento
-
-6 = Paid non-supervised training, don't mine: Requiere generación de PoW o pago a los  mineros
-
-7 = On-demand non-supervised training, mine to pay for training
-
-8 = On-demand non-supervised training and mining, mine excess CPU for profit
- 
  
