@@ -13,23 +13,18 @@
 
 #ifndef TRAVELINGWAVE_H
 #define	TRAVELINGWAVE_H
+#include "NeuralNetwork.h"
 
-
-class TravelingWave {
+class TravelingWave: NeuralNetwork{
 public:
-    /*
-    0: /// Wait(milliseconds)
-    1: /// CreateNode(int source_id, int recursive, int interfaces, bool evaluated, bool active, double distance_from_source)
-    2: /// NodeSetActive(int node_id, bool act) 
-    3: /// NodeSetEvaluated(int node_id, bool evaluated)
-    4: /// NodeAddInterface(int node_id, int num)
-    5: /// NodeSetRecursive(int node_id, int recursive)
-    6: /// CreateConnection(node_id_source, node_id_target, src_if, length,active)
-    7: /// ConnectionSetLength(conn_id, length)
-    8: /// ConnectionSetActive(conn_id)
-     * 
-     * 
-     */
+    // neuro evolution commands to be implemented in derived classes
+    void create_fully_connected_net(int num_inputs, int num_outputs);
+    void create_node_from_connecction(int num_inputs, int num_outputs);
+    void create_connection(int node_source, int node_target);
+    void set_connection_weight(int conn_id, double wt);
+    void set_connection_length(int conn_id, double len);
+    void set_connection_speed(int conn_id, double spd);
+    void mutate_conn(int conn_id, double d_weight, double d_len, double d_spd);    
     // constructors
     TravelingWave();
     TravelingWave(const TravelingWave& orig);

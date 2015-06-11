@@ -9,14 +9,11 @@
 #define	DATASET_H
 #include "taxon.h"
 
-
-
-
-class Dataset {
+class DataSet {
 public:
-    Dataset();
-    Dataset(const Dataset& orig);
-    virtual ~Dataset();
+    DataSet();
+    DataSet(const DataSet& orig);
+    virtual ~DataSet();
 private:
 
 };

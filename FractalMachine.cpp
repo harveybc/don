@@ -35,13 +35,6 @@ void FractalMachine::reset() { ///< Erases all nodes, conex and instances, creat
     instances.clear();
     // adds a new instance
     instances.push_back(tmp_instance);
-    /// add instruction 1: CreateNode(int source_id, int recursive, bool evaluated, bool active, double distance_from_source)
-    std::vector <bool> parameters_b(2,true);// evaluated, active
-    std::vector <int> parameters_i(2,0);    // source=0, recursive=0 times
-    std::vector <double> parameters_d(1,0);      // double parameters (none)
-    FractalInstruction tmp_instruction(1, parameters_b, parameters_i
-            , parameters_d);   ///< create node 0 active and non-evaluated
-    instances[0].add_instruction(tmp_instruction);
     // sets program counter to 0
     instances[0].set_program_counter(0);
 }
@@ -73,15 +66,6 @@ void FractalMachine::iterate() { ///< Executes next instruction from the instanc
                     );
                     // adds the node
                     nodes.push_back(tmp_node);
-                    // adds a connection from the source node interface 0
-                    tmp_connection.set_conn(
-                        connections.size(),                 // connid
-                        tmp_instruction->parameters_i[0],   // source_id 
-                        nodes.size(),                       // target_id
-                        0,                                  // source_interface 
-                        tmp_instruction->parameters_d[0],   // length
-                        tmp_instruction->parameters_b[0]    // active
-                    );
                     // if node is recursive, a new instance is added
                     if (tmp_instruction->parameters_i[1] > 0){ // 0 evaluations
                         tmp_instance.set_instance(instances.size(), tmp_instruction->parameters_i[0]);

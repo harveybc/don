@@ -5,20 +5,7 @@
  * ***************************************************************************** 
  * @par Description @parblock
  *      
- *      Behaviour:  Manejo de Red neuronal de múltiples tipos de datos y su I/O
- *                  creada con una neurona inicial con conex como entradas y una
- *                  neurona adicional para cada salida, puede usar múltiples 
- *                  tipos de datos en sus entradas y salidas.
- *   
- *      Structure:  Número de entradas y número de salidas por cada tipo de 
- *                  dato. Taxonomías heredadas de Expert.
- * 
- *      Interface:  Método evaluate() de las entradas en las salidas. Funciones
- *                  de transferencia y activación híbridas (tipo de datos),
- *                  métodos evaluación en GPU y entrenamiento local, remoto,
- *                  distribuído, descentralizado P2P y por minado de
- *                  Cryptocoin.
- *
+ * Neural network implementation using a fractal structure
  *  Extended information at:
  *  <http://singularityproject.co>|/
  * 
@@ -43,18 +30,56 @@
 
 #ifndef NEURALNETWORK_H
 #define	NEURALNETWORK_H
-#include "Expert.h"
+#include "FractalMachine.h"
+#include "DataSet.h"
 
-//Es una taxonomía
-class NeuralNetwork: Expert {
+class NeuralNetwork {
 public:
-    void evaluate();
-    NeuralNetwork(int num_inputs_b, int num_outputs_b, int num_inputs_d, int num_outputs_d, int num_inputs_wd, int num_outputs_wd); // params: número de entradas y número de neuronas de salida apra cada tipo de taxonomía.
+    int get_inputs();
+    int get_outputs();
+    void reset(int n_inputs, int n_outputs);
+    NeuralNetwork(int n_inputs, int n_outputs); 
     NeuralNetwork(const NeuralNetwork& orig);
     virtual ~NeuralNetwork();
+protected:
+    // neuro evolution commands to be implemented in derived classes(TravelingWave and SimpleANN)
+    virtual void create_fully_connected_net(int num_inputs, int num_outputs);
+    virtual void create_node_from_connecction(int num_inputs, int num_outputs);
+    virtual void create_connection(int node_source, int node_target);
+    virtual void set_connection_weight(int conn_id, double wt);
+    virtual void set_connection_length(int conn_id, double len);
+    virtual void set_connection_speed(int conn_id, double spd);
+    virtual void mutate_conn(int conn_id, double d_weight, double d_len, double d_spd);
+    
+    // activation and transfer functions to be implemented in derived classes (Activator)
+    virtual double activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
+    virtual double transfer_fcn(int node_id); // neuron's transfer function
+    
+    // evaluation and training (Evaluator and Trainer)
+    virtual void evaluate(DataSet data_input, DataSet &data_output);
+    virtual void train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    // real time evaluation and training (Expert)
+    virtual void rt_evaluate(DataSet data_input, DataSet &data_output);
+    virtual void rt_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// multi-expert real time evaluation and training (Agent)
+    //virtual void me_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void me_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// multi-agent evaluation and training network client and server (MultiAgentClient and MultiAgentServer)
+    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// descentralized multi-agent evaluation and training P2P network node (Singularity)
+    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
 private:
-    double activationFcn(MessageClass x); // Función de activación seleccionada ejecuta: Salida = activationFcn(transferFcn(Conex(Intefaces(Segments))))
-    double transferFcn(int node_id); // Función de transferencia
+    int num_inputs;
+    int num_outputs;
+    FractalMachine network(); // fractal 
+    
 };
 #endif	/* NEURALNETWORK_H */
 

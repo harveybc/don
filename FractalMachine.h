@@ -14,6 +14,16 @@
  * for use in scalble Neural Networks as the fractals can be resolved to any 
  * resolution (millions of neurons) potencially taking making feasible the 
  * usability of pre-trained experts.
+ * 
+    0: /// Wait(milliseconds)
+    1: /// CreateNode(int source_id, int recursive, int interfaces, bool evaluated, bool active, double distance_from_source)
+    2: /// NodeSetActive(int node_id, bool act) 
+    3: /// NodeSetEvaluated(int node_id, bool evaluated)
+    4: /// NodeAddInterface(int node_id, int num)
+    5: /// NodeSetRecursive(int node_id, int recursive)
+    6: /// CreateConnection(node_id_source, node_id_target, src_if, length,active)
+    7: /// ConnectionSetLength(conn_id, length)
+    8: /// ConnectionSetActive(conn_id)
  *       
  *      Behaviour:  Plantilla de clase implementando una máquina de Turing para
  *                  programar la generación de patrones de conectividad que se 
@@ -74,10 +84,11 @@ public:
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
+    // public attribs
+    std::vector <std::vector<int> > conn_index; ///< connection[target_id][0..n] index in conn queue for evaluation order
 private:
     std::vector<FractalConnection> connections;
     std::vector <FractalNode> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
-    std::vector <std::vector<int> > conn_index; ///< connection[target_id][0..n] index in conn queue for evaluation order
     std::deque <FractalInstance> instances;       ///< Instancias de programas ejecutándose en nodos
 };
 #endif	/* FRACTALMACHINE_H */
