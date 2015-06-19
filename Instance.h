@@ -1,5 +1,5 @@
 /* 
- * File:   FractalInstance.h
+ * File:   Instance.h
  * Author: harveybc
  *
  * Created on 3 de junio de 2015, 04:40 PM
@@ -9,7 +9,7 @@
 #define	FRACTALINSTANCE_H
 #include "FractalProgram.h"
 
-class FractalInstance {
+class Instance {
 public:
     FractalProgram program; ///< Cintas de instrucciones de la mÃ¡quina     
     // methods
@@ -23,9 +23,9 @@ public:
     void add_instruction(FractalInstruction instr);
     bool fetch(FractalInstruction &instr); // Increments PC ands returns current instruction
     // constructors
-    FractalInstance(int id, int base_node); //defaults program_id and pc to 0
-    FractalInstance(const FractalInstance& orig);
-    virtual ~FractalInstance();
+    Instance(int id, int base_node); //defaults program_id and pc to 0
+    Instance(const Instance& orig);
+    virtual ~Instance();
 private:
     int instance_id;        ///< Program instance identification
     int base_node_id;       ///< Id of the base node for the instance

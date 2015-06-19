@@ -14,12 +14,13 @@
 
 #ifndef INTERFACE_H
 #define	INTERFACE_H
+#include <deque>
 
 template <class MessageClass>
 class Interface {
 public:
     // message management
-    MessageClass read_msg();        ///< returns the front of the deque
+    MessageClass read_msg(int segment);        ///< returns the front of the deque
     void push_msg(MessageClass msg);///< puts msg into the back of the deque
     void pop_msg();                 ///< removes msg from the front of the queue
     // buffer management

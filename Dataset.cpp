@@ -7,12 +7,12 @@
 
 #include "DataSet.h"
 
-Dataset::Dataset() {
+DataSet::DataSet() {
 }
 
-Dataset::Dataset(const Dataset& orig) {
+DataSet::DataSet(const DataSet& orig) {
 }
 
-Dataset::~Dataset() {
+DataSet::~DataSet() {
 }
 

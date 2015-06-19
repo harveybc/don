@@ -31,55 +31,27 @@
 #ifndef NEURALNETWORK_H
 #define	NEURALNETWORK_H
 #include "FractalMachine.h"
-#include "DataSet.h"
 
-class NeuralNetwork {
+class NeuralNetwork: public FractalMachine{
 public:
-    int get_inputs();
-    int get_outputs();
-    void reset(int n_inputs, int n_outputs);
+    // neuro evolution commands 
+    void create_nodes(int num_nodes);
+    void create_connection(int node_source, int node_target, 
+            int source_interface, bool active, double weight, double length, 
+            double speed);    
+    void create_fully_connected_net(int num_inputs, int num_outputs);
+    void create_node_from_connection(int conn_id);
+    void set_connection_active(int conn_id, bool active);
+    void set_connection_weight(int conn_id, double wt);
+    void set_connection_length(int conn_id, double len);
+    void set_connection_speed(int conn_id, double spd);
+    // constructors
     NeuralNetwork(int n_inputs, int n_outputs); 
     NeuralNetwork(const NeuralNetwork& orig);
     virtual ~NeuralNetwork();
-protected:
-    // neuro evolution commands to be implemented in derived classes(TravelingWave and SimpleANN)
-    virtual void create_fully_connected_net(int num_inputs, int num_outputs);
-    virtual void create_node_from_connecction(int num_inputs, int num_outputs);
-    virtual void create_connection(int node_source, int node_target);
-    virtual void set_connection_weight(int conn_id, double wt);
-    virtual void set_connection_length(int conn_id, double len);
-    virtual void set_connection_speed(int conn_id, double spd);
-    virtual void mutate_conn(int conn_id, double d_weight, double d_len, double d_spd);
-    
-    // activation and transfer functions to be implemented in derived classes (Activator)
-    virtual double activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
-    virtual double transfer_fcn(int node_id); // neuron's transfer function
-    
-    // evaluation and training (Evaluator and Trainer)
-    virtual void evaluate(DataSet data_input, DataSet &data_output);
-    virtual void train(DataSet data_trainning, double &fitness, FractalMachine &champion );
-    
-    // real time evaluation and training (Expert)
-    virtual void rt_evaluate(DataSet data_input, DataSet &data_output);
-    virtual void rt_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
-    
-    /// multi-expert real time evaluation and training (Agent)
-    //virtual void me_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void me_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
-    
-    /// multi-agent evaluation and training network client and server (MultiAgentClient and MultiAgentServer)
-    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
-    
-    /// descentralized multi-agent evaluation and training P2P network node (Singularity)
-    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
-    
 private:
-    int num_inputs;
-    int num_outputs;
-    FractalMachine network(); // fractal 
     
 };
+
 #endif	/* NEURALNETWORK_H */
 

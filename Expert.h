@@ -39,10 +39,9 @@
 
 #ifndef EXPERT_H
 #define	EXPERT_H
-#include "Taxonomy.h"
+#include "NeuralNetwork.h"
 
-template <class TaxonClass,class MessageClass> 
-class Expert: public Taxonomy<TaxonClass, MessageClass> {
+class Expert: public NeuralNetwork {
 public:
     // Estructuras
     struct wave_double{ //Para ondas de entrada del tipo Y=ACos(Wt-Th), t =ticks(iteraciones)
@@ -71,12 +70,10 @@ public:
     void map_input(int expert_if_id, int taxonomy_type, int taxon_id); //Maps experts inputs interfaces to taxonomies interfaces
     void map_output();
     //  Taxonomies management
-    void add_taxonomy_bit(); 
     void add_taxonomy_double(); 
-    void add_taxonomy_wave_d(); 
     //  AI management
-    virtual void train(); // entrena el experto
-    virtual void evaluate(); // coloca un valor en la entrada y obtiene una salida 
+//    virtual void train(); // entrena el experto
+  //  virtual void evaluate(); // coloca un valor en la entrada y obtiene una salida 
     void evaluateNode(int node_id); // marca un nodo como evaluado y evalúa el nodo
     // Constructors
     Expert(int num_inputs_b, int num_outputs_b, int num_inputs_d, int num_outputs_d, int num_inputs_wd, int num_outputs_wd); //PArams = num entradas apra cada tipo de dato

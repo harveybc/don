@@ -63,32 +63,75 @@
 
 #ifndef FRACTALMACHINE_H
 #define	FRACTALMACHINE_H
-#include <map>
+#include <vector>
 #include <cmath>
 #include <chrono>
 #include <thread>
 #include <iostream>
-#include "Taxon.h"
 #include "Node.h"
 #include "Connection.h"
 #include "Instance.h"
+#include "DataSet.h"
+
 
 class FractalMachine {
 public:
     void add_instruction(FractalInstruction instr);
     void run_instruction(FractalInstruction instr);
-    void run_program(FractalProgram program);
-    void reset();        ///< Erases all nodes, conex and instances
-    void iterate();      ///< Executes next instruction from the instance's queue
+    void run_program();
+    std::vector<int> get_conn_list(int node_target_id);// returns connections list per target node
+    Connection get_connection(int conn_id);
+    Node get_node(int node_id);
+    Instance get_instance(int instance_id);
+    void reset();       ///< Erases all nodes, conex and instances
+    void iterate();     ///< Executes next instruction from the instance's queue
+    int num_nodes();    ///< returns the number of nodes
+    double read_message(int node_id, int interface_id, int segment); ///< reads a message from a interface
+    void push_message(int node_id, int interface_id, double msg); ///< puts a message in a interface and deletes the oldest one
+    void set_node_evaluated(int node_id, bool eval);
+    void reset_nodes(int num_inputs); ///< sets evaluated = false to all hidden an output neurons
+    bool get_node_eval(int node_id);
     // constructors
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
-    // public attribs
-    std::vector <std::vector<int> > conn_index; ///< connection[target_id][0..n] index in conn queue for evaluation order
+protected:
+    // neuro evolution commands to be implemented in derived classes(TravelingWave and SimpleANN)
+    virtual void create_fully_connected_net(int num_inputs, int num_outputs);
+    virtual void create_node_from_connecction(int num_inputs, int num_outputs);
+    virtual void create_connection(int node_source, int node_target);
+    virtual void set_connection_weight(int conn_id, double wt);
+    virtual void set_connection_length(int conn_id, double len);
+    virtual void set_connection_speed(int conn_id, double spd);
+    
+    // activation and transfer functions to be implemented in derived classes (Activator)
+    virtual double activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
+    virtual double transfer_fcn(int node_id); // neuron's transfer function
+    
+    // evaluation and training (Evaluator and Trainer)
+    virtual void evaluate(DataSet data_input, DataSet &data_output);
+    virtual void visualize(); // renders the neural network in unreal engine 4
+    virtual void train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    // real time evaluation and training (Expert)
+    virtual void rt_evaluate(DataSet data_input, DataSet &data_output);
+    virtual void rt_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// multi-expert real time evaluation and training (Agent)
+    //virtual void me_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void me_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// multi-agent evaluation and training network client and server (MultiAgentClient and MultiAgentServer)
+    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    
+    /// descentralized multi-agent evaluation and training P2P network node (Singularity)
+    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
+    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
 private:
-    std::vector<FractalConnection> connections;
-    std::vector <FractalNode> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
-    std::deque <FractalInstance> instances;       ///< Instancias de programas ejecutándose en nodos
+    std::vector <std::vector<int> > conn_list; ///< connection[target_id][0..n] index in conn queue for evaluation order
+    std::vector<Connection> connections;
+    std::vector <Node> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
+    std::deque <Instance> instances;       ///< Instancias de programas ejecutándose en nodos
 };
 #endif	/* FRACTALMACHINE_H */

@@ -1,5 +1,5 @@
 /* 
- * File:   FractalNode.cpp
+ * File:   Node.cpp
  * Author: harveybc
  * 
  * Created on 3 de junio de 2015, 04:39 PM
@@ -9,32 +9,32 @@
 
 #include "Node.h"
 
-int FractalNode::get_id(){
+int Node::get_id(){
     return node_id;
 }
 
-int FractalNode::get_source(){
+int Node::get_source(){
     return source_id;
 }
 
-int FractalNode::get_num_interfaces(){
+int Node::get_num_interfaces(){
     return interfaces.size();
 }
 
-void FractalNode::add_interface(int num_if, double init_val){
+void Node::add_interface(int num_if, double init_val){
     Interface<double> tmp_if(num_if, init_val);
     interfaces.push_back();
 }
 
-int FractalNode::get_evaluated(){
+bool Node::get_evaluated(){
     return evaluated;
 }
 
-bool FractalNode::get_active(){
+bool Node::get_active(){
     return active;
 }
 
-void FractalNode::get_node(int &node, int &source, int &recurs, 
+void Node::get_node(int &node, int &source, int &recurs, 
         bool &eval, bool &act){
     node = node_id;
     source = source_id;
@@ -43,23 +43,23 @@ void FractalNode::get_node(int &node, int &source, int &recurs,
     act = active;
 }
 
-int FractalNode::get_recursive(){
+int Node::get_recursive(){
     return(recursive);
 }
 
-void FractalNode::set_recursive(int times){
+void Node::set_recursive(int times){
     recursive = times;
 }
 
-void FractalNode::set_evaluated(bool eval){
+void Node::set_evaluated(bool eval){
     evaluated = eval;
 }
 
-void FractalNode::set_active(bool act){
+void Node::set_active(bool act){
     active = act;
 }
 
-void FractalNode::set_node(int node, int source, int recurs, int num_if, bool eval, bool act){
+void Node::set_node(int node, int source, int recurs, int num_if, bool eval, bool act){
     Interface<double> tmp_if(num_if, 0);
     node_id = node;
     source_id = source;
@@ -69,7 +69,15 @@ void FractalNode::set_node(int node, int source, int recurs, int num_if, bool ev
     active = act;
 }
 
-FractalNode::FractalNode(int node, int source, int recurs, int num_if, bool eval, bool act) {
+void Node::set_threshold(double th){
+    threshold = th;
+}
+
+double Node::get_threshold(){
+    return(threshold);
+}
+
+Node::Node(int node, int source, int recurs, int num_if, bool eval, bool act) {
     Interface<double> tmp_if(num_if, 0);
     node_id = node;
     source_id = source;
@@ -79,7 +87,7 @@ FractalNode::FractalNode(int node, int source, int recurs, int num_if, bool eval
     active = act;
 }
 
-FractalNode::FractalNode() {
+Node::Node() {
     Interface<double> tmp_if(1, 0);
     node_id = 0;
     source_id = 0;
@@ -89,9 +97,9 @@ FractalNode::FractalNode() {
     active = true;
 }
 
-FractalNode::FractalNode(const FractalNode& orig) {
+Node::Node(const Node& orig) {
 }
 
-FractalNode::~FractalNode() {
+Node::~Node() {
 }
 

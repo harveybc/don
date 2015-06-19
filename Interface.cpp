@@ -10,8 +10,8 @@
 #include "Interface.h"
 
 // message management
-MessageClass Interface::read_msg(){   ///< returns the front of the deque
-    return(buffer.front());
+MessageClass Interface::read_msg(int segment){   ///< returns the front of the deque
+    return(buffer[segment]);
 }
 
 void Interface::push_msg(MessageClass msg){ ///< puts msg into the back of the deque

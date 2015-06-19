@@ -1,5 +1,5 @@
 /* 
- * File:   FractalConnection.cpp
+ * File:   Connection.cpp
  * Author: harveybc
  * 
  * Created on 3 de junio de 2015, 04:39 PM
@@ -7,35 +7,39 @@
 
 #include "Connection.h"
 
-int FractalConnection::get_id(){
+void Connection::calculate_segment(){
+    segment = length/speed;
+}
+
+int Connection::get_id(){
     return conn_id;
 }
 
-int FractalConnection::get_source(){
+int Connection::get_source(){
     return source_id;
 }
 
-int FractalConnection::get_target(){
+int Connection::get_target(){
     return target_id;
 }
 
-double FractalConnection::get_length(){
+double Connection::get_length(){
     return length;
 }
 
-int FractalConnection::get_source_interface(){
+int Connection::get_source_interface(){
     return source_interface;
 }
 
-void FractalConnection::set_source_interface(int s_if){
+void Connection::set_source_interface(int s_if){
     source_interface = s_if;
 }
 
-bool FractalConnection::get_active(){
+bool Connection::get_active(){
     return active;
 }
 
-void FractalConnection::get_conn(int &connid, int &source, int &target, 
+void Connection::get_conn(int &connid, int &source, int &target, 
         int &s_if, double &len, bool &act){
     connid = conn_id;       ///< identification number of the connection
     source = source_id;     ///< remote source node identification
@@ -45,8 +49,8 @@ void FractalConnection::get_conn(int &connid, int &source, int &target,
     act = active;           ///< FALSE when the node is deleted
 }
 
-void FractalConnection::set_conn(int connid, int source, int target, 
-        int s_if, double len, double w, double spd,  bool act){
+void Connection::set_conn(int connid, int source, int target, 
+        int s_if, double w, double len, double spd,  bool act){
     conn_id = connid; ///< identification number of the connection
     source_id = source;     ///< remote source node identification
     target_id = target;     ///< remote source node identification
@@ -56,33 +60,40 @@ void FractalConnection::set_conn(int connid, int source, int target,
     speed = spd;
     
     active = act;           ///< FALSE when the node is deleted
+    calculate_segment();
 }
 
-void FractalConnection::set_length(double len){
+void Connection::set_length(double len){
     length = len;
+    calculate_segment();
 }
 
-void FractalConnection::set_active(bool act){
+void Connection::set_active(bool act){
     active = act;
 }
 
-int FractalConnection::get_weight(){
+int Connection::get_weight(){
     return weight;
 }
 
-int FractalConnection::get_speed(){
+int Connection::get_speed(){
     return speed;
 }
 
-void FractalConnection::set_weight(int w){
+void Connection::set_weight(int w){
     weight = w;
 }
 
-void FractalConnection::set_speed(int s){
+void Connection::set_speed(int s){
     speed = s;
+    calculate_segment();
 }
 
-FractalConnection::FractalConnection(int connid, int source, int target, 
+int Connection::get_segment(){
+    return(segment);
+}
+
+Connection::Connection(int connid, int source, int target, 
         int s_if, double len, double w, double spd, bool act) {
     conn_id = connid; ///< identification number of the connection
     source_id = source;     ///< remote source node identification
@@ -92,11 +103,12 @@ FractalConnection::FractalConnection(int connid, int source, int target,
     weight = w;
     speed = spd;
     active = act;           ///< FALSE when the node is deleted
+    calculate_segment();
 }
 
-FractalConnection::FractalConnection(const FractalConnection& orig) {
+Connection::Connection(const Connection& orig) {
 }
 
-FractalConnection::~FractalConnection() {
+Connection::~Connection() {
 }
 

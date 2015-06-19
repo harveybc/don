@@ -15,23 +15,28 @@
 #define	TRAVELINGWAVE_H
 #include "NeuralNetwork.h"
 
-class TravelingWave: NeuralNetwork{
+class TravelingWave: public NeuralNetwork {
 public:
-    // neuro evolution commands to be implemented in derived classes
-    void create_fully_connected_net(int num_inputs, int num_outputs);
-    void create_node_from_connecction(int num_inputs, int num_outputs);
-    void create_connection(int node_source, int node_target);
-    void set_connection_weight(int conn_id, double wt);
-    void set_connection_length(int conn_id, double len);
-    void set_connection_speed(int conn_id, double spd);
-    void mutate_conn(int conn_id, double d_weight, double d_len, double d_spd);    
-    // constructors
-    TravelingWave();
+    int get_inputs();
+    int get_outputs();
+    TravelingWave(int n_inputs, int n_outputs);
     TravelingWave(const TravelingWave& orig);
     virtual ~TravelingWave();
+protected:    
+    // activation and transfer functions to be implemented in derived classes (Activator)
+    double activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
+    double transfer_fcn(int node_id); // neuron's transfer function
+    // evaluation
+    void evaluate();
+    void evaluate_node(int node_id);    
+    // visualization
+    void visualize();   // calculate xyz coords, and colors for nodes and conex 
+                        // and renders the neural network with it´s state in 
+                        // unreal engine 4 (Nodes and segments)
 private:
-    
+    // bias is neuron 0
+    int num_inputs;     // number of inputs
+    int num_outputs;    // number of outputs 
 };
-
 #endif	/* TRAVELINGWAVE_H */
 
