@@ -14,8 +14,8 @@ int Instance::get_instance_id(){
     return(instance_id);
 }
     
-int Instance::get_base_node_id(){
-    return(base_node_id);
+int Instance::get_base_neuron_id(){
+    return(base_neuron_id);
 }
 
 int Instance::get_program_counter(){
@@ -34,9 +34,9 @@ void Instance::set_program(FractalProgram in_program){
     program = in_program;
 }
 
-void Instance::set_instance(int id, int base_node){
+void Instance::set_instance(int id, int base_neuron){
     instance_id = id; 
-    base_node_id = base_node;
+    base_neuron_id = base_neuron;
 }
 
 void Instance::add_instruction(FractalInstruction instr){
@@ -52,9 +52,9 @@ bool Instance::fetch(FractalInstruction &instr){
 }
 
 // constructors
-Instance:: Instance(int id, int base_node){ //defaults program_id and pc to 0 {
+Instance:: Instance(int id, int base_neuron){ //defaults program_id and pc to 0 {
     instance_id = id; 
-    base_node_id = base_node;
+    base_neuron_id = base_neuron;
     program_counter=0; 
     // reset the instance's program
     program.reset();

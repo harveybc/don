@@ -64,8 +64,8 @@ int main(int argc, char** argv) {
     int i,result;
 
 /*    
-    Taxonomy<Expert<int, double, double>, double > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
-    Expert<int, double, double> tmp_expert;
+    Taxonomy<Expert<int, float, float>, float > main_taxonomy; // cambiar el primer parámetro int a neuralnetwork
+    Expert<int, float, float> tmp_expert;
     // Selecciona modo de operación (se pueden agregar más modos de operación)
     if (argc > 0) {
         switch (atoi(argv[1])) {
@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
             case 1: // Write Taxonomy to file
                 clog << "Operation mode 1: write Taxonomy to file" << "\n";
 
-                i = main_taxonomy.add_taxons(0, tmp_expert, 1);
+                i = main_taxonomy.add_taxon(0, tmp_expert, 1);
 
                 i = main_taxonomy.export_taxonomy(argv[2]);
 

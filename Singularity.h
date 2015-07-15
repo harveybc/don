@@ -11,7 +11,7 @@
  *      Structure:  Atributos para manejo de conectividad de experts (fractal)
  *                  y sus objetos relacionados (experts)
  * 
- *      Interface:  Método iterate() que introduce unas entradas en los expertos
+ *      Axon:  Método iterate() que introduce unas entradas en los expertos
  *                  de entrada, realiza las comunicación y obtiene     de las entradas en las salidas. Métodos para descargar,
  *                  crear y actualizar el experto en Bittorrent. Métodos para 
  *                  evaluación P2P.
@@ -42,7 +42,7 @@
 #define	SINGULARITY_H
 #include "taxon.h"
 
-class Singularity: Taxon<double> {
+class Singularity: Taxon<float> {
 public:
     Singularity();
     Singularity(const Singularity& orig);

@@ -35,16 +35,27 @@
 class NeuralNetwork: public FractalMachine{
 public:
     // neuro evolution commands 
-    void create_nodes(int num_nodes);
-    void create_connection(int node_source, int node_target, 
-            int source_interface, bool active, double weight, double length, 
-            double speed);    
+    void create_neurons(int num_neurons);
+    void create_synapse(int neuron_source, int neuron_target, 
+            int source_axon, bool active, float weight, float length, 
+            float speed);    
     void create_fully_connected_net(int num_inputs, int num_outputs);
-    void create_node_from_connection(int conn_id);
-    void set_connection_active(int conn_id, bool active);
-    void set_connection_weight(int conn_id, double wt);
-    void set_connection_length(int conn_id, double len);
-    void set_connection_speed(int conn_id, double spd);
+    void create_neuron_from_synapse(int syn_id);
+    void set_synapse_active(int syn_id, bool active);
+    void set_synapse_weight(int syn_id, float wt);
+    void set_synapse_length(int syn_id, float len);
+    void set_synapse_speed(int syn_id, float spd);
+    void set_neuron_m_potential(int neuron_id, int if_id, float m_potential);
+    void set_neuron_threshold(int neuron_id, int if_id, float threshold);  
+    void set_neuron_polarization_factor(int neuron_id, int if_id, float p_factor); 
+    void set_neuron_refractory_period(int neuron_id, int if_id, int r_period);   
+    //11: NeuronSetMembranePotential(int neuron_id, int axon_id, float m_pot)
+    //12: NeuronSetThreshold(int syn_id, int axon_id, float threshold)
+    //13: NeuronSetPolarizationFactor(int syn_id, int axon_id, float p_factor)
+    //14: NeuronSetRefractoryPeriod(int syn_id, int axon_id, int r_period)
+    
+    float threshold;       ///< Membrane potential threshold
+    float depolarization;  ///< Depolarization factor per tick
     // constructors
     NeuralNetwork(int n_inputs, int n_outputs); 
     NeuralNetwork(const NeuralNetwork& orig);

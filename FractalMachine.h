@@ -5,25 +5,25 @@
  * @par Description @parblock 
  * 
  * A sequence of instructions called "fractal tape" is used to create a
- * connection graph that has some nodes marked as not-evaluated and they are
- * used as origin node for running again the fractal tape or parts of it, to
- * generate a connection pattern of increasing complexity every time the 
- * fractal tape is iterated in the non-evaluated nodes. We call Fractals to 
- * these connection structures of variable complexity. The fractals are used 
+ * synapse graph that has some neurons marked as not-evaluated and they are
+ * used as origin neuron for running again the fractal tape or parts of it, to
+ * generate a synapse pattern of increasing complexity every time the 
+ * fractal tape is iterated in the non-evaluated neurons. We call Fractals to 
+ * these synapse structures of variable complexity. The fractals are used 
  * in this program to create a CPPN (Connectivity Pattern Producing Networks)
  * for use in scalble Neural Networks as the fractals can be resolved to any 
  * resolution (millions of neurons) potencially taking making feasible the 
  * usability of pre-trained experts.
  * 
     0: /// Wait(milliseconds)
-    1: /// CreateNode(int source_id, int recursive, int interfaces, bool evaluated, bool active, double distance_from_source)
-    2: /// NodeSetActive(int node_id, bool act) 
-    3: /// NodeSetEvaluated(int node_id, bool evaluated)
-    4: /// NodeAddInterface(int node_id, int num)
-    5: /// NodeSetRecursive(int node_id, int recursive)
-    6: /// CreateConnection(node_id_source, node_id_target, src_if, length,active)
-    7: /// ConnectionSetLength(conn_id, length)
-    8: /// ConnectionSetActive(conn_id)
+    1: /// CreateNeuron(int source_id, int recursive, int axon, bool evaluated, bool active, float distance_from_source)
+    2: /// NeuronSetActive(int neuron_id, bool act) 
+    3: /// NeuronSetEvaluated(int neuron_id, bool evaluated)
+    4: /// NeuronAddAxon(int neuron_id, int num)
+    5: /// NeuronSetRecursive(int neuron_id, int recursive)
+    6: /// CreateSynapse(neuron_id_source, neuron_id_target, src_if, length,active)
+    7: /// SynapseSetLength(syn_id, length)
+    8: /// SynapseSetActive(syn_id)
  *       
  *      Behaviour:  Plantilla de clase implementando una máquina de Turing para
  *                  programar la generación de patrones de conectividad que se 
@@ -31,10 +31,10 @@
  * 
  *      Structure:  Atributos para almacenamiento de secuencia de comandos
  *                  (fractal_tape) y el estado de la máquina: nodos, conexiones,
- *                  buses de datos de los nodos llamados interfaces y registros
+ *                  buses de datos de los nodos llamados axon y registros
  *                  para operaciones temporales.
  * 
- *      Interface:  Métodos para agregar comandos a la cinta de comandos 
+ *      Axon:  Métodos para agregar comandos a la cinta de comandos 
  *                  (fractal_tape), el método iterate() lee y ejecuta el próximo 
  *                  comando de la cinta y actualiza el estado de la máquina.
  *
@@ -68,70 +68,76 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
-#include "Node.h"
-#include "Connection.h"
+#include "Neuron.h"
+#include "Synapse.h"
 #include "Instance.h"
 #include "DataSet.h"
 
 
 class FractalMachine {
 public:
+    // attributes (public for use during evaluation from Simulator)
+    std::vector<Synapse> synapses;
+    std::vector <Neuron> neurons;              
+    // methods
     void add_instruction(FractalInstruction instr);
     void run_instruction(FractalInstruction instr);
     void run_program();
-    std::vector<int> get_conn_list(int node_target_id);// returns connections list per target node
-    Connection get_connection(int conn_id);
-    Node get_node(int node_id);
+    std::vector<int> get_syn_list(int neuron_target_id);// returns synapses list per target neuron
+    Synapse get_synapse(int syn_id);
+    Neuron get_neuron(int neuron_id);
     Instance get_instance(int instance_id);
-    void reset();       ///< Erases all nodes, conex and instances
+    void reset();       ///< Erases all neurons, conex and instances
     void iterate();     ///< Executes next instruction from the instance's queue
-    int num_nodes();    ///< returns the number of nodes
-    double read_message(int node_id, int interface_id, int segment); ///< reads a message from a interface
-    void push_message(int node_id, int interface_id, double msg); ///< puts a message in a interface and deletes the oldest one
-    void set_node_evaluated(int node_id, bool eval);
-    void reset_nodes(int num_inputs); ///< sets evaluated = false to all hidden an output neurons
-    bool get_node_eval(int node_id);
+    int num_neurons();    ///< returns the number of neurons
+    bool read_message(int neuron_id, int axon_id, int segment); ///< reads a message from a axon
+    void push_message(int neuron_id, int axon_id, bool msg); ///< puts a message in a axon and deletes the oldest one
+    void set_neuron_evaluated(int neuron_id, bool eval);
+    void reset_neurons(int num_inputs); ///< sets evaluated = false to all hidden an output neurons
+    bool get_neuron_eval(int neuron_id);
+    bool action_potential(int neuron_id, int axon_id, int tf_result); // true and starts refractory period if  membrane potential > threshold
+    bool get_refractory_state(int neuron_id, int axon_id); // true if remaining_refractory > 0
+    int get_num_axon(int neuron_id);
+    void increase_membrane_potential(int neuron_id, int axon_id, float pot);
     // constructors
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
 protected:
-    // neuro evolution commands to be implemented in derived classes(TravelingWave and SimpleANN)
+    // neuro evolution commands to be implemented in derived classes(SpikingEvaluator and SimpleANN)
     virtual void create_fully_connected_net(int num_inputs, int num_outputs);
-    virtual void create_node_from_connecction(int num_inputs, int num_outputs);
-    virtual void create_connection(int node_source, int node_target);
-    virtual void set_connection_weight(int conn_id, double wt);
-    virtual void set_connection_length(int conn_id, double len);
-    virtual void set_connection_speed(int conn_id, double spd);
+    virtual void create_neuron_from_connecction(int num_inputs, int num_outputs);
+    virtual void create_synapse(int neuron_source, int neuron_target);
+    virtual void set_synapse_weight(int syn_id, float wt);
+    virtual void set_synapse_length(int syn_id, float len);
+    virtual void set_synapse_speed(int syn_id, float spd);
     
     // activation and transfer functions to be implemented in derived classes (Activator)
-    virtual double activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
-    virtual double transfer_fcn(int node_id); // neuron's transfer function
+    virtual float activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
+    virtual float transfer_fcn(int neuron_id); // neuron's transfer function
     
     // evaluation and training (Evaluator and Trainer)
     virtual void evaluate(DataSet data_input, DataSet &data_output);
     virtual void visualize(); // renders the neural network in unreal engine 4
-    virtual void train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    virtual void train(DataSet data_trainning, float &fitness, FractalMachine &champion );
     
     // real time evaluation and training (Expert)
     virtual void rt_evaluate(DataSet data_input, DataSet &data_output);
-    virtual void rt_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    virtual void rt_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
     
     /// multi-expert real time evaluation and training (Agent)
     //virtual void me_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void me_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    //virtual void me_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
     
     /// multi-agent evaluation and training network client and server (MultiAgentClient and MultiAgentServer)
     //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    //virtual void ma_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
     
-    /// descentralized multi-agent evaluation and training P2P network node (Singularity)
+    /// descentralized multi-agent evaluation and training P2P network neuron (Singularity)
     //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, double &fitness, FractalMachine &champion );
+    //virtual void ma_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
 private:
-    std::vector <std::vector<int> > conn_list; ///< connection[target_id][0..n] index in conn queue for evaluation order
-    std::vector<Connection> connections;
-    std::vector <Node> nodes;               ///< Taxones que componen el estado de la máquina (persistente entre iteraciones))
+    std::vector <std::vector<int> > syn_list; ///< synapse[target_id][0..n] index in conn queue for evaluation order
     std::deque <Instance> instances;       ///< Instancias de programas ejecutándose en nodos
 };
 #endif	/* FRACTALMACHINE_H */

@@ -8,7 +8,7 @@
 #include "FractalInstruction.h"
 
 FractalInstruction::FractalInstruction(char in_id, std::vector <bool> in_parameters_b,
-            std::vector <int> in_parameters_i, std::vector <double> in_parameters_d){
+            std::vector <int> in_parameters_i, std::vector <float> in_parameters_d){
     id = in_id;
     parameters_b = in_parameters_b;
     parameters_i = in_parameters_i;

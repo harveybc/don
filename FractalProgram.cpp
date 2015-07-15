@@ -33,7 +33,7 @@ void FractalProgram::reset(){ ///< destroys all elements in the instructrions de
 }
 
 FractalProgram::FractalProgram(std::deque <FractalInstruction> in_instr) {
-    // Adds the first node 
+    // Adds the first neuron 
     instructions = in_instr;
 }
 
