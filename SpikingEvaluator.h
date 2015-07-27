@@ -17,15 +17,10 @@
 
 class SpikingEvaluator: public NeuralNetwork {
 public:
-    int get_inputs();
-    int get_outputs();
-    SpikingEvaluator(int n_inputs, int n_outputs);
-    SpikingEvaluator(const SpikingEvaluator& orig);
-    virtual ~SpikingEvaluator();
-protected:    
-    // activation and transfer functions to be implemented in derived classes (Activator)
-    float activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
-    float transfer_fcn(int neuron_id); // neuron's transfer function
+    int num_inputs;     // number of inputs
+    int num_outputs;    // number of outputs     SpikingEvaluator(int n_inputs, int n_outputs);
+    float summation(int neuron_id); // integrate neuron synapses
+    bool action_potential(Neuron &tmp_neuron, float tf_result); // true and starts refractory period if  membrane potential > threshold
     // evaluation
     void evaluate();
     void evaluate_neuron(int neuron_id);    
@@ -33,9 +28,13 @@ protected:
     void visualize();   // calculate xyz coords, and colors for neurons and conex 
                         // and renders the neural network with it´s state in 
                         // unreal engine 4 (Neurons and segments)
+    // constructors
+    SpikingEvaluator::SpikingEvaluator(int n_inputs, int n_outputs);
+    SpikingEvaluator(const SpikingEvaluator& orig);
+    virtual ~SpikingEvaluator();
+    
 private:
-    int num_inputs;     // number of inputs
-    int num_outputs;    // number of outputs 
+    
 };
 #endif	/* SPIKINGEVALUATOR_H */
 

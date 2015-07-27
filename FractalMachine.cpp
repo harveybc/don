@@ -10,7 +10,7 @@
  */
 
 #include "FractalMachine.h"
-#include "DataSet.h"
+
 
 
 void FractalMachine::add_instruction(FractalInstruction instr){
@@ -27,18 +27,6 @@ void FractalMachine::run_program(){
         iterate();
 }
 
- std::vector<int> FractalMachine::get_syn_list(int neuron_target_id){
-     return(syn_list[neuron_target_id]);
-}
-
-Synapse FractalMachine::get_synapse(int syn_id){
-    return(synapses[syn_id]);
-}
-
-Neuron FractalMachine::get_neuron(int neuron_id){
-    return(neurons[neuron_id]);
-}
-
 Instance FractalMachine::get_instance(int instance_id){
     return(instances[instance_id]);
 }
@@ -48,27 +36,16 @@ void FractalMachine::reset() { ///< Erases all neurons, conex and instances, cre
     int i;
     // clears all neurons, conex and instances
     neurons.clear();
-    synapses.clear();
     instances.clear();
     // adds a new instance
     instances.push_back(tmp_instance);
     // sets program counter to 0
     instances[0].set_program_counter(0);
-    // reset conn list
-    for (i=0;i<syn_list.size();i++){
-        syn_list[i].clear();
-    }
-    syn_list.clear();
 }
 
 void FractalMachine::iterate() { ///< Executes next instruction from the instance's queue
-    Neuron tmp_neuron;
+    Instance tmp_instance;
     FractalInstruction tmp_instruction;
-    Synapse tmp_synapse;
-    std::deque <FractalInstruction> tmp_instructions;
-    Instance tmp_instance(0,0);
-    std::vector <int> tmp_syn_index;
-    tmp_syn_index.push_back(0); // adds an element to tmp_syn_index
     if (instances.size() > 0) {
         // Executes every command in the tape,later it is removed from instances         
         if (instances.front().fetch(tmp_instruction)) { 
@@ -76,15 +53,46 @@ void FractalMachine::iterate() { ///< Executes next instruction from the instanc
                 case 0: /// Wait(milliseconds)
                     std::this_thread::sleep_for(std::chrono::milliseconds(tmp_instruction->parameters_i[0]));
                 break;
-                case 1: /// CreateNeuron(int source_id, int recursive, int axon, bool evaluated, bool active)
-                    tmp_neuron.set_neuron(
-                        neurons.size(),                        // id
-                        tmp_instruction->parameters_i[0],    // source_id  
-                        tmp_instruction->parameters_i[1],    // recursive  
-                        tmp_instruction->parameters_i[2],     // axon
-                        tmp_instruction->parameters_b[0],    // evaluated
-                        tmp_instruction->parameters_b[1]     // active
-                    );
+                case 1: /// CreateNeuron()
+                    Neuron tmp_neuron               
+                    {
+                        // general attributes
+                        tmp_instruction->parameters_i[0], //int parent_id_,  ///< Parent neuron's identification number
+                        tmp_instruction->parameters_i[1], //int recursive_,  ///< Number of times this neuron must be evaluated
+                        tmp_instruction->parameters_b[0], //bool active_,    ///< FALSE when the neuron is deleted
+                        // neural network flags
+                        tmp_instruction->parameters_b[1], //bool evaluated_, ///< TRUE if neuron has been evaluated
+                        tmp_instruction->parameters_i[2], //char neuron_type_,  ///< 0=normal, 1=Tonic, 2=Bistable, 3=Pacemaker, 4=Random
+                        // membrane attributes for model with intrinsic currents from (Beer, 1990) not for voltage but charge (integrating model over time)
+                        tmp_instruction->parameters_f[0], //float Qm_,     ///< membrane charge (def: -70mv*10nF)
+                        tmp_instruction->parameters_f[1], //float Cm_,      ///< membrane capacintance (def: 10nF)
+                        tmp_instruction->parameters_f[2], //float Gm_,     ///< membrane conductance (def: 100nS)
+                        tmp_instruction->parameters_f[3], //float Qth_,   ///< membrane charge threshold (def:-55mV*10nF Coulombs))
+                        tmp_instruction->parameters_f[4], //float Qss_,    ///< membrane steady state (resting) charge (def: -70mv*10nF)
+                        // intrinsic currents for pacemaker neurons (Beer, 1990) 
+                        tmp_instruction->parameters_f[5], //float Q_min_, ///< membrane intrinsic current charge threshold (-54mV*10nF)
+                        tmp_instruction->parameters_f[6], //float Ih_,        ///< intrinsic depolarizing current
+                        tmp_instruction->parameters_f[7], //float Il_,       ///< intrinsic hyperpolarizing current
+                        tmp_instruction->parameters_f[8], //float Th_,         ///< time Ih should remain active (def:100ms)
+                        tmp_instruction->parameters_f[9], //float Mtl_,              ///< slope of line used to calculate Tl
+                        tmp_instruction->parameters_f[10], //float Btl_,              ///< initial time used to calculate Tl
+                        // action potential timming
+                        tmp_instruction->parameters_i[3], //int action_potential_period_,  ///< duration of action potential polarization and depolarization
+                        tmp_instruction->parameters_i[4], //int remaining_action_potential_,   ///< remaining time of action potential
+                        tmp_instruction->parameters_i[5], //int refractory_period_,        ///< refractory period in milliseconds
+                        tmp_instruction->parameters_i[6], //int remaining_refractory_,     ///< rremaining refractory period in milliseconds
+                        // synaptogenesis and neurogenesis and prunning
+                        tmp_instruction->parameters_f[11], //float prob_synaptogenesis_,    ///< increases with neural activity, if negative, is probability of synaptic prunnig
+                        tmp_instruction->parameters_f[12], //float prob_neurogenesis_,      ///< increases with local complexity if negative, is probability of neural prunnig
+                        // extracellular activity (neurotransmitters, receptors and modulators)
+                        tmp_instruction->parameters_f[13], //float synapse_neurotransmitter_, 
+                        tmp_instruction->parameters_f[14], //float synapse_receptor_, 
+                        tmp_instruction->parameters_f[15], //float secreted_neurotransmitter_, // for volume transfer synapses
+                        tmp_instruction->parameters_f[16], //float inhibiting_neuro_receptor_, 
+                        tmp_instruction->parameters_f[17], //float stimulating_neuro_receptor_,
+                        tmp_instruction->parameters_f[18], //float inhibiting_neuro_modulator_,
+                        tmp_instruction->parameters_f[19]  //float stimulating_neuro_modulator_
+                    };
                     // adds the neuron
                     neurons.push_back(tmp_neuron);
                     // if neuron is recursive, a new instance is added
@@ -93,103 +101,59 @@ void FractalMachine::iterate() { ///< Executes next instruction from the instanc
                         instances.push_back(tmp_instance);
                     }
                 break;
-                case 2: /// NeuronSetActive(int neuron_id, bool act)
-                    neurons[tmp_instruction->parameters_i[0]].set_active(tmp_instruction->parameters_b[0]);
-                break;
-                case 3: /// TODO:: REMOVER NeuronSetEvaluated(int neuron_id, bool evaluated)
-                    neurons[tmp_instruction->parameters_i[0]].set_evaluated(tmp_instruction->parameters_b[0]);
-                break;
-                case 4: /// NeuronAddAxon(int neuron_id, int num, float init_val)
-                    neurons[tmp_instruction->parameters_i[0]].add_axon(tmp_instruction->parameters_i[1],
-                            tmp_instruction->parameters_d[0]);
-                break;
-                case 5: /// NeuronSetRecursive(int neuron_id, int recursive)
-                    // if neuron is not-evaluated, a new instance is added
-                    if (tmp_instruction->parameters_i[1] > 0){ // >0 evaluations
-                        // if the previous recursive was 0, adds an instance
-                        if (neurons[tmp_instruction->parameters_i[0]].get_recursive()==0){
-                            tmp_instance.set_instance(instances.size(), tmp_instruction->parameters_i[0]);
-                            instances.push_back(tmp_instance);
-                        }
-                    }
-                    neurons[tmp_instruction->parameters_i[0]].set_recursive(tmp_instruction->parameters_i[1]);
-                    
-                break;
-                case 6: /// CreateSynapse(neuron_id_source, neuron_id_target, src_if, length,active)
-                    tmp_synapse.set_conn(
-                        synapses.size(),                 // connid
-                        tmp_instruction->parameters_i[0],   // source_id (remote)
-                        tmp_instruction->parameters_i[1],   // target_id (local)
-                        tmp_instruction->parameters_i[2],   // source axon
-                        tmp_instruction->parameters_d[0],   // weight    
-                        tmp_instruction->parameters_d[1],   // length
-                        tmp_instruction->parameters_d[2],   // speed
-                        tmp_instruction->parameters_b[0]    // active
-                    );
-                    // adds the syn_index for easy ANN evaluation
-                    syn_list[tmp_instruction->parameters_i[1]].push_back(synapses.size());
-                    // calculates the segment
-                    tmp_synapse.calculate_segment();
+                case 2: /// CreateSynapse()
+                    Synapse tmp_synapse
+                    {
+                        // attributes
+                        tmp_instruction->parameters_i[0], //int source_id_, ///< remote source neuron identification
+                        tmp_instruction->parameters_b[0], //bool active_, ///< FALSE when the neuron is deleted
+                        tmp_instruction->parameters_f[0], //float strength_, ///< Synapse strength in Coulombs/spike
+                        tmp_instruction->parameters_i[1], //char synapse_type_, ///< 0=axodendritic, 1=axoaxonic, 2=axoextracellular, 3=axosecretory
+                        // short term plasticity 
+                        tmp_instruction->parameters_b[1], //bool short_term_plasticity_, ///< true = short term non-hebbian learning (presynaptic) 
+                        tmp_instruction->parameters_i[2], //int stp_critical_period_, ///< time to return to baseline strength
+                        tmp_instruction->parameters_i[3], //int stp_recovery_period_, ///< period for spike counting (in ms)    
+                        tmp_instruction->parameters_f[1], //float stp_max_intensity_,  ///< initial stp intensity as a fraction of str, can be negative for st-depression         
+                        tmp_instruction->parameters_i[4], //int stp_depletion_rate_,     ///<  stp depletion in Coulombs/clock_tick = max_intensity/recovery_period
+                        tmp_instruction->parameters_i[5], //int stp_remaining_recovery_, ///<  remaining ticks to recovery
+                        tmp_instruction->parameters_f[2], //float stp_, ///< stp magnitude added to strength per tick 
+                        // long term plasticity 
+                        tmp_instruction->parameters_b[2], //bool long_term_plasticity_, ///< true = persistent hebbian learning (presynaptic) 
+                        tmp_instruction->parameters_i[6], //int ltp_critical_period_, ///<  period for presynaptic to postsynaptic spike phase calculus (in ms)    
+                        tmp_instruction->parameters_i[7], //int ltp_recovery_period_, ///< time to return to baseline strenth
+                        tmp_instruction->parameters_f[3], //float ltp_max_intensity_,  ///< initial ltp intensity as a fraction of str, can be negative for st-depression         
+                        tmp_instruction->parameters_i[8], //int ltp_depletion_rate_, ///<  stp depletion in Coulombs/clock_tick = max_intensity/recovery_period
+                        tmp_instruction->parameters_i[9], //int ltp_remaining_recovery_, ///<  remaining ticks to recovery
+                        tmp_instruction->parameters_f[4], //float ltp_, ///< ltp magnitude added to strength per tick 
+                        // persistent long term plasticity
+                        tmp_instruction->parameters_b[3], //bool persistent_plasticity_, ///< a fraction of ltp is modified in baseline strength permanently if true
+                        tmp_instruction->parameters_f[5], //float persistent_change_factor_, ///< fraction of ltp that becomes permanent change in strength
+                        // trveling wave parameters
+                        tmp_instruction->parameters_f[6], //float length_, ///< synapse length, regulates phase
+                        tmp_instruction->parameters_f[7]  //float speed_ ///< synapse radius, regulates propagation speed                    
+                    };                        
                     // verify the source axon size and increases it if needed
-                    if (neurons[tmp_instruction->parameters_i[0]].axon[0].get_buffer_size()
-                            <= tmp_synapse.get_segment()){
-                        neurons[tmp_instruction->parameters_i[0]].axon[0].resize_buffer(tmp_synapse.get_segment()+1);
+                    if (neurons[tmp_instruction->parameters_i[0]].axon.size()
+                            <= tmp_synapse.segment){
+                        neurons[tmp_instruction->parameters_i[0]].axon.resize(tmp_synapse.segment+1,0);
                     }
-                    // adds synapse to the synapses deque
-                    synapses.push_back(tmp_synapse);
-                    
+                    // adds synapse to the synapses deque parameters_i[10] is the target_id
+                    neurons[tmp_instruction->parameters_i[10]].synapses.push_back(tmp_synapse);
                 break;
-                case 7: /// SynapseSetWeight(int syn_id, float weight)
-                    synapses[tmp_instruction->parameters_i[0]].set_weight(tmp_instruction->parameters_d[0]);
-                break;
-                case 8: /// SynapseSetLength(int syn_id, float length)
-                    synapses[tmp_instruction->parameters_i[0]].set_length(tmp_instruction->parameters_d[1]);
-                    // verify the source axon size and increases it if needed
-                    if (neurons[tmp_instruction->parameters_i[0]].axon[0].get_buffer_size()
-                            <= tmp_synapse.get_segment()){
-                        neurons[tmp_instruction->parameters_i[0]].axon[0].resize_buffer(tmp_synapse.get_segment()+1);
-                    }
-               break;
-                case 9: /// SynapseSetSpeed(int syn_id, float speed)
-                    synapses[tmp_instruction->parameters_i[0]].set_speed(tmp_instruction->parameters_d[2]);
-                    // verify the source axon size and increases it if needed
-                    if (neurons[tmp_instruction->parameters_i[0]].axon[0].get_buffer_size()
-                            <= tmp_synapse.get_segment()){
-                        neurons[tmp_instruction->parameters_i[0]].axon[0].resize_buffer(tmp_synapse.get_segment()+1);
-                    }
-                break;
-                case 10: /// SynapseSetActive(int syn_id, bool active)
-                    synapses[tmp_instruction->parameters_i[0]].set_active(tmp_instruction->parameters_b[0]);
-                break;                
-                case 11: /// NeuronSetMembranePotential(int neuron_id, int axon_id, float m_pot)
-                    neurons[tmp_instruction->parameters_i[0]].axon[tmp_instruction->parameters_i[1]].m_potential 
-                            = tmp_instruction->parameters_d[0];
-                break;                
-                case 12: /// NeuronSetThreshold(int syn_id, int axon_id, float threshold)
-                    neurons[tmp_instruction->parameters_i[0]].axon[tmp_instruction->parameters_i[1]].threshold
-                            = tmp_instruction->parameters_d[0];
-                break;                
-                case 13: /// NeuronSetPolarizationFactor(int syn_id, int axon_id, float p_factor)
-                    neurons[tmp_instruction->parameters_i[0]].axon[tmp_instruction->parameters_i[1]].threshold
-                            = tmp_instruction->parameters_d[0];
-                break;                
-                case 14: /// NeuronSetRefractoryPeriod(int syn_id, int axon_id, int r_period)
-                    neurons[tmp_instruction->parameters_i[0]].axon[tmp_instruction->parameters_i[1]].threshold
-                            = tmp_instruction->parameters_i[2];
-                break;                
                 default:
                 break;
             }
         }
         else{
             // if the front instance's base neuron has recursive > 0, 
-            if (neurons[instances.front().get_base_neuron_id()].get_recursive()>0)
-            // decreases recursive
-            neurons[instances.front().get_base_neuron_id()].set_recursive(neurons[instances.front().get_base_neuron_id()].get_recursive()-1);    
-            // sets front instance's program counter to 0
-            instances.front().set_program_counter(0);
-            // push the instance in the back of the deque
-            instances.push_back(instances.front());
+            if (neurons[instances.front().get_base_neuron_id()].recursive > 0){
+                // decreases recursive
+                neurons[instances.front().get_base_neuron_id()].recursive = neurons[instances.front().get_base_neuron_id()].recursive - 1;    
+                // sets front instance's program counter to 0
+                instances.front().set_program_counter(0);
+                // push the instance in the back of the deque
+                instances.push_back(instances.front());
+            }
             // pop instance from front
             instances.pop_front();
             if (instances.size() > 0) {
@@ -199,25 +163,9 @@ void FractalMachine::iterate() { ///< Executes next instruction from the instanc
     }
 }
 
-int FractalMachine::num_neurons(){    ///< returns the number of neurons
-    return(neurons.size());
-}
-
-float FractalMachine::read_message(int neuron_id, int axon_id, int segment){   ///< reads a message from a axon
-    return(neurons[neuron_id].axon[axon_id].read_msg(segment));
-}
-    
-void FractalMachine::push_message(int neuron_id, int axon_id, float msg){    ///< puts a message in a axon and deletes the oldest one
-    neurons[neuron_id].axon[axon_id].push_msg(msg);
-}
-
-void FractalMachine::set_neuron_evaluated(int neuron_id, bool eval){
-    neurons[neuron_id].evaluated = eval;
-}
-
 void FractalMachine::reset_neurons(int num_inputs){
     int acum1 = num_inputs+1;
-    int n_neurons = num_neurons();
+    int n_neurons = neurons.size();
     int i;
     for (i = acum1; i < n_neurons; i++){
         neurons[i].evaluated=false;
@@ -225,65 +173,6 @@ void FractalMachine::reset_neurons(int num_inputs){
     // sets the input and bias (num_inputs) neurons as evaluated
     for (i = 0; i <= num_inputs; i++){
         neurons[i].evaluated=true;
-    }
-}
-
-bool FractalMachine::get_neuron_eval(int neuron_id){
-    return (neurons[neuron_id].evaluated);
-}
-
- // true and starts refractory period if threshold < membrane potential 
-bool FractalMachine::action_potential(int neuron_id, int axon_id, int tf_result){
-    // if there is no refractory period active
-    if (neurons[neuron_id].axon[axon_id].remaining_refractory < 1){
-        // if the neuron is a pacemaker (and not in refr period),returns starts 
-        // refractory period again and outputs true
-        if (neurons[neuron_id].axon[axon_id].pacemaker){
-            // TODO: VERIFICAR http://animatlab.com/Help/Documentation/Neural-Network-Editor/Neural-Simulation-Plug-ins/Firing-Rate-Neural-Plug-in/Pacemaker-Neuron
-        }
-        // decreases membrane_potential with de polarization factor
-        neurons[neuron_id].axon[axon_id].m_potential *= 
-                neurons[neuron_id].axon[axon_id].polarization_factor;
-        // adds the transfer function to the membrane potential
-        neurons[neuron_id].axon[axon_id].m_potential += tf_result;
-        // calculates output
-        if (neurons[neuron_id].axon[axon_id].m_potential > 
-                neurons[neuron_id].axon[axon_id].threshold){
-            // polarize the membrane
-            neurons[neuron_id].axon[axon_id].m_potential = 0;
-            // starts the refractory period
-            neurons[neuron_id].axon[axon_id].remaining_refractory = 
-                    neurons[neuron_id].axon[axon_id].refractory_period;
-            //outputs true signal
-            return(true); 
-        }
-        else{
-            return(false);
-        }
-    }
-    else{
-        neurons[neuron_id].axon[axon_id].refractory_period--;
-        return(false);
-    }
-}
-
-// true if remaining_refractory > 0
-bool FractalMachine::get_refractory_state(int neuron_id, int axon_id){
-    return(neurons[neuron_id].axon[axon_id].remaining_refractory > 0);
-}
-
-int FractalMachine::get_num_axon(int neuron_id){
-    return(neurons[neuron_id].axon.size());
-}
-
-void FractalMachine::increase_membrane_potential(int neuron_id, int axon_id, float pot){
-    neurons[neuron_id].axon[axon_id].m_potential += pot;
-}
-
-bool FractalMachine::refracted_neuron(int neuron_id){
-    bool result=true;
-    for (int i=0; i < neurons[neuron_id].axon.size(); i++){
-        result = result && (neurons[neuron_id].axon[i].remaining_refractory>0);
     }
 }
 

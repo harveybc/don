@@ -7,35 +7,74 @@
 
 #include "SpikingEvaluator.h"
 
-int SpikingEvaluator::get_inputs(){
-    return(num_inputs);
-}
-
-int SpikingEvaluator::get_outputs(){
-    return(num_outputs);
-}
-
 // sums the charge from SYNAPSES
-float SpikingEvaluator::transfer_fcn(int neuron_id){
+float SpikingEvaluator::summation(Neuron &neuron){
     float acum=0;
-    int i, syn_source;
-    std::vector<int> syn_list;
-    Synapse syn_tmp;
-    syn_list = FractalMachine::get_syn_list(neuron_id);
-    // sums (weight*taxon_id,if_id,segment) for all synapses to a neuron
-    for (std::vector<int>::iterator it = syn_list.begin();it != syn_list.end()
-            ;++it){
-        syn_tmp = FractalMachine::synapses[ *it];
-        syn_source = syn_tmp.source_id;
+    int syn_source, num_synapses;
+    Neuron *source_neuron;
+    Synapse *tmp_synapse;
+    // sums strength for all synapses to a neuron
+    num_synapses = neuron.synapses.size();
+    for (int i = 0; i < num_synapses; i++){
+        tmp_synapse =  &(neuron.synapses[i]);
+         syn_source = tmp_synapse->source_id;
+         source_neuron = &(neurons[syn_source]);
         // if the neuron is not evaluated, evaluates it before calculating acum
-        if (FractalMachine::get_neuron_eval(syn_source)){ 
-            evaluate_neuron(syn_source);
+        if (!source_neuron->evaluated){ 
+            evaluate_neuron(neurons[syn_source]);
         }
         // if the message is true, sums the weigth(charge) to the accumulator
-        if (FractalMachine::read_message(neuron_id, 0, syn_tmp.segment))
-            acum += syn_tmp.weight;
+        if (source_neuron->axon[tmp_synapse->segment] &
+                source_neuron->axon[tmp_synapse->mask]){
+            acum += tmp_synapse->strength;
+        }
     }
     return acum;
+}
+
+ // true and starts refractory period if threshold < membrane potential 
+bool SpikingEvaluator::action_potential(Neuron &tmp_neuron, int tf_result){
+    char n_type = tmp_neuron.neuron_type;
+    float tmp_Qm = tmp_neuron.Qm; // used for optimization
+    // if there is no refractory period active
+    if (tmp_neuron.remaining_refractory < 1){
+        // sets the intrinsic currents for the tonic, bistable, pacemaker and random neurons
+        if (n_type==1){ // Tonic Neuron
+            
+        }
+        if (n_type==2){ // Bistable Neuron
+            
+        }
+        if (n_type==3){ // Pacemaker Neuron
+            
+        }
+        if (n_type==4){ // Random Neuron
+            
+        }
+        // decreases membrane_potential with polarization factor
+        tmp_Qm -= tmp_neuron.Qleak;
+        // adds the transfer function to the membrane potential
+        tmp_Qm += tf_result;
+        // calculates output
+        if (tmp_Qm > tmp_neuron.Qth){
+            // polarize the membrane
+            tmp_Qm = tmp_neuron.Qss;
+            // starts the refractory period
+            tmp_neuron.remaining_refractory 
+                    = tmp_neuron.refractory_period;
+            //outputs true signal
+            tmp_neuron.Qm = tmp_Qm;
+            return(true); 
+        }
+        else{
+            tmp_neuron.Qm = tmp_Qm;
+            return(false);
+        }
+    }
+    else{
+        tmp_neuron.refractory_period--;
+        return(false);
+    }
 }
 
 void SpikingEvaluator::evaluate(){
@@ -66,7 +105,7 @@ void SpikingEvaluator::evaluate_neuron(int neuron_id){
     }
     // calculates the transfer function if there is a non-refractory axon
     if (FractalMachine::refracted_neuron(neuron_id)){
-        tf_result = transfer_fcn(neuron_id);
+        tf_result = summation(FractalMachine:: get_syn_list(neuron_id));
     }
     else{
         tf_result = 0;

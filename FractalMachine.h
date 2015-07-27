@@ -77,67 +77,20 @@
 class FractalMachine {
 public:
     // attributes (public for use during evaluation from Simulator)
-    std::vector<Synapse> synapses;
     std::vector <Neuron> neurons;              
     // methods
     void add_instruction(FractalInstruction instr);
     void run_instruction(FractalInstruction instr);
     void run_program();
-    std::vector<int> get_syn_list(int neuron_target_id);// returns synapses list per target neuron
-    Synapse get_synapse(int syn_id);
-    Neuron get_neuron(int neuron_id);
     Instance get_instance(int instance_id);
     void reset();       ///< Erases all neurons, conex and instances
     void iterate();     ///< Executes next instruction from the instance's queue
-    int num_neurons();    ///< returns the number of neurons
-    bool read_message(int neuron_id, int axon_id, int segment); ///< reads a message from a axon
-    void push_message(int neuron_id, int axon_id, bool msg); ///< puts a message in a axon and deletes the oldest one
-    void set_neuron_evaluated(int neuron_id, bool eval);
     void reset_neurons(int num_inputs); ///< sets evaluated = false to all hidden an output neurons
-    bool get_neuron_eval(int neuron_id);
-    bool action_potential(int neuron_id, int axon_id, int tf_result); // true and starts refractory period if  membrane potential > threshold
-    bool get_refractory_state(int neuron_id, int axon_id); // true if remaining_refractory > 0
-    int get_num_axon(int neuron_id);
-    void increase_membrane_potential(int neuron_id, int axon_id, float pot);
     // constructors
     FractalMachine();
     FractalMachine(const FractalMachine& orig);
     virtual ~FractalMachine();
-protected:
-    // neuro evolution commands to be implemented in derived classes(SpikingEvaluator and SimpleANN)
-    virtual void create_fully_connected_net(int num_inputs, int num_outputs);
-    virtual void create_neuron_from_connecction(int num_inputs, int num_outputs);
-    virtual void create_synapse(int neuron_source, int neuron_target);
-    virtual void set_synapse_weight(int syn_id, float wt);
-    virtual void set_synapse_length(int syn_id, float len);
-    virtual void set_synapse_speed(int syn_id, float spd);
-    
-    // activation and transfer functions to be implemented in derived classes (Activator)
-    virtual float activation_fcn(); // neuron output = activation_fcn(transfer_fcn(inputs))
-    virtual float transfer_fcn(int neuron_id); // neuron's transfer function
-    
-    // evaluation and training (Evaluator and Trainer)
-    virtual void evaluate(DataSet data_input, DataSet &data_output);
-    virtual void visualize(); // renders the neural network in unreal engine 4
-    virtual void train(DataSet data_trainning, float &fitness, FractalMachine &champion );
-    
-    // real time evaluation and training (Expert)
-    virtual void rt_evaluate(DataSet data_input, DataSet &data_output);
-    virtual void rt_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
-    
-    /// multi-expert real time evaluation and training (Agent)
-    //virtual void me_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void me_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
-    
-    /// multi-agent evaluation and training network client and server (MultiAgentClient and MultiAgentServer)
-    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
-    
-    /// descentralized multi-agent evaluation and training P2P network neuron (Singularity)
-    //virtual void ma_evaluate(DataSet data_input, DataSet &data_output);
-    //virtual void ma_train(DataSet data_trainning, float &fitness, FractalMachine &champion );
 private:
-    std::vector <std::vector<int> > syn_list; ///< synapse[target_id][0..n] index in conn queue for evaluation order
     std::deque <Instance> instances;       ///< Instancias de programas ejecutándose en nodos
 };
 #endif	/* FRACTALMACHINE_H */
