@@ -66,7 +66,10 @@ public:
     float axon_feedback_strength; 
     std::vector <uint32_t> axon;    ///< neuron's communications axon with 32 bit spike trains
     std::vector <uint32_t> axon_feedback;    ///<  used for bidirectional axon's  propagation
-    
+    bool bidirectional; //  def: true if axosomatic synapse length < 40um 
+                        //  or axo-dendrític ( bidirectional if length < 300um)
+                        //  axo-axonic - postsynapticOR (bidirectional if length < 300um)
+    float bidir_max_length; // length of the bidirectional part of the axon
     // synapses
     std::vector<Synapse> synapses;  ///< neuron´s synapses
     // methonds

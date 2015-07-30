@@ -38,7 +38,7 @@ public:
     // neuro evolution commands 
     void create_neurons(int num_neurons);
     void create_synapse(int source, int target, float strength, float length,
-                float speed, char synapse_type);    
+                char synapse_type);    
     void create_fully_connected_net(int num_inputs, int num_outputs);
     void create_neuron_from_synapse(Neuron &neuron, int syn_id);
     // constructors

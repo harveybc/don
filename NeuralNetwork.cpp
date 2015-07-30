@@ -16,16 +16,17 @@ void NeuralNetwork::create_neurons( int num_neurons) {
 }
 
 void NeuralNetwork::create_synapse(int source , int target, float strength, 
-        float length,float speed, char synapse_type){
+        float length, char synapse_type){
     float tmp_f;
+    float tmp_speed;
     Synapse tmp_synapse();
     tmp_synapse.source_id = source;
     tmp_synapse.strength = strength;
     tmp_synapse.length = length;
-    tmp_synapse.speed = speed;
     tmp_synapse.synapse_type = synapse_type;
+    tmp_speed = neurons[source].axon_speed;
     //calculate segment and offset
-    if (speed > 0){
+    if ( neurons[source].axon_speed > 0){
         tmp_f = ((length/speed)/clock_tick)/32.0;
         tmp_synapse.segment = (int) tmp_f; ///<  truncates decimals to get remote axon segment of the synapse = length/speed  
         tmp_synapse.offset = (int)(32.0*(tmp_f-tmp_synapse.segment)); ///< the remainning decimals are multiplied by 32 to get the offset
@@ -36,31 +37,11 @@ void NeuralNetwork::create_synapse(int source , int target, float strength,
     }
     // calculate bit mask
     tmp_synapse.mask = 0x80000000 >> tmp_synapse.offset;
-    if (synapse_type==0){ // electric synapse (bidirectional, length < 1um)
-    }   
-    else if (synapse_type==1){  // axo-somatic synapse  (bidirectional if length < 40um)
-        // add temporal synapse to neuron synapses
-        neurons[target].synapses.push_back(tmp_synapse);
-    }
-    else if (synapse_type==2){ // axo-dendrític ( bidirectional if length < 300um)
-        FALTAN OTROS TIPOS DE SINAPSES
-    }
-    else if (synapse_type==3){ // axo-axonic - postsynaptic AND
-    }
-    else if (synapse_type==4){ // axo-axonic - postsynaptic OR (bidirectional if length < 300um)
-    }
-    else if (synapse_type==5){ // axo-axonic - postsynaptic strength modulator(only for non-spiking neurons)
-    }   
-    else if (synapse_type==6){ // axo-synaptic -´presynaptic AND
-    }
-    else if (synapse_type==7){ // axo-synaptic - presynaptic OR (bidirectional if length < 300um)
-    }
-    else if (synapse_type==8){ // axo-synaptic - presynaptic strength modulator 
-    }   
-    else if (synapse_type==9){ // axo-extracellular
+    if (synapse_type==9){ // axo-extracellular
     }   
     else if (synapse_type==10){ // axo-secretory
     }   
+    neurons[target].synapses.push_back(tmp_synapse);
 }
 
 void NeuralNetwork::create_fully_connected_net(int num_inputs, int num_outputs) {
