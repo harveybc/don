@@ -27,7 +27,7 @@ void NeuralNetwork::create_synapse(int source , int target, float strength,
     tmp_speed = neurons[source].axon_speed;
     //calculate segment and offset
     if ( neurons[source].axon_speed > 0){
-        tmp_f = ((length/speed)/clock_tick)/32.0;
+        tmp_f = ((length/neurons[source].axon_speed)/clock_tick)/32.0;
         tmp_synapse.segment = (int) tmp_f; ///<  truncates decimals to get remote axon segment of the synapse = length/speed  
         tmp_synapse.offset = (int)(32.0*(tmp_f-tmp_synapse.segment)); ///< the remainning decimals are multiplied by 32 to get the offset
     } 
@@ -35,7 +35,7 @@ void NeuralNetwork::create_synapse(int source , int target, float strength,
         tmp_synapse.segment = 0; 
         tmp_synapse.offset = 0;
     }
-    // calculate bit mask
+    // calculate offset bit mask
     tmp_synapse.mask = 0x80000000 >> tmp_synapse.offset;
     if (synapse_type==9){ // axo-extracellular
     }   
@@ -69,7 +69,7 @@ void NeuralNetwork::create_neuron_from_synapse(int neuron_id, int syn_id) {
     tmp_syn->active = false;
     // creates a synapse from source to new
     create_synapse(tmp_syn->source_id, neurons.size() - 1,
-            tmp_syn->strength, tmp_syn->length, tmp_syn->speed);
+            tmp_syn->strength, tmp_syn->length, tmp_syn->synapse_type);
     // creates a synapse from new to target
     create_synapse(neurons.size - 1, neuron_id, 7.5e-11,  0, 1); // speed = 1m/s
 }

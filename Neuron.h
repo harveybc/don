@@ -9,38 +9,25 @@
 #ifndef Neuron_H
 #define	Neuron_H
 #include <cstdint>
+#include <array>
+#include <forward_list>
 #include "Synapse.h"
 
 class Neuron {
 public:
     // general neuron attributes
     int parent_id;      ///< Parent neuron's identification number
-    int recursive;      ///< Number of times this neuron must be evaluated
-    bool active;        ///< FALSE when the neuron is deleted (def:true)
+    bool active;        ///< FALSE when the neuron is deleted, also become recesive gene for NE (def:true)
     // neural network flags
     bool evaluated;     ///< TRUE if neuron has been evaluated (def:false)
-    char neuron_type;  ///< 0=normal, 1=Tonic, 2=Bistable, 3=Pacemaker, 4=Random (def:0))
-    // membrane attributes for model with intrinsic currents from (Beer, 1990) not for voltage but charge (integrating model over time)
-    float Qm;    ///< membrane charge (def: -70mV*10nF   = -7e-10C)
-    float Cm;    ///< membrane capacintance (def: 10nF = 10e-9)
-    float Gm;    ///< membrane conductance (def: 100nS =  100e-9)
+    // membrane charge leaking
     float Qleak; ///< leaking charge factor (def: Gm/Cm  = 10)
-    float Qth;   ///< membrane charge threshold (def:-55mV*10nF = -5.5e-10C)
-    float Qss;   ///< membrane steady state (resting) charge (def: -70mv*10nF = -7e-10C)
-    // intrinsic currents for pacemaker neurons (Beer, 1990) 
-    float Q_min; ///< membrane intrinsic current charge threshold (-68mV*10nF = -6.8e-10C)
-    float Ih;    ///< intrinsic depolarizing current (def: 2e-9 A)
-    float Il;    ///< intrinsic hyperpolarizing current (def: -2e-9 A)
-    float Th;    ///< time Ih should remain active in clock ticks(def:100)
-    float Tl;    ///< time Il should remain active (Tl = Mtl*(Qm/C - Ih/Gm) + Btl ) 
-    float Mtl;   ///< slope of line used to calculate Tl (def:-1e5)
-    float Btl;   ///< initial time used to calculate Tl in clock ticks(def: 500))
     // action potential timing
     int action_potential_period;    ///< duration of action potential polarization and depolarization(def:2)
     int remaining_action_potential; ///< remaining clock ticks of action potential
     int refractory_period;          ///< refractory period in milliseconds (def:2)
     int remaining_refractory;       ///< rremaining refractory period in milliseconds
-    // epigenetics: synaptogenesis, neurogenesis and prunning
+    // Epigenetics: synaptogenesis, neurogenesis and prunning
     // permanent changes in the genome caused by neurotransmitters, synaptic or neuronal activity
     // uses a two phase evaluation and a neuroevolution training phase: 
     //      1. maduration:  do synaptic pruning and release nt for controlling prob prunning y prob synaptogenesis, and prob inheritable in  the next phase
@@ -52,26 +39,35 @@ public:
                                ///< to pruning or neurogenesis. A change of fitness 
                                ///< between neurogenesis events causes all presynaptic  
                                ///< neurons to modify their prob_inheritable)
-    // extracellular activity bit masks (neurotransmitters, receptors and modulators)
+    // Extracellular activity for up to 8 neurotransmitters(NT)and receptors(NR)  
+    // using bit masks to be used during synaptogenesis to choose compatible neurons.
     // for synapses: byte   0 = axosomatic/dendritic, 1=axoaxonic, 
     //                      2=axosynaptic, 3=axosecretory/extracellular 
-    uint32_t neurotransmitter_mask; 
-    uint32_t nt_receptor_mask; 
+    uint32_t neurotransmitter_mask;  ///< def: 0x1111 hex (first NT enabled for each synapse type)
+    uint32_t nt_receptor_mask; ///< def: 0x1111 hex (first NT receptor enabled for each synapse type)
     // axon
     float axon_speed;    ///< axon's propagation speed in m/s (def: 100), proportional 
                          ///< to radius wich is proportional to soma diameter wich 
                          ///< controls the optimum number of dendrites (dendritic synapses)
                          ///< for synaptic pruning(maduration), synaptogenesis(practice)
                          ///< and neuroevolution(training).
-    float axon_feedback_strength; 
-    std::vector <uint32_t> axon;    ///< neuron's communications axon with 32 bit spike trains
-    std::vector <uint32_t> axon_feedback;    ///<  used for bidirectional axon's  propagation
-    bool bidirectional; //  def: true if axosomatic synapse length < 40um 
+    float axon_feedback_strength; ///< strength of the feedback connection n Coulombs/spike (def:7.5e-11) 
+    bool bidirectional; //  def: true if axosomatic synapse length < 40um (def:true)
                         //  or axo-dendrític ( bidirectional if length < 300um)
                         //  axo-axonic - postsynapticOR (bidirectional if length < 300um)
-    float bidir_max_length; // length of the bidirectional part of the axon
+    float bidir_max_length; // length of the bidirectional section of the axon (def:500e-6 m)
+    std::vector <uint32_t> axon;    ///< neuron's communications axon with 32 bit spike trains
+    std::vector <uint32_t> axon_feedback;    ///<  used for bidirectional axon's  propagation
     // synapses
-    std::vector<Synapse> synapses;  ///< neuron´s synapses
+    std::forward_list<Synapse> axodendritic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
+    std::forward_list<Synapse> axosomatic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
+    std::forward_list<Synapse> axosynaptic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axosynaptic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axosynaptic_modulated_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axoaxonic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axoaxonic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axoextracellular_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::forward_list<Synapse> axosecretory_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
     // methonds
     void push_message(int msg);     ///< pushes a message in the axon´s front and removes the oldest from the back
     // constructors

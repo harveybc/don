@@ -33,8 +33,9 @@ Synapse::Synapse(
     bool persistent_plasticity_, ///< a fraction of ltp is modified in baseline strength permanently if true
     float persistent_change_factor_, ///< fraction of ltp that becomes permanent change in strength
     // trveling wave parameters
-    float length_, ///< synapse length, regulates phase
-    float speed_ ///< synapse radius, regulates propagation speed
+    float length_,
+    // epigenetics
+    float prob_inheritable_ ///< increases with fitness changes since the synaptogenesis/pruning event to the next event
 ) {
     // attributes
     source_id=source_id_; ///< remote source neuron identification
@@ -61,8 +62,7 @@ Synapse::Synapse(
     persistent_plasticity = persistent_plasticity_; ///< a fraction of ltp is modified in baseline strength permanently if true
     persistent_change_factor = persistent_change_factor_; ///< fraction of ltp that becomes permanent change in strength
     //traveling wave parameters
-    length=length_; ///< synapse length, regulates phase
-    speed=speed_; ///< synapse radius, regulates propagation speed
+    length=length_; ///< synapse length
     //calculate segment and offset
     segment = 0; 
     offset = 0;
@@ -78,36 +78,37 @@ Synapse::Synapse(
     // initializes remaining recovery time for stp and ltp
     stp_remaining_recovery = 0;
     ltp_remaining_recovery = 0;
+    mask = (0x8000 >> offset);
+    prob_inheritable = prob_inheritable_;
  }
 
 Synapse::Synapse(){
     // attributes
     source_id = 0; ///< remote source neuron identification
     active = true; ///< FALSE when the synapse is deleted
-    strength = 7.5e-11; ///< Synapse strength in Coulombs/spike (def: half of Qth-Qss)
+    strength = 7.5e-11f; ///< Synapse strength in Coulombs/spike (def: half of Qth-Qss)
     synapse_type = 0; ///< 0=axodendritic, 1=axoaxonic, 2=axoextracellular, 3=axosecretory
     // short term plasticity 
     short_term_plasticity = true; ///< true = short term non-hebbian learning (presynaptic) 
     stp_critical_period = 20; ///< period for spike counting in clock ticks (def: 20)
     stp_recovery_period = 200; ///< clock ticks to return to baseline strength (def: 200)
-    stp_max_intensity = 0;  ///< initial stp intensity as a fraction of str, can be negative for st-depression         
+    stp_max_intensity = 0.0f;  ///< initial stp intensity as a fraction of str, can be negative for st-depression         
     stp_depletion_rate = 0; ///<  stp depletion in Coulombs/clock_tick = max_intensity/recovery_period
     stp_remaining_recovery = 0; ///<  remaining ticks to recovery
-    stp=0; ///< stp magnitude added to strength per tick 
+    stp=0.0f; ///< stp magnitude added to strength per tick 
     // long term plasticity 
     long_term_plasticity = true; ///< true = persistent hebbian learning (presynaptic) 
     ltp_critical_period = 100; ///<  period for presynaptic to postsynaptic spike phase calculus (in ms)    
     ltp_recovery_period = 3600000; ///< time to return to baseline strenth
-    ltp_max_intensity = 0;  ///< initial ltp intensity as a fraction of str, can be negative for st-depression         
+    ltp_max_intensity = 0.0f;  ///< initial ltp intensity as a fraction of str, can be negative for st-depression         
     ltp_depletion_rate = 0; ///<  stp depletion in Coulombs/clock_tick = max_intensity/recovery_period
     ltp_remaining_recovery = 0; ///<  remaining ticks to recovery
-    ltp = 0; ///< ltp magnitude added to strength per tick 
+    ltp = 0.0f; ///< ltp magnitude added to strength per tick 
     // persistent long term plasticity
     persistent_plasticity = false; ///< a fraction of ltp is modified in baseline strength permanently if true
-    persistent_change_factor = 0.001;  ///< fraction of ltp that becomes permanent change in strength (def: 0.001*ltp)
+    persistent_change_factor = 0.001f;  ///< fraction of ltp that becomes permanent change in strength (def: 0.001*ltp)
     // trveling wave parameters
-    length = 0; ///< synapse length, regulates phase
-    speed = 1; ///< synapse radius, regulates propagation speed (def: 1m/s)
+    length = 0.0f; ///< synapse length, regulates phase
     segment = 0; ///<  remote axon segment of the synapse = length/speed 
     offset = 0; 
     // initializes ltp and stp decrease factors (charge/tick) = max_intensity/recovery_period
@@ -122,6 +123,8 @@ Synapse::Synapse(){
     // initializes remaining recovery time for stp and ltp
     stp_remaining_recovery = 0;
     ltp_remaining_recovery = 0;
+    mask = (0x8000 >> offset);
+    prob_inheritable = 0; ///< increases with fitness changes since the synaptogenesis/pruning event to the next event
 }
 
 Synapse::Synapse(const Synapse& orig) {
