@@ -4,8 +4,8 @@
  *    This file is part of Singularity, the descentralized multi-agent AI 
  *    open-source training platform.
  *    
- *    The use of Singularity in any military, police or civil applications 
- *    intended to be used in defensive or ofensive products is prohibited. 
+ *    The use of Singularity in any military or civil applications intended to 
+ *    be used in defensive or ofensive products is prohibited. 
  * 
  *    Singularity is free software, hardware and data; you can redistribute it 
  *    and/or modify it under the terms of the GNU General Public License as 

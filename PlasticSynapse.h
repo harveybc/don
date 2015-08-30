@@ -3,7 +3,7 @@
 @author     harveybc
 @date       16 de agosto de 2015, 04:54 PM
 @version    0.0.1 (pre-alpha)
-@class      Synapse
+@class      PlasticSynapse
 @brief Chemical synapse with long/short-term plasticity. 
 
 @details Synaptic plasticity modifies the strength of a synapse temporarily 
