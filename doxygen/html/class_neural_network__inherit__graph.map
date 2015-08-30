@@ -1,0 +1,6 @@
+<map id="NeuralNetwork" name="NeuralNetwork">
+<area shape="rect" id="node3" href="$class_expert.html" title="Expert" alt="" coords="5,155,68,181"/>
+<area shape="rect" id="node4" href="$class_spiking_evaluator.html" title="SpikingEvaluator" alt="" coords="92,155,219,181"/>
+<area shape="rect" id="node2" href="$class_fractal_machine.html" title="FractalMachine" alt="" coords="36,5,155,32"/>
+<area shape="rect" id="node5" href="$class_simulator.html" title="Simulator" alt="" coords="115,229,195,256"/>
+</map>
