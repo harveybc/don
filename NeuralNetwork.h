@@ -30,22 +30,26 @@
 
 #ifndef NEURALNETWORK_H
 #define	NEURALNETWORK_H
+#include <array>
 #include "FractalMachine.h"
 
 class NeuralNetwork: public FractalMachine{
 public:
     // time resolution
     float clock_tick = 1e-3; // time resolution = 1 milli second
-    // membrane attributes for model with intrinsic currents from (Beer, 1990) not for voltage but charge (integrating model over time)
-    float Qm;    ///< membrane charge (def: -70mV*10nF   = -7e-10C)
-    float Cm;    ///< membrane capacintance (def: 10nF = 10e-9)
-    float Gm;    ///< membrane conductance (def: 100nS =  100e-9)
-    float Qth;   ///< membrane charge threshold (def:-55mV*10nF = -5.5e-10C)
-    float Qss;   ///< membrane steady state (resting) charge (def: -70mv*10nF = -7e-10C)
+    // axon attributes
+    float bidir_max_length; // length of the bidirectional section of the axon (def:500e-6 m)
     // synapses
     bool use_long_term_plasticity; ///< true = persistent hebbian learning (post-synaptic) 
     bool use_short_term_plasticity; ///< true = short term non-hebbian learning (presynaptic) 
     bool use_persistent_plasticity; ///< a fraction of ltp is modified in baseline strength permanently if true
+    // Extracellular medium Neurotransmitter concentration (g/liter?) from blood for each NT
+    std::array <float,32> ecm_neuro_transmitter;    
+    // Whole membrane NT receptor charge factor (in: Coulombs/concentration) 
+    // Def: Qth / GABA concentration:1.23e-1 g/Liter  (from: http://www.sciencedirect.com/science/article/pii/S0925492700000755)
+    std::array <float,32> ecm_nt_receptor_charge_factor;
+    // Extracellular dissipation factor per tick (def: 0.99931 for 10 seconds to 0.1%)
+    std::array <float,32> ecm_nt_dissipation;
     // neuro evolution commands 
     void create_neurons(int num_neurons);
     void create_synapse(int source, int target, float strength, float length,

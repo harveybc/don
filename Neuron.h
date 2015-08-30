@@ -16,18 +16,20 @@
 class Neuron {
 public:
     // general neuron attributes
-    int parent_id;      ///< Parent neuron's identification number
     bool active;        ///< FALSE when the neuron is deleted, also become recesive gene for NE (def:true)
     // neural network flags
     bool evaluated;     ///< TRUE if neuron has been evaluated (def:false)
+    // neurotransmitter code (5bit, max value :32)
+    uint8_t neurotransmitter;
     // membrane charge leaking
     float Qleak; ///< leaking charge factor (def: Gm/Cm  = 10)
     // action potential timing
-    int action_potential_period;    ///< duration of action potential polarization and depolarization(def:2)
-    int remaining_action_potential; ///< remaining clock ticks of action potential
-    int refractory_period;          ///< refractory period in milliseconds (def:2)
-    int remaining_refractory;       ///< rremaining refractory period in milliseconds
-    // Epigenetics: synaptogenesis, neurogenesis and prunning
+    uint16_t action_potential_period;    ///< duration of action potential polarization and depolarization(def:2)
+    uint16_t remaining_action_potential; ///< remaining clock ticks of action potential
+    uint16_t refractory_period;          ///< refractory period in milliseconds (def:2)
+    uint16_t remaining_refractory;       ///< remaining refractory period in milliseconds
+
+    // epigenetics: synaptogenesis, neurogenesis and prunning, Harvey 2015 :)
     // permanent changes in the genome caused by neurotransmitters, synaptic or neuronal activity
     // uses a two phase evaluation and a neuroevolution training phase: 
     //      1. maduration:  do synaptic pruning and release nt for controlling prob prunning y prob synaptogenesis, and prob inheritable in  the next phase
@@ -39,12 +41,6 @@ public:
                                ///< to pruning or neurogenesis. A change of fitness 
                                ///< between neurogenesis events causes all presynaptic  
                                ///< neurons to modify their prob_inheritable)
-    // Extracellular activity for up to 8 neurotransmitters(NT)and receptors(NR)  
-    // using bit masks to be used during synaptogenesis to choose compatible neurons.
-    // for synapses: byte   0 = axosomatic/dendritic, 1=axoaxonic, 
-    //                      2=axosynaptic, 3=axosecretory/extracellular 
-    uint32_t neurotransmitter_mask;  ///< def: 0x1111 hex (first NT enabled for each synapse type)
-    uint32_t nt_receptor_mask; ///< def: 0x1111 hex (first NT receptor enabled for each synapse type)
     // axon
     float axon_speed;    ///< axon's propagation speed in m/s (def: 100), proportional 
                          ///< to radius wich is proportional to soma diameter wich 
@@ -55,19 +51,21 @@ public:
     bool bidirectional; //  def: true if axosomatic synapse length < 40um (def:true)
                         //  or axo-dendrític ( bidirectional if length < 300um)
                         //  axo-axonic - postsynapticOR (bidirectional if length < 300um)
-    float bidir_max_length; // length of the bidirectional section of the axon (def:500e-6 m)
     std::vector <uint32_t> axon;    ///< neuron's communications axon with 32 bit spike trains
     std::vector <uint32_t> axon_feedback;    ///<  used for bidirectional axon's  propagation
+    // extracellular activity masks for up to 32 neurotransmitters(NT)and receptors(NR)  
+    uint32_t neurotransmitter_mask;  ///< def: 0x1 hex (first NT enabled )
+    uint32_t nt_receptor_mask; ///< def: 0x1 hex (first NT receptor enabled)
     // synapses
-    std::forward_list<Synapse> axodendritic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
-    std::forward_list<Synapse> axosomatic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
-    std::forward_list<Synapse> axosynaptic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axosynaptic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axosynaptic_modulated_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axoaxonic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axoaxonic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axoextracellular_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
-    std::forward_list<Synapse> axosecretory_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axodendritic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
+    std::vector<Synapse> axosomatic_synapses;  ///< neuron´s axo dendritic and axosomatic synapses
+    std::vector<Synapse> axosynaptic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axosynaptic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axosynaptic_modulated_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axoaxonic_and_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axoaxonic_or_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axoextracellular_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
+    std::vector<Synapse> axosecretory_synapses;  ///< neuron extracellular synapses (for local exteracellular medium concentrations)
     // methonds
     void push_message(int msg);     ///< pushes a message in the axon´s front and removes the oldest from the back
     // constructors
@@ -111,7 +109,6 @@ public:
     Neuron(const Neuron& orig);
     virtual ~Neuron();
 private:
-
 };
 
 #endif	/* Neuron_H */

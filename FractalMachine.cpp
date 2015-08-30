@@ -51,7 +51,7 @@ void FractalMachine::iterate() { ///< Executes next instruction from the instanc
         if (instances.front().fetch(tmp_instruction)) { 
             switch (tmp_instruction->id) {
                 case 0: /// Wait(milliseconds)
-                    std::this_thread::sleep_for(std::chrono::milliseconds(tmp_instruction->parameters_i[0]));
+                    //std::this_thread::sleep_for(std::chrono::milliseconds(tmp_instruction->parameters_i[0]));
                 break;
                 case 1: /// CreateNeuron()
                     Neuron tmp_neuron               
