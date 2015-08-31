@@ -6,7 +6,7 @@
  */
 
 #include "Synapse.h"
-
+/*
 Synapse::Synapse(
         uint32_t source_id_,// remote source neuron identification
         bool active_,       // FALSE when the synapse is deleted, also become recesive gene for NE (def:true)
@@ -35,6 +35,7 @@ Synapse::Synapse(
     // epigenetics
     prob_inheritable = prob_inheritable_; // increases with fitness changes since the synaptogenesis/pruning event to the next event
 }
+*/
 
 Synapse::Synapse() {
     // attributes
@@ -46,7 +47,8 @@ Synapse::Synapse() {
     segment = 0; // remote axon´s segment of the synapse = floor (length/speed)
     offset = 0; // remote axon's bit offset on the 32 bit segment (autocalculated)
     mask = 0x8000;
-    prob_inheritable = 0; // increases with fitness changes since the synaptogenesis/pruning event to the next event
+    // epigenetics
+    prob_inheritable =0.5f; // increases with fitness changes in phase with post synaptic activity, decreases if postsynaptic activity decreases fitness (def:0.5)
 }
 
 Synapse::Synapse(const Synapse& orig) {

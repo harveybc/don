@@ -65,7 +65,7 @@ Inheritance diagram for PlasticSynapse:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_plastic_synapse__inherit__graph.png" border="0" usemap="#_plastic_synapse_inherit__map" alt="Inheritance graph"/></div>
 <map name="_plastic_synapse_inherit__map" id="_plastic_synapse_inherit__map">
-<area shape="rect" id="node2" href="class_synapse.html" title="Chemical synapse from a spiking neuron&#39;s axon&#39;s segment. " alt="" coords="26,5,103,32"/>
+<area shape="rect" id="node2" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl..." alt="" coords="26,5,103,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -73,14 +73,15 @@ Collaboration diagram for PlasticSynapse:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_plastic_synapse__coll__graph.png" border="0" usemap="#_plastic_synapse_coll__map" alt="Collaboration graph"/></div>
 <map name="_plastic_synapse_coll__map" id="_plastic_synapse_coll__map">
-<area shape="rect" id="node2" href="class_synapse.html" title="Chemical synapse from a spiking neuron&#39;s axon&#39;s segment. " alt="" coords="26,5,103,32"/>
+<area shape="rect" id="node2" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl..." alt="" coords="26,5,103,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7441d9bbeedd87da82174c6493e8aeb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a7441d9bbeedd87da82174c6493e8aeb8">PlasticSynapse</a> ()</td></tr>
-<tr class="memdesc:a7441d9bbeedd87da82174c6493e8aeb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">fraction of ltp that becomes permanent change in strength (def: 0.001*ltp)  <a href="#a7441d9bbeedd87da82174c6493e8aeb8">More...</a><br /></td></tr>
+<tr class="memitem:a7441d9bbeedd87da82174c6493e8aeb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7441d9bbeedd87da82174c6493e8aeb8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a7441d9bbeedd87da82174c6493e8aeb8">PlasticSynapse</a> ()</td></tr>
+<tr class="memdesc:a7441d9bbeedd87da82174c6493e8aeb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">increases proportionally to stp + ltp on positive variations of prob_inheritable (def:0) <br /></td></tr>
 <tr class="separator:a7441d9bbeedd87da82174c6493e8aeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1d762d0974c9feff71646cdfb1e2ac5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1d762d0974c9feff71646cdfb1e2ac5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PlasticSynapse</b> (const <a class="el" href="class_plastic_synapse.html">PlasticSynapse</a> &amp;orig)</td></tr>
@@ -107,11 +108,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a6bc55f439ce21024727afb3369437ccc">stp_remaining_recovery</a></td></tr>
 <tr class="memdesc:a6bc55f439ce21024727afb3369437ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">stp depletion in Coulombs/clock_tick = max_intensity/recovery_period <br /></td></tr>
 <tr class="separator:a6bc55f439ce21024727afb3369437ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07133fe17b7a2a61a7721f615f240de2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a07133fe17b7a2a61a7721f615f240de2">stp</a></td></tr>
-<tr class="memdesc:a07133fe17b7a2a61a7721f615f240de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">remaining ticks to recovery  <a href="#a07133fe17b7a2a61a7721f615f240de2">More...</a><br /></td></tr>
+<tr class="memitem:a07133fe17b7a2a61a7721f615f240de2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07133fe17b7a2a61a7721f615f240de2"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a07133fe17b7a2a61a7721f615f240de2">stp</a></td></tr>
+<tr class="memdesc:a07133fe17b7a2a61a7721f615f240de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">remaining ticks to recovery <br /></td></tr>
 <tr class="separator:a07133fe17b7a2a61a7721f615f240de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab26d3ab33c87009ea840781171be1846"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab26d3ab33c87009ea840781171be1846"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ltp_critical_period</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#ab26d3ab33c87009ea840781171be1846">ltp_critical_period</a></td></tr>
+<tr class="memdesc:ab26d3ab33c87009ea840781171be1846"><td class="mdescLeft">&#160;</td><td class="mdescRight">stp magnitude added to strength per tick <br /></td></tr>
 <tr class="separator:ab26d3ab33c87009ea840781171be1846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a501202bd4d94474f06cd01f965f16f57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a501202bd4d94474f06cd01f965f16f57"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a501202bd4d94474f06cd01f965f16f57">ltp_recovery_period</a></td></tr>
@@ -133,51 +136,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a274cc90833fe99c39b77f3dd09dc2144">ltp</a></td></tr>
 <tr class="memdesc:a274cc90833fe99c39b77f3dd09dc2144"><td class="mdescLeft">&#160;</td><td class="mdescRight">remaining ticks to recovery (def:0) <br /></td></tr>
 <tr class="separator:a274cc90833fe99c39b77f3dd09dc2144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a873f6e15862058f81d8ceea567e3137c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a873f6e15862058f81d8ceea567e3137c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a873f6e15862058f81d8ceea567e3137c">persistent_change_factor</a></td></tr>
-<tr class="memdesc:a873f6e15862058f81d8ceea567e3137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ltp magnitude added to strength per tick <br /></td></tr>
-<tr class="separator:a873f6e15862058f81d8ceea567e3137c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d71a7f77d5f3068341e467eff6eda93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d71a7f77d5f3068341e467eff6eda93"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plastic_synapse.html#a4d71a7f77d5f3068341e467eff6eda93">epigenetic_strength_change</a></td></tr>
+<tr class="memdesc:a4d71a7f77d5f3068341e467eff6eda93"><td class="mdescLeft">&#160;</td><td class="mdescRight">ltp magnitude added to strength per tick <br /></td></tr>
+<tr class="separator:a4d71a7f77d5f3068341e467eff6eda93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Chemical synapse with long/short-term plasticity. </p>
 <p>Synaptic plasticity modifies the strength of a synapse temporarily depending on the activity of the neuron.</p>
-<p>Short-term plasticity acts as a band-pass filter of the pre-synaptic activity while the long-term plasticity uses hebbian learning and it´s intensity depends on the phase shift of the post-synaptic activity respect to the pre-synaptic activity. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7441d9bbeedd87da82174c6493e8aeb8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PlasticSynapse::PlasticSynapse </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>fraction of ltp that becomes permanent change in strength (def: 0.001*ltp) </p>
-<p>time to return to baseline strenth </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a07133fe17b7a2a61a7721f615f240de2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PlasticSynapse::stp</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>remaining ticks to recovery </p>
-<p>stp magnitude added to strength per tick </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<dl class="section user"><dt>Types of synaptic plasticity  </dt><dd>There are two types of synaptic plasticity depending on their mechanics and the time required to return the <a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> to it´s baseline strength:<br />
+ -Short-term plasticity (STP): acts as a band-pass filter of the pre-synaptic activity, is added to the base line strength of the synapse.<br />
+ -Long-term plasticity (LTP): uses hebbian learning and it´s intensity depends on the phase shift of the post-synaptic activity respect to the pre-synaptic activity, is added to the baselinestrengh of the synapse.</dd></dl>
+<dl class="section user"><dt>Epigenetics  </dt><dd>Epigenetics are modelled as inheritable changes in the strength of a connection related to external factors (fitness of the Neural Network). </dd></dl>
+<dl class="section user"><dt>Relationships with other classes  </dt><dd>The <a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> class is the base class of <a class="el" href="class_plastic_synapse.html" title="Chemical synapse with long/short-term plasticity. ">PlasticSynapse</a> used in the vectors of synapses by type for each <a class="el" href="class_neuron.html">Neuron</a>, all the types of synapses are implemented in the <a class="el" href="class_spiking_evaluator.html">SpikingEvaluator</a> class wich evauates all Neurons in a <a class="el" href="class_neural_network.html" title="Chemical synapse with long/short-term plasticity. ">NeuralNetwork</a>. </dd></dl>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_plastic_synapse_8h_source.html">PlasticSynapse.h</a></li>
 <li>PlasticSynapse.cpp</li>
 </ul>

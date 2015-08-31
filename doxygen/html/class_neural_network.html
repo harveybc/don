@@ -55,6 +55,11 @@
 <div class="title">NeuralNetwork Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Chemical synapse with long/short-term plasticity.  
+ <a href="class_neural_network.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_neural_network_8h_source.html">NeuralNetwork.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NeuralNetwork:</div>
 <div class="dyncontent">
@@ -157,7 +162,15 @@ std::array&lt; float, 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"
 std::vector&lt; <a class="el" href="class_neuron.html">Neuron</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>neurons</b></td></tr>
 <tr class="separator:a004f0da6a7d1aa7d877affcc69da32e3 inherit pub_attribs_class_fractal_machine"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Chemical synapse with long/short-term plasticity. </p>
+<p>Synaptic plasticity modifies the strength of a synapse temporarily depending on the activity of the neuron.</p>
+<dl class="section user"><dt>Types of synaptic plasticity  </dt><dd>There are two types of synaptic plasticity depending on their mechanics and the time required to return the <a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> to it´s baseline strength:<br />
+ -Short-term plasticity (STP): acts as a band-pass filter of the pre-synaptic activity, is added to the base line strength of the synapse.<br />
+ -Long-term plasticity (LTP): uses hebbian learning and it´s intensity depends on the phase shift of the post-synaptic activity respect to the pre-synaptic activity, is added to the baselinestrengh of the synapse.</dd></dl>
+<dl class="section user"><dt>Epigenetics  </dt><dd>Epigenetics are modelled as inheritable changes in the strength of a connection related to external factors (fitness of the Neural Network). </dd></dl>
+<dl class="section user"><dt>Relationships with other classes  </dt><dd>The <a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> class is the base class of <a class="el" href="class_plastic_synapse.html" title="Chemical synapse with long/short-term plasticity. ">PlasticSynapse</a> used in the vectors of synapses by type for each <a class="el" href="class_neuron.html">Neuron</a>, all the types of synapses are implemented in the <a class="el" href="class_spiking_evaluator.html">SpikingEvaluator</a> class wich evauates all Neurons in a <a class="el" href="class_neural_network.html" title="Chemical synapse with long/short-term plasticity. ">NeuralNetwork</a>. </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a59f3212d6cc6a55adb95dc026f335518"></a>
 <div class="memitem">
 <div class="memproto">

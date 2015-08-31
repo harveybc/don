@@ -1,9 +1,31 @@
 /* 
- * File:   Neuron.h
- * Author: harveybc
- *
- * Created on 3 de junio de 2015, 04:39 PM
- * COMPLETE
+@file       Neuron.h
+@author     Harvey D. Bastidas C. <harveybc@ingeni-us.com>
+@date       3 de junio de 2015, 04:39 PM
+@version    0.0.1 (pre-alpha)
+@class      Neuron
+@brief Integrate and fire spiking neuron. 
+
+@details Synaptic plasticity modifies the strength of a synapse temporarily 
+ depending on the activity of the neuron. 
+ 
+@par Types of synaptic plasticity @parblock
+    There are two types of synaptic plasticity depending on their mechanics and the time required to return the Synapse to it´s baseline strength:\n
+        -Short-term plasticity (STP): acts as a band-pass filter of the pre-synaptic activity, is added to the base line strength of the synapse.\n
+        -Long-term plasticity (LTP): uses hebbian learning and it´s intensity depends on the phase shift of the post-synaptic activity respect to the pre-synaptic activity, is added to the baselinestrengh of the synapse.
+ 
+@endparblock
+ 
+@par Epigenetics @parblock
+ Epigenetics are modelled as inheritable changes in the strength of a connection
+ related to external factors (fitness of the Neural Network). 
+@endparblock
+ 
+@par Relationships with other classes @parblock
+ The Synapse class is the base class of PlasticSynapse used in the vectors of 
+ synapses by type for each Neuron, all the types of synapses are  implemented 
+ in the SpikingEvaluator class wich evauates all Neurons in a NeuralNetwork. 
+@endparblock 
  */
 
 #ifndef Neuron_H

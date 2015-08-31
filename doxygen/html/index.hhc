@@ -192,13 +192,13 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="PlasticSynapse"><param name="Local" value="class_plastic_synapse.html#a7441d9bbeedd87da82174c6493e8aeb8"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="PlasticSynapse"><param name="Local" value="class_plastic_synapse.html#ab1d762d0974c9feff71646cdfb1e2ac5"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="~PlasticSynapse"><param name="Local" value="class_plastic_synapse.html#a62ab125b9bef6ed3fdb819bfeea63a9b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="epigenetic_strength_change"><param name="Local" value="class_plastic_synapse.html#a4d71a7f77d5f3068341e467eff6eda93"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp"><param name="Local" value="class_plastic_synapse.html#a274cc90833fe99c39b77f3dd09dc2144"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp_critical_period"><param name="Local" value="class_plastic_synapse.html#ab26d3ab33c87009ea840781171be1846"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp_depletion_rate"><param name="Local" value="class_plastic_synapse.html#af2dfcb483d92e3f823e18a7793e778d9"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp_max_intensity"><param name="Local" value="class_plastic_synapse.html#a7a15a3868ed9ff069b0142532a476621"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp_recovery_period"><param name="Local" value="class_plastic_synapse.html#a501202bd4d94474f06cd01f965f16f57"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ltp_remaining_recovery"><param name="Local" value="class_plastic_synapse.html#a812a7d282e0c07db8c808a9327556534"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="persistent_change_factor"><param name="Local" value="class_plastic_synapse.html#a873f6e15862058f81d8ceea567e3137c"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="stp"><param name="Local" value="class_plastic_synapse.html#a07133fe17b7a2a61a7721f615f240de2"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="stp_critical_period"><param name="Local" value="class_plastic_synapse.html#ae29d7cdf9c52759d47c2152d09629d4a"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="stp_depletion_rate"><param name="Local" value="class_plastic_synapse.html#a6e23485ed2330a014fffaa93a09f7f61"><param name="ImageNumber" value="11"></OBJECT>
@@ -261,7 +261,6 @@
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html"><param name="ImageNumber" value="1"></OBJECT>
       <UL>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a5b52d4d7a690ebf503563f8d7cb064dc"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a68e6c8546084f93ae7d39af6986562fb"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a8deca7e465e6c93afe5389872400f9a6"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="~Synapse"><param name="Local" value="class_synapse.html#a14b4fd7dfc88489ef9a40c404e6f2d20"><param name="ImageNumber" value="11"></OBJECT>
@@ -450,7 +449,6 @@
       <UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
-        <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a5b52d4d7a690ebf503563f8d7cb064dc"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a68e6c8546084f93ae7d39af6986562fb"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Synapse"><param name="Local" value="class_synapse.html#a8deca7e465e6c93afe5389872400f9a6"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~Synapse"><param name="Local" value="class_synapse.html#a14b4fd7dfc88489ef9a40c404e6f2d20"><param name="ImageNumber" value="11"></OBJECT>

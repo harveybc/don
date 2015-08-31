@@ -18,13 +18,13 @@ PlasticSynapse::PlasticSynapse() {
     stp = 0.0f; // stp magnitude added to strength per tick 
     // long term plasticity 
     ltp_critical_period = 100; //  period for presynaptic to postsynaptic spike phase calculus (in ms)    
-    ltp_recovery_period = 3600000; /// time to return to baseline strenth
+    ltp_recovery_period = 3600000; // time to return to baseline strenth
     ltp_max_intensity = 0.0f; // initial ltp intensity as a fraction of str, can be negative for st-depression         
     ltp_depletion_rate = 0; //  stp depletion in Coulombs/clock_tick = max_intensity/recovery_period
     ltp_remaining_recovery = 0; //  remaining ticks to recovery
     ltp = 0.0f; // ltp magnitude added to strength per tick 
-    // persistent long term plasticity
-    persistent_change_factor = 0.001f; // fraction of ltp that becomes permanent change in strength (def: 0.001*ltp)
+    // epigenetics: persistent long term plasticity
+    epigenetic_strength_change=0.0f; // increases proportionally to stp + ltp on positive variations of prob_inheritable 
     // initializes ltp and stp decrease factors (charge/tick) = max_intensity/recovery_period
     if (stp_recovery_period < 1) {
         stp_recovery_period = 1;

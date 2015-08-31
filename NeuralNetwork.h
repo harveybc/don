@@ -1,32 +1,32 @@
 /**
- * @mainpage
- * ***************************************************************************** 
- * @brief       Neural Network Class
- * ***************************************************************************** 
- * @par Description @parblock
- *      
- * Neural network implementation using a fractal structure
- *  Extended information at:
- *  <http://singularityproject.co>|/
- * 
- *  @endparblock
- *  @copyright @parblock
- *  This file is part of Singularity.
- *  Singularity is free software; you can redistribute it and/or modify it under
- *  the terms of the GNU General Public License as published by the Free
- *  Software Foundation; either version 3, or (at your option) any later
- *  version. Singularity is distributed in the hope that it will be useful, but 
- *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
- *  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- *  for more details. You should have received a copy of the GNU General Public 
- *  License along with GCC; see the file COPYING3.  If not see
- *  <http://www.gnu.org/licenses/>. 
- * @endparblock
- * @file        NeuralNetwork.h
- * @version     0.1
- * @date        Created on 14 de abril de 2015, 11:32 PM
- * @author      Harvey D. Bastidas C. <harveybc@ingeni-us.com>
- **/
+@file       NeuralNetwork.h
+@author     Harvey D. Bastidas C. <harveybc@ingeni-us.com>
+@date       14 de abril de 2015, 11:32 PM
+@version    0.0.1 (pre-alpha)
+@class      NeuralNetwork
+@brief Chemical synapse with long/short-term plasticity. 
+
+@details Synaptic plasticity modifies the strength of a synapse temporarily 
+ depending on the activity of the neuron. 
+ 
+@par Types of synaptic plasticity @parblock
+    There are two types of synaptic plasticity depending on their mechanics and the time required to return the Synapse to it´s baseline strength:\n
+        -Short-term plasticity (STP): acts as a band-pass filter of the pre-synaptic activity, is added to the base line strength of the synapse.\n
+        -Long-term plasticity (LTP): uses hebbian learning and it´s intensity depends on the phase shift of the post-synaptic activity respect to the pre-synaptic activity, is added to the baselinestrengh of the synapse.
+ 
+@endparblock
+ 
+@par Epigenetics @parblock
+ Epigenetics are modelled as inheritable changes in the strength of a connection
+ related to external factors (fitness of the Neural Network). 
+@endparblock
+ 
+@par Relationships with other classes @parblock
+ The Synapse class is the base class of PlasticSynapse used in the vectors of 
+ synapses by type for each Neuron, all the types of synapses are  implemented 
+ in the SpikingEvaluator class wich evauates all Neurons in a NeuralNetwork. 
+@endparblock 
+*/
 
 #ifndef NEURALNETWORK_H
 #define	NEURALNETWORK_H

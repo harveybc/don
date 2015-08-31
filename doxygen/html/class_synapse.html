@@ -56,7 +56,8 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Chemical synapse from a spiking neuron's axon's segment.  
+<p>Models a synapse from the axon of an integrate and fire spiking <a class="el" href="class_neuron.html">Neuron</a>. The image bellow shows examples of some types of synapses.<br />
+.  
  <a href="class_synapse.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_synapse_8h_source.html">Synapse.h</a>&gt;</code></p>
@@ -71,9 +72,10 @@ Inheritance diagram for Synapse:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5b52d4d7a690ebf503563f8d7cb064dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#a5b52d4d7a690ebf503563f8d7cb064dc">Synapse</a> (uint32_t source_id_, bool active_, float strength_,   uint8_t target_synapse_type_, uint16_t target_synapse_,   float length_,   float prob_inheritable_, float speed_)</td></tr>
-<tr class="memdesc:a5b52d4d7a690ebf503563f8d7cb064dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">increases with fitness changes since the synaptogenesis/pruning event to the next event  <a href="#a5b52d4d7a690ebf503563f8d7cb064dc">More...</a><br /></td></tr>
-<tr class="separator:a5b52d4d7a690ebf503563f8d7cb064dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e6c8546084f93ae7d39af6986562fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68e6c8546084f93ae7d39af6986562fb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#a68e6c8546084f93ae7d39af6986562fb">Synapse</a> ()</td></tr>
+<tr class="memdesc:a68e6c8546084f93ae7d39af6986562fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">increases with fitness changes in phase with post synaptic activity, decreases if postsynaptic activity decreases fitness (def:0.5)) <br /></td></tr>
+<tr class="separator:a68e6c8546084f93ae7d39af6986562fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8deca7e465e6c93afe5389872400f9a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8deca7e465e6c93afe5389872400f9a6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Synapse</b> (const <a class="el" href="class_synapse.html">Synapse</a> &amp;orig)</td></tr>
 <tr class="separator:a8deca7e465e6c93afe5389872400f9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -81,11 +83,11 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ad361f87b5ec158a3cc8d57c81e261fc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad361f87b5ec158a3cc8d57c81e261fc1"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#ad361f87b5ec158a3cc8d57c81e261fc1">source_id</a></td></tr>
-<tr class="memdesc:ad361f87b5ec158a3cc8d57c81e261fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">remote source neuron identification <br /></td></tr>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>source_id</b></td></tr>
 <tr class="separator:ad361f87b5ec158a3cc8d57c81e261fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac4517f2eddec11b6de51f63111ceb04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac4517f2eddec11b6de51f63111ceb04"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#aac4517f2eddec11b6de51f63111ceb04">active</a></td></tr>
+<tr class="memdesc:aac4517f2eddec11b6de51f63111ceb04"><td class="mdescLeft">&#160;</td><td class="mdescRight">remote source neuron identification <br /></td></tr>
 <tr class="separator:aac4517f2eddec11b6de51f63111ceb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a848706a4e461cf2752b3a7d31a35f150"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a848706a4e461cf2752b3a7d31a35f150"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#a848706a4e461cf2752b3a7d31a35f150">strength</a></td></tr>
@@ -93,7 +95,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="separator:a848706a4e461cf2752b3a7d31a35f150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a1d7dbb2e676f717e07e1b256f59c34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a1d7dbb2e676f717e07e1b256f59c34"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#a7a1d7dbb2e676f717e07e1b256f59c34">target_synapse_type</a></td></tr>
-<tr class="memdesc:a7a1d7dbb2e676f717e07e1b256f59c34"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_synapse.html" title="Chemical synapse from a spiking neuron&#39;s axon&#39;s segment. ">Synapse</a> strength in Coulombs/spike (def:7.5e-11, aprox (Qth-Qss)/2) <br /></td></tr>
+<tr class="memdesc:a7a1d7dbb2e676f717e07e1b256f59c34"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> strength in Coulombs/spike (def:7.5e-11, aprox (Qth-Qss)/2) <br /></td></tr>
 <tr class="separator:a7a1d7dbb2e676f717e07e1b256f59c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41aedb7d15743fb0d990dfa36584e344"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41aedb7d15743fb0d990dfa36584e344"></a>
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_synapse.html#a41aedb7d15743fb0d990dfa36584e344">target_synapse</a></td></tr>
@@ -121,101 +123,34 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="separator:a0d3bfdfa45e90661880d97c8b9eaeeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Chemical synapse from a spiking neuron's axon's segment. </p>
-<p>Synapses are the inputs of neurons and receive data from the axon of a <a class="el" href="class_neuron.html">Neuron</a>. This class models the connection to a source <a class="el" href="class_neuron.html#af7ffd7484e5690331efecac2725c15b8" title="neuron&#39;s communications axon with 32 bit spike trains ">Neuron::axon</a> with physycal, chemical and genetic attributes: <a class="el" href="class_synapse.html#ae3691dd5a1da5b045a78cce193ddaeda" title="index of the synapse in the target_synapse_type array of the target neuron(this) ">length</a>, <a class="el" href="class_synapse.html#a848706a4e461cf2752b3a7d31a35f150" title="FALSE when the synapse is deleted, also become recesive gene for NE (def:true) ">strength</a> and <a class="el" href="class_synapse.html#a0d3bfdfa45e90661880d97c8b9eaeeea" title="remote axon&#39;s bit mask for reading single bits (autocalculated=0x01 hex>>offset) ">prob_inheritable</a>.</p>
-<dl class="section user"><dt>Relationships with other classes  </dt><dd>The <a class="el" href="class_synapse.html" title="Chemical synapse from a spiking neuron&#39;s axon&#39;s segment. ">Synapse</a> class is the base class of <a class="el" href="class_plastic_synapse.html" title="Chemical synapse with long/short-term plasticity. ">PlasticSynapse</a> used in the vectors of synapses by type for each <a class="el" href="class_neuron.html">Neuron</a> and there are 10 types of synapses implemented in the <a class="el" href="class_spiking_evaluator.html">SpikingEvaluator</a> class wich evauates all Neurons in a <a class="el" href="class_neural_network.html">NeuralNetwork</a>. </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5b52d4d7a690ebf503563f8d7cb064dc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Synapse::Synapse </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>source_id_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>active_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>strength_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>target_synapse_type_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>target_synapse_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>length_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>prob_inheritable_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>speed_</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>increases with fitness changes since the synaptogenesis/pruning event to the next event </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">active_</td><td>remote source neuron identification </td></tr>
-    <tr><td class="paramname">strength_</td><td>FALSE when the synapse is deleted, also become recesive gene for NE (def:true) </td></tr>
-    <tr><td class="paramname">target_synapse_type_</td><td><a class="el" href="class_synapse.html" title="Chemical synapse from a spiking neuron&#39;s axon&#39;s segment. ">Synapse</a> strength in Coulombs/spike (def:7.5e-11, aprox (Qth-Qss)/2) </td></tr>
-    <tr><td class="paramname">target_synapse_</td><td>type of the target synapse </td></tr>
-    <tr><td class="paramname">length_</td><td>index of the synapse in the target_synapse_type array of the target neuron(this) </td></tr>
-    <tr><td class="paramname">prob_inheritable_</td><td>synapse length in meters (def 0) </td></tr>
-    <tr><td class="paramname">speed_</td><td>increases with fitness changes since the synaptogenesis/pruning event to the next event speed of the source axon </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_synapse_a5b52d4d7a690ebf503563f8d7cb064dc_cgraph.png" border="0" usemap="#class_synapse_a5b52d4d7a690ebf503563f8d7cb064dc_cgraph" alt=""/></div>
+<div class="textblock"><p>Models a synapse from the axon of an integrate and fire spiking <a class="el" href="class_neuron.html">Neuron</a>. The image bellow shows examples of some types of synapses.<br />
+. </p>
+<div class="image">
+<img src="Blausen_0843_SynapseTypes.png" alt="Blausen_0843_SynapseTypes.png"/>
 </div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_synapse_a5b52d4d7a690ebf503563f8d7cb064dc_icgraph.png" border="0" usemap="#class_synapse_a5b52d4d7a690ebf503563f8d7cb064dc_icgraph" alt=""/></div>
-</div>
-</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+ <dl class="section note"><dt>Note</dt><dd>Image source: Blausen.com staff. "Blausen gallery 2014". Wikiversity Journal of Medicine. DOI:10.15347/wjm/2014.010. ISSN 20018762. - Own work </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The image's synapse type numbering does not correspond with the actual numbering of all the types of synapes used.<br />
+</dd></dl>
+<p>Synapses are the inputs of neurons and receive data from the axon of a <a class="el" href="class_neuron.html">Neuron</a>. This class models the connection to a source <a class="el" href="class_neuron.html#af7ffd7484e5690331efecac2725c15b8" title="neuron&#39;s communications axon with 32 bit spike trains ">Neuron::axon</a>. </p><dl class="section user"><dt>Epigenetics  </dt><dd>Epigenetics are modeled using the <a class="el" href="class_synapse.html#a0d3bfdfa45e90661880d97c8b9eaeeea" title="remote axon&#39;s bit mask for reading single bits (autocalculated=0x01 hex>>offset) ">Synapse::prob_inheritable</a> attribute wich increases or decreases due to external factors (the ANN fitness). </dd></dl>
+<dl class="section user"><dt>Relationships with other classes  </dt><dd>The <a class="el" href="class_synapse.html" title="Models a synapse from the axon of an integrate and fire spiking Neuron. The image bellow shows exampl...">Synapse</a> class is the base class of <a class="el" href="class_plastic_synapse.html" title="Chemical synapse with long/short-term plasticity. ">PlasticSynapse</a> used in the vectors of synapses by type for each <a class="el" href="class_neuron.html">Neuron</a>, all the types of synapses are implemented in the <a class="el" href="class_spiking_evaluator.html">SpikingEvaluator</a> class wich evauates all Neurons in a <a class="el" href="class_neural_network.html" title="Chemical synapse with long/short-term plasticity. ">NeuralNetwork</a>. </dd></dl>
+<dl class="section user"><dt>Types of Synapses </dt><dd><ol type="1">
+<li>Axo-Somatic</li>
+<li>Axo-Dendritic</li>
+<li>Axo-Synaptic AND</li>
+<li>Axo-Synaptic OR</li>
+<li>Axo-Synaptic XOR</li>
+<li>Axo-Synaptic Modulatory</li>
+<li>Axo-Axonic AND</li>
+<li>Axo-Axonic OR</li>
+<li>Axo-Axonic XOR</li>
+<li>Axo-Extracellular</li>
+<li>Axo-Secretory</li>
+<li>Non-spiking Axo-Dendritic</li>
+<li>Electrical Non-Rectifying</li>
+<li>Electrical Rectifying </li>
+</ol>
+</dd></dl>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_synapse_8h_source.html">Synapse.h</a></li>
 <li>Synapse.cpp</li>
 </ul>

@@ -62,6 +62,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_neural_network.html#add2c96eae9519086b48507beba5c2d89"><param name="Name" value="ecm_neuro_transmitter"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_neural_network.html#a12dc7aeec13e7ed70b2ad4412bbfc885"><param name="Name" value="ecm_nt_dissipation"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_neural_network.html#ae4c3cb2f5817ce7b628ebea6b73e302e"><param name="Name" value="ecm_nt_receptor_charge_factor"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a4d71a7f77d5f3068341e467eff6eda93"><param name="Name" value="epigenetic_strength_change"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_simulator.html#a1ce05aa1b7b5ed54e7f4b27889e9b027"><param name="Name" value="equity"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_spiking_evaluator.html#a42be6322c9face4892863ba70450f757"><param name="Name" value="evaluate"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_evaluator.html#a095aacfa9573df47cd16464306f4def2"><param name="Name" value="evaluate_dataset"></OBJECT>
@@ -260,16 +261,15 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_fractal_instruction.html#a6a144693b85fe300d1ddd24e2e5fd2dc"><param name="Name" value="parameters_f"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_fractal_instruction.html#aa92c9e74a77103993d16a896b3b5d2ff"><param name="Name" value="parameters_i"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_expert.html#a73df3c7548b9f069e4fa1aacd506199d"><param name="Name" value="pending_msgs"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a873f6e15862058f81d8ceea567e3137c"><param name="Name" value="persistent_change_factor"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html"><param name="Name" value="PlasticSynapse"></OBJECT>
   <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a4d71a7f77d5f3068341e467eff6eda93"><param name="Name" value="epigenetic_strength_change"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a274cc90833fe99c39b77f3dd09dc2144"><param name="Name" value="ltp"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#ab26d3ab33c87009ea840781171be1846"><param name="Name" value="ltp_critical_period"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#af2dfcb483d92e3f823e18a7793e778d9"><param name="Name" value="ltp_depletion_rate"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a7a15a3868ed9ff069b0142532a476621"><param name="Name" value="ltp_max_intensity"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a501202bd4d94474f06cd01f965f16f57"><param name="Name" value="ltp_recovery_period"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a812a7d282e0c07db8c808a9327556534"><param name="Name" value="ltp_remaining_recovery"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a873f6e15862058f81d8ceea567e3137c"><param name="Name" value="persistent_change_factor"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a7441d9bbeedd87da82174c6493e8aeb8"><param name="Name" value="PlasticSynapse"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#a07133fe17b7a2a61a7721f615f240de2"><param name="Name" value="stp"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_plastic_synapse.html#ae29d7cdf9c52759d47c2152d09629d4a"><param name="Name" value="stp_critical_period"></OBJECT>
@@ -381,7 +381,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#aa02846229a3ca02aa4d0836f0199b93d"><param name="Name" value="segment"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#ad361f87b5ec158a3cc8d57c81e261fc1"><param name="Name" value="source_id"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#a848706a4e461cf2752b3a7d31a35f150"><param name="Name" value="strength"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#a5b52d4d7a690ebf503563f8d7cb064dc"><param name="Name" value="Synapse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#a68e6c8546084f93ae7d39af6986562fb"><param name="Name" value="Synapse"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#a41aedb7d15743fb0d990dfa36584e344"><param name="Name" value="target_synapse"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_synapse.html#a7a1d7dbb2e676f717e07e1b256f59c34"><param name="Name" value="target_synapse_type"></OBJECT>
   </UL>
