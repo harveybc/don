@@ -1,6 +1,0 @@
-<map id="FractalMachine" name="FractalMachine">
-<area shape="rect" id="node2" href="$class_neural_network.html" title="Chemical synapse with long/short&#45;term plasticity. " alt="" coords="38,80,153,107"/>
-<area shape="rect" id="node3" href="$class_expert.html" title="Expert" alt="" coords="5,155,68,181"/>
-<area shape="rect" id="node4" href="$class_spiking_evaluator.html" title="SpikingEvaluator" alt="" coords="92,155,219,181"/>
-<area shape="rect" id="node5" href="$class_simulator.html" title="Simulator" alt="" coords="115,229,195,256"/>
-</map>
