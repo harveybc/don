@@ -2,57 +2,101 @@
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
-      <df name="doxygen">
-        <df name="html">
-          <df name="search">
-          </df>
-        </df>
+      <df name="behavior">
+        <in>DataSet.cpp</in>
+        <in>DataSet.h</in>
+        <in>Evaluator.cpp</in>
+        <in>Evaluator.h</in>
+        <in>Expert.cpp</in>
+        <in>Expert.h</in>
+        <in>Simulator.cpp</in>
+        <in>Simulator.h</in>
+        <in>Singularity.cpp</in>
+        <in>Singularity.h</in>
+        <in>SpikingEvaluator.cpp</in>
+        <in>SpikingEvaluator.h</in>
+        <in>Trainer.cpp</in>
+        <in>Trainer.h</in>
+        <in>Visualizer.cpp</in>
+        <in>Visualizer.h</in>
       </df>
-      <df name="images">
+      <df name="configuration">
+        <in>Configuration.cpp</in>
+        <in>Configuration.h</in>
+      </df>
+      <df name="information">
+        <in>Candlestick.cpp</in>
+        <in>Candlestick.h</in>
+        <in>ElectricalNeuron.cpp</in>
+        <in>ElectricalNeuron.h</in>
+        <in>Neuron.cpp</in>
+        <in>Neuron.h</in>
+        <in>NonSpikingNeuron.cpp</in>
+        <in>NonSpikingNeuron.h</in>
+        <in>PacemakerNeuron.cpp</in>
+        <in>PacemakerNeuron.h</in>
+        <in>SpikingNeuron.cpp</in>
+        <in>SpikingNeuron.h</in>
+      </df>
+      <df name="knowledge">
+        <in>FractalMachine.cpp</in>
+        <in>FractalMachine.h</in>
+        <in>Instance.cpp</in>
+        <in>Instance.h</in>
+        <in>NeuralNetwork.cpp</in>
+        <in>NeuralNetwork.h</in>
+        <in>NonSpikingSynapse.cpp</in>
+        <in>NonSpikingSynapse.h</in>
+        <in>PlasticSynapse.cpp</in>
+        <in>PlasticSynapse.h</in>
+        <in>Synapse.cpp</in>
+        <in>Synapse.h</in>
       </df>
       <df name="tests">
         <in>AANNtest.cpp</in>
         <in>Neuron_d_test.cpp</in>
       </df>
+      <df name="web">
+        <df name="doxygen">
+          <df name="html">
+            <df name="search">
+            </df>
+          </df>
+        </df>
+        <df name="images">
+        </df>
+      </df>
       <in>Candlestick.cpp</in>
-      <in>Candlestick.h</in>
       <in>Configuration.cpp</in>
       <in>Configuration.h</in>
       <in>DataSet.cpp</in>
-      <in>DataSet.h</in>
+      <in>ElectricalNeuron.cpp</in>
+      <in>ElectricalNeuron.h</in>
       <in>Evaluator.cpp</in>
-      <in>Evaluator.h</in>
       <in>Expert.cpp</in>
-      <in>Expert.h</in>
       <in>FractalInstruction.cpp</in>
-      <in>FractalInstruction.h</in>
       <in>FractalMachine.cpp</in>
-      <in>FractalMachine.h</in>
       <in>FractalProgram.cpp</in>
-      <in>FractalProgram.h</in>
       <in>Instance.cpp</in>
-      <in>Instance.h</in>
       <in>NeuralNetwork.cpp</in>
-      <in>NeuralNetwork.h</in>
       <in>Neuron.cpp</in>
-      <in>Neuron.h</in>
+      <in>NonSpikingNeuron.cpp</in>
+      <in>NonSpikingNeuron.h</in>
+      <in>NonSpikingSynapse.cpp</in>
+      <in>NonSpikingSynapse.h</in>
       <in>PacemakerNeuron.cpp</in>
-      <in>PacemakerNeuron.h</in>
       <in>PlasticSynapse.cpp</in>
-      <in>PlasticSynapse.h</in>
       <in>Simulator.cpp</in>
-      <in>Simulator.h</in>
       <in>Singularity.cpp</in>
-      <in>Singularity.h</in>
       <in>SpikingEvaluator.cpp</in>
-      <in>SpikingEvaluator.h</in>
+      <in>SpikingNeuron.cpp</in>
+      <in>SpikingNeuron.h</in>
       <in>Synapse.cpp</in>
-      <in>Synapse.h</in>
       <in>Trainer.cpp</in>
-      <in>Trainer.h</in>
       <in>Visualizer.cpp</in>
-      <in>Visualizer.h</in>
       <in>main.cpp</in>
+      <in>newClass.cpp</in>
+      <in>newClass.h</in>
       <in>taxonomy.cpp</in>
     </df>
   </logicalFolder>

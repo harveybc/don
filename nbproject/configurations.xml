@@ -10,6 +10,8 @@
       <in>Configuration.cpp</in>
       <in>Configuration.h</in>
       <in>DataSet.cpp</in>
+      <in>ElectricalNeuron.cpp</in>
+      <in>ElectricalNeuron.h</in>
       <in>Evaluator.cpp</in>
       <in>Expert.cpp</in>
       <in>FractalInstruction.cpp</in>
@@ -18,15 +20,23 @@
       <in>Instance.cpp</in>
       <in>NeuralNetwork.cpp</in>
       <in>Neuron.cpp</in>
+      <in>NonSpikingNeuron.cpp</in>
+      <in>NonSpikingNeuron.h</in>
+      <in>NonSpikingSynapse.cpp</in>
+      <in>NonSpikingSynapse.h</in>
       <in>PacemakerNeuron.cpp</in>
       <in>PlasticSynapse.cpp</in>
       <in>Simulator.cpp</in>
       <in>Singularity.cpp</in>
       <in>SpikingEvaluator.cpp</in>
+      <in>SpikingNeuron.cpp</in>
+      <in>SpikingNeuron.h</in>
       <in>Synapse.cpp</in>
       <in>Trainer.cpp</in>
       <in>Visualizer.cpp</in>
       <in>main.cpp</in>
+      <in>newClass.cpp</in>
+      <in>newClass.h</in>
       <in>taxonomy.cpp</in>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -75,6 +85,10 @@
             <pElem></pElem>
           </incDir>
         </ccTool>
+      </item>
+      <item path="ElectricalNeuron.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ElectricalNeuron.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Evaluator.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
@@ -132,6 +146,14 @@
           </incDir>
         </ccTool>
       </item>
+      <item path="NonSpikingNeuron.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NonSpikingNeuron.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NonSpikingSynapse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NonSpikingSynapse.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="PacemakerNeuron.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
@@ -167,6 +189,10 @@
           </incDir>
         </ccTool>
       </item>
+      <item path="SpikingNeuron.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpikingNeuron.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Synapse.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
           <incDir>
@@ -201,6 +227,10 @@
             <pElem></pElem>
           </incDir>
         </ccTool>
+      </item>
+      <item path="newClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="newClass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="taxonomy.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
