@@ -1,8 +1,8 @@
 ﻿Singularity 
 ===========
 
- *    This file is part of Singularity, the descentralized multi-agent control model
- *    open-source simulation and optimization platform. Work in Progress.
+ *    This file is part of Singularity, a open-source descentralized control model
+ *    simulation and optimization platform. Work in Progress.
  *    
  *    The use of Singularity in any military or civil applications intended to 
  *    be used in defensive or ofensive products is prohibited. 
