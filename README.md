@@ -4,9 +4,26 @@ Decentralized network for optimization of mathematical model's parameters using 
 
 A Webtorrent/Bittorrent shared blockchain serves as decentralized ledger of the progress of the optimization and also serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 
-### Description
+### Definitions
 
-The Evolutive Computing algorithms have the following characteristics 
+A "model" is a function with input variables, a state represented by the set of all the variables used the model and some output variables that are a subset of the state.
+
+The "parameters" of a model are a subset of state variables wich are static during the evaluation of the model.
+
+Control Model (CM) = The model to be optimized
+ Inputs: Universe Model sensory outputs - Variables of exported from the UM State
+ Outputs: Universe Model actuatory inputs - 
+
+for example: a neural network
+
+Universe Model (UM) = Generates data to be feed in the Control Model
+
+The payload of the optimization of a model is a set of parameters wich upon be 
+
+Optimization Model (OM): An evolutive computing algorithm 
+
+The Evolutive Computing algorithms have the following characteristics:
+
 
 The objective is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
