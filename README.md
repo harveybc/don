@@ -1,4 +1,4 @@
-﻿![SINGULARITY]
+﻿![SINGULARITY](/logo.png)
 
 Decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to optimize one or more models.
 
