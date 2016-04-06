@@ -1,11 +1,51 @@
-﻿Singularity 
-===========
+﻿![SINGULARITY]
+
+Decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to optimize one or more models.
+
+A shared blockchain serves as decentralized ledger of the progress of optimization and to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in each of the network's nodes, wich execute this optimization model and generate new blocks for the blockchain.
+
+### Description
+
+The objective is to produce a set of optimized parameters saved in a JSON or binary format file for a set of interacting models and their initial states, all the models are represented by Javascript programs and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
+
+
+One example of the optimizable model is a neural network.
+One example of the parameters generated vía optimization are the weights and topology of the neural network.
+
+
+NeuralZoo is a open source, GNU GPL v3 licensed, repository of javascript libraries wich fall in one of five categories:
+<ul>
+<li>Universe Model (UM): A program with optional inputs for a Control Model wich affect it´s state.</li>
+<li>Control Model (CM): Read inputs from a Universe Model's state and produces outputs wich affect the UM next state.</li>
+<li>Efficiency Model (EM): Calculates a measurement of efficiency of the CM in the UM</li>
+<li>Optimization Model (OM): Apply neurocomputing techniques (NEAT, genetic algos) to obtain the parameters of the CM wich maximize it´s EM on a UM.</li>
+</ul>
+### Components
+
+WIP Development is sponsored by Ingeni-us (http://www.ingeni-us.com).
+
+### Behavior
+
+WIP
+
+### Documentation
+
+WIP
+
+### Binary Downloads, Community, etc.
+
+WIP
+
+### Installation and usage issues
+
+WIP
+
 
  *    This file is part of Singularity, a open-source descentralized control model
  *    simulation and optimization platform. Work in Progress.
  *    
- *    The use of Singularity in any military or civil applications intended to 
- *    be used in defensive or ofensive products is prohibited. 
+ *    The use of Singularity in any military applications intended to be used 
+ *    in defensive or ofensive products is prohibited. 
  * 
  *    Singularity is free software, hardware and data; you can redistribute it 
  *    and/or modify it under the terms of the GNU General Public License as 
