@@ -2,11 +2,13 @@
 
 Decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to optimize one or more models.
 
-A shared blockchain serves as decentralized ledger of the progress of optimization and to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in each of the network's nodes, wich execute this optimization model and generate new blocks for the blockchain.
+A Webtorrent/Bittorrent shared blockchain serves as decentralized ledger of the progress of the optimization and also serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 
 ### Description
 
-The objective is to produce a set of optimized parameters saved in a JSON or binary format file for a set of interacting models and their initial states, all the models are represented by Javascript programs and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
+The Evolutive Computing algorithms have the following characteristics 
+
+The objective is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
 
 One example of the optimizable model is a neural network.
