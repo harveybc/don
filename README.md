@@ -20,7 +20,7 @@ To intuitively manage the decentralized optimization process, some components we
  <b>Control Model (CM)</b>: The model to be optimized
  <ul>
   <li>Example Control Model:  Artificial Neural Network implemented in a Javascript file</li> 
-  <li>Examples of Optimizable Parameters depending on Optimization Model: 
+  <li>Examples of Optimizable Parameters: 
    <ol>
     <li>Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)  
     </li>
