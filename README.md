@@ -8,7 +8,7 @@
 To intuitively manage the decentralized optimization process, some components were identified with the following definitions:
 <ul>
 <li>
-<b>Model</b>: an algorithm with input variables, a state represented by the set of all the variables in used the model and some output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
+<b>Model</b>: an algorithm with input variables, a state represented by the set of all the variables used in the model and output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
 </li><li>
 <b>Evaluation of a Model</b>: the execution of the model's algoritm with it's parameters and input data to obtain output data.
 </li><li>
