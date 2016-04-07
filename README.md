@@ -14,7 +14,7 @@ To intuitively manage the decentralized optimization process, some components we
 </li><li>
 <b>Parameters of a Model</b>:  a subset of values of state variables wich value is constant during the evaluation of the model.
 </li><li>
-<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular universe of information represented by a Universe Model.
+<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular Universe Model.
 </li>
 <li>
  <b>Control Model (CM)</b>: The model to be optimized
