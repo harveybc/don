@@ -1,7 +1,7 @@
 ﻿![SINGULARITY](/logo.png)
 ### Making the World Smarter....Permanently
 
-Singularity is a distributed ledger (blockchain) based decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
+Singularity is blockchain-based decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
 
 ### Optimization Framework 
 
@@ -23,6 +23,7 @@ To intuitively manage the decentralized optimization process, some components we
   </li>
   <li>Outputs: Universe Model actuators - Variables to be imported to the UM (i.e. output values from a ANN)
   </li>
+  <li><b>Example Control Model: </b> Artificial Neural Network implemented in a Javascript file 
   <li><b>Examples of Optimizable Parameters depending on Optimization Model:</b> 
    <ol>
     <li>Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)  
@@ -35,25 +36,30 @@ To intuitively manage the decentralized optimization process, some components we
   </li>
  </ul>
 </li>
-<li><b>Universe Model (UM)</b> = A program wich generate sensory outputs with optional actuatory inputs.
+<li><b>Universe Model (UM)</b> = A program wich generate sensory outputs with optional actuatory inputs. The output of this model is a dataset wich is feed to a control model. For example:
+ <ul>
+  <li>  A database-reading program wich generates a output dataset in each iteration wich is feed to the CM in a supervised-learning neuroevolution algorithm.
+  </li>
+  <li>  A simulator implemented in Javascript wich receives some inputs(CM actuatory outputs), an initial state and generate a new state with some of it's variables exported as sensory outputs to be feed to the  inputs of a CM in a non-supervised learning neuroevolution algorithm.  
+  </li>
+  </ul>
 </li>
-<li>Efficiency Model (EM): Function wich calculates a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
-<li>Optimization Model (OM): Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
+<li><b>Efficiency Model (EM)</b> = Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
+<li><b>Optimization Model (OM)</b> = Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
 </ul>
 
 ### Network Architecture
 
-The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application. 
-A shared blockchain is used as a decentralized ledger of the optimization progress and serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
+The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
+<br/>
+A shared blockchain is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 Universe Model (UM) = Generates data to be feed in the Control Model
 
-### Network Node 
+### Optimization Process 
 
 The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
-### Network Node 
-One example of the optimizable model is a neural network.
-One example of the parameters generated vía optimization are the weights and topology of the neural network.
+### Network Node Operation
 
 WIP Development is sponsored by Ingeni-us (http://www.ingeni-us.com).
 
