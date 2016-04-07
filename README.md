@@ -10,14 +10,14 @@ To intuitively manage the decentralized optimization process, some components we
 <li>
 <b>Model</b> = an algorithm with input variables, a state represented by the set of all the variables in used the model and some output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
 </li><li>
-<b>Evaluation of a Model</b> = the execution of the model's algoritm with it's parameters and input data to obtain output data.
+<b>Evaluation of a Model</b>: the execution of the model's algoritm with it's parameters and input data to obtain output data.
 </li><li>
-<b>Parameters of a Model</b> =  a subset of values of state variables wich value is constant during the evaluation of the model.
+<b>Parameters of a Model</b>:  a subset of values of state variables wich value is constant during the evaluation of the model.
 </li><li>
-<b>Optimizable Parameters of a Model</b> =  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular universe of information represented by a Universe Model.
+<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular universe of information represented by a Universe Model.
 </li>
 <li>
- <b>Control Model (CM)</b> = The model to be optimized
+ <b>Control Model (CM)</b>: The model to be optimized
  <ul>
   <li>Inputs: Universe Model sensors - Exported variables from the UM State (i.e. input values for a ANN)
   </li>
@@ -36,7 +36,7 @@ To intuitively manage the decentralized optimization process, some components we
   </li>
  </ul>
 </li>
-<li><b>Universe Model (UM)</b> = A program wich generate sensory outputs with optional actuatory inputs. The output of this model is a dataset wich is feed to a control model. For example:
+<li><b>Universe Model (UM)</b>: A program wich generate sensory outputs with optional actuatory inputs. The output of this model is a dataset wich is feed to a control model. For example:
  <ul>
   <li>  A database-reading program wich generates a output dataset in each iteration wich is feed to the CM in a supervised-learning neuroevolution algorithm.
   </li>
@@ -44,8 +44,8 @@ To intuitively manage the decentralized optimization process, some components we
   </li>
   </ul>
 </li>
-<li><b>Efficiency Model (EM)</b> = Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
-<li><b>Optimization Model (OM)</b> = Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
+<li><b>Efficiency Model (EM)</b>: Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
+<li><b>Optimization Model (OM)</b>: Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
 </ul>
 
 ### Network Architecture
