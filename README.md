@@ -2,13 +2,18 @@
 ### Making the World Smarter....Permanently
 
 Decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to optimize one or more models.
-The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application. 
-Also a shared blockchain is a decentralized ledger of the optimization progress and serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 
-### Definitions
+### Network Architecture
+
+The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application. 
+A shared blockchain is used as a decentralized ledger of the optimization progress and serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
+
+### Optimization Framework 
+
+To intuitively manage the decentralized optimization process, some components must be identified with the following definitions:
 <ul>
 <li>
-<b>Model</b> = an algorithm with input variables, a state represented by the set of all the variables in used the model and some output variables that are a subset of the state.
+<b>Model</b> = an algorithm with input variables, a state represented by the set of all the variables in used the model and some output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
 </li><li>
 <b>Evaluation of a Model</b> = the execution of the model's algoritm with it's parameters and input data to obtain output data.
 </li><li>
