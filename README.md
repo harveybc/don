@@ -19,12 +19,8 @@ To intuitively manage the decentralized optimization process, some components we
 <li>
  <b>Control Model (CM)</b>: The model to be optimized
  <ul>
-  <li>Inputs: Universe Model sensors - Exported variables from the UM State (i.e. input values for a ANN)
-  </li>
-  <li>Outputs: Universe Model actuators - Variables to be imported to the UM (i.e. output values from a ANN)
-  </li>
-  <li><b>Example Control Model: </b> Artificial Neural Network implemented in a Javascript file 
-  <li><b>Examples of Optimizable Parameters depending on Optimization Model:</b> 
+  <li>Example Control Model:  Artificial Neural Network implemented in a Javascript file</li> 
+  <li>Examples of Optimizable Parameters depending on Optimization Model: 
    <ol>
     <li>Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)  
     </li>
