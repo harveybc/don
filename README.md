@@ -1,7 +1,7 @@
 ﻿![SINGULARITY](/logo.png)
 ## Decentralized Architecture for Evolutionary Computation
 
-<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
+<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform off-line or on-line (real-time) optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
 
 ## Optimization Framework 
 
@@ -42,14 +42,22 @@ To intuitively manage the decentralized optimization process, some components we
 </li>
 <li><b>Efficiency Model (EM)</b>: Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
 <li><b>Optimization Model (OM)</b>: Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
+<li><b>Off-line Optimization</b>: The Universe Model generates data from a database or a simulation.</li>
+<li><b>On-line Optimization</b>: The Universe Model creates data from a streaming connection to a data source.</li>
 </ul>
 
 ## Network Architecture
 
 The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
 <br/>
-A shared blockchain is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
-Universe Model (UM) = Generates data to be feed in the Control Model
+A shared blockchain per CM is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (OM) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency. This blockchains are called sidechains.
+<br/>
+The transactions on the blocks of the sidechains are composed of the parameters tested and the resulting efficiency. 
+
+<br/>
+A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution.
+<br/>
+
 
 ## Optimization Process 
 
