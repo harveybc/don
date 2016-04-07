@@ -1,9 +1,9 @@
 ﻿![SINGULARITY](/logo.png)
-### Decentralized Architecture for Evolutionary Computation
+# Decentralized Architecture for Evolutionary Computation
 
-<b>Singularity</b> is blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
+<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
 
-### Optimization Framework 
+## Optimization Framework 
 
 To intuitively manage the decentralized optimization process, some components were identified with the following definitions:
 <ul>
@@ -44,22 +44,22 @@ To intuitively manage the decentralized optimization process, some components we
 <li><b>Optimization Model (OM)</b>: Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
 </ul>
 
-### Network Architecture
+## Network Architecture
 
 The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
 <br/>
 A shared blockchain is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 Universe Model (UM) = Generates data to be feed in the Control Model
 
-### Optimization Process 
+## Optimization Process 
 
 The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
-### Network Node Operation
+## Network Node Operation
 
 WIP Development is sponsored by Ingeni-us (http://www.ingeni-us.com).
 
-### Documentation
+## Documentation
 
 WIP
 
