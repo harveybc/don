@@ -5,16 +5,36 @@ Decentralized network for optimization of mathematical model's parameters using 
 A Webtorrent/Bittorrent shared blockchain serves as decentralized ledger of the progress of the optimization and also serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 
 ### Definitions
+<ul>
+<li>
+<b>Model</b> = an algorithm with input variables, a state represented by the set of all the variables in used the model and some output variables that are a subset of the state.
+</li><li>
+<b>Evaluation of a Model</b> = the execution of the model's algoritm with it's parameters and input data to obtain output data.
+</li><li>
+<b>Parameters of a Model</b> =  a subset of values of state variables wich value is constant during the evaluation of the model.
+</li><li>
+<b>Optimizable Parameters of a Model</b> =  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular universe of information represented by a Universe Model.
+</li><li>
+<b>Control Model (CM)</b> = The model to be optimized
+<ul>
+ <li>Inputs: Universe Model sensors - Exported variables from the UM State (i.e. input values for a ANN)
+ </li>
+ <li>Outputs: Universe Model actuators - Variables to be imported to the UM (i.e. output values from a ANN)
+ </li>
+ <li><b>Examples of Optimizable Parameters depending on Optimization Model:</b> 
+  <ol>
+   <li>Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)  
+   </li>
+   <li>Values of design parameters of electronic circuits, solid 3D parts or industrial processes (optimization model: Genetic Algorithm)
+   </li>
+   <li>Relationships between data for Data Minning (optimization model: Genetic Programming)
+   </li>
+  </ol>
+ </li>
+ </ul>
+</li>
 
-A "model" is a function with input variables, a state represented by the set of all the variables used the model and some output variables that are a subset of the state.
-
-The "parameters" of a model are a subset of state variables wich are static during the evaluation of the model.
-
-Control Model (CM) = The model to be optimized
- Inputs: Universe Model sensory outputs - Variables of exported from the UM State
- Outputs: Universe Model actuatory inputs - 
-
-for example: a neural network
+</ul>
 
 Universe Model (UM) = Generates data to be feed in the Control Model
 
