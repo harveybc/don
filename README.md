@@ -2,8 +2,8 @@
 ### Making the World Smarter....Permanently
 
 Decentralized network for optimization of mathematical model's parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutive Computing</a> algorithms, allowing the use of the computational power of several computers to optimize one or more models.
-
-A Webtorrent/Bittorrent shared blockchain serves as decentralized ledger of the progress of the optimization and also serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
+The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application. 
+Also a shared blockchain is a decentralized ledger of the optimization progress and serves to extract the initial state for the the Evolutionary Computing algorithm (optimization model) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency.
 
 ### Definitions
 <ul>
