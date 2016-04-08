@@ -58,7 +58,7 @@ A separated blockchain is used as root ledger of the progress of all models avai
 <br/>
 The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp, eff and fincancial transactions between accounts(optional ?????????????????????????). The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
 <br/>
-A node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.???????????????? 
+A node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
 
 
 ## Optimization Process 
