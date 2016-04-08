@@ -1,7 +1,7 @@
 ﻿![SINGULARITY](/logo.png)
 ## Decentralized Architecture for Evolutionary Computation
 
-<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared.
+<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Webtorrent network where optimization payloads are shared. This repository contains a Node.js and a C++ network node implementations.
 
 ## Optimization Framework 
 
@@ -65,9 +65,22 @@ A node can receive a payment based on a per-node, processing-power-based and ban
 
 The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
-## Network Node Operation
+A CLI network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response. The main requests used to perform the optimization are:
 
+1. GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido. En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual y la eficiencia de cada CM.
+2. GetModelOutput(model_id) WIP.
+
+WIP
+
+## Blockchain Description
+WIP 
+## Block Description
+WIP
+## Network Node Operation
 WIP Development is sponsored by Ingeni-us (http://www.ingeni-us.com).
+## Use Cases
+
+WIP
 
 ## Documentation
 
