@@ -48,13 +48,28 @@ To intuitively manage the decentralized optimization process, some components we
 
 ## Network Architecture
 
+A CLI network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response. The main requests used to perform the optimization are:
+<br/>
+<ol>
+<li>GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido. En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual(Kormogorov para ANNs) y la eficiencia de cada CM.
+</li>
+<li>2. GetModelOutput(model_id) WIP.
+</li>
+</ol>
+<br/>
+WIP
+
 The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
 <br/>
 A shared blockchain per CM is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (OM) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency. This blockchains are called sidechains.
 <br/>
 The transactions on the blocks of the sidechains are composed of the parameters tested for each of the population individuals and the resulting efficiency, the blocks are ordered in descending order of efficiency so the first is always the fittest. 
 <br/>
-A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks with transactions, the main of wich is the called Coinbase transaction wich is a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution currency generation can be associated to the Coinbase transaction, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin.  
+A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks with 2 types of transactions, the main of wich is the called Coinbase transaction wich is a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution. 
+<br/>
+Currency generation can be associated to the Coinbase transaction, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. 
+<br/>
+This project focus on the Optimization process and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin. Future work may include tunning the cryptocurrency aspect or integrating this crypto-coin minning scheme with other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
 <br/>
 The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp, eff and may also host fincancial transactions between únique node identifications (optional use of accounts?????????????????????????). The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
 <br/>
@@ -65,12 +80,6 @@ A node can receive a payment based on a per-node, processing-power-based and ban
 
 The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
-A CLI network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response. The main requests used to perform the optimization are:
-
-1. GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido. En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual(Kormogorov para ANNs) y la eficiencia de cada CM.
-2. GetModelOutput(model_id) WIP.
-
-WIP
 
 ## Blockchain Description
 WIP 
