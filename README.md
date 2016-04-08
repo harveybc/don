@@ -46,6 +46,28 @@ To intuitively manage the decentralized optimization process, some components we
 <li><b>On-line Optimization</b>: The Universe Model creates data from a streaming connection to a data source.</li>
 </ul>
 
+## Optimization Process 
+
+The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
+
+The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
+<br/>
+A shared blockchain per CM is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (OM) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency with  transactions called "Coinbase transactions" in Bitcoin . This blockchains are called sidechains.
+<br/>
+The transactions on the blocks of the sidechains are composed of the parameters tested for each of the population individuals and the resulting efficiency, the blocks are ordered in descending order of efficiency so the first is always the fittest. 
+<br/>
+A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks with 2 types of transactions, the main of wich is the called Coinbase transaction wich is a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution. 
+
+The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp, eff and may also host fincancial transactions between únique node identifications (optional use of accounts?????????????????????????). The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
+<br/>
+Currency generation can be associated to the Coinbase transaction of the root blockchain, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. 
+<br/>
+This project focus on the Optimization process and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin. Future work may include tunning the cryptocurrency aspect or integrating this crypto-coin minning scheme with other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
+<br/>
+A node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
+
+
+
 ## Network Architecture
 
 The network is composed of nodes, a CLI network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
@@ -59,29 +81,8 @@ The network is composed of nodes, a CLI network node implements a service wich r
 <br/>
 WIP
 
-## Network Node Definition 
+## Network Node Description 
 WIP 
-
-
-## Optimization Process 
-
-The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
-
-The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
-<br/>
-A shared blockchain per CM is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (OM) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency. This blockchains are called sidechains.
-<br/>
-The transactions on the blocks of the sidechains are composed of the parameters tested for each of the population individuals and the resulting efficiency, the blocks are ordered in descending order of efficiency so the first is always the fittest. 
-<br/>
-A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks with 2 types of transactions, the main of wich is the called Coinbase transaction wich is a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution. 
-<br/>
-Currency generation can be associated to the Coinbase transaction, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. 
-<br/>
-This project focus on the Optimization process and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin. Future work may include tunning the cryptocurrency aspect or integrating this crypto-coin minning scheme with other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
-<br/>
-The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp, eff and may also host fincancial transactions between únique node identifications (optional use of accounts?????????????????????????). The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
-<br/>
-A node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
 
 
 
