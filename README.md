@@ -53,11 +53,19 @@ A CLI network node implements a service wich receives JSON requests from externa
 <ol>
 <li>GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido. En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual(Kormogorov para ANNs) y la eficiencia de cada CM.
 </li>
-<li>2. GetModelOutput(model_id) WIP.
+<li>GetModelOutput(model_id) requerido? WIP.
 </li>
 </ol>
 <br/>
 WIP
+
+## Network Node Definition 
+WIP 
+
+
+## Optimization Process 
+
+The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
 The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
 <br/>
@@ -76,17 +84,11 @@ The transactions on the blocks of the root-chain are composed of the identificat
 A node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
 
 
-## Optimization Process 
-
-The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
-
 
 ## Blockchain Description
 WIP 
 ## Block Description
 WIP
-## Network Node Operation
-WIP Development is sponsored by Ingeni-us (http://www.ingeni-us.com).
 ## Use Cases
 
 WIP
