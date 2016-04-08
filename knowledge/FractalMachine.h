@@ -13,7 +13,8 @@
  * in this program to create a CPPN (Connectivity Pattern Producing Networks)
  * for use in scalble Neural Networks as the fractals can be resolved to any 
  * resolution (millions of neurons) potencially taking making feasible the 
- * usability of pre-trained experts.
+ * usability of pre-trained experts adapting the input number to the required
+ * by a different resolution of the same information.
  * 
     0: /// Wait(milliseconds)
     1: /// CreateNeuron(int source_id, int recursive, int axon, bool evaluated, bool active, float distance_from_source)
