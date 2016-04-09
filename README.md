@@ -62,7 +62,7 @@ The transactions on the blocks of the root-chain are composed of the identificat
 
 ## Network Architecture
 
-The network is composed of nodes, in this phase of the project only a "trusting" version of a node is implemented, meaning that no verification of the efficiency reported by other nodes. In the future a "untrusting" node version may be implemented, see below section "Future Work"
+The network is composed of nodes, in this phase of the project only a "trusting" version of a node is implemented, meaning that no verification of the efficiency reported by other nodes is made. In the future a "untrusting" node version may be implemented, see below section "Future Work"
 <br/>
 A CLI trusting network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
 <br/>
