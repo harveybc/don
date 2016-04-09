@@ -5,7 +5,7 @@
 
 ## Optimization Framework 
 
-To intuitively manage the decentralized optimization process, some components were identified with the following definitions:
+To intuitively manage the optimization process, some components were identified with the following definitions:
 <ul>
 <li>
 <b>Model</b>: an algorithm with input variables, a state represented by the set of all the variables used in the model and output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
