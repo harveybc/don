@@ -58,19 +58,13 @@ The transactions on the blocks of the sidechains are composed of the parameters 
 <br/>
 A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks of transactions, a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution. 
 
-The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp, eff and may also host fincancial transactions between únique node identifications.
-<br/>
-This project focus on the Optimization process and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin in the current state. Future work may include tunning the cryptocurrency aspect or integrating the optimization as crypto-coin minning mechanism within other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
-<br/>
-Currency generation can be associated to the Coinbase transaction of the root blockchain, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
-<br/>
-Also, the future use as crypto-coinwould allow a node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
-
-
+The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp and efficiency .
 
 ## Network Architecture
 
-The network is composed of nodes, a CLI network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
+The network is composed of nodes, in this phase of the project only a "trusting" version of a node is implemented, meaning that no verification of the efficiency reported by other nodes. In the future a "untrusting" node version may be implemented, see below section "Future Work"
+<br/>
+A CLI trusting network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
 <br/>
 <ol>
 <li>GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido, si no lo tiene, envía el mismo request a otro nodo(realiza broadcast para actualizar su lista de peers). En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual(Kormogorov para ANNs) y la eficiencia de cada CM.
@@ -105,6 +99,14 @@ WIP
 ### Installation and usage issues
 
 WIP
+### Future Work
+A "non-trusting" version of Singularity would require consensus and verification to publish a new sidechain/root-blockchain blocks, meaning that public-private keys must be created to verify the identification of minning nodes and also will open the posibility to use Singularity as an altenative Bitcoin-like crypo-coin minning procedure. But the remaining problem of finding new UM and CM continually to optimize and produce currency in the process is an  open problem. A possible approach would be to use complexity-variable dataset-producing Universe Models with complexity-variable Control Models, the only known examples of such scalable control models are the CPPN networks and the HyperNEAT Neuroevolution technique wich produce neuroal networks of variable complexity.   
+<br/>
+This project focus on the Optimization process with the blockchain and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin in the current state. Future work may include implementing a "trustless" cryptocurrency functionality or integrating the optimization as crypto-coin minning mechanism within other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
+<br/>
+Currency generation can be associated to the Coinbase transaction of the root blockchain, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
+<br/>
+Also, the future use as crypto-coinwould allow a node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
 
 ### License
 
