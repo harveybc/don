@@ -48,7 +48,7 @@ To intuitively manage the optimization process, the following definitions are ma
 
 ## Optimization Process 
 
-The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared libraries or programs (i.e. Javascript libraries) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
+The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by shared programs (i.e. python scripts) and both the JSON parameters and the Javascript models are shared using Webtorrent thus being usables from external applications.  
 
 The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
 <br/>
