@@ -67,9 +67,13 @@ The network is composed of nodes, in this phase of the project only a "trusting"
 A CLI trusting network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
 <br/>
 <ol>
-<li>GetOptimizedParams(model_id) Retorna un JSON que contiene la dirección de torrent del último bloque del sidechain para MC requerido, si no lo tiene, envía el mismo request a otro nodo(realiza broadcast para actualizar su lista de peers). En el último bloque, se ecuentran como transacciones las direcciones de torrent de los últimos parámetros candidato (JSON files) que se usan como estado inicial del Modelo de Optimización. Si el parámetro model_id es 0, se retorna la dirección de torrent del último bloque del root-blockchain para que el cliente pueda seleccionar el model_id de las transacciones que contene el bloque que contienen la dirección de torrent, la complejidad actual(Kormogorov para ANNs) y la eficiencia de cada CM.
+<li>GetCapabilities: Retorna los modelos disponibles para optimizar y evaluar, el estado actual del nodo.
 </li>
-<li>GetModelOutput(model_id) requerido? WIP.
+<li>OptimumFound: Propagate to other peers a new block containing a population with a efficiency increase, as new block of the sidechain.
+</li>
+<li>StartOptimization: Start, re-start or resume an optimization process on the node.
+</li>
+<li>StopOptimization: Stop or pause an optimization process on the node.
 </li>
 </ol>
 <br/>

@@ -1,8 +1,0 @@
-<map id="Synapse.h" name="Synapse.h">
-<area shape="rect" id="node2" href="$_neuron_8h_source.html" title="Neuron.h" alt="" coords="30,80,109,107"/>
-<area shape="rect" id="node3" href="$_fractal_machine_8h.html" title="Fractal Machine Class Template &#160;" alt="" coords="43,155,173,181"/>
-<area shape="rect" id="node4" href="$_neural_network_8h.html" title="NeuralNetwork.h" alt="" coords="45,229,171,256"/>
-<area shape="rect" id="node5" href="$_expert_8h.html" title="Expert Class &#160;" alt="" coords="5,304,80,331"/>
-<area shape="rect" id="node6" href="$_spiking_evaluator_8h_source.html" title="SpikingEvaluator.h" alt="" coords="104,304,243,331"/>
-<area shape="rect" id="node7" href="$_simulator_8h_source.html" title="Simulator.h" alt="" coords="128,379,219,405"/>
-</map>
