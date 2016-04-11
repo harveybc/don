@@ -1,46 +1,72 @@
 ﻿![SINGULARITY](/logo.png)
 ## Decentralized Architecture for Evolutionary Computation
 
-<b>Singularity</b> is a blockchain-based decentralized network for optimization of mathematical model parameters using <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary Computation</a> algorithms, allowing the use of the computational power of several computers to perform optimization and the use of the pre-optimized models from external applications by connecting to the Bittrorrent or Webtorrent networks where optimization payloads are shared. This repository contains a Python implementation of a proof-of-concept network node.
+<b>Singularity</b> is a blockchain-based decentralized network for optimization
+ of mathematical model parameters using 
+<a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary 
+Computation</a> algorithms, allowing the use of the computational power of 
+several computers to perform optimization and the use of the pre-optimized 
+models from external applications by connecting to the Bittrorrent or Webtorrent
+networks where optimization payloads are shared. This repository contains a 
+Node.js implementation of a proof-of-concept network node.
 
 ## Optimization Framework 
 
-To intuitively manage the optimization process, the following definitions are made:
+To intuitively manage the optimization process, the following definitions are 
+made:
 <ul>
 <li>
-<b>Model</b>: an algorithm with input variables, a state represented by the set of all the variables used in the model and output variables that are a subset of the state. A model is represented by a program, i.e. a Javascript file.
+<b>Model</b>: an algorithm with input variables, a state represented by the set 
+of all the variables used in the model and output variables that are a subset 
+of the state. A model is represented by a program, i.e. a Javascript file.
 </li><li>
-<b>Evaluation of a Model</b>: the execution of the model's algoritm with it's parameters and input data to obtain output data.
+<b>Evaluation of a Model</b>: the execution of the model's algoritm with it's 
+parameters and input data to obtain output data.
 </li><li>
-<b>Parameters of a Model</b>:  a subset of values of state variables wich value is constant during the evaluation of the model.
+<b>Parameters of a Model</b>:  a subset of values of state variables wich value 
+is constant during the evaluation of the model.
 </li><li>
-<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are static during the evaluation of the model and wich can be optimized to maximize a Fitness or Efficiency function for a particular Universe Model.
+<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are 
+static during the evaluation of the model and wich can be optimized to maximize 
+a Fitness or Efficiency function for a particular Universe Model.
 </li>
 <li>
  <b>Control Model (CM)</b>: The model to be optimized
  <ul>
-  <li>Example of Control Model:  Artificial Neural Network implemented in a Javascript file</li> 
+  <li>Example of Control Model:  Artificial Neural Network implemented in a 
+Javascript file</li> 
   <li>Examples of Optimizable Parameters: 
    <ol>
-    <li>Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)  
+    <li>Topology and synapse weights of a ANN (optimization model: 
+Neuroevolution Algorithm)  
     </li>
-    <li>Values of design parameters of electronic circuits, solid 3D parts or industrial processes (optimization model: Genetic Algorithm)
+    <li>Values of design parameters of electronic circuits, solid 3D parts or 
+industrial processes (optimization model: Genetic Algorithm)
     </li>
-    <li>Relationships between data for Data Minning (optimization model: Genetic Programming)
+    <li>Relationships between data for Data Minning (optimization model: 
+Genetic Programming)
     </li>
    </ol>
   </li>
  </ul>
 </li>
-<li><b>Universe Model (UM)</b>: A program wich generate sensory outputs with optional actuatory inputs. The output of this model is a dataset wich is feed to a control model. For example:
+<li><b>Universe Model (UM)</b>: A program wich generate sensory outputs with 
+optional actuatory inputs. The output of this model is a dataset wich is feed to 
+a control model. For example:
  <ul>
-  <li>  A database-reading program wich generates a output dataset in each iteration wich is feed to the CM in a supervised-learning neuroevolution algorithm.
+  <li>  A database-reading program wich generates a output dataset in each 
+iteration wich is feed to the CM in a supervised-learning neuroevolution 
+algorithm.
   </li>
-  <li>  A simulator implemented in Javascript wich receives some inputs(CM actuatory outputs), an initial state and generate a new state with some of it's variables exported as sensory outputs to be feed to the  inputs of a CM in a non-supervised learning neuroevolution algorithm.  
+  <li>  A simulator implemented in Javascript wich receives some inputs(CM 
+actuatory outputs), an initial state and generate a new state with some of it's 
+variables exported as sensory outputs to be feed to the  inputs of a CM in a 
+non-supervised learning neuroevolution algorithm.  
   </li>
   </ul>
 </li>
-<li><b>Efficiency Model (EM)</b>: Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model</li>
+<li><b>Efficiency Model (EM)</b>: Function to calculate a measurement of 
+efficiency of a Control Model with some parameters in a Universe Model</li>
 <li><b>Optimization Model (OM)</b>: Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
 <li><b>Off-line Optimization</b>: The Universe Model generates data from a database or a simulation.</li>
 <li><b>On-line Optimization</b>: The Universe Model creates data from a streaming connection to a data source.</li>
