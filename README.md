@@ -1,7 +1,7 @@
 ﻿![SINGULARITY](/logo.png)
 ## Decentralized Architecture for Evolutionary Computation
 
-<b>Singularity</b> is a blockchain-based decentralized network for optimization
+<p><b>Singularity</b> is a blockchain-based decentralized network for optimization
  of mathematical model parameters using 
 <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary 
 Computation</a> algorithms, allowing the use of the computational power of 
@@ -9,11 +9,12 @@ several computers to perform optimization and the use of the pre-optimized
 models from external applications by connecting to the Bittrorrent or Webtorrent
 networks where optimization payloads are shared. This repository contains a 
 Node.js implementation of a proof-of-concept network node. 
-<br/>
-The optimization model is executed as an external application written in any language 
-capable of sending requests to the node including web, móbile and IoT applications.
-An optimization model of a Neuroevolution algorithm (NEAT) is implemented in C++ 
+</p>
+<p>The optimization model is executed as an external application written in any language 
+capable of sending requests to the node including Web, mobile and Internet of Things(IoT) 
+applications.An optimization model of a neuroevolution algorithm (NEAT) is implemented in C++ 
 with some decentralized optimization examples.
+</p>
 
 ## Optimization Framework 
 
