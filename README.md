@@ -23,7 +23,7 @@ same algorithm and sendng a request to a node when an increase in efficiency is 
 </p>
 <p>Several Singularity nodes world-wide can optimize one or more models connecting to peers
 vía Internet. Also, private optimization experiments or applications can be realized
-running Singularity Nodes in a local network or a VPN without Internet access.
+running Singularity Nodes in a local networks or VPN without Internet access.
 
 </p>
 ## Optimization Framework 
