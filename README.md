@@ -6,7 +6,7 @@
 <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary 
 Computation(EC)</a> algorithms, allowing the use of the computational power of 
 several computers with to perform optimization and the use of the pre-optimized 
-models from external applications by connecting to the Bittrorrent or Webtorrent
+parámeters from external applications by connecting to the Bittrorrent or Webtorrent
 networks where optimization payloads are shared. This repository contains a 
 Node.js implementation of a proof-of-concept network node. 
 </p>
