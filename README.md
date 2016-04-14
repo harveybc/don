@@ -21,7 +21,7 @@ of an EC optimization algoritm to work cooperatively in searching optimized para
 for example: one node could be a laptop and other node could be a cluster, running the 
 same algorithm and sendng a request to a node when an increase in efficiency is found.
 </p>
-<p>Several Singularity nodes world-wide can optimize one or more models connecting to peers
+<p>Several Singularity nodes world-wide can optimize one or more models connecting to public peers
 vía Internet. Also, private optimization experiments or applications can be realized
 running Singularity Nodes in private networks without Internet access.
 
