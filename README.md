@@ -8,7 +8,12 @@ Computation</a> algorithms, allowing the use of the computational power of
 several computers to perform optimization and the use of the pre-optimized 
 models from external applications by connecting to the Bittrorrent or Webtorrent
 networks where optimization payloads are shared. This repository contains a 
-Node.js implementation of a proof-of-concept network node.
+Node.js implementation of a proof-of-concept network node. 
+<br/>
+The optimization model is executed as an external application written in any language 
+capable of sending requests to the node including web, móbile and IoT applications.
+An optimization model of a Neuroevolution algorithm (NEAT) is implemented in C++ 
+with some decentralized optimization examples.
 
 ## Optimization Framework 
 
@@ -95,7 +100,8 @@ A CLI trusting network node implements a service wich receives JSON requests fro
 <ol>
 <li>GetCapabilities: Retorna los modelos disponibles para optimizar y evaluar, el estado actual del nodo.
 </li>
-<li>OptimumFound: Propagate to other peers a new block containing a population with a efficiency increase, as new block of the sidechain.
+<li>OptimumFound: Propagate to other peers a new block containing a population with a efficiency increase, as new block of the sidechain. Also is sent to a node from an external program implementing the Optimization Model to initiate the propagation
+of the new optimum.
 </li>
 <li>StartOptimization: Start, re-start or resume an optimization process on the node.
 </li>
@@ -103,6 +109,7 @@ A CLI trusting network node implements a service wich receives JSON requests fro
 </li>
 </ol>
 <br/>
+
 WIP
 
 ## Network Node Description 
