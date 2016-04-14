@@ -109,7 +109,7 @@ The network is composed of nodes, in this phase of the project only a "trusting"
 A CLI trusting network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
 <br/>
 <ol>
-<li>GetCapabilities: Retorna los modelos disponibles para optimizar y evaluar, el estado actual del nodo.
+<li>GetCapabilities: Retorna los modelos disponibles para optimizar y evaluar, el estado actual del nodo incluyendo su lista de peers (nodos conocidos).
 </li>
 <li>OptimumFound: Propagate to other peers a new block containing a population with a efficiency increase, as new block of the sidechain. Also is sent to a node from an external program implementing the Optimization Model to initiate the propagation
 of the new optimum.
@@ -122,6 +122,12 @@ of the new optimum.
 <br/>
 
 WIP
+## Peer Discovery
+
+When a node starts, it sends a GetCapabilites request to a public node wich returns the state of the node and 
+and copies it's peer list. This list is filtered so the local node store only a list of peers with similar capabilities 
+to it.
+
 
 ## Network Node Description 
 WIP 
