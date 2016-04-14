@@ -4,18 +4,28 @@
 <p><b>Singularity</b> is a blockchain-based decentralized network for optimization
  of mathematical model parameters using 
 <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary 
-Computation</a> algorithms, allowing the use of the computational power of 
-several computers to perform optimization and the use of the pre-optimized 
+Computation(EC)</a> algorithms, allowing the use of the computational power of 
+several computers with to perform optimization and the use of the pre-optimized 
 models from external applications by connecting to the Bittrorrent or Webtorrent
 networks where optimization payloads are shared. This repository contains a 
 Node.js implementation of a proof-of-concept network node. 
 </p>
-<p>The optimization model is executed as an external application written in any language 
-capable of sending requests to the node including Web, mobile and Internet of Things(IoT) 
-applications.An optimization model of a neuroevolution algorithm (NEAT) is implemented in C++ 
+<p>The optimization algorithms are executed as external applications written in any language 
+capable of sending requests to a Singularity node including Web, mobile and Internet of Things(IoT) 
+applications. An optimization model of a neuroevolution algorithm (NEAT) is implemented in C++ 
 with some decentralized optimization examples.
 </p>
+<p>
+This architecture allows to use heterogeneous hardware with independent implementations
+of an EC optimization algoritm to work cooperatively in searching optimized parameters,
+for example: one node could be a laptop and other node could be a cluster, running the 
+same algorithm and sendng a request to a node when an increase in efficiency is found.
+</p>
+<p>Several Singularity nodes world-wide can optimize one or more models connecting to peers
+vía Internet. Also, private optimization experiments or applications can be realized
+running Singularity Nodes in a local network or a VPN without Internet access.
 
+</p>
 ## Optimization Framework 
 
 To intuitively manage the optimization process, the following definitions are 
