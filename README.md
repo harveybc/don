@@ -10,7 +10,7 @@ parámeters from external applications by connecting to the Bittrorrent or Webto
 networks where optimization payloads are shared. This repository contains a 
 Node.js implementation of a proof-of-concept network node. 
 </p>
-<p>The optimization algorithms are executed as external applications written in any language 
+<p>The optimization algorithms are executed as external applications (clients) written in any language 
 capable of sending requests to a Singularity node including Web, mobile and Internet of Things(IoT) 
 applications. As example optimization model, a neuroevolution algorithm (NEAT) is implemented in C++ 
 with some decentralized optimization examples.
