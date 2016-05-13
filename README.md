@@ -16,151 +16,125 @@ applications. As example optimization model, a neuroevolution algorithm (NEAT) i
 with some decentralized optimization examples.
 </p>
 <p>
-This architecture allows to use heterogeneous hardware with independent implementations
-of an EC optimization algoritm to work cooperatively in searching optimized parameters,
-for example: one node could be a laptop and other node could be a cluster, running the 
-same algorithm and sendng a request to a node when an increase in efficiency is found.
+###ABSTRACT
+This document proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
+
+EC techniques such as genetic algorithms, neuroevolution or swarm intelligence are global optimization methods characterized by the use of a population of candidate solutions that evolve in a search space in a way inspired by biological evolution principles like competition, selection or reproduction. EC techniques are used in a wide range of applications in both academic research and industrial environments. 
+
+A decentralized architecture allows heterogeneous hardware with independent implementations of the same optimization algorithm to work cooperatively in searching optimized model parameters, with no restrictions on the computing power of each node and with the flexibility to connect and disconnect nodes from the network without affecting the continuity of an optimization process. 
+
+The proposed architecture is defined by a protocol to handle the communication between peers and a shared blockchain as a ledger of the progress of an optimization process. A block in the blockchain contains an optimization state represented by a population. When some node finds an efficiency increment, it sends a HTTP request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
+
+The expected reduction in training time of a neuroevolution algorithm by adding new nodes to the proposed network is measured by implementing a node prototype to execute an experiment for distributed online training of a foreign exchange (Forex) automated trading agent. 
+
+
+Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
 </p>
-<p>Several Singularity nodes world-wide can optimize one or more models connecting to public peers
-vía Internet. Also, private optimization experiments or applications can be realized
-running Singularity Nodes in private networks without Internet access.
+<p> 
+### 1.	INTRODUCTION
+Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1][2][3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4][5], that motivates our effort to propose a scalable architecture that allows to incorporate new computing resources to an optimization process without affecting its continuity. A decentralized architecture for optimization is justified by the fact that centralized architectures suffer from single-points of failure while the decentralized architectures don’t and that guarantees the continuity of a distributed optimization process as long some connected nodes remain working in the network. The continuity is particularly important in real-time problems which require continuous optimization or on-line training like foreign exchange trading agents that must adapt to ever-changing market conditions. 
 
+A characteristic of the EC algorithms, also called Evolutionary Algorithms (EA) is that an optimization process state is composed of a population of candidate solutions called specimens which represent points on a search space and are evaluated to determine their performance in a particular task and then they are slightly but randomly changed to be tested in a different location in the search space in the next iteration with the exception of the fittest specimens that remain unchanged between iterations [1]. 
+
+An optimization state can be replicated on another optimization process to produce two slightly different populations after one iteration of each process, but the efficiency is preserved due to the immutability of the fittest specimens. The replication of the population in a parallel optimization process is equivalent to an increase in the size of the total population due to the randomization made during each iteration that make replicated populations slightly different as shown in [6]. This feature is exploitable for escalation of computational capacity for optimization via increasing the total amount of candidate solutions being evaluated by sharing the optimization states between the devices running the same algorithm and input data, as shown in [7].  
+
+A shared ledger of the optimization process keeps record of the state reported by nodes which produced an increase in efficiency, synchronizing the optimization state of participating nodes by consensus and saving information about the evolution of the solution. Bitcoin implements a blockchain as a shared ledger of financial transactions, and a proof-of-work as a mechanism for consensus on the time of financial transactions between nodes cryptographically signing a block with a hash of the previously generated one to form a chain of validated blocks, but the blockchain is a distributed database that can be used in other applications like as ledger of registered of domain names [8] [9]. The use of a blockchain as ledger of progress of optimization states and as verification and consensus mechanism is a novel and adequate solution for broadcasting optimization states between network nodes to reach consensus on their validity.  While in Bitcoin, nodes manifest their block verification and consensus to use it by cryptographically signing the next generated block with a hash of the validated one [10], in the proposed architecture, nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
 </p>
-## Optimization Framework 
+<p>
+###3.	PROBLEM DEFINITION
+##3.1	PROBLEM STATEMENT
+The problems addressed in this work are the low tolerance to failure in critical nodes of existing centralized network architectures for distributed optimization and the lack of a platform-independent mechanism to leverage the scalability of population using optimization state replication observed in Evolutionary Algorithms. 
+</p>
+<p>
+##3.2	APPROACH TO SOLUTION
+To solve the aforementioned problems, a decentralized network architecture is proposed, and is constituted of two components, the first is a protocol which defines the communication procedures of a node in the form of requests and responses, the second is a blockchain that nodes use as media to synchronize their optimization state.
 
-To intuitively manage the optimization process, the following definitions are 
-made:
-<ul>
-<li>
-<b>Model</b>: an algorithm with input variables, a state represented by the set 
-of all the variables used in the model and output variables that are a subset 
-of the state. A model is represented by a program, i.e. a Javascript file.
-</li><li>
-<b>Evaluation of a Model</b>: the execution of the model's algoritm with it's 
-parameters and input data to obtain output data.
-</li><li>
-<b>Parameters of a Model</b>:  a subset of values of state variables wich value 
-is constant during the evaluation of the model.
-</li><li>
-<b>Optimizable Parameters of a Model</b>:  a subset of parameters wich are 
-static during the evaluation of the model and wich can be optimized to maximize 
-a Fitness or Efficiency function for a particular Universe Model.
-</li>
-<li>
- <b>Control Model (CM)</b>: The model to be optimized
- <ul>
-  <li>Example of Control Model:  Artificial Neural Network implemented in a 
-Javascript file</li> 
-  <li>Examples of Optimizable Parameters: 
-   <ol>
-    <li>Topology and synapse weights of a ANN (optimization model: 
-Neuroevolution Algorithm)  
-    </li>
-    <li>Values of design parameters of electronic circuits, solid 3D parts or 
-industrial processes (optimization model: Genetic Algorithm)
-    </li>
-    <li>Relationships between data for Data Minning (optimization model: 
-Genetic Programming)
-    </li>
-   </ol>
-  </li>
- </ul>
-</li>
-<li><b>Universe Model (UM)</b>: A program wich generate sensory outputs with 
-optional actuatory inputs. The output of this model is a dataset wich is feed to 
-a control model. For example:
- <ul>
-  <li>  A database-reading program wich generates a output dataset in each 
-iteration wich is feed to the CM in a supervised-learning neuroevolution 
-algorithm.
-  </li>
-  <li>  A simulator implemented in Javascript wich receives some inputs(CM 
-actuatory outputs), an initial state and generate a new state with some of it's 
-variables exported as sensory outputs to be feed to the  inputs of a CM in a 
-non-supervised learning neuroevolution algorithm.  
-  </li>
-  </ul>
-</li>
-<li><b>Efficiency Model (EM)</b>: Function to calculate a measurement of 
-efficiency of a Control Model with some parameters in a Universe Model</li>
-<li><b>Optimization Model (OM)</b>: Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model wich maximize it´s Efficiency Model on a Universe Model.</li>
-<li><b>Off-line Optimization</b>: The Universe Model generates data from a database or a simulation.</li>
-<li><b>On-line Optimization</b>: The Universe Model creates data from a streaming connection to a data source.</li>
-</ul>
+The decentralized architecture allows the use heterogeneous hardware with independent implementations of an optimization algorithm to work cooperatively in searching optimized parameters. The optimization algorithms are executed as external applications (clients) written in any language capable of sending HTTP requests to a node to download the latest optimum state or to notify the finding of a new optimum, so nodes can propagate it. 
 
-## Optimization Process 
+The use of a Service Oriented Architecture (SoA) pattern based on HTTP requests and responses, allows communication between implementations of a network node in diverse platforms and exists a methodology to develop service-oriented evolutionary algorithms [11] that will be used in this project. The use of SoA, allows to differentiate some roles for nodes in the network:  
+•	A simple client: is a device that connects to a node only to retrieve a pre-trained model to be used in some external application, and do not implement the full communications protocol.
+•	An optimizing client: is a device that connects to a node to report new found efficiency increments or to synchronize their optimization state with the network but do not implement the full communications protocol.
+•	A stand-alone node: does not have optimization capabilities, but implements the full communications protocol, serving only as hub/gateway for clients and other nodes.
+•	A full-node: have optimization capabilities, meaning that implements some EA alongside with the full communications protocol.
 
-The objective of the optimization process is to produce a set of optimized parameters saved in a shared file (JSON or any binary format) for a set of interacting models, all the models are represented by programs (i.e. python scripts) and the JSON parameters are shared using Webtorrent thus being usables from external applications implementing the same Control Model.  
+The use of pre-optimized parameters from external applications are made by connecting to the Bittorrent networks where optimized parameters are shared as enabling their use from applications on Mobile and Internet of Things(IoT) platforms. Heterogeneous hardware such as a GPU cluster and a cellphone can connect and collaborate in real-time. Several nodes world-wide can optimize one or more models connecting to public peers via Internet. Also, private optimization experiments or applications can be realized by connecting nodes in private networks without Internet access.
+</p>
+<p>
+3.3	SCOPE AND LIMITATIONS
+The scope is to implement a network node and test the implementation by measuring the time to train a model to a known efficiency with a different number of network nodes participating in an optimization process. The network node and the optimization models implemented are prototype software used as proof-of-concept for the proposed architecture and are not made to be used on insecure or production environments. 
 
-The optimized parameters are shared vía Webtorrent/Bittorrent to be used from any Web/CLI application.
-<br/>
-A shared blockchain per CM is used as a distributed ledger of the optimization progress and serves to read the initial state for the the Evolutionary Computing algorithm (OM) in the network's nodes, wich execute this optimization model and generate new blocks for the blockchain when they find an increment in efficiency with  transactions called "Coinbase transactions" in Bitcoin . This blockchains are called sidechains.
-<br/>
-The transactions on the blocks of the sidechains are composed of the parameters tested for each of the population individuals and the resulting efficiency, the blocks are ordered in descending order of efficiency so the first is always the fittest. 
-<br/>
-A separated blockchain is used as root ledger of the progress of all models available in the network and the complexity of the last optimum solution. This blockchain is called root-chain and contains blocks of transactions, a set of a CM's identification, timestamp, measurement of complexity of actual solution and efficiency of actual solution. 
+This project focus on the usage of the blockchain for an optimization process, not intend to implement the crypto-coin transactions dynamics generally associated with Bitcoin and is not designed to be a crypto-coin in the current state. Future work may include using the optimization process state as proof-of-work for cryptocurrency generation. 
+</p>
+<p>
+##5.	JUSTIFICATION
 
-The transactions on the blocks of the root-chain are composed of the identification of the CM, timestamp and efficiency .
+Some machine learning platforms already support distributed architectures like Google Cloud MLTM, Microsoft Azure MLTM or Amazon AWS ML TM, but no public or anonymous nodes can freely connect to contribute to an existing distributed optimization process neither exists a standardized method to share the optimized parameters publicly so external applications can use them directly no commercial optimization platforms based on EC are available now, motivating our proposal for a solution.  Decentralized networks are tolerant to faults in any of their nodes, provide large scalability and they allow to publicly and anonymously share optimization states as files, allowing to re-use optimized model parameters from external applications. 
+  
+The re-usability of pre-optimized model parameters is being adopted by cloud Machine Learning services, but is only usable after finishing the optimization, not during the optimization process and to the date only some predictive and classification models are available to optimize only with machine learning algorithms which are more sensitive to local minimum issues in some problems than EA, this motivates the proposal of our   distributed optimization method for these types of algorithms and the use of the Bittorrent protocol to share the optimized parameters in real time, so external applications can use them while the optimization process is being performed . 
 
-## Network Architecture
+The author of this work has previous experience with foreign exchange trading automation and with the selection, pre-processing and usage of financial variables in neuroevolution algorithms for data-series prediction which justifies the selection of forex experiments to test and validate the proposed architecture.
+</p>
+<p>
+### 7.	METHODOLOGY
+## 7.1	DESCRIPTION
+Two aspects of the proposed architecture must be designed and implemented during the projects duration: a communications protocol and a blockchain structure. In the following sub chapters, these two components will be briefly conceptualized as starting point for the design process, and a methodology for design and implementation is selected based on an existing methodology for SoA development in EA [11].
+</p>
+<p>
 
-The network is composed of nodes, in this phase of the project only a "trusting" version of a node is implemented, meaning that no verification of the efficiency reported by other nodes is made. In the future a "untrusting" node version may be implemented, see below section "Future Work"
-<br/>
-A CLI trusting network node implements a service wich receives JSON requests from external sources in a TCP port an returns a response, also allows the discovery of network peers. The main requests used to perform the optimization are:
-<br/>
-<ol>
-<li>GetCapabilities: Retorna los modelos disponibles para optimizar y evaluar, el estado actual del nodo incluyendo su lista de peers (nodos conocidos).
-</li>
-<li>OptimumFound: Propagate to other peers a new block containing a population with a efficiency increase, as new block of the sidechain. Also is sent to a node from an external program implementing the Optimization Model to initiate the propagation
-of the new optimum.
-</li>
-<li>StartOptimization: Start, re-start or resume an optimization process on the node.
-</li>
-<li>StopOptimization: Stop or pause an optimization process on the node.
-</li>
-</ol>
-<br/>
+## 7.1.1 Communications Protocol 
+A network node implements a service which receives JSON requests from external sources in a TCP port a returns a response. The main requests used to perform the optimization are: 
 
-WIP
-## Peer Discovery
+•	GetCapabilities:  Returns the optimization capabilities of a node and the current node state including its contact list for peer discovery and message propagation.
+•	OptimumFound: Propagate to other peers a new block containing a population with an efficiency increase, as new block of the blockchain.  Is sent to a node from an external program implementing an Optimization Model to initiate the propagation of the new optimization state when it finds an efficiency increment.
+•	StartOptimization: Start, re-start or resume an optimization process on a node.
+•	StopOptimization: Stop or pause an optimization process on the node.
 
-When a node starts, it sends a GetCapabilites request to a public node wich returns the state of the node and 
-and copies it's peer list. This list is filtered so the local node store only a list of peers with similar capabilities 
-to it.
+Every node has list of known peers, when a node starts, it sends a GetCapabilites request to a public node which returns the state of the node and copies its peer list. When some node finds an efficiency increment, it sends a OptimumFound request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
+</p>
+<p>
+
+7.1.2 Blockchain Structure 
+The blockchain is composed of blocks interlaced by a field in the block header which is a hash of the previous block, every block is a JSON file shared in the Bittorrent network, and it has the following basic attributes in its structure:
+•	Block_header
+o	Source_node_id: Signature of the node which produced the block
+o	Optimization_model_id: String identifying an optimization experiment
+o	Maximum_population_efficiency: Efficiency of the champion
+o	Champion_content_index: index in the specimen_i array
+o	Previous_block_hash: Hash of the previous block
+o	Timestamp
+o	Size_of_block_contents : in bytes
+o	Size_of_population 
+•	Block_contents (for i=0 to Size_of_population)
+o	specimen[i].efficiency: can be a vector for multi-objective optimization
+o	specimen[i].parameters: neural network topology and weights in binary or  or JSON format for neuroevolution.
+
+The nodes download the last block from some peer and replace totally or partially its training population with the one contained in the block_contents attribute.
+</p>
+<p>
+
+## 7.1.2 Design Methodology 
+A stand-alone node prototype will be developed in Node.js, and two additional full-node prototypes will be implemented in C++ with neural network evaluations in CUDA, for each of the proposed experiments mentioned in section 7.2. To intuitively manage the optimization process and to design and implement modular platform-independent components for nodes, some definitions are made and used in the code and documentation to follow the methodology for development of service-oriented EA described in [11]:
+
+•	Model: an algorithm with input variables, a state represented by the set of all the variables used in the model and output variables that are a subset of the state. A model is represented by a program.
+•	Evaluation of a Model: the execution of the model's algorithm with its parameters and input data to obtain output data.
+•	Parameters of a Model: a subset of values of state variables which value is constant during the evaluation of the model.
+•	Optimizable Parameters of a Model: a subset of parameters that are static during the evaluation of the model and which can be optimized to maximize a Fitness or Efficiency function for a particular Universe Model.
+•	Control Model (CM): The model to be optimized
+o	Example of Control Model: Artificial Neural 
+o	Examples of Optimizable Parameters:
+	Topology and synapse weights of a ANN (optimization model: Neuroevolution Algorithm)
+	Values of design parameters of electronic circuits, solid 3D parts or industrial processes (optimization model: Genetic Algorithm)
+	Relationships between data for Data Mining (optimization model: Genetic Programming)
+•	Universe Model (UM): A program that generate sensory outputs with optional actuatory inputs. The output of this model is a dataset which is feed to a control model. For example:
+o	A database-reading program that generates an output dataset in each iteration which is feed to the CM in a supervised-learning neuroevolution algorithm.
+o	A simulator which receives some inputs (CM actuatory outputs), an initial state and generate a new state with some of its variables exported as sensory outputs to be feed to the inputs of a CM in a non-supervised learning neuroevolution algorithm.
+•	Efficiency Model (EM): Function to calculate a measurement of efficiency of a Control Model with some parameters in a Universe Model
+•	Optimization Model (OM): Evolutive computing algorithm (i.e. NEAT) to obtain the parameters of the Control Model which maximize its Efficiency Model on a Universe Model.
+•	Off-line Optimization: The Universe Model generates data from a database or a simulation.
+•	On-line Optimization: The Universe Model creates data from a streaming connection to a data source.
+</p>
 
 
-## Network Node Description 
-WIP 
-
-
-
-## Blockchain Description
-WIP 
-## Block Description
-WIP
-## Use Cases
-
-WIP
-
-## Documentation
-
-WIP
-
-### Binary Downloads, Community, etc.
-
-WIP
-
-### Installation and usage issues
-
-WIP
-### Future Work
-A "non-trusting" version of Singularity would require consensus and verification to publish a new sidechain/root-blockchain blocks, meaning that public-private keys must be created to verify the identification of minning nodes and also will open the posibility to use Singularity as an altenative Bitcoin-like crypo-coin minning procedure. But the remaining problem of finding new UM and CM continually to optimize and produce currency in the process is an  open problem. A possible approach would be to use complexity-variable dataset-producing Universe Models with complexity-variable Control Models, the only known examples of such scalable control models are the CPPN networks and the HyperNEAT Neuroevolution technique wich produce neuroal networks of variable complexity.   
-<br/>
-This project focus on the Optimization process with the blockchain and NOT in the cryptocoin transactions dynamics and is not designed to be a Crypto-Coin in the current state. Future work may include implementing a "trustless" cryptocurrency functionality or integrating the optimization as crypto-coin minning mechanism within other crypto-currency specialized projects like Ethereum that implements Smart Contracts. 
-<br/>
-Currency generation can be associated to the Coinbase transaction of the root blockchain, generating cryptocurrency for the node wich discovered the fittest parameters for a CM, this allows to have the second type of transaction: cryptocurrency transactions composed of source, target and quantity of currency to be saved in this blockchain like in Bitcoin. The generation of coin is made with a "coinbase transaction" wich transfer to it's submiting address (like bitcoin address) a quantity of currency proportional to the increase of efficiency and invested bandwidth and cpu consumption spent by the optimization process (complexity of the CM with parameters).  
-<br/>
-Also, the future use as crypto-coinwould allow a node can receive a payment based on a per-node, processing-power-based and bandwidth based, fee to exclusively evaluate or optimize a offline or on-line model(online optional????????????????). He would create a WebRTC Data Channel p2p connection with the requesting client and start streaming data to the CM to obtain an output stream.(only if online????????????????)
 
 ### License
 
