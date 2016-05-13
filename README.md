@@ -17,8 +17,7 @@ with some decentralized optimization examples.
 </p>
 ### ABSTRACT
 <p>
-
-This document proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
+This project proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
 
 EC techniques such as genetic algorithms, neuroevolution or swarm intelligence are global optimization methods characterized by the use of a population of candidate solutions that evolve in a search space in a way inspired by biological evolution principles like competition, selection or reproduction. EC techniques are used in a wide range of applications in both academic research and industrial environments. 
 
@@ -27,12 +26,12 @@ A decentralized architecture allows heterogeneous hardware with independent impl
 The proposed architecture is defined by a protocol to handle the communication between peers and a shared blockchain as a ledger of the progress of an optimization process. A block in the blockchain contains an optimization state represented by a population. When some node finds an efficiency increment, it sends a HTTP request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
 
 The expected reduction in training time of a neuroevolution algorithm by adding new nodes to the proposed network is measured by implementing a node prototype to execute an experiment for distributed online training of a foreign exchange (Forex) automated trading agent. 
-
-
-Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
 </p>
 <p> 
+Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
+</p>
 ### 1.	INTRODUCTION
+<p> 
 Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1][2][3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4][5], that motivates our effort to propose a scalable architecture that allows to incorporate new computing resources to an optimization process without affecting its continuity. A decentralized architecture for optimization is justified by the fact that centralized architectures suffer from single-points of failure while the decentralized architectures don’t and that guarantees the continuity of a distributed optimization process as long some connected nodes remain working in the network. The continuity is particularly important in real-time problems which require continuous optimization or on-line training like foreign exchange trading agents that must adapt to ever-changing market conditions. 
 
 A characteristic of the EC algorithms, also called Evolutionary Algorithms (EA) is that an optimization process state is composed of a population of candidate solutions called specimens which represent points on a search space and are evaluated to determine their performance in a particular task and then they are slightly but randomly changed to be tested in a different location in the search space in the next iteration with the exception of the fittest specimens that remain unchanged between iterations [1]. 
