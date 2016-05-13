@@ -28,9 +28,7 @@ A decentralized architecture allows heterogeneous hardware with independent impl
 <p> 
 The proposed architecture is defined by a protocol to handle the communication between peers and a shared blockchain as a ledger of the progress of an optimization process. A block in the blockchain contains an optimization state represented by a population. When some node finds an efficiency increment, it sends a HTTP request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
 </p>
-<p> 
-Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
-</p>
+
 ### 1.	Introduction
 <p> 
 Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1][2][3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4][5], that motivates our effort to propose a scalable architecture that allows to incorporate new computing resources to an optimization process without affecting its continuity. A decentralized architecture for optimization is justified by the fact that centralized architectures suffer from single-points of failure while the decentralized architectures don’t and that guarantees the continuity of a distributed optimization process as long some connected nodes remain working in the network. The continuity is particularly important in real-time problems which require continuous optimization or on-line training like foreign exchange trading agents that must adapt to ever-changing market conditions. 
@@ -167,4 +165,6 @@ o	A simulator which receives some inputs (CM actuatory outputs), an initial stat
  *    <http://www.gnu.org/licenses/>. 
 
 
- 
+ <p> 
+Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
+</p>
