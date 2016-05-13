@@ -15,7 +15,7 @@ capable of sending requests to a Singularity node including Web, mobile and Inte
 applications. As example optimization model, a neuroevolution algorithm (NEAT) is implemented in C++ 
 with some decentralized optimization examples.
 </p>
-### ABSTRACT
+### Abstract
 <p>
 This project proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
 </p>
@@ -31,7 +31,7 @@ The proposed architecture is defined by a protocol to handle the communication b
 <p> 
 Keywords: Optimization, Evolutionary Computation, Neuroevolution, Genetic Algorithm, Peer-to-Peer, Blockchain, Bittorrent, Web Services, Bitcoin Mining, Decentralized Networks, Foreign Exchange, Internet of Things, Proof-of-Work, Distributed Hash Table
 </p>
-### 1.	INTRODUCTION
+### 1.	Introduction
 <p> 
 Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1][2][3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4][5], that motivates our effort to propose a scalable architecture that allows to incorporate new computing resources to an optimization process without affecting its continuity. A decentralized architecture for optimization is justified by the fact that centralized architectures suffer from single-points of failure while the decentralized architectures don’t and that guarantees the continuity of a distributed optimization process as long some connected nodes remain working in the network. The continuity is particularly important in real-time problems which require continuous optimization or on-line training like foreign exchange trading agents that must adapt to ever-changing market conditions. 
 </p>
@@ -44,7 +44,7 @@ An optimization state can be replicated on another optimization process to produ
 <p> 
 A shared ledger of the optimization process keeps record of the state reported by nodes which produced an increase in efficiency, synchronizing the optimization state of participating nodes by consensus and saving information about the evolution of the solution. Bitcoin implements a blockchain as a shared ledger of financial transactions, and a proof-of-work as a mechanism for consensus on the time of financial transactions between nodes cryptographically signing a block with a hash of the previously generated one to form a chain of validated blocks, but the blockchain is a distributed database that can be used in other applications like as ledger of registered of domain names [8] [9]. The use of a blockchain as ledger of progress of optimization states and as verification and consensus mechanism is a novel and adequate solution for broadcasting optimization states between network nodes to reach consensus on their validity.  While in Bitcoin, nodes manifest their block verification and consensus to use it by cryptographically signing the next generated block with a hash of the validated one [10], in the proposed architecture, nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
 </p>
-### 2.	PROBLEM DEFINITION
+### 2.	Problem Definition
 <p> 
 The problems addressed in this work are the low tolerance to failure in critical nodes of existing centralized network architectures for distributed optimization and the lack of a platform-independent mechanism to leverage the scalability of population using optimization state replication observed in Evolutionary Algorithms. 
 </p>
@@ -65,14 +65,14 @@ The use of a Service Oriented Architecture (SoA) pattern based on HTTP requests 
 <p> 
 The use of pre-optimized parameters from external applications are made by connecting to the Bittorrent networks where optimized parameters are shared as enabling their use from applications on Mobile and Internet of Things(IoT) platforms. Heterogeneous hardware such as a GPU cluster and a cellphone can connect and collaborate in real-time. Several nodes world-wide can optimize one or more models connecting to public peers via Internet. Also, private optimization experiments or applications can be realized by connecting nodes in private networks without Internet access.
 </p>
-### 4.	SCOPE AND LIMITATIONS
+### 4.	Scope and Limitation
 <p>
 The scope is to implement a network node and test the implementation by measuring the time to train a model to a known efficiency with a different number of network nodes participating in an optimization process. The network node and the optimization models implemented are prototype software used as proof-of-concept for the proposed architecture and are not made to be used on insecure or production environments. 
 </p>
 <p> 
 This project focus on the usage of the blockchain for an optimization process, not intend to implement the crypto-coin transactions dynamics generally associated with Bitcoin and is not designed to be a crypto-coin in the current state. Future work may include using the optimization process state as proof-of-work for cryptocurrency generation. 
 </p>
-### 5.	JUSTIFICATION
+### 5.	Justification
 <p> 
 Some machine learning platforms already support distributed architectures like Google Cloud MLTM, Microsoft Azure MLTM or Amazon AWS ML TM, but no public or anonymous nodes can freely connect to contribute to an existing distributed optimization process neither exists a standardized method to share the optimized parameters publicly so external applications can use them directly no commercial optimization platforms based on EC are available now, motivating our proposal for a solution.  Decentralized networks are tolerant to faults in any of their nodes, provide large scalability and they allow to publicly and anonymously share optimization states as files, allowing to re-use optimized model parameters from external applications. 
  </p>
@@ -82,7 +82,7 @@ The re-usability of pre-optimized model parameters is being adopted by cloud Mac
 <p> 
 The author of this work has previous experience with foreign exchange trading automation and with the selection, pre-processing and usage of financial variables in neuroevolution algorithms for data-series prediction which justifies the selection of forex experiments to test and validate the proposed architecture.
 </p>
-### 6.	METHODOLOGY
+### 6.	Methodology
 <p> 
 Two aspects of the proposed architecture must be designed and implemented during the projects duration: a communications protocol and a blockchain structure. In the following sub chapters, these two components will be briefly conceptualized as starting point for the design process, and a methodology for design and implementation is selected based on an existing methodology for SoA development in EA [11].
 </p>
