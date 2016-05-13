@@ -15,8 +15,9 @@ capable of sending requests to a Singularity node including Web, mobile and Inte
 applications. As example optimization model, a neuroevolution algorithm (NEAT) is implemented in C++ 
 with some decentralized optimization examples.
 </p>
-<p>
 ### ABSTRACT
+<p>
+
 This document proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
 
 EC techniques such as genetic algorithms, neuroevolution or swarm intelligence are global optimization methods characterized by the use of a population of candidate solutions that evolve in a search space in a way inspired by biological evolution principles like competition, selection or reproduction. EC techniques are used in a wide range of applications in both academic research and industrial environments. 
