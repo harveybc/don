@@ -6,117 +6,19 @@
 <a href="https://en.wikipedia.org/wiki/Evolutionary_computation">Evolutionary 
 Computation(EC)</a> algorithms.
 
-, allowing the use of the computational power of 
-several computers with to perform optimization and the use of the pre-optimized 
-parámeters from external applications by connecting to the Bittrorrent or Webtorrent
-networks where optimization payloads are shared. This repository contains a 
-Node.js implementation of a proof-of-concept network node. 
-</p>
-<p>The optimization algorithms are executed as external applications (clients) written in any language 
-capable of sending requests to a Singularity node including Web, mobile and Internet of Things(IoT) 
-applications. As example optimization model, a neuroevolution algorithm (NEAT) is implemented in C++ 
-with some decentralized optimization examples.
-</p>
 ### Abstract
 <p>
-This project proposes a communications protocol and a blockchain based consensus mechanism for a network architecture intended to perform distributed optimization using Evolutionary Computation (EC) techniques, leveraging the computing power of multiple peer-to-peer connected devices without central nodes to perform an optimization process cooperatively with the advantage of not having the single-points of failure as is observed on centralized network architectures. 
-</p>
-<p> 
-EC techniques such as genetic algorithms, neuroevolution or swarm intelligence are global optimization methods characterized by the use of a population of candidate solutions that evolve in a search space in a way inspired by biological evolution principles like competition, selection or reproduction. EC techniques are used in a wide range of applications in both academic research and industrial environments. 
-</p>
-<p> 
-A decentralized architecture allows heterogeneous hardware with independent implementations of the same optimization algorithm to work cooperatively in searching optimized model parameters, with no restrictions on the computing power of each node and with the flexibility to connect and disconnect nodes from the network without affecting the continuity of an optimization process. 
-</p>
-<p> 
-The proposed architecture is defined by a protocol to handle the communication between peers and a shared blockchain as a ledger of the progress of an optimization process. A block in the blockchain contains an optimization state represented by a population. When some node finds an efficiency increment, it sends a HTTP request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
-</p>
+The Evolutionary Computation (EC) techniques such as genetic algorithms, neuroevolution or swarm intelligence are optimization methods characterized by the use of a population of candidate solutions that evolve in a search space in a way inspired by biological evolution principles like competition, selection or reproduction. There are several models for implementing EC techniques in distributed processing architectures (dEC), the models with better fault tolerance and lower communicational cost are the hybrid models based on the so-called island model. 
 
-### 1.	Introduction
-<p> 
-Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1][2][3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4][5], that motivates our effort to propose a scalable architecture that allows to incorporate new computing resources to an optimization process without affecting its continuity. A decentralized architecture for optimization is justified by the fact that centralized architectures suffer from single-points of failure while the decentralized architectures don’t and that guarantees the continuity of a distributed optimization process as long some connected nodes remain working in the network. The continuity is particularly important in real-time problems which require continuous optimization or on-line training like foreign exchange trading agents that must adapt to ever-changing market conditions. 
+These dEC models have been implemented in multiple frameworks or software platforms and they are adequate for academic research applications in controlled environments, but the existing implementations have low fault tolerance in some nodes, little or no communications security and none of them have result reliability mechanisms, limiting their use in industrial applications or applications running over insecure networks as the Internet.
+
+This document proposes a decentralized software platform for implementing distributed Evolutionary Algorithms (dEA) using the island model and hybrid models. This platform aims to improve the fault-tolerance over existing solutions by using a decentralized architectural pattern, to increase the communications security by using public-key cryptography, and to improve the results reliability by implementing the traceability of the operations performed during dEC processes.
+
+The proposed platform explores the use of a blockchain as the one used in Bitcoin, modifying it to store operations traceability information and state synchronization of the participating nodes in multiple simultaneous dEC processes.
+ 
+A validation of the fault-tolerance of applications developed for the platform will be made by designing and implementing a prototype node and an application for reinforcement learning using dEC in the domain of foreign exchange trading automation.
 </p>
-<p> 
-A characteristic of the EC algorithms, also called Evolutionary Algorithms (EA) is that an optimization process state is composed of a population of candidate solutions called specimens which represent points on a search space and are evaluated to determine their performance in a particular task and then they are slightly but randomly changed to be tested in a different location in the search space in the next iteration with the exception of the fittest specimens that remain unchanged between iterations [1]. 
-</p>
-<p> 
-An optimization state can be replicated on another optimization process to produce two slightly different populations after one iteration of each process, but the efficiency is preserved due to the immutability of the fittest specimens. The replication of the population in a parallel optimization process is equivalent to an increase in the size of the total population due to the randomization made during each iteration that make replicated populations slightly different as shown in [6]. This feature is exploitable for escalation of computational capacity for optimization via increasing the total amount of candidate solutions being evaluated by sharing the optimization states between the devices running the same algorithm and input data, as shown in [7].  
-</p>
-<p> 
-A shared ledger of the optimization process keeps record of the state reported by nodes which produced an increase in efficiency, synchronizing the optimization state of participating nodes by consensus and saving information about the evolution of the solution. Bitcoin implements a blockchain as a shared ledger of financial transactions, and a proof-of-work as a mechanism for consensus on the time of financial transactions between nodes cryptographically signing a block with a hash of the previously generated one to form a chain of validated blocks, but the blockchain is a distributed database that can be used in other applications like as ledger of registered of domain names [8] [9]. The use of a blockchain as ledger of progress of optimization states and as verification and consensus mechanism is a novel and adequate solution for broadcasting optimization states between network nodes to reach consensus on their validity.  While in Bitcoin, nodes manifest their block verification and consensus to use it by cryptographically signing the next generated block with a hash of the validated one [10], in the proposed architecture, nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
-</p>
-### 2.	Problem Definition
-<p> 
-The problems addressed in this work are the low tolerance to failure in critical nodes of existing centralized network architectures for distributed optimization and the lack of a platform-independent mechanism to leverage the scalability of population using optimization state replication observed in Evolutionary Algorithms. 
-</p>
-### 3.	APPROACH TO SOLUTION
-<p>
-To solve the aforementioned problems, a decentralized network architecture is proposed, and is constituted of two components, the first is a protocol which defines the communication procedures of a node in the form of requests and responses, the second is a blockchain that nodes use as media to synchronize their optimization state.
-</p>
-<p> 
-The decentralized architecture allows the use heterogeneous hardware with independent implementations of an optimization algorithm to work cooperatively in searching optimized parameters. The optimization algorithms are executed as external applications (clients) written in any language capable of sending HTTP requests to a node to download the latest optimum state or to notify the finding of a new optimum, so nodes can propagate it. 
-</p>
-<p> 
-The use of a Service Oriented Architecture (SoA) pattern based on HTTP requests and responses, allows communication between implementations of a network node in diverse platforms and exists a methodology to develop service-oriented evolutionary algorithms [11] that will be used in this project. The use of SoA, allows to differentiate some roles for nodes in the network:  
-•	A simple client: is a device that connects to a node only to retrieve a pre-trained model to be used in some external application, and do not implement the full communications protocol.
-•	An optimizing client: is a device that connects to a node to report new found efficiency increments or to synchronize their optimization state with the network but do not implement the full communications protocol.
-•	A stand-alone node: does not have optimization capabilities, but implements the full communications protocol, serving only as hub/gateway for clients and other nodes.
-•	A full-node: have optimization capabilities, meaning that implements some EA alongside with the full communications protocol.
-</p>
-<p> 
-The use of pre-optimized parameters from external applications are made by connecting to the Bittorrent networks where optimized parameters are shared as enabling their use from applications on Mobile and Internet of Things(IoT) platforms. Heterogeneous hardware such as a GPU cluster and a cellphone can connect and collaborate in real-time. Several nodes world-wide can optimize one or more models connecting to public peers via Internet. Also, private optimization experiments or applications can be realized by connecting nodes in private networks without Internet access.
-</p>
-### 4.	Scope and Limitation
-<p>
-The scope is to implement a network node and test the implementation by measuring the time to train a model to a known efficiency with a different number of network nodes participating in an optimization process. The network node and the optimization models implemented are prototype software used as proof-of-concept for the proposed architecture and are not made to be used on insecure or production environments. 
-</p>
-<p> 
-This project focus on the usage of the blockchain for an optimization process, not intend to implement the crypto-coin transactions dynamics generally associated with Bitcoin and is not designed to be a crypto-coin in the current state. Future work may include using the optimization process state as proof-of-work for cryptocurrency generation. 
-</p>
-### 5.	Justification
-<p> 
-Some machine learning platforms already support distributed architectures like Google Cloud MLTM, Microsoft Azure MLTM or Amazon AWS ML TM, but no public or anonymous nodes can freely connect to contribute to an existing distributed optimization process neither exists a standardized method to share the optimized parameters publicly so external applications can use them directly no commercial optimization platforms based on EC are available now, motivating our proposal for a solution.  Decentralized networks are tolerant to faults in any of their nodes, provide large scalability and they allow to publicly and anonymously share optimization states as files, allowing to re-use optimized model parameters from external applications. 
- </p>
-<p> 
-The re-usability of pre-optimized model parameters is being adopted by cloud Machine Learning services, but is only usable after finishing the optimization, not during the optimization process and to the date only some predictive and classification models are available to optimize only with machine learning algorithms which are more sensitive to local minimum issues in some problems than EA, this motivates the proposal of our   distributed optimization method for these types of algorithms and the use of the Bittorrent protocol to share the optimized parameters in real time, so external applications can use them while the optimization process is being performed . 
-</p>
-<p> 
-The author of this work has previous experience with foreign exchange trading automation and with the selection, pre-processing and usage of financial variables in neuroevolution algorithms for data-series prediction which justifies the selection of forex experiments to test and validate the proposed architecture.
-</p>
-### 6.	Methodology
-<p> 
-Two aspects of the proposed architecture must be designed and implemented during the projects duration: a communications protocol and a blockchain structure. In the following sub chapters, these two components will be briefly conceptualized as starting point for the design process, and a methodology for design and implementation is selected based on an existing methodology for SoA development in EA [11].
-</p>
-### 7. Communications Protocol 
-<p> 
-A network node implements a service which receives JSON requests from external sources in a TCP port a returns a response. The main requests used to perform the optimization are: 
-</p>
-<p> 
-•	GetCapabilities:  Returns the optimization capabilities of a node and the current node state including its contact list for peer discovery and message propagation.
-•	OptimumFound: Propagate to other peers a new block containing a population with an efficiency increase, as new block of the blockchain.  Is sent to a node from an external program implementing an Optimization Model to initiate the propagation of the new optimization state when it finds an efficiency increment.
-•	StartOptimization: Start, re-start or resume an optimization process on a node.
-•	StopOptimization: Stop or pause an optimization process on the node.
-</p>
-<p> 
-Every node has list of known peers, when a node starts, it sends a GetCapabilites request to a public node which returns the state of the node and copies its peer list. When some node finds an efficiency increment, it sends a OptimumFound request to its known peers containing a new block so they also broadcast the block to their known peers. Nodes manifest their verification and consensus to use the new block by replacing or merging their population with the one contained on the new block and by resuming their optimization processes, cryptographically signing subsequently found blocks with a hash of the verified one.
-</p>
-### 8. Blockchain Structure 
-<p> 
-The blockchain is composed of blocks interlaced by a field in the block header which is a hash of the previous block, every block is a JSON file shared in the Bittorrent network, and it has the following basic attributes in its structure:
-•	Block_header
-o	Source_node_id: Signature of the node which produced the block
-o	Optimization_model_id: String identifying an optimization experiment
-o	Maximum_population_efficiency: Efficiency of the champion
-o	Champion_content_index: index in the specimen_i array
-o	Previous_block_hash: Hash of the previous block
-o	Timestamp
-o	Size_of_block_contents : in bytes
-o	Size_of_population 
-•	Block_contents (for i=0 to Size_of_population)
-o	specimen[i].efficiency: can be a vector for multi-objective optimization
-o	specimen[i].parameters: neural network topology and weights in binary or  or JSON format for neuroevolution.
-</p>
-<p> 
-1.	INTRODUCTION
+### 1.	INTRODUCTION
 Evolutionary Computation techniques are used to search for optimum values of mathematical model parameters [1] [2] [3]. As the search for solutions in EC is based on trial and error, optimization of complex models may require the use of a large computational capacity for testing many candidate solutions or large datasets [4] [5].
 
 The defining characteristic of an Evolutionary Algorithm (EA) is that an optimization process state is composed of a population of candidate solutions called specimens representing points in a search space. These specimens are evaluated to determine their performance in a particular task and then they are slightly but randomly modified to be tested in a different location in the search space during the next iteration. 
@@ -129,12 +31,12 @@ The island-model is also used as higher layer in model ensembles in the so-calle
 
 As an improvement over the existing island-model implementations, the proposed platform will have a decentralized architectural pattern that would enhance the fault-tolerance of multiple simultaneous distributed EC processes in a single network. The proposed platform uses multicast with a flooding mechanism for achieving a decentralized fault-tolerant architecture that can execute multiple processes and explores the usage of a blockchain, a data structure used in Bitcoin. The block-chain will be adapted to the functions of tracing the operations between nodes participating in EC processes, providing a result reliability mechanism and providing synchronization data for participating nodes. 
 
-2.	 POSSIBLE TITLE
+### 2.	 POSSIBLE TITLE
 “A DECENTRALIZED SOFTWARE PLATFORM FOR EVOLUTIONARY COMPUTATION WITH HYBRID MODELS”
 
 
-3.	PROBLEM DEFINITION
-3.1	PROBLEM STATEMENT
+### 3.	PROBLEM DEFINITION
+### 3.1	PROBLEM STATEMENT
 The existing frameworks for hybrid-model distributed optimization with EC are either programming language specific [12] [13], centralized or do not provide mechanisms for traceability of results requiring the participation of trusted nodes. The requirement of trust for participating nodes and the lack of reliability or security features limit the use of existing implementations for production EC applications over insecure environments.
 
 It is observed that: a decentralized architectural pattern could be an improvement since it addresses the low tolerance to failure found in centralized software architectures. The use of an API provides a language-agnostic interface for programming, and the use of a consensus system based on the Bitcoin blockchain could allow the collaboration between trust-less nodes in a decentralized network since node results are validated by a network consensus and not just by a central authority. 
@@ -142,16 +44,16 @@ It is observed that: a decentralized architectural pattern could be an improveme
 This project includes to design and implementation of the proposed platform components and the validation of the tolerance to failures by removing nodes participating in an optimization process. The platform uses a hybrid cryptographic system with a RSA cipher for communications privacy since these systems are widely used, but more advanced ciphers can be used since the proposed platform is extensible and modular. 
 
 
-4.	OBJECTIVES
-4.1	GENERAL OBJECTIVE
+### 4.	OBJECTIVES
+### 4.1	GENERAL OBJECTIVE
 To design, implement and test a prototype of the proposed software platform and to deploy an application for optimization with distributed EC techniques in this platform.  
-4.2	SPECIFIC OBJECTIVES
+### 4.2	SPECIFIC OBJECTIVES
 •	To design the platform for distributed EC, the design includes describing its requirements, components (nodes), relationships, desired behavior, data exchanged and data structures used.
 •	To define communications protocol between participating nodes with the objective of achieving the desired behavior of the platform. The information exchanged in this protocol will be used for synchronization of nodes participating in an EC process.
 •	To implement the communications protocol in a prototype node that listens to REST API requests from applications or other nodes.
 •	To implement an application for distributed EC that uses the proposed platform in the foreign exchange trading automation domain.
 •	To perform tests to validate the scalability, fault-tolerance, traceability, reliability and multi-process support of the proposed software platform.
-4.3	EXPECTED RESULTS
+### 4.3	EXPECTED RESULTS
 •	The design and implementation of a prototype node of the proposed platform, this implementation will be used for all the participating nodes in the dEC experiments. 
 •	A distributed application for reinforcement learning training in the forex trading automation domain built on the proposed platform. 
 •	The application should validate the following quality attributes provided by the proposed platform:
@@ -161,7 +63,7 @@ o	Traceability, the platform must trace of operations between nodes participatin
 o	Reliability of results, the app must have mechanisms allowing the use of non-trusted nodes, for testing this, an invalid result will be introduced from a working node and the network should reject it by consensus and continue the process. 
 o	Multi-processing, the platform should be able to execute multiple applications simultaneously by sharing some nodes, this will be tested by running a parallel application with different working nodes but sharing the same routing nodes.
 
-5.	JUSTIFICATION
+### 5.	JUSTIFICATION
 Distributed EC has many fields of real-world application, some applications include but are not limited to:  systems design like VLSI routing [6] or simulation optimization [7], resource scheduling i.e. cancer treatment scheduling [8],  network planning [9], transport i.e. traffic estimation [14], classifier optimization [15], feature extraction [10] and parameter tuning of machine learning models such as neural networks [11]. This variety of applications justify the effort to improve existing implementations to overcome their downfalls and to provide the reliability that a platform for industrial applications over insecure networks requires.
 
 Reliability is a desirable quality attribute for an industrial application, a distributed optimization platform is more reliable when it reduces the factors that can interrupt an optimization process or corrupt its results. Also, is desirable for its implementation that the programming interface is language-agnostic so the working nodes can use different implementations of an EA in heterogeneous hardware. 
@@ -177,10 +79,10 @@ A foreign exchange trading automation experiment will be performed as an applica
   
 6.	THEORETICAL FRAMEWORK AND STATE OF THE ART
 In the following subsections, the theoretical framework and state of the art of the proposed platform and prototype design topics are described and the existing distributed EC platforms are discussed. The platform topics are: evolutionary computation, decentralized architectural pattern, public-key cryptography and blockchain. The prototype experiment topics are: reinforcement learning and automated foreign exchange.
-6.1	PLATFORM TOPICS
+### 6.1	PLATFORM TOPICS
 In this section the topics related to the platform are described. Evolutionary computation is the set of techniques that can use the proposed architecture, the REST Application Programming Interface allows language-agnostic implementation of evolutionary algorithms in heterogeneous hardware, the decentralized architectural pattern uses REST and allows fault-tolerance in any node of the optimization network, the public-key cryptography allows to secure the communication between participating devices and is a key concept in the blockchain technology that is the last topic described. 
 
-6.1.1	Evolutionary Computation (EC)
+### 6.1.1	Evolutionary Computation (EC)
 
 The proposed platform is going to be designed specifically for distributed optimization using Evolutionary Computation techniques. EC is a field of artificial intelligence that uses global optimization algorithms called Evolutionary Algorithms (EA) that are characterized by imitating Darwinian principles such as reproduction, mutation, recombination, natural selection and survival of the fittest [1][2][3].
 
@@ -199,7 +101,7 @@ Neuroevolution Algorithms are a particular set of GA for optimizing neural netwo
 
 Recently, the global search capabilities of EA are used to search parameters of Machine Learning(ML) techniques for example: Support Vector Machine(SVM) parameter estimation with Genetic Algorithms [19], Deep Learning [20] [21] and Neuroevolution for estimation of value functions in Q-Learning [22],  Evolvable Neural Turing Machines (ENTM) for adaptive behavior in reinforcement learning [23] and One-Shot Learning with ENTM [24]. All of these techniques would benefit from the scalability of the proposed platform applications or experiments. 
 
-6.1.2	Distributed Evolutionary Computation (dEC)
+### 6.1.2	Distributed Evolutionary Computation (dEC)
 
 The EC techniques have the capability to be executed in distributed processing architectures, they have to evaluate a large population and this process can be made in parallel for each specimen. There are many ways of intercommunicating the components of a dEC process. This section describes the existing techniques for dEC and the improvements on dEC that the proposed platform will provide.  Since the quantity of techniques is very large, a framework is used for standardizing the description of these techniques, this framework was defined in the survey of the state-of-the-art of distributed EAs by Yue-Jiao Gong et al. [25] and it splits the components of a dEC application on four layers as shown in Figure 1.  
 
@@ -230,7 +132,7 @@ Many dEA frameworks have been implemented, but they are either EA-specific [30],
 
 Another innovation introduced by the proposed platform is a blockchain to allow the use of trust-less nodes and to provide reliability and traceability of a dEA allowing its use in large-scale optimization projects over insecure networks.
 
-6.1.3	Decentralized Architectural Pattern
+### 6.1.3	Decentralized Architectural Pattern
 
 The proposed platform features a Decentralized Architectural Pattern that allows fault-tolerance in any node participating in a distributed EC technique [35] [25]. The main difference between a decentralized or peer-to-peer network and a client-server network is that while in the latter a node can exclusively behave as client or server, in the former peer nodes simultaneously function as both clients and servers to the other nodes on the network and this feature makes that there are no central nodes or single points of failure.
 
@@ -242,7 +144,7 @@ The Bittorrent protocol designed on 2001 is more efficient for searching resourc
 
 In this project HTTP requests will be used for communication between nodes implementing a Representational State Transfer (REST) Web service platform to favor the interaction with a broad spectrum of programming languages and applications capable of sending HTTP requests, running in heterogeneous platforms and making the network suitable for Internet of Things (IoT) applications by allowing pre-trained model evaluation with sensor data without dealing with the model training computing exigencies in these devices. 
 
-6.1.4	REST Application Programming Interface (API)
+### 6.1.4	REST Application Programming Interface (API)
 
 The proposed platform will feature a Representational State Transfer (REST) API to provide a language-agnostic interface to make distributed EC applications. A REST AP is a way of communicating computer systems over a network, it was proposed in the Ph.D. thesis of Roy Fielding [36] and is widely used in mobile and desktop applications, especially as way of providing interoperability between devices with heterogeneous hardware capable of sending HTTP requests and receive responses from an HTTP server. The messages transmitted in the API can be in any format but the responses are commonly text encoded in XML, HTML or JSON format. The use of a REST API is a commonly used tactic for implementing a Service Oriented Architecture(SoA).
 
@@ -250,7 +152,7 @@ The main characteristic of a REST API is the use of the standard HTTP protocol m
 
 The use of the standard HTTP protocol methods has additional advantages to the interoperability, as the fact that the standard HTTP allowed traffic in a Firewall also allows the communication via a REST interface and it is usable by clients behind a router with NAT, and the HTTPS secure communications protocol can be used without API changes.
 
-6.1.5	Public Key Cryptography
+### 6.1.5	Public Key Cryptography
 
 The proposed platform requirement of traceability of the activity of nodes participating in an optimization process justifies the use of a cryptographic system. 
 
@@ -276,7 +178,7 @@ For this platform, a pair of public and private keys will be created to identify
  
 Figure 5 - Pretty Good Privacy (PGP) Message Signing. Image Source: [42]
 
-6.1.6	Blockchain
+### 6.1.6	Blockchain
 
 A blockchain is a transaction ledger first used in Bitcoin and later in other applications for traceability of operations between nodes of a network. It is a read-only distributed database running on top of a storage media for the blocks (of transactions) provided by the nodes, the storage media for the blocks can be any database or a local text file containing the block’s content in JSON, XML or any other format.
 
@@ -293,10 +195,10 @@ The proof-of-work cryptocurrency generation mechanism in Bitcoin involves solvin
 The blockchain characteristic of serving as public ledger of changes in some information composed of signed blocks, cryptographically linked with the past ones and with verification based consensus has recently been used for decentralized DNS [45], voting systems [46], smart contracts [47] and private data management [48]. While in Bitcoin, nodes manifest their block verification and consensus to use it by cryptographically signing the next generated block with a hash of the validated one [44], in the proposed platform, nodes manifest their verification and consensus to use the new block by merging it with their population.
 
 In the proposed platform, the blockchain will provide traceability so a user can know the identity of the nodes that increased the performance of the model and the timeline of advancements. The traceability also allows to protect the process against false or corrupt reports of performance by network nodes as it contains a history of changes in performance and the reported author nodes.  Also, the blockchain is a data reliability tactic since a change in a past block of the blockchain implies the creation of all subsequent blocks and any change in a block is detectable once chained to the blockchain, protecting the information from corruption once the data has been accepted by the nodes consensus.  
-6.2	PROTOTYPE AND EXPERIMENT TOPICS
+### 6.2	PROTOTYPE AND EXPERIMENT TOPICS
 This section describes the topics related to the prototype network node design for a distributed optimization experiment. In the proposed experiment, an automatic foreign exchange trading agent is trained by using reinforcement learning with a distributed evolutionary computation technique being executed in the proposed platform.  
 
-6.2.1	Reinforcement Learning (RL)
+### 6.2.1	Reinforcement Learning (RL)
 
 As proof of concept, the proposed platform will be used to perform a distributed RL experiment in the forex trading automation domain. RL is an area of machine learning that has the objective of mapping situations to actions, maximizing a reward given to an agent that interacts with an environment by executing actions resulting from policies applied to observations of the environment and obtaining a cumulative reward [49] as shown in Figure 6.
 
@@ -329,7 +231,7 @@ There exist some software frameworks with repositories  reinforcement learning e
 
 Additionally, recently the Open AI Universe software platform was released with more than 1000 environments including modern 3D videogames and common benchmarking problems used in reinforcement learning literature, this platform uses the Docker application virtualization technology and the VNC remote desktop system to generate the image of the screen of any application as the observation and features mouse and keyboard events as actions controlled by an agent, keeping the same programming interface than open AI Gym. 
 
-6.2.2	Automated Foreign Exchange Trading
+### 6.2.2	Automated Foreign Exchange Trading
 
 As a prototype application of the proposed platform, an automated trading agent in the forex market will be implemented. The foreign exchange market is the largest market in the world, it is also called Forex and is a global, decentralized market for currency trading, works 24 hours, every day of the year except for weekends. 
 
@@ -364,11 +266,11 @@ The trading simulation model will generate additionally as observations the agen
 Multiple instances of this trading simulation will be used in the proposed platform and they will parallelly evaluate candidate solutions produced by a decentralized neuroevolution algorithm that is executed continually even if any participating device is disconnected from the optimization network. 
 
 
-7.	METHODOLOGY
+### 7.	METHODOLOGY
 The objective of this work is to design and implement a software platform that leverages: the fault-tolerance of decentralized networks, the advantages of the blockchain for reliability and the interoperability that provides a REST API. And using this platform, deploy a training process for automated foreign exchange trading with a simulated Forex account as validation experiment. 
 
 The methodology proposed to achieve the objectives of this work has three steps: platform design, node implementation and deployment of an experiment built on the platform. These steps are described in the following sections.
-7.1	PLATFORM DESIGN
+### 7.1	PLATFORM DESIGN
 The objective of this step is to define the components, relationships and behaviors of the proposed platform. The following activities will be performed for this step:
 
 •	To define application requirements and case uses.
@@ -376,13 +278,13 @@ The objective of this step is to define the components, relationships and behavi
 •	To design a decentralized software architecture for the proposed, that satisfy the requirements.
 •	To define the data structures and storage technologies used for implementation of the architectural design.
 •	To define the communications protocol between nodes as a REST API.
-7.2	NODE IMPLEMENTATION
+### 7.2	NODE IMPLEMENTATION
 The objective of this step is to implement a prototype node of the proposed platform. The following activities will be performed for this step:
 
 •	To implement the data structures using the technologies selected during the design process.
 •	To implement a REST API in a platform node in the selected language.
 •	Unit testing of the implemented node.
-7.3	EXPERIMENT DESIGN AND DEPLOYMENT
+### 7.3	EXPERIMENT DESIGN AND DEPLOYMENT
 An experiment is proposed to show the functionality of the platform in a real-world application, the objective of the experiment is to validate the scalability of an optimization process of neural network parameters for value function estimation and policy search in reinforcement learning with an evolutionary computation technique (NEAT) in the proposed platform.  Also, the experiment will validate the continuity of a training process in the eventuality of retiring some nodes from the network. 
 
 The selected problem for experimentation is the automated Forex trading, this problem is defined here with the following question: ¿What actions a software agent must execute given some market and agent conditions to maximize its equity in a Forex trading account starting with some initial capital while maintaining an acceptable risk level, and how to measure the agent’s performance? 
