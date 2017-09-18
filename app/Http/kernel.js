@@ -29,7 +29,7 @@ const globalMiddleware = [
 |
 */
 const namedMiddleware = {
-  'auth.basic': 'App/Http/Middleware/BasicAuth'
+  auth: 'Adonis/Middleware/Auth'
 }
 
 /*
