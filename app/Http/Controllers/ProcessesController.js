@@ -3,8 +3,8 @@
 class ProcessesController {
     * headList(request, response) {
         const metadata_list = {
-            "num_results": "3",
-            "results":
+            "num_items": "3",
+            "items":
                     [
                         {"process_id": "1", "model_id": "4", "performance": "0.75543", "date_optimum": "2017-09-02 05:22:31"},
                         {"process_id": "2", "model_id": "5", "performance": "0.81513", "date_optimum": "2017-09-02 05:20:12"},
