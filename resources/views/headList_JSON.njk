@@ -7,8 +7,8 @@
     "results":
     {{metadata_list}}
     [
-        {% for process_id,model_id,performance, date_optimum in metadata_list %}
-            {"id":"{{ process_id }}","model_id":"{{ model_id }}","performance":"{{ performance }}","date_optimum":"{{ date_optimum }}"},
+        {% for metadata in metadata_list %}
+            {"id":"{{ metadata.process_id }}","model_id":"{{ metadata.model_id }}","performance":"{{ metadata.performance }}","date_optimum":"{{ metadata.date_optimum }}"},
         {% endfor %}
     ]
 }
