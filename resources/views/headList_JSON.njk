@@ -2,7 +2,7 @@
 {% extends 'master_JSON' %}
 
 {% block content %}
-    {{ metadata_list | dump}}
+    {{ metadata_list | dump|raw}}
 {% endblock %}
 
 {% block request_id %}
