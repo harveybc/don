@@ -1,0 +1,19 @@
+{# Includes the JSON-RPC 2.0 specification template #}
+{% extends 'master_JSON' %}
+
+{% block content %}
+{
+    "num_results": "3",
+    "results":
+    {{metadata_list}}
+    [
+        {% for process_id,model_id,performance, date_optimum in metadata_list %}
+            {"id":"{{ process_id }}","model_id":"{{ model_id }}","performance":"{{ performance }}","date_optimum":"{{ date_optimum }}"},
+        {% endfor %}
+    ]
+}
+{% endblock %}
+
+{% block footer %}
+{{ id }}
+{% endblock %}
