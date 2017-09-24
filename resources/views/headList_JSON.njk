@@ -4,12 +4,7 @@
 {% block content %}
 {
     "num_results": "3",
-    "results":
-    [
-        {% for metadata in metadata_list %}
-            {"id":"{{ metadata.process_id }}","model_id":"{{ metadata.model_id }}","performance":"{{ metadata.performance }}","date_optimum":"{{ metadata.date_optimum }}"},
-        {% endfor %}
-    ]
+    "results": {{ metadata_list }}
 }
 {% endblock %}
 
