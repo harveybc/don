@@ -3,12 +3,7 @@
 
 {% block content %}
 {
-    "num_results": metadata_list.num_items,
-    "results": [ 
-        {% for item in metadata_list.items %}
-            {{ item | dump }},
-        {% endfor %}
-    ]
+    {{ metadata_list | dump}}
 }
 {% endblock %}
 
