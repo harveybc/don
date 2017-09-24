@@ -1,13 +1,8 @@
 {# Includes the JSON-RPC 2.0 specification template #}
-{% extends 'master_JSON' %}
 {# Content with the JSON_STRINGIFY(metadata_list) without escaping characters #}
-{% block content %}
-    {{ metadata_list | dump | safe}}
-{% endblock %}
+{% extends 'master_JSON' %}{% block content %}{{ metadata_list | dump | safe}}{% endblock %}
 {# if field for the JSONRPC 2.0 specification http://www.jsonrpc.org/specification #}
-{% block request_id %}
-{{ id }}
-{% endblock %}
+{% block request_id %}{{ id }}{% endblock %}
 
 
                 
