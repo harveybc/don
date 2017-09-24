@@ -4,7 +4,11 @@
 {% block content %}
 {
     "num_results": "3",
-    "results": {{ metadata_list }}
+    "results": { 
+        {% for item in metadata_list %}
+            {{ item.results }}
+        {% endfor %}
+    }
 }
 {% endblock %}
 
