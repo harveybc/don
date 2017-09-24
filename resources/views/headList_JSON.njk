@@ -5,7 +5,6 @@
 {
     "num_results": "3",
     "results":
-    {{metadata_list}}
     [
         {% for metadata in metadata_list %}
             {"id":"{{ metadata.process_id }}","model_id":"{{ metadata.model_id }}","performance":"{{ metadata.performance }}","date_optimum":"{{ metadata.date_optimum }}"},
