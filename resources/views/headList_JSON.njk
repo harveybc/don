@@ -3,10 +3,9 @@
 
 {% block content %}
 {
-    "num_results": "3",
+    "num_results": metadata_list.num_items,
     "results": [ 
-        {% for item in metadata_list %}
-            test,
+        {% for item in metadata_list.items %}
         {% endfor %}
     ]
 }
