@@ -17,7 +17,7 @@
 
 const Route = use('Route')
 
-Route.route('/processes', 'HEAD', 'ProcessesController.headList')
+Route.route('/processes', 'GET', 'ProcessesController.headList')
 
 
 // Route.get('/', 'ListController.show')
