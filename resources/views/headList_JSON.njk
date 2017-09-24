@@ -6,7 +6,7 @@
     "num_results": metadata_list.num_items,
     "results": [ 
         {% for item in metadata_list.items %}
-            {{ item }},
+            {{ item | dump }},
         {% endfor %}
     ]
 }
