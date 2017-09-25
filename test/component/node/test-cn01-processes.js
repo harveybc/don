@@ -30,10 +30,10 @@ describe('Processes Collection', function() {
     expected_response = '{"jsonrpc": "2.0", "result": {"process_id":1,"model_id":4,"performance":0.75543,"date_optimum":"2017-09-02 05:22:31"}, "id":3}';
     // Assesment  
     it(description, function(done) {
-        // Makes request to the endpoint
+        // Makes request to the endpoint 
         request.get(endpoint+parameters , function(error, response, body) {
             parsed_body=JSON.parse(body);
-            parsed_expected_response=JSON.parse(expected_response);
+            parsed_expected_response=JSON.parse(expected_response); 
             // Verify if the result is equal to the expected response. 
             expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
             done();
