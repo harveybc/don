@@ -18,6 +18,7 @@
 const Route = use('Route')
 
 Route.get('/processes/metadata', 'ProcessesController.metadataList')
+Route.get('/processes/metadata/:id', 'ProcessesController.metadataItem')
 
 // Route.get('/', 'ListController.show')
 // Route.get('/login', 'AuthController.index')
