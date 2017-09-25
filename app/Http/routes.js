@@ -17,7 +17,7 @@
 
 const Route = use('Route')
 
-Route.get('/processes/metadata', 'ProcessesController.headList')
+Route.get('/processes/metadata', 'ProcessesController.metadataList')
 
 // Route.get('/', 'ListController.show')
 // Route.get('/login', 'AuthController.index')
