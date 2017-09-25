@@ -4,4 +4,3 @@ storage
 .env
 npm-debug.log
 /nbproject/private/
-/node_modules
