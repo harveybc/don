@@ -39,6 +39,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "chai": "^4.1.2",
+    "formats": "^0.5.5",
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "raw": "^0.1.4",
