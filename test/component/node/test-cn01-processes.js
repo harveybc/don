@@ -29,7 +29,7 @@ describe('Processes Collection', function() {
     endpoint = 'http://dev.ingeni-us.com:3338/processes/metadata/1?';
     expected_response = '{"jsonrpc": "2.0", "result": {"process_id":1,"model_id":4,"performance":0.75543,"date_optimum":"2017-09-02 05:22:31"}, "id":3}';
     // Assesment  
-    it(description, function(done) {
+    it(description, function(done) { 
         // Makes request to the endpoint 
         request.get(endpoint+parameters , function(error, response, body) {
             parsed_body=JSON.parse(body);
