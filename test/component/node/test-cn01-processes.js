@@ -54,7 +54,6 @@ describe('Processes Collection', function() {
             done();
         });
     });
-    /** 
     // Test CN01-4:  GET processes<id> request (GetItem)
     // Configuration
     description = 'CN01-4: GET processes/item/<id> (GetItem)';
@@ -72,6 +71,7 @@ describe('Processes Collection', function() {
             done();
         });
     });    
+     /** 
     // Test CN01-5:  POST processes request (CreateItem)
     // Configuration
     description = 'CN01-5: POST processes (CreateItem)';
