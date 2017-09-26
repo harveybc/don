@@ -22,7 +22,6 @@ describe('Processes Collection', function() {
             done();
         });
     }); 
-    /** 
     // Test CN01-2:  GET processes/metadata/<id> request (metadataItem)
     // Configuration
     description = 'CN01-2: GET processes/metadata/<id> (MetadataItem)';
@@ -40,6 +39,7 @@ describe('Processes Collection', function() {
             done();
         });
     });
+    /** 
     // Test CN01-3:  GET processes (GetList)
     // Configuration
     description = 'CN01-3: GET processes/item (GetList)';
