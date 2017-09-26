@@ -71,7 +71,7 @@ describe('Processes Collection', function () {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/processes?';
-        var expected_response = '{"jsonrpc": "2.0", "result": {"id": 4}, "id":3}';
+        var expected_response = '{"jsonrpc": "1.0", "result": {"id": 4}, "id":3}';
         // Assesment  
         request.post(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
