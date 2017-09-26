@@ -6,4 +6,4 @@
 {# Content for the response from the metadata_list variable #}
 {% block content %}{{ result | dump | safe}}{% endblock %}
 {# JSONRPC 2.0 Footer from http://www.jsonrpc.org/specification #}
-{% block footer %}, "id":{% block req_id %}{% endblock %}}{{ request_id }}{% endblock %}  
+{% block footer %}, "id":{% block req_id %}{{ request_id }}{% endblock %}}{% endblock %}  
