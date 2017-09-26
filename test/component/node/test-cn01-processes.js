@@ -61,7 +61,7 @@ describe('Processes Collection', function () {
             parsed_expected_response = JSON.parse(expected_response);
             // Verify if the result is equal to the expected response. 
             expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-            done();
+            done(); 
         });
     });
 
