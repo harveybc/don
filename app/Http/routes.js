@@ -1,36 +1,29 @@
+// REST API routes for the adonis.js framework
+// Created: Harvey D. Bastidas C. 20170921
+// This file is part of the singularity platform project
 'use strict'
-
-/*
-|--------------------------------------------------------------------------
-| Router
-|--------------------------------------------------------------------------
-|
-| AdonisJs Router helps you in defining urls and their actions. It supports
-| all major HTTP conventions to keep your routes file descriptive and
-| clean.
-|
-| @example
-| Route.get('/user', 'UserController.index')
-| Route.post('/user', 'UserController.store')
-| Route.resource('user', 'UserController')
-*/
 
 const Route = use('Route')
 
-Route.get('/processes/metadata', 'ProcessesController.metadataList')
-Route.get('/processes/metadata/:id', 'ProcessesController.metadataItem')
+// Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention
+// 
+// PROCESSES COLLECTION MANAGEMENT:
+// MetadataList: get a list of processes' metadata 
+Route.get('/processes/metadata', 'ProcessesStubController.MetadataList')
+// MetadataItem: get a list of a process' metadata
+Route.get('/processes/metadata/:id', 'ProcessesStubController.MetadataItem')
+// GetList: get a list of processes
+Route.get('/processes', 'ProcessesStubController.GetList')
+// GetItem: get a process
+Route.get('/processes/:id', 'ProcessesStubController.GetItem')
+// CreateItem: create a process
+Route.post('/processes', 'ProcessesStubController.CreateItem')
+// DeleteItem: Deletes a process
+Route.delete('/processes/:id', 'ProcessesStubController.DeleteItem')
+// EmptyCollection: Deletes all processes in a collection for which the user is admin
+Route.delete('/processes', 'ProcessesStubController.EmptyCollection')
+//
+// APPLICATIONS COLLECTION MANAGEMENT:
+// MetadataList: get a list of processes' metadata 
+Route.get('/processes/metadata', 'ProcessesController.MetadataList')
 
-// Route.get('/', 'ListController.show')
-// Route.get('/login', 'AuthController.index')
-// Route.post('/login', 'AuthController.login')
-
-// Route.get('/register', 'RegisterController.index')
-// Route.post('register', 'RegisterController.doRegister')
-
-
-// Route.put('/api/:resource', 'CrudController.update') //optional 
-// Route.get('/api/:resource/grid', 'CrudController.grid') //the grid configurations for the list grid view 
-// Route.get('/api/:resource/form', 'CrudController.form') //the form configurations for create 
-// Route.get('/api/:resource/:id/form', 'CrudController.form') // the form configurations for edit 
-// Route.resource('/api/:resource', 'CrudController') //CRUD for resources 
-// Route.resource('/api/:parent/:parentId/:resource', 'CrudController') //CRUD for netsted resource (In Progress...) 
