@@ -71,6 +71,7 @@ describe('Processes Collection', function() {
             done();
         });
     });    
+         /** 
     // Test CN01-5:  POST processes request (CreateItem)
     // Configuration
     description = 'CN01-5: POST processes (CreateItem)';
@@ -88,7 +89,7 @@ describe('Processes Collection', function() {
             done();
         });
     });   
-     /** 
+
     // Test CN01-6:  DELETE processes/<id> request (DeleteItem)
     // Configuration
     description = 'CN01-6: DELETE processes/<id> (DeleteItem)';
