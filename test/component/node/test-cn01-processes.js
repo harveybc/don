@@ -22,14 +22,14 @@ describe('Processes Collection', function() {
             done();
         });
     }); 
-    
+    /** 
     // Test CN01-2:  GET processes/metadata/<id> request (metadataItem)
     // Configuration
     description = 'CN01-2: GET processes/metadata/<id> (MetadataItem)';
     parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
     endpoint = 'http://dev.ingeni-us.com:3338/processes/metadata/1?';
     expected_response = '{"jsonrpc": "2.0", "result": {"process_id": 1, "model_id": 4, "performance": 0.75543, "date_optimum": "2017-09-02 05:22:31"}, "id":3}';
-    // Assesment  
+   // Assesment  
     it(description, function(done) { 
         // Makes request to the endpoint 
         request.get(endpoint+parameters , function(error, response, body) {
@@ -123,5 +123,6 @@ describe('Processes Collection', function() {
             done();
         });
     });  
+    */
 });
 
