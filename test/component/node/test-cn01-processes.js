@@ -34,7 +34,7 @@ describe('Processes Collection', function () {
         });
     });
     // Test CN01-3:  GET processes (GetList)
- description = 'CN01-3: GET processes/item (GetList)';
+    description = 'CN01-3: GET processes/item (GetList)';
     it(description, function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
@@ -49,7 +49,7 @@ describe('Processes Collection', function () {
         });
     });
     // Test CN01-4:  GET processes<id> request (GetItem)
- description = 'CN01-4: GET processes/item/<id> (GetItem)';
+    description = 'CN01-4: GET processes/item/<id> (GetItem)';
     it(description, function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
@@ -81,41 +81,37 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    /** 
-     // Test CN01-6:  DELETE processes/<id> request (DeleteItem)
-     // Configuration
-     description = 'CN01-6: DELETE processes/<id> (DeleteItem)';
-     parameters = 'public_key=PUB_KEY&xml=false';
-     endpoint = 'http://dev.ingeni-us.com:3338/processes/1?';
-     expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 1}, "id":3}';
-     // Assesment  
-     it(description, function(done) { 
-     // Makes request to the endpoint 
-     request.delete(endpoint+parameters , function(error, response, body) {
-     parsed_body=JSON.parse(body);
-     parsed_expected_response=JSON.parse(expected_response); 
-     // Verify if the result is equal to the expected response. 
-     expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-     done();
-     });
-     });   
-     // Test CN01-7:  DELETE processes request (EmptyCollection)
-     // Configuration 
-     description = 'CN01-7: DELETE processes (EmptyCollection)';
-     parameters = 'public_key=PUB_KEY&xml=false';
-     endpoint = 'http://dev.ingeni-us.com:3338/processes?';
-     expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 3}, "id":3}';
-     // Assesment  
-     it(description, function(done) { 
-     // Makes request to the endpoint 
-     request.delete(endpoint+parameters , function(error, response, body) {
-     parsed_body=JSON.parse(body);
-     parsed_expected_response=JSON.parse(expected_response); 
-     // Verify if the result is equal to the expected response. 
-     expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-     done();
-     });
-     });  
-     */
+    // Test CN01-6:  DELETE processes/<id> request (DeleteItem)
+    description = 'CN01-6: DELETE processes/<id> (DeleteItem)';
+    it(description, function (done) {
+        // Configuration
+        var parameters = 'public_key=PUB_KEY&xml=false';
+        var endpoint = 'http://dev.ingeni-us.com:3338/processes/1?';
+        var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 1}, "id":3}';
+        // Assesment  
+        request.delete(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-7:  DELETE processes request (EmptyCollection)
+    description = 'CN01-7: DELETE processes (EmptyCollection)';
+    it(description, function (done) {
+    // Configuration 
+    var parameters = 'public_key=PUB_KEY&xml=false';
+    var endpoint = 'http://dev.ingeni-us.com:3338/processes?';
+    var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 3}, "id":3}';
+    // Assesment  
+        request.delete(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
 });
 
