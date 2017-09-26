@@ -106,7 +106,7 @@ describe('Processes Collection', function() {
         });
     });   
     // Test CN01-7:  DELETE processes request (EmptyCollection)
-    // Configuration
+    // Configuration 
     description = 'CN01-7: DELETE processes (EmptyCollection)';
     parameters = 'public_key=PUB_KEY&xml=false';
     endpoint = 'http://dev.ingeni-us.com:3338/processes?';
