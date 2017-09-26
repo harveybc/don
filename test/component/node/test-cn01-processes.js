@@ -27,7 +27,7 @@ describe('Processes Collection', function() {
     description = 'CN01-2: GET processes/metadata/<id> (MetadataItem)';
     parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
     endpoint = 'http://dev.ingeni-us.com:3338/processes/metadata/1?';
-    expected_response = '{"jsonrpc": "2.0", "result": {"process_id":1,"model_id":4,"performance":0.75543,"date_optimum":"2017-09-02 05:22:31"}, "id":3}';
+    expected_response = '{"jsonrpc": "2.0", "result": {"process_id": 1, "model_id": 4, "performance": 0.75543, "date_optimum": "2017-09-02 05:22:31"}, "id":3}';
     // Assesment  
     it(description, function(done) { 
         // Makes request to the endpoint 
