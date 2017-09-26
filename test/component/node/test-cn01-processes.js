@@ -39,7 +39,6 @@ describe('Processes Collection', function() {
             done();
         });
     });
-    /** 
     // Test CN01-3:  GET processes (GetList)
     // Configuration
     description = 'CN01-3: GET processes/item (GetList)';
@@ -55,6 +54,7 @@ describe('Processes Collection', function() {
             done();
         });
     });
+    /** 
     // Test CN01-4:  GET processes<id> request (GetItem)
     // Configuration
     description = 'CN01-4: GET processes/item/<id> (GetItem)';
