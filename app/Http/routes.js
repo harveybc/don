@@ -13,9 +13,9 @@ Route.get('/processes/metadata', 'ProcessesStubController.MetadataList')
 // MetadataItem: get a list of a process' metadata
 Route.get('/processes/metadata/:id', 'ProcessesStubController.MetadataItem')
 // GetList: get a list of processes
-Route.get('/processes/item', 'ProcessesStubController.GetList')
+Route.get('/processes', 'ProcessesStubController.GetList')
 // GetItem: get a process
-Route.get('/processes/item/:id', 'ProcessesStubController.GetItem')
+Route.get('/processes/:id', 'ProcessesStubController.GetItem')
 // CreateItem: create a process
 Route.post('/processes', 'ProcessesStubController.CreateItem')
 // DeleteItem: Deletes a process
