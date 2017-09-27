@@ -25,8 +25,7 @@ class ProcessesTableSchema extends Schema {
       // block_time_control (0=CPoW,1=OPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det), [
       table.integer('block_time_control')
       table.integer('difficulty')
-    })
-    this.insert(parsed_expected_response.result)
+    }).insert(parsed_expected_response.result)
   }
 
   down () {
