@@ -117,7 +117,7 @@ module.exports = {
     | IoC container. Setting it to false will disable this feature.
     |
     */
-    injectServices: true
+    injectServices: false
   },
 
   static: {
