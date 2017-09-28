@@ -15,7 +15,7 @@
 // const Factory = use('Factory')
 
 // usa modelo de Procesos
-const Process = use(App/Model/Processes)
+const Process = use(app/Model/Processes)
 
 class DatabaseSeeder {
     
