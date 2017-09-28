@@ -7,7 +7,8 @@
     "dev": "echo \"\\033[31mWARN: 'dev' will be depreciated soon. Instead use 'npm run serve:dev'\" && npm run serve:dev",
     "serve:dev": "nodemon --watch app --watch bootstrap --watch config --watch .env -x node server.js",
     "serve": "node server.js",
-    "lint": "standard"
+    "lint": "standard",
+    "test": "mocha --recursive test"
   },
   "author": "Harvey Bastidas <harveybc@ingeni-us.com> (http://dev.ingeni-us.com:3338)",
   "license": "SEE LICENCE IN <s_license.txt>",
@@ -23,6 +24,8 @@
     "adonis-middleware": "^1.0.11",
     "adonis-websocket": "^1.0.3",
     "debug": "^3.0.1",
+    "request": "^2.82.0",
+    "sqlite3": "3.1.8",
     "youch": "^2.0.4"
   },
   "standard": {
@@ -35,10 +38,14 @@
     "App": "./app"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "chai": "^4.1.2",
+    "formats": "^0.5.5",
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
-    "standard": "^10.0.1"
+    "raw": "^0.1.4",
+    "standard": "^10.0.1",
+    "test": "^0.6.0"
   },
   "repository": {
     "type": "git",
@@ -55,7 +62,7 @@
     "url": "https://github.com/harveybc/singularity/issues"
   },
   "homepage": "https://github.com/harveybc/singularity#readme",
-	"engines": {
-  "node": ">=4.2.4"
-},
+  "engines": {
+    "node": ">=4.2.4"
+  }
 }
