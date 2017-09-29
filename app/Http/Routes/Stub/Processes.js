@@ -5,16 +5,16 @@
 const Route = use('Route')
 // PROCESSES COLLECTION MANAGEMENT:
 // MetadataList: get a list of processes' metadata 
-Route.get('/stub/processes/metadata', 'ProcessesStubController.MetadataList')
+Route.get('/stub/processes/metadata', 'Stub/ProcessesStubController.MetadataList')
 // MetadataItem: get a list of a process' metadata
-Route.get('/stub/processes/metadata/:id', 'ProcessesStubController.MetadataItem')
+Route.get('/stub/processes/metadata/:id', 'Stub/ProcessesStubController.MetadataItem')
 // GetList: get a list of processes
-Route.get('/stub/processes', 'ProcessesStubController.GetList')
+Route.get('/stub/processes', 'Stub/ProcessesStubController.GetList')
 // GetItem: get a process
-Route.get('/stub/processes/:id', 'ProcessesStubController.GetItem')
+Route.get('/stub/processes/:id', 'Stub/ProcessesStubController.GetItem')
 // CreateItem: create a process
-Route.post('/stub/processes', 'ProcessesStubController.CreateItem')
+Route.post('/stub/processes', 'Stub/ProcessesStubController.CreateItem')
 // DeleteItem: Deletes a process
-Route.delete('/stub/processes/:id', 'ProcessesStubController.DeleteItem')
+Route.delete('/stub/processes/:id', 'Stub/ProcessesStubController.DeleteItem')
 // EmptyCollection: Deletes all processes in a collection for which the user is admin
-Route.delete('/stub/processes', 'ProcessesStubController.EmptyCollection')
+Route.delete('/stub/processes', 'Stub/ProcessesStubController.EmptyCollection')
