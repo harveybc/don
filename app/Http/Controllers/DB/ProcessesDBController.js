@@ -3,10 +3,8 @@
 class ProcessesDBController {
     // Returns a list of metadata for found processes
     * MetadataList(request, response) {
-        const result = [
-                {"id":1, "updated_at": "2017-09-03 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009},
-                {"id":2, "updated_at": "2017-09-04 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009},
-                {"id":3, "updated_at": "2017-09-05 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}]
+        const Database = use('Database')
+        const result = Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").from('users').limit(3)
         // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
