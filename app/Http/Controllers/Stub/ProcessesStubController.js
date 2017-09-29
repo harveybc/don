@@ -1,3 +1,4 @@
+// Stub process controler
 'use strict'
 
 class ProcessesStubController {
