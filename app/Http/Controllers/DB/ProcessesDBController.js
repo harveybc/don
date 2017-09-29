@@ -13,7 +13,7 @@ class ProcessesDBController {
         const Database = use('Database')
         const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").from('processes').where('id',1)
         const process_id = request.param('id')
-        yield response.sendView('master_JSON', {result: result, request_id: 3})
+        yield response.sendView('master_JSON', {result: result[0], request_id: 3})
     }
     // Returns a list of processes
     * GetList(request, response) {
