@@ -10,7 +10,7 @@ class ProcessesDBController {
     }
     // Returns the metadata for the <id> process
     * MetadataItem(request, response) {
-        const result = {"id":1, "updated_at": "2017-09-03 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}
+        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").from('processes').where('id',1)
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
