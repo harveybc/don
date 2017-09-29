@@ -2,7 +2,7 @@
  * This file has the routes used for testing without database or AAA
  */
 // Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention
-// 
+const Route = use('Route')
 // PROCESSES COLLECTION MANAGEMENT:
 // MetadataList: get a list of processes' metadata 
 Route.get('/stub/processes/metadata', 'ProcessesStubController.MetadataList')
