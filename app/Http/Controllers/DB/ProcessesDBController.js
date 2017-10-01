@@ -17,6 +17,7 @@ class ProcessesDBController {
     }
     // Returns a list of processes
     * GetList(request, response) {
+        const Database = use('Database')
         const result = yield Database.select('*').from('processes').limit(request.param('max_results'))
         // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request
         yield response.sendView('master_JSON', {result: result, request_id: 3})
