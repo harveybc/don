@@ -1,5 +1,5 @@
 {
-  "source": "./app",
+  "source": ["./test/**/*.js","./database/**/*.js","./resources/views/**/*.njk", "./app/**/*.js"],
   "destination": "./docs",
   "plugins": [
     {"name": "esdoc-standard-plugin"}
