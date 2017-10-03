@@ -32,16 +32,15 @@ class ProcessesTableSchema extends Schema {
       table.integer('last_block_difficulty') 
       table.integer('last_block_time') // in milliseconds 
       table.integer('last_block_size') // in bytes
-      // Optional status for last block if using block_time_control>0 (!OPoW) 
+      // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
       table.integer('last_block_performance')
-      // Optional status for LAST OPTIMUM if using block_time_control>0 (!OPoW) 
+      // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
       table.integer('last_optimum_id')
       table.timestamp('last_optimum_date')
       table.float('last_optimum_performance')
     })
     this.insert(parsed_expected_response.result)
   }
-
   down () {
     this.drop('processes')
   }
