@@ -4,7 +4,9 @@ class ProcessesDBController {
     // Returns a list of metadata for found processes
     * MetadataList(request, response) {
         const Database = use('Database')
-        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").from('processes').limit(3)
+        var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};
+        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").
+                    where('app_id',1,'public_key',).from('processes').limit(3)
         // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
