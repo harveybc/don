@@ -1,0 +1,1634 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "app/.external-ecmascript.js",
+    "static": true,
+    "longname": "app/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "app/Commands/Greet.js",
+    "content": "'use strict'\n\nconst Command = use('Command')\n\nclass Greet extends Command {\n\n  /**\n   * signature defines the requirements and name\n   * of command.\n   *\n   * @return {String}\n   */\n  get signature () {\n    return 'greet {name}'\n  }\n\n  /**\n   * description is the little helpful information displayed\n   * on the console.\n   *\n   * @return {String}\n   */\n  get description () {\n    return 'Greet a user with a name'\n  }\n\n  /**\n   * handle method is invoked automatically by ace, once your\n   * command has been executed.\n   *\n   * @param  {Object} args    [description]\n   * @param  {Object} options [description]\n   */\n  * handle (args, options) {\n    this.info(`Hello ${args.name}`)\n  }\n\n}\n\nmodule.exports = Greet\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Commands/Greet.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "Command",
+    "memberof": "app/Commands/Greet.js",
+    "static": true,
+    "longname": "app/Commands/Greet.js~Command",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Commands/Greet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "class",
+    "name": "Greet",
+    "memberof": "app/Commands/Greet.js",
+    "static": true,
+    "longname": "app/Commands/Greet.js~Greet",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Commands/Greet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Command"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "get",
+    "name": "signature",
+    "memberof": "app/Commands/Greet.js~Greet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/Commands/Greet.js~Greet#signature",
+    "access": "public",
+    "description": "signature defines the requirements and name\nof command.",
+    "lineNumber": 13,
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "get",
+    "name": "description",
+    "memberof": "app/Commands/Greet.js~Greet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "app/Commands/Greet.js~Greet#description",
+    "access": "public",
+    "description": "description is the little helpful information displayed\non the console.",
+    "lineNumber": 23,
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "name": "handle",
+    "memberof": "app/Commands/Greet.js~Greet",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Commands/Greet.js~Greet#handle",
+    "access": "public",
+    "description": "handle method is invoked automatically by ace, once your\ncommand has been executed.",
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "args",
+        "description": "[description]"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "[description]"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "app/Http/Controllers/DB/ProcessesDBController.js",
+    "content": "'use strict'\n\nclass ProcessesDBController {\n    // Returns a list of metadata for found processes\n    * MetadataList(request, response) {\n        const Database = use('Database')\n        var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};\n        const result = yield Database.select(\"id\", \"updated_at\", \"last_block_time\", \"last_block_size\", \"last_optimum_performance\", \"last_optimum_id\", \"date_last_optimum\", \"difficulty\").\n                    where('app_id',1,'public_key',).from('processes').limit(3)\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the metadata for the <id> process\n    * MetadataItem(request, response) {\n        const Database = use('Database')\n        const result = yield Database.select(\"id\", \"updated_at\", \"last_block_time\", \"last_block_size\", \"last_optimum_performance\", \"last_optimum_id\", \"date_last_optimum\", \"difficulty\").from('processes').where('id',1)\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result[0], request_id: 3})\n    }\n    // Returns a list of processes\n    * GetList(request, response) {\n        const Database = use('Database')\n        const result = yield Database.select('*').from('processes').limit(request.param('max_results'))\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the the <id> process\n    * GetItem(request, response) {\n        const result = {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * CreateItem(request, response) {\n        const result = {\"id\": 4}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * DeleteItem(request, response) {\n        const result = {\"delete_count\": 1}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * EmptyCollection(request, response) {\n        const result = {\"delete_count\": 3}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n}\n\nmodule.exports = ProcessesDBController\n    ",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "class",
+    "name": "ProcessesDBController",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js",
+    "static": true,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "MetadataList",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#MetadataList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "MetadataItem",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#MetadataItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "GetList",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#GetList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "GetItem",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#GetItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "CreateItem",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#CreateItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "DeleteItem",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#DeleteItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "EmptyCollection",
+    "memberof": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#EmptyCollection",
+    "access": "public",
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "app/Http/Controllers/Stub/ProcessesStubController.js",
+    "content": "// Stub process controler\n'use strict'\n\nclass ProcessesStubController {\n    // Returns a list of metadata for found processes\n    * MetadataList(request, response) {\n        const result = [\n                {\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},\n                {\"id\":2, \"updated_at\": \"2017-09-04 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},\n                {\"id\":3, \"updated_at\": \"2017-09-05 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}]\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the metadata for the <id> process\n    * MetadataItem(request, response) {\n        const result = {\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns a list of processes\n    * GetList(request, response) {\n        const result = [\n                    {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 2, \"name\": \"Test process 2\", \"description\": \"Test process 2 -  stub testing\", \"created_at\": \"2017-09-03 05:22:31\", \"updated_at\": \"2017-09-04 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 3, \"name\": \"Test process 3\", \"description\": \"Test process 3 -  stub testing\", \"created_at\": \"2017-09-04 05:22:31\", \"updated_at\": \"2017-09-05 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n                ]\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> process\n    * GetItem(request, response) {\n        const result = {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * CreateItem(request, response) {\n        const result = {\"id\": 4}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * DeleteItem(request, response) {\n        const result = {\"delete_count\": 1}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * EmptyCollection(request, response) {\n        const result = {\"delete_count\": 3}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n}\n\nmodule.exports = ProcessesStubController\n    ",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "class",
+    "name": "ProcessesStubController",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js",
+    "static": true,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "MetadataList",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#MetadataList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "MetadataItem",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#MetadataItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "GetList",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#GetList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "GetItem",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#GetItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "CreateItem",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#CreateItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "DeleteItem",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#DeleteItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "EmptyCollection",
+    "memberof": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#EmptyCollection",
+    "access": "public",
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 72,
+    "kind": "file",
+    "name": "app/Http/Routes/DB/Processes.js",
+    "content": "/* \n * This file has the routes used for testing without AAA but with Database\n */\n// Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention\nconst Route = use('Route')\n// PROCESSES COLLECTION MANAGEMENT:\n// MetadataList: get a list of processes' metadata \nRoute.get('/db/processes/metadata', 'DB/ProcessesDBController.MetadataList')\n// MetadataItem: get a list of a process' metadata\nRoute.get('/db/processes/metadata/:id', 'DB/ProcessesDBController.MetadataItem')\n// GetList: get a list of processes\nRoute.get('/db/processes', 'DB/ProcessesDBController.GetList')\n// GetItem: get a process\nRoute.get('/db/processes/:id', 'DB/ProcessesDBController.GetItem')\n// CreateItem: create a process\nRoute.post('/db/processes', 'DB/ProcessesDBController.CreateItem')\n// DeleteItem: Deletes a process\nRoute.delete('/db/processes/:id', 'DB/ProcessesDBController.DeleteItem')\n// EmptyCollection: Deletes all processes in a collection for which the user is admin\nRoute.delete('/db/processes', 'DB/ProcessesDBController.EmptyCollection')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Routes/DB/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "Route",
+    "memberof": "app/Http/Routes/DB/Processes.js",
+    "static": true,
+    "longname": "app/Http/Routes/DB/Processes.js~Route",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/Routes/DB/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "file",
+    "name": "app/Http/Routes/Stub/Processes.js",
+    "content": "/* \n * This file has the routes used for testing without database or AAA\n */\n// Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention\nconst Route = use('Route')\n// PROCESSES COLLECTION MANAGEMENT:\n// MetadataList: get a list of processes' metadata \nRoute.get('/stub/processes/metadata', 'Stub/ProcessesStubController.MetadataList')\n// MetadataItem: get a list of a process' metadata\nRoute.get('/stub/processes/metadata/:id', 'Stub/ProcessesStubController.MetadataItem')\n// GetList: get a list of processes\nRoute.get('/stub/processes', 'Stub/ProcessesStubController.GetList')\n// GetItem: get a process\nRoute.get('/stub/processes/:id', 'Stub/ProcessesStubController.GetItem')\n// CreateItem: create a process\nRoute.post('/stub/processes', 'Stub/ProcessesStubController.CreateItem')\n// DeleteItem: Deletes a process\nRoute.delete('/stub/processes/:id', 'Stub/ProcessesStubController.DeleteItem')\n// EmptyCollection: Deletes all processes in a collection for which the user is admin\nRoute.delete('/stub/processes', 'Stub/ProcessesStubController.EmptyCollection')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Routes/Stub/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
+    "kind": "variable",
+    "name": "Route",
+    "memberof": "app/Http/Routes/Stub/Processes.js",
+    "static": true,
+    "longname": "app/Http/Routes/Stub/Processes.js~Route",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/Routes/Stub/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "file",
+    "name": "app/Http/kernel.js",
+    "content": "'use strict'\n\nconst Middleware = use('Middleware')\n\n/*\n|--------------------------------------------------------------------------\n| Global Middleware\n|--------------------------------------------------------------------------\n|\n| Global middleware are executed on every request and must be defined\n| inside below array.\n|\n*/\nconst globalMiddleware = [\n  'Adonis/Middleware/Cors',\n  'Adonis/Middleware/BodyParser',\n  'Adonis/Middleware/Shield',\n  'Adonis/Middleware/Flash',\n  'Adonis/Middleware/AuthInit'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Named Middleware\n|--------------------------------------------------------------------------\n|\n| Named middleware are key/value pairs. Keys are later used on routes\n| which binds middleware to specific routes.\n|\n*/\nconst namedMiddleware = {\n  auth: 'Adonis/Middleware/Auth'\n}\n\n/*\n|--------------------------------------------------------------------------\n| Register Middleware\n|--------------------------------------------------------------------------\n|\n| Here we finally register our defined middleware to Middleware provider.\n|\n*/\nMiddleware.global(globalMiddleware)\nMiddleware.named(namedMiddleware)\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/kernel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 77,
+    "kind": "variable",
+    "name": "Middleware",
+    "memberof": "app/Http/kernel.js",
+    "static": true,
+    "longname": "app/Http/kernel.js~Middleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "variable",
+    "name": "globalMiddleware",
+    "memberof": "app/Http/kernel.js",
+    "static": true,
+    "longname": "app/Http/kernel.js~globalMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "variable",
+    "name": "namedMiddleware",
+    "memberof": "app/Http/kernel.js",
+    "static": true,
+    "longname": "app/Http/kernel.js~namedMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"auth\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "app/Http/routes.js",
+    "content": "// REST API routes for the adonis.js framework\n// Created: Harvey D. Bastidas C. 20170921\n// This file is part of the singularity platform project\n'use strict'\nrequire('./Routes/Stub/Processes')\nrequire('./Routes/DB/Processes')",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/routes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "file",
+    "name": "app/Listeners/Http.js",
+    "content": "'use strict'\n\nconst Env = use('Env')\nconst Youch = use('youch')\nconst Http = exports = module.exports = {}\n\n/**\n * handle errors occured during a Http request.\n *\n * @param  {Object} error\n * @param  {Object} request\n * @param  {Object} response\n */\nHttp.handleError = function * (error, request, response) {\n  const status = error.status || 500\n\n  /**\n   * DEVELOPMENT REPORTER\n   */\n  if (Env.get('NODE_ENV') === 'development') {\n    const youch = new Youch(error, request.request)\n    const type = request.accepts('json', 'html')\n    const formatMethod = type === 'json' ? 'toJSON' : 'toHTML'\n    const formattedErrors = yield youch[formatMethod]()\n    response.status(status).send(formattedErrors)\n    return\n  }\n\n  /**\n   * PRODUCTION REPORTER\n   */\n  console.error(error.stack)\n  yield response.status(status).sendView('errors/index', {error})\n}\n\n/**\n * listener for Http.start event, emitted after\n * starting http server.\n */\nHttp.onStart = function () {\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Listeners/Http.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 82,
+    "kind": "variable",
+    "name": "Env",
+    "memberof": "app/Listeners/Http.js",
+    "static": true,
+    "longname": "app/Listeners/Http.js~Env",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "Youch",
+    "memberof": "app/Listeners/Http.js",
+    "static": true,
+    "longname": "app/Listeners/Http.js~Youch",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "name": "Http",
+    "memberof": "app/Listeners/Http.js",
+    "static": true,
+    "longname": "app/Listeners/Http.js~Http",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "handleError",
+    "memberof": "app/Listeners/Http.js",
+    "generator": true,
+    "async": false,
+    "static": true,
+    "longname": "app/Listeners/Http.js~handleError",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": "handle errors occured during a Http request.",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "error",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "request",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response",
+        "description": ""
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "onStart",
+    "memberof": "app/Listeners/Http.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "app/Listeners/Http.js~onStart",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": "listener for Http.start event, emitted after\nstarting http server.",
+    "lineNumber": 40,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "file",
+    "name": "app/Model/Processes.js",
+    "content": "'use strict'\n\nconst Lucid = use('Lucid')\n\nclass Processes extends Lucid {\n\n}\n\nmodule.exports = Processes\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Model/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 88,
+    "kind": "variable",
+    "name": "Lucid",
+    "memberof": "app/Model/Processes.js",
+    "static": true,
+    "longname": "app/Model/Processes.js~Lucid",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Model/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "class",
+    "name": "Processes",
+    "memberof": "app/Model/Processes.js",
+    "static": true,
+    "longname": "app/Model/Processes.js~Processes",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Model/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Lucid"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "name": "app/Ws/kernel.js",
+    "content": "'use strict'\n\nconst Ws = use('Ws')\n\n/*\n|--------------------------------------------------------------------------\n| Global Middleware\n|--------------------------------------------------------------------------\n|\n| Global middleware are executed on every websocket request handshake and\n| must be defined inside below array.\n|\n*/\nconst globalMiddleware = [\n  'Adonis/Middleware/AuthInit'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Named Middleware\n|--------------------------------------------------------------------------\n|\n| Named middleware are key/value pairs. Keys are later used on websocket\n| channels.\n|\n*/\nconst namedMiddleware = {\n  auth: 'Adonis/Middleware/Auth'\n}\n\n/*\n|--------------------------------------------------------------------------\n| Register Middleware\n|--------------------------------------------------------------------------\n|\n| Here we finally register our defined middleware to Middleware provider.\n|\n*/\nWs.global(globalMiddleware)\nWs.named(namedMiddleware)\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Ws/kernel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 91,
+    "kind": "variable",
+    "name": "Ws",
+    "memberof": "app/Ws/kernel.js",
+    "static": true,
+    "longname": "app/Ws/kernel.js~Ws",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "name": "globalMiddleware",
+    "memberof": "app/Ws/kernel.js",
+    "static": true,
+    "longname": "app/Ws/kernel.js~globalMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "name": "namedMiddleware",
+    "memberof": "app/Ws/kernel.js",
+    "static": true,
+    "longname": "app/Ws/kernel.js~namedMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"auth\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "file",
+    "name": "app/Ws/socket.js",
+    "content": "'use strict'\n\n/*\n|-----------------------------------------------------------------------------\n| Web Socket\n|-----------------------------------------------------------------------------\n|\n| WebSocket provider makes it so simple for you to write realtime applications\n| with the power of channels and dynamic rooms. Make use of this file to\n| define channels and bind controllers next to them.\n|\n|\n| @example\n| Ws.channel('/chat', 'ChatController')\n*/\n\nconst Ws = use('Ws')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Ws/socket.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "Ws",
+    "memberof": "app/Ws/socket.js",
+    "static": true,
+    "longname": "app/Ws/socket.js~Ws",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/app/Ws/socket.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "kind": "index",
+    "content": "# AdonisJs Application\n\nThis repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.\n\n> Make sure to star the official [framework repo](https://github.com/adonisjs/adonis-framework) or [tweet on twitter](https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I%20am%20using%20AdonisJs,%20a%20practical%20MVC%20framework%20for%20nodejs&hashtags=nodejs,adonisframework) :wave:\n\n## Story\n\nOne day a :boy: wanted to write a web application to slowly turn it into a business and make some :moneybag: for better living. Being a Javascript lover, he decided to go with Node.js. \n\nHosting Node.js applications are cheap and offers lots of mordern programming concepts to build realtime data rich applications.\n\nHe was so excited and full of energy to build this application and share it with the world. But soon his dreams started struggling with the amount of decisions he has to make, just to build an MVP of his idea. These decisions were not even related to the business and was about.\n\n1. How should I structure my application?\n2. Why do I need to download 20 modules just to start an HTTP server, parse request body and upload files.\n3. How should I manage the authentication on website, and expose public API for others to interact with the data?\n4. What do I need to do to secure my application from web attacks and how to handle CORS?\n5. Why do I have ton of `require` statements everywhere?\n6. How the heck should I test my code? I am having hard time mocking dependencies.\n7. **WHY THE :fish:** there are no standards to write some code. Hell I am not going to write this application and going for a walk.\n\n\n## Not Anymore\n\nThis is so frustating. Node.js is a beautiful language but all of the above questions have never been answered together. We all love writing small concise modules but business are not created by downloading 20 modules.\n\nDevelopers needs productive tools, so that they can focus on what matters, and not on downloading & finding the best ways to combine these small modules. \n\n## AdonisJs\n\nAdonisJs is a beautiful framework with pre-configured answers to all of your questions. We not only created this framework, but validated the features of framework with realtime problems and still improving every bit, so that you have to write less and structured code.\n\nThis time a :boy: will write his ambitious application and will set the world on :fire:. Don't hesitate to work on your ideas and we promise to improve the framework every :sunny: and :first_quarter_moon_with_face: and YESSSS do not forget to star us on [:octocat:](https://github.com/adonisjs/adonis-framework)\n\n",
+    "longname": "/home/ubuntu/singularity/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"singularity\",\n  \"version\": \"0.1.0\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"echo \\\"\\\\033[31mWARN: 'start' will be depreciated soon. Instead use 'npm run serve'\\\" && npm run serve\",\n    \"dev\": \"echo \\\"\\\\033[31mWARN: 'dev' will be depreciated soon. Instead use 'npm run serve:dev'\\\" && npm run serve:dev\",\n    \"serve:dev\": \"nodemon --watch app --watch bootstrap --watch config --watch .env -x node server.js\",\n    \"serve\": \"node server.js\",\n    \"lint\": \"standard\",\n    \"test\": \"mocha --recursive test\"\n  },\n  \"author\": \"Harvey Bastidas <harveybc@ingeni-us.com> (http://dev.ingeni-us.com:3338)\",\n  \"license\": \"SEE LICENCE IN <s_license.txt>\",\n  \"description\": \"This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.\",\n  \"private\": true,\n  \"dependencies\": {\n    \"adonis-ace\": \"^3.0.7\",\n    \"adonis-auth\": \"^1.0.5\",\n    \"adonis-commands\": \"^2.1.5\",\n    \"adonis-fold\": \"^3.0.3\",\n    \"adonis-framework\": \"^3.0.14\",\n    \"adonis-lucid\": \"^3.0.16\",\n    \"adonis-middleware\": \"^1.0.11\",\n    \"adonis-websocket\": \"^1.0.3\",\n    \"debug\": \"^3.0.1\",\n    \"request\": \"^2.82.0\",\n    \"sqlite3\": \"3.1.10\",\n    \"youch\": \"^2.0.4\"\n  },\n  \"standard\": {\n    \"global\": [\n      \"use\",\n      \"make\"\n    ]\n  },\n  \"autoload\": {\n    \"App\": \"./app\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"formats\": \"^0.5.5\",\n    \"mocha\": \"^3.5.3\",\n    \"nodemon\": \"^1.12.1\",\n    \"raw\": \"^0.1.4\",\n    \"standard\": \"^10.0.1\",\n    \"test\": \"^0.6.0\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/harveybc/singularity.git\"\n  },\n  \"keywords\": [\n    \"p2p\",\n    \"optimization\",\n    \"blockchain\",\n    \"decentralized\",\n    \"automation\"\n  ],\n  \"bugs\": {\n    \"url\": \"https://github.com/harveybc/singularity/issues\"\n  },\n  \"homepage\": \"https://github.com/harveybc/singularity#readme\",\n  \"engines\": {\n    \"node\": \">=4.2.4\"\n  }\n}\n",
+    "longname": "/home/ubuntu/singularity/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]
