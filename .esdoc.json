@@ -1,6 +1,6 @@
 {
   "source": "./app",
-  "includes" : ["\\.\\/test\\/\\S*\\.js" , "\\.\\/database\\/\\S*\\.js", "\\.\\/resources\\/\\S*\\.js"],
+  "includes" : [".\\test\\$.js" , ".\\database\\.js", ".\\resources\\.js"],
   "destination": "./docs",
   "plugins": [
     {"name": "esdoc-standard-plugin"}
