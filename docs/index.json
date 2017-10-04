@@ -1,9 +1,2606 @@
 [
   {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "singularity/.external-ecmascript.js",
+    "static": true,
+    "longname": "singularity/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "singularity/app/Commands/Greet.js",
+    "content": "'use strict'\n\nconst Command = use('Command')\n\nclass Greet extends Command {\n\n  /**\n   * signature defines the requirements and name\n   * of command.\n   *\n   * @return {String}\n   */\n  get signature () {\n    return 'greet {name}'\n  }\n\n  /**\n   * description is the little helpful information displayed\n   * on the console.\n   *\n   * @return {String}\n   */\n  get description () {\n    return 'Greet a user with a name'\n  }\n\n  /**\n   * handle method is invoked automatically by ace, once your\n   * command has been executed.\n   *\n   * @param  {Object} args    [description]\n   * @param  {Object} options [description]\n   */\n  * handle (args, options) {\n    this.info(`Hello ${args.name}`)\n  }\n\n}\n\nmodule.exports = Greet\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Commands/Greet.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "Command",
+    "memberof": "singularity/app/Commands/Greet.js",
+    "static": true,
+    "longname": "singularity/app/Commands/Greet.js~Command",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Commands/Greet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "class",
+    "name": "Greet",
+    "memberof": "singularity/app/Commands/Greet.js",
+    "static": true,
+    "longname": "singularity/app/Commands/Greet.js~Greet",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Commands/Greet.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Command"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "get",
+    "name": "signature",
+    "memberof": "singularity/app/Commands/Greet.js~Greet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Commands/Greet.js~Greet#signature",
+    "access": "public",
+    "description": "signature defines the requirements and name\nof command.",
+    "lineNumber": 13,
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "get",
+    "name": "description",
+    "memberof": "singularity/app/Commands/Greet.js~Greet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Commands/Greet.js~Greet#description",
+    "access": "public",
+    "description": "description is the little helpful information displayed\non the console.",
+    "lineNumber": 23,
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "name": "handle",
+    "memberof": "singularity/app/Commands/Greet.js~Greet",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Commands/Greet.js~Greet#handle",
+    "access": "public",
+    "description": "handle method is invoked automatically by ace, once your\ncommand has been executed.",
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "args",
+        "description": "[description]"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "[description]"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "content": "'use strict'\n\nclass ProcessesDBController {\n    // Returns a list of metadata for found processes\n    * MetadataList(request, response) {\n        const Database = use('Database')\n        var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};\n        const result = yield Database.select(\"id\", \"updated_at\", \"last_block_time\", \"last_block_size\", \"last_optimum_performance\", \"last_optimum_id\", \"date_last_optimum\", \"difficulty\").\n                    where('app_id',1,'public_key',).from('processes').limit(3)\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the metadata for the <id> process\n    * MetadataItem(request, response) {\n        const Database = use('Database')\n        const result = yield Database.select(\"id\", \"updated_at\", \"last_block_time\", \"last_block_size\", \"last_optimum_performance\", \"last_optimum_id\", \"date_last_optimum\", \"difficulty\").from('processes').where('id',1)\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result[0], request_id: 3})\n    }\n    // Returns a list of processes\n    * GetList(request, response) {\n        const Database = use('Database')\n        const result = yield Database.select('*').from('processes').limit(request.param('max_results'))\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the the <id> process\n    * GetItem(request, response) {\n        const result = {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * CreateItem(request, response) {\n        const result = {\"id\": 4}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * DeleteItem(request, response) {\n        const result = {\"delete_count\": 1}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * EmptyCollection(request, response) {\n        const result = {\"delete_count\": 3}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n}\n\nmodule.exports = ProcessesDBController\n    ",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "class",
+    "name": "ProcessesDBController",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "static": true,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/Controllers/DB/ProcessesDBController.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "MetadataList",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#MetadataList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "MetadataItem",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#MetadataItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "GetList",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#GetList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "GetItem",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#GetItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "CreateItem",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#CreateItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "DeleteItem",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#DeleteItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "EmptyCollection",
+    "memberof": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/DB/ProcessesDBController.js~ProcessesDBController#EmptyCollection",
+    "access": "public",
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "content": "// Stub process controler\n'use strict'\n\nclass ProcessesStubController {\n    // Returns a list of metadata for found processes\n    * MetadataList(request, response) {\n        const result = [\n                {\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},\n                {\"id\":2, \"updated_at\": \"2017-09-04 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},\n                {\"id\":3, \"updated_at\": \"2017-09-05 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}]\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the metadata for the <id> process\n    * MetadataItem(request, response) {\n        const result = {\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns a list of processes\n    * GetList(request, response) {\n        const result = [\n                    {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 2, \"name\": \"Test process 2\", \"description\": \"Test process 2 -  stub testing\", \"created_at\": \"2017-09-03 05:22:31\", \"updated_at\": \"2017-09-04 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 3, \"name\": \"Test process 3\", \"description\": \"Test process 3 -  stub testing\", \"created_at\": \"2017-09-04 05:22:31\", \"updated_at\": \"2017-09-05 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n                ]\n        // TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> process\n    * GetItem(request, response) {\n        const result = {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * CreateItem(request, response) {\n        const result = {\"id\": 4}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * DeleteItem(request, response) {\n        const result = {\"delete_count\": 1}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n    // Returns the <id> of the created process\n    * EmptyCollection(request, response) {\n        const result = {\"delete_count\": 3}\n        const process_id = request.param('id')\n        yield response.sendView('master_JSON', {result: result, request_id: 3})\n    }\n}\n\nmodule.exports = ProcessesStubController\n    ",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "class",
+    "name": "ProcessesStubController",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "static": true,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/Controllers/Stub/ProcessesStubController.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "MetadataList",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#MetadataList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "MetadataItem",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#MetadataItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "GetList",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#GetList",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "GetItem",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#GetItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "CreateItem",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#CreateItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "DeleteItem",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#DeleteItem",
+    "access": "public",
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "EmptyCollection",
+    "memberof": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/app/Http/Controllers/Stub/ProcessesStubController.js~ProcessesStubController#EmptyCollection",
+    "access": "public",
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "request",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 72,
+    "kind": "file",
+    "name": "singularity/app/Http/Routes/DB/Processes.js",
+    "content": "/* \n * This file has the routes used for testing without AAA but with Database\n */\n// Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention\nconst Route = use('Route')\n// PROCESSES COLLECTION MANAGEMENT:\n// MetadataList: get a list of processes' metadata \nRoute.get('/db/processes/metadata', 'DB/ProcessesDBController.MetadataList')\n// MetadataItem: get a list of a process' metadata\nRoute.get('/db/processes/metadata/:id', 'DB/ProcessesDBController.MetadataItem')\n// GetList: get a list of processes\nRoute.get('/db/processes', 'DB/ProcessesDBController.GetList')\n// GetItem: get a process\nRoute.get('/db/processes/:id', 'DB/ProcessesDBController.GetItem')\n// CreateItem: create a process\nRoute.post('/db/processes', 'DB/ProcessesDBController.CreateItem')\n// DeleteItem: Deletes a process\nRoute.delete('/db/processes/:id', 'DB/ProcessesDBController.DeleteItem')\n// EmptyCollection: Deletes all processes in a collection for which the user is admin\nRoute.delete('/db/processes', 'DB/ProcessesDBController.EmptyCollection')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Routes/DB/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "Route",
+    "memberof": "singularity/app/Http/Routes/DB/Processes.js",
+    "static": true,
+    "longname": "singularity/app/Http/Routes/DB/Processes.js~Route",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/Routes/DB/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "file",
+    "name": "singularity/app/Http/Routes/Stub/Processes.js",
+    "content": "/* \n * This file has the routes used for testing without database or AAA\n */\n// Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention\nconst Route = use('Route')\n// PROCESSES COLLECTION MANAGEMENT:\n// MetadataList: get a list of processes' metadata \nRoute.get('/stub/processes/metadata', 'Stub/ProcessesStubController.MetadataList')\n// MetadataItem: get a list of a process' metadata\nRoute.get('/stub/processes/metadata/:id', 'Stub/ProcessesStubController.MetadataItem')\n// GetList: get a list of processes\nRoute.get('/stub/processes', 'Stub/ProcessesStubController.GetList')\n// GetItem: get a process\nRoute.get('/stub/processes/:id', 'Stub/ProcessesStubController.GetItem')\n// CreateItem: create a process\nRoute.post('/stub/processes', 'Stub/ProcessesStubController.CreateItem')\n// DeleteItem: Deletes a process\nRoute.delete('/stub/processes/:id', 'Stub/ProcessesStubController.DeleteItem')\n// EmptyCollection: Deletes all processes in a collection for which the user is admin\nRoute.delete('/stub/processes', 'Stub/ProcessesStubController.EmptyCollection')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/Routes/Stub/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
+    "kind": "variable",
+    "name": "Route",
+    "memberof": "singularity/app/Http/Routes/Stub/Processes.js",
+    "static": true,
+    "longname": "singularity/app/Http/Routes/Stub/Processes.js~Route",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/Routes/Stub/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "file",
+    "name": "singularity/app/Http/kernel.js",
+    "content": "'use strict'\n\nconst Middleware = use('Middleware')\n\n/*\n|--------------------------------------------------------------------------\n| Global Middleware\n|--------------------------------------------------------------------------\n|\n| Global middleware are executed on every request and must be defined\n| inside below array.\n|\n*/\nconst globalMiddleware = [\n  'Adonis/Middleware/Cors',\n  'Adonis/Middleware/BodyParser',\n  'Adonis/Middleware/Shield',\n  'Adonis/Middleware/Flash',\n  'Adonis/Middleware/AuthInit'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Named Middleware\n|--------------------------------------------------------------------------\n|\n| Named middleware are key/value pairs. Keys are later used on routes\n| which binds middleware to specific routes.\n|\n*/\nconst namedMiddleware = {\n  auth: 'Adonis/Middleware/Auth'\n}\n\n/*\n|--------------------------------------------------------------------------\n| Register Middleware\n|--------------------------------------------------------------------------\n|\n| Here we finally register our defined middleware to Middleware provider.\n|\n*/\nMiddleware.global(globalMiddleware)\nMiddleware.named(namedMiddleware)\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/kernel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 77,
+    "kind": "variable",
+    "name": "Middleware",
+    "memberof": "singularity/app/Http/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Http/kernel.js~Middleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "variable",
+    "name": "globalMiddleware",
+    "memberof": "singularity/app/Http/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Http/kernel.js~globalMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "variable",
+    "name": "namedMiddleware",
+    "memberof": "singularity/app/Http/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Http/kernel.js~namedMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Http/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"auth\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "singularity/app/Http/routes.js",
+    "content": "// REST API routes for the adonis.js framework\n// Created: Harvey D. Bastidas C. 20170921\n// This file is part of the singularity platform project\n'use strict'\nrequire('./Routes/Stub/Processes')\nrequire('./Routes/DB/Processes')",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Http/routes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "file",
+    "name": "singularity/app/Listeners/Http.js",
+    "content": "'use strict'\n\nconst Env = use('Env')\nconst Youch = use('youch')\nconst Http = exports = module.exports = {}\n\n/**\n * handle errors occured during a Http request.\n *\n * @param  {Object} error\n * @param  {Object} request\n * @param  {Object} response\n */\nHttp.handleError = function * (error, request, response) {\n  const status = error.status || 500\n\n  /**\n   * DEVELOPMENT REPORTER\n   */\n  if (Env.get('NODE_ENV') === 'development') {\n    const youch = new Youch(error, request.request)\n    const type = request.accepts('json', 'html')\n    const formatMethod = type === 'json' ? 'toJSON' : 'toHTML'\n    const formattedErrors = yield youch[formatMethod]()\n    response.status(status).send(formattedErrors)\n    return\n  }\n\n  /**\n   * PRODUCTION REPORTER\n   */\n  console.error(error.stack)\n  yield response.status(status).sendView('errors/index', {error})\n}\n\n/**\n * listener for Http.start event, emitted after\n * starting http server.\n */\nHttp.onStart = function () {\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Listeners/Http.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 82,
+    "kind": "variable",
+    "name": "Env",
+    "memberof": "singularity/app/Listeners/Http.js",
+    "static": true,
+    "longname": "singularity/app/Listeners/Http.js~Env",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "Youch",
+    "memberof": "singularity/app/Listeners/Http.js",
+    "static": true,
+    "longname": "singularity/app/Listeners/Http.js~Youch",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "name": "Http",
+    "memberof": "singularity/app/Listeners/Http.js",
+    "static": true,
+    "longname": "singularity/app/Listeners/Http.js~Http",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "function",
+    "name": "handleError",
+    "memberof": "singularity/app/Listeners/Http.js",
+    "generator": true,
+    "async": false,
+    "static": true,
+    "longname": "singularity/app/Listeners/Http.js~handleError",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": "handle errors occured during a Http request.",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "error",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "request",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response",
+        "description": ""
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "onStart",
+    "memberof": "singularity/app/Listeners/Http.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "singularity/app/Listeners/Http.js~onStart",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Listeners/Http.js",
+    "importStyle": null,
+    "description": "listener for Http.start event, emitted after\nstarting http server.",
+    "lineNumber": 40,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "file",
+    "name": "singularity/app/Model/Processes.js",
+    "content": "'use strict'\n\nconst Lucid = use('Lucid')\n\nclass Processes extends Lucid {\n\n}\n\nmodule.exports = Processes\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Model/Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 88,
+    "kind": "variable",
+    "name": "Lucid",
+    "memberof": "singularity/app/Model/Processes.js",
+    "static": true,
+    "longname": "singularity/app/Model/Processes.js~Lucid",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Model/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "class",
+    "name": "Processes",
+    "memberof": "singularity/app/Model/Processes.js",
+    "static": true,
+    "longname": "singularity/app/Model/Processes.js~Processes",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Model/Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Lucid"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "name": "singularity/app/Ws/kernel.js",
+    "content": "'use strict'\n\nconst Ws = use('Ws')\n\n/*\n|--------------------------------------------------------------------------\n| Global Middleware\n|--------------------------------------------------------------------------\n|\n| Global middleware are executed on every websocket request handshake and\n| must be defined inside below array.\n|\n*/\nconst globalMiddleware = [\n  'Adonis/Middleware/AuthInit'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Named Middleware\n|--------------------------------------------------------------------------\n|\n| Named middleware are key/value pairs. Keys are later used on websocket\n| channels.\n|\n*/\nconst namedMiddleware = {\n  auth: 'Adonis/Middleware/Auth'\n}\n\n/*\n|--------------------------------------------------------------------------\n| Register Middleware\n|--------------------------------------------------------------------------\n|\n| Here we finally register our defined middleware to Middleware provider.\n|\n*/\nWs.global(globalMiddleware)\nWs.named(namedMiddleware)\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Ws/kernel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 91,
+    "kind": "variable",
+    "name": "Ws",
+    "memberof": "singularity/app/Ws/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Ws/kernel.js~Ws",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "name": "globalMiddleware",
+    "memberof": "singularity/app/Ws/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Ws/kernel.js~globalMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "name": "namedMiddleware",
+    "memberof": "singularity/app/Ws/kernel.js",
+    "static": true,
+    "longname": "singularity/app/Ws/kernel.js~namedMiddleware",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Ws/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"auth\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "file",
+    "name": "singularity/app/Ws/socket.js",
+    "content": "'use strict'\n\n/*\n|-----------------------------------------------------------------------------\n| Web Socket\n|-----------------------------------------------------------------------------\n|\n| WebSocket provider makes it so simple for you to write realtime applications\n| with the power of channels and dynamic rooms. Make use of this file to\n| define channels and bind controllers next to them.\n|\n|\n| @example\n| Ws.channel('/chat', 'ChatController')\n*/\n\nconst Ws = use('Ws')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/app/Ws/socket.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "Ws",
+    "memberof": "singularity/app/Ws/socket.js",
+    "static": true,
+    "longname": "singularity/app/Ws/socket.js~Ws",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/app/Ws/socket.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "file",
+    "name": "singularity/bootstrap/app.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Application Providers\n|--------------------------------------------------------------------------\n|\n| Here we configure the providers required to run adonis application. They\n| are registered only once and can be used inside any file using `use`\n| keyword.\n|\n*/\nconst providers = [\n  'adonis-framework/providers/ConfigProvider',\n  'adonis-framework/providers/EnvProvider',\n  'adonis-framework/providers/EventProvider',\n  'adonis-framework/providers/HelpersProvider',\n  'adonis-framework/providers/HashProvider',\n  'adonis-framework/providers/MiddlewareProvider',\n  'adonis-framework/providers/RequestProvider',\n  'adonis-framework/providers/ResponseProvider',\n  'adonis-framework/providers/RouteProvider',\n  'adonis-framework/providers/ServerProvider',\n  'adonis-framework/providers/SessionProvider',\n  'adonis-framework/providers/StaticProvider',\n  'adonis-framework/providers/ViewProvider',\n  'adonis-lucid/providers/DatabaseProvider',\n  'adonis-lucid/providers/LucidProvider',\n  'adonis-lucid/providers/FactoryProvider',\n  'adonis-middleware/providers/AppMiddlewareProvider',\n  'adonis-auth/providers/AuthManagerProvider',\n  'adonis-websocket/providers/WsProvider'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Ace Providers\n|--------------------------------------------------------------------------\n|\n| Ace providers are specific to ace, and are not registered when starting\n| http server. It helps in reducing boot time.\n|\n*/\nconst aceProviders = [\n  'adonis-lucid/providers/CommandsProvider',\n  'adonis-lucid/providers/MigrationsProvider',\n  'adonis-lucid/providers/SchemaProvider',\n  'adonis-lucid/providers/SeederProvider',\n  'adonis-ace/providers/CommandProvider',\n  'adonis-commands/providers/GeneratorsProvider',\n  'adonis-commands/providers/HelperCommandsProvider',\n  'adonis-commands/providers/ReplProvider'\n]\n\n/*\n|--------------------------------------------------------------------------\n| Namespace Aliases\n|--------------------------------------------------------------------------\n|\n| Each provider is registered with a long unique namespace. Here we alias\n| them with a short unique name to keep our import statements short and\n| sweet.\n|\n*/\nconst aliases = {\n  Command: 'Adonis/Src/Command',\n  Config: 'Adonis/Src/Config',\n  Database: 'Adonis/Src/Database',\n  Env: 'Adonis/Src/Env',\n  Event: 'Adonis/Src/Event',\n  Factory: 'Adonis/Src/Factory',\n  Hash: 'Adonis/Src/Hash',\n  Helpers: 'Adonis/Src/Helpers',\n  Lucid: 'Adonis/Src/Lucid',\n  Middleware: 'Adonis/Src/Middleware',\n  Route: 'Adonis/Src/Route',\n  Schema: 'Adonis/Src/Schema',\n  View: 'Adonis/Src/View',\n  Ws: 'Adonis/Addons/Ws'\n}\n\n/*\n|--------------------------------------------------------------------------\n| Ace Commands\n|--------------------------------------------------------------------------\n|\n| Ace Commands are also are registered inside the IoC container. Here we\n| register with Ace Kernel using their unique namespace.\n|\n*/\nconst commands = [\n  'App/Commands/Greet',\n  'Adonis/Commands/Auth:Setup',\n  'Adonis/Commands/Repl',\n  'Adonis/Commands/Make:Controller',\n  'Adonis/Commands/Route:List',\n  'Adonis/Commands/Make:Migration',\n  'Adonis/Commands/Make:Model',\n  'Adonis/Commands/Make:View',\n  'Adonis/Commands/Make:Command',\n  'Adonis/Commands/Make:Hook',\n  'Adonis/Commands/Make:Middleware',\n  'Adonis/Commands/Make:Seed',\n  'Adonis/Commands/Make:Listener',\n  'Adonis/Commands/Migration:Run',\n  'Adonis/Commands/Migration:Rollback',\n  'Adonis/Commands/Migration:Refresh',\n  'Adonis/Commands/Migration:Reset',\n  'Adonis/Commands/DB:Seed',\n  'Adonis/Commands/Migration:Status',\n  'Adonis/Commands/Key:Generate'\n]\n\nmodule.exports = { providers, aceProviders, aliases, commands }\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/bootstrap/app.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 97,
+    "kind": "variable",
+    "name": "providers",
+    "memberof": "singularity/bootstrap/app.js",
+    "static": true,
+    "longname": "singularity/bootstrap/app.js~providers",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "variable",
+    "name": "aceProviders",
+    "memberof": "singularity/bootstrap/app.js",
+    "static": true,
+    "longname": "singularity/bootstrap/app.js~aceProviders",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 44,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "variable",
+    "name": "aliases",
+    "memberof": "singularity/bootstrap/app.js",
+    "static": true,
+    "longname": "singularity/bootstrap/app.js~aliases",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"Command\": string, \"Config\": string, \"Database\": string, \"Env\": string, \"Event\": string, \"Factory\": string, \"Hash\": string, \"Helpers\": string, \"Lucid\": string, \"Middleware\": string, \"Route\": string, \"Schema\": string, \"View\": string, \"Ws\": string}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "variable",
+    "name": "commands",
+    "memberof": "singularity/bootstrap/app.js",
+    "static": true,
+    "longname": "singularity/bootstrap/app.js~commands",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 91,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "file",
+    "name": "singularity/bootstrap/events.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Events\n|--------------------------------------------------------------------------\n|\n| Here you register events and define their listeners, which can be inline\n| closures or reference to a Listener inside app/Listeners. Also your\n| listeners can be async.\n|\n| Listeners are saved in app/Listeners directory.\n|\n| @example\n| Event.when('login', 'User.login')\n|\n*/\nconst Event = use('Event')\n\nEvent.when('Http.error.*', 'Http.handleError')\nEvent.when('Http.start', 'Http.onStart')\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/bootstrap/events.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 102,
+    "kind": "variable",
+    "name": "Event",
+    "memberof": "singularity/bootstrap/events.js",
+    "static": true,
+    "longname": "singularity/bootstrap/events.js~Event",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/events.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "file",
+    "name": "singularity/bootstrap/extend.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Extend Providers\n|--------------------------------------------------------------------------\n|\n| Some providers give options to be extended like SessionProvider. In this\n| file you can easily track which providers are extended.\n|\n| @note - Here you do not have access to any providers, which means this file\n| is called before loading service providers. But have access to the Ioc\n| container and you can use it extend providers, which are about to get\n| registered.\n|\n| @example\n| Ioc.extend('Adonis/Src/Session', 'redis', function (app) {\n|   // your redis driver implementation\n| })\n|\n*/\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/bootstrap/extend.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 104,
+    "kind": "file",
+    "name": "singularity/bootstrap/http.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| HTTP Server Setup\n|--------------------------------------------------------------------------\n|\n| Here we join different pieces and start the HTTP server. It will be\n| a matter of seconds to start your shiny Adonis application.\n|\n*/\n\nconst app = require('./app')\nconst fold = require('adonis-fold')\nconst path = require('path')\nconst packageFile = path.join(__dirname, '../package.json')\nrequire('./extend')\n\nmodule.exports = function (callback) {\n  fold.Registrar\n    .register(app.providers)\n    .then(() => {\n      /*\n      |--------------------------------------------------------------------------\n      | Register Aliases\n      |--------------------------------------------------------------------------\n      |\n      | After registering all the providers, we need to setup aliases so that\n      | providers can be referenced with short sweet names.\n      |\n      */\n      fold.Ioc.aliases(app.aliases)\n\n      /*\n      |--------------------------------------------------------------------------\n      | Register Package File\n      |--------------------------------------------------------------------------\n      |\n      | Adonis application package.json file has the reference to the autoload\n      | directory. Here we register the package file with the Helpers provider\n      | to setup autoloading.\n      |\n      */\n      const Helpers = use('Helpers')\n      const Env = use('Env')\n      Helpers.load(packageFile, fold.Ioc)\n\n      /*\n      |--------------------------------------------------------------------------\n      | Register Events\n      |--------------------------------------------------------------------------\n      |\n      | Here we require the event.js file to register events defined inside\n      | events.js file.\n      |\n      */\n      require('./events')\n\n      /*\n      |--------------------------------------------------------------------------\n      | Load Middleware And Routes\n      |--------------------------------------------------------------------------\n      |\n      | Middleware and Routes are required to oil up your HTTP server. Here we\n      | require defined files for same.\n      |\n      */\n      use(Helpers.makeNameSpace('Http', 'kernel'))\n      use(Helpers.makeNameSpace('Http', 'routes'))\n\n      /*\n      |--------------------------------------------------------------------------\n      | Load Websocket Channels And Middleware\n      |--------------------------------------------------------------------------\n      |\n      | Websocket channels defination should be loaded before firing the Http\n      | server.\n      |\n      */\n      use(Helpers.makeNameSpace('Ws', 'kernel'))\n      use(Helpers.makeNameSpace('Ws', 'socket'))\n\n      /*\n      |--------------------------------------------------------------------------\n      | Load Database Factory\n      |--------------------------------------------------------------------------\n      |\n      | All database/model blueprints are defined inside the below file. We\n      | autoload it to be used inside the entire application.\n      |\n      */\n      use(Helpers.databasePath('factory'))\n\n      /*\n      |--------------------------------------------------------------------------\n      | Start Http Server\n      |--------------------------------------------------------------------------\n      |\n      | We are all set to fire the Http Server and start receiving new requests.\n      |\n      */\n      const Server = use('Adonis/Src/Server')\n      Server.listen(Env.get('HOST'), Env.get('PORT'))\n      if (typeof (callback) === 'function') {\n        callback()\n      }\n    })\n    .catch((error) => console.error(error.stack))\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/bootstrap/http.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 105,
+    "kind": "variable",
+    "name": "app",
+    "memberof": "singularity/bootstrap/http.js",
+    "static": true,
+    "longname": "singularity/bootstrap/http.js~app",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "variable",
+    "name": "fold",
+    "memberof": "singularity/bootstrap/http.js",
+    "static": true,
+    "longname": "singularity/bootstrap/http.js~fold",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "variable",
+    "name": "path",
+    "memberof": "singularity/bootstrap/http.js",
+    "static": true,
+    "longname": "singularity/bootstrap/http.js~path",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 108,
+    "kind": "variable",
+    "name": "packageFile",
+    "memberof": "singularity/bootstrap/http.js",
+    "static": true,
+    "longname": "singularity/bootstrap/http.js~packageFile",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 109,
+    "kind": "function",
+    "name": "exports",
+    "memberof": "singularity/bootstrap/http.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "singularity/bootstrap/http.js~exports",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/http.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "params": [
+      {
+        "name": "callback",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 110,
+    "kind": "file",
+    "name": "singularity/bootstrap/kernel.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Ace Setup\n|--------------------------------------------------------------------------\n|\n| Ace is the command line utility to create and run terminal commands.\n| Here we setup the environment and register ace commands.\n|\n*/\n\nconst app = require('./app')\nconst fold = require('adonis-fold')\nconst Ace = require('adonis-ace')\nconst path = require('path')\nconst packageFile = path.join(__dirname, '../package.json')\nrequire('./extend')\n\nmodule.exports = function () {\n  fold.Registrar\n    .register(app.providers.concat(app.aceProviders))\n    .then(() => {\n      /*\n      |--------------------------------------------------------------------------\n      | Register Aliases\n      |--------------------------------------------------------------------------\n      |\n      | After registering all the providers, we need to setup aliases so that\n      | providers can be referenced with short sweet names.\n      |\n      */\n      fold.Ioc.aliases(app.aliases)\n\n      /*\n      |--------------------------------------------------------------------------\n      | Register Package File\n      |--------------------------------------------------------------------------\n      |\n      | Adonis application package.json file has the reference to the autoload\n      | directory. Here we register the package file with the Helpers provider\n      | to setup autoloading.\n      |\n      */\n      const Helpers = use('Helpers')\n      Helpers.load(packageFile, fold.Ioc)\n\n      /*\n      |--------------------------------------------------------------------------\n      | Register Events\n      |--------------------------------------------------------------------------\n      |\n      | Here we require the event.js file to register events defined inside\n      | events.js file.\n      |\n      */\n      require('./events')\n\n      /*\n      |--------------------------------------------------------------------------\n      | Load Middleware And Routes\n      |--------------------------------------------------------------------------\n      |\n      | Middleware and Routes are required to oil up your HTTP server. Here we\n      | require defined files for same.\n      |\n      */\n      use(Helpers.makeNameSpace('Http', 'kernel'))\n      use(Helpers.makeNameSpace('Http', 'routes'))\n\n      /*\n      |--------------------------------------------------------------------------\n      | Load Database Factory\n      |--------------------------------------------------------------------------\n      |\n      | All database/model blueprints are defined inside the below file. We\n      | autoload it to be used inside the entire application.\n      |\n      */\n      use(Helpers.databasePath('factory'))\n\n      /*\n      |--------------------------------------------------------------------------\n      | Register/Invoke Commands\n      |--------------------------------------------------------------------------\n      |\n      | Here we register commands with the Ace kernel and invoke the currently\n      | executed command. It's so simple :)\n      |\n      */\n      Ace.register(app.commands)\n      Ace.invoke(require(packageFile))\n    })\n    .catch((error) => console.error(error.stack))\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/bootstrap/kernel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 111,
+    "kind": "variable",
+    "name": "app",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~app",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "variable",
+    "name": "fold",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~fold",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "variable",
+    "name": "Ace",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~Ace",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "variable",
+    "name": "path",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~path",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "variable",
+    "name": "packageFile",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~packageFile",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "function",
+    "name": "exports",
+    "memberof": "singularity/bootstrap/kernel.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "singularity/bootstrap/kernel.js~exports",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/bootstrap/kernel.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "singularity/config/app.js",
+    "content": "'use strict'\n\nconst Env = use('Env')\n\nmodule.exports = {\n\n  /*\n  |--------------------------------------------------------------------------\n  | App Key\n  |--------------------------------------------------------------------------\n  |\n  | App key is a randomly generated 16 or 32 characters long string required\n  | to encrypted cookies, sessions and other sensitive data.\n  |\n  */\n  appKey: Env.get('APP_KEY'),\n\n  encryption: {\n    /*\n    |--------------------------------------------------------------------------\n    | Encryption algorithm\n    |--------------------------------------------------------------------------\n    |\n    | Encryption algorithm defines the algorithm to be used while encrypting\n    | values. Under the hood adonis makes of node-crypto.\n    |\n    | aes-256-cbc requires 32 characters long string\n    | aes-128-cbc requires 16 characters long string\n    |\n    */\n    algorithm: 'aes-256-cbc'\n  },\n\n  http: {\n    /*\n    |--------------------------------------------------------------------------\n    | Allow Method Spoofing\n    |--------------------------------------------------------------------------\n    |\n    | Method spoofing allows to make requests by spoofing the http verb.\n    | Which means you can make a GET request but instruct the server to\n    | treat as a POST or PUT request. If you want this feature, set the\n    | below value to true.\n    |\n    */\n    allowMethodSpoofing: true,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Trust Proxy\n    |--------------------------------------------------------------------------\n    |\n    | Trust proxy defines whether X-Forwaded-* headers should be trusted or not.\n    | When your application is behind a proxy server like nginx, these values\n    | are set automatically and should be trusted. Apart from setting it\n    | to true or false Adonis supports handful or ways to allow proxy\n    | values. Read documentation for that.\n    |\n    */\n    trustProxy: false,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Subdomains\n    |--------------------------------------------------------------------------\n    |\n    | Offset to be used for returning subdomains for a given request.For\n    | majority of applications it will be 2, until you have nested\n    | sudomains.\n    | cheatsheet.adonisjs.com      - offset - 2\n    | virk.cheatsheet.adonisjs.com - offset - 3\n    |\n    */\n    subdomainOffset: 2,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Set Powered By\n    |--------------------------------------------------------------------------\n    |\n    | Adonis will set response header X-Powered-By if below value is set to\n    | true. Consider this as a way of saying thanks to us.\n    |\n    */\n    setPoweredBy: true,\n\n    /*\n    |--------------------------------------------------------------------------\n    | JSONP Callback\n    |--------------------------------------------------------------------------\n    |\n    | Default jsonp callback to be used when callback query string is missing\n    | in request url.\n    |\n    */\n    jsonpCallback: 'callback'\n  },\n\n  views: {\n    /*\n    |--------------------------------------------------------------------------\n    | Cache Views\n    |--------------------------------------------------------------------------\n    |\n    | Define whether or not to cache the compiled view. Set it to true in\n    | production to optimize view loading time.\n    |\n    */\n    cache: Env.get('CACHE_VIEWS', true),\n\n    /*\n    |--------------------------------------------------------------------------\n    | Service Injection\n    |--------------------------------------------------------------------------\n    |\n    | Inside your nunjucks views, you can inject models, services etc using\n    | IoC container. Setting it to false will disable this feature.\n    |\n    */\n    injectServices: false\n  },\n\n  static: {\n    /*\n    |--------------------------------------------------------------------------\n    | Dot Files\n    |--------------------------------------------------------------------------\n    |\n    | Define how to treat dot files when trying to server static resources.\n    | By default it is set to ignore, which will pretend that dotfiles\n    | does not exists.\n    |\n    | Can be one of the following\n    | ignore, deny, allow\n    |\n    */\n    dotfiles: 'ignore',\n\n    /*\n    |--------------------------------------------------------------------------\n    | ETag\n    |--------------------------------------------------------------------------\n    |\n    | Enable or disable etag generation\n    |\n    */\n    etag: true,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Extensions\n    |--------------------------------------------------------------------------\n    |\n    | Set file extension fallbacks. When set, if a file is not found, the given\n    | extensions will be added to the file name and search for. The first\n    | that exists will be served. Example: ['html', 'htm'].\n    |\n    */\n    extensions: false\n  },\n\n  locales: {\n    /*\n    |--------------------------------------------------------------------------\n    | Driver\n    |--------------------------------------------------------------------------\n    |\n    | The driver to be used for fetching and updating locales. Below is the\n    | list of available options.\n    |\n    | file, database\n    |\n    */\n    driver: 'file',\n\n    /*\n    |--------------------------------------------------------------------------\n    | Default Locale\n    |--------------------------------------------------------------------------\n    |\n    | Default locale to be used by Antl provider. You can always switch drivers\n    | in runtime or use the official Antl middleware to detect the driver\n    | based on HTTP headers/query string.\n    |\n    */\n    locale: 'en',\n\n    /*\n    |--------------------------------------------------------------------------\n    | Fallback Locale\n    |--------------------------------------------------------------------------\n    |\n    | Fallback locale to be used when actual locale is not supported.\n    |\n    */\n    fallbackLocale: 'en'\n  }\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/app.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "variable",
+    "name": "Env",
+    "memberof": "singularity/config/app.js",
+    "static": true,
+    "longname": "singularity/config/app.js~Env",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/config/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "file",
+    "name": "singularity/config/auth.js",
+    "content": "'use strict'\n\nconst Config = use('Config')\n\nmodule.exports = {\n\n  /*\n  |--------------------------------------------------------------------------\n  | Authenticator\n  |--------------------------------------------------------------------------\n  |\n  | Authenticator is a combination of HTTP Authentication scheme and the\n  | serializer to be used for retrieving users. Below is the default\n  | authenticator to be used for every request.\n  |\n  | Available Schemes - basic, session, jwt, api\n  | Available Serializers - Lucid, Database\n  |\n  */\n  authenticator: 'session',\n\n  /*\n  |--------------------------------------------------------------------------\n  | Session Authenticator\n  |--------------------------------------------------------------------------\n  |\n  | Session authenticator will make use of sessions to maintain the login\n  | state for a given user.\n  |\n  */\n  session: {\n    serializer: 'Lucid',\n    model: 'App/Model/User',\n    scheme: 'session',\n    uid: 'email',\n    password: 'password'\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | Basic Auth Authenticator\n  |--------------------------------------------------------------------------\n  |\n  | Basic Authentication works on Http Basic auth header.\n  |\n  */\n  basic: {\n    serializer: 'Lucid',\n    model: 'App/Model/User',\n    scheme: 'basic',\n    uid: 'email',\n    password: 'password'\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | JWT Authenticator\n  |--------------------------------------------------------------------------\n  |\n  | Jwt authentication works with a payload sent with every request under\n  | Http Authorization header.\n  |\n  */\n  jwt: {\n    serializer: 'Lucid',\n    model: 'App/Model/User',\n    scheme: 'jwt',\n    uid: 'email',\n    password: 'password',\n    secret: Config.get('app.appKey')\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | API Authenticator\n  |--------------------------------------------------------------------------\n  |\n  | Api authenticator authenticates are requests based on Authorization\n  | header.\n  |\n  | Make sure to define relationships on User and Token model as defined\n  | in documentation\n  |\n  */\n  api: {\n    serializer: 'Lucid',\n    model: 'App/Model/Token',\n    scheme: 'api'\n  }\n\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/auth.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 120,
+    "kind": "variable",
+    "name": "Config",
+    "memberof": "singularity/config/auth.js",
+    "static": true,
+    "longname": "singularity/config/auth.js~Config",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/config/auth.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 121,
+    "kind": "file",
+    "name": "singularity/config/bodyParser.js",
+    "content": "'use strict'\n\nmodule.exports = {\n  /*\n  |--------------------------------------------------------------------------\n  | Data Limit\n  |--------------------------------------------------------------------------\n  |\n  | Data limit to be sent on a POST request.\n  |\n  */\n  limit: '1mb',\n\n  /*\n  |--------------------------------------------------------------------------\n  | Strict\n  |--------------------------------------------------------------------------\n  |\n  | Keeping strict to true will make body parse only parse array and objects\n  | using JSON.parse. Keeping it to false will force the parse to parse all\n  | values include null.\n  |\n  */\n  strict: true,\n\n  qs: {\n    /*\n    |--------------------------------------------------------------------------\n    | Depth\n    |--------------------------------------------------------------------------\n    |\n    | How deep to parse nested values submitted as form body.\n    |\n    */\n    depth: 5,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Parameter Limit\n    |--------------------------------------------------------------------------\n    |\n    | Max number of parameters to parse. 1000 is a way decent number for any\n    | normal application.\n    |\n    */\n    parameterLimit: 1000,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Delimiter\n    |--------------------------------------------------------------------------\n    |\n    | Delimiter to be used for parsing values. Example - a=b&b=c\n    |\n    */\n    delimiter: '&',\n\n    /*\n    |--------------------------------------------------------------------------\n    | Allow Dots\n    |--------------------------------------------------------------------------\n    |\n    | Keeping this value to true will enable dot notation. For example\n    | 'a.b=c' will be parsed as {a: {b: 'c'}}\n    |\n    */\n    allowDots: false\n  },\n  uploads: {\n\n    /*\n    |--------------------------------------------------------------------------\n    | Multiple\n    |--------------------------------------------------------------------------\n    |\n    | Whether or not to allow multiple file uploads.\n    |\n    */\n    multiple: true,\n\n    /*\n    |--------------------------------------------------------------------------\n    | CheckSums\n    |--------------------------------------------------------------------------\n    |\n    | This option will enable checksums for uploaded files. Following are\n    | the support options.\n    |\n    | md5, sha1\n    |\n    */\n    hash: false,\n\n    /*\n    |--------------------------------------------------------------------------\n    | Max Upload Size\n    |--------------------------------------------------------------------------\n    |\n    | Max file upload size for all files. Example - 2 files of 1mb will reach\n    | the maximum limit.\n    |\n    */\n    maxSize: '2mb'\n  }\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/bodyParser.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 122,
+    "kind": "file",
+    "name": "singularity/config/cors.js",
+    "content": "'use strict'\n\nmodule.exports = {\n  /*\n  |--------------------------------------------------------------------------\n  | Origin\n  |--------------------------------------------------------------------------\n  |\n  | Setting up origin true will allow the request origin. You can also\n  | define multiple origins as string.\n  |\n  */\n  origin: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Methods\n  |--------------------------------------------------------------------------\n  |\n  | Comma seperated HTTP methods to be allowed.\n  |\n  */\n  methods: 'GET, PUT, POST',\n\n  /*\n  |--------------------------------------------------------------------------\n  | Headers\n  |--------------------------------------------------------------------------\n  |\n  | Headers to allow. Keep it true will allow headers defined in\n  | Access-Control-Request-Headers.\n  |\n  */\n  headers: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Expose Headers\n  |--------------------------------------------------------------------------\n  |\n  | Expose headers to Access-Control-Expose-Headers.\n  |\n  */\n  exposeHeaders: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Credentials\n  |--------------------------------------------------------------------------\n  |\n  | Define Access-Control-Allow-Credentials header\n  |\n  */\n  credentials: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | MaxAge\n  |--------------------------------------------------------------------------\n  |\n  | Define Access-Control-Allow-Max-Age\n  |\n  */\n  maxAge: 90\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/cors.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "name": "singularity/config/database.js",
+    "content": "'use strict'\n\nconst Env = use('Env')\nconst Helpers = use('Helpers')\n\nmodule.exports = {\n\n  /*\n  |--------------------------------------------------------------------------\n  | Default Connection\n  |--------------------------------------------------------------------------\n  |\n  | Connection defines the default connection settings to be used while\n  | interacting with SQL databases.\n  |\n  */\n  connection: Env.get('DB_CONNECTION', 'sqlite'),\n\n  /*\n  |--------------------------------------------------------------------------\n  | Sqlite\n  |--------------------------------------------------------------------------\n  |\n  | Sqlite is a flat file database and can be good choice under development\n  | environment.\n  |\n  | npm i --save sqlite3\n  |\n  */\n  sqlite: {\n    client: 'sqlite3',\n    connection: {\n      filename: Helpers.databasePath('development.sqlite')\n    },\n    useNullAsDefault: true\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | MySQL\n  |--------------------------------------------------------------------------\n  |\n  | Here we define connection settings for MySQL database.\n  |\n  | npm i --save mysql\n  |\n  */\n  mysql: {\n    client: 'mysql',\n    connection: {\n      host: Env.get('DB_HOST', 'localhost'),\n      port: Env.get('DB_PORT', ''),\n      user: Env.get('DB_USER', 'root'),\n      password: Env.get('DB_PASSWORD', ''),\n      database: Env.get('DB_DATABASE', 'adonis')\n    }\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | PostgreSQL\n  |--------------------------------------------------------------------------\n  |\n  | Here we define connection settings for PostgreSQL database.\n  |\n  | npm i --save pg\n  |\n  */\n  pg: {\n    client: 'pg',\n    connection: {\n      host: Env.get('DB_HOST', 'localhost'),\n      port: Env.get('DB_PORT', ''),\n      user: Env.get('DB_USER', 'root'),\n      password: Env.get('DB_PASSWORD', ''),\n      database: Env.get('DB_DATABASE', 'adonis')\n    }\n  }\n\n}",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/database.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 124,
+    "kind": "variable",
+    "name": "Env",
+    "memberof": "singularity/config/database.js",
+    "static": true,
+    "longname": "singularity/config/database.js~Env",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/config/database.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 125,
+    "kind": "variable",
+    "name": "Helpers",
+    "memberof": "singularity/config/database.js",
+    "static": true,
+    "longname": "singularity/config/database.js~Helpers",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/config/database.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 126,
+    "kind": "file",
+    "name": "singularity/config/event.js",
+    "content": "'use strict'\n\nmodule.exports = {\n\n  /*\n  |--------------------------------------------------------------------------\n  | WildCard\n  |--------------------------------------------------------------------------\n  |\n  | Keeping wildcard true will let you register listeners using wildcards\n  | instead of always using full names.\n  |\n  */\n  wildcard: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Handle New Listener\n  |--------------------------------------------------------------------------\n  |\n  | Whether or not to emit new listener event, it's set to false by default.\n  |\n  */\n  newListener: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Max Listeners/Event\n  |--------------------------------------------------------------------------\n  |\n  | Maximum number of listeners to be registered for a single event. 10\n  | seems to be a good number.\n  |\n  */\n  maxListeners: 10\n\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/event.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 127,
+    "kind": "file",
+    "name": "singularity/config/session.js",
+    "content": "'use strict'\n\nconst Env = use('Env')\n\nmodule.exports = {\n  /*\n  |--------------------------------------------------------------------------\n  | Session Driver\n  |--------------------------------------------------------------------------\n  |\n  | Cookie driver will save session on cookies, but make sure to setup\n  | APP_KEY inside .env file to keep cookies encrypted and signed.\n  |\n  | Available Options are :-\n  | cookie, file, redis\n  */\n  driver: Env.get('SESSION_DRIVER', 'cookie'),\n\n  /*\n  |--------------------------------------------------------------------------\n  | Cookie Name\n  |--------------------------------------------------------------------------\n  |\n  | Cookie name defines the name of key to used for saving session cookie.\n  | Cookie name is required even if you are not using cookie driver.\n  |\n  */\n  cookie: 'adonis-session',\n\n  \n  /*\n  |--------------------------------------------------------------------------\n  | Redis options\n  |--------------------------------------------------------------------------\n  |\n  | When using redis driver, configure the connection options here.\n  | see https://github.com/adonisjs/adonis-redis for more configuration options.\n  | Clustering is not supported for sessions.\n  |\n  | You can also supply a redis connection string like so:\n  | redis: Env.get('REDIS_URL', 'redis://localhost:6379')\n  */\n  redis: {\n    port: 6379,          // Redis port\n    host: '127.0.0.1',   // Redis host\n    family: 4,           // 4 (IPv4) or 6 (IPv6)\n    password: 'auth',\n    db: 0\n  },\n\n  \n  /*\n  |--------------------------------------------------------------------------\n  | Session Age\n  |--------------------------------------------------------------------------\n  |\n  | Define session life in minutes. Session will be destroyed after defined\n  | minutes of inactivity.\n  |\n  */\n  age: 120,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Clear on browser close\n  |--------------------------------------------------------------------------\n  |\n  | You can make your sessions to be removed once browser has been closed/killed\n  | by setting below value to true. Also it will disregard age parameter.\n  |\n  */\n  clearWithBrowser: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Http Only Cookie\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie http only, which means javascript cannot access the cookie\n  | by document.cookie.\n  |\n  */\n  httpOnly: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Same site only\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie accessible from the same domain. Available values are\n  | true, false, lax and strict.\n  | https://tools.ietf.org/html/draft-west-first-party-cookies-07\n  |\n  */\n  sameSite: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Domain\n  |--------------------------------------------------------------------------\n  |\n  | Set domain for session cookie. If not defined it will be set to current\n  | domain. For single and subdomains use. \".adonisjs.com\"\n  |\n  */\n  domain: null,\n\n  /*\n  |--------------------------------------------------------------------------\n  | Path\n  |--------------------------------------------------------------------------\n  |\n  | Path defines where the session will be available. If you want to access\n  | it anywhere on your website. Set it to /\n  |\n  */\n  path: '/',\n\n  /*\n  |--------------------------------------------------------------------------\n  | Secure\n  |--------------------------------------------------------------------------\n  |\n  | Define whether to keep session cookie secure or not. Secured cookies\n  | are only served over HTTPS.\n  |\n  */\n  secure: false,\n\n  /*\n  |--------------------------------------------------------------------------\n  | File Driver Config\n  |--------------------------------------------------------------------------\n  |\n  | Here we define settings for file driver. For now we define directory\n  | in which we want to store our sessions. Defined directory will be\n  | created inside storage directory.\n  |\n  */\n  file: {\n    directory: 'sessions'\n  }\n\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/session.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 128,
+    "kind": "variable",
+    "name": "Env",
+    "memberof": "singularity/config/session.js",
+    "static": true,
+    "longname": "singularity/config/session.js~Env",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/config/session.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "file",
+    "name": "singularity/config/shield.js",
+    "content": "'use strict'\n\nmodule.exports = {\n  /*\n  |--------------------------------------------------------------------------\n  | Content Security Policy\n  |--------------------------------------------------------------------------\n  |\n  | Content security policy filters out the origins not allowed to execute\n  | and load resources like scripts, styles and fonts. There are wide\n  | variety of options to choose from.\n  | @examples\n  | directives: {\n  |   defaultSrc: ['self', '@nonce', 'cdnjs.cloudflare.com']\n  | }\n  */\n  csp: {\n    directives: {\n    },\n    reportOnly: false,\n    setAllHeaders: false,\n    disableAndroid: true\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | X-XSS-Protection\n  |--------------------------------------------------------------------------\n  |\n  | X-XSS Protection saves from applications from XSS attacks. It is adopted\n  | by IE and later followed by some other browsers.\n  |\n  */\n  xss: {\n    enabled: true,\n    enableOnOldIE: false\n  },\n\n  /*\n  |--------------------------------------------------------------------------\n  | Iframe Options\n  |--------------------------------------------------------------------------\n  |\n  | xframe defines whether or not your website can be embedded inside an\n  | iframe. Choose from one of the following options.\n  | @available options\n  | DENY, SAMEORIGIN, ALLOW-FROM http://example.com\n  */\n  xframe: 'DENY',\n\n  /*\n  |--------------------------------------------------------------------------\n  | No Sniff\n  |--------------------------------------------------------------------------\n  |\n  | Browsers have a habit of sniffing content-type of a response. Which means\n  | files with .txt extension containing Javascript code will be executed as\n  | Javascript. You can disable this behavior by setting nosniff to false.\n  |\n  */\n  nosniff: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | No Open\n  |--------------------------------------------------------------------------\n  |\n  | IE users can execute webpages in the context of your website, which is\n  | a serious security risk. Below options will manage this for you.\n  |\n  */\n  noopen: true,\n\n  /*\n  |--------------------------------------------------------------------------\n  | CSRF Protection\n  |--------------------------------------------------------------------------\n  |\n  | CSRF Protection adds another layer of security by making sure, actionable\n  | routes does have a valid token to execute an action.\n  |\n  */\n  csrf: {\n    enable: false,\n    methods: ['POST', 'PUT', 'DELETE'],\n    filterUris: [],\n    compareHostAndOrigin: true\n  }\n\n}\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/config/shield.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 130,
+    "kind": "file",
+    "name": "singularity/database/factory.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Model and Database Factory\n|--------------------------------------------------------------------------\n|\n| Factories let you define blueprints for your database models or tables.\n| These blueprints can be used with seeds to create fake entries. Also\n| factories are helpful when writing tests.\n|\n*/\n\nconst Factory = use('Factory')\n\n/*\n|--------------------------------------------------------------------------\n| User Model Blueprint\n|--------------------------------------------------------------------------\n| Below is an example of blueprint for User Model. You can make use of\n| this blueprint inside your seeds to generate dummy data.\n|\n*/\nFactory.blueprint('App/Model/User', (fake) => {\n  return {\n    username: fake.username(),\n    email: fake.email(),\n    password: fake.password()\n  }\n})\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/database/factory.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 131,
+    "kind": "variable",
+    "name": "Factory",
+    "memberof": "singularity/database/factory.js",
+    "static": true,
+    "longname": "singularity/database/factory.js~Factory",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/factory.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "file",
+    "name": "singularity/database/migrations/1506473302377_Processes.js",
+    "content": "'use strict'\nconst Schema = use('Schema')\n/** \n * Processes table controls a blockchain per process (block time, size, etc..)\n * it has fields for metadata, control, configuration and status of the process. \n * \n * A process belongs to an application and it can be accessed by its users. If \n * the OPoW block time control is selected, a model is optimized to produce the\n * PoW to generate a block in the blockchain. \n * \n * Migrations must be executed with the command:\n * @example \n * ./ace migration:run\n **/\nclass ProcessesTableSchema extends Schema {\n  up () {\n    var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": [{\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"creator_key\": \"CREATOR_KEY\", \"created_at\": \"2017-09-02 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},            {\"id\": 2, \"name\": \"Test process 2\", \"description\": \"Test process 2 -  stub testing\", \"creator_key\": \"CREATOR_KEY\", \"date\": \"2017-09-02 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},            {\"id\": 3, \"name\": \"Test process 3\", \"description\": \"Test process 3 -  stub testing\", \"creator_key\": \"CREATOR_KEY\", \"date\": \"2017-09-02 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}], \"id\":3}';\n    var parsed_expected_response = JSON.parse(expected_response);  \n    this.create('processes', (table) => {\n      // Metadata\n      table.increments('id')\n      table.string('name', 4086)\n      table.text('description', 40860)\n      table.string('creator_key',4086)\n      table.string('tags',4086)\n      table.integer('app_id')\n      table.timestamps()\n      // Control\n      table.boolean('active')\n      // Configuration\n      table.integer('desired_block_time')\n      table.integer('desired_block_size')\n      table.integer('block_time_control') // (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)\n     // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation\n      table.integer('model_id')\n      table.integer('training_set_id')\n      table.integer('validation_set_id')\n      // Status \n      table.float('difficulty')\n      table.integer('last_block_id')  \n      table.integer('last_block_date')\n      table.integer('last_block_difficulty') \n      table.integer('last_block_time') // in milliseconds \n      table.integer('last_block_size') // in bytes\n      // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) \n      table.integer('last_block_performance')\n      // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) \n      table.integer('last_optimum_id')\n      table.timestamp('last_optimum_date')\n      table.float('last_optimum_performance')\n    })\n    this.insert(parsed_expected_response.result)\n  }\n  down () {\n    this.drop('processes')\n  }\n}\nmodule.exports = ProcessesTableSchema\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/database/migrations/1506473302377_Processes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 133,
+    "kind": "variable",
+    "name": "Schema",
+    "memberof": "singularity/database/migrations/1506473302377_Processes.js",
+    "static": true,
+    "longname": "singularity/database/migrations/1506473302377_Processes.js~Schema",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/migrations/1506473302377_Processes.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "class",
+    "name": "ProcessesTableSchema",
+    "memberof": "singularity/database/migrations/1506473302377_Processes.js",
+    "static": true,
+    "longname": "singularity/database/migrations/1506473302377_Processes.js~ProcessesTableSchema",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/migrations/1506473302377_Processes.js",
+    "importStyle": null,
+    "description": "Processes table controls a blockchain per process (block time, size, etc..)\nit has fields for metadata, control, configuration and status of the process. \n\nA process belongs to an application and it can be accessed by its users. If \nthe OPoW block time control is selected, a model is optimized to produce the\nPoW to generate a block in the blockchain. \n\nMigrations must be executed with the command:",
+    "examples": [
+      "./ace migration:run"
+    ],
+    "lineNumber": 15,
+    "interface": false,
+    "extends": [
+      "Schema"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "method",
+    "name": "up",
+    "memberof": "singularity/database/migrations/1506473302377_Processes.js~ProcessesTableSchema",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "singularity/database/migrations/1506473302377_Processes.js~ProcessesTableSchema#up",
+    "access": "public",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "name": "down",
+    "memberof": "singularity/database/migrations/1506473302377_Processes.js~ProcessesTableSchema",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "singularity/database/migrations/1506473302377_Processes.js~ProcessesTableSchema#down",
+    "access": "public",
+    "description": null,
+    "lineNumber": 54,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 137,
+    "kind": "file",
+    "name": "singularity/database/seeds/Database.js",
+    "content": "'use strict'\n/*\n|--------------------------------------------------------------------------\n| Database Seeder\n|--------------------------------------------------------------------------\n| Database Seeder can be used to seed dummy data to your application\n| database. Here you can make use of Factories to create records.\n|\n| make use of Ace to generate a new seed\n|   ./ace make:seed [name]\n|\n*/\n// const Factory = use('Factory')\n// usa modelo de Procesos\nconst Process = use('App/Model/Processes')\nconst processArray=[\n                    {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 2, \"name\": \"Test process 2\", \"description\": \"Test process 2 -  stub testing\", \"created_at\": \"2017-09-03 05:22:31\", \"updated_at\": \"2017-09-04 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},\n                    {\"id\": 3, \"name\": \"Test process 3\", \"description\": \"Test process 3 -  stub testing\", \"created_at\": \"2017-09-04 05:22:31\", \"updated_at\": \"2017-09-05 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}\n                ]\n        \nclass DatabaseSeeder {\n   \n  * run () {\n      \n    // yield Factory.model('App/Model/User').create(5)\n    yield Process.createMany(processArray) \n      \n  }\n\n}\n\nmodule.exports = DatabaseSeeder\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/database/seeds/Database.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 138,
+    "kind": "variable",
+    "name": "Process",
+    "memberof": "singularity/database/seeds/Database.js",
+    "static": true,
+    "longname": "singularity/database/seeds/Database.js~Process",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/seeds/Database.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "variable",
+    "name": "processArray",
+    "memberof": "singularity/database/seeds/Database.js",
+    "static": true,
+    "longname": "singularity/database/seeds/Database.js~processArray",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/seeds/Database.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "class",
+    "name": "DatabaseSeeder",
+    "memberof": "singularity/database/seeds/Database.js",
+    "static": true,
+    "longname": "singularity/database/seeds/Database.js~DatabaseSeeder",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/database/seeds/Database.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "method",
+    "name": "run",
+    "memberof": "singularity/database/seeds/Database.js~DatabaseSeeder",
+    "generator": true,
+    "async": false,
+    "static": false,
+    "longname": "singularity/database/seeds/Database.js~DatabaseSeeder#run",
+    "access": "public",
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 142,
+    "kind": "file",
+    "name": "singularity/server.js",
+    "content": "'use strict'\n\n/*\n|--------------------------------------------------------------------------\n| Http Server\n|--------------------------------------------------------------------------\n|\n| Here we boot the HTTP Server by calling the exported method. A callback\n| function is optionally passed which is executed, once the HTTP server\n| is running.\n|\n*/\n\nconst http = require('./bootstrap/http')\nhttp(function () {\n  use('Event').fire('Http.start')\n})\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/server.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 143,
+    "kind": "variable",
+    "name": "http",
+    "memberof": "singularity/server.js",
+    "static": true,
+    "longname": "singularity/server.js~http",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/server.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "file",
+    "name": "singularity/test/component/node/test-cn01-processes-db.js",
+    "content": "// Tests using controllers with database connection but without AAA\nvar expect = require('chai').expect;\nvar request = require('request');\n// Processes collection tests\nvar description = 'CN01-DB-1: GET db/processes/metadata (MetadataList)';\ndescribe('Processes Collection', function () {\n    // Test CN01-DB-1:  GET db/processes/metadata (metadataList)\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": [{\"id\":1, \"updated_at\": \"2017-09-29 02:17:57\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},{\"id\":2, \"updated_at\": \"2017-09-29 02:17:58\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},{\"id\":3, \"updated_at\": \"2017-09-29 02:17:58\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}], \"id\":3}';\n        // Assesment\n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-DB-2:  GET db/processes/metadata/<id> request (metadataItem)\n    description = 'CN01-DB-2: GET db/processes/metadata/<id> (MetadataItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\":1, \"updated_at\": \"2017-09-29 02:17:57\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}, \"id\":3}';\n       // metadata='{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\":\"2017-09-02 05:22:31\", \"created_at\": \"2017-09-02 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2}, \"id\":3}'\n        // Assesment  \n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-DB-3:  GET db/processes (GetList)\n    description = 'CN01-DB-3: GET db/processes (GetList)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';\n        var expected_response = '{\"jsonrpc\":\"2.0\",\"result\":[{\"id\":1,\"name\":\"Test process 1\",\"description\":\"Test process 1 -  stub testing\",\"creator_key\":null,\"created_at\":\"2017-09-29 02:17:57\",\"updated_at\":\"2017-09-29 02:17:57\",\"tags\":null,\"application_id\":2,\"last_block_time\":86400,\"last_block_size\":2048,\"last_optimum_performance\":0.79983,\"last_optimum_id\":1,\"date_last_optimum\":\"2017-09-03 06:22:31\",\"desired_block_time\":85000,\"desired_block_size\":0,\"block_time_control\":1,\"difficulty\":0.0009},{\"id\":2,\"name\":\"Test process 2\",\"description\":\"Test process 2 -  stub testing\",\"creator_key\":null,\"created_at\":\"2017-09-29 02:17:58\",\"updated_at\":\"2017-09-29 02:17:58\",\"tags\":null,\"application_id\":2,\"last_block_time\":86400,\"last_block_size\":2048,\"last_optimum_performance\":0.79983,\"last_optimum_id\":1,\"date_last_optimum\":\"2017-09-03 06:22:31\",\"desired_block_time\":85000,\"desired_block_size\":0,\"block_time_control\":1,\"difficulty\":0.0009},{\"id\":3,\"name\":\"Test process 3\",\"description\":\"Test process 3 -  stub testing\",\"creator_key\":null,\"created_at\":\"2017-09-29 02:17:58\",\"updated_at\":\"2017-09-29 02:17:58\",\"tags\":null,\"application_id\":2,\"last_block_time\":86400,\"last_block_size\":2048,\"last_optimum_performance\":0.79983,\"last_optimum_id\":1,\"date_last_optimum\":\"2017-09-03 06:22:31\",\"desired_block_time\":85000,\"desired_block_size\":0,\"block_time_control\":1,\"difficulty\":0.0009}],\"id\":3}';\n        // Assesment\n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-DB-4:  GET db/processes<id> request (GetItem)\n    description = 'CN01-DB-4: GET db/processes/<id> (GetItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}, \"id\":3}';\n        // Assesment  \n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done(); \n        });\n    });\n\n    // Test CN01-DB-5:  POST db/processes request (CreateItem)\n    description = 'CN01-DB-5: POST db/processes (CreateItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 4}, \"id\":3}';\n        // Assesment  \n        request.post(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-DB-6:  DELETE db/processes/<id> request (DeleteItem)\n    description = 'CN01-DB-6: DELETE db/processes/<id> (DeleteItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"delete_count\": 1}, \"id\":3}';\n        // Assesment  \n        request.delete(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-DB-7:  DELETE db/processes request (EmptyCollection)\n    description = 'CN01-DB-7: DELETE db/processes (EmptyCollection)';\n    it(description, function (done) {\n    // Configuration \n    var parameters = 'public_key=PUB_KEY&xml=false';\n    var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';\n    var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"delete_count\": 3}, \"id\":3}';\n    // Assesment  \n        request.delete(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n});\n\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/test/component/node/test-cn01-processes-db.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 145,
+    "kind": "variable",
+    "name": "expect",
+    "memberof": "singularity/test/component/node/test-cn01-processes-db.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-db.js~expect",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-db.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "variable",
+    "name": "request",
+    "memberof": "singularity/test/component/node/test-cn01-processes-db.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-db.js~request",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-db.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 147,
+    "kind": "variable",
+    "name": "description",
+    "memberof": "singularity/test/component/node/test-cn01-processes-db.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-db.js~description",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-db.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "file",
+    "name": "singularity/test/component/node/test-cn01-processes-stub.js",
+    "content": "// Tests using stub controllers\nvar expect = require('chai').expect;\nvar request = require('request');\n// Processes collection tests\nvar description = 'CN01-stub-1: GET stub/processes/metadata (MetadataList)';\ndescribe('Processes Collection', function () {\n    // Test CN01-stub-1:  GET stub/processes/metadata (metadataList)\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": [{\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},{\"id\":2, \"updated_at\": \"2017-09-04 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009},{\"id\":3, \"updated_at\": \"2017-09-05 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}], \"id\":3}';\n        // Assesment\n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-stub-2:  GET stub/processes/metadata/<id> request (metadataItem)\n    description = 'CN01-stub-2: GET stub/processes/metadata/<id> (MetadataItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\":1, \"updated_at\": \"2017-09-03 05:22:31\", \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"difficulty\": 0.0009}, \"id\":3}';\n       // metadata='{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\":\"2017-09-02 05:22:31\", \"created_at\": \"2017-09-02 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2}, \"id\":3}'\n        // Assesment  \n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-stub-3:  GET stub/processes (GetList)\n    description = 'CN01-stub-3: GET stub/processes (GetList)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": [{\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},{\"id\": 2, \"name\": \"Test process 2\", \"description\": \"Test process 2 -  stub testing\", \"created_at\": \"2017-09-03 05:22:31\", \"updated_at\": \"2017-09-04 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009},{\"id\": 3, \"name\": \"Test process 3\", \"description\": \"Test process 3 -  stub testing\", \"created_at\": \"2017-09-04 05:22:31\", \"updated_at\": \"2017-09-05 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}], \"id\":3}';\n        // Assesment\n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-stub-4:  GET stub/processes<id> request (GetItem)\n    description = 'CN01-stub-4: GET stub/processes/<id> (GetItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 1, \"name\": \"Test process 1\", \"description\": \"Test process 1 -  stub testing\", \"created_at\": \"2017-09-02 05:22:31\", \"updated_at\": \"2017-09-03 05:22:31\", \"tags\": [\"p2p\", \"forex\", \"dqn\"], \"application_id\": 2, \"last_block_time\": 86400, \"last_block_size\": 2048, \"last_optimum_performance\": 0.79983, \"last_optimum_id\": 1, \"date_last_optimum\": \"2017-09-03 06:22:31\", \"desired_block_time\": 85000, \"desired_block_size\": 0, \"block_time_control\": 1, \"difficulty\": 0.0009}, \"id\":3}';\n        // Assesment  \n        request.get(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done(); \n        });\n    });\n\n    // Test CN01-stub-5:  POST stub/processes request (CreateItem)\n    description = 'CN01-stub-5: POST stub/processes (CreateItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"id\": 4}, \"id\":3}';\n        // Assesment  \n        request.post(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-stub-6:  DELETE stub/processes/<id> request (DeleteItem)\n    description = 'CN01-stub-6: DELETE stub/processes/<id> (DeleteItem)';\n    it(description, function (done) {\n        // Configuration\n        var parameters = 'public_key=PUB_KEY&xml=false';\n        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';\n        var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"delete_count\": 1}, \"id\":3}';\n        // Assesment  \n        request.delete(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n    // Test CN01-stub-7:  DELETE stub/processes request (EmptyCollection)\n    description = 'CN01-stub-7: DELETE stub/processes (EmptyCollection)';\n    it(description, function (done) {\n    // Configuration \n    var parameters = 'public_key=PUB_KEY&xml=false';\n    var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';\n    var expected_response = '{\"jsonrpc\": \"2.0\", \"result\": {\"delete_count\": 3}, \"id\":3}';\n    // Assesment  \n        request.delete(endpoint + parameters, function (error, response, body) {\n            parsed_body = JSON.parse(body);\n            parsed_expected_response = JSON.parse(expected_response);\n            // Verify if the result is equal to the expected response. \n            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));\n            done();\n        });\n    });\n});\n\n",
+    "static": true,
+    "longname": "/home/ubuntu/singularity/test/component/node/test-cn01-processes-stub.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 149,
+    "kind": "variable",
+    "name": "expect",
+    "memberof": "singularity/test/component/node/test-cn01-processes-stub.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-stub.js~expect",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-stub.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "variable",
+    "name": "request",
+    "memberof": "singularity/test/component/node/test-cn01-processes-stub.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-stub.js~request",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-stub.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "variable",
+    "name": "description",
+    "memberof": "singularity/test/component/node/test-cn01-processes-stub.js",
+    "static": true,
+    "longname": "singularity/test/component/node/test-cn01-processes-stub.js~description",
+    "access": "public",
+    "export": false,
+    "importPath": "singularity/singularity/test/component/node/test-cn01-processes-stub.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
     "kind": "index",
     "content": "# AdonisJs Application\n\nThis repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.\n\n> Make sure to star the official [framework repo](https://github.com/adonisjs/adonis-framework) or [tweet on twitter](https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I%20am%20using%20AdonisJs,%20a%20practical%20MVC%20framework%20for%20nodejs&hashtags=nodejs,adonisframework) :wave:\n\n## Story\n\nOne day a :boy: wanted to write a web application to slowly turn it into a business and make some :moneybag: for better living. Being a Javascript lover, he decided to go with Node.js. \n\nHosting Node.js applications are cheap and offers lots of mordern programming concepts to build realtime data rich applications.\n\nHe was so excited and full of energy to build this application and share it with the world. But soon his dreams started struggling with the amount of decisions he has to make, just to build an MVP of his idea. These decisions were not even related to the business and was about.\n\n1. How should I structure my application?\n2. Why do I need to download 20 modules just to start an HTTP server, parse request body and upload files.\n3. How should I manage the authentication on website, and expose public API for others to interact with the data?\n4. What do I need to do to secure my application from web attacks and how to handle CORS?\n5. Why do I have ton of `require` statements everywhere?\n6. How the heck should I test my code? I am having hard time mocking dependencies.\n7. **WHY THE :fish:** there are no standards to write some code. Hell I am not going to write this application and going for a walk.\n\n\n## Not Anymore\n\nThis is so frustating. Node.js is a beautiful language but all of the above questions have never been answered together. We all love writing small concise modules but business are not created by downloading 20 modules.\n\nDevelopers needs productive tools, so that they can focus on what matters, and not on downloading & finding the best ways to combine these small modules. \n\n## AdonisJs\n\nAdonisJs is a beautiful framework with pre-configured answers to all of your questions. We not only created this framework, but validated the features of framework with realtime problems and still improving every bit, so that you have to write less and structured code.\n\nThis time a :boy: will write his ambitious application and will set the world on :fire:. Don't hesitate to work on your ideas and we promise to improve the framework every :sunny: and :first_quarter_moon_with_face: and YESSSS do not forget to star us on [:octocat:](https://github.com/adonisjs/adonis-framework)\n\n",
     "longname": "/home/ubuntu/singularity/README.md",
     "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"singularity\",\n  \"version\": \"0.1.0\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"start\": \"echo \\\"\\\\033[31mWARN: 'start' will be depreciated soon. Instead use 'npm run serve'\\\" && npm run serve\",\n    \"dev\": \"echo \\\"\\\\033[31mWARN: 'dev' will be depreciated soon. Instead use 'npm run serve:dev'\\\" && npm run serve:dev\",\n    \"serve:dev\": \"nodemon --watch app --watch bootstrap --watch config --watch .env -x node server.js\",\n    \"serve\": \"node server.js\",\n    \"lint\": \"standard\",\n    \"test\": \"mocha --recursive test\"\n  },\n  \"author\": \"Harvey Bastidas <harveybc@ingeni-us.com> (http://dev.ingeni-us.com:3338)\",\n  \"license\": \"SEE LICENCE IN <s_license.txt>\",\n  \"description\": \"This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.\",\n  \"private\": true,\n  \"dependencies\": {\n    \"adonis-ace\": \"^3.0.7\",\n    \"adonis-auth\": \"^1.0.5\",\n    \"adonis-commands\": \"^2.1.5\",\n    \"adonis-fold\": \"^3.0.3\",\n    \"adonis-framework\": \"^3.0.14\",\n    \"adonis-lucid\": \"^3.0.16\",\n    \"adonis-middleware\": \"^1.0.11\",\n    \"adonis-websocket\": \"^1.0.3\",\n    \"debug\": \"^3.0.1\",\n    \"request\": \"^2.82.0\",\n    \"sqlite3\": \"3.1.10\",\n    \"youch\": \"^2.0.4\"\n  },\n  \"standard\": {\n    \"global\": [\n      \"use\",\n      \"make\"\n    ]\n  },\n  \"autoload\": {\n    \"App\": \"./app\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"formats\": \"^0.5.5\",\n    \"mocha\": \"^3.5.3\",\n    \"nodemon\": \"^1.12.1\",\n    \"raw\": \"^0.1.4\",\n    \"standard\": \"^10.0.1\",\n    \"test\": \"^0.6.0\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/harveybc/singularity.git\"\n  },\n  \"keywords\": [\n    \"p2p\",\n    \"optimization\",\n    \"blockchain\",\n    \"decentralized\",\n    \"automation\"\n  ],\n  \"bugs\": {\n    \"url\": \"https://github.com/harveybc/singularity/issues\"\n  },\n  \"homepage\": \"https://github.com/harveybc/singularity#readme\",\n  \"engines\": {\n    \"node\": \">=4.2.4\"\n  }\n}\n",
+    "longname": "/home/ubuntu/singularity/package.json",
+    "name": "package.json",
     "static": true,
     "access": "public"
   }

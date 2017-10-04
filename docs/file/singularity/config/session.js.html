@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">singularity/config/session.js | singularity</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="singularity"><meta property="twitter:description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/harveybc/singularity"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">singularity/config/session.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+const Env = use(&apos;Env&apos;)
+
+module.exports = {
+  /*
+  |--------------------------------------------------------------------------
+  | Session Driver
+  |--------------------------------------------------------------------------
+  |
+  | Cookie driver will save session on cookies, but make sure to setup
+  | APP_KEY inside .env file to keep cookies encrypted and signed.
+  |
+  | Available Options are :-
+  | cookie, file, redis
+  */
+  driver: Env.get(&apos;SESSION_DRIVER&apos;, &apos;cookie&apos;),
+
+  /*
+  |--------------------------------------------------------------------------
+  | Cookie Name
+  |--------------------------------------------------------------------------
+  |
+  | Cookie name defines the name of key to used for saving session cookie.
+  | Cookie name is required even if you are not using cookie driver.
+  |
+  */
+  cookie: &apos;adonis-session&apos;,
+
+  
+  /*
+  |--------------------------------------------------------------------------
+  | Redis options
+  |--------------------------------------------------------------------------
+  |
+  | When using redis driver, configure the connection options here.
+  | see https://github.com/adonisjs/adonis-redis for more configuration options.
+  | Clustering is not supported for sessions.
+  |
+  | You can also supply a redis connection string like so:
+  | redis: Env.get(&apos;REDIS_URL&apos;, &apos;redis://localhost:6379&apos;)
+  */
+  redis: {
+    port: 6379,          // Redis port
+    host: &apos;127.0.0.1&apos;,   // Redis host
+    family: 4,           // 4 (IPv4) or 6 (IPv6)
+    password: &apos;auth&apos;,
+    db: 0
+  },
+
+  
+  /*
+  |--------------------------------------------------------------------------
+  | Session Age
+  |--------------------------------------------------------------------------
+  |
+  | Define session life in minutes. Session will be destroyed after defined
+  | minutes of inactivity.
+  |
+  */
+  age: 120,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Clear on browser close
+  |--------------------------------------------------------------------------
+  |
+  | You can make your sessions to be removed once browser has been closed/killed
+  | by setting below value to true. Also it will disregard age parameter.
+  |
+  */
+  clearWithBrowser: false,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Http Only Cookie
+  |--------------------------------------------------------------------------
+  |
+  | Keep cookie http only, which means javascript cannot access the cookie
+  | by document.cookie.
+  |
+  */
+  httpOnly: true,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Same site only
+  |--------------------------------------------------------------------------
+  |
+  | Keep cookie accessible from the same domain. Available values are
+  | true, false, lax and strict.
+  | https://tools.ietf.org/html/draft-west-first-party-cookies-07
+  |
+  */
+  sameSite: true,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Domain
+  |--------------------------------------------------------------------------
+  |
+  | Set domain for session cookie. If not defined it will be set to current
+  | domain. For single and subdomains use. &quot;.adonisjs.com&quot;
+  |
+  */
+  domain: null,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Path
+  |--------------------------------------------------------------------------
+  |
+  | Path defines where the session will be available. If you want to access
+  | it anywhere on your website. Set it to /
+  |
+  */
+  path: &apos;/&apos;,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Secure
+  |--------------------------------------------------------------------------
+  |
+  | Define whether to keep session cookie secure or not. Secured cookies
+  | are only served over HTTPS.
+  |
+  */
+  secure: false,
+
+  /*
+  |--------------------------------------------------------------------------
+  | File Driver Config
+  |--------------------------------------------------------------------------
+  |
+  | Here we define settings for file driver. For now we define directory
+  | in which we want to store our sessions. Defined directory will be
+  | created inside storage directory.
+  |
+  */
+  file: {
+    directory: &apos;sessions&apos;
+  }
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

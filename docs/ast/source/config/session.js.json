@@ -1,0 +1,4316 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 4306,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 145,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 4306,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 145,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "VariableDeclaration",
+        "start": 14,
+        "end": 36,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 22
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 20,
+            "end": 36,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 6
+              },
+              "end": {
+                "line": 3,
+                "column": 22
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 20,
+              "end": 23,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 6
+                },
+                "end": {
+                  "line": 3,
+                  "column": 9
+                },
+                "identifierName": "Env"
+              },
+              "name": "Env"
+            },
+            "init": {
+              "type": "CallExpression",
+              "start": 26,
+              "end": 36,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 12
+                },
+                "end": {
+                  "line": 3,
+                  "column": 22
+                }
+              },
+              "callee": {
+                "type": "Identifier",
+                "start": 26,
+                "end": 29,
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 15
+                  },
+                  "identifierName": "use"
+                },
+                "name": "use"
+              },
+              "arguments": [
+                {
+                  "type": "StringLiteral",
+                  "start": 30,
+                  "end": 35,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 21
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "Env",
+                    "raw": "'Env'"
+                  },
+                  "value": "Env"
+                }
+              ]
+            }
+          }
+        ],
+        "kind": "const"
+      },
+      {
+        "type": "ExpressionStatement",
+        "start": 38,
+        "end": 4305,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 144,
+            "column": 1
+          }
+        },
+        "expression": {
+          "type": "AssignmentExpression",
+          "start": 38,
+          "end": 4305,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 144,
+              "column": 1
+            }
+          },
+          "operator": "=",
+          "left": {
+            "type": "MemberExpression",
+            "start": 38,
+            "end": 52,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 14
+              }
+            },
+            "object": {
+              "type": "Identifier",
+              "start": 38,
+              "end": 44,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 0
+                },
+                "end": {
+                  "line": 5,
+                  "column": 6
+                },
+                "identifierName": "module"
+              },
+              "name": "module"
+            },
+            "property": {
+              "type": "Identifier",
+              "start": 45,
+              "end": 52,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 14
+                },
+                "identifierName": "exports"
+              },
+              "name": "exports"
+            },
+            "computed": false
+          },
+          "right": {
+            "type": "ObjectExpression",
+            "start": 55,
+            "end": 4305,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 17
+              },
+              "end": {
+                "line": 144,
+                "column": 1
+              }
+            },
+            "properties": [
+              {
+                "type": "ObjectProperty",
+                "start": 443,
+                "end": 486,
+                "loc": {
+                  "start": {
+                    "line": 17,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 45
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 443,
+                  "end": 449,
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 8
+                    },
+                    "identifierName": "driver"
+                  },
+                  "name": "driver",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "CallExpression",
+                  "start": 451,
+                  "end": 486,
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 45
+                    }
+                  },
+                  "callee": {
+                    "type": "MemberExpression",
+                    "start": 451,
+                    "end": 458,
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 17
+                      }
+                    },
+                    "object": {
+                      "type": "Identifier",
+                      "start": 451,
+                      "end": 454,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 13
+                        },
+                        "identifierName": "Env"
+                      },
+                      "name": "Env"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "start": 455,
+                      "end": 458,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 14
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 17
+                        },
+                        "identifierName": "get"
+                      },
+                      "name": "get"
+                    },
+                    "computed": false
+                  },
+                  "arguments": [
+                    {
+                      "type": "StringLiteral",
+                      "start": 459,
+                      "end": 475,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 34
+                        }
+                      },
+                      "extra": {
+                        "rawValue": "SESSION_DRIVER",
+                        "raw": "'SESSION_DRIVER'"
+                      },
+                      "value": "SESSION_DRIVER"
+                    },
+                    {
+                      "type": "StringLiteral",
+                      "start": 477,
+                      "end": 485,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 36
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 44
+                        }
+                      },
+                      "extra": {
+                        "rawValue": "cookie",
+                        "raw": "'cookie'"
+                      },
+                      "value": "cookie"
+                    }
+                  ]
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Session Driver\n  |--------------------------------------------------------------------------\n  |\n  | Cookie driver will save session on cookies, but make sure to setup\n  | APP_KEY inside .env file to keep cookies encrypted and signed.\n  |\n  | Available Options are :-\n  | cookie, file, redis\n  ",
+                    "start": 59,
+                    "end": 440,
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 825,
+                "end": 849,
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 26
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 825,
+                  "end": 831,
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 8
+                    },
+                    "identifierName": "cookie"
+                  },
+                  "name": "cookie",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "StringLiteral",
+                  "start": 833,
+                  "end": 849,
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 26
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "adonis-session",
+                    "raw": "'adonis-session'"
+                  },
+                  "value": "adonis-session"
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Cookie Name\n  |--------------------------------------------------------------------------\n  |\n  | Cookie name defines the name of key to used for saving session cookie.\n  | Cookie name is required even if you are not using cookie driver.\n  |\n  ",
+                    "start": 491,
+                    "end": 822,
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 27,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 1361,
+                "end": 1532,
+                "loc": {
+                  "start": {
+                    "line": 43,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 49,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 1361,
+                  "end": 1366,
+                  "loc": {
+                    "start": {
+                      "line": 43,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 7
+                    },
+                    "identifierName": "redis"
+                  },
+                  "name": "redis",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 1368,
+                  "end": 1532,
+                  "loc": {
+                    "start": {
+                      "line": 43,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1374,
+                      "end": 1384,
+                      "loc": {
+                        "start": {
+                          "line": 44,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 44,
+                          "column": 14
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1374,
+                        "end": 1378,
+                        "loc": {
+                          "start": {
+                            "line": 44,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 44,
+                            "column": 8
+                          },
+                          "identifierName": "port"
+                        },
+                        "name": "port"
+                      },
+                      "value": {
+                        "type": "NumericLiteral",
+                        "start": 1380,
+                        "end": 1384,
+                        "loc": {
+                          "start": {
+                            "line": 44,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 44,
+                            "column": 14
+                          }
+                        },
+                        "extra": {
+                          "rawValue": 6379,
+                          "raw": "6379"
+                        },
+                        "value": 6379
+                      }
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1413,
+                      "end": 1430,
+                      "loc": {
+                        "start": {
+                          "line": 45,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 45,
+                          "column": 21
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1413,
+                        "end": 1417,
+                        "loc": {
+                          "start": {
+                            "line": 45,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 45,
+                            "column": 8
+                          },
+                          "identifierName": "host"
+                        },
+                        "name": "host",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 1419,
+                        "end": 1430,
+                        "loc": {
+                          "start": {
+                            "line": 45,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 45,
+                            "column": 21
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "127.0.0.1",
+                          "raw": "'127.0.0.1'"
+                        },
+                        "value": "127.0.0.1"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentLine",
+                          "value": " Redis port",
+                          "start": 1395,
+                          "end": 1408,
+                          "loc": {
+                            "start": {
+                              "line": 44,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 44,
+                              "column": 38
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1452,
+                      "end": 1461,
+                      "loc": {
+                        "start": {
+                          "line": 46,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 46,
+                          "column": 13
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1452,
+                        "end": 1458,
+                        "loc": {
+                          "start": {
+                            "line": 46,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 10
+                          },
+                          "identifierName": "family"
+                        },
+                        "name": "family",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "NumericLiteral",
+                        "start": 1460,
+                        "end": 1461,
+                        "loc": {
+                          "start": {
+                            "line": 46,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 13
+                          }
+                        },
+                        "extra": {
+                          "rawValue": 4,
+                          "raw": "4"
+                        },
+                        "value": 4
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentLine",
+                          "value": " Redis host",
+                          "start": 1434,
+                          "end": 1447,
+                          "loc": {
+                            "start": {
+                              "line": 45,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 45,
+                              "column": 38
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1501,
+                      "end": 1517,
+                      "loc": {
+                        "start": {
+                          "line": 47,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 47,
+                          "column": 20
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1501,
+                        "end": 1509,
+                        "loc": {
+                          "start": {
+                            "line": 47,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 12
+                          },
+                          "identifierName": "password"
+                        },
+                        "name": "password",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 1511,
+                        "end": 1517,
+                        "loc": {
+                          "start": {
+                            "line": 47,
+                            "column": 14
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 20
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "auth",
+                          "raw": "'auth'"
+                        },
+                        "value": "auth"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentLine",
+                          "value": " 4 (IPv4) or 6 (IPv6)",
+                          "start": 1473,
+                          "end": 1496,
+                          "loc": {
+                            "start": {
+                              "line": 46,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 46,
+                              "column": 48
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1523,
+                      "end": 1528,
+                      "loc": {
+                        "start": {
+                          "line": 48,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 48,
+                          "column": 9
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1523,
+                        "end": 1525,
+                        "loc": {
+                          "start": {
+                            "line": 48,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 48,
+                            "column": 6
+                          },
+                          "identifierName": "db"
+                        },
+                        "name": "db"
+                      },
+                      "value": {
+                        "type": "NumericLiteral",
+                        "start": 1527,
+                        "end": 1528,
+                        "loc": {
+                          "start": {
+                            "line": 48,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 48,
+                            "column": 9
+                          }
+                        },
+                        "extra": {
+                          "rawValue": 0,
+                          "raw": "0"
+                        },
+                        "value": 0
+                      }
+                    }
+                  ]
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Redis options\n  |--------------------------------------------------------------------------\n  |\n  | When using redis driver, configure the connection options here.\n  | see https://github.com/adonisjs/adonis-redis for more configuration options.\n  | Clustering is not supported for sessions.\n  |\n  | You can also supply a redis connection string like so:\n  | redis: Env.get('REDIS_URL', 'redis://localhost:6379')\n  ",
+                    "start": 857,
+                    "end": 1358,
+                    "loc": {
+                      "start": {
+                        "line": 31,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 42,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 1833,
+                "end": 1841,
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 61,
+                    "column": 10
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 1833,
+                  "end": 1836,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 5
+                    },
+                    "identifierName": "age"
+                  },
+                  "name": "age",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "NumericLiteral",
+                  "start": 1838,
+                  "end": 1841,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 7
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 10
+                    }
+                  },
+                  "extra": {
+                    "rawValue": 120,
+                    "raw": "120"
+                  },
+                  "value": 120
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Session Age\n  |--------------------------------------------------------------------------\n  |\n  | Define session life in minutes. Session will be destroyed after defined\n  | minutes of inactivity.\n  |\n  ",
+                    "start": 1540,
+                    "end": 1830,
+                    "loc": {
+                      "start": {
+                        "line": 52,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 60,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 2202,
+                "end": 2225,
+                "loc": {
+                  "start": {
+                    "line": 72,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 72,
+                    "column": 25
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 2202,
+                  "end": 2218,
+                  "loc": {
+                    "start": {
+                      "line": 72,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 72,
+                      "column": 18
+                    },
+                    "identifierName": "clearWithBrowser"
+                  },
+                  "name": "clearWithBrowser",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "BooleanLiteral",
+                  "start": 2220,
+                  "end": 2225,
+                  "loc": {
+                    "start": {
+                      "line": 72,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 72,
+                      "column": 25
+                    }
+                  },
+                  "value": false
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Clear on browser close\n  |--------------------------------------------------------------------------\n  |\n  | You can make your sessions to be removed once browser has been closed/killed\n  | by setting below value to true. Also it will disregard age parameter.\n  |\n  ",
+                    "start": 1846,
+                    "end": 2199,
+                    "loc": {
+                      "start": {
+                        "line": 63,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 2524,
+                "end": 2538,
+                "loc": {
+                  "start": {
+                    "line": 83,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 83,
+                    "column": 16
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 2524,
+                  "end": 2532,
+                  "loc": {
+                    "start": {
+                      "line": 83,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 10
+                    },
+                    "identifierName": "httpOnly"
+                  },
+                  "name": "httpOnly",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "BooleanLiteral",
+                  "start": 2534,
+                  "end": 2538,
+                  "loc": {
+                    "start": {
+                      "line": 83,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 16
+                    }
+                  },
+                  "value": true
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Http Only Cookie\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie http only, which means javascript cannot access the cookie\n  | by document.cookie.\n  |\n  ",
+                    "start": 2230,
+                    "end": 2521,
+                    "loc": {
+                      "start": {
+                        "line": 74,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 82,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 2905,
+                "end": 2919,
+                "loc": {
+                  "start": {
+                    "line": 95,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 95,
+                    "column": 16
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 2905,
+                  "end": 2913,
+                  "loc": {
+                    "start": {
+                      "line": 95,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 95,
+                      "column": 10
+                    },
+                    "identifierName": "sameSite"
+                  },
+                  "name": "sameSite",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "BooleanLiteral",
+                  "start": 2915,
+                  "end": 2919,
+                  "loc": {
+                    "start": {
+                      "line": 95,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 95,
+                      "column": 16
+                    }
+                  },
+                  "value": true
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Same site only\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie accessible from the same domain. Available values are\n  | true, false, lax and strict.\n  | https://tools.ietf.org/html/draft-west-first-party-cookies-07\n  |\n  ",
+                    "start": 2543,
+                    "end": 2902,
+                    "loc": {
+                      "start": {
+                        "line": 85,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 94,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 3244,
+                "end": 3256,
+                "loc": {
+                  "start": {
+                    "line": 106,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 106,
+                    "column": 14
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 3244,
+                  "end": 3250,
+                  "loc": {
+                    "start": {
+                      "line": 106,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 8
+                    },
+                    "identifierName": "domain"
+                  },
+                  "name": "domain",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "NullLiteral",
+                  "start": 3252,
+                  "end": 3256,
+                  "loc": {
+                    "start": {
+                      "line": 106,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 14
+                    }
+                  }
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Domain\n  |--------------------------------------------------------------------------\n  |\n  | Set domain for session cookie. If not defined it will be set to current\n  | domain. For single and subdomains use. \".adonisjs.com\"\n  |\n  ",
+                    "start": 2924,
+                    "end": 3241,
+                    "loc": {
+                      "start": {
+                        "line": 97,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 105,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 3565,
+                "end": 3574,
+                "loc": {
+                  "start": {
+                    "line": 117,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 117,
+                    "column": 11
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 3565,
+                  "end": 3569,
+                  "loc": {
+                    "start": {
+                      "line": 117,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 117,
+                      "column": 6
+                    },
+                    "identifierName": "path"
+                  },
+                  "name": "path",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "StringLiteral",
+                  "start": 3571,
+                  "end": 3574,
+                  "loc": {
+                    "start": {
+                      "line": 117,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 117,
+                      "column": 11
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "/",
+                    "raw": "'/'"
+                  },
+                  "value": "/"
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Path\n  |--------------------------------------------------------------------------\n  |\n  | Path defines where the session will be available. If you want to access\n  | it anywhere on your website. Set it to /\n  |\n  ",
+                    "start": 3261,
+                    "end": 3562,
+                    "loc": {
+                      "start": {
+                        "line": 108,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 116,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 3869,
+                "end": 3882,
+                "loc": {
+                  "start": {
+                    "line": 128,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 128,
+                    "column": 15
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 3869,
+                  "end": 3875,
+                  "loc": {
+                    "start": {
+                      "line": 128,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 128,
+                      "column": 8
+                    },
+                    "identifierName": "secure"
+                  },
+                  "name": "secure",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "BooleanLiteral",
+                  "start": 3877,
+                  "end": 3882,
+                  "loc": {
+                    "start": {
+                      "line": 128,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 128,
+                      "column": 15
+                    }
+                  },
+                  "value": false
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | Secure\n  |--------------------------------------------------------------------------\n  |\n  | Define whether to keep session cookie secure or not. Secured cookies\n  | are only served over HTTPS.\n  |\n  ",
+                    "start": 3579,
+                    "end": 3866,
+                    "loc": {
+                      "start": {
+                        "line": 119,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 127,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 4265,
+                "end": 4302,
+                "loc": {
+                  "start": {
+                    "line": 140,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 142,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 4265,
+                  "end": 4269,
+                  "loc": {
+                    "start": {
+                      "line": 140,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 140,
+                      "column": 6
+                    },
+                    "identifierName": "file"
+                  },
+                  "name": "file",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 4271,
+                  "end": 4302,
+                  "loc": {
+                    "start": {
+                      "line": 140,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 142,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 4277,
+                      "end": 4298,
+                      "loc": {
+                        "start": {
+                          "line": 141,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 141,
+                          "column": 25
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 4277,
+                        "end": 4286,
+                        "loc": {
+                          "start": {
+                            "line": 141,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 141,
+                            "column": 13
+                          },
+                          "identifierName": "directory"
+                        },
+                        "name": "directory"
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 4288,
+                        "end": 4298,
+                        "loc": {
+                          "start": {
+                            "line": 141,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 141,
+                            "column": 25
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "sessions",
+                          "raw": "'sessions'"
+                        },
+                        "value": "sessions"
+                      }
+                    }
+                  ]
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | File Driver Config\n  |--------------------------------------------------------------------------\n  |\n  | Here we define settings for file driver. For now we define directory\n  | in which we want to store our sessions. Defined directory will be\n  | created inside storage directory.\n  |\n  ",
+                    "start": 3887,
+                    "end": 4262,
+                    "loc": {
+                      "start": {
+                        "line": 130,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 139,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "directives": [
+      {
+        "type": "Directive",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": {
+          "type": "DirectiveLiteral",
+          "start": 0,
+          "end": 12,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          },
+          "value": "use strict",
+          "extra": {
+            "raw": "'use strict'",
+            "rawValue": "use strict"
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Session Driver\n  |--------------------------------------------------------------------------\n  |\n  | Cookie driver will save session on cookies, but make sure to setup\n  | APP_KEY inside .env file to keep cookies encrypted and signed.\n  |\n  | Available Options are :-\n  | cookie, file, redis\n  ",
+      "start": 59,
+      "end": 440,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Cookie Name\n  |--------------------------------------------------------------------------\n  |\n  | Cookie name defines the name of key to used for saving session cookie.\n  | Cookie name is required even if you are not using cookie driver.\n  |\n  ",
+      "start": 491,
+      "end": 822,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 27,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Redis options\n  |--------------------------------------------------------------------------\n  |\n  | When using redis driver, configure the connection options here.\n  | see https://github.com/adonisjs/adonis-redis for more configuration options.\n  | Clustering is not supported for sessions.\n  |\n  | You can also supply a redis connection string like so:\n  | redis: Env.get('REDIS_URL', 'redis://localhost:6379')\n  ",
+      "start": 857,
+      "end": 1358,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 42,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Redis port",
+      "start": 1395,
+      "end": 1408,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 25
+        },
+        "end": {
+          "line": 44,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Redis host",
+      "start": 1434,
+      "end": 1447,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 25
+        },
+        "end": {
+          "line": 45,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " 4 (IPv4) or 6 (IPv6)",
+      "start": 1473,
+      "end": 1496,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 25
+        },
+        "end": {
+          "line": 46,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Session Age\n  |--------------------------------------------------------------------------\n  |\n  | Define session life in minutes. Session will be destroyed after defined\n  | minutes of inactivity.\n  |\n  ",
+      "start": 1540,
+      "end": 1830,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 2
+        },
+        "end": {
+          "line": 60,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Clear on browser close\n  |--------------------------------------------------------------------------\n  |\n  | You can make your sessions to be removed once browser has been closed/killed\n  | by setting below value to true. Also it will disregard age parameter.\n  |\n  ",
+      "start": 1846,
+      "end": 2199,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 2
+        },
+        "end": {
+          "line": 71,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Http Only Cookie\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie http only, which means javascript cannot access the cookie\n  | by document.cookie.\n  |\n  ",
+      "start": 2230,
+      "end": 2521,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 2
+        },
+        "end": {
+          "line": 82,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Same site only\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie accessible from the same domain. Available values are\n  | true, false, lax and strict.\n  | https://tools.ietf.org/html/draft-west-first-party-cookies-07\n  |\n  ",
+      "start": 2543,
+      "end": 2902,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 2
+        },
+        "end": {
+          "line": 94,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Domain\n  |--------------------------------------------------------------------------\n  |\n  | Set domain for session cookie. If not defined it will be set to current\n  | domain. For single and subdomains use. \".adonisjs.com\"\n  |\n  ",
+      "start": 2924,
+      "end": 3241,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 2
+        },
+        "end": {
+          "line": 105,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Path\n  |--------------------------------------------------------------------------\n  |\n  | Path defines where the session will be available. If you want to access\n  | it anywhere on your website. Set it to /\n  |\n  ",
+      "start": 3261,
+      "end": 3562,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 2
+        },
+        "end": {
+          "line": 116,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Secure\n  |--------------------------------------------------------------------------\n  |\n  | Define whether to keep session cookie secure or not. Secured cookies\n  | are only served over HTTPS.\n  |\n  ",
+      "start": 3579,
+      "end": 3866,
+      "loc": {
+        "start": {
+          "line": 119,
+          "column": 2
+        },
+        "end": {
+          "line": 127,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | File Driver Config\n  |--------------------------------------------------------------------------\n  |\n  | Here we define settings for file driver. For now we define directory\n  | in which we want to store our sessions. Defined directory will be\n  | created inside storage directory.\n  |\n  ",
+      "start": 3887,
+      "end": 4262,
+      "loc": {
+        "start": {
+          "line": 130,
+          "column": 2
+        },
+        "end": {
+          "line": 139,
+          "column": 4
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "use strict",
+      "start": 0,
+      "end": 12,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 14,
+      "end": 19,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Env",
+      "start": 20,
+      "end": 23,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 6
+        },
+        "end": {
+          "line": 3,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 24,
+      "end": 25,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 10
+        },
+        "end": {
+          "line": 3,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "use",
+      "start": 26,
+      "end": 29,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 12
+        },
+        "end": {
+          "line": 3,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 29,
+      "end": 30,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 15
+        },
+        "end": {
+          "line": 3,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "Env",
+      "start": 30,
+      "end": 35,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 16
+        },
+        "end": {
+          "line": 3,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 35,
+      "end": 36,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 21
+        },
+        "end": {
+          "line": 3,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "module",
+      "start": 38,
+      "end": 44,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 44,
+      "end": 45,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 6
+        },
+        "end": {
+          "line": 5,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "exports",
+      "start": 45,
+      "end": 52,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 53,
+      "end": 54,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 15
+        },
+        "end": {
+          "line": 5,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 55,
+      "end": 56,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 17
+        },
+        "end": {
+          "line": 5,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Session Driver\n  |--------------------------------------------------------------------------\n  |\n  | Cookie driver will save session on cookies, but make sure to setup\n  | APP_KEY inside .env file to keep cookies encrypted and signed.\n  |\n  | Available Options are :-\n  | cookie, file, redis\n  ",
+      "start": 59,
+      "end": 440,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "driver",
+      "start": 443,
+      "end": 449,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 449,
+      "end": 450,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 8
+        },
+        "end": {
+          "line": 17,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Env",
+      "start": 451,
+      "end": 454,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 10
+        },
+        "end": {
+          "line": 17,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 454,
+      "end": 455,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 13
+        },
+        "end": {
+          "line": 17,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "get",
+      "start": 455,
+      "end": 458,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 14
+        },
+        "end": {
+          "line": 17,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 458,
+      "end": 459,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 17
+        },
+        "end": {
+          "line": 17,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "SESSION_DRIVER",
+      "start": 459,
+      "end": 475,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 18
+        },
+        "end": {
+          "line": 17,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 475,
+      "end": 476,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 34
+        },
+        "end": {
+          "line": 17,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "cookie",
+      "start": 477,
+      "end": 485,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 36
+        },
+        "end": {
+          "line": 17,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 485,
+      "end": 486,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 44
+        },
+        "end": {
+          "line": 17,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 486,
+      "end": 487,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 45
+        },
+        "end": {
+          "line": 17,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Cookie Name\n  |--------------------------------------------------------------------------\n  |\n  | Cookie name defines the name of key to used for saving session cookie.\n  | Cookie name is required even if you are not using cookie driver.\n  |\n  ",
+      "start": 491,
+      "end": 822,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 27,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "cookie",
+      "start": 825,
+      "end": 831,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 2
+        },
+        "end": {
+          "line": 28,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 831,
+      "end": 832,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 8
+        },
+        "end": {
+          "line": 28,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "adonis-session",
+      "start": 833,
+      "end": 849,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 10
+        },
+        "end": {
+          "line": 28,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 849,
+      "end": 850,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 26
+        },
+        "end": {
+          "line": 28,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Redis options\n  |--------------------------------------------------------------------------\n  |\n  | When using redis driver, configure the connection options here.\n  | see https://github.com/adonisjs/adonis-redis for more configuration options.\n  | Clustering is not supported for sessions.\n  |\n  | You can also supply a redis connection string like so:\n  | redis: Env.get('REDIS_URL', 'redis://localhost:6379')\n  ",
+      "start": 857,
+      "end": 1358,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 42,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "redis",
+      "start": 1361,
+      "end": 1366,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 2
+        },
+        "end": {
+          "line": 43,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1366,
+      "end": 1367,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 7
+        },
+        "end": {
+          "line": 43,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1368,
+      "end": 1369,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 9
+        },
+        "end": {
+          "line": 43,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "port",
+      "start": 1374,
+      "end": 1378,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 4
+        },
+        "end": {
+          "line": 44,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1378,
+      "end": 1379,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 8
+        },
+        "end": {
+          "line": 44,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 6379,
+      "start": 1380,
+      "end": 1384,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 10
+        },
+        "end": {
+          "line": 44,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1384,
+      "end": 1385,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 14
+        },
+        "end": {
+          "line": 44,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Redis port",
+      "start": 1395,
+      "end": 1408,
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 25
+        },
+        "end": {
+          "line": 44,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "host",
+      "start": 1413,
+      "end": 1417,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1417,
+      "end": 1418,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 8
+        },
+        "end": {
+          "line": 45,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "127.0.0.1",
+      "start": 1419,
+      "end": 1430,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 10
+        },
+        "end": {
+          "line": 45,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1430,
+      "end": 1431,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 21
+        },
+        "end": {
+          "line": 45,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Redis host",
+      "start": 1434,
+      "end": 1447,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 25
+        },
+        "end": {
+          "line": 45,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "family",
+      "start": 1452,
+      "end": 1458,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 4
+        },
+        "end": {
+          "line": 46,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1458,
+      "end": 1459,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 10
+        },
+        "end": {
+          "line": 46,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 4,
+      "start": 1460,
+      "end": 1461,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 12
+        },
+        "end": {
+          "line": 46,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1461,
+      "end": 1462,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 13
+        },
+        "end": {
+          "line": 46,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " 4 (IPv4) or 6 (IPv6)",
+      "start": 1473,
+      "end": 1496,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 25
+        },
+        "end": {
+          "line": 46,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "password",
+      "start": 1501,
+      "end": 1509,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 4
+        },
+        "end": {
+          "line": 47,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1509,
+      "end": 1510,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 12
+        },
+        "end": {
+          "line": 47,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "auth",
+      "start": 1511,
+      "end": 1517,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 14
+        },
+        "end": {
+          "line": 47,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1517,
+      "end": 1518,
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 20
+        },
+        "end": {
+          "line": 47,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "db",
+      "start": 1523,
+      "end": 1525,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 48,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1525,
+      "end": 1526,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 6
+        },
+        "end": {
+          "line": 48,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 0,
+      "start": 1527,
+      "end": 1528,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 8
+        },
+        "end": {
+          "line": 48,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1531,
+      "end": 1532,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 2
+        },
+        "end": {
+          "line": 49,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1532,
+      "end": 1533,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 3
+        },
+        "end": {
+          "line": 49,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Session Age\n  |--------------------------------------------------------------------------\n  |\n  | Define session life in minutes. Session will be destroyed after defined\n  | minutes of inactivity.\n  |\n  ",
+      "start": 1540,
+      "end": 1830,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 2
+        },
+        "end": {
+          "line": 60,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "age",
+      "start": 1833,
+      "end": 1836,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 2
+        },
+        "end": {
+          "line": 61,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1836,
+      "end": 1837,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 5
+        },
+        "end": {
+          "line": 61,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 120,
+      "start": 1838,
+      "end": 1841,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 7
+        },
+        "end": {
+          "line": 61,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1841,
+      "end": 1842,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 10
+        },
+        "end": {
+          "line": 61,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Clear on browser close\n  |--------------------------------------------------------------------------\n  |\n  | You can make your sessions to be removed once browser has been closed/killed\n  | by setting below value to true. Also it will disregard age parameter.\n  |\n  ",
+      "start": 1846,
+      "end": 2199,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 2
+        },
+        "end": {
+          "line": 71,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "clearWithBrowser",
+      "start": 2202,
+      "end": 2218,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 2
+        },
+        "end": {
+          "line": 72,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2218,
+      "end": 2219,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 18
+        },
+        "end": {
+          "line": 72,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "false",
+        "keyword": "false",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "false",
+      "start": 2220,
+      "end": 2225,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 20
+        },
+        "end": {
+          "line": 72,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2225,
+      "end": 2226,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 25
+        },
+        "end": {
+          "line": 72,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Http Only Cookie\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie http only, which means javascript cannot access the cookie\n  | by document.cookie.\n  |\n  ",
+      "start": 2230,
+      "end": 2521,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 2
+        },
+        "end": {
+          "line": 82,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "httpOnly",
+      "start": 2524,
+      "end": 2532,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 2
+        },
+        "end": {
+          "line": 83,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2532,
+      "end": 2533,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 10
+        },
+        "end": {
+          "line": 83,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 2534,
+      "end": 2538,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 12
+        },
+        "end": {
+          "line": 83,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2538,
+      "end": 2539,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 16
+        },
+        "end": {
+          "line": 83,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Same site only\n  |--------------------------------------------------------------------------\n  |\n  | Keep cookie accessible from the same domain. Available values are\n  | true, false, lax and strict.\n  | https://tools.ietf.org/html/draft-west-first-party-cookies-07\n  |\n  ",
+      "start": 2543,
+      "end": 2902,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 2
+        },
+        "end": {
+          "line": 94,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "sameSite",
+      "start": 2905,
+      "end": 2913,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 2
+        },
+        "end": {
+          "line": 95,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2913,
+      "end": 2914,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 10
+        },
+        "end": {
+          "line": 95,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 2915,
+      "end": 2919,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 12
+        },
+        "end": {
+          "line": 95,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2919,
+      "end": 2920,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 16
+        },
+        "end": {
+          "line": 95,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Domain\n  |--------------------------------------------------------------------------\n  |\n  | Set domain for session cookie. If not defined it will be set to current\n  | domain. For single and subdomains use. \".adonisjs.com\"\n  |\n  ",
+      "start": 2924,
+      "end": 3241,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 2
+        },
+        "end": {
+          "line": 105,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "domain",
+      "start": 3244,
+      "end": 3250,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 2
+        },
+        "end": {
+          "line": 106,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3250,
+      "end": 3251,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 8
+        },
+        "end": {
+          "line": 106,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "null",
+        "keyword": "null",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "null",
+      "start": 3252,
+      "end": 3256,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 10
+        },
+        "end": {
+          "line": 106,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3256,
+      "end": 3257,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 14
+        },
+        "end": {
+          "line": 106,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Path\n  |--------------------------------------------------------------------------\n  |\n  | Path defines where the session will be available. If you want to access\n  | it anywhere on your website. Set it to /\n  |\n  ",
+      "start": 3261,
+      "end": 3562,
+      "loc": {
+        "start": {
+          "line": 108,
+          "column": 2
+        },
+        "end": {
+          "line": 116,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "path",
+      "start": 3565,
+      "end": 3569,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 2
+        },
+        "end": {
+          "line": 117,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3569,
+      "end": 3570,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 6
+        },
+        "end": {
+          "line": 117,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "/",
+      "start": 3571,
+      "end": 3574,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 8
+        },
+        "end": {
+          "line": 117,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3574,
+      "end": 3575,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 11
+        },
+        "end": {
+          "line": 117,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | Secure\n  |--------------------------------------------------------------------------\n  |\n  | Define whether to keep session cookie secure or not. Secured cookies\n  | are only served over HTTPS.\n  |\n  ",
+      "start": 3579,
+      "end": 3866,
+      "loc": {
+        "start": {
+          "line": 119,
+          "column": 2
+        },
+        "end": {
+          "line": 127,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "secure",
+      "start": 3869,
+      "end": 3875,
+      "loc": {
+        "start": {
+          "line": 128,
+          "column": 2
+        },
+        "end": {
+          "line": 128,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3875,
+      "end": 3876,
+      "loc": {
+        "start": {
+          "line": 128,
+          "column": 8
+        },
+        "end": {
+          "line": 128,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "false",
+        "keyword": "false",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "false",
+      "start": 3877,
+      "end": 3882,
+      "loc": {
+        "start": {
+          "line": 128,
+          "column": 10
+        },
+        "end": {
+          "line": 128,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3882,
+      "end": 3883,
+      "loc": {
+        "start": {
+          "line": 128,
+          "column": 15
+        },
+        "end": {
+          "line": 128,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | File Driver Config\n  |--------------------------------------------------------------------------\n  |\n  | Here we define settings for file driver. For now we define directory\n  | in which we want to store our sessions. Defined directory will be\n  | created inside storage directory.\n  |\n  ",
+      "start": 3887,
+      "end": 4262,
+      "loc": {
+        "start": {
+          "line": 130,
+          "column": 2
+        },
+        "end": {
+          "line": 139,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "file",
+      "start": 4265,
+      "end": 4269,
+      "loc": {
+        "start": {
+          "line": 140,
+          "column": 2
+        },
+        "end": {
+          "line": 140,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4269,
+      "end": 4270,
+      "loc": {
+        "start": {
+          "line": 140,
+          "column": 6
+        },
+        "end": {
+          "line": 140,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4271,
+      "end": 4272,
+      "loc": {
+        "start": {
+          "line": 140,
+          "column": 8
+        },
+        "end": {
+          "line": 140,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "directory",
+      "start": 4277,
+      "end": 4286,
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 4
+        },
+        "end": {
+          "line": 141,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4286,
+      "end": 4287,
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 13
+        },
+        "end": {
+          "line": 141,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "sessions",
+      "start": 4288,
+      "end": 4298,
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 15
+        },
+        "end": {
+          "line": 141,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4301,
+      "end": 4302,
+      "loc": {
+        "start": {
+          "line": 142,
+          "column": 2
+        },
+        "end": {
+          "line": 142,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4304,
+      "end": 4305,
+      "loc": {
+        "start": {
+          "line": 144,
+          "column": 0
+        },
+        "end": {
+          "line": 144,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4306,
+      "end": 4306,
+      "loc": {
+        "start": {
+          "line": 145,
+          "column": 0
+        },
+        "end": {
+          "line": 145,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

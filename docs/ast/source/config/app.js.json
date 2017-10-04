@@ -1,0 +1,5019 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 6227,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 199,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 6227,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 199,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "VariableDeclaration",
+        "start": 14,
+        "end": 36,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 22
+          }
+        },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 20,
+            "end": 36,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 6
+              },
+              "end": {
+                "line": 3,
+                "column": 22
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 20,
+              "end": 23,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 6
+                },
+                "end": {
+                  "line": 3,
+                  "column": 9
+                },
+                "identifierName": "Env"
+              },
+              "name": "Env"
+            },
+            "init": {
+              "type": "CallExpression",
+              "start": 26,
+              "end": 36,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 12
+                },
+                "end": {
+                  "line": 3,
+                  "column": 22
+                }
+              },
+              "callee": {
+                "type": "Identifier",
+                "start": 26,
+                "end": 29,
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 15
+                  },
+                  "identifierName": "use"
+                },
+                "name": "use"
+              },
+              "arguments": [
+                {
+                  "type": "StringLiteral",
+                  "start": 30,
+                  "end": 35,
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 21
+                    }
+                  },
+                  "extra": {
+                    "rawValue": "Env",
+                    "raw": "'Env'"
+                  },
+                  "value": "Env"
+                }
+              ]
+            }
+          }
+        ],
+        "kind": "const"
+      },
+      {
+        "type": "ExpressionStatement",
+        "start": 38,
+        "end": 6226,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 198,
+            "column": 1
+          }
+        },
+        "expression": {
+          "type": "AssignmentExpression",
+          "start": 38,
+          "end": 6226,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 198,
+              "column": 1
+            }
+          },
+          "operator": "=",
+          "left": {
+            "type": "MemberExpression",
+            "start": 38,
+            "end": 52,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 14
+              }
+            },
+            "object": {
+              "type": "Identifier",
+              "start": 38,
+              "end": 44,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 0
+                },
+                "end": {
+                  "line": 5,
+                  "column": 6
+                },
+                "identifierName": "module"
+              },
+              "name": "module"
+            },
+            "property": {
+              "type": "Identifier",
+              "start": 45,
+              "end": 52,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 14
+                },
+                "identifierName": "exports"
+              },
+              "name": "exports"
+            },
+            "computed": false
+          },
+          "right": {
+            "type": "ObjectExpression",
+            "start": 55,
+            "end": 6226,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 17
+              },
+              "end": {
+                "line": 198,
+                "column": 1
+              }
+            },
+            "properties": [
+              {
+                "type": "ObjectProperty",
+                "start": 384,
+                "end": 410,
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 28
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 384,
+                  "end": 390,
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 8
+                    },
+                    "identifierName": "appKey"
+                  },
+                  "name": "appKey",
+                  "leadingComments": null
+                },
+                "value": {
+                  "type": "CallExpression",
+                  "start": 392,
+                  "end": 410,
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 28
+                    }
+                  },
+                  "callee": {
+                    "type": "MemberExpression",
+                    "start": 392,
+                    "end": 399,
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 17
+                      }
+                    },
+                    "object": {
+                      "type": "Identifier",
+                      "start": 392,
+                      "end": 395,
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 13
+                        },
+                        "identifierName": "Env"
+                      },
+                      "name": "Env"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "start": 396,
+                      "end": 399,
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 14
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 17
+                        },
+                        "identifierName": "get"
+                      },
+                      "name": "get"
+                    },
+                    "computed": false
+                  },
+                  "arguments": [
+                    {
+                      "type": "StringLiteral",
+                      "start": 400,
+                      "end": 409,
+                      "loc": {
+                        "start": {
+                          "line": 16,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 27
+                        }
+                      },
+                      "extra": {
+                        "rawValue": "APP_KEY",
+                        "raw": "'APP_KEY'"
+                      },
+                      "value": "APP_KEY"
+                    }
+                  ]
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "\n  |--------------------------------------------------------------------------\n  | App Key\n  |--------------------------------------------------------------------------\n  |\n  | App key is a randomly generated 16 or 32 characters long string required\n  | to encrypted cookies, sessions and other sensitive data.\n  |\n  ",
+                    "start": 60,
+                    "end": 381,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 4
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 415,
+                "end": 921,
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 32,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 415,
+                  "end": 425,
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 12
+                    },
+                    "identifierName": "encryption"
+                  },
+                  "name": "encryption"
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 427,
+                  "end": 921,
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 893,
+                      "end": 917,
+                      "loc": {
+                        "start": {
+                          "line": 31,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 28
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 893,
+                        "end": 902,
+                        "loc": {
+                          "start": {
+                            "line": 31,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 13
+                          },
+                          "identifierName": "algorithm"
+                        },
+                        "name": "algorithm",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 904,
+                        "end": 917,
+                        "loc": {
+                          "start": {
+                            "line": 31,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 28
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "aes-256-cbc",
+                          "raw": "'aes-256-cbc'"
+                        },
+                        "value": "aes-256-cbc"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Encryption algorithm\n    |--------------------------------------------------------------------------\n    |\n    | Encryption algorithm defines the algorithm to be used while encrypting\n    | values. Under the hood adonis makes of node-crypto.\n    |\n    | aes-256-cbc requires 32 characters long string\n    | aes-128-cbc requires 16 characters long string\n    |\n    ",
+                          "start": 433,
+                          "end": 888,
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 30,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 926,
+                "end": 3185,
+                "loc": {
+                  "start": {
+                    "line": 34,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 97,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 926,
+                  "end": 930,
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 6
+                    },
+                    "identifierName": "http"
+                  },
+                  "name": "http"
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 932,
+                  "end": 3185,
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 97,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1396,
+                      "end": 1421,
+                      "loc": {
+                        "start": {
+                          "line": 46,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 46,
+                          "column": 29
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1396,
+                        "end": 1415,
+                        "loc": {
+                          "start": {
+                            "line": 46,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 23
+                          },
+                          "identifierName": "allowMethodSpoofing"
+                        },
+                        "name": "allowMethodSpoofing",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 1417,
+                        "end": 1421,
+                        "loc": {
+                          "start": {
+                            "line": 46,
+                            "column": 25
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 29
+                          }
+                        },
+                        "value": true
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Allow Method Spoofing\n    |--------------------------------------------------------------------------\n    |\n    | Method spoofing allows to make requests by spoofing the http verb.\n    | Which means you can make a GET request but instruct the server to\n    | treat as a POST or PUT request. If you want this feature, set the\n    | below value to true.\n    |\n    ",
+                          "start": 938,
+                          "end": 1391,
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 45,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 1977,
+                      "end": 1994,
+                      "loc": {
+                        "start": {
+                          "line": 60,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 60,
+                          "column": 21
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 1977,
+                        "end": 1987,
+                        "loc": {
+                          "start": {
+                            "line": 60,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 60,
+                            "column": 14
+                          },
+                          "identifierName": "trustProxy"
+                        },
+                        "name": "trustProxy",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 1989,
+                        "end": 1994,
+                        "loc": {
+                          "start": {
+                            "line": 60,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 60,
+                            "column": 21
+                          }
+                        },
+                        "value": false
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Trust Proxy\n    |--------------------------------------------------------------------------\n    |\n    | Trust proxy defines whether X-Forwaded-* headers should be trusted or not.\n    | When your application is behind a proxy server like nginx, these values\n    | are set automatically and should be trusted. Apart from setting it\n    | to true or false Adonis supports handful or ways to allow proxy\n    | values. Read documentation for that.\n    |\n    ",
+                          "start": 1428,
+                          "end": 1972,
+                          "loc": {
+                            "start": {
+                              "line": 48,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 59,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 2457,
+                      "end": 2475,
+                      "loc": {
+                        "start": {
+                          "line": 74,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 74,
+                          "column": 22
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 2457,
+                        "end": 2472,
+                        "loc": {
+                          "start": {
+                            "line": 74,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 74,
+                            "column": 19
+                          },
+                          "identifierName": "subdomainOffset"
+                        },
+                        "name": "subdomainOffset",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "NumericLiteral",
+                        "start": 2474,
+                        "end": 2475,
+                        "loc": {
+                          "start": {
+                            "line": 74,
+                            "column": 21
+                          },
+                          "end": {
+                            "line": 74,
+                            "column": 22
+                          }
+                        },
+                        "extra": {
+                          "rawValue": 2,
+                          "raw": "2"
+                        },
+                        "value": 2
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Subdomains\n    |--------------------------------------------------------------------------\n    |\n    | Offset to be used for returning subdomains for a given request.For\n    | majority of applications it will be 2, until you have nested\n    | sudomains.\n    | cheatsheet.adonisjs.com      - offset - 2\n    | virk.cheatsheet.adonisjs.com - offset - 3\n    |\n    ",
+                          "start": 2001,
+                          "end": 2452,
+                          "loc": {
+                            "start": {
+                              "line": 62,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 73,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 2824,
+                      "end": 2842,
+                      "loc": {
+                        "start": {
+                          "line": 85,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 85,
+                          "column": 22
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 2824,
+                        "end": 2836,
+                        "loc": {
+                          "start": {
+                            "line": 85,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 85,
+                            "column": 16
+                          },
+                          "identifierName": "setPoweredBy"
+                        },
+                        "name": "setPoweredBy",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 2838,
+                        "end": 2842,
+                        "loc": {
+                          "start": {
+                            "line": 85,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 85,
+                            "column": 22
+                          }
+                        },
+                        "value": true
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Set Powered By\n    |--------------------------------------------------------------------------\n    |\n    | Adonis will set response header X-Powered-By if below value is set to\n    | true. Consider this as a way of saying thanks to us.\n    |\n    ",
+                          "start": 2482,
+                          "end": 2819,
+                          "loc": {
+                            "start": {
+                              "line": 76,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 84,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 3156,
+                      "end": 3181,
+                      "loc": {
+                        "start": {
+                          "line": 96,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 96,
+                          "column": 29
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 3156,
+                        "end": 3169,
+                        "loc": {
+                          "start": {
+                            "line": 96,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 96,
+                            "column": 17
+                          },
+                          "identifierName": "jsonpCallback"
+                        },
+                        "name": "jsonpCallback",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 3171,
+                        "end": 3181,
+                        "loc": {
+                          "start": {
+                            "line": 96,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 96,
+                            "column": 29
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "callback",
+                          "raw": "'callback'"
+                        },
+                        "value": "callback"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | JSONP Callback\n    |--------------------------------------------------------------------------\n    |\n    | Default jsonp callback to be used when callback query string is missing\n    | in request url.\n    |\n    ",
+                          "start": 2849,
+                          "end": 3151,
+                          "loc": {
+                            "start": {
+                              "line": 87,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 95,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 3190,
+                "end": 3950,
+                "loc": {
+                  "start": {
+                    "line": 99,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 121,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 3190,
+                  "end": 3195,
+                  "loc": {
+                    "start": {
+                      "line": 99,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 99,
+                      "column": 7
+                    },
+                    "identifierName": "views"
+                  },
+                  "name": "views"
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 3197,
+                  "end": 3950,
+                  "loc": {
+                    "start": {
+                      "line": 99,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 121,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 3529,
+                      "end": 3564,
+                      "loc": {
+                        "start": {
+                          "line": 109,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 109,
+                          "column": 39
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 3529,
+                        "end": 3534,
+                        "loc": {
+                          "start": {
+                            "line": 109,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 109,
+                            "column": 9
+                          },
+                          "identifierName": "cache"
+                        },
+                        "name": "cache",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "CallExpression",
+                        "start": 3536,
+                        "end": 3564,
+                        "loc": {
+                          "start": {
+                            "line": 109,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 109,
+                            "column": 39
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 3536,
+                          "end": 3543,
+                          "loc": {
+                            "start": {
+                              "line": 109,
+                              "column": 11
+                            },
+                            "end": {
+                              "line": 109,
+                              "column": 18
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 3536,
+                            "end": 3539,
+                            "loc": {
+                              "start": {
+                                "line": 109,
+                                "column": 11
+                              },
+                              "end": {
+                                "line": 109,
+                                "column": 14
+                              },
+                              "identifierName": "Env"
+                            },
+                            "name": "Env"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 3540,
+                            "end": 3543,
+                            "loc": {
+                              "start": {
+                                "line": 109,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 109,
+                                "column": 18
+                              },
+                              "identifierName": "get"
+                            },
+                            "name": "get"
+                          },
+                          "computed": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "StringLiteral",
+                            "start": 3544,
+                            "end": 3557,
+                            "loc": {
+                              "start": {
+                                "line": 109,
+                                "column": 19
+                              },
+                              "end": {
+                                "line": 109,
+                                "column": 32
+                              }
+                            },
+                            "extra": {
+                              "rawValue": "CACHE_VIEWS",
+                              "raw": "'CACHE_VIEWS'"
+                            },
+                            "value": "CACHE_VIEWS"
+                          },
+                          {
+                            "type": "BooleanLiteral",
+                            "start": 3559,
+                            "end": 3563,
+                            "loc": {
+                              "start": {
+                                "line": 109,
+                                "column": 34
+                              },
+                              "end": {
+                                "line": 109,
+                                "column": 38
+                              }
+                            },
+                            "value": true
+                          }
+                        ]
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Cache Views\n    |--------------------------------------------------------------------------\n    |\n    | Define whether or not to cache the compiled view. Set it to true in\n    | production to optimize view loading time.\n    |\n    ",
+                          "start": 3203,
+                          "end": 3524,
+                          "loc": {
+                            "start": {
+                              "line": 100,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 108,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 3925,
+                      "end": 3946,
+                      "loc": {
+                        "start": {
+                          "line": 120,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 120,
+                          "column": 25
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 3925,
+                        "end": 3939,
+                        "loc": {
+                          "start": {
+                            "line": 120,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 120,
+                            "column": 18
+                          },
+                          "identifierName": "injectServices"
+                        },
+                        "name": "injectServices",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 3941,
+                        "end": 3946,
+                        "loc": {
+                          "start": {
+                            "line": 120,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 120,
+                            "column": 25
+                          }
+                        },
+                        "value": false
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Service Injection\n    |--------------------------------------------------------------------------\n    |\n    | Inside your nunjucks views, you can inject models, services etc using\n    | IoC container. Setting it to false will disable this feature.\n    |\n    ",
+                          "start": 3571,
+                          "end": 3920,
+                          "loc": {
+                            "start": {
+                              "line": 111,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 119,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 3955,
+                "end": 5124,
+                "loc": {
+                  "start": {
+                    "line": 123,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 160,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 3955,
+                  "end": 3961,
+                  "loc": {
+                    "start": {
+                      "line": 123,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 123,
+                      "column": 8
+                    },
+                    "identifierName": "static"
+                  },
+                  "name": "static"
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 3963,
+                  "end": 5124,
+                  "loc": {
+                    "start": {
+                      "line": 123,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 160,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 4407,
+                      "end": 4425,
+                      "loc": {
+                        "start": {
+                          "line": 137,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 137,
+                          "column": 22
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 4407,
+                        "end": 4415,
+                        "loc": {
+                          "start": {
+                            "line": 137,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 137,
+                            "column": 12
+                          },
+                          "identifierName": "dotfiles"
+                        },
+                        "name": "dotfiles",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 4417,
+                        "end": 4425,
+                        "loc": {
+                          "start": {
+                            "line": 137,
+                            "column": 14
+                          },
+                          "end": {
+                            "line": 137,
+                            "column": 22
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "ignore",
+                          "raw": "'ignore'"
+                        },
+                        "value": "ignore"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Dot Files\n    |--------------------------------------------------------------------------\n    |\n    | Define how to treat dot files when trying to server static resources.\n    | By default it is set to ignore, which will pretend that dotfiles\n    | does not exists.\n    |\n    | Can be one of the following\n    | ignore, deny, allow\n    |\n    ",
+                          "start": 3969,
+                          "end": 4402,
+                          "loc": {
+                            "start": {
+                              "line": 124,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 136,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 4669,
+                      "end": 4679,
+                      "loc": {
+                        "start": {
+                          "line": 147,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 147,
+                          "column": 14
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 4669,
+                        "end": 4673,
+                        "loc": {
+                          "start": {
+                            "line": 147,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 147,
+                            "column": 8
+                          },
+                          "identifierName": "etag"
+                        },
+                        "name": "etag",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 4675,
+                        "end": 4679,
+                        "loc": {
+                          "start": {
+                            "line": 147,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 147,
+                            "column": 14
+                          }
+                        },
+                        "value": true
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | ETag\n    |--------------------------------------------------------------------------\n    |\n    | Enable or disable etag generation\n    |\n    ",
+                          "start": 4432,
+                          "end": 4664,
+                          "loc": {
+                            "start": {
+                              "line": 139,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 146,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 5103,
+                      "end": 5120,
+                      "loc": {
+                        "start": {
+                          "line": 159,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 159,
+                          "column": 21
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 5103,
+                        "end": 5113,
+                        "loc": {
+                          "start": {
+                            "line": 159,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 159,
+                            "column": 14
+                          },
+                          "identifierName": "extensions"
+                        },
+                        "name": "extensions",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "BooleanLiteral",
+                        "start": 5115,
+                        "end": 5120,
+                        "loc": {
+                          "start": {
+                            "line": 159,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 159,
+                            "column": 21
+                          }
+                        },
+                        "value": false
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Extensions\n    |--------------------------------------------------------------------------\n    |\n    | Set file extension fallbacks. When set, if a file is not found, the given\n    | extensions will be added to the file name and search for. The first\n    | that exists will be served. Example: ['html', 'htm'].\n    |\n    ",
+                          "start": 4686,
+                          "end": 5098,
+                          "loc": {
+                            "start": {
+                              "line": 149,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 158,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "ObjectProperty",
+                "start": 5129,
+                "end": 6224,
+                "loc": {
+                  "start": {
+                    "line": 162,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 197,
+                    "column": 3
+                  }
+                },
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 5129,
+                  "end": 5136,
+                  "loc": {
+                    "start": {
+                      "line": 162,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 162,
+                      "column": 9
+                    },
+                    "identifierName": "locales"
+                  },
+                  "name": "locales"
+                },
+                "value": {
+                  "type": "ObjectExpression",
+                  "start": 5138,
+                  "end": 6224,
+                  "loc": {
+                    "start": {
+                      "line": 162,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 197,
+                      "column": 3
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "start": 5479,
+                      "end": 5493,
+                      "loc": {
+                        "start": {
+                          "line": 174,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 174,
+                          "column": 18
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 5479,
+                        "end": 5485,
+                        "loc": {
+                          "start": {
+                            "line": 174,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 174,
+                            "column": 10
+                          },
+                          "identifierName": "driver"
+                        },
+                        "name": "driver",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 5487,
+                        "end": 5493,
+                        "loc": {
+                          "start": {
+                            "line": 174,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 174,
+                            "column": 18
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "file",
+                          "raw": "'file'"
+                        },
+                        "value": "file"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Driver\n    |--------------------------------------------------------------------------\n    |\n    | The driver to be used for fetching and updating locales. Below is the\n    | list of available options.\n    |\n    | file, database\n    |\n    ",
+                          "start": 5144,
+                          "end": 5474,
+                          "loc": {
+                            "start": {
+                              "line": 163,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 173,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 5903,
+                      "end": 5915,
+                      "loc": {
+                        "start": {
+                          "line": 186,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 186,
+                          "column": 16
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 5903,
+                        "end": 5909,
+                        "loc": {
+                          "start": {
+                            "line": 186,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 186,
+                            "column": 10
+                          },
+                          "identifierName": "locale"
+                        },
+                        "name": "locale",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 5911,
+                        "end": 5915,
+                        "loc": {
+                          "start": {
+                            "line": 186,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 186,
+                            "column": 16
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "en",
+                          "raw": "'en'"
+                        },
+                        "value": "en"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Default Locale\n    |--------------------------------------------------------------------------\n    |\n    | Default locale to be used by Antl provider. You can always switch drivers\n    | in runtime or use the official Antl middleware to detect the driver\n    | based on HTTP headers/query string.\n    |\n    ",
+                          "start": 5500,
+                          "end": 5898,
+                          "loc": {
+                            "start": {
+                              "line": 176,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 185,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 6200,
+                      "end": 6220,
+                      "loc": {
+                        "start": {
+                          "line": 196,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 196,
+                          "column": 24
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 6200,
+                        "end": 6214,
+                        "loc": {
+                          "start": {
+                            "line": 196,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 196,
+                            "column": 18
+                          },
+                          "identifierName": "fallbackLocale"
+                        },
+                        "name": "fallbackLocale",
+                        "leadingComments": null
+                      },
+                      "value": {
+                        "type": "StringLiteral",
+                        "start": 6216,
+                        "end": 6220,
+                        "loc": {
+                          "start": {
+                            "line": 196,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 196,
+                            "column": 24
+                          }
+                        },
+                        "extra": {
+                          "rawValue": "en",
+                          "raw": "'en'"
+                        },
+                        "value": "en"
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "\n    |--------------------------------------------------------------------------\n    | Fallback Locale\n    |--------------------------------------------------------------------------\n    |\n    | Fallback locale to be used when actual locale is not supported.\n    |\n    ",
+                          "start": 5922,
+                          "end": 6195,
+                          "loc": {
+                            "start": {
+                              "line": 188,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 195,
+                              "column": 6
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "directives": [
+      {
+        "type": "Directive",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": {
+          "type": "DirectiveLiteral",
+          "start": 0,
+          "end": 12,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          },
+          "value": "use strict",
+          "extra": {
+            "raw": "'use strict'",
+            "rawValue": "use strict"
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | App Key\n  |--------------------------------------------------------------------------\n  |\n  | App key is a randomly generated 16 or 32 characters long string required\n  | to encrypted cookies, sessions and other sensitive data.\n  |\n  ",
+      "start": 60,
+      "end": 381,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Encryption algorithm\n    |--------------------------------------------------------------------------\n    |\n    | Encryption algorithm defines the algorithm to be used while encrypting\n    | values. Under the hood adonis makes of node-crypto.\n    |\n    | aes-256-cbc requires 32 characters long string\n    | aes-128-cbc requires 16 characters long string\n    |\n    ",
+      "start": 433,
+      "end": 888,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 30,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Allow Method Spoofing\n    |--------------------------------------------------------------------------\n    |\n    | Method spoofing allows to make requests by spoofing the http verb.\n    | Which means you can make a GET request but instruct the server to\n    | treat as a POST or PUT request. If you want this feature, set the\n    | below value to true.\n    |\n    ",
+      "start": 938,
+      "end": 1391,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Trust Proxy\n    |--------------------------------------------------------------------------\n    |\n    | Trust proxy defines whether X-Forwaded-* headers should be trusted or not.\n    | When your application is behind a proxy server like nginx, these values\n    | are set automatically and should be trusted. Apart from setting it\n    | to true or false Adonis supports handful or ways to allow proxy\n    | values. Read documentation for that.\n    |\n    ",
+      "start": 1428,
+      "end": 1972,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Subdomains\n    |--------------------------------------------------------------------------\n    |\n    | Offset to be used for returning subdomains for a given request.For\n    | majority of applications it will be 2, until you have nested\n    | sudomains.\n    | cheatsheet.adonisjs.com      - offset - 2\n    | virk.cheatsheet.adonisjs.com - offset - 3\n    |\n    ",
+      "start": 2001,
+      "end": 2452,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 4
+        },
+        "end": {
+          "line": 73,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Set Powered By\n    |--------------------------------------------------------------------------\n    |\n    | Adonis will set response header X-Powered-By if below value is set to\n    | true. Consider this as a way of saying thanks to us.\n    |\n    ",
+      "start": 2482,
+      "end": 2819,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 4
+        },
+        "end": {
+          "line": 84,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | JSONP Callback\n    |--------------------------------------------------------------------------\n    |\n    | Default jsonp callback to be used when callback query string is missing\n    | in request url.\n    |\n    ",
+      "start": 2849,
+      "end": 3151,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 4
+        },
+        "end": {
+          "line": 95,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Cache Views\n    |--------------------------------------------------------------------------\n    |\n    | Define whether or not to cache the compiled view. Set it to true in\n    | production to optimize view loading time.\n    |\n    ",
+      "start": 3203,
+      "end": 3524,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 4
+        },
+        "end": {
+          "line": 108,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Service Injection\n    |--------------------------------------------------------------------------\n    |\n    | Inside your nunjucks views, you can inject models, services etc using\n    | IoC container. Setting it to false will disable this feature.\n    |\n    ",
+      "start": 3571,
+      "end": 3920,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 4
+        },
+        "end": {
+          "line": 119,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Dot Files\n    |--------------------------------------------------------------------------\n    |\n    | Define how to treat dot files when trying to server static resources.\n    | By default it is set to ignore, which will pretend that dotfiles\n    | does not exists.\n    |\n    | Can be one of the following\n    | ignore, deny, allow\n    |\n    ",
+      "start": 3969,
+      "end": 4402,
+      "loc": {
+        "start": {
+          "line": 124,
+          "column": 4
+        },
+        "end": {
+          "line": 136,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | ETag\n    |--------------------------------------------------------------------------\n    |\n    | Enable or disable etag generation\n    |\n    ",
+      "start": 4432,
+      "end": 4664,
+      "loc": {
+        "start": {
+          "line": 139,
+          "column": 4
+        },
+        "end": {
+          "line": 146,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Extensions\n    |--------------------------------------------------------------------------\n    |\n    | Set file extension fallbacks. When set, if a file is not found, the given\n    | extensions will be added to the file name and search for. The first\n    | that exists will be served. Example: ['html', 'htm'].\n    |\n    ",
+      "start": 4686,
+      "end": 5098,
+      "loc": {
+        "start": {
+          "line": 149,
+          "column": 4
+        },
+        "end": {
+          "line": 158,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Driver\n    |--------------------------------------------------------------------------\n    |\n    | The driver to be used for fetching and updating locales. Below is the\n    | list of available options.\n    |\n    | file, database\n    |\n    ",
+      "start": 5144,
+      "end": 5474,
+      "loc": {
+        "start": {
+          "line": 163,
+          "column": 4
+        },
+        "end": {
+          "line": 173,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Default Locale\n    |--------------------------------------------------------------------------\n    |\n    | Default locale to be used by Antl provider. You can always switch drivers\n    | in runtime or use the official Antl middleware to detect the driver\n    | based on HTTP headers/query string.\n    |\n    ",
+      "start": 5500,
+      "end": 5898,
+      "loc": {
+        "start": {
+          "line": 176,
+          "column": 4
+        },
+        "end": {
+          "line": 185,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Fallback Locale\n    |--------------------------------------------------------------------------\n    |\n    | Fallback locale to be used when actual locale is not supported.\n    |\n    ",
+      "start": 5922,
+      "end": 6195,
+      "loc": {
+        "start": {
+          "line": 188,
+          "column": 4
+        },
+        "end": {
+          "line": 195,
+          "column": 6
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "use strict",
+      "start": 0,
+      "end": 12,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 14,
+      "end": 19,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Env",
+      "start": 20,
+      "end": 23,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 6
+        },
+        "end": {
+          "line": 3,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 24,
+      "end": 25,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 10
+        },
+        "end": {
+          "line": 3,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "use",
+      "start": 26,
+      "end": 29,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 12
+        },
+        "end": {
+          "line": 3,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 29,
+      "end": 30,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 15
+        },
+        "end": {
+          "line": 3,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "Env",
+      "start": 30,
+      "end": 35,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 16
+        },
+        "end": {
+          "line": 3,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 35,
+      "end": 36,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 21
+        },
+        "end": {
+          "line": 3,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "module",
+      "start": 38,
+      "end": 44,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 44,
+      "end": 45,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 6
+        },
+        "end": {
+          "line": 5,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "exports",
+      "start": 45,
+      "end": 52,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 53,
+      "end": 54,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 15
+        },
+        "end": {
+          "line": 5,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 55,
+      "end": 56,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 17
+        },
+        "end": {
+          "line": 5,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n  |--------------------------------------------------------------------------\n  | App Key\n  |--------------------------------------------------------------------------\n  |\n  | App key is a randomly generated 16 or 32 characters long string required\n  | to encrypted cookies, sessions and other sensitive data.\n  |\n  ",
+      "start": 60,
+      "end": 381,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "appKey",
+      "start": 384,
+      "end": 390,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 390,
+      "end": 391,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 8
+        },
+        "end": {
+          "line": 16,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Env",
+      "start": 392,
+      "end": 395,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 10
+        },
+        "end": {
+          "line": 16,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 395,
+      "end": 396,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 13
+        },
+        "end": {
+          "line": 16,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "get",
+      "start": 396,
+      "end": 399,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 14
+        },
+        "end": {
+          "line": 16,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 399,
+      "end": 400,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 17
+        },
+        "end": {
+          "line": 16,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "APP_KEY",
+      "start": 400,
+      "end": 409,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 18
+        },
+        "end": {
+          "line": 16,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 409,
+      "end": 410,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 27
+        },
+        "end": {
+          "line": 16,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 410,
+      "end": 411,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 28
+        },
+        "end": {
+          "line": 16,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "encryption",
+      "start": 415,
+      "end": 425,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 425,
+      "end": 426,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 12
+        },
+        "end": {
+          "line": 18,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 427,
+      "end": 428,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 14
+        },
+        "end": {
+          "line": 18,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Encryption algorithm\n    |--------------------------------------------------------------------------\n    |\n    | Encryption algorithm defines the algorithm to be used while encrypting\n    | values. Under the hood adonis makes of node-crypto.\n    |\n    | aes-256-cbc requires 32 characters long string\n    | aes-128-cbc requires 16 characters long string\n    |\n    ",
+      "start": 433,
+      "end": 888,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 30,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "algorithm",
+      "start": 893,
+      "end": 902,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 4
+        },
+        "end": {
+          "line": 31,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 902,
+      "end": 903,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 13
+        },
+        "end": {
+          "line": 31,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "aes-256-cbc",
+      "start": 904,
+      "end": 917,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 15
+        },
+        "end": {
+          "line": 31,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 920,
+      "end": 921,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 921,
+      "end": 922,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 3
+        },
+        "end": {
+          "line": 32,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "http",
+      "start": 926,
+      "end": 930,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 2
+        },
+        "end": {
+          "line": 34,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 930,
+      "end": 931,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 6
+        },
+        "end": {
+          "line": 34,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 932,
+      "end": 933,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 8
+        },
+        "end": {
+          "line": 34,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Allow Method Spoofing\n    |--------------------------------------------------------------------------\n    |\n    | Method spoofing allows to make requests by spoofing the http verb.\n    | Which means you can make a GET request but instruct the server to\n    | treat as a POST or PUT request. If you want this feature, set the\n    | below value to true.\n    |\n    ",
+      "start": 938,
+      "end": 1391,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "allowMethodSpoofing",
+      "start": 1396,
+      "end": 1415,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 4
+        },
+        "end": {
+          "line": 46,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1415,
+      "end": 1416,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 23
+        },
+        "end": {
+          "line": 46,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 1417,
+      "end": 1421,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 25
+        },
+        "end": {
+          "line": 46,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1421,
+      "end": 1422,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 29
+        },
+        "end": {
+          "line": 46,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Trust Proxy\n    |--------------------------------------------------------------------------\n    |\n    | Trust proxy defines whether X-Forwaded-* headers should be trusted or not.\n    | When your application is behind a proxy server like nginx, these values\n    | are set automatically and should be trusted. Apart from setting it\n    | to true or false Adonis supports handful or ways to allow proxy\n    | values. Read documentation for that.\n    |\n    ",
+      "start": 1428,
+      "end": 1972,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "trustProxy",
+      "start": 1977,
+      "end": 1987,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 4
+        },
+        "end": {
+          "line": 60,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1987,
+      "end": 1988,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 14
+        },
+        "end": {
+          "line": 60,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "false",
+        "keyword": "false",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "false",
+      "start": 1989,
+      "end": 1994,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 16
+        },
+        "end": {
+          "line": 60,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1994,
+      "end": 1995,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 21
+        },
+        "end": {
+          "line": 60,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Subdomains\n    |--------------------------------------------------------------------------\n    |\n    | Offset to be used for returning subdomains for a given request.For\n    | majority of applications it will be 2, until you have nested\n    | sudomains.\n    | cheatsheet.adonisjs.com      - offset - 2\n    | virk.cheatsheet.adonisjs.com - offset - 3\n    |\n    ",
+      "start": 2001,
+      "end": 2452,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 4
+        },
+        "end": {
+          "line": 73,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "subdomainOffset",
+      "start": 2457,
+      "end": 2472,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 4
+        },
+        "end": {
+          "line": 74,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2472,
+      "end": 2473,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 19
+        },
+        "end": {
+          "line": 74,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "num",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": 2,
+      "start": 2474,
+      "end": 2475,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 21
+        },
+        "end": {
+          "line": 74,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2475,
+      "end": 2476,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 22
+        },
+        "end": {
+          "line": 74,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Set Powered By\n    |--------------------------------------------------------------------------\n    |\n    | Adonis will set response header X-Powered-By if below value is set to\n    | true. Consider this as a way of saying thanks to us.\n    |\n    ",
+      "start": 2482,
+      "end": 2819,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 4
+        },
+        "end": {
+          "line": 84,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "setPoweredBy",
+      "start": 2824,
+      "end": 2836,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 4
+        },
+        "end": {
+          "line": 85,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2836,
+      "end": 2837,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 16
+        },
+        "end": {
+          "line": 85,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 2838,
+      "end": 2842,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 18
+        },
+        "end": {
+          "line": 85,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2842,
+      "end": 2843,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 22
+        },
+        "end": {
+          "line": 85,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | JSONP Callback\n    |--------------------------------------------------------------------------\n    |\n    | Default jsonp callback to be used when callback query string is missing\n    | in request url.\n    |\n    ",
+      "start": 2849,
+      "end": 3151,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 4
+        },
+        "end": {
+          "line": 95,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "jsonpCallback",
+      "start": 3156,
+      "end": 3169,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 4
+        },
+        "end": {
+          "line": 96,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3169,
+      "end": 3170,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 17
+        },
+        "end": {
+          "line": 96,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "callback",
+      "start": 3171,
+      "end": 3181,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 19
+        },
+        "end": {
+          "line": 96,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3184,
+      "end": 3185,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 2
+        },
+        "end": {
+          "line": 97,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3185,
+      "end": 3186,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 3
+        },
+        "end": {
+          "line": 97,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "views",
+      "start": 3190,
+      "end": 3195,
+      "loc": {
+        "start": {
+          "line": 99,
+          "column": 2
+        },
+        "end": {
+          "line": 99,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3195,
+      "end": 3196,
+      "loc": {
+        "start": {
+          "line": 99,
+          "column": 7
+        },
+        "end": {
+          "line": 99,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3197,
+      "end": 3198,
+      "loc": {
+        "start": {
+          "line": 99,
+          "column": 9
+        },
+        "end": {
+          "line": 99,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Cache Views\n    |--------------------------------------------------------------------------\n    |\n    | Define whether or not to cache the compiled view. Set it to true in\n    | production to optimize view loading time.\n    |\n    ",
+      "start": 3203,
+      "end": 3524,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 4
+        },
+        "end": {
+          "line": 108,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "cache",
+      "start": 3529,
+      "end": 3534,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 4
+        },
+        "end": {
+          "line": 109,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3534,
+      "end": 3535,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 9
+        },
+        "end": {
+          "line": 109,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Env",
+      "start": 3536,
+      "end": 3539,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 11
+        },
+        "end": {
+          "line": 109,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3539,
+      "end": 3540,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 14
+        },
+        "end": {
+          "line": 109,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "get",
+      "start": 3540,
+      "end": 3543,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 15
+        },
+        "end": {
+          "line": 109,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3543,
+      "end": 3544,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 18
+        },
+        "end": {
+          "line": 109,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "CACHE_VIEWS",
+      "start": 3544,
+      "end": 3557,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 19
+        },
+        "end": {
+          "line": 109,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3557,
+      "end": 3558,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 32
+        },
+        "end": {
+          "line": 109,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 3559,
+      "end": 3563,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 34
+        },
+        "end": {
+          "line": 109,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3563,
+      "end": 3564,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 38
+        },
+        "end": {
+          "line": 109,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3564,
+      "end": 3565,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 39
+        },
+        "end": {
+          "line": 109,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Service Injection\n    |--------------------------------------------------------------------------\n    |\n    | Inside your nunjucks views, you can inject models, services etc using\n    | IoC container. Setting it to false will disable this feature.\n    |\n    ",
+      "start": 3571,
+      "end": 3920,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 4
+        },
+        "end": {
+          "line": 119,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "injectServices",
+      "start": 3925,
+      "end": 3939,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 4
+        },
+        "end": {
+          "line": 120,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3939,
+      "end": 3940,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 18
+        },
+        "end": {
+          "line": 120,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "false",
+        "keyword": "false",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "false",
+      "start": 3941,
+      "end": 3946,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 20
+        },
+        "end": {
+          "line": 120,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3949,
+      "end": 3950,
+      "loc": {
+        "start": {
+          "line": 121,
+          "column": 2
+        },
+        "end": {
+          "line": 121,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3950,
+      "end": 3951,
+      "loc": {
+        "start": {
+          "line": 121,
+          "column": 3
+        },
+        "end": {
+          "line": 121,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "static",
+      "start": 3955,
+      "end": 3961,
+      "loc": {
+        "start": {
+          "line": 123,
+          "column": 2
+        },
+        "end": {
+          "line": 123,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3961,
+      "end": 3962,
+      "loc": {
+        "start": {
+          "line": 123,
+          "column": 8
+        },
+        "end": {
+          "line": 123,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3963,
+      "end": 3964,
+      "loc": {
+        "start": {
+          "line": 123,
+          "column": 10
+        },
+        "end": {
+          "line": 123,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Dot Files\n    |--------------------------------------------------------------------------\n    |\n    | Define how to treat dot files when trying to server static resources.\n    | By default it is set to ignore, which will pretend that dotfiles\n    | does not exists.\n    |\n    | Can be one of the following\n    | ignore, deny, allow\n    |\n    ",
+      "start": 3969,
+      "end": 4402,
+      "loc": {
+        "start": {
+          "line": 124,
+          "column": 4
+        },
+        "end": {
+          "line": 136,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "dotfiles",
+      "start": 4407,
+      "end": 4415,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 4
+        },
+        "end": {
+          "line": 137,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4415,
+      "end": 4416,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 12
+        },
+        "end": {
+          "line": 137,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "ignore",
+      "start": 4417,
+      "end": 4425,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 14
+        },
+        "end": {
+          "line": 137,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4425,
+      "end": 4426,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 22
+        },
+        "end": {
+          "line": 137,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | ETag\n    |--------------------------------------------------------------------------\n    |\n    | Enable or disable etag generation\n    |\n    ",
+      "start": 4432,
+      "end": 4664,
+      "loc": {
+        "start": {
+          "line": 139,
+          "column": 4
+        },
+        "end": {
+          "line": 146,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "etag",
+      "start": 4669,
+      "end": 4673,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 4
+        },
+        "end": {
+          "line": 147,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4673,
+      "end": 4674,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 8
+        },
+        "end": {
+          "line": 147,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 4675,
+      "end": 4679,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 10
+        },
+        "end": {
+          "line": 147,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4679,
+      "end": 4680,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 14
+        },
+        "end": {
+          "line": 147,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Extensions\n    |--------------------------------------------------------------------------\n    |\n    | Set file extension fallbacks. When set, if a file is not found, the given\n    | extensions will be added to the file name and search for. The first\n    | that exists will be served. Example: ['html', 'htm'].\n    |\n    ",
+      "start": 4686,
+      "end": 5098,
+      "loc": {
+        "start": {
+          "line": 149,
+          "column": 4
+        },
+        "end": {
+          "line": 158,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "extensions",
+      "start": 5103,
+      "end": 5113,
+      "loc": {
+        "start": {
+          "line": 159,
+          "column": 4
+        },
+        "end": {
+          "line": 159,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5113,
+      "end": 5114,
+      "loc": {
+        "start": {
+          "line": 159,
+          "column": 14
+        },
+        "end": {
+          "line": 159,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "false",
+        "keyword": "false",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "false",
+      "start": 5115,
+      "end": 5120,
+      "loc": {
+        "start": {
+          "line": 159,
+          "column": 16
+        },
+        "end": {
+          "line": 159,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5123,
+      "end": 5124,
+      "loc": {
+        "start": {
+          "line": 160,
+          "column": 2
+        },
+        "end": {
+          "line": 160,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5124,
+      "end": 5125,
+      "loc": {
+        "start": {
+          "line": 160,
+          "column": 3
+        },
+        "end": {
+          "line": 160,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "locales",
+      "start": 5129,
+      "end": 5136,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 2
+        },
+        "end": {
+          "line": 162,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5136,
+      "end": 5137,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 9
+        },
+        "end": {
+          "line": 162,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5138,
+      "end": 5139,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 11
+        },
+        "end": {
+          "line": 162,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Driver\n    |--------------------------------------------------------------------------\n    |\n    | The driver to be used for fetching and updating locales. Below is the\n    | list of available options.\n    |\n    | file, database\n    |\n    ",
+      "start": 5144,
+      "end": 5474,
+      "loc": {
+        "start": {
+          "line": 163,
+          "column": 4
+        },
+        "end": {
+          "line": 173,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "driver",
+      "start": 5479,
+      "end": 5485,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 4
+        },
+        "end": {
+          "line": 174,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5485,
+      "end": 5486,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 10
+        },
+        "end": {
+          "line": 174,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "file",
+      "start": 5487,
+      "end": 5493,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 12
+        },
+        "end": {
+          "line": 174,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5493,
+      "end": 5494,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 18
+        },
+        "end": {
+          "line": 174,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Default Locale\n    |--------------------------------------------------------------------------\n    |\n    | Default locale to be used by Antl provider. You can always switch drivers\n    | in runtime or use the official Antl middleware to detect the driver\n    | based on HTTP headers/query string.\n    |\n    ",
+      "start": 5500,
+      "end": 5898,
+      "loc": {
+        "start": {
+          "line": 176,
+          "column": 4
+        },
+        "end": {
+          "line": 185,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "locale",
+      "start": 5903,
+      "end": 5909,
+      "loc": {
+        "start": {
+          "line": 186,
+          "column": 4
+        },
+        "end": {
+          "line": 186,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5909,
+      "end": 5910,
+      "loc": {
+        "start": {
+          "line": 186,
+          "column": 10
+        },
+        "end": {
+          "line": 186,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "en",
+      "start": 5911,
+      "end": 5915,
+      "loc": {
+        "start": {
+          "line": 186,
+          "column": 12
+        },
+        "end": {
+          "line": 186,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5915,
+      "end": 5916,
+      "loc": {
+        "start": {
+          "line": 186,
+          "column": 16
+        },
+        "end": {
+          "line": 186,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n    |--------------------------------------------------------------------------\n    | Fallback Locale\n    |--------------------------------------------------------------------------\n    |\n    | Fallback locale to be used when actual locale is not supported.\n    |\n    ",
+      "start": 5922,
+      "end": 6195,
+      "loc": {
+        "start": {
+          "line": 188,
+          "column": 4
+        },
+        "end": {
+          "line": 195,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "fallbackLocale",
+      "start": 6200,
+      "end": 6214,
+      "loc": {
+        "start": {
+          "line": 196,
+          "column": 4
+        },
+        "end": {
+          "line": 196,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6214,
+      "end": 6215,
+      "loc": {
+        "start": {
+          "line": 196,
+          "column": 18
+        },
+        "end": {
+          "line": 196,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "en",
+      "start": 6216,
+      "end": 6220,
+      "loc": {
+        "start": {
+          "line": 196,
+          "column": 20
+        },
+        "end": {
+          "line": 196,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 6223,
+      "end": 6224,
+      "loc": {
+        "start": {
+          "line": 197,
+          "column": 2
+        },
+        "end": {
+          "line": 197,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 6225,
+      "end": 6226,
+      "loc": {
+        "start": {
+          "line": 198,
+          "column": 0
+        },
+        "end": {
+          "line": 198,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6227,
+      "end": 6227,
+      "loc": {
+        "start": {
+          "line": 199,
+          "column": 0
+        },
+        "end": {
+          "line": 199,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

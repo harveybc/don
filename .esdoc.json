@@ -1,7 +1,7 @@
 {
-  "source": "./app",
-  "includes" : ["\\.\\/test\\/\\S*\\.js" , "\\.\\/database\\/\\S*\\.js", "\\.\\/resources\\/\\S*\\.js"],
+  "source": "./",
   "destination": "./docs",
+  "excludes":[".*node_modules.*\\.js"],
   "plugins": [
     {"name": "esdoc-standard-plugin"}
   ]

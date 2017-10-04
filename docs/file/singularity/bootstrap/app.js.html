@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">singularity/bootstrap/app.js | singularity</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="singularity"><meta property="twitter:description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/harveybc/singularity"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">singularity/bootstrap/app.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+/*
+|--------------------------------------------------------------------------
+| Application Providers
+|--------------------------------------------------------------------------
+|
+| Here we configure the providers required to run adonis application. They
+| are registered only once and can be used inside any file using `use`
+| keyword.
+|
+*/
+const providers = [
+  &apos;adonis-framework/providers/ConfigProvider&apos;,
+  &apos;adonis-framework/providers/EnvProvider&apos;,
+  &apos;adonis-framework/providers/EventProvider&apos;,
+  &apos;adonis-framework/providers/HelpersProvider&apos;,
+  &apos;adonis-framework/providers/HashProvider&apos;,
+  &apos;adonis-framework/providers/MiddlewareProvider&apos;,
+  &apos;adonis-framework/providers/RequestProvider&apos;,
+  &apos;adonis-framework/providers/ResponseProvider&apos;,
+  &apos;adonis-framework/providers/RouteProvider&apos;,
+  &apos;adonis-framework/providers/ServerProvider&apos;,
+  &apos;adonis-framework/providers/SessionProvider&apos;,
+  &apos;adonis-framework/providers/StaticProvider&apos;,
+  &apos;adonis-framework/providers/ViewProvider&apos;,
+  &apos;adonis-lucid/providers/DatabaseProvider&apos;,
+  &apos;adonis-lucid/providers/LucidProvider&apos;,
+  &apos;adonis-lucid/providers/FactoryProvider&apos;,
+  &apos;adonis-middleware/providers/AppMiddlewareProvider&apos;,
+  &apos;adonis-auth/providers/AuthManagerProvider&apos;,
+  &apos;adonis-websocket/providers/WsProvider&apos;
+]
+
+/*
+|--------------------------------------------------------------------------
+| Ace Providers
+|--------------------------------------------------------------------------
+|
+| Ace providers are specific to ace, and are not registered when starting
+| http server. It helps in reducing boot time.
+|
+*/
+const aceProviders = [
+  &apos;adonis-lucid/providers/CommandsProvider&apos;,
+  &apos;adonis-lucid/providers/MigrationsProvider&apos;,
+  &apos;adonis-lucid/providers/SchemaProvider&apos;,
+  &apos;adonis-lucid/providers/SeederProvider&apos;,
+  &apos;adonis-ace/providers/CommandProvider&apos;,
+  &apos;adonis-commands/providers/GeneratorsProvider&apos;,
+  &apos;adonis-commands/providers/HelperCommandsProvider&apos;,
+  &apos;adonis-commands/providers/ReplProvider&apos;
+]
+
+/*
+|--------------------------------------------------------------------------
+| Namespace Aliases
+|--------------------------------------------------------------------------
+|
+| Each provider is registered with a long unique namespace. Here we alias
+| them with a short unique name to keep our import statements short and
+| sweet.
+|
+*/
+const aliases = {
+  Command: &apos;Adonis/Src/Command&apos;,
+  Config: &apos;Adonis/Src/Config&apos;,
+  Database: &apos;Adonis/Src/Database&apos;,
+  Env: &apos;Adonis/Src/Env&apos;,
+  Event: &apos;Adonis/Src/Event&apos;,
+  Factory: &apos;Adonis/Src/Factory&apos;,
+  Hash: &apos;Adonis/Src/Hash&apos;,
+  Helpers: &apos;Adonis/Src/Helpers&apos;,
+  Lucid: &apos;Adonis/Src/Lucid&apos;,
+  Middleware: &apos;Adonis/Src/Middleware&apos;,
+  Route: &apos;Adonis/Src/Route&apos;,
+  Schema: &apos;Adonis/Src/Schema&apos;,
+  View: &apos;Adonis/Src/View&apos;,
+  Ws: &apos;Adonis/Addons/Ws&apos;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Ace Commands
+|--------------------------------------------------------------------------
+|
+| Ace Commands are also are registered inside the IoC container. Here we
+| register with Ace Kernel using their unique namespace.
+|
+*/
+const commands = [
+  &apos;App/Commands/Greet&apos;,
+  &apos;Adonis/Commands/Auth:Setup&apos;,
+  &apos;Adonis/Commands/Repl&apos;,
+  &apos;Adonis/Commands/Make:Controller&apos;,
+  &apos;Adonis/Commands/Route:List&apos;,
+  &apos;Adonis/Commands/Make:Migration&apos;,
+  &apos;Adonis/Commands/Make:Model&apos;,
+  &apos;Adonis/Commands/Make:View&apos;,
+  &apos;Adonis/Commands/Make:Command&apos;,
+  &apos;Adonis/Commands/Make:Hook&apos;,
+  &apos;Adonis/Commands/Make:Middleware&apos;,
+  &apos;Adonis/Commands/Make:Seed&apos;,
+  &apos;Adonis/Commands/Make:Listener&apos;,
+  &apos;Adonis/Commands/Migration:Run&apos;,
+  &apos;Adonis/Commands/Migration:Rollback&apos;,
+  &apos;Adonis/Commands/Migration:Refresh&apos;,
+  &apos;Adonis/Commands/Migration:Reset&apos;,
+  &apos;Adonis/Commands/DB:Seed&apos;,
+  &apos;Adonis/Commands/Migration:Status&apos;,
+  &apos;Adonis/Commands/Key:Generate&apos;
+]
+
+module.exports = { providers, aceProviders, aliases, commands }
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

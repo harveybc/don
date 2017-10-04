@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">singularity/config/app.js | singularity</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="singularity"><meta property="twitter:description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/harveybc/singularity"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">singularity/config/app.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+const Env = use(&apos;Env&apos;)
+
+module.exports = {
+
+  /*
+  |--------------------------------------------------------------------------
+  | App Key
+  |--------------------------------------------------------------------------
+  |
+  | App key is a randomly generated 16 or 32 characters long string required
+  | to encrypted cookies, sessions and other sensitive data.
+  |
+  */
+  appKey: Env.get(&apos;APP_KEY&apos;),
+
+  encryption: {
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption algorithm
+    |--------------------------------------------------------------------------
+    |
+    | Encryption algorithm defines the algorithm to be used while encrypting
+    | values. Under the hood adonis makes of node-crypto.
+    |
+    | aes-256-cbc requires 32 characters long string
+    | aes-128-cbc requires 16 characters long string
+    |
+    */
+    algorithm: &apos;aes-256-cbc&apos;
+  },
+
+  http: {
+    /*
+    |--------------------------------------------------------------------------
+    | Allow Method Spoofing
+    |--------------------------------------------------------------------------
+    |
+    | Method spoofing allows to make requests by spoofing the http verb.
+    | Which means you can make a GET request but instruct the server to
+    | treat as a POST or PUT request. If you want this feature, set the
+    | below value to true.
+    |
+    */
+    allowMethodSpoofing: true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Trust Proxy
+    |--------------------------------------------------------------------------
+    |
+    | Trust proxy defines whether X-Forwaded-* headers should be trusted or not.
+    | When your application is behind a proxy server like nginx, these values
+    | are set automatically and should be trusted. Apart from setting it
+    | to true or false Adonis supports handful or ways to allow proxy
+    | values. Read documentation for that.
+    |
+    */
+    trustProxy: false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Subdomains
+    |--------------------------------------------------------------------------
+    |
+    | Offset to be used for returning subdomains for a given request.For
+    | majority of applications it will be 2, until you have nested
+    | sudomains.
+    | cheatsheet.adonisjs.com      - offset - 2
+    | virk.cheatsheet.adonisjs.com - offset - 3
+    |
+    */
+    subdomainOffset: 2,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Set Powered By
+    |--------------------------------------------------------------------------
+    |
+    | Adonis will set response header X-Powered-By if below value is set to
+    | true. Consider this as a way of saying thanks to us.
+    |
+    */
+    setPoweredBy: true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | JSONP Callback
+    |--------------------------------------------------------------------------
+    |
+    | Default jsonp callback to be used when callback query string is missing
+    | in request url.
+    |
+    */
+    jsonpCallback: &apos;callback&apos;
+  },
+
+  views: {
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Views
+    |--------------------------------------------------------------------------
+    |
+    | Define whether or not to cache the compiled view. Set it to true in
+    | production to optimize view loading time.
+    |
+    */
+    cache: Env.get(&apos;CACHE_VIEWS&apos;, true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Service Injection
+    |--------------------------------------------------------------------------
+    |
+    | Inside your nunjucks views, you can inject models, services etc using
+    | IoC container. Setting it to false will disable this feature.
+    |
+    */
+    injectServices: false
+  },
+
+  static: {
+    /*
+    |--------------------------------------------------------------------------
+    | Dot Files
+    |--------------------------------------------------------------------------
+    |
+    | Define how to treat dot files when trying to server static resources.
+    | By default it is set to ignore, which will pretend that dotfiles
+    | does not exists.
+    |
+    | Can be one of the following
+    | ignore, deny, allow
+    |
+    */
+    dotfiles: &apos;ignore&apos;,
+
+    /*
+    |--------------------------------------------------------------------------
+    | ETag
+    |--------------------------------------------------------------------------
+    |
+    | Enable or disable etag generation
+    |
+    */
+    etag: true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extensions
+    |--------------------------------------------------------------------------
+    |
+    | Set file extension fallbacks. When set, if a file is not found, the given
+    | extensions will be added to the file name and search for. The first
+    | that exists will be served. Example: [&apos;html&apos;, &apos;htm&apos;].
+    |
+    */
+    extensions: false
+  },
+
+  locales: {
+    /*
+    |--------------------------------------------------------------------------
+    | Driver
+    |--------------------------------------------------------------------------
+    |
+    | The driver to be used for fetching and updating locales. Below is the
+    | list of available options.
+    |
+    | file, database
+    |
+    */
+    driver: &apos;file&apos;,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Locale
+    |--------------------------------------------------------------------------
+    |
+    | Default locale to be used by Antl provider. You can always switch drivers
+    | in runtime or use the official Antl middleware to detect the driver
+    | based on HTTP headers/query string.
+    |
+    */
+    locale: &apos;en&apos;,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fallback Locale
+    |--------------------------------------------------------------------------
+    |
+    | Fallback locale to be used when actual locale is not supported.
+    |
+    */
+    fallbackLocale: &apos;en&apos;
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

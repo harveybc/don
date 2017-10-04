@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../../">
+  <title data-ice="title">singularity/test/component/node/test-cn01-processes-stub.js | singularity</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="singularity"><meta property="twitter:description" content="This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/harveybc/singularity"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">singularity/test/component/node/test-cn01-processes-stub.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// Tests using stub controllers
+var expect = require(&apos;chai&apos;).expect;
+var request = require(&apos;request&apos;);
+// Processes collection tests
+var description = &apos;CN01-stub-1: GET stub/processes/metadata (MetadataList)&apos;;
+describe(&apos;Processes Collection&apos;, function () {
+    // Test CN01-stub-1:  GET stub/processes/metadata (metadataList)
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;model_id=10&amp;min_performance=0.5&amp;max_results=100&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes/metadata?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: [{&quot;id&quot;:1, &quot;updated_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;difficulty&quot;: 0.0009},{&quot;id&quot;:2, &quot;updated_at&quot;: &quot;2017-09-04 05:22:31&quot;, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;difficulty&quot;: 0.0009},{&quot;id&quot;:3, &quot;updated_at&quot;: &quot;2017-09-05 05:22:31&quot;, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;difficulty&quot;: 0.0009}], &quot;id&quot;:3}&apos;;
+        // Assesment
+        request.get(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-stub-2:  GET stub/processes/metadata/&lt;id&gt; request (metadataItem)
+    description = &apos;CN01-stub-2: GET stub/processes/metadata/&lt;id&gt; (MetadataItem)&apos;;
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes/metadata/1?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;:1, &quot;updated_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;difficulty&quot;: 0.0009}, &quot;id&quot;:3}&apos;;
+       // metadata=&apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;: 1, &quot;name&quot;: &quot;Test process 1&quot;, &quot;description&quot;: &quot;Test process 1 -  stub testing&quot;, &quot;created_at&quot;:&quot;2017-09-02 05:22:31&quot;, &quot;created_at&quot;: &quot;2017-09-02 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2}, &quot;id&quot;:3}&apos;
+        // Assesment  
+        request.get(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-stub-3:  GET stub/processes (GetList)
+    description = &apos;CN01-stub-3: GET stub/processes (GetList)&apos;;
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;model_id=10&amp;min_performance=0.5&amp;max_results=100&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: [{&quot;id&quot;: 1, &quot;name&quot;: &quot;Test process 1&quot;, &quot;description&quot;: &quot;Test process 1 -  stub testing&quot;, &quot;created_at&quot;: &quot;2017-09-02 05:22:31&quot;, &quot;updated_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;desired_block_time&quot;: 85000, &quot;desired_block_size&quot;: 0, &quot;block_time_control&quot;: 1, &quot;difficulty&quot;: 0.0009},{&quot;id&quot;: 2, &quot;name&quot;: &quot;Test process 2&quot;, &quot;description&quot;: &quot;Test process 2 -  stub testing&quot;, &quot;created_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;updated_at&quot;: &quot;2017-09-04 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;desired_block_time&quot;: 85000, &quot;desired_block_size&quot;: 0, &quot;block_time_control&quot;: 1, &quot;difficulty&quot;: 0.0009},{&quot;id&quot;: 3, &quot;name&quot;: &quot;Test process 3&quot;, &quot;description&quot;: &quot;Test process 3 -  stub testing&quot;, &quot;created_at&quot;: &quot;2017-09-04 05:22:31&quot;, &quot;updated_at&quot;: &quot;2017-09-05 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;desired_block_time&quot;: 85000, &quot;desired_block_size&quot;: 0, &quot;block_time_control&quot;: 1, &quot;difficulty&quot;: 0.0009}], &quot;id&quot;:3}&apos;;
+        // Assesment
+        request.get(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-stub-4:  GET stub/processes&lt;id&gt; request (GetItem)
+    description = &apos;CN01-stub-4: GET stub/processes/&lt;id&gt; (GetItem)&apos;;
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes/1?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;: 1, &quot;name&quot;: &quot;Test process 1&quot;, &quot;description&quot;: &quot;Test process 1 -  stub testing&quot;, &quot;created_at&quot;: &quot;2017-09-02 05:22:31&quot;, &quot;updated_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;desired_block_time&quot;: 85000, &quot;desired_block_size&quot;: 0, &quot;block_time_control&quot;: 1, &quot;difficulty&quot;: 0.0009}, &quot;id&quot;:3}&apos;;
+        // Assesment  
+        request.get(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done(); 
+        });
+    });
+
+    // Test CN01-stub-5:  POST stub/processes request (CreateItem)
+    description = &apos;CN01-stub-5: POST stub/processes (CreateItem)&apos;;
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;description=TEST&amp;model_id=1&amp;training_id=1&amp;validation_id=1&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;: 4}, &quot;id&quot;:3}&apos;;
+        // Assesment  
+        request.post(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-stub-6:  DELETE stub/processes/&lt;id&gt; request (DeleteItem)
+    description = &apos;CN01-stub-6: DELETE stub/processes/&lt;id&gt; (DeleteItem)&apos;;
+    it(description, function (done) {
+        // Configuration
+        var parameters = &apos;public_key=PUB_KEY&amp;xml=false&apos;;
+        var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes/1?&apos;;
+        var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;delete_count&quot;: 1}, &quot;id&quot;:3}&apos;;
+        // Assesment  
+        request.delete(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+    // Test CN01-stub-7:  DELETE stub/processes request (EmptyCollection)
+    description = &apos;CN01-stub-7: DELETE stub/processes (EmptyCollection)&apos;;
+    it(description, function (done) {
+    // Configuration 
+    var parameters = &apos;public_key=PUB_KEY&amp;xml=false&apos;;
+    var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes?&apos;;
+    var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;delete_count&quot;: 3}, &quot;id&quot;:3}&apos;;
+    // Assesment  
+        request.delete(endpoint + parameters, function (error, response, body) {
+            parsed_body = JSON.parse(body);
+            parsed_expected_response = JSON.parse(expected_response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            done();
+        });
+    });
+});
+
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

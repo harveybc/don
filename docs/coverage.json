@@ -1,6 +1,219 @@
 {
-  "coverage": "0%",
-  "expectCount": 0,
-  "actualCount": 0,
-  "files": {}
+  "coverage": "8.1%",
+  "expectCount": 74,
+  "actualCount": 6,
+  "files": {
+    "singularity/app/Commands/Greet.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "singularity/app/Http/Controllers/DB/ProcessesDBController.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5,
+        14,
+        21,
+        28,
+        34,
+        40,
+        46
+      ]
+    },
+    "singularity/app/Http/Controllers/Stub/ProcessesStubController.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        6,
+        15,
+        21,
+        31,
+        37,
+        43,
+        49
+      ]
+    },
+    "singularity/app/Http/Routes/DB/Processes.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "singularity/app/Http/Routes/Stub/Processes.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "singularity/app/Http/kernel.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        14,
+        31
+      ]
+    },
+    "singularity/app/Listeners/Http.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        3,
+        4,
+        5
+      ]
+    },
+    "singularity/app/Model/Processes.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "singularity/app/Ws/kernel.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        14,
+        27
+      ]
+    },
+    "singularity/app/Ws/socket.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        17
+      ]
+    },
+    "singularity/bootstrap/app.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        44,
+        65,
+        91
+      ]
+    },
+    "singularity/bootstrap/events.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        18
+      ]
+    },
+    "singularity/bootstrap/http.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        14,
+        15,
+        16,
+        19
+      ]
+    },
+    "singularity/bootstrap/kernel.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ]
+    },
+    "singularity/config/app.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "singularity/config/auth.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "singularity/config/database.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4
+      ]
+    },
+    "singularity/config/session.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "singularity/database/factory.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "singularity/database/migrations/1506473302377_Processes.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        2,
+        16,
+        54
+      ]
+    },
+    "singularity/database/seeds/Database.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        15,
+        16,
+        22,
+        24
+      ]
+    },
+    "singularity/server.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "singularity/test/component/node/test-cn01-processes-db.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        5
+      ]
+    },
+    "singularity/test/component/node/test-cn01-processes-stub.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        5
+      ]
+    }
+  }
 }

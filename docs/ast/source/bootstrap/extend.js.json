@@ -1,0 +1,177 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 686,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 22,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 686,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 22,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [],
+    "directives": [
+      {
+        "type": "Directive",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": {
+          "type": "DirectiveLiteral",
+          "start": 0,
+          "end": 12,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          },
+          "value": "use strict",
+          "extra": {
+            "raw": "'use strict'",
+            "rawValue": "use strict"
+          },
+          "trailingComments": null
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "\n|--------------------------------------------------------------------------\n| Extend Providers\n|--------------------------------------------------------------------------\n|\n| Some providers give options to be extended like SessionProvider. In this\n| file you can easily track which providers are extended.\n|\n| @note - Here you do not have access to any providers, which means this file\n| is called before loading service providers. But have access to the Ioc\n| container and you can use it extend providers, which are about to get\n| registered.\n|\n| @example\n| Ioc.extend('Adonis/Src/Session', 'redis', function (app) {\n|   // your redis driver implementation\n| })\n|\n",
+            "start": 14,
+            "end": 685,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 21,
+                "column": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "\n|--------------------------------------------------------------------------\n| Extend Providers\n|--------------------------------------------------------------------------\n|\n| Some providers give options to be extended like SessionProvider. In this\n| file you can easily track which providers are extended.\n|\n| @note - Here you do not have access to any providers, which means this file\n| is called before loading service providers. But have access to the Ioc\n| container and you can use it extend providers, which are about to get\n| registered.\n|\n| @example\n| Ioc.extend('Adonis/Src/Session', 'redis', function (app) {\n|   // your redis driver implementation\n| })\n|\n",
+      "start": 14,
+      "end": 685,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "use strict",
+      "start": 0,
+      "end": 12,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "\n|--------------------------------------------------------------------------\n| Extend Providers\n|--------------------------------------------------------------------------\n|\n| Some providers give options to be extended like SessionProvider. In this\n| file you can easily track which providers are extended.\n|\n| @note - Here you do not have access to any providers, which means this file\n| is called before loading service providers. But have access to the Ioc\n| container and you can use it extend providers, which are about to get\n| registered.\n|\n| @example\n| Ioc.extend('Adonis/Src/Session', 'redis', function (app) {\n|   // your redis driver implementation\n| })\n|\n",
+      "start": 14,
+      "end": 685,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 686,
+      "end": 686,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 0
+        }
+      }
+    }
+  ]
+}
