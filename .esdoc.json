@@ -1,10 +1,5 @@
 {
-<<<<<<< HEAD
   "source": "./",
-=======
-  "source": "./app",
-  "includes" : ["\\.\\/database\\/.*\\.js" , ".\\test\\.js", ".\\resources\\.js"],
->>>>>>> d2105c35616c4b8dd857017eca01aebd9cb46976
   "destination": "./docs",
   "excludes":[".*node_modules.*\\.js"],
   "plugins": [

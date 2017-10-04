@@ -444,6 +444,60 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "singularity/docs/script/inherited-summary.js",
+    "file/singularity/docs/script/inherited-summary.js.html",
+    "singularity/docs/script/inherited-summary.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/inner-link.js",
+    "file/singularity/docs/script/inner-link.js.html",
+    "singularity/docs/script/inner-link.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/manual.js",
+    "file/singularity/docs/script/manual.js.html",
+    "singularity/docs/script/manual.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/patch-for-local.js",
+    "file/singularity/docs/script/patch-for-local.js.html",
+    "singularity/docs/script/patch-for-local.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/prettify/prettify.js",
+    "file/singularity/docs/script/prettify/prettify.js.html",
+    "singularity/docs/script/prettify/prettify.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/pretty-print.js",
+    "file/singularity/docs/script/pretty-print.js.html",
+    "singularity/docs/script/pretty-print.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/search.js",
+    "file/singularity/docs/script/search.js.html",
+    "singularity/docs/script/search.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/search_index.js",
+    "file/singularity/docs/script/search_index.js.html",
+    "singularity/docs/script/search_index.js",
+    "file"
+  ],
+  [
+    "singularity/docs/script/test-summary.js",
+    "file/singularity/docs/script/test-summary.js.html",
+    "singularity/docs/script/test-summary.js",
+    "file"
+  ],
+  [
     "singularity/server.js",
     "file/singularity/server.js.html",
     "singularity/server.js",
