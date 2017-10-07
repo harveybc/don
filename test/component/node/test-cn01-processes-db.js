@@ -1,11 +1,10 @@
 // Tests using controllers with database connection but without AAA
 var expect = require('chai').expect;
 var request = require('request');
-// Processes collection tests
-var description = 'CN01-DB-1: GET db/processes/metadata (MetadataList)';
+/** Tests for the Processes collection */ 
 describe('Processes Collection', function () {
     // Test CN01-DB-1:  GET db/processes/metadata (metadataList)
-    it(description, function (done) {
+    it('CN01-DB-1: GET db/processes/metadata (MetadataList)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         // TODO: Cambiar STUB por DB
