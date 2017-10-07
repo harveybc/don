@@ -1,4 +1,4 @@
-// Tests using controllers with database connection but without AAA
+/** Tests using controllers with database connection but without AAA */
 var expect = require('chai').expect;
 var request = require('request');
 /** Tests for the Processes collection */ 
