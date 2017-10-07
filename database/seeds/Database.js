@@ -1,5 +1,7 @@
 'use strict'
-/** Processes collection seeds, uses Processes model */
+/** Processes collection seeds, uses Processes model, to run execute:
+@example ./ace make:seed [name]
+ **/
 const Process = use('App/Model/Processes')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const processArray=[
