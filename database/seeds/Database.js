@@ -1,6 +1,6 @@
 'use strict'
 /** Processes collection seeds, uses Processes model, to run execute:
-@example ./ace make:seed [name]
+@example ./ace db:seed [name]
  **/
 const Process = use('App/Model/Processes')
 /** Test data with 3 similar registers only differing in the name, description and id */
@@ -27,8 +27,8 @@ const processArray=[
  Can be used to seed dummy data to your application database. 
  Here you can also make use of Factories to create records witn random data.
 
- @example make use of Ace to generate a new seed
-./ace make:seed [name]
+ @example to execute
+./ace db:seed [name]
 */
 class DatabaseSeeder {
   * run () {
