@@ -1,6 +1,6 @@
 {
-  "coverage": "8.1%",
-  "expectCount": 74,
+  "coverage": "8.21%",
+  "expectCount": 73,
   "actualCount": 6,
   "files": {
     "singularity/app/Commands/Greet.js": {
@@ -198,12 +198,11 @@
       ]
     },
     "singularity/test/component/node/test-cn01-processes-db.js": {
-      "expectCount": 3,
+      "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         2,
-        3,
-        5
+        3
       ]
     },
     "singularity/test/component/node/test-cn01-processes-stub.js": {

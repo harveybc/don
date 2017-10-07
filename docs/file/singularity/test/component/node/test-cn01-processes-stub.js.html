@@ -61,7 +61,7 @@ describe(&apos;Processes Collection&apos;, function () {
         var parameters = &apos;app_id=1&amp;public_key=PUB_KEY&amp;xml=false&apos;;
         var endpoint = &apos;http://dev.ingeni-us.com:3338/stub/processes/metadata/1?&apos;;
         var expected_response = &apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;:1, &quot;updated_at&quot;: &quot;2017-09-03 05:22:31&quot;, &quot;last_block_time&quot;: 86400, &quot;last_block_size&quot;: 2048, &quot;last_optimum_performance&quot;: 0.79983, &quot;last_optimum_id&quot;: 1, &quot;date_last_optimum&quot;: &quot;2017-09-03 06:22:31&quot;, &quot;difficulty&quot;: 0.0009}, &quot;id&quot;:3}&apos;;
-       // metadata=&apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;: 1, &quot;name&quot;: &quot;Test process 1&quot;, &quot;description&quot;: &quot;Test process 1 -  stub testing&quot;, &quot;created_at&quot;:&quot;2017-09-02 05:22:31&quot;, &quot;created_at&quot;: &quot;2017-09-02 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2}, &quot;id&quot;:3}&apos;
+        // metadata=&apos;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;id&quot;: 1, &quot;name&quot;: &quot;Test process 1&quot;, &quot;description&quot;: &quot;Test process 1 -  stub testing&quot;, &quot;created_at&quot;:&quot;2017-09-02 05:22:31&quot;, &quot;created_at&quot;: &quot;2017-09-02 05:22:31&quot;, &quot;tags&quot;: [&quot;p2p&quot;, &quot;forex&quot;, &quot;dqn&quot;], &quot;application_id&quot;: 2}, &quot;id&quot;:3}&apos;
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
