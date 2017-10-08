@@ -7,15 +7,14 @@ class ProcessesDBController {
     * MetadataList(request, response) {
         const Database = use('Database')
         var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};
-        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").
-                from('processes').limit(3)
+        const result = yield Database.select("*").from('processes').limit(3)
         /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.json.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the metadata for the <id> process */
     * MetadataItem(request, response) {
         const Database = use('Database')
-        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "difficulty").from('processes').where('id',1)
+        const result = yield Database.select("*").from('processes').where('id',1)
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result[0], request_id: 3})
     }
