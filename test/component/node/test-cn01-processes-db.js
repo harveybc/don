@@ -46,7 +46,7 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    
+
     /** @test {ProcessesDB#GetItem} */
     description = 'CN01-DB-4: GET db/processes/<id> (GetItem)';
     it(description, function (done) {
@@ -58,7 +58,7 @@ describe('Processes Collection', function () {
             resp = JSON.parse(body);
             // In the database the third process should have a id=1
             expect(resp.result[0].id).to.equal(1);
-            done(); 
+            done();
         });
     });
 
@@ -68,13 +68,11 @@ describe('Processes Collection', function () {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&name=TEST4&description=TEST4_desc&model_id=1&training_id=1&validation_id=1&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
-        var expected_response = '{"jsonrpc": "2.0", "result": {"id": 4}, "id":3}';
         // Assesment  
         request.post(endpoint + parameters, function (error, response, body) {
-            parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
+            resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            expect(resp.result[0].id>0).to.be.true;
             done();
         });
     });
@@ -97,11 +95,11 @@ describe('Processes Collection', function () {
     /** @test {ProcessesDB#EmptyCollection} */
     description = 'CN01-DB-7: DELETE db/processes (EmptyCollection)';
     it(description, function (done) {
-    // Configuration 
-    var parameters = 'public_key=PUB_KEY&xml=false';
-    var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
-    var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 3}, "id":3}';
-    // Assesment  
+        // Configuration 
+        var parameters = 'public_key=PUB_KEY&xml=false';
+        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
+        var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 3}, "id":3}';
+        // Assesment  
         request.delete(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
             parsed_expected_response = JSON.parse(expected_response);
