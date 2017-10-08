@@ -35,13 +35,14 @@ class ProcessesDBController {
     * CreateItem(request, response) {
         // generate parameters for query
         const Database = use('Database')
-        const app_id = request.param('app_id')
-        const public_key = request.param('public_key')
-        const name = request.param('name')
-        const description = request.param('description')
-        const model_id = request.param('model_id')
-        const training_id = request.param('training_id')
-        const validation_id = request.param('validation_id')
+        const url_params=request.get()
+        const app_id = url_params.app_id
+        const public_key = url_params.public_key
+        const name = url_params.name
+        const description = url_params.description
+        const model_id = url_params.model_id
+        const training_id = url_params.training_id
+        const validation_id = url_params.validation_id
         // perform query and send view
         const process_id = yield Database.table('processes').insert({'app_id':app_id,'creator_key':public_key,
             'name':name,'description':description,'model_id':model_id,'training_set_id':training_id,'validation_set_id':validation_id})
