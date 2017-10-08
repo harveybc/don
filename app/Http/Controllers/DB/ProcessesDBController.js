@@ -6,16 +6,15 @@ class ProcessesDBController {
     /** @desc Returns a list of metadata for found processes in a view */
     * MetadataList(request, response) {
         const Database = use('Database')
-        var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};
-        const result = yield Database.select("*").from('processes').limit(3)
+        const result = yield Database.select('id','name','description','creator_key','tags','app_id','created_at','updated_at').from('processes').limit(3)
         /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the metadata for the <id> process */
     * MetadataItem(request, response) {
         const Database = use('Database')
-        const result = yield Database.select("*").from('processes').where('id',1)
         const process_id = request.param('id')
+        const result = yield Database.select('id','name','description','creator_key','tags','app_id','created_at','updated_at').from('processes').where('id',process_id)
         yield response.sendView('master_JSON', {result: result[0], request_id: 3})
     }
     /** @desc Returns a list of processes */
@@ -28,15 +27,25 @@ class ProcessesDBController {
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         const Database = use('Database')
-        const result = yield Database.select('*').from('processes').limit(request.param('max_results'))
         const process_id = request.param('id')
+        const result = yield Database.select('*').from('processes').where('id',process_id)
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        // generate parameters for query
         const Database = use('Database')
-        const result = {"id": 4}
-        const process_id = request.param('id')
+        const app_id = request.param('app_id')
+        const public_key = request.param('public_key')
+        const name = request.param('name')
+        const description = request.param('description')
+        const model_id = request.param('model_id')
+        const training_id = request.param('training_id')
+        const validation_id = request.param('validation_id')
+        // perform query and send view
+        const process_id = yield Database.table('processes').insert({'app_id':app_id,'creator_key':public_key,
+            'name':name,'description':description,'model_id':model_id,'training_id':training_id,'validation_id':validation_id})
+        const result = {"id": process_id}
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */

@@ -66,7 +66,7 @@ describe('Processes Collection', function () {
     description = 'CN01-DB-5: POST db/processes (CreateItem)';
     it(description, function (done) {
         // Configuration
-        var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';
+        var parameters = 'app_id=1&public_key=PUB_KEY&name=TEST4&description=TEST4_desc&model_id=1&training_id=1&validation_id=1&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
         var expected_response = '{"jsonrpc": "2.0", "result": {"id": 4}, "id":3}';
         // Assesment  
