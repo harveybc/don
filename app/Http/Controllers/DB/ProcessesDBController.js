@@ -44,7 +44,7 @@ class ProcessesDBController {
         const validation_id = request.param('validation_id')
         // perform query and send view
         const process_id = yield Database.table('processes').insert({'app_id':app_id,'creator_key':public_key,
-            'name':name,'description':description,'model_id':model_id,'training_id':training_id,'validation_id':validation_id})
+            'name':name,'description':description,'model_id':model_id,'training_set_id':training_id,'validation_set_id':validation_id})
         const result = {"id": process_id}
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
