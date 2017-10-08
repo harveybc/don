@@ -26,7 +26,7 @@ describe('Processes Collection', function () {
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata/1?';
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
-            resp = JSON.parse(response);
+            resp = JSON.parse(body);
             // In the database the third process should have a id=1
             expect(resp.result[2].id).to.equal(1);
             done();
@@ -40,7 +40,7 @@ describe('Processes Collection', function () {
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
         // Assesment
         request.get(endpoint + parameters, function (error, response, body) {
-            resp = JSON.parse(response);
+            resp = JSON.parse(body);
             // In the database the third process should have a id=3
             expect(resp.result[2].id).to.equal(3);
             done();

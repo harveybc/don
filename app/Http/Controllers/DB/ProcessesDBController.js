@@ -10,7 +10,7 @@ class ProcessesDBController {
         const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").
                     where('app_id',1,'public_key',).from('processes').limit(3)
         /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
-        yield response.sendView('master_JSON', {result: result, request_id: 3})
+        yield response.json.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the metadata for the <id> process */
     * MetadataItem(request, response) {
