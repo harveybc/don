@@ -15,7 +15,7 @@ class ProcessesDBController {
     /** @desc Returns the metadata for the <id> process */
     * MetadataItem(request, response) {
         const Database = use('Database')
-        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "date_last_optimum", "difficulty").from('processes').where('id',1)
+        const result = yield Database.select("id", "updated_at", "last_block_time", "last_block_size", "last_optimum_performance", "last_optimum_id", "difficulty").from('processes').where('id',1)
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result[0], request_id: 3})
     }
