@@ -81,7 +81,7 @@ describe('Processes Collection', function () {
     it(description, function (done) {
         // Configuration
         var parameters = 'public_key=PUB_KEY&xml=false';
-        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/5?';
+        var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/4?';
         // Assesment  
         request.delete(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
