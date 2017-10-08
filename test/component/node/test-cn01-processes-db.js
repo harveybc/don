@@ -72,7 +72,7 @@ describe('Processes Collection', function () {
         request.post(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(resp.result[0].id>0).to.be.true;
+            expect(resp.result.id[0]>0).to.be.true;
             done();
         });
     });
