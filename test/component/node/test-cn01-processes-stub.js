@@ -1,11 +1,11 @@
-// Tests using stub controllers
+/** @description Tests using stub controllers */
 var expect = require('chai').expect;
+/** @description Uses http requests to perform the tests */
 var request = require('request');
-// Processes collection tests
-var description = 'CN01-stub-1: GET stub/processes/metadata (MetadataList)';
+/** @test {ProcessesStub} */
 describe('Processes Collection', function () {
-    // Test CN01-stub-1:  GET stub/processes/metadata (metadataList)
-    it(description, function (done) {
+    /** @test {ProcessesStub#MetadataList} */
+    it('CN01-stub-1: GET stub/processes/metadata (MetadataList)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata?';
@@ -18,9 +18,8 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-stub-2:  GET stub/processes/metadata/<id> request (metadataItem)
-    description = 'CN01-stub-2: GET stub/processes/metadata/<id> (MetadataItem)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#MetadataItem} */
+    it('CN01-stub-2: GET stub/processes/metadata/<id> (MetadataItem)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata/1?';
@@ -35,9 +34,8 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-stub-3:  GET stub/processes (GetList)
-    description = 'CN01-stub-3: GET stub/processes (GetList)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#GetList} */
+    it('CN01-stub-3: GET stub/processes (GetList)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';
@@ -50,9 +48,8 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-stub-4:  GET stub/processes<id> request (GetItem)
-    description = 'CN01-stub-4: GET stub/processes/<id> (GetItem)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#GetItem} */
+    it('CN01-stub-4: GET stub/processes/<id> (GetItem)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';
@@ -66,10 +63,8 @@ describe('Processes Collection', function () {
             done(); 
         });
     });
-
-    // Test CN01-stub-5:  POST stub/processes request (CreateItem)
-    description = 'CN01-stub-5: POST stub/processes (CreateItem)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#CreateItem} */
+    it('CN01-stub-5: POST stub/processes (CreateItem)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';
@@ -83,9 +78,8 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-stub-6:  DELETE stub/processes/<id> request (DeleteItem)
-    description = 'CN01-stub-6: DELETE stub/processes/<id> (DeleteItem)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#DeleteItem} */
+    it('CN01-stub-6: DELETE stub/processes/<id> (DeleteItem)', function (done) {
         // Configuration
         var parameters = 'public_key=PUB_KEY&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';
@@ -99,9 +93,8 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-stub-7:  DELETE stub/processes request (EmptyCollection)
-    description = 'CN01-stub-7: DELETE stub/processes (EmptyCollection)';
-    it(description, function (done) {
+    /** @test {ProcessesStub#EmptyCollection} */
+    it('CN01-stub-7: DELETE stub/processes (EmptyCollection)', function (done) {
     // Configuration 
     var parameters = 'public_key=PUB_KEY&xml=false';
     var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';

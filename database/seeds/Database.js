@@ -1,5 +1,5 @@
 'use strict'
-/** Processes collection seeds, uses Processes model, to run execute:
+/** @desc Processes collection seeds, uses Processes model, to run execute:
 @example ./ace db:seed [name]
  **/
 const Process = use('App/Model/Processes')
@@ -23,11 +23,11 @@ const processArray=[
                    ]
                
 /** 
- Database Seeder
+ @desc Database Seeder
  Can be used to seed dummy data to your application database. 
  Here you can also make use of Factories to create records witn random data.
 
- @example to execute
+ @example to execute:
 ./ace db:seed [name]
 */
 class DatabaseSeeder {

@@ -1,8 +1,8 @@
 'use strict'
-/** Processes Migration: creates the processes collection. */
+/** @desc Processes Migration: creates the processes collection. */
 const Schema = use('Schema')
 /** 
- * Processes table controls a blockchain per process (block time, size, etc..)
+ * @desc Processes table controls a blockchain per process (block time, size, etc..)
  * it has fields for metadata, control, configuration and status of the process. 
  * 
  * A process belongs to an application and it can be accessed by its users. If 

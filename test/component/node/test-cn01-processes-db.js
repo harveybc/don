@@ -1,9 +1,11 @@
 /** Tests using controllers with database connection but without AAA */
 var expect = require('chai').expect;
+/** @description Uses http requests to perform the tests */
 var request = require('request');
-/** Tests for the Processes collection */ 
+/** @test {ProcessesDB} 
+ * @todo TODO: prueba de REQUEST_ID (debe ser la misma en reqest y response)*/
 describe('Processes Collection', function () {
-    // Test CN01-DB-1:  GET db/processes/metadata (metadataList)
+    /** @test {ProcessesDB#MetadataList} */
     it('CN01-DB-1: GET db/processes/metadata (MetadataList)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
@@ -18,7 +20,7 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-DB-2:  GET db/processes/metadata/<id> request (metadataItem)
+    /** @test {ProcessesDB#MetadataItem} */
     description = 'CN01-DB-2: GET db/processes/metadata/<id> (MetadataItem)';
     it(description, function (done) {
         // Configuration
@@ -27,8 +29,6 @@ describe('Processes Collection', function () {
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata/1?';
         //var expected_response = '{"jsonrpc": "2.0", "result": {"id":1, "updated_at": "2017-09-29 02:17:57", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}, "id":3}';
         var expected_response = '{"jsonrpc": "2.0", "result": {"id":1, "updated_at": "2017-09-03 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}, "id":3}';
-        
-// metadata='{"jsonrpc": "2.0", "result": {"id": 1, "name": "Test process 1", "description": "Test process 1 -  stub testing", "created_at":"2017-09-02 05:22:31", "created_at": "2017-09-02 05:22:31", "tags": ["p2p", "forex", "dqn"], "application_id": 2}, "id":3}'
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
@@ -38,7 +38,7 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-DB-3:  GET db/processes (GetList)
+    /** @test {ProcessesDB#GetList} */
     description = 'CN01-DB-3: GET db/processes (GetList)';
     it(description, function (done) {
         // Configuration
@@ -55,7 +55,7 @@ describe('Processes Collection', function () {
         });
     });
     
-    // Test CN01-DB-4:  GET db/processes<id> request (GetItem)
+    /** @test {ProcessesDB#GetItem} */
     description = 'CN01-DB-4: GET db/processes/<id> (GetItem)';
     it(description, function (done) {
         // Configuration
@@ -72,7 +72,7 @@ describe('Processes Collection', function () {
         });
     });
 
-    // Test CN01-DB-5:  POST db/processes request (CreateItem)
+    /** @test {ProcessesDB#CreateItem} */
     description = 'CN01-DB-5: POST db/processes (CreateItem)';
     it(description, function (done) {
         // Configuration
@@ -88,7 +88,7 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-DB-6:  DELETE db/processes/<id> request (DeleteItem)
+    /** @test {ProcessesDB#DeleteItem} */
     description = 'CN01-DB-6: DELETE db/processes/<id> (DeleteItem)';
     it(description, function (done) {
         // Configuration
@@ -104,7 +104,7 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    // Test CN01-DB-7:  DELETE db/processes request (EmptyCollection)
+    /** @test {ProcessesDB#EmptyCollection} */
     description = 'CN01-DB-7: DELETE db/processes (EmptyCollection)';
     it(description, function (done) {
     // Configuration 
