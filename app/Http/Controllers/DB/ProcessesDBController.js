@@ -9,7 +9,7 @@ class ProcessesDBController {
         var parameters = {'app_id':1,'public_key':'PUB_KEY', 'model_id':10,'min_performance':0.5,'max_results':100,'xml':false};
         const result = yield Database.select("*").from('processes').limit(3)
         /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
-        yield response.json.sendView('master_JSON', {result: result, request_id: 3})
+        yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the metadata for the <id> process */
     * MetadataItem(request, response) {
