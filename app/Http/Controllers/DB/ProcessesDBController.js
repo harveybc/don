@@ -27,24 +27,28 @@ class ProcessesDBController {
     }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
+        const Database = use('Database')
         const result = yield Database.select('*').from('processes').limit(request.param('max_results'))
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        const Database = use('Database')
         const result = {"id": 4}
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
+        const Database = use('Database')
         const result = {"delete_count": 1}
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
     * EmptyCollection(request, response) {
+        const Database = use('Database')
         const result = {"delete_count": 3}
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
