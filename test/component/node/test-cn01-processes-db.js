@@ -17,7 +17,7 @@ describe('Processes Collection', function () {
             parsed_body = JSON.parse(body);
             resp = JSON.parse(expected_response);
             // In the database the third process should have a id=3
-            expect(resp.result[3].id).to.equal(3);
+            expect(resp.result[2].id).to.equal(3);
             done();
         });
     });
