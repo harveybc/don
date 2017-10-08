@@ -9,9 +9,7 @@ describe('Processes Collection', function () {
     it('CN01-DB-1: GET db/processes/metadata (MetadataList)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
-        // TODO: Cambiar STUB por DB
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata?';
-        var expected_response = '{"jsonrpc": "2.0", "result": [{"id":1,"name":"Test process 1","description":"Test process 1 -  stub testing","creator_key":"THAKEY","tags":null,"app_id":2,"created_at":"2017-10-07 23:33:33","updated_at":"2017-10-07 23:33:33","active":1,"desired_block_time":85000,"desired_block_size":0,"block_time_control":1,"model_id":1,"training_set_id":1,"validation_set_id":1,"difficulty":0.0009,"last_block_id":1,"last_block_date":"2017-09-03 05:22:31","last_block_difficulty":0.1,"last_block_time":86400,"last_block_size":2048,"last_block_performance":0.88,"last_optimum_id":1,"last_optimum_date":"2017-09-03 06:22:31","last_optimum_performance":0.8983},{"id":2,"name":"Test process 2","description":"Test process 2 -  stub testing","creator_key":"THAKEY","tags":null,"app_id":2,"created_at":"2017-10-07 23:33:33","updated_at":"2017-10-07 23:33:33","active":1,"desired_block_time":85000,"desired_block_size":0,"block_time_control":1,"model_id":1,"training_set_id":1,"validation_set_id":1,"difficulty":0.0009,"last_block_id":1,"last_block_date":"2017-09-03 05:22:31","last_block_difficulty":0.1,"last_block_time":86400,"last_block_size":2048,"last_block_performance":0.88,"last_optimum_id":1,"last_optimum_date":"2017-09-03 06:22:31","last_optimum_performance":0.8983},{"id":3,"name":"Test process 3","description":"Test process 3 -  stub testing","creator_key":"THAKEY","tags":null,"app_id":2,"created_at":"2017-10-07 23:33:33","updated_at":"2017-10-07 23:33:33","active":1,"desired_block_time":85000,"desired_block_size":0,"block_time_control":1,"model_id":1,"training_set_id":1,"validation_set_id":1,"difficulty":0.0009,"last_block_id":1,"last_block_date":"2017-09-03 05:22:31","last_block_difficulty":0.1,"last_block_time":86400,"last_block_size":2048,"last_block_performance":0.88,"last_optimum_id":1,"last_optimum_date":"2017-09-03 06:22:31","last_optimum_performance":0.8983}], "id":3}';
         // Assesment
         request.get(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
@@ -26,16 +24,13 @@ describe('Processes Collection', function () {
     it(description, function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
-        // TODO: Cambiar STUB por DB
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/metadata/1?';
-        //var expected_response = '{"jsonrpc": "2.0", "result": {"id":1, "updated_at": "2017-09-29 02:17:57", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}, "id":3}';
-        var expected_response = '{"jsonrpc": "2.0", "result": {"id":1, "updated_at": "2017-09-03 05:22:31", "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "difficulty": 0.0009}, "id":3}';
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
-            // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            resp = JSON.parse(expected_response);
+            // In the database the third process should have a id=1
+            expect(resp.result[2].id).to.equal(1);
             done();
         });
     });
@@ -44,14 +39,13 @@ describe('Processes Collection', function () {
     it(description, function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
-        // TODO: Cambiar STUB por DB
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes?';
-        var expected_response = '{"jsonrpc": "2.0", "result": [{"id": 1, "name": "Test process 1", "description": "Test process 1 -  stub testing", "created_at": "2017-09-02 05:22:31", "updated_at": "2017-09-03 05:22:31", "tags": ["p2p", "forex", "dqn"], "application_id": 2, "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "desired_block_time": 85000, "desired_block_size": 0, "block_time_control": 1, "difficulty": 0.0009},{"id": 2, "name": "Test process 2", "description": "Test process 2 -  stub testing", "created_at": "2017-09-03 05:22:31", "updated_at": "2017-09-04 05:22:31", "tags": ["p2p", "forex", "dqn"], "application_id": 2, "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "desired_block_time": 85000, "desired_block_size": 0, "block_time_control": 1, "difficulty": 0.0009},{"id": 3, "name": "Test process 3", "description": "Test process 3 -  stub testing", "created_at": "2017-09-04 05:22:31", "updated_at": "2017-09-05 05:22:31", "tags": ["p2p", "forex", "dqn"], "application_id": 2, "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "desired_block_time": 85000, "desired_block_size": 0, "block_time_control": 1, "difficulty": 0.0009}], "id":3}';
         // Assesment
         request.get(endpoint + parameters, function (error, response, body) {
             parsed_body = JSON.parse(body);
             parsed_expected_response = JSON.parse(expected_response);
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
+            // In the database the third process should have a id=3
+            expect(resp.result[2].id).to.equal(3);
             done();
         });
     });
