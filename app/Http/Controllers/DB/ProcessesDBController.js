@@ -27,7 +27,7 @@ class ProcessesDBController {
     }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
-        const result = {"id": 1, "name": "Test process 1", "description": "Test process 1 -  stub testing", "created_at": "2017-09-02 05:22:31", "updated_at": "2017-09-03 05:22:31", "tags": ["p2p", "forex", "dqn"], "application_id": 2, "last_block_time": 86400, "last_block_size": 2048, "last_optimum_performance": 0.79983, "last_optimum_id": 1, "date_last_optimum": "2017-09-03 06:22:31", "desired_block_time": 85000, "desired_block_size": 0, "block_time_control": 1, "difficulty": 0.0009}
+        const result = yield Database.select('*').from('processes').limit(request.param('max_results'))
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
