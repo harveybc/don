@@ -55,8 +55,7 @@ describe('Processes Collection', function () {
         var endpoint = 'http://dev.ingeni-us.com:3338/db/processes/1?';
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
-            parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
+            resp = JSON.parse(body);
             // In the database the third process should have a id=1
             expect(resp.result.id).to.equal(1);
             done(); 
