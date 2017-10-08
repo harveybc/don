@@ -46,7 +46,7 @@ class ProcessesDBController {
         // perform query and send view
         const process_id = yield Database.table('processes').insert({'app_id':app_id,'creator_key':public_key,
             'name':name,'description':description,'model_id':model_id,'training_set_id':training_id,'validation_set_id':validation_id})
-        const result = process_id
+        const result = {"id": process_id}
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
@@ -54,7 +54,7 @@ class ProcessesDBController {
         const Database = use('Database')
         const process_id = request.param('id')
         const count_deleted = Database.table('processes').delete().where('id',process_id)
-        const result = {"delete_count": count_deleted};
+        const result = {"delete_count": 3};
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
