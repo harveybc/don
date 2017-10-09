@@ -65,6 +65,6 @@ class ProcessesDBController {
         const process_id = request.param('id')
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
-}
+} 
 module.exports = ProcessesDBController
     
