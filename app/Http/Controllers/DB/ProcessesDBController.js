@@ -51,10 +51,9 @@ class ProcessesDBController {
     }
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
-        const Process = use('App/Model/Processes')
+        const Database = use('Database')
         const process_id = request.param('id')
-        const process = Process.find('id',process_id);
-        yield process.delete();
+        const deleted_count = yield Database.table.where('id',process_id).delete();
 //        const result = {"delete_count": count_deleted};
         yield response.sendView('master_JSON', {result: 1, request_id: 3})
     }
