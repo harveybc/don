@@ -86,7 +86,7 @@ describe('Processes Collection', function () {
         request.delete(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(resp)).to.be.true;
+            expect(resp.result.deleted_count).to.equal(1);
             done();
         });
     });
