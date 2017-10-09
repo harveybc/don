@@ -53,7 +53,7 @@ class ProcessesDBController {
     * DeleteItem(request, response) {
         const Database = use('Database')
         const process_id = request.param('id')
-        const count_deleted = Database.table('processes').delete().where('id',0+process_id);
+        const count_deleted = Database.table('processes').where('id',0+process_id).delete();
         const result = {"delete_count": count_deleted};
         yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
