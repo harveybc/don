@@ -55,7 +55,7 @@ class ProcessesDBController {
         const process_id = request.param('id')
         const deleted_count = yield Database.table('processes').where('id',process_id).delete();
         const result = {"deleted_count": deleted_count};
-        yield response.sendView('master_JSON', {result: 1, request_id: 3})
+        yield response.sendView('master_JSON', {result: result, request_id: 3})
     }
     /** @desc Returns the <id> of the created process */
     * EmptyCollection(request, response) {
