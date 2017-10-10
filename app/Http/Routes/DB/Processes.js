@@ -14,7 +14,8 @@ Route.get('/db/processes', 'DB/ProcessesDBController.GetList')
 Route.get('/db/processes/:id', 'DB/ProcessesDBController.GetItem')
 /** @desc CreateItem: create a process */
 Route.post('/db/processes', 'DB/ProcessesDBController.CreateItem')
+/** @desc CreateItem: create a process */
+Route.patch('/db/processes/:id', 'DB/ProcessesDBController.UpdateItem')
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/db/processes/:id', 'DB/ProcessesDBController.DeleteItem')
-/** @desc EmptyCollection: Deletes all processes in a collection for which the user is admin */
-Route.delete('/db/processes', 'DB/ProcessesDBController.EmptyCollection')
+
