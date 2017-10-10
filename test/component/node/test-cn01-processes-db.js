@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 /** @description Uses http requests to perform the tests */
 var request = require('request');
 /** @desc Routes and parameters for the ProcessesStub controller Tests */
-require('./data/param_processes.js');
+require('data/param_processes.js');
 /** @test {ProcessesDB} 
  * @todo TODO: prueba de REQUEST_ID (debe ser la misma en reqest y response)*/
 describe('Processes Collection', function () {
