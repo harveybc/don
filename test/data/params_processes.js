@@ -124,5 +124,6 @@ module.exports ={
         for (var i = 0, len = params.items.length; i < len; i++) {
             ret = ret + params.items[i].key + "=" + params.items[i].value + "&";
         }
+        return(ret);
     }
 }
