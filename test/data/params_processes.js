@@ -7,7 +7,7 @@ function getTestParameters(method) {
     switch (method) {
         case 'processes/MetadataList':
             ret = {
-                'prefix': 'processes/metadata?',
+                'prefix': '/processes/metadata?',
                 'items': [
                     {'key': 'app_id',       'value': 1},
                     {'key': 'public_key',   'value': 'PUB_KEY'},
@@ -21,7 +21,7 @@ function getTestParameters(method) {
             break;
         case 'processes/MetadataItem':
             ret = {
-                'prefix': 'processes/metadata/1?',
+                'prefix': '/processes/metadata/1?',
                 'items': [
                     {'key': 'app_id',       'value': 1},
                     {'key': 'public_key',   'value': 'PUB_KEY'},
@@ -31,7 +31,7 @@ function getTestParameters(method) {
             break;
         case 'processes/GetList':
             ret = {
-                'prefix': 'processes?',
+                'prefix': '/processes?',
                 'items': [
                     {'key': 'app_id',       'value': 1},
                     {'key': 'public_key',   'value': 'PUB_KEY'},
@@ -45,7 +45,7 @@ function getTestParameters(method) {
             break;
         case 'processes/GetItem':
             ret = {
-                'prefix': 'processes/1?',
+                'prefix': '/processes/1?',
                 'items': [
                     {'key': 'app_id',       'value': 1},
                     {'key': 'public_key',   'value': 'PUB_KEY'},
@@ -55,7 +55,7 @@ function getTestParameters(method) {
             break;
         case 'processes/CreateItem':            
             ret = {
-                'prefix': 'processes/1?',
+                'prefix': '/processes/1?',
                 'items': [
                     {'key': 'name',         'value': 'TEST4'},
                     {'key': 'description',  'value': 'TEST4_desc'},
@@ -76,7 +76,7 @@ function getTestParameters(method) {
             break;
         case 'processes/UpdateItem':            
             ret = {
-                'prefix': 'processes/1?',
+                'prefix': '/processes/1?',
                 'items': [
                     {'key': 'name',         'value': 'TEST4'},
                     {'key': 'description',  'value': 'TEST4_desc'},
@@ -97,7 +97,7 @@ function getTestParameters(method) {
             break;
         case 'processes/DeleteItem':
             ret = {
-                'prefix': 'processes/4?',
+                'prefix': '/processes/4?',
                 'items': [
                     {'key': 'app_id',       'value': 1},
                     {'key': 'public_key',   'value': 'PUB_KEY'},
