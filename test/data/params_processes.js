@@ -1,4 +1,4 @@
-module.exports ={
+
     /** 
      @param {string} method is the name of the collectionand method, i.e: processes/DeleteItem* 
      @return Array with the parameters for the method  
@@ -107,7 +107,9 @@ module.exports ={
                 break;
         }
         return(ret);
-    },
+    }
+    
+module.exports ={
     /** 
      @param {string} method is the name of the collectionand method, i.e: processes/DeleteItem* 
      @return The parameters for the method on REST format 
