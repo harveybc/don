@@ -13,6 +13,8 @@ describe('Processes Collection', function () {
         // var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         var parameters = params.getTestParametersREST('processes/MetadataList');
         var endpoint = 'http://dev.ingeni-us.com:3338/db';
+        // Log
+        console.log(endpoint + parameters)
         // Assesment
         request.get(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
