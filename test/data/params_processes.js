@@ -122,7 +122,7 @@ module.exports ={
         var ret = params.prefix;
         // for each parameter adds the key from i and the value from i+1
         for (var i = 0, len = params.items.length; i < len; i++) {
-            ret = ret + params.items[i].key + "=" + params.items[i + 1].value + "&";
+            ret = ret + params.items[i].key + "=" + params.items[i].value + "&";
         }
     }
 }
