@@ -55,7 +55,7 @@
                 break;
             case 'processes/CreateItem':
                 ret = {
-                    'prefix': '/processes/1?',
+                    'prefix': '/processes?',
                     'items': [
                         {'key': 'name', 'value': 'TEST4'},
                         {'key': 'description', 'value': 'TEST4_desc'},
