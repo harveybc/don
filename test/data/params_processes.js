@@ -3,7 +3,7 @@
      @param {string} method is the name of the collectionand method, i.e: processes/DeleteItem* 
      @return Array with the parameters for the method  
      * */
-    getTestParameters: function(method) {
+    function getTestParameters (method) {
         switch (method) {
             case 'processes/MetadataList':
                 ret = {
