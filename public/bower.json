@@ -60,6 +60,7 @@
     "jquery-ui": "1.11.4"
   },
   "resolutions": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "chart.js": "1.0.*"
   }
 }
