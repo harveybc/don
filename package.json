@@ -15,6 +15,7 @@
   "description": "This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.",
   "private": true,
   "dependencies": {
+    "admin-lte": "^2.4.2",
     "adonis-ace": "^3.0.7",
     "adonis-auth": "^1.0.5",
     "adonis-commands": "^2.1.5",
