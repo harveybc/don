@@ -78,11 +78,13 @@ class ProcessesDBController {
     /** @desc Renders the admin view  */
     * AdminView(request, response) {
         yield response.sendView('master_HTML',{
-            title: 'Processes Admin',
+            title: 'Processes Admin - Singularity',
             header: 'Processes',
             description: 'Administrative view',
             collection: 'Processes',
             view: 'Admin',
+            user_full_name: 'Harvey Bastidas',
+            user_role: 'Administrator',
             content: 'TEST GRID'
         });
     }
