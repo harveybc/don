@@ -80,7 +80,7 @@ class ProcessesDBController {
         yield response.sendView('master_HTML',{
             title: 'Processes Admin - Singularity',
             header: 'Processes',
-            description: 'Administrative view',
+            description: 'Administrative View',
             collection: 'Processes',
             view: 'Admin',
             user_full_name: 'Harvey Bastidas',
