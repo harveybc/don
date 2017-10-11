@@ -18,4 +18,12 @@ Route.post('/db/processes', 'DB/ProcessesDBController.CreateItem');
 Route.patch('/db/processes/:id', 'DB/ProcessesDBController.UpdateItem'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/db/processes/:id', 'DB/ProcessesDBController.DeleteItem');
-
+/*** Web Interface ***/
+/** @desc AdminView: Grid view with edit, details and  */
+Route.get('/db/processes/admin', 'DB/ProcessesDBController.AdminView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/detail/:id', 'DB/ProcessesDBController.DetailView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/create', 'DB/ProcessesDBController.CreateView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/update/:id', 'DB/ProcessesDBController.UpdateView')

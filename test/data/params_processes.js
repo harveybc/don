@@ -105,6 +105,16 @@
                     ]
                 };
                 break;
+                case 'processes/AdminView':
+                ret = {
+                    'prefix': '/processes/admin?',
+                    'items': [
+                        {'key': 'app_id', 'value': 1},
+                        {'key': 'public_key', 'value': 'PUB_KEY'},
+                        {'key': 'format', 'value': 'jsonrpc2'}
+                    ]
+                };
+                break;
         }
         return(ret);
     }

@@ -98,7 +98,7 @@ describe('Processes Collection', function () {
     it('CN01-DB-7: DELETE db/processes/<id> (DeleteItem)', function (done) {
         // Configuration
         // var parameters = 'public_key=PUB_KEY&xml=false';
-        var parameters = params.getTestParametersREST('processesDeleteItem');
+        var parameters = params.getTestParametersREST('processes/DeleteItem');
         var endpoint = 'http://dev.ingeni-us.com:3338/db';
         // Assesment  
         request.delete(endpoint + parameters, function (error, response, body) {
@@ -107,7 +107,20 @@ describe('Processes Collection', function () {
             expect(resp.result.deleted_count).to.equal(1);
             done();
         });
-    });    
+    });  
+    /** @test {ProcessesDB#AdminView} */
+    it('CN01-DB-8: GET db/processes/admin (AdminView)', function (done) {
+        // Configuration
+        var parameters = params.getTestParametersREST('processes/DeleteItem');
+        var endpoint = 'http://dev.ingeni-us.com:3338/db';
+        // Assesment  
+        request.get(endpoint + parameters, function (error, response, body) {
+            resp = JSON.parse(response);
+            // Verify if the result is equal to the expected response. 
+            expect(JSON.stringify(resp)).to.equal(1);
+            done();
+        });
+    });
     /* @todo TODO: HACER PURE-REST Y SOAP REQUESTS AND RESPONSES
      * @test {ProcessesDB#PureJSON} 
     it('CN01-DB-8: POST json (PureJSON)', function (done) {
