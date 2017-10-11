@@ -3,6 +3,14 @@
   Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention
 */
 const Route = use('Route');
+// VIEWS
+Route.get('/db/processes/admin', 'DB/ProcessesDBController.AdminView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/detail/:id', 'DB/ProcessesDBController.DetailView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/create', 'DB/ProcessesDBController.CreateView')
+/** @desc AdminView: Deletes a process */
+Route.get('/db/processes/update/:id', 'DB/ProcessesDBController.UpdateView')
 // PROCESSES COLLECTION MANAGEMENT:
 /** @desc MetadataList: get a list of processes' metadata */
 Route.get('/db/processes/metadata', 'DB/ProcessesDBController.MetadataList');
