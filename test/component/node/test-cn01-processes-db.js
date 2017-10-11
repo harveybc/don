@@ -111,7 +111,7 @@ describe('Processes Collection', function () {
     /** @test {ProcessesDB#AdminView} */
     it('CN01-DB-8: GET db/processes/admin (AdminView)', function (done) {
         // Configuration
-        var parameters = params.getTestParametersREST('processes/DeleteItem');
+        var parameters = params.getTestParametersREST('processes/AdminView');
         var endpoint = 'http://dev.ingeni-us.com:3338/db';
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
