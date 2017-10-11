@@ -90,7 +90,7 @@ describe('Processes Collection', function () {
         request.post(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(resp.result.id[0]>0).to.be.true;
+            expect(JSON.stringify(resp)).to.be.true;
             done();
         });
     });
@@ -104,7 +104,7 @@ describe('Processes Collection', function () {
         request.delete(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(resp)).to.equal(1);
+            expect(resp.result.deleted_count).to.equal(1);
             done();
         });
     });    
