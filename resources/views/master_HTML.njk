@@ -73,23 +73,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
+                    <h1>
+                        {{header}}
+                        <small>{{description}}</small>
+                    </h1>
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- User Account Menu -->
                             <li class="dropdown user user-menu">
                                 <!-- search form -->
-                                <form action="#" method="get" class="navbar-form">
-                                    <div class="input-group">
-                                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
-
+                                
                             </li>
 
                             <li>
@@ -162,10 +156,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        {{header}}
-                        <small>{{description}}</small>
-                    </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> {{collection}}</a></li>
                         <li class="active">{{view}}</li>
