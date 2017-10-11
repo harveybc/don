@@ -81,7 +81,7 @@ class ProcessesDBController {
         const process_id = request.param('id');
         const deleted_count = yield Database.table('processes').where('id',process_id).delete();
         const result = {"deleted_count": deleted_count};
-        yield response.sendView('processes.admin', {result: result, request_id: 3});
+        yield response.sendView('ProcessesAdmin', {result: result, request_id: 3});
     }
 } 
 module.exports = ProcessesDBController;
