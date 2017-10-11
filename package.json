@@ -24,7 +24,9 @@
     "adonis-lucid": "^3.0.16",
     "adonis-middleware": "^1.0.11",
     "adonis-websocket": "^1.0.3",
+    "bower": "^1.8.2",
     "debug": "^3.0.1",
+    "ionicons": "^3.0.0",
     "request": "^2.82.0",
     "sqlite3": "3.1.10",
     "youch": "^2.0.4"
