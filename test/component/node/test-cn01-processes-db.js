@@ -87,10 +87,10 @@ describe('Processes Collection', function () {
         var parameters = params.getTestParametersREST('processes/UpdateItem');
         var endpoint = 'http://dev.ingeni-us.com:3338/db';
         // Assesment  
-        request.post(endpoint + parameters, function (error, response, body) {
+        request.patch(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
             // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(resp)).to.be.true;
+            expect(resp.result.id[0]>0).to.be.true;
             done();
         });
     });
