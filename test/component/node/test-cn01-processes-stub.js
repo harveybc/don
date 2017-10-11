@@ -93,20 +93,5 @@ describe('Processes Collection', function () {
             done();
         });
     });
-    /** @test {ProcessesStub#EmptyCollection} */
-    it('CN01-stub-7: DELETE stub/processes (EmptyCollection)', function (done) {
-    // Configuration 
-    var parameters = 'public_key=PUB_KEY&xml=false';
-    var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';
-    var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 3}, "id":3}';
-    // Assesment  
-        request.delete(endpoint + parameters, function (error, response, body) {
-            parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
-            // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-            done();
-        });
-    });
 });
 
