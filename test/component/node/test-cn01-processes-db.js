@@ -66,7 +66,6 @@ describe('Processes Collection', function () {
             done();
         });
     });
-
     /** @test {ProcessesDB#CreateItem} */
     it('CN01-DB-5: POST db/processes (CreateItem)', function (done) {
         // Configuration
