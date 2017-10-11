@@ -77,7 +77,14 @@ class ProcessesDBController {
     }
     /** @desc Renders the admin view  */
     * AdminView(request, response) {
-        yield response.sendView('ProcessesAdmin');
+        yield response.sendView('master_HTML',{
+            title: 'Processes Admin',
+            header: 'Processes Administration',
+            description: 'List of processes',
+            collection: 'Processes',
+            view: 'Admin',
+            content: 'TEST GRID'
+        });
     }
 } 
 module.exports = ProcessesDBController;

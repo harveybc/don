@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Processes Admin</title>
+  <title>{{title}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="/bower_components/bootstrap//dist/css/bootstrap.min.css">
@@ -83,43 +83,9 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Harvey Bastidas</span>
             </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
+            
           </li>
           
           <!-- search form (Optional) -->
@@ -205,22 +171,22 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          {% block header %}Page Header1{% endblock %}
-        <small>{% block description %}Optional description1{% endblock %}</small>
+          {{header}}
+        <small>{{description}}</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> {% block collection %}Collection1{% endblock %}</a></li>
-        <li class="active">{% block view %}admin1{% endblock %}</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> {{collection}}</a></li>
+        <li class="active">{{view}}</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+{% block content %}
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
+{% endblock %}
     </section>
     <!-- /.content -->
   </div>
