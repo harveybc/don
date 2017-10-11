@@ -15,7 +15,7 @@ Route.get('/db/processes/:id', 'DB/ProcessesDBController.GetItem');
 /** @desc CreateItem: create a process */
 Route.post('/db/processes', 'DB/ProcessesDBController.CreateItem');
 /** @desc CreateItem: update a process */
-Route.put('/db/processes/:id', 'DB/ProcessesDBController.UpdateItem'); 
+Route.patch('/db/processes/:id', 'DB/ProcessesDBController.UpdateItem'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/db/processes/:id', 'DB/ProcessesDBController.DeleteItem');
 
