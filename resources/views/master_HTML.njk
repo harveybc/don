@@ -21,7 +21,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               page. However, you can choose any other skin. Make sure you
               apply the skin class to the body tag so the changes take effect. -->
         <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
-
+        <!-- js-grid -->
+        <link type="text/css" rel="stylesheet" href="/bower_components/jsgrid/dist/jsgrid.min.css" />
+        <link type="text/css" rel="stylesheet" href="/bower_components/jsgrid/dist/jsgrid-theme.min.css" />
+        <script type="text/javascript" src="/bower_components/jsgrid/dist/jsgrid.min.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -83,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                <h3 style="width:100%;text-align: center;  margin:11px 2px 0 0;padding:0; font-size:22px; color:#001872;">
                        {{header}}
                         <small style="color:white">{{description}}</small>
-                        </h3>         
+                        </h3>
                             </li>
 
                             <li>
@@ -164,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Main content -->
                 <section class="content container-fluid">
-                    {{content}}
+                    {% block cont %}{{content}}{% endblock %}
                 </section>
                 <!-- /.content -->
             </div>
@@ -261,7 +264,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED JS SCRIPTS -->
 
-        <!-- jQuery 3 --> 
+        <!-- jQuery 3 -->
         <script src="/bower_components/jquery//dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="/bower_components/bootstrap//dist/js/bootstrap.min.js"></script>
