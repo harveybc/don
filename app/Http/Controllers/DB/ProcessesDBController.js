@@ -86,7 +86,7 @@ class ProcessesDBController {
             view: 'Admin',
             user_full_name: 'Harvey Bastidas',
             user_role: 'Administrator',
-            content: testd
+            content: JSON.stringify(testd)
                     
                     
         });
