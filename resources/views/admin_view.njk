@@ -2,7 +2,7 @@
     <div id="jsGrid">
         <script>
             // Gets data from controller
-            var data = {{content}};
+            var data = {{content| dump | safe}};
 
             /* var processes = [
                         {"Name": "Otto Clay", "Age": 25, "Country": 1, "Address": "Ap #897-1459 Quam Avenue", "Married": false},
