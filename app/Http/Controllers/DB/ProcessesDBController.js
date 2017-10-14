@@ -87,7 +87,7 @@ class ProcessesDBController {
             view: 'Admin',
             user_full_name: 'Harvey Bastidas',
             user_role: 'Administrator',
-            content: test_d
+            data: test_d
                     
                     
         });
