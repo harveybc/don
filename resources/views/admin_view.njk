@@ -9,7 +9,7 @@
     <script>
         // Gets data from controller
         var data = {{data| dump | safe}};
-                $("#jsGrid").jsGrid({ width: "100%",
+       $("#jsGrid").jsGrid({width: "100%",
             height: "auto",
             inserting: false,
             editing: false,
@@ -17,15 +17,38 @@
             paging: true,
             data: data,
             fields: [
-                {name: "id", type: "number", width: 30, validate: "required", align:"center",title: "Id"},
-                {name: "name", type: "number", width: 100, align:"center",title: "Name"},
-                {name: "last_optimum_performance", type: "text", width: 50, align:"center",title: "Last Perf."},
-                {name: "last_block_time", type: "text", width: 50, align:"center",title: "Block Time"},
-
-                //{name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name"},
-                //{name: "Married", type: "checkbox", title: "Is Married", sorting: false},
-                {type: "control"}
-            ]
+                {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id"},
+                {name: "name", type: "number", width: 100, align: "center", title: "Name"},
+                {name: "last_optimum_performance", type: "text", width: 50, align: "center", title: "Last Perf."},
+                {name: "last_block_time", type: "text", width: 50, align: "center", title: "Block Time"},
+                {type: "control"},
+            ],
+             onItemDeleting: function (args) {
+                // send a request to the node
+                var xmlhttp = new XMLHttpRequest();
+                var url = "http://dev.ingeni-us.com:3338/db/processes/"+args.item.id;
+                // fired when the state of the request changes
+                xmlhttp.onreadystatechange = function() {
+                    // readyState==4 ==> request finished and response is ready
+                    if (this.readyState == 4 && this.status == 200) {
+                        if (this.status==200) {
+                            var response = JSON.parse(this.responseText);
+                            // if an item was not deleted, cancel the deletion in the frontend list
+                            if(response.result.deleted_count!=1)
+                                args.cancel = true;
+                        }
+                        // if an error code is received, cancel the deletion in the frontend list
+                        else
+                        {
+                            args.cancel = true;
+                        }
+                    }
+                };
+                xmlhttp.open("DELETE", url, false);
+                xmlhttp.send();
+            }
+ 
         });
+
     </script>
 {% endblock %}
