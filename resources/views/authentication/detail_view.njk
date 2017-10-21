@@ -1,0 +1,112 @@
+{# Admin view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends '../master_AdminLTE' %}{% block content %}
+<a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="http://dev.ingeni-us.com:3338/db/processes/create"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+    
+
+    <!-- form start -->
+    <form class="form-horizontal">
+        <div class="box box-info" >
+            <div class="box-header with-border">
+                <h3 class="box-title">Applications and Processes</h3>
+            </div> 
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Processes Per Application</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Processes">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Optimized Parameters Per Process</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Evaluations">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Evaluations Per Process</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Evaluations">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Blocks Per Process</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Blocks Per Process">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Optimization</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Models Per Application</label>
+
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Models Per Application">
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Training Sets per Application</label>
+
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Training Sets per Application">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Validation sets per Application</label>
+
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Validation sets per Application">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Network</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Neighbors</label>
+
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Neighbors">
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Avg. Time Between Transactions (Accounting)</label>
+
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Avg. Time Between Transactions (Accounting)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">TTL Depleted Rate</label>
+
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="TTL Depleted Rate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">SNCF Flooding Rejected Rate</label>
+
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="SNCF Flooding Rejected Rate">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

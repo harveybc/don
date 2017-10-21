@@ -35,3 +35,5 @@ Route.get('/db/processes/detail/:id', 'DB/ProcessesDBController.DetailView')
 Route.get('/db/processes/create', 'DB/ProcessesDBController.CreateView')
 /** @desc AdminView: Deletes a process */
 Route.get('/db/processes/update/:id', 'DB/ProcessesDBController.UpdateView')
+/** @desc User DetailView: Shows details of a process  */
+Route.get('/db', 'DB/ProcessesDBController.UserView')
