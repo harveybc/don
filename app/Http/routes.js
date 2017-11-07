@@ -8,3 +8,7 @@
 require('./Routes/Stub/Processes')
 /** @desc Routes for the ProcessesDB ontroller  Tests */
 require('./Routes/DB/Processes')
+/** @desc Final Routes for the Processes controller  Tests */
+require('./Routes/Processes')
+/** @desc Final Routes for the Processes controller  Tests */
+require('./Routes/Authentication')

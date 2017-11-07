@@ -2,229 +2,550 @@
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-
-
+    <style>
+        .box-info{
+            margin-bottom:10px;
+        }
+        .form-group{
+            margin-bottom:10px;
+        }
+    </style>
     <!-- form start -->
     <form class="form-horizontal">
-        <div class="box box-info" style="position:relative;top:-5px;">
-            <div class="box-header with-border" >
-                <h3 class="box-title">Process Metadata</h3>
+        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/processes/update/{{process_id}}"><span class="glyphicon glyphicon-edit"></span> Edit Process</a>
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- interactive chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-area-chart"></i>
+
+                        <h3 class="box-title">Performance</h3>
+
+                        <div class="box-tools pull-right">
+                            Real time
+                            <div class="btn-group" id="realtime" data-toggle="btn-toggle">
+                                <button type="button" class="btn btn-default btn-xs active" data-toggle="on">On</button>
+                                <button type="button" class="btn btn-default btn-xs" data-toggle="off">Off</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="interactive" style="height: 250px;"></div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+            <!-- /.col -->
+        </div>
+        <div class="row">
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+            <div class="col-md-6">
+                <!-- Bar chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-list-alt"></i>
+                        <h3 class="box-title">Metadata</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
                     </div>
-                </div>                
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+                    <div class="box-body">
+                        <div id="bar-chart">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" name="name">
+                                </div>
+                            </div>                
+                            <div class="form-group">
+                                <label for="inputDescription" class="col-sm-2 control-label">Description</label>
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Description">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputDescription"  name="description" placeholder="Description">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCreatorKey" class="col-sm-2 control-label">Creator Key</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputCreatorKey"  name="creator_key" placeholder="Creator Key">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTags" class="col-sm-2 control-label">Tags</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputTags" name="tags"  placeholder="forex,dqn,dcn,neat">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputAppId" name="app_id"  placeholder="1">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- /.box-body-->
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Creator Key</label>
+                <!-- /.box -->
 
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Creator Key">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tags</label>
+            </div>
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Tags">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Application ID</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
-                    </div>
-                </div>
+            <div class="col-md-6">
+                <!-- Line chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-cogs"></i>
 
+                        <h3 class="box-title">Difficulty & Block Time</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="line-chart" style="height: 250px;"></div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <!-- Bar chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-line-chart"></i>
+                        <h3 class="box-title">Optimization Configuration</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div id="bar-chart">
+                            <div class="form-group">
+                                <label for="inputModelId" class="col-sm-2 control-label">Model Id</label>
+                                <div class="col-sm-10">
+                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputModelId"  name="model_id" placeholder="Model Id">
+                                </div>
+                            </div>                
+                            <div class="form-group">
+                                <label for="inputTrainingSetId" class="col-sm-2 control-label">Training Set Id</label>
+                                <div class="col-sm-10">
+                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputTrainingSetId"  name="training_set_id" placeholder="Training Set Id">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputValidationSetId" class="col-sm-2 control-label">Validation Set Id</label>
+                                <div class="col-sm-10">
+                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputValidationSetId"  name="validation_set_id" placeholder="Validation Set Id">
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+            <div class="col-md-6">
+                <!-- Line chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-cube"></i>
+
+                        <h3 class="box-title">Process Configuration</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputDesiredBlockTime" class="col-sm-2 control-label">Desired Block Time</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2592000" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="Desired Block Time">
+                            </div>
+                        </div>                
+                        <div class="form-group">
+                            <label for="inputDesiredBlockSize" class="col-sm-2 control-label">Desired Block Size</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2147483648" class="form-control" id="inputDesiredBlockSize"  name="desired_block_size" placeholder="Desired Block Size">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBlockTimeControl" class="col-sm-2 control-label">Block Time Control</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2147483648" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="Block Time Control Method">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <!-- Bar chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-linode"></i>
+                        <h3 class="box-title">Blockchain Status </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="bar-chart">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Current Difficulty</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+                                </div>
+                            </div>                
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Id</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Description">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Last Block Date</label>
+
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Creator Key">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Difficulty</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Tags">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Time</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Size</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+            <div class="col-md-6">
+                <!-- Line chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-sliders"></i>
+
+                        <h3 class="box-title">Detailed Performance</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Last Block Performance</label>
+
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Block Performance">
+                            </div>
+                        </div>                
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Parameters Id</label>
+
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Parameters Id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Last Optimum Date</label>
+
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Last Optimum Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Performance</label>
+
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Performance">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Processes Detail View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to view the process details with a real-time graphic of reported performances and block generation difficulty.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Process Status</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Current Difficulty</label>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <!-- FastClick -->
+    <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- FLOT CHARTS -->
+    <script src="/bower_components/Flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="/bower_components/Flot/jquery.flot.resize.js"></script>
+    <script>
+        // Gets data from controller
+        var data = {{data| dump | safe}};
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            // Metadata
+            $('#inputName').val(data[0].name);
+            $('#inputDescription').val(data[0].description);
+            $('#inputCreatorKey').val(data[0].creator_key);
+            $('#inputTags').val(data[0].tags);
+            $('#inputAppId').val(data[0].app_id);
+            // Control
+            $('#inputActive').val(data[0].active);
+            // Configuration
+            $('#inputDesiredBlockTime').val(data[0].desired_block_time);
+            $('#inputDesiredBlockSize').val(data[0].desired_block_size);
+            $('#inputBlockTimeControl').val(data[0].block_time_control_id);// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
+            // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+            $('#inputModelId').val(data[0].model_id);
+            $('#inputTrainingSetId').val(data[0].training_set_id);
+            $('#inputValidationSetId').val(data[0].validation_set_id);
+            // Status 
+            $('#inputDifficulty').val(data[0].difficulty);
+            $('#inputLastBlockId').val(data[0].last_block_id);
+            $('#inputLastBlockDate').val(data[0].last_block_date);
+            $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
+            $('#inputLastBlockTime').val(data[0].last_block_time);
+            $('#inputLastBlockSize').val(data[0].last_block_size);
+            // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
+            $('#inputLastBlockPerformance').val(data[0].last_block_size);
+            // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
+            $('#inputLastOptimumId').val(data[0].last_optimum_id);
+            $('#inputLastOptimumDate').val(data[0].last_optimum_date);
+            $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Id</label>
+        });
+        $(function () {
+            /*
+             * Flot Interactive Chart
+             * -----------------------
+             */
+            // We use an inline data source in the example, usually data would
+            // be fetched from a server
+            var data = [], totalPoints = 100
+            function getRandomData() {
+                if (data.length > 0)
+                    data = data.slice(1)
+                // Do a random walk
+                while (data.length < totalPoints) {
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Description">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Last Block Date</label>
+                    var prev = data.length > 0 ? data[data.length - 1] : 50,
+                            y = prev + Math.random() * 10 - 5
 
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Creator Key">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Difficulty</label>
+                    if (y < 0) {
+                        y = 0
+                    } else if (y > 100) {
+                        y = 100
+                    }
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Tags">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Time</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Size</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
-                    </div>
-                </div>
-            </div>
-        </div>
-                <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Process Performance</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Performance</label>
+                    data.push(y)
+                }
+                // Zip the generated y values with the x values
+                var res = []
+                for (var i = 0; i < data.length; ++i) {
+                    res.push([i, data[i]])
+                }
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Last Block Performance">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Parameters Id</label>
+                return res
+            }
+            var interactive_plot = $.plot('#interactive', [getRandomData()], {
+                grid: {
+                    borderColor: '#f3f3f3',
+                    borderWidth: 1,
+                    tickColor: '#f3f3f3'
+                },
+                series: {
+                    shadowSize: 0, // Drawing is faster without shadows
+                    color: '#3c8dbc'
+                },
+                lines: {
+                    fill: true, //Converts the line chart to area chart
+                    color: '#3c8dbc'
+                },
+                yaxis: {
+                    min: 0,
+                    max: 100,
+                    show: true
+                },
+                xaxis: {
+                    show: true
+                }
+            })
+            var updateInterval = 1000 //Fetch data ever x milliseconds
+            var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
+            function update() {
+                interactive_plot.setData([getRandomData()])
+                // Since the axes don't change, we don't need to call plot.setupGrid()
+                interactive_plot.draw()
+                if (realtime === 'on')
+                    setTimeout(update, updateInterval)
+            }
+            //INITIALIZE REALTIME DATA FETCHING
+            if (realtime === 'on') {
+                update()
+            }
+            //REALTIME TOGGLE
+            $('#realtime .btn').click(function () {
+                if ($(this).data('toggle') === 'on') {
+                    realtime = 'on'
+                } else {
+                    realtime = 'off'
+                }
+                update()
+            })
+            /*
+             * END INTERACTIVE CHART
+             */
+            /*
+             * LINE CHART
+             * ----------
+             */
+            //LINE randomly generated data
+            var sin = [], cos = []
+            for (var i = 0; i < 14; i += 0.5) {
+                sin.push([i, Math.sin(i)])
+                cos.push([i, Math.cos(i)])
+            }
+            var line_data1 = {
+                data: sin,
+                color: '#3c8dbc'
+            }
+            var line_data2 = {
+                data: cos,
+                color: '#00c0ef'
+            }
+            $.plot('#line-chart', [line_data1, line_data2], {
+                grid: {
+                    hoverable: true,
+                    borderColor: '#f3f3f3',
+                    borderWidth: 1,
+                    tickColor: '#f3f3f3'
+                },
+                series: {
+                    shadowSize: 0,
+                    lines: {
+                        show: true
+                    },
+                    points: {
+                        show: true
+                    }
+                },
+                lines: {
+                    fill: false,
+                    color: ['#3c8dbc', '#f56954']
+                },
+                yaxis: {
+                    show: true
+                },
+                xaxis: {
+                    show: true
+                }
+            })
+            //Initialize tooltip on hover
+            $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
+                position: 'absolute',
+                display: 'none',
+                opacity: 0.8
+            }).appendTo('body')
+            $('#line-chart').bind('plothover', function (event, pos, item) {
+                if (item) {
+                    var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2)
 
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Parameters Id">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Last Optimum Date</label>
-
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Last Optimum Date">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Performance</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Performance">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Time</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Last Block Time">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Last Block Size</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Last Block Size">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Process Control</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Active</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Active">
-                    </div>
-                </div>                
-
-                <!-- /.box-footer -->
-            </div>
-        </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Process Configuration</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Desired Block Time</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Desired Block Time">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Desired Block Size</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Desired Block Size">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Block Time Control Method</label>
-
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Block Time Control Method">
-                    </div>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-        </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Optimization Configuration</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Model Id</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Model Id">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Training Set Id</label>
-
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Training Set IdEmail">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Validation Set Id</label>
-
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Validation Set Id">
-                    </div>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-
-    </div>
-</form>
-
-        {% endblock %}
-        {% block footer %}
-        {% endblock %}
+                    $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
+                            .css({top: item.pageY + 5, left: item.pageX + 5})
+                            .fadeIn(200)
+                } else {
+                    $('#line-chart-tooltip').hide()
+                }
+            })
+            /* END LINE CHART */
+        })
+        /*
+         * Custom Label formatter
+         * ----------------------
+         */
+        function labelFormatter(label, series) {
+            return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+                    + label
+                    + '<br>'
+                    + Math.round(series.percent) + '%</div>'
+        }
+    </script>
+{% endblock %}

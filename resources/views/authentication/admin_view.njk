@@ -2,14 +2,14 @@
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="http://dev.ingeni-us.com:3338/processes/create"><span class="glyphicon glyphicon-plus"></span> Create New Process</a>
+    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="http://dev.ingeni-us.com:3338/authentication/create"><span class="glyphicon glyphicon-plus"></span> Create New User</a>
     <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
-        <strong>Result:</strong> The process was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+        <strong>Result:</strong> The user was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
     </div>
     <div id="div_error" class="alert alert-danger fade in alert-dismissable" style="display: none; margin: 0px 0 5px 0;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-        <strong>Error!</strong> Could not save the process. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+        <strong>Error!</strong> Could not save the user. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
     </div>
     <div class="box box-info" style="padding-right:10px; ">
         <div id="jsGrid" class="box-header" style="padding: 5px 10px 5px 5px; ">
@@ -23,10 +23,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Processes Administrative View Help</h4>
+                    <h4 class="modal-title">Authentication Administrative View Help</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This view allows to view a list of processes and create, update or delete processes. Click on the process to view its detailed view (Dashboard).</p>
+                    <p>This view allows to view a list of authentication and create, update or delete authentication. Click on the user to view its detailed view (Dashboard).</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,8 +112,10 @@
                 x.style.display = "block";
             }
             // initialize menu start active item
-            document.getElementById("m_processes").classList.add('active');
-        });
+            document.getElementById("m_administrative").classList.add('menu-open');
+            document.getElementById("m_administrative").classList.add('active');            
+            document.getElementById("m_authentication").classList.add('active');
+        });  
         // Gets data from controller
         var data = {{data| dump | safe}};
         $("#jsGrid").jsGrid({
@@ -125,26 +127,25 @@
             paging: true,
             data: data,
             rowClick: function (e) {
-                window.location = "/processes/detail/" + e.item.id;
+                window.location = "/authentication/detail/" + e.item.id;
             },
             fields: [
                 {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id", headercss: "header_color"},
-                {name: "name", type: "number", width: 100, align: "center", title: "Name", headercss: "header_color"},
-                {name: "last_optimum_performance", type: "text", width: 50, align: "center", title: "Last Perf.", headercss: "header_color"},
-                {name: "last_block_time", type: "text", width: 50, align: "center", title: "Block Time", headercss: "header_color"},
+                {name: "name", type: "text", width: 100, align: "center", title: "Name", headercss: "header_color"},
+                {name: "created_at", type: "text", width: 50, align: "center", title: "Created At", headercss: "header_color"},                
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/processes/update/' + item.id + '"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/authentication/update/' + item.id + '"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"
                 },
                 {type: "control", editButton: false, width: 40, headercss: "header_color"}
             ],
             editRowRenderer: function (item, itemIndex) {
-                window.location = "http://dev.ingeni-us.com:3338/processes/update/" + item.id;
+                window.location = "http://dev.ingeni-us.com:3338/authentication/update/" + item.id;
             },
             onItemDeleting: function (args) {
                 // send a request to the node
                 var xmlhttp = new XMLHttpRequest();
-                var url = "http://dev.ingeni-us.com:3338/processes/" + args.item.id;
+                var url = "http://dev.ingeni-us.com:3338/authentication/" + args.item.id;
                 // fired when the state of the request changes
                 xmlhttp.onreadystatechange = function () {
                     // readyState==4 ==> request finished and response is ready

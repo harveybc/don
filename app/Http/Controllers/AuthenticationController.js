@@ -1,34 +1,28 @@
 'use strict';
 /** @desc
- Processeses dummy controller for testing database, it uses static test data.
+ Authenticationes dummy controller for testing database, it uses static test data.
  */
-class ProcessesDBController {
-    /** @desc Returns a list of metadata for found processes in a view */
-    * MetadataList(request, response) {
-        const Database = use('Database');
-        const result = yield Database.select('id', 'name', 'description', 'creator_key', 'tags', 'app_id', 'created_at', 'updated_at').from('processes').limit(3);
-        /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
-    }
-    /** @desc Returns the metadata for the <id> process */
-    * MetadataItem(request, response) {
-        const Database = use('Database');
-        const process_id = request.param('id');
-        const result = yield Database.select('id', 'name', 'description', 'creator_key', 'tags', 'app_id', 'created_at', 'updated_at').from('processes').where('id', process_id);
-        yield response.sendView('master_JSON', {result: result[0], request_id: 3});
-    }
-    /** @desc Returns a list of processes */
+class AuthenticationController {
+    /** @desc Returns a list of authentication */
     * GetList(request, response) {
+        // Authentication
+        const User = use('');
+        // Authorization
+        // Queries
         const Database = use('Database');
-        const result = yield Database.select('*').from('processes').limit(request.param('max_results'));
-        /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
+        const result = yield Database.select('*').from('authentications').limit(request.param('max_results'));
+        // Accounting
+       
+        // send response
+        // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         const Database = use('Database');
         const process_id = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
+        const result = yield Database.select('*').from('authentications').where('id', process_id);
+        
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * createItemQuery(request, response) {
@@ -36,30 +30,19 @@ class ProcessesDBController {
         const Database = use('Database');
         const url_params = request.get();
         const name = url_params.name;
-        const description = url_params.description;
-        const creator_key = url_params.public_key;
-        const tags = url_params.tags;
-        const app_id = url_params.app_id;
+        const public_key = url_params.public_key;
+        const pass_hash = url_params.pass_hash;
+        const created_by = url_params.created_by;
+        const updated_by = url_params.updated_by;
         const active = url_params.active;
-        const desired_block_time = url_params.desired_block_time;
-        const desired_block_size = url_params.desired_block_size;
-        const block_time_control = url_params.block_time_control;
-        const model_id = url_params.model_id;
-        const training_set_id = url_params.training_id;
-        const validation_set_id = url_params.validation_id;
-        const difficulty = url_params.difficulty;
-        const format = url_params.format;
-        //@todo TODO: Perform data validation
+        // @todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
 
         // perform query and send view
         const process_id = yield Database
-                .table('processes')
-                .insert({'name': name, 'description': description, 'creator_key': creator_key
-                    , 'tags': tags, 'app_id': app_id, 'active': active, 'desired_block_time': desired_block_time
-                    , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
-                    , 'model_id': model_id, 'training_set_id': training_set_id
-                    , 'validation_set_id': validation_set_id});
+                .table('authentications')
+                .insert({'name': name, 'public_key': public_key, 'pass_hash': pass_hash
+                    , 'created_by': created_by, 'updated_by': updated_by, 'active': active});
         const result = {"id": process_id};
         return (result);
     }
@@ -71,58 +54,55 @@ class ProcessesDBController {
     }
     * updateItemQuery(request, response) {
         // generate parameters for query
-// TODO CORREGIR SQL DE UPDATE EN LUGAR DE CREATE
         const Database = use('Database');
         const url_params = request.get();
         const name = url_params.name;
-        const description = url_params.description;
-        const creator_key = url_params.public_key;
-        const tags = url_params.tags;
-        const app_id = url_params.app_id;
+        const public_key = url_params.public_key;
+        const pass_hash = url_params.pass_hash;
+        const created_by = url_params.created_by;
+        const updated_by = url_params.updated_by;
         const active = url_params.active;
-        const desired_block_time = url_params.desired_block_time;
-        const desired_block_size = url_params.desired_block_size;
-        const block_time_control = url_params.block_time_control;
-        const model_id = url_params.model_id;
-        const training_set_id = url_params.training_id;
-        const validation_set_id = url_params.validation_id;
-        const difficulty = url_params.difficulty;
-        const format = url_params.format;
+        //@todo TODO: Perform data validation
+        // https://adonisjs.com/docs/3.2/validator
         // perform query and send view
         const affected_rows = yield Database
-                .table('processes')
+                .table('authentications')
                 .where('id', request.param('id'))
-                .update({'name': name, 'description': description, 'creator_key': creator_key
-                    , 'tags': tags, 'app_id': app_id, 'active': active, 'desired_block_time': desired_block_time
-                    , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
-                    , 'model_id': model_id, 'training_set_id': training_set_id
-                    , 'validation_set_id': validation_set_id});
+                .update({'name': name, 'public_key': public_key, 'pass_hash': pass_hash
+                    , 'created_by': created_by, 'updated_by': updated_by, 'active': active});
         const result = {"affected_rows": affected_rows};
         return (result);
     }
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
+        // Authentication layer (401 Error)
+        if (this.authenticate(public_key, pass_hash)!=1){
+            const result = {"error": 401};
+            yield response.sendView('master_JSON', {result: result, request_id: 3});
+        }
+        // Authorization layer (403 Error)
         var resp;
         result = yield * this.updateItemQuery(request, resp);
+        // Accounting layer (402 Error if quota exceeded)
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         const Database = use('Database');
         const process_id = request.param('id');
-        const deleted_count = yield Database.table('processes').where('id', process_id).delete();
+        const deleted_count = yield Database.table('authentications').where('id', process_id).delete();
         const result = {"deleted_count": deleted_count};
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Renders the admin view  */
     * AdminView(request, response, error) {
         const Database = use('Database');
-        const result = yield Database.select('*').from('processes').limit(request.input('max_results'));
-        yield response.sendView('processes/admin_view', {
-            title: 'Processes Admin - Singularity',
-            header: 'Processes',
+        const result = yield Database.select('*').from('authentications').limit(request.input('max_results'));
+        yield response.sendView('authentication/admin_view', {
+            title: 'Authentication Admin - Singularity',
+            header: 'Authentication',
             description: 'Administrative View',
-            collection: 'Processes',
+            collection: 'Authentication',
             view: 'Admin',
             user_full_name: 'Harvey Bastidas',
             user_role: 'Administrator',
@@ -150,12 +130,12 @@ class ProcessesDBController {
         else {
             const Database = use('Database');
 
-            const result = yield Database.select('*').from('processes').where('id', process_id);
-            yield response.sendView('processes/update_view', {
-                title: 'Edit Process - Singularity',
-                header: 'Process',
+            const result = yield Database.select('*').from('authentications').where('id', process_id);
+            yield response.sendView('authentication/update_view', {
+                title: 'Edit User - Singularity',
+                header: 'Authentication',
                 description: 'Editing View',
-                collection: 'Processes',
+                collection: 'Authentication',
                 view: 'Update : ' + result[0].id,
                 user_full_name: 'Harvey Bastidas',
                 user_role: 'Administrator',
@@ -183,11 +163,11 @@ class ProcessesDBController {
         // sino muestra vista
         else {
             const Database = use('Database');
-            yield response.sendView('processes/create_view', {
-                title: 'Create Process - Singularity',
-                header: 'Process',
+            yield response.sendView('authentication/create_view', {
+                title: 'Create User - Singularity',
+                header: 'Authentication',
                 description: 'Creation View',
-                collection: 'Processes',
+                collection: 'Authentication',
                 view: 'Create',
                 user_full_name: 'Harvey Bastidas',
                 user_role: 'Administrator'
@@ -198,12 +178,12 @@ class ProcessesDBController {
     * DetailView(request, response) {
         const Database = use('Database');
         const process_id = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
-        yield response.sendView('processes/detail_view', {
-            title: 'Process Details - Singularity',
-            header: 'Process',
+        const result = yield Database.select('*').from('authentications').where('id', process_id);
+        yield response.sendView('authentication/detail_view', {
+            title: 'User Details - Singularity',
+            header: 'Authentication',
             description: 'Details and Status',
-            collection: 'Processes',
+            collection: 'Authentication',
             view: 'Details: ' + result[0].id,
             user_full_name: 'Harvey Bastidas',
             user_role: 'Administrator',
@@ -217,7 +197,7 @@ class ProcessesDBController {
         yield response.sendView('authentication/detail_view', {
             title: 'Dashboard - Singularity',
             header: 'Dashboard',
-            description: 'Apps and Processes',
+            description: 'Apps and Authentication',
             collection: 'Authentication',
             view: 'Details: ',
             user_full_name: 'Harvey Bastidas',
@@ -225,5 +205,5 @@ class ProcessesDBController {
         });
     }
 }
-module.exports = ProcessesDBController;
+module.exports = AuthenticationController;
     

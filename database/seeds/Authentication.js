@@ -1,0 +1,37 @@
+'use strict'
+/** @desc Authentication collection seeds, uses Authentication model, to run execute:
+ @example ./ace db:seed [name]
+ **/
+const Authentication = use('App/Model/Authentication')
+/** Test data with 3 similar registers only differing in the name, description and id */
+const authenticationArray = [{"id": 1, "public_key": "AAAAAAA", "name":
+                "Harvey Bastidas", "created_by": "AAA001", "updated_by": "AAA001",
+                "active": true},
+    {"id": 2, "public_key": "AAAAAAA", "name":
+                "Test User Node", "created_by": "AAA002", "updated_by": "AAA002",
+                "active": true},
+    {"id": 3, "public_key": "AAAAAAA", "name":
+                "Test User Optimizer", "created_by": "AAA003", "updated_by": "AAA003",
+                "active": true},
+    {"id": 4, "public_key": "AAAAAAA", "name":
+                "Test User Evaluator", "created_by": "AAA004", "updated_by": "AAA004",
+                "active": true},
+    {"id": 5, "public_key": "AAAAAAA", "name":
+                "Test User Client", "created_by": "AAA005", "updated_by": "AAA005",
+                "active": true}
+] 
+/** 
+ @desc Database Seeder
+ Can be used to seed dummy data to your application database. 
+ Here you can also make use of Factories to create records witn random data.
+ 
+ @example to execute:
+ ./ace db:seed [name]
+ */
+class DatabaseSeeder {
+    * run() {
+        // yield Factory.model('App/Model/User').create(5)
+        yield Authentication.createMany(authenticationArray)
+    }
+}
+module.exports = DatabaseSeeder

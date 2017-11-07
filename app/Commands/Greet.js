@@ -30,6 +30,7 @@ class Greet extends Command {
    *
    * @param  {Object} args    [description]
    * @param  {Object} options [description]
+   * Thanks god for this task :)
    */
   * handle (args, options) {
     this.info(`Hello ${args.name}`)

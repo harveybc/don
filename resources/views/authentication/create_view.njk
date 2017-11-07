@@ -1,0 +1,69 @@
+{# Creation view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends '../master_AdminLTE' %}{% block content %}
+    <!-- form start -->
+        <!-- form start. Include path is relative to nonjunks config directory in resource/views -->
+    {% include "authentication/form.njk" %}
+    <!-- form end -->
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Authentication Creation View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to Create a new user, fill the details and clik on the save button on the top or the bottom.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <script type="text/javascript">
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            // Metadata
+            $('#inputName').val("Default User");
+            $('#inputDescription').val("Default User");
+            $('#inputCreatorKey').val("CREATOR_KEY");
+            $('#inputTags').val("forex,dqn,dcn,neat");
+            $('#inputAppId').val("1");
+            // Configuration
+            $('#inputDesiredBlockTime').val("60"); // 1 minute block
+            $('#inputDesiredBlockSize').val("0");
+            $('#inputBlockTimeControl').val("0");// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
+            // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+            $('#inputModelId').val("1");
+            $('#inputTrainingSetId').val("1");
+            $('#inputValidationSetId').val("1");
+/*          // Status 
+            $('#inputDifficulty').val(data[0].difficulty);
+            $('#inputLastBlockId').val(data[0].last_block_id);
+            $('#inputLastBlockDate').val(data[0].last_block_date);
+            $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
+            $('#inputLastBlockTime').val(data[0].last_block_time);
+            $('#inputLastBlockSize').val(data[0].last_block_size);
+            // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
+            $('#inputLastBlockPerformance').val(data[0].last_block_size);
+            // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
+            $('#inputLastOptimumId').val(data[0].last_optimum_id);
+            $('#inputLastOptimumDate').val(data[0].last_optimum_date);
+            $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);          
+*/
+        });
+
+    </script>
+
+{% endblock %}

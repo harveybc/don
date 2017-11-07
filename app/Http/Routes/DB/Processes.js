@@ -1,7 +1,7 @@
 /** @desc
   This file has the routes used for testing without AAA but with Database
   Method names according to the Google Cloud API Naming Conventions https://cloud.google.com/apis/design/naming_convention
-*/
+*/ 
 const Route = use('Route');
 // VIEWS
 Route.get('/db/processes/admin', 'DB/ProcessesDBController.AdminView')

@@ -2,26 +2,32 @@
 /** @desc
  Processeses dummy controller for testing database, it uses static test data.
  */
-class ProcessesDBController {
-    /** @desc Returns a list of metadata for found processes in a view */
+class ProcessesController {
+    /** @desc Returns a list of metadata for found processes in a view 
     * MetadataList(request, response) {
         const Database = use('Database');
         const result = yield Database.select('id', 'name', 'description', 'creator_key', 'tags', 'app_id', 'created_at', 'updated_at').from('processes').limit(3);
-        /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
-    }
-    /** @desc Returns the metadata for the <id> process */
+    }*/
+    /** @desc Returns the metadata for the <id> process
     * MetadataItem(request, response) {
         const Database = use('Database');
         const process_id = request.param('id');
         const result = yield Database.select('id', 'name', 'description', 'creator_key', 'tags', 'app_id', 'created_at', 'updated_at').from('processes').where('id', process_id);
         yield response.sendView('master_JSON', {result: result[0], request_id: 3});
-    }
+    } */
     /** @desc Returns a list of processes */
     * GetList(request, response) {
+        // Authentication
+        const User = use('');
+        // Autheorization
+        // Queries
         const Database = use('Database');
         const result = yield Database.select('*').from('processes').limit(request.param('max_results'));
-        /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
+        // Accounting
+       
+        // send response
+        // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the the <id> process */
@@ -29,6 +35,7 @@ class ProcessesDBController {
         const Database = use('Database');
         const process_id = request.param('id');
         const result = yield Database.select('*').from('processes').where('id', process_id);
+        
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * createItemQuery(request, response) {
@@ -225,5 +232,5 @@ class ProcessesDBController {
         });
     }
 }
-module.exports = ProcessesDBController;
+module.exports = ProcessesController;
     

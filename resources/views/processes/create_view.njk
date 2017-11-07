@@ -1,54 +1,56 @@
-{# Admin view template #}
+{# Creation view template #}
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-
-
+    <style>
+        .box-info{
+            margin-bottom:10px;
+        }
+    </style>
     <!-- form start -->
     <form class="form-horizontal">
         <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/db/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Process Metadata</h3>
             </div>
-            <!-- /.box-header -->
+            <!-- /.box-header 
+            TODO: CARGAR VALORES DESDE PARAMS
+            -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
-
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+                        <input type="text" class="form-control" id="inputName" name="name">
                     </div>
                 </div>                
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+                    <label for="inputDescription" class="col-sm-2 control-label">Description</label>
 
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Description">
+                        <input type="text" class="form-control" id="inputDescription"  name="description" placeholder="Description">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Creator Key</label>
-
+                    <label for="inputCreatorKey" class="col-sm-2 control-label">Creator Key</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Creator Key">
+                        <input type="text" class="form-control" id="inputCreatorKey"  name="creator_key" placeholder="Creator Key">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tags</label>
+                    <label for="inputTags" class="col-sm-2 control-label">Tags</label>
 
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Tags">
+                        <input type="text" class="form-control" id="inputTags" name="tags"  placeholder="forex,dqn,dcn,neat">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Application ID</label>
+                    <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
+                        <input type="text" class="form-control" id="inputAppId" name="app_id"  placeholder="1">
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="box box-info">
@@ -58,13 +60,11 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Active</label>
-
+                    <label for="inputActive" class="col-sm-2 control-label">Active</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Active">
+                        <input type="checkbox" class="checkbox" id="inputActive" name="active" checked>
                     </div>
                 </div>                
-
                 <!-- /.box-footer -->
             </div>
         </div>
@@ -75,24 +75,21 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Desired Block Time</label>
-
+                    <label for="inputDesiredBlockTime" class="col-sm-2 control-label">Desired Block Time</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Desired Block Time">
+                        <input type="number" min="0" max="2592000" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="Desired Block Time">
                     </div>
                 </div>                
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Desired Block Size</label>
-
+                    <label for="inputDesiredBlockSize" class="col-sm-2 control-label">Desired Block Size</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Desired Block Size">
+                        <input type="number" min="0" max="2147483648" class="form-control" id="inputDesiredBlockSize"  name="desired_block_size" placeholder="Desired Block Size">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Block Time Control Method</label>
-
+                    <label for="inputBlockTimeControl" class="col-sm-2 control-label">Block Time Control Method</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Block Time Control Method">
+                        <input type="number" min="0" max="2147483648" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="Block Time Control Method">
                     </div>
                 </div>
                 <!-- /.box-footer -->
@@ -105,24 +102,21 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Model Id</label>
-
+                    <label for="inputModelId" class="col-sm-2 control-label">Model Id</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Model Id">
+                        <input type="number" min="0" max="2147483648" class="form-control" id="inputModelId"  name="model_id" placeholder="Model Id">
                     </div>
                 </div>                
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Training Set Id</label>
-
+                    <label for="inputTrainingSetId" class="col-sm-2 control-label">Training Set Id</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Training Set IdEmail">
+                        <input type="number" min="0" max="2147483648" class="form-control" id="inputTrainingSetId"  name="training_set_id" placeholder="Training Set Id">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Validation Set Id</label>
-
+                    <label for="inputValidationSetId" class="col-sm-2 control-label">Validation Set Id</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Validation Set Id">
+                        <input type="number" min="0" max="2147483648" class="form-control" id="inputValidationSetId"  name="validation_set_id" placeholder="Validation Set Id">
                     </div>
                 </div>
                 <!-- /.box-footer -->
@@ -130,15 +124,72 @@
 
             <!-- /.box-body 
             <div class="box-footer">
-
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info pull-right">Update</button>
             </div>
             <!-- /.box-footer                 -->
         </div>
         <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/db/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
-
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
     </form>
-
 {% endblock %}
 {% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Processes Creation View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to Create a new process, fill the details and clik on the save button on the top or the bottom.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <script type="text/javascript">
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            // Metadata
+            $('#inputName').val("Default Process");
+            $('#inputDescription').val("Default Process");
+            $('#inputCreatorKey').val("CREATOR_KEY");
+            $('#inputTags').val("forex,dqn,dcn,neat");
+            $('#inputAppId').val("1");
+            // Configuration
+            $('#inputDesiredBlockTime').val("60"); // 1 minute block
+            $('#inputDesiredBlockSize').val("0");
+            $('#inputBlockTimeControl').val("0");// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
+            // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+            $('#inputModelId').val("1");
+            $('#inputTrainingSetId').val("1");
+            $('#inputValidationSetId').val("1");
+/*          // Status 
+            $('#inputDifficulty').val(data[0].difficulty);
+            $('#inputLastBlockId').val(data[0].last_block_id);
+            $('#inputLastBlockDate').val(data[0].last_block_date);
+            $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
+            $('#inputLastBlockTime').val(data[0].last_block_time);
+            $('#inputLastBlockSize').val(data[0].last_block_size);
+            // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
+            $('#inputLastBlockPerformance').val(data[0].last_block_size);
+            // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
+            $('#inputLastOptimumId').val(data[0].last_optimum_id);
+            $('#inputLastOptimumDate').val(data[0].last_optimum_date);
+            $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);          
+*/
+        });
+
+    </script>
+
 {% endblock %}
