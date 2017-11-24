@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <header class="main-header">
 
                 <!-- Logo -->
-                <a href="/processes/admin" class="logo" style="padding-left:5px;padding-right:5px;">
+                <a href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}" class="logo" style="padding-left:5px;padding-right:5px;">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><img src="/assets/logo3s.png" style="width:35px;"></span>
                     <!-- logo for regular state and mobile devices -->
@@ -127,8 +127,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">COLLECTIONS</li>
                         <!-- Optionally, you can add icons to the links -->
-                        <li id="m_applications"><a href="/applications/admin"><i class="fa fa-laptop fa-lg"></i> <span>Applications</span></a></li>
-                        <li id="m_processes"><a href="/processes/admin"><i class="fa fa-dashboard fa-lg"></i> <span>Processes</span></a></li>
+                        <li id="m_applications"><a href="/applications/admin?username={{username}}&pass_hash={{pass_hash}}"><i class="fa fa-laptop fa-lg"></i> <span>Applications</span></a></li>
+                        <li id="m_processes"><a href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}"><i class="fa fa-dashboard fa-lg"></i> <span>Processes</span></a></li>
                         <li id="m_optimization" class="treeview">
                             <a href="#"><i class="fa fa-pie-chart fa-lg"></i> <span>Optimization</span>
                                 <span class="pull-right-container">
@@ -136,10 +136,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li id="m_models"><a href="/models/admin">Models</a></li>
-                                <li id="m_parameters"><a href="/parameters/admin">Parameters</a></li>
-                                <li id="m_datasets"><a href="/datasets/admin">Datasets</a></li>
-                                <li id="m_evaluations"><a href="/evaluations/admin">Evaluations</a></li>
+                                <li id="m_models"><a href="/models/admin?username={{username}}&pass_hash={{pass_hash}}">Models</a></li>
+                                <li id="m_parameters"><a href="/parameters/admin?username={{username}}&pass_hash={{pass_hash}}">Parameters</a></li>
+                                <li id="m_datasets"><a href="/datasets/admin?username={{username}}&pass_hash={{pass_hash}}">Datasets</a></li>
+                                <li id="m_evaluations"><a href="/evaluations/admin?username={{username}}&pass_hash={{pass_hash}}">Evaluations</a></li>
                             </ul>
                         </li>
                         <li id="m_administrative" class="treeview">
@@ -149,13 +149,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li id="m_authentication"><a href="/authentication/admin">Authentication</a></li>
-                                <li id="m_authorization"><a href="/authorization/admin">Authorization</a></li>
-                                <li id="m_accounting"><a href="/accounting/admin">Accounting</a></li>
-                                <li id="m_blocks"><a href="/blocks/admin">Blockchain</a></li>
+                                <li id="m_authentication"><a href="/authentication/admin?username={{username}}&pass_hash={{pass_hash}}">Authentication</a></li>
+                                <li id="m_authorization"><a href="/authorization/admin?username={{username}}&pass_hash={{pass_hash}}">Authorization</a></li>
+                                <li id="m_accounting"><a href="/accounting/admin?username={{username}}&pass_hash={{pass_hash}}">Accounting</a></li>
+                                <li id="m_blocks"><a href="/blocks/admin?username={{username}}&pass_hash={{pass_hash}}">Blockchain</a></li>
                             </ul>
                         </li>
-                        <li id="m_network"><a href="/network/admin"><i class="fa fa-link fa-lg"></i> <span>Network</span></a></li>
+                        <li id="m_network"><a href="/network/admin?username={{username}}&pass_hash={{pass_hash}}"><i class="fa fa-link fa-lg"></i> <span>Network</span></a></li>
                         <li id="m_docs"><a href="/docs" id="btn-trig"><i class="fa fa-book fa-lg"></i> <span>Documentation</span></a></li>
                     </ul>
                     <!-- /.sidebar-menu -->
@@ -168,8 +168,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="padding:0px 7px 0px 7px;">
                     <ol class="breadcrumb" style="top:5px;z-index:1000;" >
-                        <li><a href="/processes/admin"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="/processes/admin"><i class="fa fa-dashboard"></i> {{collection}}</a></li>
+                        <li><a href="/{{collection}}/admin?username={{username}}&pass_hash={{pass_hash}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/{{collection}}/admin?username={{username}}&pass_hash={{pass_hash}}"><i class="fa fa-dashboard"></i> {{collection}}</a></li>
                         <li class="active">{{view}}</li>
                     </ol>
                 </section>

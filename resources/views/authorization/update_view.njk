@@ -8,7 +8,7 @@
         }
     </style>
     <!-- form start. Include path is relative to nonjunks config directory in resource/views -->
-    {% include "authentication/form.njk" %}
+    {% include "authorization/form.njk" %}
     <!-- form end -->
 {% endblock %}
 {% block footer %}
@@ -18,10 +18,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Authentication Edit View Help</h4>
+                    <h4 class="modal-title">Authorization Edit View Help</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This view allows to Update a user. Change the required values and press the save button on the top or bottom.</p>
+                    <p>This view allows to Update an authorization. Change the required values and press the save button on the top or bottom.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -41,11 +41,8 @@
             });
             // Initialize values of form
             // Metadata
-            $('#inputName').val(data[0].name);
-            $('#inputUserName').val(data[0].username);
-            $('#inputPublicKey').val(data[0].public_key);
-            $('#passHash').val(data[0].pass_hash);
-            $('#appId').val(data[0].app_id);
+            $('#inputName').val(data[0].username);
+            $('#inputRole').val(data[0].role);
             // Control
             $('#inputActive').val(data[0].active);
             

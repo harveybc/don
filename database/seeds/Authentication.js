@@ -4,21 +4,21 @@
  **/
 const Authentication = use('App/Model/Authentication')
 /** Test data with 3 similar registers only differing in the name, description and id */
-const authenticationArray = [{"id": 1, "public_key": "AAAAAAA", "name":
-                "Harvey Bastidas", "created_by": "AAA001", "updated_by": "AAA001",
-                "active": true},
-    {"id": 2, "public_key": "AAAAAAA", "name":
-                "Test User Node", "created_by": "AAA002", "updated_by": "AAA002",
-                "active": true},
-    {"id": 3, "public_key": "AAAAAAA", "name":
+const authenticationArray = [{"id": 1, "public_key": "AAAAAAA", "username": "harveybc",   "app_id": 1,
+                 "name": "Harvey Bastidas", "created_by": "AAA001", "updated_by": "AAA001",
+                 "pass_hash": "$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q", "active": true},
+    {"id": 2, "public_key": "AAAAAAA", "username": "testnode", "app_id": 1, "name":
+                "Test User Node (ProcessAdmin)", "created_by": "AAA002", "updated_by": "AAA002",
+                "pass_hash": "$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q", "active": true},
+    {"id": 3, "public_key": "AAAAAAA", "username": "testoptimizer", "app_id": 1, "name":
                 "Test User Optimizer", "created_by": "AAA003", "updated_by": "AAA003",
-                "active": true},
-    {"id": 4, "public_key": "AAAAAAA", "name":
+                "pass_hash": "$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q", "active": true},
+    {"id": 4, "public_key": "AAAAAAA", "username": "testevaluator", "app_id": 1, "name":
                 "Test User Evaluator", "created_by": "AAA004", "updated_by": "AAA004",
-                "active": true},
-    {"id": 5, "public_key": "AAAAAAA", "name":
+                "pass_hash": "$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q", "active": true},
+    {"id": 5, "public_key": "AAAAAAA", "username": "testclient", "app_id": 1, "name":
                 "Test User Client", "created_by": "AAA005", "updated_by": "AAA005",
-                "active": true}
+                "pass_hash": "$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q", "active": true}
 ] 
 /** 
  @desc Database Seeder

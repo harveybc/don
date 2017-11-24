@@ -12,3 +12,5 @@ require('./Routes/DB/Processes')
 require('./Routes/Processes')
 /** @desc Final Routes for the Processes controller  Tests */
 require('./Routes/Authentication')
+/** @desc Final Routes for the Processes controller  Tests */
+require('./Routes/Authorization')

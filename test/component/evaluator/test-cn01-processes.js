@@ -61,7 +61,7 @@ describe('Processes Collection', function () {
         // Assesment  
         request.get(endpoint + parameters, function (error, response, body) {
             resp = JSON.parse(body);
-            // In the database the process should have a id=1
+            // In the database the third process should have a id=1
             expect(resp.result[0].id).to.equal(1);
             done();
         });

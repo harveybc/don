@@ -4,7 +4,7 @@
 {% extends '../master_AdminLTE' %}{% block content %}
     <!-- form start -->
         <!-- form start. Include path is relative to nonjunks config directory in resource/views -->
-    {% include "authentication/form.njk" %}
+    {% include "authorization/form.njk" %}
     <!-- form end -->
 {% endblock %}
 {% block footer %}
@@ -17,7 +17,7 @@
                     <h4 class="modal-title">Authentication Creation View Help</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This view allows to Create a new user, fill the details and clik on the save button on the top or the bottom.</p>
+                    <p>This view allows to Create a new authorization, fill the details and clik on the save button on the top or the bottom.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
