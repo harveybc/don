@@ -1,16 +1,15 @@
 'use strict'
-/** @desc Authorization collection seeds, uses Authorization model, to run execute:
+/** @desc Accounting collection seeds, uses Accounting model, to run execute:
  @example ./ace db:seed [name]
  **/
-const Authorization = use('App/Model/Authentication')
+const Accounting = use('App/Model/Accounting')
 /** Test data with 3 similar registers only differing in the name, description and id */
-const authorizationArray = [
-    {"id": 1, "username": "harveybc", "role": 1, "active": true},
-    {"id": 2, "username": "testnode", "role": 2, "active": true},
-    {"id": 3, "username": "testoptimizer", "role": 3, "active": true},
-    {"id": 4, "username": "testevaluator", "role": 4, "active": true},
-    {"id": 5, "username": "testclient", "role": 5, "active": true},
-] 
+const accountingArray = [
+    {"id": 1, "username": "harveybc", "collection": 1, "method": 1, "date":"2017-09-03 06:22:31", "parameters":"", "result":"", 'block_id':1},
+    {"id": 2, "username": "harveybc", "collection": 1, "method": 1, "date":"2017-09-03 06:22:31", "parameters":"", "result":"", 'block_id':1},
+    {"id": 3, "username": "harveybc", "collection": 1, "method": 1, "date":"2017-09-03 06:22:31", "parameters":"", "result":"", 'block_id':2},
+    {"id": 4, "username": "harveybc", "collection": 1, "method": 1, "date":"2017-09-03 06:22:31", "parameters":"", "result":"", 'block_id':2},
+    ] 
 /** 
  @desc Database Seeder
  Can be used to seed dummy data to your application database.  Here you can also make use of Factories to create records witn random data.aaaa
@@ -21,7 +20,7 @@ const authorizationArray = [
 class DatabaseSeeder {
     * run() {
         // yield Factory.model('App/Model/User').create(5)
-        yield Authorization.createMany(authorizationArray)
+        yield Accounting.createMany(accountingArray)
     }
 }
-module.exports = DatabaseSeeder
+module.exports = DatabaseSeeder 

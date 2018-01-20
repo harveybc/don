@@ -2,7 +2,7 @@
 /** @desc Authorization collection seeds, uses Authorization model, to run execute:
  @example ./ace db:seed [name]
  **/
-const Authorization = use('App/Model/Authentication')
+const Authorization = use('App/Model/Authorization')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const authorizationArray = [
     {"id": 1, "username": "harveybc", "role": 1, "active": true},

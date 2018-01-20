@@ -3,9 +3,9 @@ var expect = require('chai').expect;
 /** @description Uses http requests to perform the tests */
 var request = require('request');
 /** @test {ProcessesStub} */
-describe('Processes Collection', function () {
+describe('I-NO3: Accounting Collection Sub Tests', function () {
     /** @test {ProcessesStub#MetadataList} */
-    it('CN01-stub-1: GET stub/processes/metadata (MetadataList)', function (done) {
+    it('SubTest-1: Optimization Method Not OPoW', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata?';
@@ -19,7 +19,7 @@ describe('Processes Collection', function () {
         });
     });
     /** @test {ProcessesStub#MetadataItem} */
-    it('CN01-stub-2: GET stub/processes/metadata/<id> (MetadataItem)', function (done) {
+    it('SubTest-2: Collection Not 8', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/metadata/1?';
@@ -35,7 +35,7 @@ describe('Processes Collection', function () {
         });
     });
     /** @test {ProcessesStub#GetList} */
-    it('CN01-stub-3: GET stub/processes (GetList)', function (done) {
+    it('SubTest-3: Performance is less than last one (fixed 0.8)', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&model_id=10&min_performance=0.5&max_results=100&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';
@@ -49,7 +49,7 @@ describe('Processes Collection', function () {
         });
     });
     /** @test {ProcessesStub#GetItem} */
-    it('CN01-stub-4: GET stub/processes/<id> (GetItem)', function (done) {
+    it('SubTest-4: OPoW,Collection=8,Method=4,Perf=0.9,', function (done) {
         // Configuration
         var parameters = 'app_id=1&public_key=PUB_KEY&xml=false';
         var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';
@@ -61,36 +61,6 @@ describe('Processes Collection', function () {
             // Verify if the result is equal to the expected response. 
             expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
             done(); 
-        });
-    });
-    /** @test {ProcessesStub#CreateItem} */
-    it('CN01-stub-5: POST stub/processes (CreateItem)', function (done) {
-        // Configuration
-        var parameters = 'app_id=1&public_key=PUB_KEY&description=TEST&model_id=1&training_id=1&validation_id=1&xml=false';
-        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes?';
-        var expected_response = '{"jsonrpc": "2.0", "result": {"id": 4}, "id":3}';
-        // Assesment  
-        request.post(endpoint + parameters, function (error, response, body) {
-            parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
-            // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-            done();
-        });
-    });
-    /** @test {ProcessesStub#DeleteItem} */
-    it('CN01-stub-6: DELETE stub/processes/<id> (DeleteItem)', function (done) {
-        // Configuration
-        var parameters = 'public_key=PUB_KEY&xml=false';
-        var endpoint = 'http://dev.ingeni-us.com:3338/stub/processes/1?';
-        var expected_response = '{"jsonrpc": "2.0", "result": {"delete_count": 1}, "id":3}';
-        // Assesment  
-        request.delete(endpoint + parameters, function (error, response, body) {
-            parsed_body = JSON.parse(body);
-            parsed_expected_response = JSON.parse(expected_response);
-            // Verify if the result is equal to the expected response. 
-            expect(JSON.stringify(parsed_body)).to.equal(JSON.stringify(parsed_expected_response));
-            done();
         });
     });
 });

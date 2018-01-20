@@ -19,10 +19,10 @@ Route.get('/authentication/metadata/:id', 'AuthenticationController.MetadataItem
 Route.get('/authentication', 'AuthenticationController.GetList');
 /** @desc GetItem: get a process */
 Route.get('/authentication/:id', 'AuthenticationController.GetItem'); 
+/** @desc UpdateItem: update a process */
+Route.post('/authentication/:id', 'AuthenticationController.UpdateItem'); 
 /** @desc CreateItem: create a process */
 Route.post('/authentication', 'AuthenticationController.CreateItem');
-/** @desc CreateItem: update a process */
-Route.patch('/authentication/:id', 'AuthenticationController.UpdateItem'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/authentication/:id', 'AuthenticationController.DeleteItem');
 /*** Web Interface ***/

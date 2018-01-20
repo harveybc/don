@@ -3,34 +3,41 @@
  Processeses dummy controller for testing database, it uses static test data.
  */
 class ProcessesController {
+    * GetItemQuery(process_id) {
+        const Database = use('Database');
+        const result = yield Database.select('*').from('processes').where('id', process_id);
+        return (result);
+    }
     /** @desc Returns a list of processes */
     * GetList(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=5; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
+        const collection=4; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        // queries
         const Database = use('Database');
         const result = yield Database.select('*').from('processes').limit(request.param('max_results'));
-        // Accounting
-
-        // send response
-        // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
+        /** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
+        // Accounting layer (402 Error)
+        var datetime = new Date(); Account(url_params.username, collection, method, datetime, request, result) 
+        // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=5; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
+        const collection=4; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        // queries
         const Database = use('Database');
         const process_id = request.param('id');
         const result = yield Database.select('*').from('processes').where('id', process_id);
-
+        // Accounting layer (402 Error)
+        var datetime = new Date(); Account(url_params.username, collection, method, datetime, request, result) 
+        // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * createItemQuery(request, response) {
@@ -67,15 +74,17 @@ class ProcessesController {
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=5; const method=3;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
+        const collection=4; const method=3;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        // queries
         var resp;
         result = yield * this.createItemQuery(request, resp);
+        // Accounting layer (402 Error)
+        var datetime = new Date(); Account(url_params.username, collection, method, datetime, request, result) 
+        // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * updateItemQuery(request, response) {
@@ -111,41 +120,38 @@ class ProcessesController {
     }
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=5; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
+        const collection=4; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        // queries
         var resp;
-        result = yield * this.updateItemQuery(request, resp);
+        var 2result = yield * this.updateItemQuery(request, resp);
+        // Accounting layer (402 Error)
+        var datetime = new Date(); Account(url_params.username, collection, method, datetime, request, result) 
+        // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=5; const method=5;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
+        const collection=4; const method=5;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        // queries
         const Database = use('Database');
         const process_id = request.param('id');
         const deleted_count = yield Database.table('processes').where('id', process_id).delete();
         const result = {"deleted_count": deleted_count};
+        // Accounting layer (402 Error)
+        var Ac = use('App/Http/Controllers/AccountingController'); var ac = new Ac(); var datetime = new Date(); const result_a=ac.Account(url_params.username, collection, method, datetime, request, result) 
+        // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Renders the admin view  */
-    * AdminView(request, response, error) { 
-        var url_params= request.get();
-        // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
-        // Authorization layer (403 Error)
-        const collection=5; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
+    * AdminView(request, response, error) {
         const Database = use('Database');
         const result = yield Database.select('*').from('processes').limit(request.input('max_results'));
         yield response.sendView('processes/admin_view', {
@@ -156,85 +162,12 @@ class ProcessesController {
             view: 'Admin',
             user_full_name: 'Harvey Bastidas',
             user_role: 'Administrator',
-            username: url_params.username,
-            pass_hash: url_params.pass_hash,
             error: error,
             data: result
         });
     }
     /** @desc Renders the edit view  */
-    * DetailView(request, response) {
-        var url_params= request.get();
-        // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
-        // Authorization layer (403 Error)
-        const collection=5; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
-        const Database = use('Database');
-        const process_id = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
-        yield response.sendView('processes/detail_view', {
-            title: 'Process Details - Singularity',
-            header: 'Process',
-            description: 'Details and Status',
-            collection: 'Processes',
-            view: 'Details: ' + result[0].id,
-            user_full_name: 'Harvey Bastidas',
-            user_role: 'Administrator',
-            data: result,
-            username: url_params.username,
-            pass_hash: url_params.pass_hash,
-            process_id: process_id
-        });
-    }
-    /** @desc Renders the create view  */
-    * CreateView(request, response) {
-        var url_params= request.get();
-        // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
-        // Authorization layer (403 Error)
-        const collection=5; const method=3;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
-        // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
-        if (request.input('redir') == 1) {
-            var resp;
-
-            // if response = Ok redirect to admin with ok message
-            var testv = yield * this.createItemQuery(request, resp);
-            if (testv.id >= 0) {
-                yield * this.AdminView(request, response, 0);
-            } else {
-                // else redirect to admin with error message
-                yield * this.AdminView(request, response, 1);
-            }
-        }
-        // sino muestra vista
-        else {
-            const Database = use('Database');
-            yield response.sendView('processes/create_view', {
-                title: 'Create Process - Singularity',
-                header: 'Process',
-                description: 'Creation View',
-                collection: 'Processes',
-                view: 'Create',
-                user_full_name: 'Harvey Bastidas',
-                username: url_params.username,
-            pass_hash: url_params.pass_hash,
-            user_role: 'Administrator'
-            });
-        }
-    }
-    /** @desc Renders the edit view  */
     * UpdateView(request, response) {
-        var url_params= request.get();
-        // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A();const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
-        // Authorization layer (403 Error)
-        const collection=5; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-         // Queries
-        
         const process_id = request.param('id');
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
         if (request.input('redir') == 1) {
@@ -263,13 +196,70 @@ class ProcessesController {
                 user_full_name: 'Harvey Bastidas',
                 user_role: 'Administrator',
                 process_id: result[0].id,
-                username: url_params.username,
-            pass_hash: url_params.pass_hash,
-            data: result
+                data: result
 
             });
         }
     }
+    /** @desc Renders the create view  */
+    * CreateView(request, response) {
+        // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
+        if (request.input('redir') == 1) {
+            var resp;
+
+            // if response = Ok redirect to admin with ok message
+            var testv = yield * this.createItemQuery(request, resp);
+            if (testv.id >=0) {
+                yield * this.AdminView(request, response, 0);
+            } else {
+                // else redirect to admin with error message
+                yield * this.AdminView(request, response, 1);
+            }
+        }
+        // sino muestra vista
+        else {
+            const Database = use('Database');
+            yield response.sendView('processes/create_view', {
+                title: 'Create Process - Singularity',
+                header: 'Process',
+                description: 'Creation View',
+                collection: 'Processes',
+                view: 'Create',
+                user_full_name: 'Harvey Bastidas',
+                user_role: 'Administrator'
+            });
+        }
+    }
+    /** @desc Renders the edit view  */
+    * DetailView(request, response) {
+        const Database = use('Database');
+        const process_id = request.param('id');
+        const result = yield Database.select('*').from('processes').where('id', process_id);
+        yield response.sendView('processes/detail_view', {
+            title: 'Process Details - Singularity',
+            header: 'Process',
+            description: 'Details and Status',
+            collection: 'Processes',
+            view: 'Details: ' + result[0].id,
+            user_full_name: 'Harvey Bastidas',
+            user_role: 'Administrator',
+            data: result,
+            process_id:process_id
+        });
+    }
+    /** @desc Renders the edit view  */
+    * UserView(request, response) {
+        const Database = use('Database');
+        yield response.sendView('authentication/detail_view', {
+            title: 'Dashboard - Singularity',
+            header: 'Dashboard',
+            description: 'Apps and Processes',
+            collection: 'Authentication',
+            view: 'Details: ',
+            user_full_name: 'Harvey Bastidas',
+            user_role: 'Administrator'
+        });
+    }
 }
 module.exports = ProcessesController;
-   
+    

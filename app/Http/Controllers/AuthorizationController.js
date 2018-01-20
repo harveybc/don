@@ -2,6 +2,7 @@
 /** @desc
  Authorizations, collection 1
  */
+// @TODO: ADICIONAR autorizacion para transacciones, son los mismos clientes?
 class AuthorizationController {
     /** @desc searches for the username´s role and verifies if method  in collection c is allowed (defaul:deny all)  */
     * AuthorizeUser(username, c, method) {
@@ -157,7 +158,7 @@ class AuthorizationController {
         const collection=2; const method=4; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
 
         var resp;
-        result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(request, resp);
         // Accounting layer (402 Error if quota exceeded)
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }

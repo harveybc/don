@@ -27,26 +27,45 @@ class ProcessesTableSchema extends Schema {
       // Control
       table.boolean('active')
       // Configuration
-      table.integer('desired_block_time')
-      table.integer('desired_block_size')
-      table.integer('block_time_control') // (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
-     // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+      // 0=OPoWdet,1=OPoWnodet,2=CPoW,
+      // 3=block_size_det, 4=block_size_non_det,
+      // 5=block_time_det, 6=block_time_non_det
+      table.integer('block_time_control') 
+      // OPOW det
+      table.float('threshold')
+      table.float('last_threshold')
+      table.float('last_block_performance')
+      table.float('current_block_performance')
+      // OPOW no-det
+      table.float('nodet_threshold')
+      // CPOW
+      table.float('difficulty')      
+      table.float('last_block_difficulty') 
+      // NoDetSize
+      table.integer('last_block_size') // in bytes
+      table.integer('desired_block_size') // in bytes
+      // DetSize every node must configure a unique position
+      table.integer('position')
+      table.integer('last_position')
+      // NoDetTime
+      table.integer('desired_block_time') // in milliseconds 
+      table.integer('last_block_time') // in milliseconds 
+      // DetTime similar to detsize
+      table.float('any_variable')
+      //TODO: anyvariable uses the same thresholds as performance in OPoW 
+      
+      // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
       table.integer('model_id')
       table.integer('training_set_id')
       table.integer('validation_set_id')
       // Status 
-      table.float('difficulty')
       table.integer('last_block_id')  
       table.integer('last_block_date')
-      table.integer('last_block_difficulty') 
-      table.integer('last_block_time') // in milliseconds 
-      table.integer('last_block_size') // in bytes
-      // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
-      table.integer('last_block_performance')
       // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
       table.integer('last_optimum_id')
       table.timestamp('last_optimum_date')
       table.float('last_optimum_performance')
+      
     })
   }
   down () {
