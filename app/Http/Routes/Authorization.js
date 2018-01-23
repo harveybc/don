@@ -22,7 +22,7 @@ Route.get('/authorization/:id', 'AuthorizationController.GetItem');
 /** @desc CreateItem: create a process */
 Route.post('/authorization', 'AuthorizationController.CreateItem');
 /** @desc CreateItem: update a process */
-Route.patch('/authorization/:id', 'AuthorizationController.UpdateItem'); 
+Route.post('/authorization/:id', 'AuthorizationController.UpdateItem'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/authorization/:id', 'AuthorizationController.DeleteItem');
 /*** Web Interface ***/

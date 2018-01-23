@@ -7,9 +7,12 @@
             margin-bottom:10px;
         }
     </style>
-    <!-- form start. Include path is relative to nonjunks config directory in resource/views -->
-    {% include "authentication/form_update.njk" %}
+    <!-- form start.-->
+    <form class="form-horizontal" method="post" action="/authentication/{{auth_id}}">
+    <!-- form contents. Include path is relative to nonjunks config directory in resource/views -->
+    {% include "authentication/form.njk" %}
     <!-- form end -->
+    </form>
 {% endblock %}
 {% block footer %}
     <div id="helpModal" class="modal fade" role="dialog" >

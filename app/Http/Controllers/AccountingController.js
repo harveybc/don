@@ -164,7 +164,7 @@ class AccountingController {
     * createItemQuery(request, response) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.get();
+        var url_params = request.post();
         const user_name = url_params.user_name;
         const collection = url_params.collection;
         const method = url_params.method;
@@ -172,18 +172,28 @@ class AccountingController {
         const parameters = url_params.parameters;
         const res = url_params.result;
         const block_id = url_params.block_id;
+               const created_by = url_params.created_by;
+        const updated_by = url_params.updated_by;
+        const created_at_d = new Date;
+        const updated_at_d = created_at_d;
+        const created_at = created_at_d.toISOString();
+        const updated_at = updated_at_d.toISOString();
         // @todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
         // perform query and send view
         const process_id = yield Database
                 .table('accountings')
-                .insert({"username": user_name, "collection": collection, "method": method, "date": date, "parameters": parameters, "result": res, 'block_id': block_id});
+                .insert({"username": user_name, "collection": collection
+                , "method": method, "date": date, "parameters": parameters
+                , "result": res, 'block_id': block_id
+                , 'created_by': created_by, 'updated_by': updated_by
+                    , 'created_at': created_at, 'updated_at': updated_at});
         const result = {"id": process_id};
         return (result);
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
-        var url_params = request.get();
+        var url_params = request.post();
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
         var authe = new Authe();
@@ -207,7 +217,7 @@ class AccountingController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var accounting = new Accounting();
+        var account = new Accounting();
         var sha256 = require('js-sha256');
         var result_hash = sha256(JSON.stringify(result));
         const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
@@ -220,7 +230,7 @@ class AccountingController {
     * updateItemQuery(request, response) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.get();
+        var url_params = request.post();
         const user_name = url_params.user_name;
         const collection = url_params.collection;
         const method = url_params.method;
@@ -240,7 +250,7 @@ class AccountingController {
     }
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
-        var url_params = request.get();
+        var url_params = request.post();
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
         var authe = new Authe();

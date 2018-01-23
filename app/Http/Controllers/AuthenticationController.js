@@ -56,6 +56,10 @@ class AuthenticationController {
         const created_by = url_params.created_by;
         const updated_by = url_params.updated_by;
         const active = url_params.active;
+        const created_at_d = new Date;
+        const updated_at_d = created_at_d;
+        const created_at = created_at_d.toISOString();
+        const updated_at = updated_at_d.toISOString();
         // @todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
 
@@ -63,7 +67,8 @@ class AuthenticationController {
         const process_id = yield Database
                 .table('authentications')
                 .insert({'name': name,  'username': user_name, 'public_key': public_key, 'pass_hash': pass_hash
-                    , 'created_by': created_by, 'updated_by': updated_by, 'active': active});
+                    , 'created_by': created_by, 'updated_by': updated_by
+                    , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"id": process_id};
         return (result);
     }
@@ -134,7 +139,18 @@ class AuthenticationController {
         
         var resp;
         var result = yield * this.updateItemQuery(request, resp);
-        // Accounting layer (402 Error if quota exceeded)
+        // Accounting layer
+        // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
+        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        var Accounting = use('App/Http/Controllers/AccountingController');
+        var account = new Accounting();
+        var sha256 = require('js-sha256');
+        var result_hash = sha256(JSON.stringify(result));
+        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
+        if (!account_res) {
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
+        // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Returns the <id> of the created process */
@@ -149,6 +165,19 @@ class AuthenticationController {
         const process_id = request.param('id');
         const deleted_count = yield Database.table('authentications').where('id', process_id).delete();
         const result = {"deleted_count": deleted_count};
+        // Accounting layer
+        // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
+        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        var Accounting = use('App/Http/Controllers/AccountingController');
+        var account = new Accounting();
+        var sha256 = require('js-sha256');
+        var result_hash = sha256(JSON.stringify(result));
+        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
+        if (!account_res) {
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
+        // send response
+
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /** @desc Renders the admin view  */

@@ -22,7 +22,7 @@ Route.get('/processes/:id', 'ProcessesController.GetItem');
 /** @desc CreateItem: create a process */
 Route.post('/processes', 'ProcessesController.CreateItem');
 /** @desc CreateItem: update a process */
-Route.patch('/processes/:id', 'ProcessesController.UpdateItem'); 
+Route.post('/processes/:id', 'ProcessesController.UpdateItem'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/processes/:id', 'ProcessesController.DeleteItem');
 /*** Web Interface ***/
