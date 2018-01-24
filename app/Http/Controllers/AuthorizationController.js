@@ -6,7 +6,7 @@
 class AuthorizationController {
     /** @desc searches for the username´s role and verifies if method  in collection c is allowed (defaul:deny all)  */
     * AuthorizeUser(username, c, method) {
-        var ret=false;
+        var ret = false;
         var result;
         if (username && c && method) {
             const Database = use('Database');
@@ -17,63 +17,134 @@ class AuthorizationController {
             if (result[0].role === 1) {
                 // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
                 // collection==1:Authentication,2:Authorization,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
-                     if (method===1) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===2) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===3) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===4) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===5) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===6) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}      
-            } 
-            else if (result[0].role === 2) {
+                if (method === 1) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 2) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 3) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 4) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 5) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 6) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                }
+            } else if (result[0].role === 2) {
                 // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
                 // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
-                   if (method===1) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===2) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===3) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===4) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===5) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===6) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}      
-            } 
-            else if (result[0].role === 3) {
+                if (method === 1) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 2) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 3) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 4) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 5) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 6) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                }
+            } else if (result[0].role === 3) {
                 // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
                 // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
-                   if (method===1) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===2) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===3) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===4) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===5) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===6) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}      
-            } 
-            else if (result[0].role === 4) {
+                if (method === 1) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 2) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 3) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 4) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 5) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 6) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                }
+            } else if (result[0].role === 4) {
                 // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
                 // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
-                   if (method===1) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===2) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===3) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===4) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===5) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===6) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}      
-            } 
-            else if (result[0].role === 5) {
+                if (method === 1) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 2) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 3) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 4) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 5) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 6) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                }
+            } else if (result[0].role === 5) {
                 // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
                 // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
-                   if (method===1) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===2) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===3) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===4) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===5) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}
-                else if (method===6) {if ((c===1)||(c===2)||(c===3)||(c===4)||(c===5)||(c===6)||(c===7)||(c===8)||(c===9)||(c===10)||(c===11)||(c===12)||(c===13)||(c===14)) ret=true;}      
-            } 
+                if (method === 1) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 2) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 3) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 4) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 5) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                } else if (method === 6) {
+                    if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
+                        ret = true;
+                }
+            }
         }
-        return ret ;
+        return ret;
     }
     /** @desc Returns a list of authorization */
     * GetList(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=1; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 1;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Queries
         const Database = use('Database');
         const result = yield Database.select('*').from('authorizations').limit(request.param('max_results'));
@@ -85,11 +156,21 @@ class AuthorizationController {
     }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=2; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 2;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
 
         const Database = use('Database');
         const process_id = request.param('id');
@@ -100,10 +181,10 @@ class AuthorizationController {
     * createItemQuery(request, response) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params= request.post();
+        var url_params = request.post();
         const user_name = url_params.user_name;
         const role = url_params.role_key;
-        const created_by = url_params.created_by;
+        const created_by = url_params.username;
         const updated_by = url_params.updated_by;
         const created_at_d = new Date;
         const updated_at_d = created_at_d;
@@ -117,19 +198,29 @@ class AuthorizationController {
         const process_id = yield Database
                 .table('authorizations')
                 .insert({'username': user_name, 'role': role, 'created_by': created_by, 'updated_by': updated_by
-                    , 'created_at': created_at, 'updated_at': updated_at,'active': active});
+                    , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"id": process_id};
         return (result);
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
-        var url_params= request.post();
+        var url_params = request.post();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=3; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 3;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         var resp;
-        result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
@@ -137,7 +228,9 @@ class AuthorizationController {
         var account = new Accounting();
         var sha256 = require('js-sha256');
         var result_hash = sha256(JSON.stringify(result));
-        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
+        const date_d = new Date;
+        const date = date_d.toISOString();
+        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
         }
@@ -148,11 +241,15 @@ class AuthorizationController {
 
         // generate parameters for query
         const Database = use('Database');
-        var url_params= request.post();
+        var url_params = request.post();
         const user_name = url_params.user_name;
         const role = url_params.role_key;
         const created_by = url_params.created_by;
-        const updated_by = url_params.updated_by;
+        const updated_by = url_params.username;
+        const created_at_d = new Date;
+        const updated_at_d = created_at_d;
+        const created_at = created_at_d.toISOString();
+        const updated_at = updated_at_d.toISOString();
         const active = url_params.active;
         //@todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
@@ -160,17 +257,28 @@ class AuthorizationController {
         const affected_rows = yield Database
                 .table('authorizations')
                 .where('id', request.param('id'))
-                .update({'username': user_name, 'role': role, 'active': active});
+                .update({'username': user_name, 'role': role, 'created_by': created_by, 'updated_by': updated_by
+                    , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"affected_rows": affected_rows};
         return (result);
     }
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
-        var url_params= request.post();
+        var url_params = request.post();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=4; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 4;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
 
         var resp;
         var result = yield * this.updateItemQuery(request, resp);
@@ -181,7 +289,9 @@ class AuthorizationController {
         var account = new Accounting();
         var sha256 = require('js-sha256');
         var result_hash = sha256(JSON.stringify(result));
-        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
+        const date_d = new Date;
+        const date = date_d.toISOString();
+        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
         }
@@ -190,11 +300,21 @@ class AuthorizationController {
     }
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=5; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 5;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         const Database = use('Database');
         const process_id = request.param('id');
         const deleted_count = yield Database.table('authorizations').where('id', process_id).delete();
@@ -206,7 +326,9 @@ class AuthorizationController {
         var account = new Accounting();
         var sha256 = require('js-sha256');
         var result_hash = sha256(JSON.stringify(result));
-        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
+        const date_d = new Date;
+        const date = date_d.toISOString();
+        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
         }
@@ -215,12 +337,22 @@ class AuthorizationController {
     }
     /** @desc Renders the admin view  */
     * AdminView(request, response, error) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=1; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-      
+        const collection = 2;
+        const method = 1;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
+
         const Database = use('Database');
         const result = yield Database.select('*').from('authorizations').limit(request.input('max_results'));
         yield response.sendView('authorization/admin_view', {
@@ -240,12 +372,22 @@ class AuthorizationController {
     }
     /** @desc Renders the edit view  */
     * DetailView(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=2; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-      
+        const collection = 2;
+        const method = 2;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
+
         const Database = use('Database');
         const user_id = request.param('id');
         const result = yield Database.select('*').from('authorizations').where('id', user_id);
@@ -259,18 +401,28 @@ class AuthorizationController {
             user_role: 'Administrator',
             username: url_params.username,
             pass_hash: url_params.pass_hash,
-            data: result, 
+            data: result,
             user_id: user_id
         });
     }
     /** @desc Renders the create view  */
     * CreateView(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=3; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
-      
+        const collection = 2;
+        const method = 3;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
+
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
         if (request.input('redir') == 1) {
             var resp;
@@ -302,11 +454,21 @@ class AuthorizationController {
     }
     /** @desc Renders the edit view  */
     * UpdateView(request, response) {
-        var url_params= request.get();
+        var url_params = request.get();
         // Authentication layer (401 Error)
-        var A = use('App/Http/Controllers/AuthenticationController'); var a = new A(); const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401, "pass_hash": url_params.pass_hash}, request_id: 3});}
+        var A = use('App/Http/Controllers/AuthenticationController');
+        var a = new A();
+        const auth_res = yield * a.AuthenticateUser(url_params.username, url_params.pass_hash);
+        if (!auth_res) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
         // Authorization layer (403 Error)
-        const collection=2; const method=4; const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403, "pass_hash": url_params.pass_hash}, request_id: 3});} 
+        const collection = 2;
+        const method = 4;
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, collection, method);
+        if (!auth_res_2) {
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+        }
 
         const process_id = request.param('id');
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
@@ -335,7 +497,7 @@ class AuthorizationController {
                 user_role: 'Administrator',
                 process_id: result[0].id,
                 pass_hash: url_params.pass_hash,
-                data: result, 
+                data: result,
                 username: url_params.username
             });
         }

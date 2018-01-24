@@ -34,10 +34,10 @@ class AccountingTableSchema extends Schema {
       table.string('parameters');
       table.string('result');
       table.integer('block_id');
-            table.string('created_at');
-
-      table.string('updated_at');
-
+      table.string('created_by', 4086);
+      table.string('updated_by', 4086);
+      table.string('created_at', 4086);
+      table.string('updated_at', 4086);
       
 })
   }
