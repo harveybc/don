@@ -27,13 +27,25 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-    * Account(username, c, m, d, p, r, process_id) {
+    * Account(c, m, parameters_raw, result_raw) {
+        // calcula el hash del relultado
+        var sha256 = require('js-sha256');
+        var r = sha256(JSON.stringify(result_raw));
+        // calcula fecha actual
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        // coloca el pass_hash como vacio
+        var url_params_mod = parameters_raw;
+        url_params_mod.pass_hash = "";
+        // convierte a string los parámetros sin el pass_hash
+        var p=JSON.stringify(url_params_mod);
+        // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
         // @TODO: set the block of the regiser to the last one in blocks collection
         var block_id = 0;
         // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(process_id);
+        var c_vars = this.GetConditionVariables(parameters_raw.process_id);
         //TODO: TEST CONDITONS? 
         //TODO: EXTRAER DE PARAMETERS EL  PROCESS_ID 
         // if the block generation conditions are met, create a new block,set the new block_id and flood the new block.
@@ -45,7 +57,7 @@ class AccountingController {
             if ((c_vars.block_time_control == 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
                 cond = true;
             // If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control == 1) && 
+            if ((c_vars.block_time_control == 1) &&
                     (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
                 cond = true;
             // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
@@ -73,14 +85,14 @@ class AccountingController {
         }
         // TODO: FLOOD
         // get list of application.num_neighs neighbors 
-        if (username && c && m) {
+        if (parameters_raw.username && c && m) {
             // generate parameters for query
             const Database = use('Database');
             const id = yield Database
                     .table('accountings')
-                    .insert({'username': username, 'collection': c, 'method': m,
-                        'date': d, 'parameters': p, 'result': r, 'created_by': username, 'updated_by': username
-                    , 'created_at': d, 'updated_at': d, 'block_id': block_id});
+                    .insert({'username': parameters_raw.username, 'process_id': parameters_raw.process_id ,'collection': c, 'method': m,
+                        'date': d, 'parameters': p, 'result': r, 'created_by': parameters_raw.username, 'updated_by': parameters_raw.username,
+                         'created_at': d, 'updated_at': d, 'block_id': block_id});
             const result = {"block_id": block_id};
             return (result);
         }
@@ -96,7 +108,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -105,22 +117,11 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         // Queries and result
         const Database = use('Database');
         const result = yield Database.select('*').from('accountings').limit(request.param('max_results'));
-        // Accounting layer
-        // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
-        var Accounting = use('App/Http/Controllers/AccountingController');
-        var accounting = new Accounting();
-        var sha256 = require('js-sha256');
-        var result_hash = sha256(JSON.stringify(result));
-        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
-        if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
-        }
         // send response
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
@@ -133,7 +134,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -142,23 +143,12 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         // Queries and result 
         const Database = use('Database');
         const process_id = request.param('id');
         const result = yield Database.select('*').from('accountings').where('id', process_id);
-        // Accounting layer
-        // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
-        var Accounting = use('App/Http/Controllers/AccountingController');
-        var accounting = new Accounting();
-        var sha256 = require('js-sha256');
-        var result_hash = sha256(JSON.stringify(result));
-        const account_res = yield * account.Account(url_params.username, collection, method, Math.floor(Date.now()), JSON.stringify(url_params), result_hash, url_params.process_id);
-        if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
-        }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
@@ -185,9 +175,9 @@ class AccountingController {
         const process_id = yield Database
                 .table('accountings')
                 .insert({"username": user_name, "collection": collection
-                , "method": method, "date": date, "parameters": parameters
-                , "result": res, 'block_id': block_id
-                , 'created_by': created_by, 'updated_by': updated_by
+                    , "method": method, "date": date, "parameters": parameters
+                    , "result": res, 'block_id': block_id
+                    , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at});
         const result = {"id": process_id};
         return (result);
@@ -200,7 +190,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -209,23 +199,19 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         // Queries and response
         var resp;
         var result = yield * this.createItemQuery(request, resp);
-        // Accounting layer
+                // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
-        var sha256 = require('js-sha256');
-        var result_hash = sha256(JSON.stringify(result));
-        const date_d = new Date;
-        const date = date_d.toISOString();
-        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
+        const account_res = yield * account.Account(collection, method, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
@@ -267,7 +253,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -276,23 +262,19 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         // Queries and result
         var resp;
         var result = yield * this.updateItemQuery(request, resp);
-        // Accounting layer
+                // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var accounting = new Accounting();
-        var sha256 = require('js-sha256');
-        var result_hash = sha256(JSON.stringify(result));
-        const date_d = new Date;
-        const date = date_d.toISOString();
-        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
+        var account = new Accounting();
+        const account_res = yield * account.Account(collection, method, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
@@ -305,7 +287,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -314,25 +296,21 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         //Queries and result
         const Database = use('Database');
         const process_id = request.param('id');
         const deleted_count = yield Database.table('accountings').where('id', process_id).delete();
         const result = {"deleted_count": deleted_count};
-        // Accounting layer
+                // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var accounting = new Accounting();
-        var sha256 = require('js-sha256');
-        var result_hash = sha256(JSON.stringify(result));
-        const date_d = new Date;
-        const date = date_d.toISOString();
-        const account_res = yield * account.Account(url_params.username, collection, method, date, JSON.stringify(url_params), result_hash, url_params.process_id);
+        var account = new Accounting();
+        const account_res = yield * account.Account(collection, method, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
@@ -345,7 +323,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -354,7 +332,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         const Database = use('Database');
         const result = yield Database.select('*').from('accountings').limit(request.input('max_results'));
@@ -381,7 +359,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -390,7 +368,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
 
         const Database = use('Database');
@@ -418,7 +396,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -427,7 +405,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
 
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
@@ -467,7 +445,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -476,7 +454,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "pass_hash": url_params.pass_hash}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
 
 
