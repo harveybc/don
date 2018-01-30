@@ -2,7 +2,7 @@
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/processes/create?username={{username}}&pass_hash={{pass_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Process</a>
+    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/processes/create?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-plus"></span> Create New Process</a>
     <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
         <strong>Result:</strong> The process was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
@@ -125,7 +125,7 @@
             paging: true,
             data: data,
             rowClick: function (e) {
-                window.location = "/processes/detail/" + e.item.id+'?username={{username}}&pass_hash={{pass_hash}}';
+                window.location = "/processes/detail/" + e.item.id+'?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}';
             },
             fields: [
                 {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id", headercss: "header_color"},
@@ -133,18 +133,18 @@
                 {name: "last_optimum_performance", type: "text", width: 50, align: "center", title: "Last Perf.", headercss: "header_color"},
                 {name: "last_block_time", type: "text", width: 50, align: "center", title: "Block Time", headercss: "header_color"},
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/processes/update/' + item.id +  '?username={{username}}&pass_hash={{pass_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/processes/update/' + item.id +  '?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"
                 },
                 {type: "control", editButton: false, width: 40, headercss: "header_color"}
             ],
             editRowRenderer: function (item, itemIndex) {
-                window.location = "http://dev.ingeni-us.com:3338/processes/update/" + item.id+ '?username={{username}}&pass_hash={{pass_hash}}';
+                window.location = "http://dev.ingeni-us.com:3338/processes/update/" + item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}';
             },
             onItemDeleting: function (args) {
                 // send a request to the node
                 var xmlhttp = new XMLHttpRequest();
-                var url = "http://dev.ingeni-us.com:3338/processes/" + args.item.id+ '?username={{username}}&pass_hash={{pass_hash}}';
+                var url = "http://dev.ingeni-us.com:3338/processes/" + args.item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}';
                 // fired when the state of the request changes
                 xmlhttp.onreadystatechange = function () {
                     // readyState==4 ==> request finished and response is ready

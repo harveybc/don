@@ -21,8 +21,8 @@ class AuthorizationTableSchema extends Schema {
       // Metadata 
       table.increments('id');
       table.string('username', 256);
+      table.string('process_hash', 4086);
       table.integer('role');
-      //table.string('api_key',4086)
       table.string('created_by', 4086);
       table.string('updated_by', 4086);
       table.string('created_at', 4086);

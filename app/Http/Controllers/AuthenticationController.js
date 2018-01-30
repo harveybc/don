@@ -5,6 +5,7 @@
 class AuthenticationController {
     /** @desc Verifies 4 Pass Bcrypt Hash of a user pass  */
     * AuthenticateUser(username, pass_hash) {
+        // TODO: RATE-LIMITING LAYER
         // searches for the username and verifies if the pass_hash is the saved one  
         if (username && pass_hash) {
             const Database = use('Database');
@@ -17,13 +18,14 @@ class AuthenticationController {
         } else
             return false;
     }
+    
     /** @desc Returns a list of authentication */
     * GetList(request, response) {
         var url_params= request.get();
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
+        const collection=1; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
         // Queries
         const Database = use('Database');
         const result = yield Database.select('*').from('authentications').limit(request.param('max_results'));
@@ -39,7 +41,7 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
+        const collection=1; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
         const Database = use('Database');
         const process_id = request.param('id');
         const result = yield Database.select('*').from('authentications').where('id', process_id);
@@ -87,7 +89,7 @@ class AuthenticationController {
         const method = 3;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -138,7 +140,7 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
+        const collection=1; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
         
         var resp;
         var result = yield * this.updateItemQuery(request, resp);
@@ -160,7 +162,7 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=5;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
+        const collection=1; const method=5;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
         
         const Database = use('Database');
         const process_id = request.param('id');
@@ -185,12 +187,12 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}                
+        const collection=1; const method=1;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}                
         const Database = use('Database');
         const result = yield Database.select('*').from('authentications').limit(request.input('max_results'));
         yield response.sendView('authentication/admin_view', {
             title: 'Authentication Admin - Singularity',
-            header: 'Authentication',
+            process_id: url_params.process_id, header: 'Authentication',
             description: 'Administrative View',
             collection: 'Authentication',
             view: 'Admin',
@@ -206,13 +208,13 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
+        const collection=1; const method=2;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
         const Database = use('Database');
         const user_id = request.param('id');
         const result = yield Database.select('*').from('authentications').where('id', user_id);
         yield response.sendView('authentication/detail_view', {
             title: 'User Details - Singularity',
-            header: 'Authentication',
+            process_id: url_params.process_id, header: 'Authentication',
             description: 'Details and Status',
             collection: 'Authentication',
             view: 'Details: ' + result[0].id,
@@ -228,7 +230,7 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=3;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
+        const collection=1; const method=3;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});}         
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
         if (request.input('redir') == 1) {
             var resp;
@@ -247,7 +249,7 @@ class AuthenticationController {
             const Database = use('Database');
             yield response.sendView('authentication/create_view', {
                 title: 'Create User - Singularity',
-                header: 'Authentication',
+                process_id: url_params.process_id, header: 'Authentication',
                 description: 'Creation View',
                 collection: 'Authentication',
                 view: 'Create',
@@ -264,7 +266,7 @@ class AuthenticationController {
         // Authentication layer (401 Error)
         const auth_res = yield * this.AuthenticateUser(url_params.username, url_params.pass_hash); if (!auth_res) { yield response.sendView('master_JSON', {result: {"error": auth_res, "code":401}, request_id: 3});}
         // Authorization layer (403 Error)
-        const collection=1; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
+        const collection=1; const method=4;var AA = use('App/Http/Controllers/AuthorizationController'); var aa = new AA(); const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id,  collection, method); if (!auth_res_2) { yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code":403}, request_id: 3});} 
         
         const auth_id = request.param('id');
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
@@ -285,7 +287,7 @@ class AuthenticationController {
             const result = yield Database.select('*').from('authentications').where('id', auth_id);
             yield response.sendView('authentication/update_view', {
                 title: 'Edit User - Singularity',
-                header: 'Authentication',
+                process_id: url_params.process_id, header: 'Authentication',
                 description: 'Editing View',
                 collection: 'Authentication',
                 view: 'Update : ' + auth_id,

@@ -15,14 +15,16 @@ const Schema = use('Schema')
  **/
 class ProcessesTableSchema extends Schema {
   up () {
+      // TODO: ADICIONAR PROCESS_HASH
     this.create('processes', (table) => {
       // Metadata
       table.increments('id')
       table.string('name', 4086)
       table.text('description', 40860)
       table.string('creator_key',4086)
+      table.string('hash',4086)
       table.string('tags',4086)
-      table.integer('app_id')
+      table.integer('app_hash')
       table.string('created_by', 4086);
       table.string('updated_by', 4086);
       table.string('created_at', 4086);

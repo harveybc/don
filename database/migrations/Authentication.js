@@ -21,7 +21,7 @@ class AuthenticationTableSchema extends Schema {
       // Metadata 
       table.increments('id');
       table.string('username', 256);
-      table.integer('app_id');
+      table.string('app_hash',4086); // Hash field of the app collection
       table.string('name', 4086);
       table.string('public_key', 4086);
       table.string('pass_hash',256);
@@ -30,13 +30,7 @@ class AuthenticationTableSchema extends Schema {
       table.string('updated_by', 4086);
       table.string('created_at', 4086);
       table.string('updated_at', 4086);
-
-
-      // Control
       table.boolean('active');
-      // Configuration
-      // table.string('photo_url',4086)
-      //social profiles
     })
   }
   down () {

@@ -23,7 +23,7 @@ class ProcessesController {
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -52,7 +52,7 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -121,7 +121,7 @@ class ProcessesController {
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -194,9 +194,9 @@ class ProcessesController {
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
-            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
+           yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
         var resp;
@@ -228,7 +228,7 @@ class ProcessesController {
         const method = 5;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -269,7 +269,7 @@ class ProcessesController {
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -278,7 +278,7 @@ class ProcessesController {
         const result = yield Database.select('*').from('processes').limit(request.input('max_results'));
         yield response.sendView('processes/admin_view', {
             title: 'Processes Admin - Singularity',
-            header: 'Processes',
+            process_id: url_params.process_id, header: 'Processes',
             description: 'Administrative View',
             collection: 'Processes',
             view: 'Admin',
@@ -305,18 +305,18 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
-        
+
         const Database = use('Database');
-        const process_id = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
+        const pid = request.param('id');
+        const result = yield Database.select('*').from('processes').where('id', pid);
         yield response.sendView('processes/detail_view', {
             title: 'Process Details - Singularity',
-            header: 'Process',
+            process_id: url_params.process_id, header: 'Process',
             description: 'Details and Status',
             collection: 'Processes',
             view: 'Details: ' + result[0].id,
@@ -325,7 +325,7 @@ class ProcessesController {
             data: result,
             username: url_params.username,
             pass_hash: url_params.pass_hash,
-            process_id: process_id
+            pid: pid
         });
     }
     /** @desc Renders the edit view  */
@@ -343,7 +343,7 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -351,7 +351,7 @@ class ProcessesController {
         const Database = use('Database');
         yield response.sendView('authentication/detail_view', {
             title: 'Dashboard - Singularity',
-            header: 'Dashboard',
+            process_id: url_params.process_id, header: 'Dashboard',
             description: 'Apps and Processes',
             collection: 'Authentication',
             view: 'Details: ',
@@ -377,7 +377,7 @@ class ProcessesController {
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -399,7 +399,7 @@ class ProcessesController {
             const Database = use('Database');
             yield response.sendView('processes/create_view', {
                 title: 'Create Process - Singularity',
-                header: 'Process',
+                process_id: url_params.process_id, header: 'Process',
                 description: 'Creation View',
                 collection: 'Processes',
                 view: 'Create',
@@ -425,12 +425,12 @@ class ProcessesController {
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
-        const process_id = request.param('id');
+        const pid = request.param('id');
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
         if (request.input('redir') == 1) {
             var resp;
@@ -448,16 +448,16 @@ class ProcessesController {
         else {
             const Database = use('Database');
 
-            const result = yield Database.select('*').from('processes').where('id', process_id);
+            const result = yield Database.select('*').from('processes').where('id', pid);
             yield response.sendView('processes/update_view', {
                 title: 'Edit Process - Singularity',
-                header: 'Process',
+                process_id: url_params.process_id, header: 'Process',
                 description: 'Editing View',
                 collection: 'Processes',
                 view: 'Update : ' + result[0].id,
                 user_full_name: 'Harvey Bastidas',
                 user_role: 'Administrator',
-                process_id: result[0].id,
+                pid: result[0].id,
                 username: url_params.username,
                 pass_hash: url_params.pass_hash,
                 data: result
@@ -465,8 +465,7 @@ class ProcessesController {
             });
         }
     }
-    
-    
+
 }
 module.exports = ProcessesController;
     

@@ -115,7 +115,7 @@ class AccountingController {
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -141,7 +141,7 @@ class AccountingController {
         const method = 2;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -197,7 +197,7 @@ class AccountingController {
         const method = 3;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -260,7 +260,7 @@ class AccountingController {
         const method = 4;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -294,7 +294,7 @@ class AccountingController {
         const method = 5;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -330,7 +330,7 @@ class AccountingController {
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -338,7 +338,7 @@ class AccountingController {
         const result = yield Database.select('*').from('accountings').limit(request.input('max_results'));
         yield response.sendView('accounting/admin_view', {
             title: 'Accounting Admin - Singularity',
-            header: 'Accounting',
+            process_id: url_params.process_id, header: 'Accounting',
             description: 'Administrative View',
             collection: 'Accounting',
             view: 'Admin',
@@ -366,7 +366,7 @@ class AccountingController {
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -376,7 +376,7 @@ class AccountingController {
         const result = yield Database.select('*').from('accountings').where('id', user_id);
         yield response.sendView('accounting/detail_view', {
             title: 'Details - Singularity',
-            header: 'Accounting',
+            process_id: url_params.process_id, header: 'Accounting',
             description: 'Details and Status',
             collection: 'Accounting',
             view: 'Details: ' + result[0].id,
@@ -403,7 +403,7 @@ class AccountingController {
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -426,7 +426,7 @@ class AccountingController {
             const Database = use('Database');
             yield response.sendView('accounting/create_view', {
                 title: 'Create - Singularity',
-                header: 'Accounting',
+                process_id: url_params.process_id, header: 'Accounting',
                 description: 'Creation View',
                 collection: 'Accounting',
                 view: 'Create',
@@ -452,7 +452,7 @@ class AccountingController {
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, collection, method);
+        const autho_res = yield * autho.AuthorizeUser(url_params.username,url_params.process_id,  collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
@@ -477,7 +477,7 @@ class AccountingController {
             const result = yield Database.select('*').from('accountings').where('id', process_id);
             yield response.sendView('accounting/update_view', {
                 title: 'Edit - Singularity',
-                header: 'Accounting',
+                process_id: url_params.process_id, header: 'Accounting',
                 description: 'Editing View',
                 collection: 'Accounting',
                 view: 'Update : ' + result[0].id,

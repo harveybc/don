@@ -5,11 +5,11 @@
 const Authorization = use('App/Model/Authorization')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const authorizationArray = [
-    {"id": 1, "username": "harveybc", "role": 1, "active": true},
-    {"id": 2, "username": "testnode", "role": 2, "active": true},
-    {"id": 3, "username": "testoptimizer", "role": 3, "active": true},
-    {"id": 4, "username": "testevaluator", "role": 4, "active": true},
-    {"id": 5, "username": "testclient", "role": 5, "active": true},
+    {"id": 1, "username": "harveybc", "process_hash": "ph", "role": 1, "active": true},
+    {"id": 2, "username": "testnode", "process_hash": "ph", "role": 2, "active": true},
+    {"id": 3, "username": "testoptimizer", "process_hash": "ph", "role": 3, "active": true},
+    {"id": 4, "username": "testevaluator", "process_hash": "ph", "role": 4, "active": true},
+    {"id": 5, "username": "testclient", "process_hash": "ph", "role": 5, "active": true},
 ] 
 /** 
  @desc Database Seeder
