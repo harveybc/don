@@ -5,15 +5,15 @@
 // @TODO: ADICIONAR autorizacion para transacciones, son los mismos clientes?
 class AuthorizationController {
     /** @desc searches for the username´s role and verifies if method  in collection c is allowed (defaul:deny all)  */
-    * AuthorizeUser(username, process_id, c, method) {
+    * AuthorizeUser(username, process_hash, c, method) {
         var ret = false;
         var result;
-        if (username && c && method) {
+        if (username && c && method && process_hash) {
             const Database = use('Database');
-            // Consulta app_id del process_id y del user_id para validar que sean el mismo
-            var process_app_id = yield Database.select('app_id').from('processes').where('id', process_id);
-            var user_app_id = yield Database.select('app_id').from('authentications').where('username', username);
-            if (process_app_id != user_app_id) {
+            // Consulta app_hash del process_hash y del user_id para validar que sean el mismo
+            var process_app_hash = yield Database.select('app_hash').from('processes').where('hash', process_hash);
+            var user_app_hash = yield Database.select('app_hash').from('authentications').where('username', username);
+            if (process_app_hash != user_app_hash) {
                 ret = true;
             } 
             else{
@@ -150,7 +150,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 1;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -176,14 +176,14 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 2;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
 
         const Database = use('Database');
-        const process_id = request.param('id');
-        const result = yield Database.select('*').from('authorizations').where('id', process_id);
+        const process_hash = request.param('id');
+        const result = yield Database.select('*').from('authorizations').where('id', process_hash);
 
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
@@ -192,6 +192,7 @@ class AuthorizationController {
         const Database = use('Database');
         var url_params = request.post();
         const user_name = url_params.user_name;
+        const process_hash = url_params.process_hash;
         const role = url_params.role_key;
         const created_by = url_params.username;
         const updated_by = url_params.updated_by;
@@ -204,11 +205,11 @@ class AuthorizationController {
         // https://adonisjs.com/docs/3.2/validator
 
         // perform query and send view
-        const process_id = yield Database
+        const res = yield Database
                 .table('authorizations')
-                .insert({'username': user_name, 'role': role, 'created_by': created_by, 'updated_by': updated_by
+                .insert({'username': user_name, 'process_hash': process_hash, 'role': role, 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
-        const result = {"id": process_id};
+        const result = {"id": res};
         return (result);
     }
     /** @desc Returns the <id> of the created process */
@@ -224,7 +225,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 3;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -232,7 +233,7 @@ class AuthorizationController {
         var result = yield * this.createItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -248,6 +249,7 @@ class AuthorizationController {
         const Database = use('Database');
         var url_params = request.post();
         const user_name = url_params.user_name;
+        const process_hash = url_params.process_hash;
         const role = url_params.role_key;
         const created_by = url_params.created_by;
         const updated_by = url_params.username;
@@ -262,7 +264,7 @@ class AuthorizationController {
         const affected_rows = yield Database
                 .table('authorizations')
                 .where('id', request.param('id'))
-                .update({'username': user_name, 'role': role, 'created_by': created_by, 'updated_by': updated_by
+                .update({'username': user_name, 'process_hash': process_hash, 'role': role, 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"affected_rows": affected_rows};
         return (result);
@@ -280,7 +282,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 4;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -289,7 +291,7 @@ class AuthorizationController {
         var result = yield * this.updateItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -312,17 +314,17 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 5;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         const Database = use('Database');
-        const process_id = request.param('id');
-        const deleted_count = yield Database.table('authorizations').where('id', process_id).delete();
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('authorizations').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -345,7 +347,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 1;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -354,7 +356,7 @@ class AuthorizationController {
         const result = yield Database.select('*').from('authorizations').limit(request.input('max_results'));
         yield response.sendView('authorization/admin_view', {
             title: 'Authorization Admin - Singularity',
-            process_id: url_params.process_id, header: 'Authorization',
+            process_hash: url_params.process_hash, header: 'Authorization',
             description: 'Administrative View',
             collection: 'Authorization',
             view: 'Admin',
@@ -380,7 +382,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 2;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -390,7 +392,7 @@ class AuthorizationController {
         const result = yield Database.select('*').from('authorizations').where('id', user_id);
         yield response.sendView('authorization/detail_view', {
             title: 'User Details - Singularity',
-            process_id: url_params.process_id, header: 'Authorization',
+            process_hash: url_params.process_hash, header: 'Authorization',
             description: 'Details and Status',
             collection: 'Authorization',
             view: 'Details: ' + result[0].id,
@@ -415,7 +417,7 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 3;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -438,7 +440,7 @@ class AuthorizationController {
             const Database = use('Database');
             yield response.sendView('authorization/create_view', {
                 title: 'Create User - Singularity',
-                process_id: url_params.process_id, header: 'Authorization',
+                process_hash: url_params.process_hash, header: 'Authorization',
                 description: 'Creation View',
                 collection: 'Authorization',
                 view: 'Create',
@@ -462,12 +464,12 @@ class AuthorizationController {
         // Authorization layer (403 Error)
         const collection = 2;
         const method = 4;
-        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * this.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
 
-        const process_id = request.param('id');
+        const process_hash = request.param('id');
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
         if (request.input('redir') == 1) {
             var resp;
@@ -483,16 +485,15 @@ class AuthorizationController {
         // sino muestra vista
         else {
             const Database = use('Database');
-            const result = yield Database.select('*').from('authorizations').where('id', process_id);
+            const result = yield Database.select('*').from('authorizations').where('id', process_hash);
             yield response.sendView('authorization/update_view', {
                 title: 'Edit User - Singularity',
-                process_id: url_params.process_id, header: 'Authorization',
+                process_hash: url_params.process_hash, header: 'Authorization',
                 description: 'Editing View',
                 collection: 'Authorization',
                 view: 'Update : ' + result[0].id,
                 user_full_name: 'Harvey Bastidas',
                 user_role: 'Administrator',
-                process_id: result[0].id,
                 pass_hash: url_params.pass_hash,
                 data: result,
                 username: url_params.username

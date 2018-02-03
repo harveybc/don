@@ -12,7 +12,7 @@
     </style>
     <!-- form start -->
     <form class="form-horizontal">
-        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authorization/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
+        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/blocks/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">User Metadata</h3>
@@ -22,34 +22,50 @@
             -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Username</label>
+                    <label for="username" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputName" name="user_name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPublicKey" class="col-sm-2 control-label">Role</label>
+                    <label for="collection" class="col-sm-2 control-label">Collection</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputRole"  name="role_key" placeholder="1">
+                        <input type="text" class="form-control" id="inputCollection"  name="collection" placeholder="1">
                     </div>
-                </div>                
-              </div>
-        </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">User Control</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
+                </div>
                 <div class="form-group">
-                    <label for="inputActive" class="col-sm-2 control-label">Active</label>
+                    <label for="method" class="col-sm-2 control-label">Method</label>
                     <div class="col-sm-10">
-                        <input type="checkbox" class="checkbox" id="inputActive" name="active" checked>
+                        <input type="text" class="form-control" id="inputMethod"  name="method" placeholder="1">
                     </div>
-                </div>                
-                <!-- /.box-footer -->
+                </div>    
+                <div class="form-group">
+                    <label for="date" class="col-sm-2 control-label">Date</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputDate"  name="date" placeholder="2017-09-03 06:22:31">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="parameters" class="col-sm-2 control-label">Parameters</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputParameters"  name="parameters" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="result" class="col-sm-2 control-label">Result</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputResult"  name="result" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="block_hash" class="col-sm-2 control-label">block_hash</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputBlockId"  name="block_hash" placeholder="1">
+                    </div>
+                </div> 
             </div>
         </div>
+        
 
 
     </form>
@@ -91,9 +107,12 @@
             // Initialize values of form
             // Metadata
             $('#inputName').val(data[0].username);
-            $('#inputRole').val(data[0].role);
-            // Control
-            $('#inputActive').val(data[0].active);
+            $('#inputCollection').val(data[0].collection);
+            $('#inputMethod').val(data[0].method);
+            $('#inputDate').val(data[0].date);
+            $('#inputParameters').val(data[0].parameters);
+            $('#inputResult').val(data[0].result);
+            $('#inputBlockId').val(data[0].block_hash);
 
         });
         $(function () {

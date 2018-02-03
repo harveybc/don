@@ -12,7 +12,7 @@
     </style>
     <!-- form start -->
     <form class="form-horizontal">
-        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/accounting/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
+        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/accounting/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">User Metadata</h3>
@@ -58,9 +58,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="block_id" class="col-sm-2 control-label">block_id</label>
+                    <label for="block_hash" class="col-sm-2 control-label">block_hash</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputBlockId"  name="block_id" placeholder="1">
+                        <input type="text" class="form-control" id="inputBlockId"  name="block_hash" placeholder="1">
                     </div>
                 </div> 
             </div>
@@ -112,7 +112,7 @@
             $('#inputDate').val(data[0].date);
             $('#inputParameters').val(data[0].parameters);
             $('#inputResult').val(data[0].result);
-            $('#inputBlockId').val(data[0].block_id);
+            $('#inputBlockId').val(data[0].block_hash);
 
         });
         $(function () {

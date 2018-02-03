@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputAppId" name="app_id"  placeholder="1">
+                                    <input type="text" class="form-control" id="inputAppId" name="app_hash"  placeholder="1">
                                 </div>
                             </div>
                         </div>
@@ -365,7 +365,7 @@
             $('#inputDescription').val(data[0].description);
             $('#inputCreatorKey').val(data[0].creator_key);
             $('#inputTags').val(data[0].tags);
-            $('#inputAppId').val(data[0].app_id);
+            $('#inputAppId').val(data[0].app_hash);
             // Control
             $('#inputActive').val(data[0].active);
             // Configuration
@@ -378,7 +378,7 @@
             $('#inputValidationSetId').val(data[0].validation_set_id);
             // Status 
             $('#inputDifficulty').val(data[0].difficulty);
-            $('#inputLastBlockId').val(data[0].last_block_id);
+            $('#inputLastBlockId').val(data[0].last_block_hash);
             $('#inputLastBlockDate').val(data[0].last_block_date);
             $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
             $('#inputLastBlockTime').val(data[0].last_block_time);

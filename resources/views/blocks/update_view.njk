@@ -8,9 +8,9 @@
         }
     </style>
     <!-- form start.-->
-    <form class="form-horizontal" method="post" action="/accounting/{{process_hash}}">
+    <form class="form-horizontal" method="post" action="/blocks/{{process_hash}}">
     <!-- form contents. Include path is relative to nonjunks config directory in resource/views -->
-    {% include "accounting/form.njk" %}
+    {% include "blocks/form.njk" %}
     <!-- form end -->
     </form>
 {% endblock %}
@@ -24,7 +24,7 @@
                     <h4 class="modal-title">Authorization Edit View Help</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This view allows to Update an accounting register. Change the required values and press the save button on the top or bottom.</p>
+                    <p>This view allows to Update an blocks register. Change the required values and press the save button on the top or bottom.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -12,7 +12,7 @@
     </style>
     <!-- form start -->
     <form class="form-horizontal">
-        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authentication/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
+        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authentication/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">User Metadata</h3>
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="appId" class="col-sm-2 control-label">App ID</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="appId"  name="app_id" placeholder="1">
+                        <input type="text" class="form-control" id="appId"  name="app_hash" placeholder="1">
                     </div>
                 </div>
             </div>

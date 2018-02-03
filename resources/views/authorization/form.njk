@@ -8,7 +8,7 @@
     </style>
     <!-- form start -->
         <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/authorization/admin?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/authorization/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">User Metadata</h3>
@@ -49,9 +49,9 @@
         
         
         <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/authentication/admin?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/authentication/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
         <input type="hidden" name="redir" value="1">
         <input type="hidden" name="username" value="{{username}}">
-        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_id" value="{{process_id}}">
+        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
 
 

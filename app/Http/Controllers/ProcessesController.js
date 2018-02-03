@@ -3,9 +3,9 @@
  Processeses dummy controller for testing database, it uses static test data.
  */
 class ProcessesController {
-    * GetItemQuery(process_id) {
+    * GetItemQuery(process_hash) {
         const Database = use('Database');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
+        const result = yield Database.select('*').from('processes').where('id', process_hash);
         return (result);
     }
     /** @desc Returns a list of processes */
@@ -23,7 +23,7 @@ class ProcessesController {
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -52,14 +52,14 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
         const Database = use('Database');
-        const process_id = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_id);
+        const process_hash = request.param('id');
+        const result = yield Database.select('*').from('processes').where('id', process_hash);
         // Accounting layer (402 Error)
         var datetime = new Date();
         Account(url_params.username, collection, method, datetime, request, result)
@@ -74,7 +74,7 @@ class ProcessesController {
         const description = url_params.description;
         const creator_key = url_params.public_key;
         const tags = url_params.tags;
-        const app_id = url_params.app_id;
+        const app_hash = url_params.app_hash;
         const active = url_params.active;
         const desired_block_time = url_params.desired_block_time;
         const desired_block_size = url_params.desired_block_size;
@@ -92,12 +92,14 @@ class ProcessesController {
         const updated_at = updated_at_d.toISOString();
         //@todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
-
+        // Calcula hash del proceso como el hash del registro en JSON.
+        var sha256 = require('js-sha256');
+        var hash = sha256(JSON.stringify(url_params));
         // perform query and send view
         const process_id = yield Database
                 .table('processes')
-                .insert({'name': name, 'description': description, 'creator_key': creator_key
-                    , 'tags': tags, 'app_id': app_id, 'active': active, 'desired_block_time': desired_block_time
+                .insert({'name': name, 'description': description, 'creator_key': creator_key, 'hash': hash
+                    , 'tags': tags, 'app_hash': app_hash, 'active': active, 'desired_block_time': desired_block_time
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
                     , 'model_id': model_id, 'training_set_id': training_set_id
                     , 'created_by': created_by, 'updated_by': updated_by
@@ -121,7 +123,7 @@ class ProcessesController {
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -130,7 +132,7 @@ class ProcessesController {
         var result = yield * this.createItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -149,7 +151,7 @@ class ProcessesController {
         const description = url_params.description;
         const creator_key = url_params.public_key;
         const tags = url_params.tags;
-        const app_id = url_params.app_id;
+        const app_hash = url_params.app_hash;
         const active = url_params.active;
         const desired_block_time = url_params.desired_block_time;
         const desired_block_size = url_params.desired_block_size;
@@ -165,13 +167,15 @@ class ProcessesController {
         const updated_at_d = created_at_d;
         const created_at = created_at_d.toISOString();
         const updated_at = updated_at_d.toISOString();
-
+        // Calcula hash del proceso como el hash del registro en JSON.
+        var sha256 = require('js-sha256');
+        var hash = sha256(JSON.stringify(url_params));
         // perform query and send view
         const affected_rows = yield Database
                 .table('processes')
                 .where('id', request.param('id'))
-                .update({'name': name, 'description': description, 'creator_key': creator_key
-                    , 'tags': tags, 'app_id': app_id, 'active': active, 'desired_block_time': desired_block_time
+                .update({'name': name, 'description': description, 'creator_key': creator_key, 'hash': hash
+                    , 'tags': tags, 'app_hash': app_hash, 'active': active, 'desired_block_time': desired_block_time
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
                     , 'model_id': model_id, 'training_set_id': training_set_id
                     , 'created_by': created_by, 'updated_by': updated_by
@@ -194,7 +198,7 @@ class ProcessesController {
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -203,7 +207,7 @@ class ProcessesController {
         var result = yield * this.updateItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -228,18 +232,18 @@ class ProcessesController {
         const method = 5;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
         const Database = use('Database');
-        const process_id = request.param('id');
-        const deleted_count = yield Database.table('processes').where('id', process_id).delete();
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('processes').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
-        // Account(username, c, m, d, p, r, process_id) - username, collection, method, date, parameters, result, process_id, (string) 
+        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const account_res = yield * account.Account(collection, method, url_params, result);
@@ -269,7 +273,7 @@ class ProcessesController {
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -278,7 +282,7 @@ class ProcessesController {
         const result = yield Database.select('*').from('processes').limit(request.input('max_results'));
         yield response.sendView('processes/admin_view', {
             title: 'Processes Admin - Singularity',
-            process_id: url_params.process_id, header: 'Processes',
+            process_hash: url_params.process_hash, header: 'Processes',
             description: 'Administrative View',
             collection: 'Processes',
             view: 'Admin',
@@ -305,7 +309,7 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -316,7 +320,7 @@ class ProcessesController {
         const result = yield Database.select('*').from('processes').where('id', pid);
         yield response.sendView('processes/detail_view', {
             title: 'Process Details - Singularity',
-            process_id: url_params.process_id, header: 'Process',
+            process_hash: url_params.process_hash, header: 'Process',
             description: 'Details and Status',
             collection: 'Processes',
             view: 'Details: ' + result[0].id,
@@ -343,7 +347,7 @@ class ProcessesController {
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -351,7 +355,7 @@ class ProcessesController {
         const Database = use('Database');
         yield response.sendView('authentication/detail_view', {
             title: 'Dashboard - Singularity',
-            process_id: url_params.process_id, header: 'Dashboard',
+            process_hash: url_params.process_hash, header: 'Dashboard',
             description: 'Apps and Processes',
             collection: 'Authentication',
             view: 'Details: ',
@@ -377,7 +381,7 @@ class ProcessesController {
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -399,7 +403,7 @@ class ProcessesController {
             const Database = use('Database');
             yield response.sendView('processes/create_view', {
                 title: 'Create Process - Singularity',
-                process_id: url_params.process_id, header: 'Process',
+                process_hash: url_params.process_hash, header: 'Process',
                 description: 'Creation View',
                 collection: 'Processes',
                 view: 'Create',
@@ -425,7 +429,7 @@ class ProcessesController {
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
-        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_id, collection, method);
+        const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
@@ -451,7 +455,7 @@ class ProcessesController {
             const result = yield Database.select('*').from('processes').where('id', pid);
             yield response.sendView('processes/update_view', {
                 title: 'Edit Process - Singularity',
-                process_id: url_params.process_id, header: 'Process',
+                process_hash: url_params.process_hash, header: 'Process',
                 description: 'Editing View',
                 collection: 'Processes',
                 view: 'Update : ' + result[0].id,

@@ -10,7 +10,7 @@
     <!-- form start -->
     <form class="form-horizontal" method="post" action="/processes/{{pid}}">
         <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Process Metadata</h3>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputAppId" name="app_id"  placeholder="1">
+                        <input type="text" class="form-control" id="inputAppId" name="app_hash"  placeholder="1">
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
         <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
         <input type="hidden" name="redir" value="1">
         <input type="hidden" name="username" value="{{username}}">
-        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_id" value="{{process_id}}">
+        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
     </form>
 {% endblock %}
 {% block footer %}
@@ -170,7 +170,7 @@
             $('#inputDescription').val(data[0].description);
             $('#inputCreatorKey').val(data[0].creator_key);
             $('#inputTags').val(data[0].tags);
-            $('#inputAppId').val(data[0].app_id);
+            $('#inputAppId').val(data[0].app_hash);
             // Control
             $('#inputActive').val(data[0].active);
             // Configuration
@@ -183,7 +183,7 @@
             $('#inputValidationSetId').val(data[0].validation_set_id);
 /*          // Status 
             $('#inputDifficulty').val(data[0].difficulty);
-            $('#inputLastBlockId').val(data[0].last_block_id);
+            $('#inputLastBlockId').val(data[0].last_block_hash);
             $('#inputLastBlockDate').val(data[0].last_block_date);
             $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
             $('#inputLastBlockTime').val(data[0].last_block_time);

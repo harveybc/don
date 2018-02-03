@@ -2,14 +2,14 @@
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/accounting/create?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Accounting</a>
+    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/blocks/create?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Blocks</a>
     <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
-        <strong>Result:</strong> The accounting was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+        <strong>Result:</strong> The blocks was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
     </div>
     <div id="div_error" class="alert alert-danger fade in alert-dismissable" style="display: none; margin: 0px 0 5px 0;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-        <strong>Error!</strong> Could not save the accounting. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+        <strong>Error!</strong> Could not save the blocks. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
     </div>
     <div class="box box-info" style="padding-right:10px; ">
         <div id="jsGrid" class="box-header" style="padding: 5px 10px 5px 5px; ">
@@ -23,10 +23,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Accounting Administrative View Help</h4>
+                    <h4 class="modal-title">Blocks Administrative View Help</h4>
                 </div>
                 <div class="modal-body">
-                    <p>This view allows to view a list of accountings and create, update or delete accounting. Click on the accounting to view its detailed view (Dashboard).</p>
+                    <p>This view allows to view a list of blocks and create, update or delete blocks. Click on the blocks to view its detailed view (Dashboard).</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -114,7 +114,7 @@
             // initialize menu start active item
             document.getElementById("m_administrative").classList.add('menu-open');
             document.getElementById("m_administrative").classList.add('active');            
-            document.getElementById("m_accounting").classList.add('active');
+            document.getElementById("m_blocks").classList.add('active');
         });  
         // Gets data from controller
         var data = {{data| dump | safe}};
@@ -127,7 +127,7 @@
             paging: true,
             data: data,
             rowClick: function (e) {
-                window.location = "/accounting/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
+                window.location = "/blocks/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
             },
             fields: [
                 {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id", headercss: "header_color"},
@@ -135,7 +135,7 @@
                 {name: "block", type: "number", width: 30, validate: "required", align: "center", title: "Block", headercss: "header_color"},
                 {name: "created_at", type: "text", width: 50, align: "center", title: "Created At", headercss: "header_color"},                
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/accounting/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/blocks/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"
                 },
                 {type: "control", editButton: false, width: 40, headercss: "header_color"}
@@ -143,7 +143,7 @@
             onItemDeleting: function (args) {
                 // send a request to the node
                 var xmlhttp = new XMLHttpRequest();
-                var url = "/accounting/" + args.item.id+ "?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}";
+                var url = "/blocks/" + args.item.id+ "?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}";
                 // fired when the state of the request changes
                 xmlhttp.onreadystatechange = function () {
                     // readyState==4 ==> request finished and response is ready

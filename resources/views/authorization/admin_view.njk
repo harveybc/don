@@ -2,7 +2,7 @@
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
 {% extends '../master_AdminLTE' %}{% block content %}
-    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authorization/create?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-plus"></span> Create New Authorization</a>
+    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authorization/create?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Authorization</a>
     <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
         <strong>Result:</strong> The authorization was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
@@ -127,7 +127,7 @@
             paging: true,
             data: data,
             rowClick: function (e) {
-                window.location = "/authorization/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}';
+                window.location = "/authorization/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
             },
             fields: [
                 {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id", headercss: "header_color"},
@@ -135,7 +135,7 @@
                 {name: "role", type: "number", width: 30, validate: "required", align: "center", title: "Role", headercss: "header_color"},
                 {name: "created_at", type: "text", width: 50, align: "center", title: "Created At", headercss: "header_color"},                
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/authorization/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/authorization/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"
                 },
                 {type: "control", editButton: false, width: 40, headercss: "header_color"}
@@ -143,7 +143,7 @@
             onItemDeleting: function (args) {
                 // send a request to the node
                 var xmlhttp = new XMLHttpRequest();
-                var url = "/authorization/" + args.item.id+ "?username={{username}}&pass_hash={{pass_hash}}&process_id={{process_id}}";
+                var url = "/authorization/" + args.item.id+ "?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}";
                 // fired when the state of the request changes
                 xmlhttp.onreadystatechange = function () {
                     // readyState==4 ==> request finished and response is ready
