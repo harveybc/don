@@ -123,13 +123,20 @@ class BlocksController {
 
         // calcula Block contents como los registros de accounting sin block_hash
         const Database = use('Database');
-        const contents = yield Database.select('username, process_hash, block_hash, collection, method, parameters, result,created_by, updated_by, created_at, updated_at').from('accountings').where({'block_hash': "",'process_hash': process_hash});
+        var hash="0000000000";
+        // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como marcador
+        const affected_rows = yield Database
+                .table('accountings')
+                .where({'block_hash': "",'process_hash': process_hash})
+                .update({"block_hash":"0000000000"});
+        // obtiene contenido de bloque como las transacciones de accounting sin block_hash
+        const contents = yield Database.select('username, process_hash, block_hash, collection, method, parameters, result,created_by, updated_by, created_at, updated_at').from('accountings').where({'block_hash': "0000000000",'process_hash': process_hash});
         // calcula block_size (sizeof block_contents? o query?)
         var jsize = require('json-size');
-        var block_size = jsize.jsonSize(contents); //=> 13
+        var block_size = jsize.jsonSize(contents); 
         // calcula hash del proceso como el hash del registro en JSON.
         var sha256 = require('js-sha256');
-        var hash = sha256(JSON.stringify({"username": user_name, "process_hash": process_hash
+        hash = sha256(JSON.stringify({"username": user_name, "process_hash": process_hash
                     ,"prev_hash": prev_hash
                     ,"difficulty":difficulty,"threshold":threshold, "block_time":block_time
                     ,"block_size":block_size,"performance":performance,"var_value":var_value
@@ -138,16 +145,22 @@ class BlocksController {
                     , 'created_at': created_at, 'updated_at': updated_at, "contents": contents}));
         const resq = yield Database
                 .table('blocks')
-                .insert({"id": 1, "username": user_name, "process_hash": process_hash
+                .insert({"username": user_name, "process_hash": process_hash
                     ,"hash":hash, "prev_hash": prev_hash
                     ,"difficulty":difficulty,"threshold":threshold, "block_time":block_time
                     ,"block_size":block_size,"performance":performance,"var_value":var_value
                     ,"position":position
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, "contents": contents});
-                
-        // TODO: Falta UPDATE en processes con los nuevos valores de sus campos generados desde el bloque
-        
+        // UPDATE en processes con los nuevos valores de sus campos generados desde el bloque
+        const affected_rows = yield Database
+                .table('processes')
+                .where('process_hash', process_hash)
+                .update({"last_block_hash": hash, "last_block_date": created_at
+                    , "performance": performance, "difficulty": difficulty
+                    , "block_time": block_time, "block_size": block_time
+                    ,  'updated_by': updated_by, 'updated_at': updated_at});
+        const result = {"affected_rows": affected_rows};
         const result = {"id": resq};
         return (result);
     }

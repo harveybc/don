@@ -18,8 +18,8 @@ class AccountingTableSchema extends Schema {
             // Metadata 
             table.increments('id');
             table.string('username', 256);
-            table.integer('process_hash'); 
-            table.integer('block_hash');
+            table.string('process_hash', 4086); 
+            table.string('block_hash', 4086);
             
             //// Ejemplo de transacción de ataque con y sin target(closer o al azar en la misma pos): 
             //// con taget = in:attack_code,target_id;out:target_id,new_target_health
