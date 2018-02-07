@@ -10,7 +10,6 @@ const Schema = use('Schema')
  * A process belongs to an application and it can be accessed by its users. If 
  * the OPoW block time control is selected, a model is optimized to produce the
  * PoW to generate a block in the blockchain. 
- * sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
  * Migrations must be executed with the command:
  * @example 
  * ./ace migration:run

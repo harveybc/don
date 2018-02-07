@@ -25,7 +25,7 @@ class BlocksController {
         // Queries and result
         const Database = use('Database');
         const result = yield Database.select('*').from('blocks').limit(request.param('max_results'));
-        // se debe calcular el hash del bloque y firmarlo con PGP
+        
         // nd response
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
@@ -74,17 +74,80 @@ class BlocksController {
         const updated_at_d = created_at_d;
         const created_at = created_at_d.toISOString();
         const updated_at = updated_at_d.toISOString();
-        // @todo TODO: Perform data validation
-        // https://adonisjs.com/docs/3.2/validator
+        // @todo TODO: Perform data validation in parameters https://adonisjs.com/docs/3.2/validator
         // perform query and send view
+        // TODO FALTA BLOCK CONTENTS Y BLOCK HASH (TODO - ID Y HASH)
+        // BLOCK CONTENTS es una lista de los hashes de las transacciones registradas
+        // es decir, los accounting de las transacciones donde block=NULL,
+        // calcula el block_hash y hace UPDATE de este en los accounting de esta lista con su nuevo hash.
+        // (el update genera un flooding).  
+        var difficulty = url_params.difficulty
+        // gets the current process for last block data
+        var Process = use('App/Http/Controllers/ProcessesController');
+        var process = new Process();
+        const res = yield * process.GetLastBlockMetadata();
+        const threshold=process.threshold;
+        const prev_hash = process.last_block_hash;
+        const last_block_date = process.last_block_date;
+        var difficulty = proces.last_block_difficulty;
+        // calculate the new difficulty based on desired and actual block time
+        if (block_time<desired_block_time) {
+            difficulty=difficulty+threshold;
+        }
+        if (block_time>desired_block_time) {
+            difficulty=difficulty-threshold;
+        }   
+        // performance
+        const performance = 0.0;
+        if (typeof url_params.performance !== 'undefined') {
+            // the variable is defined
+            performance=url_params.performance;
+        }
+        // var_value
+        const var_value = 0.0;
+        if (typeof url_params.var_value !== 'undefined') {
+            // the variable is defined
+            var_value=url_params.var_value;
+        }
+        // position
+        const position = 0;
+        if (typeof url_params.position !== 'undefined') {
+            // the variable is defined
+            position=url_params.position;
+        }
+        // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
+        var date_old = new Date(last_block_date);
+        var date_new = new Date(created_at);
+        var timeDiff = Math.abs(date_new.getTime() - date_old.getTime());
+        var block_time = Math.ceil(timeDiff / 1000); 
+
+        // calcula Block contents como los registros de accounting sin block_hash
+        const Database = use('Database');
+        const contents = yield Database.select('username, process_hash, block_hash, collection, method, parameters, result,created_by, updated_by, created_at, updated_at').from('accountings').where({'block_hash': "",'process_hash': process_hash});
+        // calcula block_size (sizeof block_contents? o query?)
+        var jsize = require('json-size');
+        var block_size = jsize.jsonSize(contents); //=> 13
+        // calcula hash del proceso como el hash del registro en JSON.
+        var sha256 = require('js-sha256');
+        var hash = sha256(JSON.stringify({"username": user_name, "process_hash": process_hash
+                    ,"prev_hash": prev_hash
+                    ,"difficulty":difficulty,"threshold":threshold, "block_time":block_time
+                    ,"block_size":block_size,"performance":performance,"var_value":var_value
+                    ,"position":position
+                    , 'created_by': created_by, 'updated_by': updated_by
+                    , 'created_at': created_at, 'updated_at': updated_at, "contents": contents}));
         const resq = yield Database
                 .table('blocks')
                 .insert({"id": 1, "username": user_name, "process_hash": process_hash
-                    , "prev_block_hash": "pbh", "block_contents": ""
-                    , "signature": "s", "difficulty": "d", "threshold": "t"
-                    , "block_time": 1, "block_size": 1
+                    ,"hash":hash, "prev_hash": prev_hash
+                    ,"difficulty":difficulty,"threshold":threshold, "block_time":block_time
+                    ,"block_size":block_size,"performance":performance,"var_value":var_value
+                    ,"position":position
                     , 'created_by': created_by, 'updated_by': updated_by
-                    , 'created_at': created_at, 'updated_at': updated_at});
+                    , 'created_at': created_at, 'updated_at': updated_at, "contents": contents});
+                
+        // TODO: Falta UPDATE en processes con los nuevos valores de sus campos generados desde el bloque
+        
         const result = {"id": resq};
         return (result);
     }

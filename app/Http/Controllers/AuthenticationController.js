@@ -65,7 +65,11 @@ class AuthenticationController {
         const updated_at = updated_at_d.toISOString();
         // @todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
-
+        
+        // @todo TODO: Crear clave pública y privada,
+        //              almacenar la pública y enviar 
+        //              la privada en la respuesta del 
+        //              request.
         // perform query and send view
         const process_hash = yield Database
                 .table('authentications')

@@ -8,20 +8,24 @@ const Schema = use('Schema')
  * @example 
  * ./ace migration:run
  **/
-class AccountingTableSchema extends Schema {
+class BlocksTableSchema extends Schema {
     up() {
         this.create('blocks', (table) => {
             // Metadata 
             table.increments('id');
             table.string('username', 256);
-            table.integer('process_hash');
-            table.integer('prev_block_hash');
-            table.integer('block_contents');
+            table.string('process_hash', 4086);
+            table.string('hash', 4086);
+            table.string('prev_hash', 4086);
+            table.string('contents');
             table.string('signature');
-            table.string('difficulty');
-            table.string('threshold');
+            table.float('difficulty');
+            table.float('threshold');
             table.integer('block_time');
             table.integer('block_size');
+            table.float('performance'); 
+            table.float('var_value'); 
+            table.integer('position'); 
             table.string('created_by', 4086);
             table.string('updated_by', 4086);
             table.string('created_at', 4086);
@@ -32,4 +36,4 @@ class AccountingTableSchema extends Schema {
         this.drop('blocks')
     }
 }
-module.exports = AccountingTableSchema
+module.exports = BlocksTableSchema

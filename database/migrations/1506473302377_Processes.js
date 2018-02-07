@@ -64,8 +64,8 @@ class ProcessesTableSchema extends Schema {
       table.integer('training_set_id')
       table.integer('validation_set_id')
       // Status 
-      table.integer('last_block_id')  
-      table.integer('last_block_date')
+      table.string('last_block_hash')  
+      table.string('last_block_date')
       // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
       table.integer('last_optimum_id')
       table.timestamp('last_optimum_date')
