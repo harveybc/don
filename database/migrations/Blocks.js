@@ -26,6 +26,7 @@ class BlocksTableSchema extends Schema {
             table.float('performance'); 
             table.float('var_value'); 
             table.integer('position'); 
+            table.integer('rejects');
             table.string('created_by', 4086);
             table.string('updated_by', 4086);
             table.string('created_at', 4086);

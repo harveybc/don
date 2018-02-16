@@ -38,7 +38,7 @@ class ProcessesTableSchema extends Schema {
       table.integer('block_time_control') 
       // OPOW det
       table.float('threshold')
-      table.float('last_threshold')
+      table.float('last_threshold') //? quitar?
       table.float('last_block_performance')
       table.float('current_block_performance')
       // OPOW no-det

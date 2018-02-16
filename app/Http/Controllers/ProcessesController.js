@@ -161,11 +161,8 @@ class ProcessesController {
         const validation_set_id = url_params.validation_id;
         const difficulty = url_params.difficulty;
         const format = url_params.format;
-        const created_by = url_params.created_by;
         const updated_by = url_params.username;
-        const created_at_d = new Date;
-        const updated_at_d = created_at_d;
-        const created_at = created_at_d.toISOString();
+        const updated_at_d = new Date;
         const updated_at = updated_at_d.toISOString();
         // Calcula hash del proceso como el hash del registro en JSON.
         var sha256 = require('js-sha256');
