@@ -18,3 +18,13 @@ require('./Routes/Authorization')
 require('./Routes/Accounting')
 /** @desc Final Routes for the Blocks controller  Tests */
 require('./Routes/Blocks')
+/** @desc Final Routes for the Blocks controller  Tests */
+require('./Routes/Datasets')
+/** @desc Final Routes for the Blocks controller  Tests */
+require('./Routes/Evaluations')
+/** @desc Final Routes for the Blocks controller  Tests */
+require('./Routes/Inputs')
+/** @desc Final Routes for the Blocks controller  Tests */
+require('./Routes/Models')
+/** @desc Final Routes for the Blocks controller  Tests */
+require('./Routes/Parameters')

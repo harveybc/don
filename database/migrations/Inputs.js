@@ -20,7 +20,7 @@ class InputsTableSchema extends Schema {
             table.integer('observations');
             table.integer('features');
             table.float('resolution');
-            table.integer('training signals'); // if !=0, returns avg error
+            table.integer('training_signals'); // if !=0, returns avg error
             table.string('model_hash', 4086);
             table.string('app_hash', 4086);
             table.string('process_hash', 4086);

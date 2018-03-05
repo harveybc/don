@@ -22,7 +22,7 @@ class DatasetsTableSchema extends Schema {
             table.integer('observations'); 
             table.integer('features'); 
             table.float('resolution');
-            table.integer('training signals'); // TODO: NOT ACCESIBLE FOR EVALUATORS ,the tr_signals have to be the first n columns in table
+            table.integer('training_signals'); // TODO: NOT ACCESIBLE FOR EVALUATORS ,the tr_signals have to be the first n columns in table
             table.string('model_hash', 4086); 
             table.string('app_hash', 4086); 
             table.string('dataset_link', 4086); 

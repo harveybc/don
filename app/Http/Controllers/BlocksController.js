@@ -134,7 +134,9 @@ class BlocksController {
         // calcula Block contents como los registros de accounting sin block_hash
         const Database = use('Database');
         var hash = "0000000000";
-        // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como marcador
+        // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
+        // marcador para que no se incluyan nuevas transacciones en el nuevo 
+        // bloque mientras se crea este (lock), y con los marcados se calcula el hash
         const affected_rows = yield Database
                 .table('accountings')
                 .where({'block_hash': "", 'process_hash': process_hash})

@@ -20,7 +20,7 @@ class EvaluationsTableSchema extends Schema {
             table.integer('observations'); 
             table.integer('features'); 
             table.float('resolution');
-            table.integer('training signals'); // if >0, calculate avg error from evaluated results
+            table.integer('training_signals'); // if >0, calculate avg error from evaluated results
             table.string('model_hash', 4086); 
             table.string('parameter_hash', 4086);
             table.string('input_hash', 4086);

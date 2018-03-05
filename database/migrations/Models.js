@@ -1,8 +1,8 @@
 'use strict'
-/** @desc Modelos Migration: creates the modelos collection. */
+/** @desc Modelos Migration: creates the models collection. */
 const Schema = use('Schema')
 /** 
- * @desc Modelos table stores the modelos registers that
+ * @desc Modelos table stores the models registers that
  * each register has an username, collection, method, date, parameters,
  * result (string) and block id(hash)of the block it belongs.
  * The block can be null if belongs to the current(on construction) block.
@@ -14,7 +14,7 @@ const Schema = use('Schema')
  **/
 class ModelosTableSchema extends Schema {
     up() {
-        this.create('modelos', (table) => {
+        this.create('models', (table) => {
             // Metadata 
             table.increments('id');
             table.string('name', 1024);
@@ -33,7 +33,7 @@ class ModelosTableSchema extends Schema {
         })
     }
     down() {
-        this.drop('modelos')
+        this.drop('models')
     }
 }
 module.exports = ModelosTableSchema
