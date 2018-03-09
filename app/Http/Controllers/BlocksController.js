@@ -14,7 +14,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -41,7 +41,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 2;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -172,6 +172,7 @@ class BlocksController {
                     , "block_time": block_time, "block_size": block_time
                     , 'updated_by': updated_by, 'updated_at': updated_at});
         const result = {"affected_rows": affected_rows};
+        // resultado de inserción de bloque
         const result = {"id": resq};
         return (result);
     }
@@ -186,7 +187,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 3;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -221,7 +222,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 5;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -257,7 +258,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -293,7 +294,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -330,7 +331,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
@@ -379,7 +380,7 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
+        const collection = 4;
         const method = 1;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
