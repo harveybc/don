@@ -58,14 +58,13 @@ class BlocksController {
     }
     * createItemQuery(request, response) {
         // generate parameters for query
-        const Database = use('Database');
         var url_params = request.post();
         const user_name = url_params.user_name;
         const collection = url_params.collection;
         const method = url_params.method;
         const date = url_params.date;
         const parameters = url_params.parameters;
-        const res = url_params.result;
+        const res1 = url_params.result;
         const block_hash = url_params.block_hash;
         const process_hash = url_params.process_hash;
         const created_by = url_params.username;
@@ -85,7 +84,7 @@ class BlocksController {
         // gets the current process for last block data
         var Process = use('App/Http/Controllers/ProcessesController');
         var process = new Process();
-        const res = yield * process.GetLastBlockMetadata();
+        //const res2 = yield * process.GetLastBlockMetadata();
         const threshold = process.threshold;
         const prev_hash = process.last_block_hash;
         const last_block_date = process.last_block_date;
@@ -137,7 +136,7 @@ class BlocksController {
         // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
         // marcador para que no se incluyan nuevas transacciones en el nuevo 
         // bloque mientras se crea este (lock), y con los marcados se calcula el hash
-        const affected_rows = yield Database
+        const affected_rows1 = yield Database
                 .table('accountings')
                 .where({'block_hash': "", 'process_hash': process_hash})
                 .update({"block_hash": "0000000000"});
@@ -171,10 +170,10 @@ class BlocksController {
                 .update({"performance": performance, "difficulty": difficulty
                     , "block_time": block_time, "block_size": block_time
                     , 'updated_by': updated_by, 'updated_at': updated_at});
-        const result = {"affected_rows": affected_rows};
+        const result1 = {"affected_rows": affected_rows};
         // resultado de inserción de bloque
-        const result = {"id": resq};
-        return (result);
+        const result2 = {"id": resq};
+        return (result2);
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {

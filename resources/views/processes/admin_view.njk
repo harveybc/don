@@ -1,7 +1,7 @@
 {# Admin view template #}
 {# harveybc 20171014 #}
 {# Includes the master_AdminLTE template containing AdminLTE #}
-{% extends '../master_AdminLTE' %}{% block content %}
+{% extends 'master_AdminLTE' %}{% block content %}
     <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/processes/create?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Process</a>
     <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
