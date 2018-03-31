@@ -1,0 +1,61 @@
+{# Creation view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends 'master_AdminLTE' %}{% block content %}
+    <!-- form start -->
+    <form class="form-horizontal" method="post" action="/models">
+    <!-- form contents. Include path is relative to nonjunks config directory in resource/views -->
+    {% include "models/form.njk" %}
+    <!-- form end -->
+    </form>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Models Creation View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to Create a new models register, fill the details and clik on the save button on the top or the bottom.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <script type="text/javascript">
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+                        // initialize menu start active item
+            document.getElementById("m_optimization").classList.add('menu-open');
+            document.getElementById("m_optimization").classList.add('active');            
+            document.getElementById("m_models").classList.add('active');
+
+            // Initialize values of form
+/*          // Status 
+            $('#inputDifficulty').val(data[0].difficulty);
+            $('#inputLastModelId').val(data[0].last_model_hash);
+            $('#inputLastModelDate').val(data[0].last_model_date);
+            $('#inputLastModelDifficulty').val(data[0].last_model_difficulty);
+            $('#inputLastModelTime').val(data[0].last_model_time);
+            $('#inputLastModelSize').val(data[0].last_model_size);
+            // Optional status for LAST MODEL if using model_time_control>0 (!OPoW) 
+            $('#inputLastModelPerformance').val(data[0].last_model_size);
+            // Optional status for LAST OPTIMUM in current model if using model_time_control>0 (!OPoW) 
+            $('#inputLastOptimumId').val(data[0].last_optimum_id);
+            $('#inputLastOptimumDate').val(data[0].last_optimum_date);
+            $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);          
+*/
+        });
+    </script>
+
+{% endblock %}

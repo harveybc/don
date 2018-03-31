@@ -3,21 +3,22 @@
 */
 const Route = use('Route');
 // VIEWS
+/** @desc AdminView: manage models */
 Route.get('/models/admin', 'ModelsController.AdminView')
-/** @desc AdminView: Deletes a process */
+/** @desc DetailView: Show details of a model */
 Route.get('/models/detail/:id', 'ModelsController.DetailView')
-/** @desc AdminView: Deletes a process */
+/** @desc CreateView: Create a model */
 Route.get('/models/create', 'ModelsController.CreateView')
-/** @desc AdminView: Deletes a process */
+/** @desc UpdateView: Update a model */
 Route.get('/models/update/:id', 'ModelsController.UpdateView')
-// ACCOUNTING COLLECTION MANAGEMENT:
+// API
 /** @desc GetList: get a list of models */
 Route.get('/models', 'ModelsController.GetList');
-/** @desc GetItem: get a process */
+/** @desc GetItem: get a model */
 Route.get('/models/:id', 'ModelsController.GetItem'); 
-/** @desc CreateItem: create a process */
+/** @desc CreateItem: create a model */
 Route.post('/models', 'ModelsController.CreateItem');
-/** @desc CreateItem: update a process */
-Route.patch('/models/:id', 'ModelsController.UpdateItem'); 
-/** @desc DeleteItem: Deletes a process */
+/** @desc UpdateItem: update a model */
+Route.post('/models/:id', 'ModelsController.UpdateItem'); 
+/** @desc DeleteItem: Deletes a model */
 Route.delete('/models/:id', 'ModelsController.DeleteItem');

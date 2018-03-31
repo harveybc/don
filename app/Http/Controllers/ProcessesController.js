@@ -3,6 +3,19 @@
  Processeses dummy controller for testing database, it uses static test data.
  */
 class ProcessesController {
+    * GetLastBlockMetadata(process_hash) {
+        const Database = use('Database');
+        const result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+        if (typeof result[0] !== 'undefined') {
+            // the variable is defined
+                    return (result[0]);
+        }
+        else
+        {
+            return(0);
+        }
+    }
+
     * GetItemQuery(process_hash) {
         const Database = use('Database');
         const result = yield Database.select('*').from('processes').where('id', process_hash);
@@ -59,7 +72,7 @@ class ProcessesController {
         // queries
         const Database = use('Database');
         const process_hash = request.param('id');
-        const result = yield Database.select('*').from('processes').where('id', process_hash);
+        const result = yield Database.select('*').from('processes').where('hash', process_hash);
         // Accounting layer (402 Error)
         var datetime = new Date();
         Account(url_params.username, collection, method, datetime, request, result)
@@ -150,6 +163,7 @@ class ProcessesController {
         const name = url_params.name;
         const description = url_params.description;
         const creator_key = url_params.public_key;
+        const created_by = creator_key;
         const tags = url_params.tags;
         const app_hash = url_params.app_hash;
         const active = url_params.active;
@@ -166,7 +180,9 @@ class ProcessesController {
         const updated_at = updated_at_d.toISOString();
         // Calcula hash del proceso como el hash del registro en JSON.
         var sha256 = require('js-sha256');
-        var hash = sha256(JSON.stringify(url_params));
+        // TODO: QUITAR Y CALCULAR EL HASH
+        // var hash = sha256(JSON.stringify(url_params));
+        var hash = url_params.hash;
         // perform query and send view
         const affected_rows = yield Database
                 .table('processes')
@@ -176,7 +192,7 @@ class ProcessesController {
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
                     , 'model_id': model_id, 'training_set_id': training_set_id
                     , 'created_by': created_by, 'updated_by': updated_by
-                    , 'created_at': created_at, 'updated_at': updated_at, 'validation_set_id': validation_set_id});
+                    , 'updated_at': updated_at, 'validation_set_id': validation_set_id});
         const result = {"affected_rows": affected_rows};
         return (result);
     }
@@ -197,7 +213,7 @@ class ProcessesController {
         var aa = new AA();
         const auth_res_2 = yield * aa.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!auth_res_2) {
-           yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
         var resp;

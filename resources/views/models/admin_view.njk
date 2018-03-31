@@ -1,0 +1,169 @@
+{# Admin view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends 'master_AdminLTE' %}{% block content %}
+    <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/models/create?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-plus"></span> Create New Models</a>
+    <div id="div_success" class="alert alert-info fade in alert-dismissable"  style="display: none; margin: 0px 0 5px 0;">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
+        <strong>Result:</strong> The models was saved successfully. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+    </div>
+    <div id="div_error" class="alert alert-danger fade in alert-dismissable" style="display: none; margin: 0px 0 5px 0;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+        <strong>Error!</strong> Could not save the models. Click <a href="#" data-dismiss="alert" aria-label="close" title="close">X</a> to close this message.
+    </div>
+    <div class="box box-info" style="padding-right:10px; ">
+        <div id="jsGrid" class="box-header" style="padding: 5px 10px 5px 5px; ">
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Models Administrative View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to view a list of models and create, update or delete models. Click on the models to view its detailed view (Dashboard).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <style>
+        .header_color{
+            color: rgb(0,24,114);
+            background-color: rgb(210, 214, 222) !important;
+        }
+        th{
+            padding:0px !important;
+        }
+        td{
+            padding:5px 1px 5px 1px !important;
+        }
+    </style>
+    <script type="text/javascript">
+        function getAllUrlParams(url) {
+            // get query string from url (optional) or window
+            var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+            // we'll store the parameters here
+            var obj = {};
+            // if query string exists
+            if (queryString) {
+                // stuff after # is not part of query string, so get rid of it
+                queryString = queryString.split('#')[0];
+                // split our query string into its component parts
+                var arr = queryString.split('&');
+                for (var i = 0; i < arr.length; i++) {
+                    // separate the keys and the values
+                    var a = arr[i].split('=');
+                    // in case params look like: list[]=thing1&list[]=thing2
+                    var paramNum = undefined;
+                    var paramName = a[0].replace(/\[\d*\]/, function (v) {
+                        paramNum = v.slice(1, -1);
+                        return '';
+                    });
+                    // set parameter value (use 'true' if empty)
+                    var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+                    // (optional) keep case consistent
+                    paramName = paramName.toLowerCase();
+                    paramValue = paramValue.toLowerCase();
+                    // if parameter name already exists
+                    if (obj[paramName]) {
+                        // convert value to array (if still string)
+                        if (typeof obj[paramName] === 'string') {
+                            obj[paramName] = [obj[paramName]];
+                        }
+                        // if no array index number specified...
+                        if (typeof paramNum === 'undefined') {
+                            // put the value on the end of the array
+                            obj[paramName].push(paramValue);
+                        }
+                        // if array index number specified...
+                        else {
+                            // put the value at that index number
+                            obj[paramName][paramNum] = paramValue;
+                        }
+                    }
+                    // if param name doesn't exist yet, set it
+                    else {
+                        obj[paramName] = paramValue;
+                    }
+                }
+            }
+            return obj;
+        }
+        $(document).ready(function () {
+            $('#btn-trig').click(function () {
+            $('#helpModal').modal('show');
+            });
+                    var err ={{error| dump | safe}} ;
+            if (err == 0) {
+                var x = document.getElementById("div_success");
+                x.style.display = "model";
+            }
+            if (err == 1) {
+                var x = document.getElementById("div_error");
+                x.style.display = "model";
+            }
+            // initialize menu start active item
+            document.getElementById("m_optimization").classList.add('menu-open');
+            document.getElementById("m_optimization").classList.add('active');            
+            document.getElementById("m_models").classList.add('active');
+        });  
+        // Gets data from controller
+        var data = {{data| dump | safe}};
+        $("#jsGrid").jsGrid({
+            width: "100%",
+            height: "auto",
+            inserting: false,
+            editing: false,
+            sorting: true,
+            paging: true,
+            data: data,
+            rowClick: function (e) {
+                window.location = "/models/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
+            },
+            fields: [
+                {% for item in items %}
+                    {name: "{{ item.attr }}", type: "{{ item.type }}", width:{{ item.width }}, align: "center", title: "{{ item.title }}", headercss: "header_color"},
+                {% endfor %}
+
+                {itemTemplate: function (_, item) {
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 2px 0 2px;" href="/models/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                    }, width: 30, align: "center", headercss: "header_color"
+                },
+                {type: "control", editButton: false, width: 30, headercss: "header_color"}
+            ],
+            onItemDeleting: function (args) {
+                // send a request to the node
+                var xmlhttp = new XMLHttpRequest();
+                var url = "/models/" + args.item.id+ "?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}";
+                // fired when the state of the request changes
+                xmlhttp.onreadystatechange = function () {
+                    // readyState==4 ==> request finished and response is ready
+                    if (this.readyState == 4 && this.status == 200) {
+                        if (this.status == 200) {
+                            var response = JSON.parse(this.responseText);
+                            // if an item was not deleted, cancel the deletion in the frontend list
+                            if (response.result.deleted_count != 1)
+                                args.cancel = true;
+                        }
+                        // if an error code is received, cancel the deletion in the frontend list
+                        else
+                        {
+                            args.cancel = true;
+                        }
+                    }
+                };
+                xmlhttp.open("DELETE", url, false);
+                xmlhttp.send();
+            },
+        });
+    </script>
+{% endblock %}

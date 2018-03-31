@@ -3,21 +3,22 @@
 */
 const Route = use('Route');
 // VIEWS
+/** @desc AdminView: */
 Route.get('/blocks/admin', 'BlocksController.AdminView')
-/** @desc AdminView: Deletes a process */
+/** @desc DetailView: */
 Route.get('/blocks/detail/:id', 'BlocksController.DetailView')
-/** @desc AdminView: Deletes a process */
+/** @desc CreateView */
 Route.get('/blocks/create', 'BlocksController.CreateView')
-/** @desc AdminView: Deletes a process */
+/** @desc UpdateView: */
 Route.get('/blocks/update/:id', 'BlocksController.UpdateView')
-// ACCOUNTING COLLECTION MANAGEMENT:
+// API
 /** @desc GetList: get a list of blocks */
 Route.get('/blocks', 'BlocksController.GetList');
-/** @desc GetItem: get a process */
+/** @desc GetItem: get a block */
 Route.get('/blocks/:id', 'BlocksController.GetItem'); 
-/** @desc CreateItem: create a process */
+/** @desc CreateItem: create a block */
 Route.post('/blocks', 'BlocksController.CreateItem');
-/** @desc CreateItem: update a process */
-Route.patch('/blocks/:id', 'BlocksController.UpdateItem'); 
-/** @desc DeleteItem: Deletes a process */
+/** @desc CreateItem: update a block */
+Route.post('/blocks/:id', 'BlocksController.UpdateItem'); 
+/** @desc DeleteItem: Deletes a block */
 Route.delete('/blocks/:id', 'BlocksController.DeleteItem');

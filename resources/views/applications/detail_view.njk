@@ -1,0 +1,230 @@
+{# Admin view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends 'master_AdminLTE' %}{% block content %}
+    <style>
+        .box-info{
+            margin-bottom:10px;
+        }
+        .form-group{
+            margin-bottom:10px;
+        }
+    </style>
+    <!-- form start -->
+    <form class="form-horizontal">
+        <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/applications/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit Application</a>
+        {% for item in items %}
+            <div class="form-group">
+                <label for="{{ item.attr }}" class="col-sm-2 control-label">{{ item.title }}</label>
+                <div class="col-sm-10">
+                    <input type="{{ item.type }}" class="form-control" id="input{{item.attr}}" name="{{ item.attr }}">
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+    </form>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Authorization Detail View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to view the authorization details.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <!-- FastClick -->
+    <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- FLOT CHARTS -->
+    <script src="/bower_components/Flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="/bower_components/Flot/jquery.flot.resize.js"></script>
+    <script>
+        // Gets data from controller
+        var data = {{data| dump | safe}};
+        // when page finishes loading, sets the values to the ones from data
+        $(document).ready(function () {
+            // initialize menu start active item
+            document.getElementById("m_applications").classList.add('active');
+
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            // Metadata
+        {% for item in items %}
+                $('#input{{item.attr}}').val(data[0].{{item.attr}});
+        {% endfor %}
+
+            });
+            $(function () {
+                /*
+                 * Flot Interactive Chart
+                 * -----------------------
+                 */
+                // We use an inline data source in the example, usually data would
+                // be fetched from a server
+                var data = [], totalPoints = 100
+                function getRandomData() {
+                    if (data.length > 0)
+                        data = data.slice(1)
+                    // Do a random walk
+                    while (data.length < totalPoints) {
+
+                        var prev = data.length > 0 ? data[data.length - 1] : 50,
+                                y = prev + Math.random() * 10 - 5
+
+                        if (y < 0) {
+                            y = 0
+                        } else if (y > 100) {
+                            y = 100
+                        }
+
+                        data.push(y)
+                    }
+                    // Zip the generated y values with the x values
+                    var res = []
+                    for (var i = 0; i < data.length; ++i) {
+                        res.push([i, data[i]])
+                    }
+
+                    return res
+                }
+                var interactive_plot = $.plot('#interactive', [getRandomData()], {
+                    grid: {
+                        borderColor: '#f3f3f3',
+                        borderWidth: 1,
+                        tickColor: '#f3f3f3'
+                    },
+                    series: {
+                        shadowSize: 0, // Drawing is faster without shadows
+                        color: '#3c8dbc'
+                    },
+                    lines: {
+                        fill: true, //Converts the line chart to area chart
+                        color: '#3c8dbc'
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        show: true
+                    },
+                    xaxis: {
+                        show: true
+                    }
+                })
+                var updateInterval = 1000 //Fetch data ever x milliseconds
+                var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
+                function update() {
+                    interactive_plot.setData([getRandomData()])
+                    // Since the axes don't change, we don't need to call plot.setupGrid()
+                    interactive_plot.draw()
+                    if (realtime === 'on')
+                        setTimeout(update, updateInterval)
+                }
+                //INITIALIZE REALTIME DATA FETCHING
+                if (realtime === 'on') {
+                    update()
+                }
+                //REALTIME TOGGLE
+                $('#realtime .btn').click(function () {
+                    if ($(this).data('toggle') === 'on') {
+                        realtime = 'on'
+                    } else {
+                        realtime = 'off'
+                    }
+                    update()
+                })
+                /*
+                 * END INTERACTIVE CHART
+                 */
+                /*
+                 * LINE CHART
+                 * ----------
+                 */
+                //LINE randomly generated data
+                var sin = [], cos = []
+                for (var i = 0; i < 14; i += 0.5) {
+                    sin.push([i, Math.sin(i)])
+                    cos.push([i, Math.cos(i)])
+                }
+                var line_data1 = {
+                    data: sin,
+                    color: '#3c8dbc'
+                }
+                var line_data2 = {
+                    data: cos,
+                    color: '#00c0ef'
+                }
+                $.plot('#line-chart', [line_data1, line_data2], {
+                    grid: {
+                        hoverable: true,
+                        borderColor: '#f3f3f3',
+                        borderWidth: 1,
+                        tickColor: '#f3f3f3'
+                    },
+                    series: {
+                        shadowSize: 0,
+                        lines: {
+                            show: true
+                        },
+                        points: {
+                            show: true
+                        }
+                    },
+                    lines: {
+                        fill: false,
+                        color: ['#3c8dbc', '#f56954']
+                    },
+                    yaxis: {
+                        show: true
+                    },
+                    xaxis: {
+                        show: true
+                    }
+                })
+                //Initialize tooltip on hover
+                $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
+                    position: 'absolute',
+                    display: 'none',
+                    opacity: 0.8
+                }).appendTo('body')
+                $('#line-chart').bind('plothover', function (event, pos, item) {
+                    if (item) {
+                        var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2)
+
+                        $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
+                                .css({top: item.pageY + 5, left: item.pageX + 5})
+                                .fadeIn(200)
+                    } else {
+                        $('#line-chart-tooltip').hide()
+                    }
+                })
+                /* END LINE CHART */
+            })
+            /*
+             * Custom Label formatter
+             * ----------------------
+             */
+            function labelFormatter(label, series) {
+                return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+                        + label
+                        + '<br>'
+                        + Math.round(series.percent) + '%</div>'
+            }
+    </script>
+{% endblock %}

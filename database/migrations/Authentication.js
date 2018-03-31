@@ -16,25 +16,26 @@ const Schema = use('Schema')
  * ./ace migration:run
  **/
 class AuthenticationTableSchema extends Schema {
-  up () {
-    this.create('authentications', (table) => {
-      // Metadata 
-      table.increments('id');
-      table.string('username', 256);
-      table.string('app_hash',4086); // Hash field of the app collection
-      table.string('name', 4086);
-      table.string('public_key', 4086);
-      table.string('pass_hash',256);
-      //table.string('api_key',4086)
-      table.string('created_by', 4086);
-      table.string('updated_by', 4086);
-      table.string('created_at', 4086);
-      table.string('updated_at', 4086);
-      table.boolean('active');
-    })
-  }
-  down () {
-    this.drop('authentications');
-  }
+    up() {
+        this.create('authentications', (table) => {
+            // Metadata 
+            table.increments('id');
+            table.string('username', 256);
+            table.string('app_hash', 4086); // Hash field of the app collection
+            table.string('name', 4086);
+            table.string('public_key', 4086);
+            table.string('pass_hash', 256);
+            table.integer('max_connections');
+            table.integer('max_neighbors');
+            table.string('created_by', 4086);
+            table.string('updated_by', 4086);
+            table.string('created_at', 4086);
+            table.string('updated_at', 4086);
+            table.boolean('active');
+        })
+    }
+    down() {
+        this.drop('authentications');
+    }
 }
 module.exports = AuthenticationTableSchema;

@@ -3,21 +3,22 @@
 */
 const Route = use('Route');
 // VIEWS
+/** @desc AdminView: manage datasets */
 Route.get('/datasets/admin', 'DatasetsController.AdminView')
-/** @desc AdminView: Deletes a process */
+/** @desc DetailView: Show details of a dataset */
 Route.get('/datasets/detail/:id', 'DatasetsController.DetailView')
-/** @desc AdminView: Deletes a process */
+/** @desc CreateView: Create a dataset */
 Route.get('/datasets/create', 'DatasetsController.CreateView')
-/** @desc AdminView: Deletes a process */
+/** @desc UpdateView: Update a dataset */
 Route.get('/datasets/update/:id', 'DatasetsController.UpdateView')
-// ACCOUNTING COLLECTION MANAGEMENT:
+// API
 /** @desc GetList: get a list of datasets */
 Route.get('/datasets', 'DatasetsController.GetList');
-/** @desc GetItem: get a process */
+/** @desc GetItem: get a dataset */
 Route.get('/datasets/:id', 'DatasetsController.GetItem'); 
-/** @desc CreateItem: create a process */
+/** @desc CreateItem: create a dataset */
 Route.post('/datasets', 'DatasetsController.CreateItem');
-/** @desc CreateItem: update a process */
-Route.patch('/datasets/:id', 'DatasetsController.UpdateItem'); 
-/** @desc DeleteItem: Deletes a process */
+/** @desc UpdateItem: update a dataset */
+Route.post('/datasets/:id', 'DatasetsController.UpdateItem'); 
+/** @desc DeleteItem: Deletes a dataset */
 Route.delete('/datasets/:id', 'DatasetsController.DeleteItem');

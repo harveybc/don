@@ -57,6 +57,8 @@ class AuthenticationController {
         const pass_hash = url_params.passhash;
         const active = url_params.active;
         const app_hash = url_params.app_hash;
+        const max_connections = url_params.max_connections;
+        const max_neighbors = url_params.max_neighbors;
         const created_by = url_params.username;
         const updated_by = url_params.updated_by;
         const created_at_d = new Date;
@@ -65,7 +67,6 @@ class AuthenticationController {
         const updated_at = updated_at_d.toISOString();
         // @todo TODO: Perform data validation
         // https://adonisjs.com/docs/3.2/validator
-        
         // @todo TODO: Crear clave pública y privada,
         //              almacenar la pública y enviar 
         //              la privada en la respuesta del 
@@ -74,6 +75,7 @@ class AuthenticationController {
         const process_hash = yield Database
                 .table('authentications')
                 .insert({'name': name,  'username': user_name, 'public_key': public_key, 'pass_hash': pass_hash, 'app_hash': app_hash
+                    , 'max_connections': max_connections, 'max_neighbors': max_neighbors
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"id": process_hash};
@@ -121,6 +123,8 @@ class AuthenticationController {
         const public_key = url_params.public_key;
         const pass_hash = url_params.passhash;
         const app_hash = url_params.app_hash;
+        const max_connections = url_params.max_connections;
+        const max_neighbors = url_params.max_neighbors;
         const created_by = url_params.created_by;
         const updated_by = url_params.username;
         const created_at_d = new Date;
@@ -135,6 +139,7 @@ class AuthenticationController {
                 .table('authentications')
                 .where('id', request.param('id'))
                 .update({'name': name,  'username': user_name, 'public_key': public_key, 'pass_hash': pass_hash, 'app_hash': app_hash
+                    , 'max_connections': max_connections, 'max_neighbors': max_neighbors
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"affected_rows": affected_rows};

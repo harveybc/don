@@ -8,15 +8,19 @@ class AuthorizationController {
     * AuthorizeUser(username, process_hash, c, method) {
         var ret = false;
         var result;
-        if (username && c && method && process_hash) {
+        // collection 5 doesnot verify processhash
+        if (username && c && method && (process_hash || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10))) {
             const Database = use('Database');
             // Consulta app_hash del process_hash y del user_id para validar que sean el mismo
-            var process_app_hash = yield Database.select('app_hash').from('processes').where('hash', process_hash);
-            var user_app_hash = yield Database.select('app_hash').from('authentications').where('username', username);
-            if (process_app_hash != user_app_hash) {
-                ret = true;
-            } 
-            else{
+            var process_app_hash = "";
+            var user_app_hash = "";
+            // TODO: ARREGLAR AUTORIZACIÓN POR APPHASH SOLO EN REQUESTS DE SCOPE=APPLICATION como datasets o models
+                        /* if (c != 5) {
+                process_app_hash = yield Database.select('app_hash').from('processes').where('hash', process_hash);
+                user_app_hash = yield Database.select('app_hash').from('authentications').where('username', username);
+            }
+            */
+            if (process_app_hash === user_app_hash) {
                 // consulta el rol de la tabla autorizathions            
                 result = yield Database.select('role').from('authorizations').where('username', username);
                 // @TODO: colocar per-role authorizations desde nueva colección

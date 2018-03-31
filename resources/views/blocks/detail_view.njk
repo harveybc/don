@@ -13,58 +13,14 @@
     <!-- form start -->
     <form class="form-horizontal">
         <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/blocks/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">User Metadata</h3>
+        {% for item in items %}
+            <div class="form-group">
+                <label for="{{ item.attr }}" class="col-sm-2 control-label">{{ item.title }}</label>
+                <div class="col-sm-10">
+                    <input type="{{ item.type }}" class="form-control" id="input{{item.attr}}" name="{{ item.attr }}">
+                </div>
             </div>
-            <!-- /.box-header 
-            TODO: CARGAR VALORES DESDE PARAMS
-            -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" name="user_name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="collection" class="col-sm-2 control-label">Collection</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputCollection"  name="collection" placeholder="1">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="method" class="col-sm-2 control-label">Method</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputMethod"  name="method" placeholder="1">
-                    </div>
-                </div>    
-                <div class="form-group">
-                    <label for="date" class="col-sm-2 control-label">Date</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputDate"  name="date" placeholder="2017-09-03 06:22:31">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="parameters" class="col-sm-2 control-label">Parameters</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputParameters"  name="parameters" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="result" class="col-sm-2 control-label">Result</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputResult"  name="result" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="block_hash" class="col-sm-2 control-label">block_hash</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputBlockId"  name="block_hash" placeholder="1">
-                    </div>
-                </div> 
-            </div>
-        </div>
+        {% endfor %}
         
 
 
@@ -106,13 +62,10 @@
             });
             // Initialize values of form
             // Metadata
-            $('#inputName').val(data[0].username);
-            $('#inputCollection').val(data[0].collection);
-            $('#inputMethod').val(data[0].method);
-            $('#inputDate').val(data[0].date);
-            $('#inputParameters').val(data[0].parameters);
-            $('#inputResult').val(data[0].result);
-            $('#inputBlockId').val(data[0].block_hash);
+            {% for item in items %}
+                $('#input{{item.attr}}').val(data[0].{{item.attr}});    
+            {% endfor %}
+
 
         });
         $(function () {

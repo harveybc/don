@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="/bower_components/bootstrap//dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect. -->
+        <link rel="stylesheet" href="/dist/css/skins/skin-blue.css">
+        <!-- js-grid -->
+        <link type="text/css" rel="stylesheet" href="/bower_components/jsgrid/dist/jsgrid.min.css" />
+        <link type="text/css" rel="stylesheet" href="/bower_components/jsgrid/dist/jsgrid-theme.min.css" />
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Google Font -->
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="shortcut icon" type="image/png" href="/assets/favicon.png"/>
+    </head>
+    <!--
+    BODY TAG OPTIONS:
+    =================
+    Apply one or more of the following classes to get the
+    desired effect
+    |---------------------------------------------------------|
+    | SKINS         | skin-blue                               |
+    |               | skin-black                              |
+    |               | skin-purple                             |
+    |               | skin-yellow                             |
+    |               | skin-red                                |
+    |               | skin-green                              |
+    |---------------------------------------------------------|
+    |LAYOUT OPTIONS | fixed                                   |
+    |               | layout-boxed                            |
+    |               | layout-top-nav                          |
+    |               | sidebar-collapse                        |
+    |               | sidebar-mini                            |
+    |---------------------------------------------------------|
+    |ME GUSTAN      | skin-blue-light                         |
+    |               |                                         |
+    |---------------------------------------------------------|
+    
+    -->
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+
+            <!-- Main Header -->
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}" class="logo" style="padding-left:5px;padding-right:5px;">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/assets/logo3s.png" style="width:35px;"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/assets/logotype4.png" style="height:25px;"></span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- search form -->
+                                <h3 style="width:100%;text-align: center;  margin:11px 2px 0 0;padding:0; font-size:22px; color:#001872;">
+                                    {{header}}
+                                    <small style="color:white">{{description}}</small>
+                                </h3>
+                            </li>
+
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"style="padding-right:5px !important;"><i class="fa fa-gears"></i></a>
+                            </li>
+                            <li>
+                                <a href="#helpModal" id="btn-trig" style="padding-left:10px!important ;padding-right:15px !important;"><i class="fa fa-question fa-lg" data-toggle="modal" 
+                                                                      data-target="#helpModal"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p> {{user_full_name}}</p>
+                            <!-- Status -->
+                            <a href="#"><i class="fa fa-circle text-success"></i> {{user_role}}</a>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">COLLECTIONS</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <!-- <li id="m_applications"><a href="/applications/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><i class="fa fa-laptop fa-lg"></i> <span>Applications</span></a></li> -->
+                        <li id="m_processes"><a href="/processes/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><i class="fa fa-dashboard fa-lg"></i> <span>Processes</span></a></li>
+                        <li id="m_optimization" class="treeview">
+                            <a href="#"><i class="fa fa-pie-chart fa-lg"></i> <span>Optimization</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="m_models"><a href="/models/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Models</a></li>
+                                <li id="m_parameters"><a href="/parameters/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Parameters</a></li>
+                                <li id="m_datasets"><a href="/datasets/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Datasets</a></li>
+                                <li id="m_models"><a href="/models/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Models</a></li>
+                            </ul>
+                        </li>
+                        <li id="m_administrative" class="treeview">
+                            <a href="#"><i class="fa fa-edit fa-lg"></i> <span>Administrative</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li id="m_authentication"><a href="/authentication/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Authentication</a></li>
+                                <li id="m_authorization"><a href="/authorization/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Authorization</a></li>
+                                <li id="m_accounting"><a href="/accounting/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Accounting</a></li>
+                                <li id="m_blockss"><a href="/blocks/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}">Blocks</a></li>
+                            </ul>
+                        </li>
+                        <li id="m_neighbors"><a href="/neighbors/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><i class="fa fa-link fa-lg"></i> <span>Network</span></a></li>
+                        <li id="m_docs"><a href="/docs" id="btn-trig"><i class="fa fa-book fa-lg"></i> <span>Documentation</span></a></li>
+                    </ul>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="position:relative;top:-5px;">
+                <!-- Content Header (Page header) -->
+                <section class="content-header" style="padding:0px 7px 0px 7px;">
+                    <ol class="breadcrumb" style="top:5px;z-index:1000;" >
+                        <li><a href="/{{collection}}/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="/{{collection}}/admin?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><i class="fa fa-dashboard"></i> {{collection}}</a></li>
+                        <li class="active">{{view}}</li>
+                    </ol>
+                </section>
+                
+                <!-- Main content -->
+                <section class="content container-fluid" style="padding:15px 7px 0px 7px; margin-top:0px;">
+
+                    <!-- Content -->
+                {% block content %}{% endblock %}
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer" style=" position:relative; top: -5px; padding: 5px 15px 5px 15px;">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2017 <a href="https://github.com/harveybc">Harvey D. Bastidas C.</a></strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content" style:"">
+                 <!-- Home tab content -->
+                 <div class="tab-pane active" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Recent Activity</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="menu-icon fa fa-plane bg-red"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Process P0001 Model Generated</h4>
+
+                                    <p>23:24pm on April 24th</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:;">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="pull-right-container">
+                                        <span class="label label-danger pull-right">70%</span>
+                                    </span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+                <!-- Stats tab content -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                <!-- /.tab-pane -->
+                <!-- Settings tab content -->
+                <div class="tab-pane" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">General Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Report panel usage
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Some information about this general settings option
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+                    </form>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 3 -->
+    <script src="/bower_components/jquery//dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/bower_components/bootstrap//dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- js-grid -->
+    <script type="text/javascript" src="/bower_components/jsgrid/dist/jsgrid.min.js"></script>
+
+    <!-- Footer for additional jquery code -->
+{% block footer %}{% endblock %}
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+<!-- Modal Help Dialog -->
+</body>
+</html>

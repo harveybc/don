@@ -8,7 +8,7 @@
         }
     </style>
     <!-- form start.-->
-    <form class="form-horizontal" method="post" action="/blocks/{{process_hash}}">
+    <form class="form-horizontal" method="post" action="/blocks/{{hash}}">
     <!-- form contents. Include path is relative to nonjunks config directory in resource/views -->
     {% include "blocks/form.njk" %}
     <!-- form end -->
@@ -43,14 +43,9 @@
                 $('#helpModal').modal('show');
             });
             // Initialize values of form
-            // Metadata
-            $('#inputName').val(data[0].username);
-            $('#inputCollection').val(data[0].collection);
-            $('#inputMethod').val(data[0].method);
-            $('#inputDate').val(data[0].date);
-            $('#inputParameters').val(data[0].parameters);
-            $('#inputResult').val(data[0].result);
-            $('#inputBlockId').val(data[0].block_hash);
+            {% for item in items %}
+                $('#input{{item.attr}}').val(data[0].{{item.attr}});    
+            {% endfor %}
             
         });
 

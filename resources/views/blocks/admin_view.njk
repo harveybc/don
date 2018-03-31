@@ -130,15 +130,15 @@
                 window.location = "/blocks/detail/" + e.item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
             },
             fields: [
-                {name: "id", type: "number", width: 30, validate: "required", align: "center", title: "Id", headercss: "header_color"},
-                {name: "username", type: "text", width: 100, align: "center", title: "Name", headercss: "header_color"},
-                {name: "block", type: "number", width: 30, validate: "required", align: "center", title: "Block", headercss: "header_color"},
-                {name: "created_at", type: "text", width: 50, align: "center", title: "Created At", headercss: "header_color"},                
+                {% for item in items %}
+                    {name: "{{ item.attr }}", type: "{{ item.type }}", width:{{ item.width }}, align: "center", title: "{{ item.title }}", headercss: "header_color"},
+                {% endfor %}
+
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/blocks/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
-                    }, width: 40, align: "center", headercss: "header_color"
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 2px 0 2px;" href="/blocks/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                    }, width: 30, align: "center", headercss: "header_color"
                 },
-                {type: "control", editButton: false, width: 40, headercss: "header_color"}
+                {type: "control", editButton: false, width: 30, headercss: "header_color"}
             ],
             onItemDeleting: function (args) {
                 // send a request to the node

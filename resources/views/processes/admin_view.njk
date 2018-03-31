@@ -132,6 +132,9 @@
                 {name: "name", type: "number", width: 100, align: "center", title: "Name", headercss: "header_color"},
                 {name: "last_optimum_performance", type: "text", width: 50, align: "center", title: "Last Perf.", headercss: "header_color"},
                 {name: "last_block_time", type: "text", width: 50, align: "center", title: "Block Time", headercss: "header_color"},
+                {name: "hash", type: "text", width: 30, align: "center", title: "Hash", headercss: "header_color"},
+                
+                
                 {itemTemplate: function (_, item) {
                         return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/processes/update/' + item.id +  '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"

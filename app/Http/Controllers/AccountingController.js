@@ -51,8 +51,8 @@ class AccountingController {
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
         // the conditions are:
         var cond = false;
-        // ic collection=parametersand method=create
-        if ((c == 5) && (m == 3)) {
+        // ic collection=parameters and method=create
+        if ((c == 8) && (m == 3)) {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control == 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
                 cond = true;
@@ -79,11 +79,8 @@ class AccountingController {
          // If block time control method is non-deterministic time
          if ((c.block_time_control==8)&&(VerifyVariableRand(c.var_value, c.var_last_value, c.var_last_threshold, c.var_nodet_threshold))) cond=true;   
          // @TODO: when others receive and verify the block , they request the accounting registers in the block that they dont have in their accounting collection */
-        if (cond == true) {
-            // createnewblock
-
-        }
         // TODO: FLOOD
+         
         // get list of application.num_neighs neighbors 
         if (parameters_raw.username && c && m) {
             // generate parameters for query
@@ -126,6 +123,7 @@ class AccountingController {
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         var url_params = request.get();
@@ -152,6 +150,7 @@ class AccountingController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
     * createItemQuery(request, response) {
         // generate parameters for query
         const Database = use('Database');

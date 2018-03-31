@@ -3,21 +3,22 @@
 */
 const Route = use('Route');
 // VIEWS
+/** @desc AdminView: manage parameters */
 Route.get('/parameters/admin', 'ParametersController.AdminView')
-/** @desc AdminView: Deletes a process */
+/** @desc DetailView: Show details of a parameter */
 Route.get('/parameters/detail/:id', 'ParametersController.DetailView')
-/** @desc AdminView: Deletes a process */
+/** @desc CreateView: Create a parameter */
 Route.get('/parameters/create', 'ParametersController.CreateView')
-/** @desc AdminView: Deletes a process */
+/** @desc UpdateView: Update a parameter */
 Route.get('/parameters/update/:id', 'ParametersController.UpdateView')
-// ACCOUNTING COLLECTION MANAGEMENT:
+// API
 /** @desc GetList: get a list of parameters */
 Route.get('/parameters', 'ParametersController.GetList');
-/** @desc GetItem: get a process */
+/** @desc GetItem: get a parameter */
 Route.get('/parameters/:id', 'ParametersController.GetItem'); 
-/** @desc CreateItem: create a process */
+/** @desc CreateItem: create a parameter */
 Route.post('/parameters', 'ParametersController.CreateItem');
-/** @desc CreateItem: update a process */
-Route.patch('/parameters/:id', 'ParametersController.UpdateItem'); 
-/** @desc DeleteItem: Deletes a process */
+/** @desc UpdateItem: update a parameter */
+Route.post('/parameters/:id', 'ParametersController.UpdateItem'); 
+/** @desc DeleteItem: Deletes a parameter */
 Route.delete('/parameters/:id', 'ParametersController.DeleteItem');

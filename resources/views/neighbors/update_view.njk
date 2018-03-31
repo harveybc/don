@@ -1,0 +1,54 @@
+{# Update view template #}
+{# harveybc 20171014 #}
+{# Includes the master_AdminLTE template containing AdminLTE #}
+{% extends 'master_AdminLTE' %}{% block content %}
+    <style>
+        .box-info{
+            margin-bottom:10px;
+        }
+    </style>
+    <!-- form start.-->
+    <form class="form-horizontal" method="post" action="/neighbors/{{hash}}">
+    <!-- form contents. Include path is relative to nonjunks config directory in resource/views -->
+    {% include "neighbors/form.njk" %}
+    <!-- form end -->
+    </form>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Neighbor Edit View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to Update an neighbors register. Change the required values and press the save button on the top or bottom.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <script type="text/javascript">
+        // Gets data from controller
+        var data = {{data| dump | safe}};
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // initialize menu start active item
+            document.getElementById("m_neighbors").classList.add('active');
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            {% for item in items %}
+                $('#input{{item.attr}}').val(data[0].{{item.attr}});    
+            {% endfor %} 
+        });
+    </script>
+
+{% endblock %}
