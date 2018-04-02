@@ -33,6 +33,7 @@ class AccountingTableSchema extends Schema {
             table.integer('method');
             table.string('parameters');
             table.string('result');
+            table.string('hash'); // The hash includes all fields including the dates
 
             table.string('created_by', 4086);
             table.string('updated_by', 4086);

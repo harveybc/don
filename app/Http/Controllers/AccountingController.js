@@ -39,6 +39,8 @@ class AccountingController {
         url_params_mod.pass_hash = "";
         // convierte a string los parámetros sin el pass_hash
         var p = JSON.stringify(url_params_mod);
+        // genera hash de la transacción
+        var hash_p = sha256(JSON.stringify(''+c+''+m+''+parameters_raw+''+r));
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
@@ -79,8 +81,7 @@ class AccountingController {
          // If block time control method is non-deterministic time
          if ((c.block_time_control==8)&&(VerifyVariableRand(c.var_value, c.var_last_value, c.var_last_threshold, c.var_nodet_threshold))) cond=true;   
          // @TODO: when others receive and verify the block , they request the accounting registers in the block that they dont have in their accounting collection */
-        // TODO: FLOOD
-         
+        // TODO: FLOOD         
         // get list of application.num_neighs neighbors 
         if (parameters_raw.username && c && m) {
             // generate parameters for query
@@ -89,7 +90,7 @@ class AccountingController {
                     .table('accountings')
                     .insert({'username': parameters_raw.username, 'process_hash': parameters_raw.process_hash, 'collection': c, 'method': m,
                         'parameters': p, 'result': r, 'created_by': parameters_raw.username, 'updated_by': parameters_raw.username,
-                        'created_at': d, 'updated_at': d, 'block_hash': block_hash});
+                        'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash':hash_p});
             const result = {"block_hash": block_hash};
             return (result);
         }

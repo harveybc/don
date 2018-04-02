@@ -5,10 +5,10 @@
 const Accounting = use('App/Model/Accounting')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const accountingArray = [
-    {"id": 1, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh"},
-    {"id": 2, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh"},
-    {"id": 3, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh"},
-    {"id": 4, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh"},
+    {"id": 1, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh", "hash":"h1"},
+    {"id": 2, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh", "hash":"h2"},
+    {"id": 3, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh", "hash":"h3"},
+    {"id": 4, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "bh", "hash":"h4"},
     ] 
 /** 
  @desc Database Seeder
