@@ -23,6 +23,32 @@ class AccountingController {
         // det anyvariable: desired_time, cada nodo tiene turno
         // nd anyvariable: desired_time, prob de bloque proporcional a time&size
     }
+    * Floooding(c, m, username, parameters_raw, result_raw, hash, TTL) {
+        // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
+        var new_ttl = TTL - 1;
+        if (new_ttl < 1){
+            return 0;
+        }
+        // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
+        const Database = use('Database');
+        const num_found = yield Database.select('count(*)').from('accounting').where('""hash"='+hash);         
+        
+        // consulta max_connections de la colección autentication
+        const max_connections = yield Database.select('max_connection').from('authentication').where('""username"='+username).limit(1);         
+        // selecciona los max_connection neighs             
+        const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(request.param('max_results'));
+        // TODO: Implementar otros métodos de selección de neighbors
+        // Envía request de FLOOD   a neighs
+        var num_neighs = result.lenght;
+         
+        // busca el hash en la colección accounting 
+
+        // Adiciona el registro de accounting original  y
+
+        // Ejecuta el collection/method/params localmente SIN nuevo accounting ni flooding.
+
+    }
+
     /** @desc saves the username, collection, method, date, parameters, result, process_hash, (string) 
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
@@ -40,7 +66,7 @@ class AccountingController {
         // convierte a string los parámetros sin el pass_hash
         var p = JSON.stringify(url_params_mod);
         // genera hash de la transacción
-        var hash_p = sha256(JSON.stringify(''+c+''+m+''+parameters_raw+''+r));
+        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + parameters_raw + '' + r));
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
@@ -90,7 +116,7 @@ class AccountingController {
                     .table('accountings')
                     .insert({'username': parameters_raw.username, 'process_hash': parameters_raw.process_hash, 'collection': c, 'method': m,
                         'parameters': p, 'result': r, 'created_by': parameters_raw.username, 'updated_by': parameters_raw.username,
-                        'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash':hash_p});
+                        'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
             const result = {"block_hash": block_hash};
             return (result);
         }
@@ -124,7 +150,7 @@ class AccountingController {
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
+
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         var url_params = request.get();
@@ -151,7 +177,7 @@ class AccountingController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
+
     * createItemQuery(request, response) {
         // generate parameters for query
         const Database = use('Database');
