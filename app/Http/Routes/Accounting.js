@@ -18,6 +18,8 @@ Route.get('/accounting/:id', 'AccountingController.GetItem');
 /** @desc CreateItem: create a process */
 Route.post('/accounting', 'AccountingController.CreateItem');
 /** @desc CreateItem: update a process */
-Route.patch('/accounting/:id', 'AccountingController.UpdateItem'); 
+Route.post('/accounting/:id', 'AccountingController.UpdateItem'); 
+/** @desc CreateItem: update a process */
+Route.post('/flooding', 'AccountingController.Flooding'); 
 /** @desc DeleteItem: Deletes a process */
 Route.delete('/accounting/:id', 'AccountingController.DeleteItem');

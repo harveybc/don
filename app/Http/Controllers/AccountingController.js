@@ -23,8 +23,8 @@ class AccountingController {
         // det anyvariable: desired_time, cada nodo tiene turno
         // nd anyvariable: desired_time, prob de bloque proporcional a time&size
     }
-    
-    * Flooding(c, m, username, parameters_raw, result_raw, hash, TTL) {
+
+    * Flooding(c, m, username, parameters_raw, result_raw, hash, TTL, request, response) {
         var url_params = request.get();
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
@@ -35,37 +35,51 @@ class AccountingController {
         }
         // Authorization layer (403 Error)
         const collection = 3;
-        const method = 1;
+        const method = 6;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
-        // Queries and result
-        const Database = use('Database');
-        const result = yield Database.select('*').from('accountings').limit(request.param('max_results'));
-        // send response
-        // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
-    }
+        /* Optional  Accounting Layer
+         // Queries and result
+         const Database = use('Database');
+         const result = yield Database.select('*').from('accountings').limit(request.param('max_results'));
+         if (!account_res) {
+         yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
+         }
+         */
         // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
         var new_ttl = TTL - 1;
-        if (new_ttl < 1){
+        if (new_ttl < 1) {
             return 0;
         }
         // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
         const Database = use('Database');
-        const num_found = yield Database.select('count(*)').from('accounting').where('""hash"='+hash);         
+        const num_found = yield Database.select('count(*)').from('accounting').where('""hash"=' + hash);
+        // busca el hash en la colección accounting 
+        if (num_found > 0) {
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "description": "already_received"}, request_id: 3});
+        }
         // consulta max_connections de la colección autentication
-        const max_connections = yield Database.select('max_connection').from('authentication').where('""username"='+username).limit(1);         
+        const max_connections = yield Database.select('max_connection').from('authentication').where('""username"=' + username).limit(1);
         // selecciona los max_connection neighs             
         const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(request.param('max_results'));
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
-        
-        // busca el hash en la colección accounting 
+        const Request = use('Request'); // Adonis request method
+        for (var i = 0; i < num_neighs; i++) {
+            var res = yield Request.post(result[i].address + '/flooding', (ctx) => {
+                ctx.request = {c, m, username, parameters_raw, result_raw, hash, TTL, request, response};
+                //ctx.response=1;
+            });
+            if (!res) {
+                yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            }
+
+        }
 
         // Adiciona el registro de accounting original  y
 
