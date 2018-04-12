@@ -8,9 +8,8 @@ class ProcessesController {
         const result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         if (typeof result[0] !== 'undefined') {
             // the variable is defined
-                    return (result[0]);
-        }
-        else
+            return (result[0]);
+        } else
         {
             return(0);
         }
@@ -32,7 +31,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -61,7 +60,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -132,7 +131,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -147,8 +146,8 @@ class ProcessesController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -207,7 +206,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -222,14 +221,24 @@ class ProcessesController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+
+    /** @desc Returns the <id> of the created process */
+    * deleteItemQuery(request, response) {
+        const Database = use('Database');
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('processes').where('id', process_hash).delete();
+        const result = {"deleted_count": deleted_count};
+        return result;
+    }        
+
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -241,7 +250,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 5;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -250,16 +259,14 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         // queries
-        const Database = use('Database');
-        const process_hash = request.param('id');
-        const deleted_count = yield Database.table('processes').where('id', process_hash).delete();
-        const result = {"deleted_count": deleted_count};
+        var resp;
+        var result = yield * this.deleteItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -282,7 +289,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 1;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -318,7 +325,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -356,7 +363,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 2;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -390,7 +397,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 3;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();
@@ -438,7 +445,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 401}, request_id: 3});
         }
         // Authorization layer (403 Error)
-        const collection = 4;
+        const collection = 11;
         const method = 4;
         var AA = use('App/Http/Controllers/AuthorizationController');
         var aa = new AA();

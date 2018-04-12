@@ -200,8 +200,8 @@ class BlocksController {
         // collections: 1=authent, 2=authoriz, 3=blocks, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -298,7 +298,7 @@ class BlocksController {
         const result = {"affected_rows": affected_rows};
         return (result);
     }
-    
+
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
         var url_params = request.post();
@@ -325,14 +325,24 @@ class BlocksController {
         // collections: 1=authent, 2=authoriz, 3=block, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Account();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+
+    /** @desc Returns the <id> of the created process */
+    * deleteItemQuery(request, response) {
+        const Database = use('Database');
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('blocks').where('id', process_hash).delete();
+        const result = {"deleted_count": deleted_count};
+        return result;
+    }
+
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -353,16 +363,14 @@ class BlocksController {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         //Queries and result
-        const Database = use('Database');
-        const process_hash = request.param('id');
-        const deleted_count = yield Database.table('blocks').where('id', process_hash).delete();
-        const result = {"deleted_count": deleted_count};
+        var resp;
+        var result = yield * this.deleteItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=blocks, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -509,7 +517,7 @@ class BlocksController {
             const result = yield Database.select('*').from('blocks').where('id', process_hash);
             yield response.sendView('blocks/update_view', {
                 title: 'Edit - Singularity',
-                process_hash: url_params.process_hash, 
+                process_hash: url_params.process_hash,
                 header: 'Blocks',
                 description: 'Editing View',
                 collection: 'Blocks',
@@ -518,7 +526,7 @@ class BlocksController {
                 user_role: 'Administrator',
                 pass_hash: url_params.pass_hash,
                 data: result,
-                hash:result[0].hash,
+                hash: result[0].hash,
                 username: url_params.username,
                 items: [
                     {attr: "process_hash", title: "proc", type: "text", width: 70},
@@ -565,11 +573,11 @@ class BlocksController {
             data: result,
             user_id: user_id,
             items: [
-                    {attr: "process_hash", title: "proc", type: "text", width: 70},
-                    {attr: "difficulty", title: "diff", type: "text", width: 30},
-                    {attr: "block_time", title: "time", type: "text", width: 30},
-                    {attr: "created_at", title: "Created At", type: "text", width: 60}
-                ]
+                {attr: "process_hash", title: "proc", type: "text", width: 70},
+                {attr: "difficulty", title: "diff", type: "text", width: 30},
+                {attr: "block_time", title: "time", type: "text", width: 30},
+                {attr: "created_at", title: "Created At", type: "text", width: 60}
+            ]
         });
     }
 }

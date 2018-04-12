@@ -28,7 +28,7 @@ class DatasetsController {
         // nd response
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
-    }    
+    }
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         var url_params = request.get();
@@ -134,8 +134,8 @@ class DatasetsController {
         // collections: 1=authent, 2=authoriz, 3=datasets, 4=processes, 5=parameters, 6=datasets, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -223,14 +223,23 @@ class DatasetsController {
         // collections: 1=authent, 2=authoriz, 3=dataset, 4=processes, 5=parameters, 6=datasets, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Account();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    /** @desc Returns the <id> of the created process */
+    * deleteItemQuery(request, response) {
+        const Database = use('Database');
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('datasets').where('id', process_hash).delete();
+        const result = {"deleted_count": deleted_count};
+        return result;
+    }
+
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -251,16 +260,14 @@ class DatasetsController {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         //Queries and result
-        const Database = use('Database');
-        const process_hash = request.param('id');
-        const deleted_count = yield Database.table('datasets').where('id', process_hash).delete();
-        const result = {"deleted_count": deleted_count};
+        var resp;
+        var result = yield * this.deleteItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=datasets, 4=processes, 5=parameters, 6=datasets, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -358,21 +365,21 @@ class DatasetsController {
                 pass_hash: url_params.pass_hash,
                 user_role: 'Administrator',
                 items: [
-                    {attr: "name",         title: "name",           type: "text", width: 30},
-                    {attr: "description",   title: "description",   type: "text", width: 30},
-                    {attr: "observations",  title: "observations",  type: "text", width: 30},
-                    {attr: "features",      title: "features",      type: "text", width: 30},
-                    {attr: "resolution",    title: "resolution",    type: "text", width: 30},
+                    {attr: "name", title: "name", type: "text", width: 30},
+                    {attr: "description", title: "description", type: "text", width: 30},
+                    {attr: "observations", title: "observations", type: "text", width: 30},
+                    {attr: "features", title: "features", type: "text", width: 30},
+                    {attr: "resolution", title: "resolution", type: "text", width: 30},
                     {attr: "training_signals", title: "training_signals", type: "text", width: 30},
-                    {attr: "model_hash",    title: "model_hash",    type: "text", width: 30},
-                    {attr: "app_hash",      title: "app_hash",      type: "text", width: 30},
-                    {attr: "dataset_link",  title: "dataset_link",  type: "text", width: 30},
-                    {attr: "dataset_text",  title: "dataset_text",  type: "text", width: 30},
-                    {attr: "dataset_blob",  title: "dataset_blob",  type: "text", width: 30},
+                    {attr: "model_hash", title: "model_hash", type: "text", width: 30},
+                    {attr: "app_hash", title: "app_hash", type: "text", width: 30},
+                    {attr: "dataset_link", title: "dataset_link", type: "text", width: 30},
+                    {attr: "dataset_text", title: "dataset_text", type: "text", width: 30},
+                    {attr: "dataset_blob", title: "dataset_blob", type: "text", width: 30},
                     {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
-                    {attr: "hash",          title: "hash",          type: "text", width: 30},
-                    {attr: "performance",   title: "performance",   type: "text", width: 30}
-                
+                    {attr: "hash", title: "hash", type: "text", width: 30},
+                    {attr: "performance", title: "performance", type: "text", width: 30}
+
                 ]
             });
         }
@@ -429,21 +436,21 @@ class DatasetsController {
                 hash: result[0].hash,
                 username: url_params.username,
                 items: [
-                    {attr: "name",         title: "name",           type: "text", width: 30},
-                    {attr: "description",   title: "description",   type: "text", width: 30},
-                    {attr: "observations",  title: "observations",  type: "text", width: 30},
-                    {attr: "features",      title: "features",      type: "text", width: 30},
-                    {attr: "resolution",    title: "resolution",    type: "text", width: 30},
+                    {attr: "name", title: "name", type: "text", width: 30},
+                    {attr: "description", title: "description", type: "text", width: 30},
+                    {attr: "observations", title: "observations", type: "text", width: 30},
+                    {attr: "features", title: "features", type: "text", width: 30},
+                    {attr: "resolution", title: "resolution", type: "text", width: 30},
                     {attr: "training_signals", title: "training_signals", type: "text", width: 30},
-                    {attr: "model_hash",    title: "model_hash",    type: "text", width: 30},
-                    {attr: "app_hash",      title: "app_hash",      type: "text", width: 30},
-                    {attr: "dataset_link",  title: "dataset_link",  type: "text", width: 30},
-                    {attr: "dataset_text",  title: "dataset_text",  type: "text", width: 30},
-                    {attr: "dataset_blob",  title: "dataset_blob",  type: "text", width: 30},
+                    {attr: "model_hash", title: "model_hash", type: "text", width: 30},
+                    {attr: "app_hash", title: "app_hash", type: "text", width: 30},
+                    {attr: "dataset_link", title: "dataset_link", type: "text", width: 30},
+                    {attr: "dataset_text", title: "dataset_text", type: "text", width: 30},
+                    {attr: "dataset_blob", title: "dataset_blob", type: "text", width: 30},
                     {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
-                    {attr: "hash",          title: "hash",          type: "text", width: 30},
-                    {attr: "performance",   title: "performance",   type: "text", width: 30}
-                
+                    {attr: "hash", title: "hash", type: "text", width: 30},
+                    {attr: "performance", title: "performance", type: "text", width: 30}
+
                 ]
             });
         }
@@ -484,21 +491,21 @@ class DatasetsController {
             data: result,
             user_id: user_id,
             items: [
-                {attr: "name",         title: "name",           type: "text", width: 30},
-                    {attr: "description",   title: "description",   type: "text", width: 30},
-                    {attr: "observations",  title: "observations",  type: "text", width: 30},
-                    {attr: "features",      title: "features",      type: "text", width: 30},
-                    {attr: "resolution",    title: "resolution",    type: "text", width: 30},
-                    {attr: "training_signals", title: "training_signals", type: "text", width: 30},
-                    {attr: "model_hash",    title: "model_hash",    type: "text", width: 30},
-                    {attr: "app_hash",      title: "app_hash",      type: "text", width: 30},
-                    {attr: "dataset_link",  title: "dataset_link",  type: "text", width: 30},
-                    {attr: "dataset_text",  title: "dataset_text",  type: "text", width: 30},
-                    {attr: "dataset_blob",  title: "dataset_blob",  type: "text", width: 30},
-                    {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
-                    {attr: "hash",          title: "hash",          type: "text", width: 30},
-                    {attr: "performance",   title: "performance",   type: "text", width: 30}
-                            ]
+                {attr: "name", title: "name", type: "text", width: 30},
+                {attr: "description", title: "description", type: "text", width: 30},
+                {attr: "observations", title: "observations", type: "text", width: 30},
+                {attr: "features", title: "features", type: "text", width: 30},
+                {attr: "resolution", title: "resolution", type: "text", width: 30},
+                {attr: "training_signals", title: "training_signals", type: "text", width: 30},
+                {attr: "model_hash", title: "model_hash", type: "text", width: 30},
+                {attr: "app_hash", title: "app_hash", type: "text", width: 30},
+                {attr: "dataset_link", title: "dataset_link", type: "text", width: 30},
+                {attr: "dataset_text", title: "dataset_text", type: "text", width: 30},
+                {attr: "dataset_blob", title: "dataset_blob", type: "text", width: 30},
+                {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
+                {attr: "hash", title: "hash", type: "text", width: 30},
+                {attr: "performance", title: "performance", type: "text", width: 30}
+            ]
         });
     }
 }

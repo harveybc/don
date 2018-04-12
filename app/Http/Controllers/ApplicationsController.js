@@ -94,16 +94,12 @@ class ApplicationsController {
         // Authorization layer (403 Error)
         const collection = 10;
         const method = 3;
-       
-        
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 4});
-        }
-        
-        
+        }       
         // Queries and response
         var resp;
         var result = yield * this.createItemQuery(request, resp);
@@ -112,8 +108,8 @@ class ApplicationsController {
         // 
 // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, applications, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -173,14 +169,25 @@ class ApplicationsController {
         // collections: 1=authent, 2=authoriz, 3=application, 4=processes, 5=applications, 6=applications, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, applications, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Account();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
+    /** @desc Returns the <id> of the created process */
+    * DeleteItem(request, response) {
+        const Database = use('Database');
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('applications').where('id', process_hash).delete();
+        const result = {"deleted_count": deleted_count};
+        return result;
+    }
+    
+    
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -201,16 +208,15 @@ class ApplicationsController {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         //Queries and result
-        const Database = use('Database');
-        const process_hash = request.param('id');
-        const deleted_count = yield Database.table('applications').where('id', process_hash).delete();
-        const result = {"deleted_count": deleted_count};
+        var resp;
+        var result = yield * this.deleteItemQuery(request, resp);
+        
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=applications, 4=processes, 5=applications, 6=applications, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, applications, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

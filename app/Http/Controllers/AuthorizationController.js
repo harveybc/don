@@ -9,7 +9,7 @@ class AuthorizationController {
         var ret = false;
         var result;
         // collection 5 doesnot verify processhash
-        if (username && c && method && (process_hash || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10))) {
+        if (username && c && method && (process_hash || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10)|| (c === 11))) {
             const Database = use('Database');
             // Consulta app_hash del process_hash y del user_id para validar que sean el mismo
             var process_app_hash = "";
@@ -94,7 +94,7 @@ class AuthorizationController {
                     }
                 } else if (result[0].role === 4) {
                     // method==1:GetList/AdminView,2:GetItem/DetailView,3:CreateItem/CreateView,4:UpdateItem/UpdateView,5:DeleteItem
-                    // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Applications,5:Processes,6:Models,7:Datasets,8:Parameters,9:Blocks,10:Neighbors,11:Network,12:Evaluations,13:Inputs,14:Outputs
+                    // collection==0:Authentication,1:Authorization,2:,3:Accounting,4:Blocks,5:Datasets,6:Evaluations,7:Models,8:Parameters,9:Neighbors,10:Applications,11:Processes
                     if (method === 1) {
                         if ((c === 1) || (c === 2) || (c === 3) || (c === 4) || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11) || (c === 12) || (c === 13) || (c === 14))
                             ret = true;
@@ -239,8 +239,8 @@ class AuthorizationController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -297,15 +297,23 @@ class AuthorizationController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    /** @desc Returns the <id> of the created process */
+   
+    * deleteItemQuery(request, response) {    
+        const Database = use('Database');
+        const process_hash = request.param('id');
+        const deleted_count = yield Database.table('authorizations').where('id', process_hash).delete();
+        const result = {"deleted_count": deleted_count};
+        return result;
+    }
+
     * DeleteItem(request, response) {
         var url_params = request.get();
         // Authentication layer (401 Error)
@@ -322,16 +330,14 @@ class AuthorizationController {
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
-        const Database = use('Database');
-        const process_hash = request.param('id');
-        const deleted_count = yield Database.table('authorizations').where('id', process_hash).delete();
-        const result = {"deleted_count": deleted_count};
+        var resp;
+        var result = yield * this.deleteItemQuery(request, resp);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting();
-        const account_res = yield * account.Account(collection, method, url_params, result);
+        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d ,url_params, result);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

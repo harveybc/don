@@ -27,6 +27,8 @@ class AuthenticationTableSchema extends Schema {
             table.string('pass_hash', 256);
             table.integer('max_connections');
             table.integer('max_neighbors');
+            table.integer('max_ttl'); // TODO: ADD TO EVERYTHING
+            
             table.string('created_by', 4086);
             table.string('updated_by', 4086);
             table.string('created_at', 4086);
