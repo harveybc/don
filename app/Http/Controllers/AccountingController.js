@@ -44,16 +44,22 @@ class AccountingController {
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
-        const Request = use('request'); // Adonis request method
+        const request = require('request'); // Adonis request method
+        var formData = {c: c, m: m, d: d, username: username, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
+        var error_q={}; var response_q={}; var body_q={};
         for (var i = 0; i < num_neighs; i++) {
-            var res = yield Request.post(result[i].address + '/flooding', (ctx) => {
-                ctx.request = {c, m, d, username, parameters_raw, result_raw, hash, TTL};
-                //ctx.response=1;
-            });
-            if (!res) {
-                yield response.sendView('master_JSON', {result: {"error": 1, "code": 401}, request_id: 3});
-            }
+            request.post(result[i].address + '/flooding', {form: formData},
+                    function (error, response, body) {
+                        error_q=error;
+                        response_q=response;
+                        body_q=body;
+                        console.log('error:', error); // Print the error if one occurred
+                        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+                        console.log('body:', body); // Print the HTML 
+                    }
+            );
         }
+        res = {error_q:error_q,response_q:response_q,body_q:body_q}
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
@@ -67,7 +73,7 @@ class AccountingController {
         const parameters_raw = url_params.parameters_raw;
         const result_raw = url_params.result_raw;
         const hash = url_params.hash;
-        const TTL = url_params.TTL; 
+        const TTL = url_params.TTL;
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
         var authe = new Authe();
@@ -619,7 +625,7 @@ class AccountingController {
         const deleted_count = yield Database.table('accountings').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
-    }    
+    }
 
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
