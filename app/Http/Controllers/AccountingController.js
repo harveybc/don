@@ -49,7 +49,7 @@ class AccountingController {
         const Request = use('request'); // Adonis request method
         for (var i = 0; i < num_neighs; i++) {
             var res = yield Request.post(result[i].address + '/flooding', (ctx) => {
-                ctx.request = {c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response};
+                ctx.request = {c, m, d, username, parameters_raw, result_raw, hash, TTL};
                 //ctx.response=1;
             });
             if (!res) {
