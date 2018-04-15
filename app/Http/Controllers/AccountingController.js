@@ -59,7 +59,7 @@ class AccountingController {
                     }
             );
         }
-        res = {error_q:error_q,response_q:response_q,body_q:body_q}
+        var res = {error_q:error_q,response_q:response_q,body_q:body_q}
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
