@@ -195,7 +195,7 @@ class NeighborsController {
     }
     
     /** @desc Returns the <id> of the created process */
-    * DeleteItem(request, response) {
+    * deleteItemQuery(request, response) {
             const Database = use('Database');
         const process_hash = request.param('id');
         const deleted_count = yield Database.table('neighbors').where('id', process_hash).delete();

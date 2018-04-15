@@ -136,18 +136,18 @@
                 
                 
                 {itemTemplate: function (_, item) {
-                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="http://dev.ingeni-us.com:3338/processes/update/' + item.id +  '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
+                        return $('<a class="btn btn-primary" style="margin:0; padding:2px 5px 0 5px;" href="/processes/update/' + item.id +  '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
                     }, width: 40, align: "center", headercss: "header_color"
                 },
                 {type: "control", editButton: false, width: 40, headercss: "header_color"}
             ],
             editRowRenderer: function (item, itemIndex) {
-                window.location = "http://dev.ingeni-us.com:3338/processes/update/" + item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
+                window.location = "/processes/update/" + item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
             },
             onItemDeleting: function (args) {
                 // send a request to the node
                 var xmlhttp = new XMLHttpRequest();
-                var url = "http://dev.ingeni-us.com:3338/processes/" + args.item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
+                var url = "/processes/" + args.item.id+ '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}';
                 // fired when the state of the request changes
                 xmlhttp.onreadystatechange = function () {
                     // readyState==4 ==> request finished and response is ready
