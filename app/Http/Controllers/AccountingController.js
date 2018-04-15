@@ -46,7 +46,7 @@ class AccountingController {
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
-        const Request = use('Request'); // Adonis request method
+        const Request = use('request'); // Adonis request method
         for (var i = 0; i < num_neighs; i++) {
             var res = yield Request.post(result[i].address + '/flooding', (ctx) => {
                 ctx.request = {c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response};
