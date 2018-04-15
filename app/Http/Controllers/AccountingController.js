@@ -41,8 +41,6 @@ class AccountingController {
         const max_connections = yield Database.select('max_connection').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
         const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_connections);
-
-        // 
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
@@ -56,7 +54,7 @@ class AccountingController {
                 yield response.sendView('master_JSON', {result: {"error": 1, "code": 401}, request_id: 3});
             }
         }
-        return result;
+        return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
     * Flooding(request, response) {
