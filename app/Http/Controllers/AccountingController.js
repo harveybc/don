@@ -50,16 +50,13 @@ class AccountingController {
         for (var i = 0; i < num_neighs; i++) {
             request.post(result[i].address + '/flooding', {form: formData},
                     function (error, response, body) {
-                        error_q=error;
-                        response_q=response;
-                        body_q=body;
                         console.log('error:', error); // Print the error if one occurred
                         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
                         console.log('body:', body); // Print the HTML 
                     }
             );
         }
-        var res = {error_q:error_q,response_q:response_q,body_q:body_q}
+        var res = {url:result[i].address + '/flooding',form: formData}
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
