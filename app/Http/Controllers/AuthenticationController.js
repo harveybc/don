@@ -134,7 +134,7 @@ class AuthenticationController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
-        yield response.sendView('master_JSON', {"result": result, "account_res": account_res, "request_id": 5});
+        yield response.sendView('master_JSON', {"result": account_res, "request_id": 5});
     }
     * updateItemQuery(request, response) {
         // generate parameters for query
