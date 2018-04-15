@@ -8,12 +8,18 @@ const Neighbors = use('App/Model/Neighbors')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const neighborsArray = [{
         "id": 1 ,
-        "app_hash": "ah",
-        "address": "http://dev.ingeni-us.com:3338",
+        "app_hash": "ah1",
+        "address": "http//192.168.0.241",
         "distance": 2,
         "latency": 500,
         "selection_method": 0
-
+    },{
+        "id": 2 ,
+        "app_hash": "ah2",
+        "address": "http://192.168.0.242",
+        "distance": 2,
+        "latency": 500,
+        "selection_method": 0
     },
 ] 
 /** 

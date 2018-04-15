@@ -184,7 +184,6 @@ class AuthenticationController {
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
-
         var resp;
         var result = yield * this.updateItemQuery(request, resp);
         // Accounting layer

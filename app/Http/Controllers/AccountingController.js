@@ -32,15 +32,17 @@ class AccountingController {
         }
         // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
         const Database = use('Database');
-        const num_found = yield Database.select('count(*)').from('accounting').where('""hash"=' + hash);
+        const num_found = yield Database.select('count(*)').from('accounting').where('hash',hash);
         // busca el hash en la colección accounting 
         if (num_found > 0) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "description": "already_received"}, request_id: 3});
         }
         // consulta max_connections de la colección autentication
-        const max_connections = yield Database.select('max_connection').from('authentication').where('""username"=' + username).limit(1);
+        const max_connections = yield Database.select('max_connection').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
         const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(request.param('max_results'));
+
+        // 
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
@@ -387,7 +389,8 @@ class AccountingController {
 
         // Read TTL from authentication
         const Database = use('Database');
-        const result = yield Database.select('*').from('authentication').where('"username"="' + parameters_raw.username + '"').limit(1);
+        
+        result = yield Database.select('*').from('authentications').where('username', parameters_raw.username).limit(1);
         var TTL = 0;
         if (result) {
             TTL = result[0].max_ttl;
@@ -399,7 +402,7 @@ class AccountingController {
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
             Flood(c, m, parameters_raw.username, parameters_raw, result_raw, hash_p, TTL);
         }
-        // get list of application.num_neighs neighbors 
+        
         if (parameters_raw.username && c && m) {
             // generate parameters for query
             const Database = use('Database');
@@ -408,8 +411,8 @@ class AccountingController {
                     .insert({'username': parameters_raw.username, 'process_hash': parameters_raw.process_hash, 'collection': c, 'method': m,
                         'parameters': p, 'result': r, 'created_by': parameters_raw.username, 'updated_by': parameters_raw.username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
-            const result = {"block_hash": block_hash};
-            return (result);
+            const result_q = {"block_hash": block_hash};
+            return (result_q);
         }
         // @TODO: si method=8, method=4 y perf>last, createNewBlock
         return ret;
