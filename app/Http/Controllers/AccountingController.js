@@ -101,10 +101,10 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(parameters_raw);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
                 }
             }
-            if (m === 4) { // method: update
+/*            if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
                     yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
@@ -116,8 +116,9 @@ class AccountingController {
                     yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
+            */
         }
-        if (c === 2) { // collection 2 : Authorization
+/*        if (c === 2) { // collection 2 : Authorization
             var A = use('App/Http/Controllers/AuthorizationController');
             var a = new A();
             if (m === 3) { // method: create
@@ -337,6 +338,7 @@ class AccountingController {
                 }
             }
         }
+        */
         return result;
     }
 
