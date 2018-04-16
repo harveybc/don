@@ -410,7 +410,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, parameters_raw.username, parameters_raw, result_raw, hash_p, TTL);
+            result = yield this.flood(c, m, d, url_params_mod.username, parameters_raw, result_raw, hash_p, TTL);
         }
 
         if (url_params_mod.username && c && m) {
