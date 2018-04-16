@@ -46,7 +46,6 @@ class AccountingController {
         var num_neighs = result.lenght;
         const request = require('request'); // Adonis request method
         var formData = {c: c, m: m, d: d, username: username, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
-        var error_q={}; var response_q={}; var body_q={};
         for (var i = 0; i < num_neighs; i++) {
             request.post(result[i].address + '/flooding', {form: formData},
                     function (error, response, body) {
@@ -418,8 +417,8 @@ class AccountingController {
             const Database = use('Database');
             const id = yield Database
                     .table('accountings')
-                    .insert({'username': parameters_raw.username, 'process_hash': parameters_raw.process_hash, 'collection': c, 'method': m,
-                        'parameters': p, 'result': r, 'created_by': parameters_raw.username, 'updated_by': parameters_raw.username,
+                    .insert({'username': url_params_mod.username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
+                        'parameters': p, 'result': r, 'created_by': url_params_mod.username, 'updated_by': url_params_mod.username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
             const result_q = {"result": result};
             return (result_q);
