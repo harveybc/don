@@ -341,7 +341,7 @@ class AccountingController {
             }
         }
         */
-        return result;
+        yield response.sendView('master_JSON', {result: result, request_id: 70});
     }
 
     /** @desc saves the username, collection, method, date, parameters, result, process_hash, (string) 
