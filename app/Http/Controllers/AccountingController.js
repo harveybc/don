@@ -30,13 +30,6 @@ class AccountingController {
         if (new_ttl < 1) {
             return 0;
         }
-        // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
-        const Database = use('Database');
-        const num_found = yield Database.count().from('accountings').where('hash', hash).as('counted');
-        // busca el hash en la colección accounting 
-        if (num_found[0].counted > 0) {
-            return 1;
-        }
         // consulta max_connections de la colección autentication
         const max_c = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
@@ -45,8 +38,8 @@ class AccountingController {
         // Envía request de FLOOD   a neighs
         var num_neighs = result.length;
         const request = require('request'); // Adonis request method
-        var formData = {c: c, m: m, d: d, username: username,pass_hash: pass_hash, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
-        
+        var formData = {c: c, m: m, d: d, username: username, pass_hash: pass_hash, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: new_ttl};
+
         for (var i = 0; i < num_neighs; i++) {
             request.post(result[i].address + '/flooding', {form: formData},
                     function (error, response, body) {
@@ -56,7 +49,7 @@ class AccountingController {
                     }
             );
         }
-        var res = { new_ttl: new_ttl, num_found:num_found[0].counted,max_connections:max_c[0].max_connections, num_neighs:num_neighs, result:result, url:result[0].address + '/flooding',form: formData }
+        var res = {new_ttl: new_ttl, max_connections: max_c[0].max_connections, num_neighs: num_neighs, result: result, url: result[0].address + '/flooding', form: formData}
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
@@ -81,16 +74,22 @@ class AccountingController {
         // Authorization layer (403 Error)  TODO: CORREGIR
         const collection = c;
         const method = m;
-/*        var Autho = use('App/Http/Controllers/AuthorizationController');
-        var autho = new Autho();
-        const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
-        if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "username":url_params.username, "process_hash":url_params.process_hash}, request_id: 9});
+        /*        var Autho = use('App/Http/Controllers/AuthorizationController');
+         var autho = new Autho();
+         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
+         if (!autho_res) {
+         yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "username":url_params.username, "process_hash":url_params.process_hash}, request_id: 9});
+         }    
+         */
+        // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
+        const Database = use('Database');
+        const num_found = yield Database.count().from('accountings').where('hash', hash).as('counted');
+        // busca el hash en la colección accounting 
+        if (num_found[0].counted > 0) {
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 410, "description": "Acounting register already exiss"}, request_id: 10});
         }
-        
-        */
-        // Flooding
-        var result = yield * this.flood(c, m, d, username,url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
+        // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
+        var result = yield * this.flood(c, m, d, username, url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
@@ -106,241 +105,241 @@ class AccountingController {
                     yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
                 }
             }
-/*            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            */
+            /*            if (m === 4) { // method: update
+             const auth_res = yield * a.updateItemQuery(request, response);
+             if (!auth_res) {
+             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+             }
+             }
+             if (m === 5) { // method: delete
+             const auth_res = yield * a.deleteItemQuery(request, response);
+             if (!auth_res) {
+             yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+             }
+             }
+             */
         }
-/*        if (c === 2) { // collection 2 : Authorization
-            var A = use('App/Http/Controllers/AuthorizationController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 3) { // collection 3 : Accounting
-            var A = use('App/Http/Controllers/AccountingController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 4) { // collection 4 : Blocks
-            var A = use('App/Http/Controllers/BlocksController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 5) { // collection 5 : Datasets
-            var A = use('App/Http/Controllers/DatasetsController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 6) { // collection 6 : Evaluations
-            var A = use('App/Http/Controllers/EvaluationsController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 7) { // collection 7 : Models
-            var A = use('App/Http/Controllers/ModelsController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 8) { // collection 8 : Parameters
-            var A = use('App/Http/Controllers/ParametersController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 9) { // collection 9 : Neighbors
-            var A = use('App/Http/Controllers/NeighborsController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 10) { // collection 10 : Applications
-            var A = use('App/Http/Controllers/ApplicationsController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        if (c === 11) { // collection 10 : Processes
-            var A = use('App/Http/Controllers/ProcessesController');
-            var a = new A();
-            if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 4) { // method: update
-                const auth_res = yield * a.updateItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-            if (m === 5) { // method: delete
-                const auth_res = yield * a.deleteItemQuery(request, response);
-                if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
-                }
-            }
-        }
-        */
+        /*        if (c === 2) { // collection 2 : Authorization
+         var A = use('App/Http/Controllers/AuthorizationController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 3) { // collection 3 : Accounting
+         var A = use('App/Http/Controllers/AccountingController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 4) { // collection 4 : Blocks
+         var A = use('App/Http/Controllers/BlocksController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 5) { // collection 5 : Datasets
+         var A = use('App/Http/Controllers/DatasetsController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 6) { // collection 6 : Evaluations
+         var A = use('App/Http/Controllers/EvaluationsController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 7) { // collection 7 : Models
+         var A = use('App/Http/Controllers/ModelsController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 8) { // collection 8 : Parameters
+         var A = use('App/Http/Controllers/ParametersController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 9) { // collection 9 : Neighbors
+         var A = use('App/Http/Controllers/NeighborsController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 10) { // collection 10 : Applications
+         var A = use('App/Http/Controllers/ApplicationsController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         if (c === 11) { // collection 10 : Processes
+         var A = use('App/Http/Controllers/ProcessesController');
+         var a = new A();
+         if (m === 3) { // method: create
+         const auth_res = yield * a.createItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 4) { // method: update
+         const auth_res = yield * a.updateItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         if (m === 5) { // method: delete
+         const auth_res = yield * a.deleteItemQuery(request, response);
+         if (!auth_res) {
+         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
+         }
+         }
+         }
+         */
         yield response.sendView('master_JSON', {result: result, request_id: 70});
     }
 
@@ -348,19 +347,21 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, username,url_params_mod, result_raw, do_flood) {
+    * Account(c, m, d, username, url_params_mod, result_raw, do_flood) {
         // calcula el hash del relultado
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // genera hash de la transacción
-        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + url_params_mod + '' + r));
+        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + url_params_mod + '' + r + '' + d));
+        // Busca SI NO EXISTIA ANTES EL MISMO HASH? o no es necesario porque ya se hace desde flooding?
+    
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
-        // @TODO: set the block of the regiser to the last one in blocks collection
-        var block_hash = 0;
+// @TODO: set the block of the regiser to the last one in blocks collection
+var block_hash = 0;
         // retrieve the variables for block generation conditions
         var c_vars = this.GetConditionVariables(url_params_mod.process_hash);
         //TODO: TEST CONDITONS? 
@@ -410,7 +411,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, url_params_mod.username,url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL);
+            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL);
         }
 
         if (username && c && m) {
