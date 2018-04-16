@@ -43,7 +43,7 @@ class AccountingController {
         const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_c[0].max_connections);
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
-        var num_neighs = result.lenght;
+        var num_neighs = result.length;
         const request = require('request'); // Adonis request method
         var formData = {c: c, m: m, d: d, username: username, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
         
@@ -56,7 +56,7 @@ class AccountingController {
                     }
             );
         }
-        var res = { new_ttl: new_ttl, num_found:num_found[0].counted,max_connections:max_c[0].max_connections, num_neigh:1, result:result, url:result[i].address + '/flooding',form: formData }
+        var res = { new_ttl: new_ttl, num_found:num_found[0].counted,max_connections:max_c[0].max_connections, num_neighs:num_neighs, result:result, url:result[i].address + '/flooding',form: formData }
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
