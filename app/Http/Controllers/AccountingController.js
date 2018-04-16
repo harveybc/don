@@ -418,10 +418,10 @@ class AccountingController {
             const Database = use('Database');
             const id = yield Database
                     .table('accountings')
-                    .insert({'username': url_params_mod.username, 'process_hash': "", 'collection': c, 'method': m,
-                        'parameters': p, 'result': r, 'created_by': url_params_mod.username, 'updated_by': url_params_mod.username,
+                    .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
+                        'parameters': p, 'result': r, 'created_by': username, 'updated_by': username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
-            const result_q = {"result": result};
+            const result_q = {"result": id};
             return (result_q);
         }
         // @TODO: si method=8, method=4 y perf>last, createNewBlock
