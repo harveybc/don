@@ -35,10 +35,10 @@ class AccountingController {
         const num_found = yield Database.select('count(*)').from('accountings').where('hash', hash);
         // busca el hash en la colección accounting 
         if (num_found > 0) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "description": "already_received"}, request_id: 7});
+            return 1;
         }
         // consulta max_connections de la colección autentication
-        const max_connections = yield Database.select('max_connection').from('authentications').where('username', username).limit(1);
+        const max_connections = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
         const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_connections);
         // TODO: Implementar otros métodos de selección de neighbors
@@ -56,7 +56,7 @@ class AccountingController {
                     }
             );
         }
-        var res = {url:result[i].address + '/flooding',form: formData}
+        res = {url:result[i].address + '/flooding',form: formData, new_ttl: new_ttl, num_found:num_found,max_connections:max_connections, result:result, num_neighs:num_neighs }
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
@@ -90,13 +90,12 @@ class AccountingController {
         
         */
         // Flooding
-        var result = yield * this.flood(c, m, d, username, JSON.parse(parameters_raw), result_raw, hash, TTL, request, response);
+        var result = yield * this.flood(c, m, d, username, JSON.parse(parameters_raw), result_raw, hash, TTL);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
         }
-
         // Ejecuta el collection/method/params localmente SIN nuevo accounting ni flooding.
         if (c === 1) { // collection 1 : Authentication
             var A = use('App/Http/Controllers/AuthenticationController');
