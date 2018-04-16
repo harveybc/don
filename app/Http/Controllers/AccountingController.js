@@ -32,7 +32,7 @@ class AccountingController {
         }
         // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
         const Database = use('Database');
-        const num_found = yield Database.select('count(*)').from('accountings').where('hash', hash);
+        const num_found = yield Database.count().from('accountings').where('hash', hash);
         // busca el hash en la colección accounting 
         if (num_found > 0) {
             return 1;
