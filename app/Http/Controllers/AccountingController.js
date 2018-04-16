@@ -348,7 +348,7 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, url_params_mod, result_raw, do_flood) {
+    * Account(c, m, d, username, url_params_mod, result_raw, do_flood) {
         // calcula el hash del relultado
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
@@ -400,7 +400,7 @@ class AccountingController {
         // Read TTL from authentication
         const Database = use('Database');
 
-        result = yield Database.select('*').from('authentications').where('username', url_params_mod.username).limit(1);
+        result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
         if (result) {
             TTL = result[0].max_ttl;
