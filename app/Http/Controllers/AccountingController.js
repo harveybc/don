@@ -62,14 +62,14 @@ class AccountingController {
     * Flooding(request, response) {
         var url_params = request.post();
         // c, m, d, username, parameters_raw, result_raw, hash, TTL, 
-        const c = url_params.c;
-        const m = url_params.m;
-        const d = url_params.d;
+        const c = parseInt(url_params.c);
+        const m = parseInt(url_params.m);
+        const d = parseInt(url_params.d);
         const username = url_params.username;
         const parameters_raw = JSON.parse(url_params.parameters_raw);
         const result_raw = JSON.parse(url_params.result_raw);
         const hash = url_params.hash;
-        const TTL = url_params.TTL;
+        const TTL = parseInt(url_params.TTL);
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
         var authe = new Authe();
