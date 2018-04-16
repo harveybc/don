@@ -421,7 +421,7 @@ class AccountingController {
                     .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
                         'parameters': url_params_mod, 'result': r, 'created_by': username, 'updated_by': username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
-            const result_q = {"result": id};
+            const result_q = {"result": result};
             return (result_q);
         }
         // @TODO: si method=8, method=4 y perf>last, createNewBlock
