@@ -89,7 +89,7 @@ class AccountingController {
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
-        const account_res = yield * this.Account(collection, method, d, url_params, result, false);
+        const account_res = yield * this.Account(collection, method, d, parameters_raw, result, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
