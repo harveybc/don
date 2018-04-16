@@ -46,6 +46,7 @@ class AccountingController {
         var num_neighs = result.lenght;
         const request = require('request'); // Adonis request method
         var formData = {c: c, m: m, d: d, username: username, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
+        
         for (var i = 0; i < num_neighs; i++) {
             request.post(result[i].address + '/flooding', {form: formData},
                     function (error, response, body) {
@@ -66,7 +67,7 @@ class AccountingController {
         const m = parseInt(url_params.m);
         const d = url_params.d;
         const username = url_params.username;
-        const parameters_raw = url_params.parameters_raw;
+        const parameters_raw = JSON.parse(url_params.parameters_raw);
         const result_raw = JSON.parse(url_params.result_raw);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
