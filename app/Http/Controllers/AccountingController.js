@@ -99,7 +99,7 @@ class AccountingController {
             var A = use('App/Http/Controllers/AuthenticationController');
             var a = new A();
             if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(parameters_raw, response);
+                const auth_res = yield * a.createItemQuery(parameters_raw);
                 if (!auth_res) {
                     yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
@@ -344,12 +344,11 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, parameters_raw, result_raw, do_flood) {
+    * Account(c, m, d, url_params_mod, result_raw, do_flood) {
         // calcula el hash del relultado
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
         // coloca el pass_hash como vacio
-        var url_params_mod = parameters_raw.post();
         url_params_mod.pass_hash = "";
         // convierte a string los parámetros sin el pass_hash
         var p = JSON.stringify(url_params_mod);
@@ -368,12 +367,12 @@ class AccountingController {
         // the conditions are:
         var cond = false;
         // ic collection=parameters and method=create
-        if ((c == 8) && (m == 3)) {
+        if ((c === 8) && (m === 3)) {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control == 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
+            if ((c_vars.block_time_control === 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
                 cond = true;
             // If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control == 1) &&
+            if ((c_vars.block_time_control === 1) &&
                     (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
                 cond = true;
             // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
@@ -409,7 +408,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, url_params_mod.username, parameters_raw, result_raw, hash_p, TTL);
+            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod, result_raw, hash_p, TTL);
         }
 
         if (url_params_mod.username && c && m) {

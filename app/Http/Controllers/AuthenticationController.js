@@ -67,10 +67,9 @@ class AuthenticationController {
         const result = yield Database.select('*').from('authentications').where('id', process_hash);
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
+    * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        const url_params = request.post();
         const user_name = url_params.user_name;
         const name = url_params.name;
         const public_key = url_params.public_key;
@@ -122,14 +121,14 @@ class AuthenticationController {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
         }
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
         // the last parameter is the flooding flag
-        const account_res = yield * account.Account(collection, method, d ,request, result, true);
+        const account_res = yield * account.Account(collection, method, d ,url_params, result, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
