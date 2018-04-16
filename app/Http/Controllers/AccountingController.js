@@ -355,14 +355,14 @@ class AccountingController {
         // convierte a string los parámetros sin el pass_hash
         var p = JSON.stringify(url_params_mod);
         // genera hash de la transacción
-        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + parameters_raw + '' + r));
+        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + url_params_mod + '' + r));
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
         // @TODO: set the block of the regiser to the last one in blocks collection
         var block_hash = 0;
         // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(parameters_raw.process_hash);
+        var c_vars = this.GetConditionVariables(url_params_mod.process_hash);
         //TODO: TEST CONDITONS? 
         //TODO: EXTRAER DE PARAMETERS EL  process_hash 
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
@@ -400,7 +400,7 @@ class AccountingController {
         // Read TTL from authentication
         const Database = use('Database');
 
-        result = yield Database.select('*').from('authentications').where('username', parameters_raw.username).limit(1);
+        result = yield Database.select('*').from('authentications').where('username', url_params_mod.username).limit(1);
         var TTL = 0;
         if (result) {
             TTL = result[0].max_ttl;
@@ -413,7 +413,7 @@ class AccountingController {
             result = yield this.flood(c, m, d, parameters_raw.username, parameters_raw, result_raw, hash_p, TTL);
         }
 
-        if (parameters_raw.username && c && m) {
+        if (url_params_mod.username && c && m) {
             // generate parameters for query
             const Database = use('Database');
             const id = yield Database
