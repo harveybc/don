@@ -32,15 +32,15 @@ class AccountingController {
         }
         // verifica si el request ya había sido hecho antes(busca hash en colección accounting).
         const Database = use('Database');
-        const num_found = yield Database.count().from('accountings').where('hash', hash);
+        const num_found = yield Database.count().from('accountings').where('hash', hash).as('counted');
         // busca el hash en la colección accounting 
-        if (num_found > 0) {
+        if (num_found[0].counted > 0) {
             return 1;
         }
         // consulta max_connections de la colección autentication
-        const max_connections = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
+        const max_c = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
-        const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_connections);
+        const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_c[0].max_connections);
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
@@ -56,7 +56,7 @@ class AccountingController {
                     }
             );
         }
-        var res = {url:result[i].address + '/flooding',form: formData, new_ttl: new_ttl, num_found:num_found,max_connections:max_connections, result:result, num_neighs:num_neighs }
+        var res = {url:result[i].address + '/flooding',form: formData, new_ttl: new_ttl, num_found:num_found,max_connections:max_c, num_neighs:num_neighs, result:result }
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
