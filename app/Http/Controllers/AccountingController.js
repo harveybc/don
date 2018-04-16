@@ -35,7 +35,7 @@ class AccountingController {
         const num_found = yield Database.select('count(*)').from('accountings').where('hash', hash);
         // busca el hash en la colección accounting 
         if (num_found > 0) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "description": "already_received"}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "description": "already_received"}, request_id: 7});
         }
         // consulta max_connections de la colección autentication
         const max_connections = yield Database.select('max_connection').from('authentications').where('username', username).limit(1);
@@ -76,7 +76,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -85,14 +85,14 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
 
         // Ejecuta el collection/method/params localmente SIN nuevo accounting ni flooding.
@@ -102,19 +102,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -124,19 +124,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -146,19 +146,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -168,19 +168,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -190,19 +190,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -212,19 +212,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -234,19 +234,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -256,19 +256,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -278,19 +278,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -300,19 +300,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -322,19 +322,19 @@ class AccountingController {
             if (m === 3) { // method: create
                 const auth_res = yield * a.createItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 4) { // method: update
                 const auth_res = yield * a.updateItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
             if (m === 5) { // method: delete
                 const auth_res = yield * a.deleteItemQuery(request, response);
                 if (!auth_res) {
-                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 3});
+                    yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
             }
         }
@@ -410,7 +410,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, parameters_raw.username, parameters_raw, result_raw, hash_p, TTL);
+            result = yield this.flood(c, m, d, parameters_raw.username, parameters_raw, result_raw, hash_p, TTL);
         }
 
         if (parameters_raw.username && c && m) {
@@ -436,7 +436,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -445,14 +445,14 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         // Queries and result
         const Database = use('Database');
         const result = yield Database.select('*').from('accountings').limit(request.param('max_results'));
         // send response
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
 
     /** @desc Returns the the <id> process */
@@ -463,7 +463,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -472,14 +472,14 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         // Queries and result 
         const Database = use('Database');
         const process_hash = request.param('id');
         const result = yield Database.select('*').from('accountings').where('id', process_hash);
         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
 
     * createItemQuery(request, response) {
@@ -521,7 +521,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -530,7 +530,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         // Queries and response
         var resp;
@@ -544,10 +544,10 @@ class AccountingController {
         const d = date_d.toISOString();
         const account_res = yield * account.Account(collection, method, d, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
     * updateItemQuery(request, response) {
         // generate parameters for query
@@ -587,7 +587,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -596,7 +596,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         // Queries and result
         var resp;
@@ -610,10 +610,10 @@ class AccountingController {
         const d = date_d.toISOString();
         const account_res = yield * account.Account(collection, method, d, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
     /** @desc Returns the <id> of the created process */
     * deleteItemQuery(request, response) {
@@ -632,7 +632,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -641,7 +641,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         //Queries and result
         var resp;
@@ -655,10 +655,10 @@ class AccountingController {
         const d = date_d.toISOString();
         const account_res = yield * account.Account(collection, method, d, url_params, result);
         if (!account_res) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
     /** @desc Renders the admin view  */
     * AdminView(request, response, error) {
@@ -668,7 +668,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -677,7 +677,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
         const Database = use('Database');
         const result = yield Database.select('*').from('accountings').limit(request.input('max_results'));
@@ -704,7 +704,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -713,7 +713,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
 
         const Database = use('Database');
@@ -741,7 +741,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -750,7 +750,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
 
         // if GET PARAM redir=TRUE: llama método de update y redirecciona a admin
@@ -790,7 +790,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
         const collection = 3;
@@ -799,7 +799,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 3});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 7});
         }
 
 
