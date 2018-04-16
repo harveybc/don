@@ -402,7 +402,7 @@ class AccountingController {
 
         result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
- /*       if (result) {
+        if (result) {
             TTL = result.max_ttl;
         }
         // FLOOD      
@@ -412,8 +412,8 @@ class AccountingController {
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
             result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod, result_raw, hash_p, TTL);
         }
-*/
-        if (url_params_mod.username && c && m) {
+
+        if (username && c && m) {
             // generate parameters for query
             const Database = use('Database');
             const id = yield Database
