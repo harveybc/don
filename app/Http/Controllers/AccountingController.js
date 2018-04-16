@@ -486,7 +486,7 @@ class AccountingController {
         // generate parameters for query
         const Database = use('Database');
         var url_params = request.post();
-        const user_name = url_params.user_name;
+        const username = url_params.username;
         const collection = url_params.collection;
         const method = url_params.method;
         const date = url_params.date;
@@ -505,7 +505,7 @@ class AccountingController {
         // perform query and send view
         const result_q = yield Database
                 .table('accountings')
-                .insert({"username": user_name, "process_hash": process_hash, "collection": collection
+                .insert({"username": username, "process_hash": process_hash, "collection": collection
                     , "method": method, "parameters": parameters
                     , "result": res, 'block_hash': block_hash
                     , 'created_by': created_by, 'updated_by': updated_by
