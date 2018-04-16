@@ -90,7 +90,7 @@ class AccountingController {
         
         */
         // Flooding
-        var result = yield * this.flood(c, m, d, username,url_params.pass_hash, JSON.parse(parameters_raw), result_raw, hash, TTL);
+        var result = yield * this.flood(c, m, d, username,url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
