@@ -77,7 +77,7 @@ class AccountingController {
         if (!authe_res) {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
-        // Authorization layer (403 Error)
+ /*       // Authorization layer (403 Error)  TODO: CORREGIR
         const collection = c;
         const method = m;
         var Autho = use('App/Http/Controllers/AuthorizationController');
@@ -86,6 +86,8 @@ class AccountingController {
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "username":url_params.username, "process_hash":url_params.process_hash}, request_id: 9});
         }
+        
+        */
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
