@@ -90,7 +90,7 @@ class AccountingController {
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
-        const account_res = yield * this.Account(collection, method, d, url_params, result);
+        const account_res = yield * this.Account(collection, method, d, url_params, result, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 7});
         }
@@ -100,7 +100,7 @@ class AccountingController {
             var A = use('App/Http/Controllers/AuthenticationController');
             var a = new A();
             if (m === 3) { // method: create
-                const auth_res = yield * a.createItemQuery(request, response);
+                const auth_res = yield * a.createItemQuery(parameters_raw, response);
                 if (!auth_res) {
                     yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                 }
@@ -350,7 +350,7 @@ class AccountingController {
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
         // coloca el pass_hash como vacio
-        var url_params_mod = parameters_raw;
+        var url_params_mod = parameters_raw.post();
         url_params_mod.pass_hash = "";
         // convierte a string los parámetros sin el pass_hash
         var p = JSON.stringify(url_params_mod);
