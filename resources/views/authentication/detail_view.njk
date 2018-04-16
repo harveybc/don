@@ -13,68 +13,74 @@
     <!-- form start -->
     <form class="form-horizontal">
         <a class="btn btn-success" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" href="/authentication/update/{{user_id}}?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-edit"></span> Edit User</a>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">User Metadata</h3>
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">User Metadata</h3>
+    </div>
+    <!-- /.box-header 
+    TODO: CARGAR VALORES DESDE PARAMS
+    -->
+    <div class="box-body">
+        <div class="form-group">
+            <label for="inputUserName" class="col-sm-2 control-label">UserName</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputUserName" name="user_name">
             </div>
-            <!-- /.box-header 
-            TODO: CARGAR VALORES DESDE PARAMS
-            -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" name="name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPublicKey" class="col-sm-2 control-label">Public Key</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPublicKey"  name="public_key" placeholder="Public Key">
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="passHash" class="col-sm-2 control-label">Pass Hash</label>
+        </div>
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" name="name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPublicKey" class="col-sm-2 control-label">Public Key</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputPublicKey"  name="public_key" placeholder="Public Key">
+            </div>
+        </div>                
+        <div class="form-group">
+            <label for="passHash" class="col-sm-2 control-label">Pass Hash</label>
 
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="passHash"  name="pass_hash" placeholder="Pass Hash">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="appId" class="col-sm-2 control-label">App ID</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="appId"  name="app_hash" placeholder="1">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="maxConnections" class="col-sm-2 control-label">Max Connections</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="maxConnections"  name="max_connections" placeholder="1">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="maxNeighbors" class="col-sm-2 control-label">Max Neighbors</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="maxConnections"  name="max_neighbors" placeholder="1">
-                    </div>
-                </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="passHash"  name="passhash" placeholder="Pass Hash">
             </div>
         </div>
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">User Control</h3>
+        <div class="form-group">
+            <label for="maxConnections"  class="col-sm-2 control-label">maxConnections</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="maxConnections"  name="max_connections">
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputActive" class="col-sm-2 control-label">Active</label>
-                    <div class="col-sm-10">
-                        <input type="checkbox" class="checkbox" id="inputActive" name="active" checked>
-                    </div>
-                </div>                
-                <!-- /.box-footer -->
+        </div>                
+        <div class="form-group">
+            <label for="maxNeighbors"  class="col-sm-2 control-label">maxNeighbors</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="maxNeighbors"  name="max_neighbors">
+            </div>
+        </div>                
+        <div class="form-group">
+            <label for="maxTtl"  class="col-sm-2 control-label">Max.TTL</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="maxTtl"  name="max_ttl">
             </div>
         </div>
+    </div>
+</div>
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">User Control</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="form-group">
+            <label for="inputActive" class="col-sm-2 control-label">Active</label>
+            <div class="col-sm-10">
+                <input type="checkbox" class="checkbox" id="inputActive" name="active" checked>
+            </div>
+        </div>                
+        <!-- /.box-footer -->
+    </div>
+</div>
 
 
     </form>
@@ -116,8 +122,13 @@
             // Initialize values of form
             // Metadata
             $('#inputName').val(data[0].name);
+            $('#inputUserName').val(data[0].username);
             $('#inputPublicKey').val(data[0].public_key);
             $('#passHash').val(data[0].pass_hash);
+            $('#appId').val(data[0].app_hash);
+            $('#maxConnections').val(data[0].max_connections);
+            $('#maxNeighbors').val(data[0].max_neighbors);
+            $('#maxTtl').val(data[0].max_ttl);
             // Control
             $('#inputActive').val(data[0].active);
 
