@@ -40,7 +40,7 @@ class AccountingController {
         // consulta max_connections de la colección autentication
         const max_c = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
-        const result = JSON.parse(yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_c[0].max_connections));
+        const result = yield Database.select('*').from('neighbors').orderBy('RAND()').limit(max_c[0].max_connections);
         // TODO: Implementar otros métodos de selección de neighbors
         // Envía request de FLOOD   a neighs
         var num_neighs = result.lenght;
@@ -56,7 +56,7 @@ class AccountingController {
                     }
             );
         }
-        var res = { new_ttl: new_ttl, num_found:num_found[0].counted,max_connections:max_c[0].max_connections, num_neigh:result.lenght, result:result, url:result[i].address + '/flooding',form: formData }
+        var res = { new_ttl: new_ttl, num_found:num_found[0].counted,max_connections:max_c[0].max_connections, num_neigh:1, result:result, url:result[i].address + '/flooding',form: formData }
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
