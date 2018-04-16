@@ -84,7 +84,7 @@ class AccountingController {
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
-            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 9});
+            yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403, "username":url_params.username, "process_hash":url_params.process_hash}, request_id: 9});
         }
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
