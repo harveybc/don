@@ -30,6 +30,7 @@ class AccountingController {
         if (new_ttl < 1) {
             return 0;
         }
+        const Database = use('Database');
         // consulta max_connections de la colección autentication
         const max_c = yield Database.select('max_connections').from('authentications').where('username', username).limit(1);
         // selecciona los max_connection neighs             
