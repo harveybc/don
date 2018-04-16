@@ -403,7 +403,7 @@ class AccountingController {
         result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
         if (result) {
-            TTL = result[0].max_ttl;
+            TTL = result.max_ttl;
         }
         // FLOOD      
         if (do_flood === true) {
