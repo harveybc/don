@@ -353,7 +353,7 @@ class AccountingController {
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
         // convierte a string los parámetros sin el pass_hash
-        var p = JSON.stringify(url_params_mod);
+        //var p = JSON.stringify(url_params_mod);
         // genera hash de la transacción
         var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + url_params_mod + '' + r));
         // inicializa variables ret y result(de esta cunfión).
@@ -419,7 +419,7 @@ class AccountingController {
             const id = yield Database
                     .table('accountings')
                     .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
-                        'parameters': p, 'result': r, 'created_by': username, 'updated_by': username,
+                        'parameters': url_params_mod, 'result': r, 'created_by': username, 'updated_by': username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
             const result_q = {"result": id};
             return (result_q);
