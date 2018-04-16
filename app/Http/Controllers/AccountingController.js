@@ -24,7 +24,7 @@ class AccountingController {
         // nd anyvariable: desired_time, prob de bloque proporcional a time&size
     }
     // Flood: this method is called from the method flooding
-    * flood(c, m, d, username, parameters_raw, result_raw, hash, TTL) {
+    * flood(c, m, d, username, pass_hash, parameters_raw, result_raw, hash, TTL) {
         // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
         var new_ttl = TTL - 1;
         if (new_ttl < 1) {
@@ -45,7 +45,7 @@ class AccountingController {
         // Envía request de FLOOD   a neighs
         var num_neighs = result.length;
         const request = require('request'); // Adonis request method
-        var formData = {c: c, m: m, d: d, username: username, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
+        var formData = {c: c, m: m, d: d, username: username,pass_hash: pass_hash, parameters_raw: parameters_raw, result_raw: result_raw, hash: hash, TTL: TTL};
         
         for (var i = 0; i < num_neighs; i++) {
             request.post(result[i].address + '/flooding', {form: formData},
@@ -90,7 +90,7 @@ class AccountingController {
         
         */
         // Flooding
-        var result = yield * this.flood(c, m, d, username, JSON.parse(parameters_raw), result_raw, hash, TTL);
+        var result = yield * this.flood(c, m, d, username,url_params.pass_hash, JSON.parse(parameters_raw), result_raw, hash, TTL);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
@@ -348,7 +348,7 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, username, url_params_mod, result_raw, do_flood) {
+    * Account(c, m, d, username,url_params_mod, result_raw, do_flood) {
         // calcula el hash del relultado
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
@@ -410,7 +410,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod, result_raw, hash_p, TTL);
+            result = yield this.flood(c, m, d, url_params_mod.username,url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL);
         }
 
         if (username && c && m) {
