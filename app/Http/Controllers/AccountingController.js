@@ -78,8 +78,8 @@ class AccountingController {
             yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
         }
         // Authorization layer (403 Error)
-        const collection = 3;
-        const method = 6;
+        const collection = c;
+        const method = m;
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
