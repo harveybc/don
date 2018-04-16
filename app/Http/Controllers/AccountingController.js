@@ -76,7 +76,7 @@ class AccountingController {
         var authe = new Authe();
         const authe_res = yield * authe.AuthenticateUser(url_params.username, url_params.pass_hash);
         if (!authe_res) {
-            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 7});
+            yield response.sendView('master_JSON', {result: {"error": authe_res, "code": 401}, request_id: 79});
         }
         // Authorization layer (403 Error)  TODO: CORREGIR
         const collection = c;
