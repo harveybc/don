@@ -56,7 +56,7 @@ class AccountingController {
                     }
             );
         }
-        var res = {url:result[i].address + '/flooding',form: formData, new_ttl: new_ttl, num_found:num_found,max_connections:max_c, num_neighs:num_neighs, result:result }
+        var res = { new_ttl: new_ttl, num_found:num_found,max_connections:max_c, num_neighs:num_neighs, result:result, url:result[i].address + '/flooding',form: formData }
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
