@@ -64,7 +64,7 @@ class AccountingController {
         // c, m, d, username, parameters_raw, result_raw, hash, TTL, 
         const c = parseInt(url_params.c);
         const m = parseInt(url_params.m);
-        const d = parseInt(url_params.d);
+        const d = url_params.d;
         const username = url_params.username;
         const parameters_raw = JSON.parse(url_params.parameters_raw);
         const result_raw = JSON.parse(url_params.result_raw);
@@ -91,7 +91,7 @@ class AccountingController {
         // Flooding
         var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
-        const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result, false);
+        const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
         }
