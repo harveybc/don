@@ -9,14 +9,14 @@ const Neighbors = use('App/Model/Neighbors')
 const neighborsArray = [{
         "id": 1 ,
         "app_hash": "ah1",
-        "address": "http://192.168.0.241",
+        "address": "http://192.168.0.241:3338",
         "distance": 2,
         "latency": 500,
         "selection_method": 0
     },{
         "id": 2 ,
         "app_hash": "ah2",
-        "address": "http://192.168.0.242",
+        "address": "http://192.168.0.242:3338",
         "distance": 2,
         "latency": 500,
         "selection_method": 0
