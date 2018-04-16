@@ -67,7 +67,7 @@ class AccountingController {
         const m = parseInt(url_params.m);
         const d = url_params.d;
         const username = url_params.username;
-        const parameters_raw = JSON.parse(url_params.parameters_raw);
+        const parameters_raw = url_params.parameters_raw;
         const result_raw = JSON.parse(url_params.result_raw);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -90,7 +90,7 @@ class AccountingController {
         
         */
         // Flooding
-        var result = yield * this.flood(c, m, d, username, parameters_raw, result_raw, hash, TTL, request, response);
+        var result = yield * this.flood(c, m, d, username, JSON.parse(parameters_raw), result_raw, hash, TTL, request, response);
         // Adiciona el registro de accounting original 
         const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
         if (!account_res) {
