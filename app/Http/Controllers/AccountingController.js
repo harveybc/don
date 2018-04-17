@@ -341,7 +341,7 @@ class AccountingController {
          }
          }
          */
-        yield response.sendView('master_JSON', {result: result, request_id: 70});
+        yield response.sendView('master_JSON', {result: num_found[0].counted , request_id: 70});
     }
 
     /** @desc saves the username, collection, method, date, parameters, result, process_hash, (string) 
@@ -354,7 +354,6 @@ class AccountingController {
         var r = sha256(JSON.stringify(result_raw));
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
-        // Busca SI NO EXISTIA ANTES EL MISMO HASH? o no es necesario porque ya se hace desde flooding?
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
