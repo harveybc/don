@@ -63,7 +63,7 @@ class AccountingController {
         const username = url_params.username;
         var parameters_raw = url_params.parameters_raw;
         //parameters_raw = parameters_raw.replace('\\"', '"');
-        parameters_raw = parameters_raw.replace("\\", "");
+        parameters_raw = parameters_raw.replace(/\\/g, "");
         const result_raw = url_params.result_raw;
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
