@@ -69,7 +69,6 @@ class AuthenticationController {
     }
     * createItemQuery(url_params) {
         // generate parameters for query
-console.log('parameters_rawIQ:', url_params.replace(/"(\w+)"\s*:/g, '$1:')); // Print the HTML
         const Database = use('Database');
         const user_name = url_params.user_name;
         const username = url_params.username;
