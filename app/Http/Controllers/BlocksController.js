@@ -287,7 +287,7 @@ class BlocksController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('blocks')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "username": user_name, "process_hash": process_hash
                     , "prev_hash": prev_hash

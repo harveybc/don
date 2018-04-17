@@ -155,7 +155,7 @@ class ParametersController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('parameters')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "process_hash": process_hash
                     , "app_hash": app_hash

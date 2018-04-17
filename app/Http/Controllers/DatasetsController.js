@@ -174,7 +174,7 @@ class DatasetsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('datasets')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "name": name
                     , "description": description

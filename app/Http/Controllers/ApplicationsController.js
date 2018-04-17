@@ -133,7 +133,7 @@ class ApplicationsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('applications')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "name": name
                     , "hash": hash

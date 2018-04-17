@@ -144,7 +144,7 @@ class NeighborsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('neighbors')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "app_hash": app_hash
                     , "address": address

@@ -181,7 +181,7 @@ class EvaluationsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('evaluations')
-                .where('hash',id)
+                .where('id',id)
                 .update({
                     "observations": observations
                     , "features": features
