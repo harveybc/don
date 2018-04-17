@@ -103,7 +103,7 @@ class AccountingController {
             // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
             var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL);
             // Adiciona el registro de accounting original 
-            console.log("parameters_raw",JSON.stringify(parameters_raw));
+            console.log("\nPARAMETERS_RAW_FLOODING",JSON.stringify(parameters_raw));
             const account_res = yield * this.Account(collection, method, d, username, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, false);
             if (!account_res) {
                 yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
@@ -361,9 +361,9 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, username, url_params_mod2, result_raw, hash_p, do_flood) {
+    * Account(c, m, d, username, url_params_string, result_raw, hash_p, do_flood) {
         var r =  result_raw;
-        var url_params_mod = JSON.parse(url_params_mod2);
+        var url_params_mod = JSON.parse(url_params_string);
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // inicializa variables ret y result(de esta cunfión).
@@ -429,7 +429,7 @@ var block_hash = 0;
             const id = yield Database
                     .table('accountings')
                     .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
-                        'parameters': url_params_mod, 'result': r, 'created_by': username, 'updated_by': username,
+                        'parameters': url_params_string, 'result': r, 'created_by': username, 'updated_by': username,
                         'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
             const result_q = {"result": result};
             return (result_q);
