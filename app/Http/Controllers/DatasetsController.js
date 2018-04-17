@@ -222,7 +222,7 @@ class DatasetsController {
         // Dataset layer
         // collections: 1=authent, 2=authoriz, 3=dataset, 4=processes, 5=parameters, 6=datasets, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
-        var Account = use('App/Http/Controllers/AccountingController');
+        var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const date_d = new Date;
         const d = date_d.toISOString();
