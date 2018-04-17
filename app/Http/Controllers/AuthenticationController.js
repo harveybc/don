@@ -72,6 +72,7 @@ class AuthenticationController {
         const Database = use('Database');
         var url_params = url_params2;
         console.log('\nPARAMS:', Object.keys(url_params));
+        console.log('\nPARAMS:', Object.values(url_params));
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
         const username = url_params.username;
