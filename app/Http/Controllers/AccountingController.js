@@ -69,9 +69,9 @@ class AccountingController {
         var parameters_raw = JSON.parse(params_r);
         // convert result string to JSON
         var result_s=JSON.stringify(url_params.result_raw);
-        var result_r = params_s.replace(/"{/,"{");
-        result_r = params_r.replace(/}"/,"}");
-        result_r = params_r.replace(/\\/g,"");
+        var result_r = result_s.replace(/"{/,"{");
+        result_r = result_r.replace(/}"/,"}");
+        result_r = result_r.replace(/\\/g,"");
         var result_raw = JSON.parse(result_r);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
