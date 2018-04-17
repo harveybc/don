@@ -71,8 +71,10 @@ class AuthenticationController {
         // generate parameters for query
         const Database = use('Database');
         var url_params = url_params2;
-        console.log('\nPARAMS_s:', JSON.stringify(url_params));
-        console.log('\nPARAMS:', url_params);
+        var params_s=JSON.stringify(url_params);
+        console.log('\nPARAMS_S:', params_s);
+        console.log('\nPARAMS_R:', params_s.replace(/"{/,"TEST"));
+        console.log('\nPARAMS:', Object.keys(url_params));
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
         const username = url_params.username;
