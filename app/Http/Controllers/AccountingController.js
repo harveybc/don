@@ -66,7 +66,7 @@ class AccountingController {
         var params_r = params_s.replace(/"{/, "{");
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
-        params_r = params_r.substring(0, params_r.indexOf('}'));
+        params_r = params_r.substring(0, params_r.indexOf('}'))+"}";
         console.log("\nURL_PARAMS_STRING", params_r);
         var parameters_raw = JSON.parse(params_r);
 
@@ -75,6 +75,7 @@ class AccountingController {
         var result_r = result_s.replace(/"{/, "{");
         result_r = result_r.replace(/}"/, "}");
         result_r = result_r.replace(/\\/g, "");
+        result_r = result_r.substring(0, result_r.indexOf('}'))+"}";
         var result_raw = JSON.parse(result_r);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -370,7 +371,7 @@ class AccountingController {
         var params_r = params_s.replace(/"{/, "{");
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
-        params_r = params_r.substring(0, params_r.indexOf('}'));
+        params_r = params_r.substring(0, params_r.indexOf('}'))+"}";
         var url_params_string = JSON.parse(params_r);
         var url_params_mod = JSON.parse(url_params_string);
 
@@ -379,6 +380,7 @@ class AccountingController {
         var result_r = result_s.replace(/"{/, "{");
         result_r = result_r.replace(/}"/, "}");
         result_r = result_r.replace(/\\/g, "");
+        result_r = result_r.substring(0, result_r.indexOf('}'))+"}";
         var result_raw = JSON.parse(result_r);
         var r = result_r;
         // convierte a string los parámetros sin el pass_hash
