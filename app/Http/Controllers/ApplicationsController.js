@@ -164,7 +164,7 @@ class ApplicationsController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(url_params);
+        var result = yield * this.updateItemQuery(url_params,request.param('id'));
         // Application layer
         // collections: 1=authent, 2=authoriz, 3=application, 4=processes, 5=applications, 6=applications, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, applications, result, process_hash, (string) 
@@ -185,7 +185,7 @@ class ApplicationsController {
     /** @desc Returns the <id> of the created process */
     * deleteQuery(url_params) {
         const Database = use('Database');
-        const process_hash = url_params.param('id');
+        const process_hash = id;
         const deleted_count = yield Database.table('applications').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -212,7 +212,7 @@ class ApplicationsController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(url_params);
+        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
 
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=applications, 4=processes, 5=applications, 6=applications, 7=network */

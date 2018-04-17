@@ -228,7 +228,7 @@ class EvaluationsController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(url_params);
+        var result = yield * this.updateItemQuery(url_params,request.param('id'));
         // Evaluation layer
         // collections: 1=authent, 2=authoriz, 3=evaluation, 4=processes, 5=parameters, 6=evaluations, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -247,9 +247,9 @@ class EvaluationsController {
     }
 
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(url_params) {
+    * deleteItemQuery(url_params,id) {
         const Database = use('Database');
-        const process_hash = url_params.param('id');
+        const process_hash = id;
         const deleted_count = yield Database.table('evaluations').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -277,7 +277,7 @@ class EvaluationsController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(url_params);
+        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
 
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=evaluations, 4=processes, 5=parameters, 6=evaluations, 7=network */

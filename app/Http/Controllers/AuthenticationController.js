@@ -190,7 +190,7 @@ class AuthenticationController {
         }
 
         var resp;
-        var result = yield * this.updateItemQuery(url_params);
+        var result = yield * this.updateItemQuery(url_params,request.param('id') );
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -209,10 +209,10 @@ class AuthenticationController {
     }
 
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(url_params) {
+    * deleteItemQuery(url_params,id) {
         /** @desc Returns the <id> of the created process */
         const Database = use('Database');
-        const process_hash = url_params.param('id');
+        const process_hash = id;
         const deleted_count = yield Database.table('authentications').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -235,7 +235,7 @@ class AuthenticationController {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         var resp;
-        var result = yield * this.deleteItemQuery(url_params);
+        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
