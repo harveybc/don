@@ -105,7 +105,7 @@ class AccountingController {
                 if (m === 3) { // method: create
                    // parameters_raw = parameters_raw.replace(/"{/,"TEST");
                    // parameters_raw = parameters_raw.replace(/}"/,'}');
-                    console.log('parameters_raw:', console.log('parameters_rawIQ:', url_params.replace(/"(\w+)"\s*:/g, '$1:')); // Print the HTML); // Print the HTML
+                    console.log('parameters_raw:', url_params.replace(/"(\w+)"\s*:/g, '$1:')); // Print the HTML); // Print the HTML
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
