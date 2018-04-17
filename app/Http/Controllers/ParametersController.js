@@ -55,9 +55,7 @@ class ParametersController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
-        // generate parameters for query
-        var url_params = request.post();
+    * createItemQuery(url_params) {
         // assign variables to url parameters
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -79,7 +77,7 @@ class ParametersController {
                 yield Database
                 .table('parameters')
                 .insert({
-                     "process_hash": app_hash
+                    "process_hash": app_hash
                     , "app_hash": app_hash
                     , "parameter_link": parameter_link
                     , "parameter_text": parameter_text
@@ -106,26 +104,30 @@ class ParametersController {
         // Authorization layer (403 Error)
         const collection = 8;
         const method = 3;
-       
-        
+
+
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 4});
         }
-        
-        
+
+
         // Queries and response
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=parameters, 4=processes, 5=parameters, 6=parameters, 7=network */
         // 
 // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -133,10 +135,8 @@ class ParametersController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate parameters for query
-        var url_params = request.post();
-        // assign variables to url parameters
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
         const parameter_link = url_params.parameter_link;
@@ -155,7 +155,7 @@ class ParametersController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('parameters')
-                .where('hash', request.param('id'))
+                .where('hash', url_params.param('id'))
                 .update({
                     "process_hash": process_hash
                     , "app_hash": app_hash
@@ -192,30 +192,33 @@ class ParametersController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Parameter layer
         // collections: 1=authent, 2=authoriz, 3=parameter, 4=processes, 5=parameters, 6=parameters, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
-    
+
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(request, response) {
+    * deleteItemQuery(url_params) {
         const Database = use('Database');
-        const process_hash = request.param('id');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('parameters').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
     }
-    
+
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -237,13 +240,17 @@ class ParametersController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
+        var result = yield * this.deleteItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=parameters, 4=processes, 5=parameters, 6=parameters, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -452,13 +459,13 @@ class ParametersController {
             user_id: user_id,
             items: [
                 {attr: "process_hash", title: "process_hash", type: "text", width: 30},
-                    {attr: "app_hash", title: "app_hash", type: "text", width: 30},
-                    {attr: "parameter_link", title: "parameter_link", type: "text", width: 30},
-                    {attr: "parameter_text", title: "parameter_text", type: "text", width: 30},
-                    {attr: "parameter_blob", title: "parameter_blob", type: "text", width: 30},
-                    {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
-                    {attr: "hash", title: "hash", type: "text", width: 30},
-                    {attr: "performance", title: "performance", type: "text", width: 30}
+                {attr: "app_hash", title: "app_hash", type: "text", width: 30},
+                {attr: "parameter_link", title: "parameter_link", type: "text", width: 30},
+                {attr: "parameter_text", title: "parameter_text", type: "text", width: 30},
+                {attr: "parameter_blob", title: "parameter_blob", type: "text", width: 30},
+                {attr: "validation_hash", title: "validation_hash", type: "text", width: 30},
+                {attr: "hash", title: "hash", type: "text", width: 30},
+                {attr: "performance", title: "performance", type: "text", width: 30}
 
             ]
         });

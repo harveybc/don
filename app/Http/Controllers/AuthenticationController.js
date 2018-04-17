@@ -72,7 +72,6 @@ class AuthenticationController {
         const Database = use('Database');
         const user_name = url_params.user_name;
         const username = url_params.username;
-        
         const name = url_params.name;
         const public_key = url_params.public_key;
         const pass_hash = url_params.passhash;
@@ -128,21 +127,22 @@ class AuthenticationController {
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
         // the last parameter is the flooding flag
-        var sha256 = require('js-sha256'); var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
-        
-        const account_res = yield * account.Account(collection, method, d ,url_params.username ,JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {"result": account_res, "request_id": 5});
     }
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        const url_params = request.post();
         const name = url_params.name;
         const user_name = url_params.user_name;
         const public_key = url_params.public_key;
@@ -163,7 +163,7 @@ class AuthenticationController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('authentications')
-                .where('id', request.param('id'))
+                .where('id', url_params.param('id'))
                 .update({'name': name, 'username': user_name, 'public_key': public_key, 'pass_hash': pass_hash, 'app_hash': app_hash
                     , 'max_connections': max_connections, 'max_neighbors': max_neighbors, 'max_ttl': max_ttl
                     , 'created_by': created_by, 'updated_by': updated_by
@@ -188,32 +188,36 @@ class AuthenticationController {
         if (!auth_res_2) {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
+
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
-    
+
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(request, response) {
-    /** @desc Returns the <id> of the created process */
+    * deleteItemQuery(url_params) {
+        /** @desc Returns the <id> of the created process */
         const Database = use('Database');
-        const process_hash = request.param('id');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('authentications').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
     }
-    
+
     * DeleteItem(request, response) {
         var url_params = request.get();
         // Authentication layer (401 Error)
@@ -231,13 +235,17 @@ class AuthenticationController {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
+        var result = yield * this.deleteItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

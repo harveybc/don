@@ -55,9 +55,7 @@ class ModelsController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
-        // generate parameters for query
-        var url_params = request.post();
+    * createItemQuery(url_params) {
         // assign variables to url parameters
         const name = url_params.name;
         const description = url_params.description;
@@ -120,14 +118,18 @@ class ModelsController {
 
         // Queries and response
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=models, 4=processes, 5=parameters, 6=models, 7=network */
         // 
 // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -135,10 +137,8 @@ class ModelsController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate parameters for query
-        var url_params = request.post();
-        // assign variables to url parameters
         const name = url_params.name;
         const description = url_params.description;
         const app_hash = url_params.app_hash;
@@ -158,7 +158,7 @@ class ModelsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('models')
-                .where('hash', request.param('id'))
+                .where('hash', url_params.param('id'))
                 .update({
                     "name": name
                     , "description": description
@@ -196,13 +196,17 @@ class ModelsController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Model layer
         // collections: 1=authent, 2=authoriz, 3=model, 4=processes, 5=parameters, 6=models, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -211,9 +215,9 @@ class ModelsController {
     }
 
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(request, response) {
+    * deleteItemQuery(url_params) {
         const Database = use('Database');
-        const process_hash = request.param('id');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('models').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -240,13 +244,17 @@ class ModelsController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
+        var result = yield * this.deleteItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=models, 4=processes, 5=parameters, 6=models, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

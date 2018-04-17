@@ -9,17 +9,17 @@ class AuthorizationController {
         var ret = false;
         var result;
         // collection 5 doesnot verify processhash
-        if (username && c && method && (process_hash || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10)|| (c === 11))) {
+        if (username && c && method && (process_hash || (c === 5) || (c === 6) || (c === 7) || (c === 8) || (c === 9) || (c === 10) || (c === 11))) {
             const Database = use('Database');
             // Consulta app_hash del process_hash y del user_id para validar que sean el mismo
             var process_app_hash = "";
             var user_app_hash = "";
             // TODO: ARREGLAR AUTORIZACIÓN POR APPHASH SOLO EN REQUESTS DE SCOPE=APPLICATION como datasets o models
-                        /* if (c != 5) {
-                process_app_hash = yield Database.select('app_hash').from('processes').where('hash', process_hash);
-                user_app_hash = yield Database.select('app_hash').from('authentications').where('username', username);
-            }
-            */
+            /* if (c != 5) {
+             process_app_hash = yield Database.select('app_hash').from('processes').where('hash', process_hash);
+             user_app_hash = yield Database.select('app_hash').from('authentications').where('username', username);
+             }
+             */
             if (process_app_hash === user_app_hash) {
                 // consulta el rol de la tabla autorizathions            
                 result = yield Database.select('role').from('authorizations').where('username', username);
@@ -191,10 +191,9 @@ class AuthorizationController {
 
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
+    * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.post();
         const user_name = url_params.user_name;
         const process_hash = url_params.process_hash;
         const role = url_params.role_key;
@@ -234,24 +233,26 @@ class AuthorizationController {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * updateItemQuery(request, response) {
-
+    * updateItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.post();
         const user_name = url_params.user_name;
         const process_hash = url_params.process_hash;
         const role = url_params.role_key;
@@ -267,7 +268,7 @@ class AuthorizationController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('authorizations')
-                .where('id', request.param('id'))
+                .where('id', url_params.param('id'))
                 .update({'username': user_name, 'process_hash': process_hash, 'role': role, 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"affected_rows": affected_rows};
@@ -292,23 +293,27 @@ class AuthorizationController {
         }
 
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-   
-    * deleteItemQuery(request, response) {    
+
+    * deleteItemQuery(url_params) {
         const Database = use('Database');
-        const process_hash = request.param('id');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('authorizations').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -331,13 +336,17 @@ class AuthorizationController {
             yield response.sendView('master_JSON', {result: {"error": auth_res_2, "code": 403}, request_id: 3});
         }
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
+        var result = yield * this.deleteItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

@@ -31,7 +31,7 @@ class ProcessesDBController {
         const result = yield Database.select('*').from('processes').where('id', process_id);
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
+    * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
         const url_params = request.get();
@@ -69,7 +69,7 @@ class ProcessesDBController {
         result = yield * this.createItemQuery(request, resp);
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate parameters for query
 // TODO CORREGIR SQL DE UPDATE EN LUGAR DE CREATE
         const Database = use('Database');

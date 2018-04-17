@@ -55,9 +55,7 @@ class NeighborsController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(request, response) {
-        // generate neighbors for query
-        var url_params = request.post();
+    * createItemQuery(url_params) {
         // assign variables to url neighbors
         const app_hash = url_params.app_hash;
         const address = url_params.address;
@@ -76,7 +74,7 @@ class NeighborsController {
                 yield Database
                 .table('neighbors')
                 .insert({
-                     "app_hash": app_hash
+                    "app_hash": app_hash
                     , "address": address
                     , "distance": distance
                     , "latency": latency
@@ -100,26 +98,28 @@ class NeighborsController {
         // Authorization layer (403 Error)
         const collection = 9;
         const method = 3;
-       
-        
+
+
         var Autho = use('App/Http/Controllers/AuthorizationController');
         var autho = new Autho();
         const autho_res = yield * autho.AuthorizeUser(url_params.username, url_params.process_hash, collection, method);
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 4});
         }
-        
-        
+
+
         // Queries and response
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=neighbors, 4=processes, 5=neighbors, 6=neighbors, 7=network */
         // 
 // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params.username, url_params, result, false);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        const account_res = yield * account.Account(collection, method, d, url_params.username, url_params, result, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -127,10 +127,8 @@ class NeighborsController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate neighbors for query
-        var url_params = request.post();
-        // assign variables to url neighbors
         const app_hash = url_params.app_hash;
         const address = url_params.address;
         const distance = url_params.distance;
@@ -146,9 +144,9 @@ class NeighborsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('neighbors')
-                .where('hash', request.param('id'))
+                .where('hash', url_params.param('id'))
                 .update({
-                     "app_hash": app_hash
+                    "app_hash": app_hash
                     , "address": address
                     , "distance": distance
                     , "latency": latency
@@ -180,30 +178,33 @@ class NeighborsController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Neighbor layer
         // collections: 1=authent, 2=authoriz, 3=neighbor, 4=processes, 5=neighbors, 6=neighbors, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Account = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
+
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(request, response) {
-            const Database = use('Database');
-        const process_hash = request.param('id');
+    * deleteItemQuery(url_params) {
+        const Database = use('Database');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('neighbors').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
     }
-    
-    
+
     /** @desc Returns the <id> of the created process */
     * DeleteItem(request, response) {
         var url_params = request.get();
@@ -225,14 +226,18 @@ class NeighborsController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
-        
+        var result = yield * this.deleteItemQuery(url_params);
+
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=neighbors, 4=processes, 5=neighbors, 6=neighbors, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
-        var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
-        const account_res = yield * account.Account(collection, method, d ,url_params, result);
+        var account = new Accounting();
+        const date_d = new Date;
+        const d = date_d.toISOString();
+        var sha256 = require('js-sha256');
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
@@ -334,7 +339,6 @@ class NeighborsController {
                     {attr: "distance", title: "distance", type: "text", width: 30},
                     {attr: "latency", title: "latency", type: "text", width: 30},
                     {attr: "selection_method", title: "selection_method", type: "text", width: 30},
-                    
                 ]
             });
         }
@@ -395,7 +399,6 @@ class NeighborsController {
                     {attr: "distance", title: "distance", type: "text", width: 30},
                     {attr: "latency", title: "latency", type: "text", width: 30},
                     {attr: "selection_method", title: "selection_method", type: "text", width: 30},
-
                 ]
             });
         }
@@ -435,12 +438,11 @@ class NeighborsController {
             data: result,
             user_id: user_id,
             items: [
-                    {attr: "app_hash", title: "app_hash", type: "text", width: 30},
-                    {attr: "address", title: "address", type: "text", width: 30},
-                    {attr: "distance", title: "distance", type: "text", width: 30},
-                    {attr: "latency", title: "latency", type: "text", width: 30},
-                    {attr: "selection_method", title: "selection_method", type: "text", width: 30},
-
+                {attr: "app_hash", title: "app_hash", type: "text", width: 30},
+                {attr: "address", title: "address", type: "text", width: 30},
+                {attr: "distance", title: "distance", type: "text", width: 30},
+                {attr: "latency", title: "latency", type: "text", width: 30},
+                {attr: "selection_method", title: "selection_method", type: "text", width: 30},
             ]
         });
     }

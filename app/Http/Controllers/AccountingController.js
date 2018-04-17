@@ -62,16 +62,16 @@ class AccountingController {
         const d = url_params.d;
         const username = url_params.username;
         // convert parameters_raw string to JSON 
-        var params_s=JSON.stringify(url_params.parameters_raw);
-        var params_r = params_s.replace(/"{/,"{");
-        params_r = params_r.replace(/}"/,"}");
-        params_r = params_r.replace(/\\/g,"");
+        var params_s = JSON.stringify(url_params.parameters_raw);
+        var params_r = params_s.replace(/"{/, "{");
+        params_r = params_r.replace(/}"/, "}");
+        params_r = params_r.replace(/\\/g, "");
         var parameters_raw = JSON.parse(params_r);
         // convert result string to JSON
-        var result_s=JSON.stringify(url_params.result_raw);
-        var result_r = result_s.replace(/"{/,"{");
-        result_r = result_r.replace(/}"/,"}");
-        result_r = result_r.replace(/\\/g,"");
+        var result_s = JSON.stringify(url_params.result_raw);
+        var result_r = result_s.replace(/"{/, "{");
+        result_r = result_r.replace(/}"/, "}");
+        result_r = result_r.replace(/\\/g, "");
         var result_raw = JSON.parse(result_r);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -98,16 +98,16 @@ class AccountingController {
         // busca el hash en la colección accounting 
         if (num_found[0].counted > 0) {
             yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
-        } else 
+        } else
         {
             // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
             var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL);
             // Adiciona el registro de accounting original 
-            console.log("\nPARAMETERS_RAW_FLOODING",JSON.stringify(parameters_raw));
+            console.log("\nPARAMETERS_RAW_FLOODING", JSON.stringify(parameters_raw));
             const account_res = yield * this.Account(collection, method, d, username, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, false);
             if (!account_res) {
                 yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
-            } 
+            }
             // Ejecuta el collection/method/params localmente SIN nuevo accounting ni flooding.
             if (c === 1) { // collection 1 : Authentication
                 var A = use('App/Http/Controllers/AuthenticationController');
@@ -353,7 +353,7 @@ class AccountingController {
              }
              }
              */
-            yield response.sendView('master_JSON', {result: parameters_raw , request_id: 71});
+            yield response.sendView('master_JSON', {result: parameters_raw, request_id: 71});
         }
     }
 
@@ -362,7 +362,7 @@ class AccountingController {
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_string, result_raw, hash_p, do_flood) {
-        var r =  result_raw;
+        var r = result_raw;
         var url_params_mod = JSON.parse(url_params_string);
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
@@ -370,7 +370,7 @@ class AccountingController {
         var ret = false;
         var result;
 // @TODO: set the block of the regiser to the last one in blocks collection
-var block_hash = 0;
+        var block_hash = 0;
         // retrieve the variables for block generation conditions
         var c_vars = this.GetConditionVariables(url_params_mod.process_hash);
         //TODO: TEST CONDITONS? 
@@ -492,10 +492,9 @@ var block_hash = 0;
         yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
 
-    * createItemQuery(request, response) {
+    * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.post();
         const username = url_params.username;
         const collection = url_params.collection;
         const method = url_params.method;
@@ -544,7 +543,7 @@ var block_hash = 0;
         }
         // Queries and response
         var resp;
-        var result = yield * this.createItemQuery(request, resp);
+        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -559,10 +558,9 @@ var block_hash = 0;
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
-    * updateItemQuery(request, response) {
+    * updateItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = request.post();
         const user_name = url_params.user_name;
         const collection = url_params.collection;
         const method = url_params.method;
@@ -583,7 +581,7 @@ var block_hash = 0;
         // perform query and send view
         const affected_rows = yield Database
                 .table('accountings')
-                .where('id', request.param('id'))
+                .where('id', url_params.param('id'))
                 .update({"username": user_name, "process_hash": process_hash, "collection": collection, "method": method, "parameters": parameters, "result": res, 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'block_hash': block_hash});
         const result = {"affected_rows": affected_rows};
@@ -610,7 +608,7 @@ var block_hash = 0;
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(request, resp);
+        var result = yield * this.updateItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -626,9 +624,9 @@ var block_hash = 0;
         yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(request, response) {
+    * deleteItemQuery(url_params) {
         const Database = use('Database');
-        const process_hash = request.param('id');
+        const process_hash = url_params.param('id');
         const deleted_count = yield Database.table('accountings').where('id', process_hash).delete();
         const result = {"deleted_count": deleted_count};
         return result;
@@ -655,7 +653,7 @@ var block_hash = 0;
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(request, resp);
+        var result = yield * this.deleteItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
