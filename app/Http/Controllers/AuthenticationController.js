@@ -70,6 +70,7 @@ class AuthenticationController {
     * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
+        console.log('\nPARAMS:',url_params);
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
         const username = url_params.username;
