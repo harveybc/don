@@ -67,9 +67,11 @@ class AuthenticationController {
         const result = yield Database.select('*').from('authentications').where('id', process_hash);
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * createItemQuery(url_params) {
+    * createItemQuery(url_params2) {
         // generate parameters for query
         const Database = use('Database');
+        url_params_s = JSON.stringify(url_params2);
+        url_params = JSON.parse(url_params_s);
         console.log('\nPARAMS:',url_params);
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
