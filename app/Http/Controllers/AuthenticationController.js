@@ -74,7 +74,7 @@ class AuthenticationController {
         console.log('\nPARAMS_S:', params_s);
         var params_r = params_s.replace(/"{/,"{");
         var params_r = params_r.replace(/}"/,"}");
-        var params_r = params_r.replace(/\\/,"");
+        var params_r = params_r.replace(/\\/g,"");
         console.log('\nPARAMS_R:', params_r);
         var url_params = JSON.parse(params_r);
         console.log('\nPARAMS:', Object.keys(url_params));
