@@ -188,7 +188,7 @@ class NeighborsController {
         const d = date_d.toISOString();
         var sha256 = require('js-sha256');
         var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
-        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
+        const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true, request.param('id'));
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
