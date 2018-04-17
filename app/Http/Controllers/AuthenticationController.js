@@ -163,6 +163,7 @@ class AuthenticationController {
         // perform query and send view
         
         console.log("\nURL_PARAMS.name:",url_params);
+        console.log("\nID:",id);
         const affected_rows = yield Database
                 .table('authentications')
                 .where('id', id)
