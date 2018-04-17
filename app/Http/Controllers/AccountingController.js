@@ -128,7 +128,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -151,7 +151,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -173,7 +173,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -195,7 +195,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -217,7 +217,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -239,7 +239,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -261,7 +261,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -283,7 +283,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -305,7 +305,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -327,7 +327,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -349,7 +349,7 @@ class AccountingController {
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
