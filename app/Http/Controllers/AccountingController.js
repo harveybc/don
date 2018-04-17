@@ -66,9 +66,9 @@ class AccountingController {
         var params_r = params_s.replace(/"{/, "{");
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
-        var parameters_raw = JSON.parse(params_r);
         console.log("\nURL_PARAMS_STRING", params_r);
-        console.log("\nURL_PARAMS_JSON", parameters_raw);
+        var parameters_raw = JSON.parse(params_r);
+
         // convert result string to JSON
         var result_s = JSON.stringify(url_params.result_raw);
         var result_r = result_s.replace(/"{/, "{");
