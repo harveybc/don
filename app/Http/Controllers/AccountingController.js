@@ -351,9 +351,7 @@ class AccountingController {
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_mod, result_raw, hash_p, do_flood) {
-        // calcula el hash del relultado
-        var sha256 = require('js-sha256');
-        var r = sha256(JSON.stringify(result_raw));
+        var r =  result_raw;
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // inicializa variables ret y result(de esta cunfión).
