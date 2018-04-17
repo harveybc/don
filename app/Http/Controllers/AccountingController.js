@@ -64,11 +64,15 @@ class AccountingController {
         // convert parameters_raw string to JSON 
         var params_s=JSON.stringify(url_params.parameters_raw);
         var params_r = params_s.replace(/"{/,"{");
-        var params_r = params_r.replace(/}"/,"}");
-        var params_r = params_r.replace(/\\/g,"");
+        params_r = params_r.replace(/}"/,"}");
+        params_r = params_r.replace(/\\/g,"");
         var parameters_raw = JSON.parse(params_r);
-                
-        const result_raw = url_params.result_raw;
+        // convert result string to JSON
+        var result_s=JSON.stringify(url_params.result_raw);
+        var result_r = params_s.replace(/"{/,"{");
+        result_r = params_r.replace(/}"/,"}");
+        result_r = params_r.replace(/\\/g,"");
+        var result_raw = JSON.parse(result_r);
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
         // Authentication layer (401 Error)
@@ -97,7 +101,7 @@ class AccountingController {
         } else 
         {
             // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
-            var result = yield * this.flood(c, m, d, username, url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
+            var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL);
             // Adiciona el registro de accounting original 
             const account_res = yield * this.Account(collection, method, d, username, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, false);
             if (!account_res) {
