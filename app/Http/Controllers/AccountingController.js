@@ -87,7 +87,7 @@ class AccountingController {
         const num_found = yield Database.count('hash as counted').from('accountings').where('hash', hash);
         // busca el hash en la colección accounting 
         if (num_found[0].counted > 0) {
-            yield response.sendView('master_JSON', {result: {"error": account_res, "code": 410, "description": "Acounting register already exiss"}, request_id: 10});
+            yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
         }
         // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
         var result = yield * this.flood(c, m, d, username, url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
