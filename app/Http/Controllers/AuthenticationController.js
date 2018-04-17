@@ -70,10 +70,13 @@ class AuthenticationController {
     * createItemQuery(url_params2) {
         // generate parameters for query
         const Database = use('Database');
-        var url_params = url_params2;
-        var params_s=JSON.stringify(url_params);
+        var params_s=JSON.stringify(url_params2);
         console.log('\nPARAMS_S:', params_s);
-        console.log('\nPARAMS_R:', params_s.replace(/"{/,"TEST"));
+        var params_r = params_s.replace(/"{/,"{");
+        var params_r = params_r.replace(/}"/,"}");
+        var params_r = params_r.replace(/\\/,"");
+        console.log('\nPARAMS_R:', params_r);
+        var url_params = JSON.parse(params_r);
         console.log('\nPARAMS:', Object.keys(url_params));
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
