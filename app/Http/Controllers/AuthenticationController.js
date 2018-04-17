@@ -72,7 +72,7 @@ class AuthenticationController {
         const Database = use('Database');
         var url_params_s = JSON.stringify(url_params2);
         var url_params = JSON.parse(url_params_s);
-        console.log('\nPARAMS:',url_params);
+        console.log('\nPARAMS:', Object.keys(url_params));
         const user_name = url_params.user_name;
         console.log('\nUNAME:', user_name);
         const username = url_params.username;
