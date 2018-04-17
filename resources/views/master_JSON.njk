@@ -4,6 +4,6 @@
 {# JSONRPC 2.0 Header from http://www.jsonrpc.org/specification #}
 {% extends 'master' %}{% block header %}{"jsonrpc": "2.0", "result": {% endblock %}
 {# Content for the response from the metadata_list variable #}
-{% block content %}{{ result | dump | safe}}{% endblock %}
+{% block content %}{{ result }}{% endblock %}
 {# JSONRPC 2.0 Footer from http://www.jsonrpc.org/specification #}
 {% block footer %}, "id":{{ request_id }}}{% endblock %}  
