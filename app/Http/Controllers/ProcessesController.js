@@ -159,6 +159,7 @@ class ProcessesController {
     }
     * updateItemQuery(url_params,id) {
         // generate parameters for query
+        console.log("\nURL_PARAMS_",url_params);
         const Database = use('Database');
         const name = url_params.name;
         const description = url_params.description;
