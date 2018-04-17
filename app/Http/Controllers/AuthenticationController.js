@@ -70,11 +70,8 @@ class AuthenticationController {
     * createItemQuery(url_params) {
         // generate parameters for query
         const Database = use('Database');
-        console.log('\nPARAMS:', Object.keys(url_params));
         const user_name = url_params.user_name;
-        console.log('\nUNAME:', user_name);
         const username = url_params.username;
-        console.log('\nU_NAME:', username);
         
         const name = url_params.name;
         const public_key = url_params.public_key;
@@ -134,6 +131,7 @@ class AuthenticationController {
         var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
         // the last parameter is the flooding flag
         var sha256 = require('js-sha256'); var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        console.log("\nUSERNAME:",url_params.username);
         const account_res = yield * account.Account(collection, method, d ,url_params.username ,JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
