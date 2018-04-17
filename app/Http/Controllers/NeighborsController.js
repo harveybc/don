@@ -391,7 +391,7 @@ class NeighborsController {
                 user_role: 'Administrator',
                 pass_hash: url_params.pass_hash,
                 data: result,
-                hash: result[0].hash,
+                hash: result[0].id,
                 username: url_params.username,
                 items: [
                     {attr: "app_hash", title: "app_hash", type: "text", width: 30},

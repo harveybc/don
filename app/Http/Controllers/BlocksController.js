@@ -536,7 +536,7 @@ class BlocksController {
                 user_role: 'Administrator',
                 pass_hash: url_params.pass_hash,
                 data: result,
-                hash: result[0].hash,
+                hash: result[0].id,
                 username: url_params.username,
                 items: [
                     {attr: "process_hash", title: "proc", type: "text", width: 70},

@@ -413,7 +413,7 @@ class ModelsController {
                 user_role: 'Administrator',
                 pass_hash: url_params.pass_hash,
                 data: result,
-                hash: result[0].hash,
+                hash: result[0].id,
                 username: url_params.username,
                 items: [
                     {attr: "name", title: "name", type: "text", width: 30},

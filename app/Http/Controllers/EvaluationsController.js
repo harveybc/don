@@ -454,7 +454,7 @@ class EvaluationsController {
                 user_role: 'Administrator',
                 pass_hash: url_params.pass_hash,
                 data: result,
-                hash: result[0].hash,
+                hash: result[0].id,
                 username: url_params.username,
                 items: [
                     {attr: "observations", title: "observations", type: "text", width: 30},
