@@ -140,7 +140,7 @@ class AuthenticationController {
         // send response
         yield response.sendView('master_JSON', {"result": account_res, "request_id": 5});
     }
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const Database = use('Database');
         const name = url_params.name;
@@ -163,7 +163,7 @@ class AuthenticationController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('authentications')
-                .where('id', url_params.param('id'))
+                .where('id', id)
                 .update({'name': name, 'username': user_name, 'public_key': public_key, 'pass_hash': pass_hash, 'app_hash': app_hash
                     , 'max_connections': max_connections, 'max_neighbors': max_neighbors, 'max_ttl': max_ttl
                     , 'created_by': created_by, 'updated_by': updated_by

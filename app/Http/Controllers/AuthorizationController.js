@@ -250,7 +250,7 @@ class AuthorizationController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const Database = use('Database');
         const user_name = url_params.user_name;
@@ -268,7 +268,7 @@ class AuthorizationController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('authorizations')
-                .where('id', url_params.param('id'))
+                .where('id', id)
                 .update({'username': user_name, 'process_hash': process_hash, 'role': role, 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, 'active': active});
         const result = {"affected_rows": affected_rows};

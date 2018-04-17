@@ -212,7 +212,7 @@ class BlocksController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const user_name = url_params.user_name;
         const collection = url_params.collection;
@@ -287,7 +287,7 @@ class BlocksController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('blocks')
-                .where('hash', url_params.param('id'))
+                .where('hash',id)
                 .update({
                     "username": user_name, "process_hash": process_hash
                     , "prev_hash": prev_hash

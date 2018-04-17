@@ -157,7 +157,7 @@ class ProcessesController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const Database = use('Database');
         const name = url_params.name;
@@ -186,7 +186,7 @@ class ProcessesController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('processes')
-                .where('id', url_params.param('id'))
+                .where('id', id)
                 .update({'name': name, 'description': description, 'creator_key': creator_key, 'hash': hash
                     , 'tags': tags, 'app_hash': app_hash, 'active': active, 'desired_block_time': desired_block_time
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control

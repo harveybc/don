@@ -127,7 +127,7 @@ class NeighborsController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate neighbors for query
         const app_hash = url_params.app_hash;
         const address = url_params.address;
@@ -144,7 +144,7 @@ class NeighborsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('neighbors')
-                .where('hash', url_params.param('id'))
+                .where('hash',id)
                 .update({
                     "app_hash": app_hash
                     , "address": address

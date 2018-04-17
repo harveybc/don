@@ -137,7 +137,7 @@ class ModelsController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const name = url_params.name;
         const description = url_params.description;
@@ -158,7 +158,7 @@ class ModelsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('models')
-                .where('hash', url_params.param('id'))
+                .where('hash',id)
                 .update({
                     "name": name
                     , "description": description

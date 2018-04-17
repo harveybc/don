@@ -135,7 +135,7 @@ class ParametersController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -155,7 +155,7 @@ class ParametersController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('parameters')
-                .where('hash', url_params.param('id'))
+                .where('hash',id)
                 .update({
                     "process_hash": process_hash
                     , "app_hash": app_hash

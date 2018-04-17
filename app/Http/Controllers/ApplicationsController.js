@@ -119,7 +119,7 @@ class ApplicationsController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate applications for query
         const name = url_params.name;
         const hash = url_params.hash;
@@ -133,7 +133,7 @@ class ApplicationsController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('applications')
-                .where('hash', url_params.param('id'))
+                .where('hash',id)
                 .update({
                     "name": name
                     , "hash": hash

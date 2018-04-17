@@ -69,7 +69,7 @@ class ProcessesDBController {
         result = yield * this.createItemQuery(request, resp);
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    * updateItemQuery(url_params) {
+    * updateItemQuery(url_params,id) {
         // generate parameters for query
 // TODO CORREGIR SQL DE UPDATE EN LUGAR DE CREATE
         const Database = use('Database');
