@@ -103,8 +103,8 @@ class AccountingController {
                 var A = use('App/Http/Controllers/AuthenticationController');
                 var a = new A();
                 if (m === 3) { // method: create
-                    parameters_raw = parameters_raw.replace(/"{/,"TEST");
-                    parameters_raw = parameters_raw.replace(/}"/,'}');
+                   // parameters_raw = parameters_raw.replace(/"{/,"TEST");
+                   // parameters_raw = parameters_raw.replace(/}"/,'}');
                     console.log('parameters_raw:', parameters_raw); // Print the HTML
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
