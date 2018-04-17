@@ -61,8 +61,13 @@ class AccountingController {
         const m = parseInt(url_params.m);
         const d = url_params.d;
         const username = url_params.username;
-        var parameters_raw = url_params.parameters_raw;
-        //parameters_raw=JSON.parse(JSON.stringify(parameters_raw.replace(/"(\w+)"\s*:/g, '$1:')));
+        // convert parameters_raw string to JSON 
+        var params_s=JSON.stringify(url_params.parameters_raw);
+        var params_r = params_s.replace(/"{/,"{");
+        var params_r = params_r.replace(/}"/,"}");
+        var params_r = params_r.replace(/\\/g,"");
+        var parameters_raw = JSON.parse(params_r);
+                
         const result_raw = url_params.result_raw;
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -103,10 +108,6 @@ class AccountingController {
                 var A = use('App/Http/Controllers/AuthenticationController');
                 var a = new A();
                 if (m === 3) { // method: create
-                   // parameters_raw = parameters_raw.replace(/"{/,"TEST");
-                   // parameters_raw = parameters_raw.replace(/}"/,'}');
-                    console.log('parameters_raw:', parameters_raw.replace(/"(\w+)"\s*:/g, '$1:')); // Print the HTML); // Print the HTML
-                    
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
