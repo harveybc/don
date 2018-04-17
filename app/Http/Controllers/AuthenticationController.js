@@ -131,7 +131,7 @@ class AuthenticationController {
         var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
         // the last parameter is the flooding flag
         var sha256 = require('js-sha256'); var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
-        console.log("\nUSERNAME:",url_params.username);
+        
         const account_res = yield * account.Account(collection, method, d ,url_params.username ,JSON.stringify(url_params), JSON.stringify(result), hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
