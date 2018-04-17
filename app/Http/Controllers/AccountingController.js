@@ -62,7 +62,7 @@ class AccountingController {
         const d = url_params.d;
         const username = url_params.username;
         var parameters_raw = url_params.parameters_raw;
-        //parameters_raw = parameters_raw.replace('\','');
+        parameters_raw=parameters_raw.replace(/"(\w+)"\s*:/g, '$1:');
         const result_raw = url_params.result_raw;
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -106,7 +106,7 @@ class AccountingController {
                    // parameters_raw = parameters_raw.replace(/"{/,"TEST");
                    // parameters_raw = parameters_raw.replace(/}"/,'}');
                     console.log('parameters_raw:', parameters_raw.replace(/"(\w+)"\s*:/g, '$1:')); // Print the HTML); // Print the HTML
-                    parameters_raw=parameters_raw.replace(/"(\w+)"\s*:/g, '$1:');
+                    
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
