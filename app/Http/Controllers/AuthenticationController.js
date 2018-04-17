@@ -129,7 +129,8 @@ class AuthenticationController {
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting(); const date_d = new Date; const d = date_d.toISOString();
         // the last parameter is the flooding flag
-        const account_res = yield * account.Account(collection, method, d ,url_params.username ,url_params, result, true);
+        var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+        const account_res = yield * account.Account(collection, method, d ,url_params.username ,url_params, result, hash_p, true);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }

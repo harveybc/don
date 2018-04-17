@@ -92,7 +92,7 @@ class AccountingController {
         // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
         var result = yield * this.flood(c, m, d, username, url_params.pass_hash, parameters_raw, result_raw, hash, TTL);
         // Adiciona el registro de accounting original 
-        const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, false);
+        const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, hash, false);
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
         }
@@ -348,16 +348,13 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, username, url_params_mod, result_raw, do_flood) {
+    * Account(c, m, d, username, url_params_mod, result_raw, hash_p, do_flood) {
         // calcula el hash del relultado
         var sha256 = require('js-sha256');
         var r = sha256(JSON.stringify(result_raw));
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
-        // genera hash de la transacción
-        var hash_p = sha256(JSON.stringify('' + c + '' + m + '' + url_params_mod + '' + r + '' + d));
         // Busca SI NO EXISTIA ANTES EL MISMO HASH? o no es necesario porque ya se hace desde flooding?
-    
         // inicializa variables ret y result(de esta cunfión).
         var ret = false;
         var result;
