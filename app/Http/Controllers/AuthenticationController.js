@@ -162,7 +162,7 @@ class AuthenticationController {
         // https://adonisjs.com/docs/3.2/validator
         // perform query and send view
         
-        console.log("\nURL_PARAMS:",url_params);
+        console.log("\nURL_PARAMS.name:",url_params.name);
         const affected_rows = yield Database
                 .table('authentications')
                 .where('id', id)
