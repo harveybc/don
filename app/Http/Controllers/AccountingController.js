@@ -61,9 +61,7 @@ class AccountingController {
         const m = parseInt(url_params.m);
         const d = url_params.d;
         const username = url_params.username;
-        var parameters_raw = url_params.parameters_raw;
-        //parameters_raw = parameters_raw.replace('\\"', '"');
-        parameters_raw = parameters_raw.replace("\\", "test");
+        var parameters_raw = JSON.parse(url_params.parameters_raw);
         const result_raw = url_params.result_raw;
         const hash = url_params.hash;
         const TTL = parseInt(url_params.TTL);
@@ -98,7 +96,7 @@ class AccountingController {
             const account_res = yield * this.Account(collection, method, d, username, parameters_raw, result_raw, hash, false);
             if (!account_res) {
                 yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
-            }
+            } 
             // Ejecuta el collection/method/params localmente SIN nuevo accounting ni flooding.
             if (c === 1) { // collection 1 : Authentication
                 var A = use('App/Http/Controllers/AuthenticationController');
