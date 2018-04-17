@@ -57,7 +57,7 @@ class AccountingController {
     * Flooding(request, response) {
         var url_params = request.post();
         // c, m, d, username, parameters_raw, result_raw, hash, TTL, 
-        const id = parseInt(url_params.id)
+        const id = parseInt(url_params.id);
         const c = parseInt(url_params.c);
         const m = parseInt(url_params.m);
         const d = url_params.d;
@@ -122,7 +122,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -145,7 +145,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -167,7 +167,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -189,7 +189,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -211,7 +211,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -233,7 +233,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -255,7 +255,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -277,7 +277,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -299,7 +299,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -321,7 +321,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -343,7 +343,7 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,parameters_raw.id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -444,7 +444,7 @@ class AccountingController {
         if (username && c && m) {
             // generate parameters for query
             const Database = use('Database');
-            const id = yield Database
+            const acc_id = yield Database
                     .table('accountings')
                     .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
                         'parameters': url_params_string, 'result': r, 'created_by': username, 'updated_by': username,
