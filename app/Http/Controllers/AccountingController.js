@@ -360,11 +360,17 @@ class AccountingController {
      * if the block creation method is OPoW verify block conditions only on collection=parameters,
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
-    * Account(c, m, d, username, url_params_string, result_raw, hash_p, do_flood) {
+    * Account(c, m, d, username, url_params_s, result_raw, hash_p, do_flood) {
         var r = result_raw;
-        console.log("\nURL_PARAMS_STRING", JSON.stringify(url_params_string));
-            
+        // filter url_params
+        var params_s = JSON.stringify(url_params_s);
+        var params_r = params_s.replace(/"{/, "{");
+        params_r = params_r.replace(/}"/, "}");
+        params_r = params_r.replace(/\\/g, "");
+        var url_params_string = JSON.parse(params_r);
         var url_params_mod = JSON.parse(url_params_string);
+        console.log("\nURL_PARAMS_STRING", JSON.stringify(url_params_string));
+        
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // inicializa variables ret y result(de esta cunfión).
