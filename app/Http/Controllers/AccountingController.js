@@ -103,7 +103,6 @@ class AccountingController {
             // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
             var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL);
             // Adiciona el registro de accounting original 
-            console.log("\nPARAMETERS_RAW_FLOODING", JSON.stringify(parameters_raw));
             const account_res = yield * this.Account(collection, method, d, username, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, false);
             if (!account_res) {
                 yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
@@ -363,6 +362,8 @@ class AccountingController {
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_string, result_raw, hash_p, do_flood) {
         var r = result_raw;
+        console.log("\nURL_PARAMS_STRING", JSON.stringify(url_params_string));
+            
         var url_params_mod = JSON.parse(url_params_string);
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
