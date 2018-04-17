@@ -67,6 +67,8 @@ class AccountingController {
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
         var parameters_raw = JSON.parse(params_r);
+        console.log("\nURL_PARAMS_STRING", params_r);
+        console.log("\nURL_PARAMS_JSON", parameters_raw);
         // convert result string to JSON
         var result_s = JSON.stringify(url_params.result_raw);
         var result_r = result_s.replace(/"{/, "{");
@@ -369,7 +371,6 @@ class AccountingController {
         params_r = params_r.replace(/\\/g, "");
         var url_params_string = JSON.parse(params_r);
         var url_params_mod = JSON.parse(url_params_string);
-        console.log("\nURL_PARAMS_STRING", JSON.stringify(url_params_string));
 
         // convert result string to JSON
         var result_s = JSON.stringify(result_raw_s);
