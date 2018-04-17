@@ -102,7 +102,7 @@ class AccountingController {
                 var A = use('App/Http/Controllers/AuthenticationController');
                 var a = new A();
                 if (m === 3) { // method: create
-                    const auth_res = yield * a.createItemQuery(parameters_raw);
+                    const auth_res = yield * a.createItemQuery(JSON.parse(JSON.stringify(parameters_raw)));
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 8});
                     }
