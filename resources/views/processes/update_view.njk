@@ -132,115 +132,120 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="inputThreshold"  name="threshold" placeholder="1">
                         </div>
-                        <div class="form-group">
-                            <label for="inputLastBlockHash" class="col-sm-2 control-label">last_block_hash</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputLastBlockHash"  name="last_block_hash" placeholder="last_block_hash">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputLastBlockDate" class="col-sm-2 control-label">last_block_date</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputLastBlockDate"  name="last_block_date" placeholder="last_block_date">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputLastBlockDifficulty" class="col-sm-2 control-label">last_block_difficulty</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputLastBlockDifficulty"  name="last_block_difficulty" placeholder="last_block_difficulty">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLastBlockTime" class="col-sm-2 control-label">last_block_time</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputLastBlockTime"  name="last_block_time" placeholder="last_block_time">
-                                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastBlockHash" class="col-sm-2 control-label">last_block_hash</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLastBlockHash"  name="last_block_hash" placeholder="last_block_hash">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastBlockDate" class="col-sm-2 control-label">last_block_date</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLastBlockDate"  name="last_block_date" placeholder="last_block_date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastBlockDifficulty" class="col-sm-2 control-label">last_block_difficulty</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLastBlockDifficulty"  name="last_block_difficulty" placeholder="last_block_difficulty">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastBlockTime" class="col-sm-2 control-label">last_block_time</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLastBlockTime"  name="last_block_time" placeholder="last_block_time">
+                        </div>
+                    </div>
 
 
 
-                                    </div>
-                                    <!-- /.box-footer -->
-                                </div>
+                </div>
+                <!-- /.box-footer -->
+            </div>
 
-                                <!-- /.box-body 
-                                <div class="box-footer">
-                                    <button type="submit" class="btn btn-default">Cancel</button>
-                                    <button type="submit" class="btn btn-info pull-right">Update</button>
-                                </div>
-                                <!-- /.box-footer                 -->
-                            </div>
-                            <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-                            <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
-                            <input type="hidden" name="redir" value="1">
-                            <input type="hidden" name="username" value="{{username}}">
-                            <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
-                            </form>
-                        {% endblock %}
-                        {% block footer %}
-                            <div id="helpModal" class="modal fade" role="dialog" >
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Processes Edit View Help</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>This view allows to Update a process. Change the required values and press the save button on the top or bottom.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <!-- End Modal Help Dialog -->
-                            <script type="text/javascript">
-                                // Gets data from controller
-                                var data = {{data| dump | safe}};
-                                        // when page finishes loading, sets the values to the ones from data
-                                        $(document).ready(function () {
-                                    // Shows Help When button clicked
-                                    $('#btn-trig').click(function () {
-                                        $('#helpModal').modal('show');
-                                    });
-                                    // Initialize values of form
-                                    // Metadata
-                                    $('#inputName').val(data[0].name);
-                                    $('#inputDescription').val(data[0].description);
-                                    $('#inputCreatorKey').val(data[0].creator_key);
-                                    $('#inputTags').val(data[0].tags);
-                                    $('#inputAppId').val(data[0].app_hash);
-                                    // Control
-                                    $('#inputActive').val(data[0].active);
-                                    // Configuration
-                                    $('#inputDesiredBlockTime').val(data[0].desired_block_time);
-                                    $('#inputDesiredBlockSize').val(data[0].desired_block_size);
-                                    $('#inputBlockTimeControl').val(data[0].block_time_control_id);// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
-                                    // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
-                                    $('#inputModelId').val(data[0].model_id);
-                                    $('#inputTrainingSetId').val(data[0].training_set_id);
-                                    $('#inputValidationSetId').val(data[0].validation_set_id);
-                                    /*          // Status 
-                                     $('#inputDifficulty').val(data[0].difficulty);
-                                     $('#inputLastBlockId').val(data[0].last_block_hash);
-                                     $('#inputLastBlockDate').val(data[0].last_block_date);
-                                     $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
-                                     $('#inputLastBlockTime').val(data[0].last_block_time);
-                                     $('#inputLastBlockSize').val(data[0].last_block_size);
-                                     // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
-                                     $('#inputLastBlockPerformance').val(data[0].last_block_size);
-                                     // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
-                                     $('#inputLastOptimumId').val(data[0].last_optimum_id);
-                                     $('#inputLastOptimumDate').val(data[0].last_optimum_date);
+            <!-- /.box-body 
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info pull-right">Update</button>
+            </div>
+            <!-- /.box-footer                 -->
+        </div>
+        <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+        <input type="hidden" name="redir" value="1">
+        <input type="hidden" name="username" value="{{username}}">
+        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
+    </form>
+{% endblock %}
+{% block footer %}
+    <div id="helpModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Processes Edit View Help</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This view allows to Update a process. Change the required values and press the save button on the top or bottom.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- End Modal Help Dialog -->
+    <script type="text/javascript">
+        // Gets data from controller
+        var data = {{data| dump | safe}};
+                // when page finishes loading, sets the values to the ones from data
+                $(document).ready(function () {
+            // Shows Help When button clicked
+            $('#btn-trig').click(function () {
+                $('#helpModal').modal('show');
+            });
+            // Initialize values of form
+            // Metadata
+            $('#inputName').val(data[0].name);
+            $('#inputDescription').val(data[0].description);
+            $('#inputCreatorKey').val(data[0].creator_key);
+            $('#inputTags').val(data[0].tags);
+            $('#inputAppId').val(data[0].app_hash);
+            // Control
+            $('#inputActive').val(data[0].active);
+            // Configuration
+            $('#inputDesiredBlockTime').val(data[0].desired_block_time);
+            $('#inputDesiredBlockSize').val(data[0].desired_block_size);
+            $('#inputBlockTimeControl').val(data[0].block_time_control_id);// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
+            // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+            $('#inputModelId').val(data[0].model_id);
+            $('#inputTrainingSetId').val(data[0].training_set_id);
+            $('#inputValidationSetId').val(data[0].validation_set_id);
+            /*          // Status 
+             $('#inputDifficulty').val(data[0].difficulty);
+             $('#inputLastBlockId').val(data[0].last_block_hash);
+             $('#inputLastBlockDate').val(data[0].last_block_date);
+             $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
+             $('#inputLastBlockTime').val(data[0].last_block_time);
+             $('#inputLastBlockSize').val(data[0].last_block_size);
+             // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
+             $('#inputLastBlockPerformance').val(data[0].last_block_size);
+             // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
+             $('#inputLastOptimumId').val(data[0].last_optimum_id);
+             $('#inputLastOptimumDate').val(data[0].last_optimum_date);
              
-                                     */
-                        //TODO: QUITAR
-                                    $('#inputHash').val(data[0].hash);
-                                    $('#inputThreshold').val(data[0].threshold);
-                                    $('#inputLastBlockHash').val(data[0].last_block_hash);
-                                    $('#inputLastBlockDate').val(data[0].last_block_date);
-                                    $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
-                                    $('#inputLastBlockTime').val(data[0].last_block_time);
-                                });
+             */
+            //TODO: QUITAR
+            $('#inputHash').val(data[0].hash);
+            $('#inputThreshold').val(data[0].threshold);
+            $('#inputLastBlockHash').val(data[0].last_block_hash);
+            $('#inputLastBlockDate').val(data[0].last_block_date);
+            $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
+            $('#inputLastBlockTime').val(data[0].last_block_time);
+        });
 
-                            </script>
+    </script>
 
-                        {% endblock %}
+{% endblock %}
