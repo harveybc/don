@@ -5,24 +5,6 @@
 // @TODO: ADICIONAR lista de métodos a hacer accounting
 // @TODO: ADICIONAR nueva colección de transacciones en variables con inputs y outputs
 class AccountingController {
-    /** @desc saves the username, collection, method, date, parameters and result (string) */
-    * GetConditionVariables(process_hash) {
-        var Autho = use('App/Http/Controllers/AccountingController');
-        var autho = new Autho();
-        // ERROR
-        const acc_res_2 = yield * aa.GetItemQuery(url_params.username, collection, method);
-        return (acc_res_2);
-        // opowdet: Read last_block_time,block-time, control method,Perf_last_block, 
-        //   current_block_perf, last_block_threshold, last_block_ from processes collection
-        // opownod: nodet_threshold, 
-        // cpow: last_block_difficulty,
-        // detsize: desired_size, cada nodo tiene un turno
-        // nd-size: desired_size, prob de bloque proporcional a size
-        // dettime: desired_time, cada nodo tiene turno
-        // nd-time: desired_time, prob de bloque proporcional a time&size
-        // det anyvariable: desired_time, cada nodo tiene turno
-        // nd anyvariable: desired_time, prob de bloque proporcional a time&size
-    }
     // Flood: this method is called from the method flooding
     * flood(c, m, d, username, pass_hash, parameters_raw, result_raw, hash, TTL, id) {
         // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
@@ -122,13 +104,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -145,13 +127,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -167,13 +149,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -189,13 +171,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -211,13 +193,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -233,13 +215,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -255,13 +237,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -277,13 +259,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -299,13 +281,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -321,13 +303,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -343,13 +325,13 @@ class AccountingController {
                     }
                 }
                 if (m === 4) { // method: update
-                    const auth_res = yield * a.updateItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.updateItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
                 if (m === 5) { // method: delete
-                    const auth_res = yield * a.deleteItemQuery(parameters_raw,id);
+                    const auth_res = yield * a.deleteItemQuery(parameters_raw, id);
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -385,50 +367,12 @@ class AccountingController {
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // inicializa variables ret y result(de esta cunfión).
-        var ret = false;
-        var result;
-// @TODO: set the block of the regiser to the last one in blocks collection
-        var block_hash = 0;
-        // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(url_params_mod.process_hash);
-        //TODO: TEST CONDITONS? 
-        //TODO: EXTRAER DE PARAMETERS EL  process_hash 
-        // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
-        // the conditions are:
-        var cond = false;
-        // ic collection=parameters and method=create
-        if ((c === 8) && (m === 3)) {
-            // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
-                cond = true;
-            // If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 1) &&
-                    (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
-                cond = true;
-            // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
-            // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
-            // iniciales y coincide
-        }
-        /* if ((c.block_time_control==2)&&(VerifyHashPoW(c.hash,c.blockJSON,c.difficulty))) cond=true;
-         // If block time control method is deterministic size, turn is fixed per node, (TODO: if not generated(node dont reply), use next turn)
-         if ((c.block_time_control==3)&&(VerifySizeTurn(c.block_size, c.desired_block_size, c.turn))) cond=true;
-         // If block time control method is non-deterministic size (SOLO FLOOD FORWARD LARGEST BLOCK, 
-         // LARGEST RAND/BLOCKS since LAST GENERATED BY this node) The rand is generated on receiver of forward
-         if ((c.block_time_control==4)&&(VerifySizeRand(c.block_size, c.desired_block_size))) cond=true;
-         // If block time control method is deterministic time
-         if ((c.block_time_control==5)&&(VerifyTimeTurn(c.block_size, c.desired_block_size, c.turn))) cond=true;
-         // If block time control method is non-deterministic time
-         if ((c.block_time_control==6)&&(VerifyTimeRand(c.block_size, c.desired_block_size, c.turn))) cond=true;   
-         // If block time control method is a variable's value, with deterministic turn
-         if ((c.block_time_control==7)&&(VerifyVariableTurn(c.var_value, c.var_last_value, c.var_last_threshold))) cond=true;
-         // If block time control method is non-deterministic time
-         if ((c.block_time_control==8)&&(VerifyVariableRand(c.var_value, c.var_last_value, c.var_last_threshold, c.var_nodet_threshold))) cond=true;   
-         // @TODO: when others receive and verify the block , they request the accounting registers in the block that they dont have in their accounting collection */
-
-        // Read TTL from authentication
+        var ret = false;   
         const Database = use('Database');
-
-        result = yield Database.select('*').from('authentications').where('username', username).limit(1);
+        // @TODO: test set the block of the regiser to the last one in blocks collection
+        var block_hash = yield Database.select('hash').from('blocks').where('rejects',0).orderBy('id').desc().limit(1);        
+        // Read TTL from authentication
+        var result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
         if (result) {
             TTL = result.max_ttl;
@@ -438,7 +382,7 @@ class AccountingController {
             // SEND FLOODING REQUEST to neights
             // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
             // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL,id);
+            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
         }
 
         if (username && c && m) {
@@ -576,7 +520,7 @@ class AccountingController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
-    * updateItemQuery(url_params,id) {
+    * updateItemQuery(url_params, id) {
         // generate parameters for query
         const Database = use('Database');
         const user_name = url_params.user_name;
@@ -626,7 +570,7 @@ class AccountingController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(url_params,request.param('id'));
+        var result = yield * this.updateItemQuery(url_params, request.param('id'));
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -642,7 +586,7 @@ class AccountingController {
         yield response.sendView('master_JSON', {result: result, request_id: 7});
     }
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(url_params,id) {
+    * deleteItemQuery(url_params, id) {
         const Database = use('Database');
         const process_hash = id;
         const deleted_count = yield Database.table('accountings').where('id', process_hash).delete();
@@ -671,7 +615,7 @@ class AccountingController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
+        var result = yield * this.deleteItemQuery(url_params, request.param('id'));
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=accounting, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
