@@ -507,7 +507,7 @@ class AuthorizationController {
             const result = yield Database.select('*').from('authorizations').where('id', process_hash);
             yield response.sendView('authorization/update_view', {
                 title: 'Edit User - Singularity',
-                process_hash: url_params.process_hash, header: 'Authorization',
+                process_hash: request.param('id'), header: 'Authorization',
                 description: 'Editing View',
                 collection: 'Authorization',
                 view: 'Update : ' + result[0].id,
