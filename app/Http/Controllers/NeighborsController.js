@@ -114,6 +114,7 @@ class NeighborsController {
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=neighbors, 4=processes, 5=neighbors, 6=neighbors, 7=network */
         // 
+        /*
 // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
@@ -123,6 +124,7 @@ class NeighborsController {
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
+        */
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
@@ -181,7 +183,8 @@ class NeighborsController {
         var result = yield * this.updateItemQuery(url_params,request.param('id'));
         // Neighbor layer
         // collections: 1=authent, 2=authoriz, 3=neighbor, 4=processes, 5=neighbors, 6=neighbors, 7=network */
-        // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
+        /* 
+// Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
         const date_d = new Date;
@@ -192,6 +195,7 @@ class NeighborsController {
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
+        */
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
@@ -227,9 +231,9 @@ class NeighborsController {
         //Queries and result
         var resp;
         var result = yield * this.deleteItemQuery(url_params,request.param('id'));
-
+/*
         // Accounting layer
-        // collections: 1=authent, 2=authoriz, 3=neighbors, 4=processes, 5=neighbors, 6=neighbors, 7=network */
+        // collections: 1=authent, 2=authoriz, 3=neighbors, 4=processes, 5=neighbors, 6=neighbors, 7=network 
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, neighbors, result, process_hash, (string) 
         var Accounting = use('App/Http/Controllers/AccountingController');
         var account = new Accounting();
@@ -241,6 +245,7 @@ class NeighborsController {
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
+        */
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
