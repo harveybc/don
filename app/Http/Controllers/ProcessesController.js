@@ -83,7 +83,7 @@ class ProcessesController {
         const Database = use('Database');
         const name = url_params.name;
         const description = url_params.description;
-        const creator_key = url_params.public_key;
+        const creator_key = url_params.creator_key;
         const tags = url_params.tags;
         const app_hash = url_params.app_hash;
         const active = url_params.active;
