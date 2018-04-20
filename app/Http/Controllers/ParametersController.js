@@ -5,13 +5,18 @@
 class ParametersController {
     /** @desc saves the username, collection, method, date, parameters and result (string) */
     * GetConditionVariables(process_hash) {
-        var Autho = use('App/Http/Controllers/AccountingController');
-        var autho = new Autho();
-        // ERROR
-        const acc_res_2 = yield * aa.GetItemQuery(url_params.username, collection, method);
-        return (acc_res_2);
-        // opowdet: Read last_block_time,block-time, control method,Perf_last_block, 
+        const Database = use('Database');
+        var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+        // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
+        var block_time = Date.Now()-result[0].last_block_date; // Calcula el blocktime como NOW-last block date
+        
+        var c_vars={last_block_time:result[0].last_block_time, block_time: block_time,
+        block_time_control:result[0].block_time_control, last_block_performance:result[0].last_block_performance,
+        current_block_performance:result[0].current_block_performance, threshold:result[0].threshold
+    };
+        return c_vars;
+        
         // opownod: nodet_threshold, 
         // cpow: last_block_difficulty,
         // detsize: desired_size, cada nodo tiene un turno
@@ -32,9 +37,9 @@ class ParametersController {
      *
      *
     */
-    * verifyBlockConditions(){
+    * verifyBlockConditions(process_hash){
                 // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(url_params_mod.process_hash);
+        var c_vars = this.GetConditionVariables(process_hash);
         //TODO: TEST CONDITONS? 
         //
         //TODO: EXTRAER DE PARAMETERS EL  process_hash 
@@ -44,12 +49,13 @@ class ParametersController {
         // ic collection=parameters and method=create
         if ((c === 8) && (m === 3)) {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 0) && (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold)))
+            if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.thresold)))
                 cond = true;
-            // If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
+            /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control === 1) &&
                     (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
                 cond = true;
+            */
             // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
             // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
             // iniciales y coincide

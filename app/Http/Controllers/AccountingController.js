@@ -347,7 +347,6 @@ class AccountingController {
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_s, result_raw_s, hash_p, do_flood, id) {
-
         // filter url_params
         var params_s = JSON.stringify(url_params_s);
         var params_r = params_s.replace(/"{/, "{");

@@ -38,7 +38,6 @@ class ProcessesTableSchema extends Schema {
       table.integer('block_time_control') 
       // OPOW det
       table.float('threshold')
-      table.float('last_threshold') //? quitar?
       table.float('last_block_performance')
       table.float('current_block_performance')
       // OPOW no-det
@@ -69,7 +68,6 @@ class ProcessesTableSchema extends Schema {
       // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
       table.integer('last_optimum_id')
       table.timestamp('last_optimum_date')
-      table.float('last_optimum_performance')
       
     })
   }
