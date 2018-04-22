@@ -4,12 +4,14 @@
  */
 class ParametersController {
     /** @desc saves the username, collection, method, date, parameters and result (string) */
-    * GetConditionVariables(process_hash) {
+    * GetConditionVariables(process_hash, performance) {
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
         var block_time = Date.Now()-result[0].last_block_date; // Calcula el blocktime como NOW-last block date
+        
+        // FALTA, si perf> current_perf, actualizar process
         
         var c_vars={last_block_time:result[0].last_block_time, block_time: block_time,
         block_time_control:result[0].block_time_control, last_block_performance:result[0].last_block_performance,
@@ -51,7 +53,12 @@ class ParametersController {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)))
                 cond = true;
-            // TODO: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold
+            // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
+            // TODO: actualiza block,flood
+            // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
+            
+            
+            
             /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control === 1) &&
                     (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
