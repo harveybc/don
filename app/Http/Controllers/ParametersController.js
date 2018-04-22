@@ -9,16 +9,16 @@ class ParametersController {
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
-        var block_time = Date.Now()-result[0].last_block_date; // Calcula el blocktime como NOW-last block date
-        
+        var block_time = Date.Now() - result[0].last_block_date; // Calcula el blocktime como NOW-last block date
+
         // FALTA, si perf> current_perf, actualizar process
-        
-        var c_vars={last_block_time:result[0].last_block_time, block_time: block_time,
-        block_time_control:result[0].block_time_control, last_block_performance:result[0].last_block_performance,
-        current_block_performance:result[0].current_block_performance,current_threshold:result[0].current_threshold,last_threshold:result[0].last_threshold
-    };
+
+        var c_vars = {last_block_time: result[0].last_block_time, block_time: block_time,
+            block_time_control: result[0].block_time_control, last_block_performance: result[0].last_block_performance,
+            current_block_performance: result[0].current_block_performance, current_threshold: result[0].current_threshold, last_threshold: result[0].last_threshold
+        };
         return c_vars;
-        
+
         // opownod: nodet_threshold, 
         // cpow: last_block_difficulty,
         // detsize: desired_size, cada nodo tiene un turno
@@ -38,10 +38,10 @@ class ParametersController {
      
      *
      *
-    */
-    * verifyBlockConditions(process_hash){
-                // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(process_hash);
+     */
+    * verifyBlockConditions(process_hash, performance) {
+        // retrieve the variables for block generation conditions
+        var c_vars = this.GetConditionVariables(process_hash, performance);
         //TODO: TEST CONDITONS? 
         //
         //TODO: EXTRAER DE PARAMETERS EL  process_hash 
@@ -56,28 +56,28 @@ class ParametersController {
             // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             // TODO: actualiza block,flood
             // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
-            
-            
-            
+
+
+
             /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 1) &&
-                    (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
-                cond = true;
-            */
+             if ((c_vars.block_time_control === 1) &&
+             (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
+             cond = true;
+             */
             // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
             // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
             // iniciales y coincide
-            
+
         }
-        if (cond){
+        if (cond) {
             var Block = use('App/Http/Controllers/BlocksController');
-        var block = new Block();
-        var result = yield * block.GenerateBlock();
-        
-        if (!result) {
-            yield response.sendView('master_JSON', {result: {"error": result, "code": 433}, request_id: 127});
-        }
-        
+            var block = new Block();
+            var result = yield * block.GenerateBlock();
+
+            if (!result) {
+                yield response.sendView('master_JSON', {result: {"error": result, "code": 433}, request_id: 127});
+            }
+
         }
         /* if ((c.block_time_control==2)&&(VerifyHashPoW(c.hash,c.blockJSON,c.difficulty))) cond=true;
          // If block time control method is deterministic size, turn is fixed per node, (TODO: if not generated(node dont reply), use next turn)
@@ -94,7 +94,7 @@ class ParametersController {
          // If block time control method is non-deterministic time
          if ((c.block_time_control==8)&&(VerifyVariableRand(c.var_value, c.var_last_value, c.var_last_threshold, c.var_nodet_threshold))) cond=true;   
          // @TODO: when others receive and verify the block , they request the accounting registers in the block that they dont have in their accounting collection */
-            
+
     }
     /** @desc Returns a list of parameters registers*/
     * GetList(request, response) {
@@ -204,7 +204,6 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 4});
         }
         // Queries and response
-        var resp;
         var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=parameters, 4=processes, 5=parameters, 6=parameters, 7=network */
@@ -221,12 +220,12 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Verify block creation conditions
-        this.verifyBlockConditions();
+        var resp = this.verifyBlockConditions(url_params.process_hash, url_params.performance);
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params,id) {
+    * updateItemQuery(url_params, id) {
         // generate parameters for query
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -246,7 +245,7 @@ class ParametersController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('parameters')
-                .where('id',id)
+                .where('id', id)
                 .update({
                     "process_hash": process_hash
                     , "app_hash": app_hash
@@ -283,7 +282,7 @@ class ParametersController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(url_params,request.param('id'));
+        var result = yield * this.updateItemQuery(url_params, request.param('id'));
         // Parameter layer
         // collections: 1=authent, 2=authoriz, 3=parameter, 4=processes, 5=parameters, 6=parameters, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -302,7 +301,7 @@ class ParametersController {
     }
 
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(url_params,id) {
+    * deleteItemQuery(url_params, id) {
         const Database = use('Database');
         const process_hash = id;
         const deleted_count = yield Database.table('parameters').where('id', process_hash).delete();
@@ -331,7 +330,7 @@ class ParametersController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
+        var result = yield * this.deleteItemQuery(url_params, request.param('id'));
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=parameters, 4=processes, 5=parameters, 6=parameters, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
