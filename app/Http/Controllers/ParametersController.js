@@ -13,7 +13,7 @@ class ParametersController {
         
         var c_vars={last_block_time:result[0].last_block_time, block_time: block_time,
         block_time_control:result[0].block_time_control, last_block_performance:result[0].last_block_performance,
-        current_block_performance:result[0].current_block_performance, threshold:result[0].threshold
+        current_block_performance:result[0].current_block_performance,current_threshold:result[0].current_threshold,last_threshold:result[0].last_threshold
     };
         return c_vars;
         
@@ -49,7 +49,7 @@ class ParametersController {
         // ic collection=parameters and method=create
         if ((c === 8) && (m === 3)) {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.thresold)))
+            if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)))
                 cond = true;
             // TODO: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold
             /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
