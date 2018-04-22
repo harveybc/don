@@ -4,14 +4,29 @@
  */
 class ParametersController {
     /** @desc saves the username, collection, method, date, parameters and result (string) */
-    * GetConditionVariables(process_hash, performance) {
+    * GetConditionVariables(process_hash, performance, param_id, date, user) {
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
         var block_time = Date.Now() - result[0].last_block_date; // Calcula el blocktime como NOW-last block date
-
-        // FALTA, si perf> current_perf, actualizar process
+        console.log("\nprocess_result=", result);
+        // FALTA, si perf> current_perf, actualizar process y FLOOD
+        if (performance > parseFloat(result[0].current_block_performance)) {
+            // actualiza con flood en processes current_block_performance, current block_time, last_optimum_id,last_optimum_date, updated_by, updated_At
+            result[0].current_block_performance = performance;
+            result[0].current_block_time = block_time;
+            result[0].last_optimum_id = param_id;
+            result[0].last_optimum_date = date;
+            result[0].updated_by = user;
+            result[0].updated_at = date;
+            var Proceso = use('App/Http/Controllers/ProcessesController');
+            var proceso = new Proceso();
+            var res2 = yield * proceso.updateItemQuery(result[0], result[0].id);
+            console.log("\nres2=", res2);
+            // lee el nuevo registro de procesos en result para calcular las variables de new block.
+            var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+        }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
@@ -19,15 +34,6 @@ class ParametersController {
             last_threshold: parseFloat(result[0].last_threshold)
         };
         return c_vars;
-
-        // opownod: nodet_threshold, 
-        // cpow: last_block_difficulty,
-        // detsize: desired_size, cada nodo tiene un turno
-        // nd-size: desired_size, prob de bloque proporcional a size
-        // dettime: desired_time, cada nodo tiene turno
-        // nd-time: desired_time, prob de bloque proporcional a time&size
-        // det anyvariable: desired_time, cada nodo tiene turno
-        // nd anyvariable: desired_time, prob de bloque proporcional a time&size
     }
 
     /** @desc Verifies if the block creation conditions are met
@@ -35,19 +41,12 @@ class ParametersController {
      * @param {type} request
      * @param {type} response
      * @returns {Generator}
-     * 
-     
-     *
-     *
      */
-    * verifyBlockConditions(process_hash, performance) {
+    * verifyBlockConditions(process_hash, performance, param_id, date, user) {
         // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(process_hash, performance);
-        //TODO: TEST CONDITONS? 
-        //
-        //TODO: EXTRAER DE PARAMETERS EL  process_hash 
+        var c_vars = this.GetConditionVariables(process_hash, performance, param_id, date, user);
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
-        // the conditions are:
+        // the conditions are: (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)
         var cond = false;
         // ic collection=parameters and method=create
         console.log("\nc_vars.block_time_control=", c_vars.block_time_control,
@@ -56,22 +55,10 @@ class ParametersController {
         // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)))
             cond = true;
+
         // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
         // TODO: actualiza block,flood
         // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
-
-
-
-        /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-         if ((c_vars.block_time_control === 1) &&
-         (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
-         cond = true;
-         */
-        // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
-        // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
-        // iniciales y coincide
-
-
         if (cond) {
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block();
@@ -86,22 +73,6 @@ class ParametersController {
         } else {
             return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
         }
-        /* if ((c.block_time_control==2)&&(VerifyHashPoW(c.hash,c.blockJSON,c.difficulty))) cond=true;
-         // If block time control method is deterministic size, turn is fixed per node, (TODO: if not generated(node dont reply), use next turn)
-         if ((c.block_time_control==3)&&(VerifySizeTurn(c.block_size, c.desired_block_size, c.turn))) cond=true;
-         // If block time control method is non-deterministic size (SOLO FLOOD FORWARD LARGEST BLOCK, 
-         // LARGEST RAND/BLOCKS since LAST GENERATED BY this node) The rand is generated on receiver of forward
-         if ((c.block_time_control==4)&&(VerifySizeRand(c.block_size, c.desired_block_size))) cond=true;
-         // If block time control method is deterministic time
-         if ((c.block_time_control==5)&&(VerifyTimeTurn(c.block_size, c.desired_block_size, c.turn))) cond=true;
-         // If block time control method is non-deterministic time
-         if ((c.block_time_control==6)&&(VerifyTimeRand(c.block_size, c.desired_block_size, c.turn))) cond=true;   
-         // If block time control method is a variable's value, with deterministic turn
-         if ((c.block_time_control==7)&&(VerifyVariableTurn(c.var_value, c.var_last_value, c.var_last_threshold))) cond=true;
-         // If block time control method is non-deterministic time
-         if ((c.block_time_control==8)&&(VerifyVariableRand(c.var_value, c.var_last_value, c.var_last_threshold, c.var_nodet_threshold))) cond=true;   
-         // @TODO: when others receive and verify the block , they request the accounting registers in the block that they dont have in their accounting collection */
-
     }
     /** @desc Returns a list of parameters registers*/
     * GetList(request, response) {
@@ -227,7 +198,8 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Verify block creation conditions
-        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseInt(url_params.performance));
+        console.log("\nResultCreateItemQuery=", result);
+        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result[0], d, url_params.username);
         // send response
         yield response.sendView('master_JSON', {result: resp, request_id: 312});
     }
