@@ -51,6 +51,7 @@ class ParametersController {
             // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.thresold)))
                 cond = true;
+            // TODO: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold
             /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
             if ((c_vars.block_time_control === 1) &&
                     (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))

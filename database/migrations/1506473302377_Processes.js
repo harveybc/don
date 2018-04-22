@@ -37,7 +37,8 @@ class ProcessesTableSchema extends Schema {
       // 5=block_time_det, 6=block_time_non_det
       table.integer('block_time_control') 
       // OPOW det
-      table.float('threshold')
+      table.float('current_threshold')
+      table.float('last_threshold')
       table.float('last_block_performance')
       table.float('current_block_performance')
       // OPOW no-det
@@ -53,7 +54,8 @@ class ProcessesTableSchema extends Schema {
       table.integer('last_position')
       // NoDetTime
       table.integer('desired_block_time') // in milliseconds 
-      table.integer('last_block_time') // in milliseconds 
+      table.integer('last_block_time') // in milliseconds       
+      table.integer('current_block_time') // in milliseconds 
       // DetTime similar to detsize
       table.float('any_variable')
       //TODO: anyvariable uses the same thresholds as performance in OPoW 
