@@ -75,9 +75,15 @@ class ParametersController {
             var result = yield * block.GenerateBlock();
 
             if (!result) {
-                yield response.sendView('master_JSON', {result: {"error": result, "code": 433}, request_id: 127});
+                return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
+            }
+            else{
+                return result;
             }
 
+        }
+        else{
+                return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
         }
         /* if ((c.block_time_control==2)&&(VerifyHashPoW(c.hash,c.blockJSON,c.difficulty))) cond=true;
          // If block time control method is deterministic size, turn is fixed per node, (TODO: if not generated(node dont reply), use next turn)
