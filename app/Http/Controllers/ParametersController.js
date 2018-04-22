@@ -170,14 +170,14 @@ class ParametersController {
                 yield Database
                 .table('parameters')
                 .insert({
-                    "process_hash": app_hash
+                    "process_hash": process_hash
                     , "app_hash": app_hash
                     , "parameter_link": parameter_link
                     , "parameter_text": parameter_text
                     , "parameter_blob": parameter_blob
                     , "validation_hash": validation_hash
                     , "hash": hash
-                    , "performance": app_hash
+                    , "performance": performance
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at});
         // resultado de inserción de bloque
