@@ -222,7 +222,7 @@ class ParametersController {
         // Verify block creation conditions
         var resp = this.verifyBlockConditions(url_params.process_hash, url_params.performance);
         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 3});
+        yield response.sendView('master_JSON', {result: resp, request_id: 312});
     }
     /* Update sql query*/
     * updateItemQuery(url_params, id) {
