@@ -6,7 +6,7 @@ const Process = use('App/Model/Processes')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const processArray=[
                     {"id": 1, "name": "Test process 1", "description": "Test process 1 -  stub testing", "creator_key": "THAKEY", "tags": ["p2p", "forex", "dqn"],
-                        "hash":"p1h", "app_hash": "ah", "created_at":"2017-09-02 05:22:30", "updated_at": "2017-09-03 05:22:31", 
+                        "hash":"ph", "app_hash": "ah", "created_at":"2017-09-02 05:22:30", "updated_at": "2017-09-03 05:22:31", 
                         "active":true, "desired_block_time": 85000, "desired_block_size": 0, "block_time_control": 0, "model_id":1, "training_set_id":1, "validation_set_id":1,
                         "last_block_hash":"1","last_block_date":"2017-09-03 05:22:31", "last_block_time": 86400, 
                         "current_threshold":0.018,"last_threshold":0.04,"current_block_time":82000, // con cbp=0.898 se debería crear nuevo block.
