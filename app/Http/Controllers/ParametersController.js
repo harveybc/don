@@ -13,9 +13,10 @@ class ParametersController {
 
         // FALTA, si perf> current_perf, actualizar process
 
-        var c_vars = {last_block_time: result[0].last_block_time, block_time: block_time,
-            block_time_control: result[0].block_time_control, last_block_performance: result[0].last_block_performance,
-            current_block_performance: result[0].current_block_performance, current_threshold: result[0].current_threshold, last_threshold: result[0].last_threshold
+        var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
+            block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
+            current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
+            last_threshold: parseFloat(result[0].last_threshold)
         };
         return c_vars;
 
@@ -49,26 +50,28 @@ class ParametersController {
         // the conditions are:
         var cond = false;
         // ic collection=parameters and method=create
-        if ((c === 8) && (m === 3)) {
-            // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-            if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)))
-                cond = true;
-            // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
-            // TODO: actualiza block,flood
-            // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
+        console.log("\nc_vars.block_time_control=", c_vars.block_time_control,
+                " c_vars.current_block_performance=", c_vars.current_block_performance, " c_vars.last_block_performance=", c_vars.last_block_performance, " c_vars.current_thresold=", c_vars.current_thresold);
+
+        // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
+        if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)))
+            cond = true;
+        // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
+        // TODO: actualiza block,flood
+        // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
 
 
 
-            /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
-             if ((c_vars.block_time_control === 1) &&
-             (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
-             cond = true;
-             */
-            // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
-            // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
-            // iniciales y coincide
+        /* If block time control method is OPoW (non-det-model? incluir un segundo threshold para verificación) and Performance>Perf_anterior_bloque+Last_block_threshold
+         if ((c_vars.block_time_control === 1) &&
+         (c_vars.performance > (c_vars.last_block_performance + c_vars.last_thresold - c_vars.nodet_thresold)))
+         cond = true;
+         */
+        // If block time control method is CPoW(bitcoin) and CryptoPuzzleSolved.difficulty(NumZeroes)>=last_block_difficulty
+        // @TODO LAST: Función VerifyHashPoW() que retorna true si el hash del bloque(JSON) tiene <difficulty> zeros
+        // iniciales y coincide
 
-        }
+
         if (cond) {
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block();
@@ -76,14 +79,12 @@ class ParametersController {
 
             if (!result) {
                 return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
-            }
-            else{
+            } else {
                 return result;
             }
 
-        }
-        else{
-                return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
+        } else {
+            return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
         }
         /* if ((c.block_time_control==2)&&(VerifyHashPoW(c.hash,c.blockJSON,c.difficulty))) cond=true;
          // If block time control method is deterministic size, turn is fixed per node, (TODO: if not generated(node dont reply), use next turn)
@@ -226,7 +227,7 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Verify block creation conditions
-        var resp = this.verifyBlockConditions(url_params.process_hash, url_params.performance);
+        var resp = this.verifyBlockConditions(url_params.process_hash, parseInt(url_params.performance));
         // send response
         yield response.sendView('master_JSON', {result: resp, request_id: 312});
     }
