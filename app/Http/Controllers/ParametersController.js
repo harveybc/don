@@ -227,7 +227,7 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Verify block creation conditions
-        var resp = this.verifyBlockConditions(url_params.process_hash, parseInt(url_params.performance));
+        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseInt(url_params.performance));
         // send response
         yield response.sendView('master_JSON', {result: resp, request_id: 312});
     }
