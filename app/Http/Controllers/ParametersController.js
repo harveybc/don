@@ -56,14 +56,17 @@ class ParametersController {
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_threshold)))
             cond = true;
 
-        // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
-        // TODO: actualiza block,flood
-        // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
+
         if (cond) {
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block();
-            var result = yield * block.GenerateBlock();
-
+            var result = yield * block.createItemQuery(url_params);
+            // Hace nuevo accounting de block creation
+            //  
+            // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
+            // TODO: actualiza block,flood con hash de accting del bloque
+            
+// TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
                 return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
             } else {
