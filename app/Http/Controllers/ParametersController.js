@@ -9,7 +9,7 @@ class ParametersController {
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
-        var block_time = Date.Now() - result[0].last_block_date; // Calcula el blocktime como NOW-last block date
+        var block_time = date - result[0].last_block_date; // Calcula el blocktime como NOW-last block date
         console.log("\nprocess_result=", result);
         // FALTA, si perf> current_perf, actualizar process y FLOOD
         if (performance > parseFloat(result[0].current_block_performance)) {
