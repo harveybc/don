@@ -44,7 +44,7 @@ class ParametersController {
      */
     * verifyBlockConditions(process_hash, performance, param_id, date, user) {
         // retrieve the variables for block generation conditions
-        var c_vars = this.GetConditionVariables(process_hash, performance, param_id, date, user);
+        var c_vars = yield * this.GetConditionVariables(process_hash, performance, param_id, date, user);
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
         // the conditions are: (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)
         var cond = false;
