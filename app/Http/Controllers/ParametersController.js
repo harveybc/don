@@ -25,7 +25,7 @@ class ParametersController {
             var res2 = yield * proceso.updateItemQuery(result[0], result[0].id);
             console.log("\nres2=", res2);
             // lee el nuevo registro de procesos en result para calcular las variables de new block.
-            var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+            result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
