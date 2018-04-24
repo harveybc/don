@@ -178,7 +178,6 @@ class ParametersController {
         // TODO: HACER QUE HASH INCLUYA DATE
         var sha256 = require('js-sha256');
         var hash = sha256(JSON.stringify(url_params));
-        ;
         const performance = url_params.performance;
         const created_by = url_params.created_by;
         const updated_by = url_params.updated_by;
@@ -204,10 +203,9 @@ class ParametersController {
                     , 'created_at': created_at, 'updated_at': updated_at});
         // Verify block creation conditions
         console.log("\nResultCreateItemQuery=", resq);
-        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), resq[0], created_at, url_params.username);
         // resultado de inserción de bloque
        
-        return ({"id": resp});
+        return ({"id": resq});
     }
 
     /** @desc Returns the <id> of the created process */
@@ -246,8 +244,11 @@ class ParametersController {
         }
         // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
        result = yield * this.createItemQuery(url_params);
-         // send response
-        yield response.sendView('master_JSON', {result: result, request_id: 312});
+       // Verify block creation conditions at the end so it can call block creation from this same machine
+       console.log("\nresult_createItemQuery=",result);
+       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result[0].id, d, url_params.username);
+       // send response
+       yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
     /* Update sql query*/
     * updateItemQuery(url_params, id) {
