@@ -29,6 +29,7 @@ class ParametersController {
         }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
+            process_hash: result[0].hash,
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
             last_threshold: parseFloat(result[0].last_threshold)
@@ -51,21 +52,40 @@ class ParametersController {
         // ic collection=parameters and method=create
         console.log("\nc_vars.block_time_control=", c_vars.block_time_control,
                 " c_vars.current_block_performance=", c_vars.current_block_performance, " c_vars.last_block_performance=", c_vars.last_block_performance, " c_vars.current_threshold=", c_vars.current_threshold);
-
         // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_threshold)))
             cond = true;
-
-
         if (cond) {
-            var Block = use('App/Http/Controllers/BlocksController');
-            var block = new Block();
-            var result = yield * block.createItemQuery(url_params);
-            // Hace nuevo accounting de block creation
-            //  
-            // TODO: cambia todas las accounting con block=null a block=last_block_hash, flood
-            // TODO: actualiza block,flood con hash de accting del bloque
+            // consulta campos para nuevo bloque
+            const Database = use('Database');
+            var prev_hash = yield Database.select('hash').from('blocks').where('process_hash',process_hash).orderBy('id','desc').limit(1);
+            var contents = yield Database.select('hash').from('accounting').where('block_hash',null);
             
+            var url_params = {
+                username: user,
+                process_hash: c_vars.process_hash,
+                hash: "", // TODO: INICIALIZAR CON HASH DEL BLOQUE(al final)
+                prev_hash: prev_hash, 
+                contents: contents, 
+                threshold: c_vars.current_threshold,
+                block_time: c_vars.block_time,
+                block_size: contents.length, // TODO: Inicializar en número de Acct
+                performance: performance,
+                rejects: 0,
+                created_by: user,
+                created_at: date
+            };
+            var sha256 = require('js-sha256');
+            url_params.hash= sha256(JSON.stringify(url_params));
+            console.log('\nurl_params',url_params);
+            // crea nuevo bloque
+            var Block = use('App/Http/Controllers/BlocksController');
+            var block = new Block;
+            var result = yield * block.createItemQuery(url_params); // the new item includes a list of all accounting register hashes that were null +prev_block_hash and final hash
+            // Hace nuevo accounting de block creation y flood
+              
+            // TODO: cambia todas las accounting con block=null a block=block_hash, flood
+
 // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
                 return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
