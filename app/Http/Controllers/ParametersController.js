@@ -73,7 +73,7 @@ class ParametersController {
                 username: user,
                 process_hash: c_vars.process_hash,
                 hash: "", //Inicializado con el hash del bloque al final
-                prev_hash: prev_hash,
+                prev_hash: prev_hash[0].hash,
                 param_hash: c_vars.param_hash,
                 contents: contents,
                 threshold: c_vars.current_threshold,
