@@ -246,7 +246,7 @@ class ParametersController {
        result = yield * this.createItemQuery(url_params);
        // Verify block creation conditions at the end so it can call block creation from this same machine
        console.log("\nresult_createItemQuery=",result);
-       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result[0].id, d, url_params.username);
+       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
        // send response
        yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
