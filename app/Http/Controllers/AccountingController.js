@@ -54,6 +54,9 @@ class AccountingController {
 
         // convert result string to JSON
         var result_s = JSON.stringify(url_params.result_raw);
+        if (!result_s){
+            result_s="{}";
+        }
         var result_r = result_s.replace(/"{/, "{");
         result_r = result_r.replace(/}"/, "}");
         result_r = result_r.replace(/\\/g, "");
