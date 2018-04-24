@@ -95,7 +95,7 @@ class BlocksController {
             difficulty = difficulty - threshold;
         }
         // inicializa performance
-        const performance = 0.0;
+        var performance = 0.0;
         if (typeof url_params.performance !== 'undefined') {
             // the variable is defined
             performance = url_params.performance;
