@@ -59,7 +59,7 @@ class ParametersController {
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash',process_hash).orderBy('id','desc').limit(1);
-            var contents = yield Database.select('hash').from('accounting').where('block_hash',null);
+            var contents = yield Database.select('hash').from('accountings').where('block_hash',null);
             
             var url_params = {
                 username: user,
