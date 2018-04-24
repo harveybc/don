@@ -17,6 +17,7 @@ class BlocksTableSchema extends Schema {
             table.string('process_hash', 4086);
             table.string('hash', 4086);
             table.string('prev_hash', 4086);
+            table.string('param_hash', 4086);
             table.string('contents');
             table.string('signature');
             table.float('difficulty');

@@ -59,119 +59,55 @@ class BlocksController {
     * createItemQuery(url_params) {
         // generate parameters for query
         const user_name = url_params.user_name;
-        const collection = url_params.collection;
-        const method = url_params.method;
         const date = url_params.date;
         const parameters = url_params.parameters;
-        const res1 = url_params.result;
         const block_hash = url_params.block_hash;
         const process_hash = url_params.process_hash;
         const created_by = url_params.username;
         const updated_by = url_params.updated_by;
+        const hash = url_params.hash;
+        const prev_hash = url_params.prev_hash;
+        const threshold = url_params.threshold;
+        const block_time = url_params.block_time;
+        const block_size = url_params.block_size;
+        const performance = url_params.performance;
+        const contents = url_params.contents;
         const created_at_d = new Date;
         const updated_at_d = created_at_d;
         const created_at = created_at_d.toISOString();
         const updated_at = updated_at_d.toISOString();
-        // @todo TODO: Perform data validation in parameters https://adonisjs.com/docs/3.2/validator
-        // perform query and send view
-        // TODO FALTA BLOCK CONTENTS Y BLOCK HASH (TODO - ID Y HASH)
-        // BLOCK CONTENTS es una lista de los hashes de las transacciones registradas
-        // es decir, los accounting de las transacciones donde block=NULL,
-        // calcula el block_hash y hace UPDATE de este en los accounting de esta lista con su nuevo hash.
-        // (el update genera un flooding).  
-        // gets the current process for last block data
-        var Process = use('App/Http/Controllers/ProcessesController');
-        var pr = new Process();
-        const process = yield * pr.GetLastBlockMetadata(process_hash);
-        const threshold = process.threshold;
-        const prev_hash = process.last_block_hash;
-        const last_block_date = process.last_block_date;
-        var difficulty = process.last_block_difficulty;
-        // calculate the new difficulty based on desired and actual block time
-        if (block_time < process.desired_block_time) {
-            difficulty = difficulty + threshold;
-        }
-        if (block_time > process.desired_block_time) {
-            difficulty = difficulty - threshold;
-        }
-        // inicializa performance
-        var performance = 0.0;
-        if (typeof url_params.performance !== 'undefined') {
-            // the variable is defined
-            performance = url_params.performance;
-            // @TODO: VERIFICA SI EL PERFORMANCE EVALUADO ES CORRECTO DENTRO DEL THRESHOLD +/- nodet_threshold
-            //  verifica si el modo de PoW es 0 = OPoW 
-            if ((process.block_time_control == 0) && (performance > (process.last_block_performance + difficulty))) {
-                // envía request de evaluación de los parametros reportados en el modelo del process
-                // 
-                // inicia timer para cada 3 segundos revisar si ya están los resultados.}
-                // si los resultados son menores al performance - nodet_threshold aborts.
-                return (false);
-            }
-
-        }
-        // var_value
-        const var_value = 0.0;
-        if (typeof url_params.var_value !== 'undefined') {
-            // the variable is defined
-            var_value = url_params.var_value;
-        }
-        // position
-        const position = 0;
-        if (typeof url_params.position !== 'undefined') {
-            // the variable is defined
-            position = url_params.position;
-        }
-        // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
-        var date_old = new Date(last_block_date);
-        var date_new = new Date(created_at);
-        var timeDiff = Math.abs(date_new.getTime() - date_old.getTime());
-        var block_time = Math.ceil(timeDiff / 1000);
-
-        // calcula Block contents como los registros de accounting sin block_hash
+        // TODO: cambia todas las accounting con block=mark_hash a block=block_hash 
         const Database = use('Database');
-        var hash = "0000000000";
-        // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
-        // marcador para que no se incluyan nuevas transacciones en el nuevo 
-        // bloque mientras se crea este (lock), y con los marcados se calcula el hash
-        const affected_rows1 = yield Database
-                .table('accountings')
-                .where({'block_hash': "", 'process_hash': process_hash})
-                .update({"block_hash": "0000000000"});
-        // obtiene contenido de bloque como las transacciones de accounting sin block_hash
-        const contents = yield Database.select('username, process_hash, block_hash, collection, method, parameters, result,created_by, updated_by, created_at, updated_at').from('accountings').where({'block_hash': "0000000000", 'process_hash': process_hash});
-        // calcula block_size (sizeof block_contents? o query?)
-        var jsonSize = require('json-size');
-        var block_size = jsonSize(contents);
-        // calcula hash del proceso como el hash del registro en JSON.
-        var sha256 = require('js-sha256');
-        hash = sha256(JSON.stringify({"username": user_name, "process_hash": process_hash
-            , "prev_hash": prev_hash
-            , "difficulty": difficulty, "threshold": threshold, "block_time": block_time
-            , "block_size": block_size, "performance": performance, "var_value": var_value
-            , "position": position
-            , 'created_by': created_by, 'updated_by': updated_by
-            , 'created_at': created_at, 'updated_at': updated_at, "contents": contents}));
+        var result;
+        // EN BLOCK CREATE ITEMQUERY adicionar que se altere cada accounting de contents con block_hash =new_block_hash...
+        for (var hash_p of contents) {
+            result = yield Database.table('accountings')
+                    .where('hash', hash_p.hash)
+                    .update({
+                        "block_hash":hash});
+        };
+        // Crea el registro de blocks
         const resq = yield Database
                 .table('blocks')
                 .insert({"username": user_name, "process_hash": process_hash
                     , "hash": hash, "prev_hash": prev_hash
-                    , "difficulty": difficulty, "threshold": threshold, "block_time": block_time
-                    , "block_size": block_size, "performance": performance, "var_value": var_value
-                    , "position": position
+                    , "threshold": threshold, "block_time": block_time
+                    , "block_size": block_size, "performance": performance
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, "contents": contents});
-        // UPDATE en processes con los nuevos valores de sus campos generados desde el bloque
-        const affected_rows = yield Database
-                .table('processes')
-                .where('process_hash', process_hash)
-                .update({"last_block_performance": performance, "last_block_difficulty": difficulty
-                    , "last_block_time": block_time, "last_block_size": block_time
-                    , 'updated_by': updated_by, 'updated_at': updated_at});
-        const result1 = {"affected_rows": affected_rows};
-        // resultado de inserción de bloque
-        const result2 = {"id": process};
-        return (result2);
+        // altera registro de process con el nuevo 
+        var result2 = yield Database.table('processes')
+                    .where('hash', process_hash)
+                    .update({
+                        "last_block_performance":performance,
+                        "current_block_performance":performance,
+                        "last_block_size": block_size,
+                        "last_block_time": block_time,
+                        "last_block_hash": hash,
+                        "last_block_date": date
+            });
+        const result3 = {"id": resq};
+        return (result3);
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
@@ -212,7 +148,7 @@ class BlocksController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     /* Update sql query*/
-    * updateItemQuery(url_params,id) {
+    * updateItemQuery(url_params, id) {
         // generate parameters for query
         const user_name = url_params.user_name;
         const collection = url_params.collection;
@@ -287,7 +223,7 @@ class BlocksController {
         // perform query and send view
         const affected_rows = yield Database
                 .table('blocks')
-                .where('id',id)
+                .where('id', id)
                 .update({
                     "username": user_name, "process_hash": process_hash
                     , "prev_hash": prev_hash
@@ -322,7 +258,7 @@ class BlocksController {
         }
         // Queries and result
         var resp;
-        var result = yield * this.updateItemQuery(url_params,request.param('id'));
+        var result = yield * this.updateItemQuery(url_params, request.param('id'));
         // Block layer
         // collections: 1=authent, 2=authoriz, 3=block, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 
@@ -341,7 +277,7 @@ class BlocksController {
     }
 
     /** @desc Returns the <id> of the created process */
-    * deleteItemQuery(url_params,id) {
+    * deleteItemQuery(url_params, id) {
         const Database = use('Database');
         const process_hash = id;
         const deleted_count = yield Database.table('blocks').where('id', process_hash).delete();
@@ -370,7 +306,7 @@ class BlocksController {
         }
         //Queries and result
         var resp;
-        var result = yield * this.deleteItemQuery(url_params,request.param('id'));
+        var result = yield * this.deleteItemQuery(url_params, request.param('id'));
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=blocks, 4=processes, 5=parameters, 6=blocks, 7=network */
         // Account(username, c, m, d, p, r, process_hash) - username, collection, method, date, parameters, result, process_hash, (string) 

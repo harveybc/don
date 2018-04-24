@@ -7,9 +7,16 @@ class ParametersController {
     * GetConditionVariables(process_hash, performance, param_id, date, user) {
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+        var result2 = yield Database.select('hash').from('parameters').where('id', param_id).limit(1);
+        var param_hash = result2[0].hash;
+
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
-        var block_time = date - result[0].last_block_date; // Calcula el blocktime como NOW-last block date
+        // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
+        var date_old = new Date(result[0].last_block_date);
+        var date_new = new Date(date);
+        var timeDiff = Math.abs(date_new.getTime() - date_old.getTime());
+        var block_time = Math.ceil(timeDiff / 1000);
         console.log("\nprocess_result=", result);
         // FALTA, si perf> current_perf, actualizar process y FLOOD
         if (performance > parseFloat(result[0].current_block_performance)) {
@@ -29,7 +36,7 @@ class ParametersController {
         }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
-            process_hash: result[0].hash,
+            process_hash: result[0].hash, param_hash: param_hash,
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
             last_threshold: parseFloat(result[0].last_threshold)
@@ -58,34 +65,55 @@ class ParametersController {
         if (cond) {
             // consulta campos para nuevo bloque
             const Database = use('Database');
-            var prev_hash = yield Database.select('hash').from('blocks').where('process_hash',process_hash).orderBy('id','desc').limit(1);
-            var contents = yield Database.select('hash').from('accountings').where('block_hash',null);
-            
+            var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
+            // Marca con 10 zeroes los registros de Acct sin marcar al momento de crear el bloque.
+            const Database = use('Database');
+            var mark_hash = "0000000000";
+            // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
+            // marcador para que no se incluyan nuevas transacciones en el nuevo 
+            // bloque mientras se crea este (lock), y con los marcados se calcula el hash
+            const affected_rows1 = yield Database
+                    .table('accountings')
+                    .where({'block_hash': "", 'process_hash': process_hash})
+                    .update({"block_hash": mark_hash});
+            // lee los registros marcados para usar como contents
+            var contents = yield Database.select('hash').from('accountings').where('block_hash', mark_hash);
+            // compone la estructura url_params usada en creación de bloque
             var url_params = {
                 username: user,
                 process_hash: c_vars.process_hash,
-                hash: "", // TODO: INICIALIZAR CON HASH DEL BLOQUE(al final)
-                prev_hash: prev_hash, 
-                contents: contents, 
+                hash: "", //Inicializado con el hash del bloque al final
+                prev_hash: prev_hash,
+                param_hash: c_vars.param_hash,
+                contents: contents,
                 threshold: c_vars.current_threshold,
                 block_time: c_vars.block_time,
-                block_size: contents.length, // TODO: Inicializar en número de Acct
+                block_size: contents.length,
                 performance: performance,
                 rejects: 0,
                 created_by: user,
                 created_at: date
             };
             var sha256 = require('js-sha256');
-            url_params.hash= sha256(JSON.stringify(url_params));
-            console.log('\nurl_params',url_params);
+            url_params.hash = sha256(JSON.stringify(url_params));
+            console.log('\nurl_params', url_params);
             // crea nuevo bloque
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block;
             var result = yield * block.createItemQuery(url_params); // the new item includes a list of all accounting register hashes that were null +prev_block_hash and final hash
             // Hace nuevo accounting de block creation y flood
-              
-            // TODO: cambia todas las accounting con block=null a block=block_hash, flood
-
+            var Accounting = use('App/Http/Controllers/AccountingController');
+            var account = new Accounting();
+            const date_d = new Date;
+            const d = date_d.toISOString();
+            var sha256 = require('js-sha256');
+            var collection = 4;// blocks
+            var method = 3; // blockCreation method
+            var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+            const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true, 0);
+            if (!account_res) {
+                return {result: {"error": account_res, "code": 402}, request_id: 3};
+            }
 // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
                 return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
@@ -157,7 +185,10 @@ class ParametersController {
         const parameter_text = url_params.parameter_text;
         const parameter_blob = url_params.parameter_blob;
         const validation_hash = url_params.validation_hash;
-        const hash = url_params.hash;
+        // TODO: HACER QUE HASH INCLUYA DATE
+        var sha256 = require('js-sha256');
+        var hash = sha256(JSON.stringify(url_params));
+        ;
         const performance = url_params.performance;
         const created_by = url_params.created_by;
         const updated_by = url_params.updated_by;
@@ -181,8 +212,12 @@ class ParametersController {
                     , "performance": performance
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at});
+        // Verify block creation conditions
+        console.log("\nResultCreateItemQuery=", resq);
+        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), resq[0], created_at, url_params.username);
         // resultado de inserción de bloque
-        return ({"id": resq});
+       
+        return ({"id": resp});
     }
 
     /** @desc Returns the <id> of the created process */
@@ -204,8 +239,6 @@ class ParametersController {
         if (!autho_res) {
             yield response.sendView('master_JSON', {result: {"error": autho_res, "code": 403}, request_id: 4});
         }
-        // Queries and response
-        var result = yield * this.createItemQuery(url_params);
         // Accounting layer
         // collections: 1=authent, 2=authoriz, 3=parameters, 4=processes, 5=parameters, 6=parameters, 7=network */
         // 
@@ -214,17 +247,17 @@ class ParametersController {
         var account = new Accounting();
         const date_d = new Date;
         const d = date_d.toISOString();
+        var result = {};
         var sha256 = require('js-sha256');
         var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
         const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true, request.param('id'));
         if (!account_res) {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
-        // Verify block creation conditions
-        console.log("\nResultCreateItemQuery=", result);
-        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result[0], d, url_params.username);
-        // send response
-        yield response.sendView('master_JSON', {result: resp, request_id: 312});
+        // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
+       result = yield * this.createItemQuery(url_params);
+         // send response
+        yield response.sendView('master_JSON', {result: result, request_id: 312});
     }
     /* Update sql query*/
     * updateItemQuery(url_params, id) {
