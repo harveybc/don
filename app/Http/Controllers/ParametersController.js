@@ -67,7 +67,6 @@ class ParametersController {
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             // Marca con 10 zeroes los registros de Acct sin marcar al momento de crear el bloque.
-            const Database = use('Database');
             var mark_hash = "0000000000";
             // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
             // marcador para que no se incluyan nuevas transacciones en el nuevo 
