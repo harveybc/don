@@ -352,7 +352,7 @@ class AccountingController {
         var params_r = params_s.replace(/"{/, "{");
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
-        params_r = params_r.substring(0, params_r.indexOf('}')) + "}";
+        //params_r = params_r.substring(0, params_r.indexOf('}')) + "}";
         var url_params_string = params_r;
         console.log("\nurl_params_string=",url_params_string);
         var url_params_mod = JSON.parse(url_params_string);
