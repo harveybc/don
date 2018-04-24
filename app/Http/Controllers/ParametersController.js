@@ -66,17 +66,8 @@ class ParametersController {
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
-            // Marca con 10 zeroes los registros de Acct sin marcar al momento de crear el bloque.
-            var mark_hash = "0000000000";
-            // UPDATE en accounting con block_hash = 0000000000 (10 zeroes) como
-            // marcador para que no se incluyan nuevas transacciones en el nuevo 
-            // bloque mientras se crea este (lock), y con los marcados se calcula el hash
-            const affected_rows1 = yield Database
-                    .table('accountings')
-                    .where({'block_hash': "", 'process_hash': process_hash})
-                    .update({"block_hash": mark_hash});
             // lee los registros marcados para usar como contents
-            var contents = yield Database.select('hash').from('accountings').where('block_hash', mark_hash);
+            var contents = yield Database.select('hash').from('accountings').where('block_hash', "");
             // compone la estructura url_params usada en creación de bloque
             var url_params = {
                 username: user,

@@ -369,7 +369,7 @@ class AccountingController {
         var ret = false;   
         const Database = use('Database');
         // @TODO: test set the block of the regiser to the last one in blocks collection
-        var block_hash = yield Database.select('hash').from('blocks').where('rejects',0).orderBy('id','desc').limit(1);        
+        var block_hash = "";        
         // Read TTL from authentication
         var result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
