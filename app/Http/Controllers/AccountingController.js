@@ -49,7 +49,7 @@ class AccountingController {
         var params_r = params_s.replace(/"{/, "{");
         params_r = params_r.replace(/}"/, "}");
         params_r = params_r.replace(/\\/g, "");
-        params_r = params_r.substring(0, params_r.indexOf('}')) + "}";
+        //params_r = params_r.substring(0, params_r.indexOf('}')) + "}";
         var parameters_raw = JSON.parse(params_r);
 
         // convert result string to JSON
