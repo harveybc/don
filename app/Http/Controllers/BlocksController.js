@@ -86,6 +86,7 @@ class BlocksController {
                     .update({
                         "block_hash":hash});
         };
+
         // Crea el registro de blocks
         const resq = yield Database
                 .table('blocks')
@@ -104,7 +105,8 @@ class BlocksController {
                         "last_block_size": block_size,
                         "last_block_time": block_time,
                         "last_block_hash": hash,
-                        "last_block_date": date
+                        "last_block_date": date,
+                        "current_threshold": threshold
             });
         const result3 = {"id": resq};
         return (result3);

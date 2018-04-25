@@ -39,7 +39,7 @@ class ParametersController {
             process_hash: result[0].hash, param_hash: param_hash,
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
-            last_threshold: parseFloat(result[0].last_threshold)
+            last_threshold: parseFloat(result[0].last_threshold), desired_block_time: parseFloat(result[0].desired_block_time)
         };
         return c_vars;
     }
@@ -68,6 +68,14 @@ class ParametersController {
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             // lee los registros marcados para usar como contents
             var contents = yield Database.select('hash').from('accountings').where('block_hash', "");
+            // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
+            if (c_vars.block_time > c_vars.desired_block_time){
+                c_vars.current_threshold=c_vars.current_threshold*0.8                
+            }
+            else{
+                c_vars.current_threshold=c_vars.current_threshold*1.2                
+            }
+                
             // compone la estructura url_params usada en creación de bloque
             var url_params = {
                 username: user,
