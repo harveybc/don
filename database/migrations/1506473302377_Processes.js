@@ -18,34 +18,34 @@ class ProcessesTableSchema extends Schema {
       // TODO: ADICIONAR PROCESS_HASH
     this.create('processes', (table) => {
       // Metadata
-      table.increments('id')
-      table.string('name', 4086)
-      table.text('description', 40860)
-      table.string('creator_key',4086)
-      table.string('hash',4086)
-      table.string('tags',4086)
-      table.integer('app_hash')
+      table.increments('id');
+      table.string('name', 4086);
+      table.text('description', 40860);
+      table.string('creator_key',4086);
+      table.string('hash',4086);
+      table.string('tags',4086);
+      table.integer('app_hash');
       table.string('created_by', 4086);
       table.string('updated_by', 4086);
       table.string('created_at', 4086);
       table.string('updated_at', 4086);
       // Control
-      table.boolean('active')
+      table.boolean('active');
       // Configuration
       // 0=OPoWdet,1=OPoWnodet,2=CPoW,
       // 3=block_size_det, 4=block_size_non_det,
       // 5=block_time_det, 6=block_time_non_det
-      table.integer('block_time_control') 
+      table.integer('block_time_control'); 
       // OPOW det
-      table.float('current_threshold')
-      table.float('last_threshold')
-      table.float('last_block_performance')
-      table.float('current_block_performance')
+      table.float('current_threshold');
+      table.float('last_threshold');
+      table.float('last_block_performance');
+      table.float('current_block_performance');
       // OPOW no-det
-      table.float('nodet_threshold')
+      table.float('nodet_threshold');
       // CPOW
-      table.float('difficulty')      
-      table.float('last_block_difficulty') 
+      table.float('difficulty');      
+      table.float('last_block_difficulty'); 
       // NoDetSize
       table.integer('last_block_size') // in bytes
       table.integer('desired_block_size') // in bytes

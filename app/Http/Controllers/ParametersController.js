@@ -20,7 +20,7 @@ class ParametersController {
         console.log("\nprocess_result=", result);
         // FALTA, si perf> current_perf, actualizar process y FLOOD
         if (performance > parseFloat(result[0].current_block_performance)) {
-            // actualiza con flood en processes current_block_performance, current block_time, last_optimum_id,last_optimum_date, updated_by, updated_At
+            // actualiza con flood en processes current_block_performance, current block_time, last_optimum_hash,last_optimum_date, updated_by, updated_At
             result[0].current_block_performance = performance;
             result[0].current_block_time = block_time;
             result[0].last_optimum_id = param_id;

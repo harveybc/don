@@ -76,11 +76,11 @@ class ProcessesController {
         }
         // queries
         const Database = use('Database');
-        const process_hash = request.param('id');
-        const result = yield Database.select('*').from('processes').where('hash', process_hash);
+        const id = request.param('id');
+        const result = yield Database.select('*').from('processes').where('id', id);
         // Accounting layer (402 Error)
-        var datetime = new Date();
-        Account(url_params.username, collection, method, datetime, request, result)
+        // var datetime = new Date();
+        // Account(url_params.username, collection, method, datetime, request, result);
         // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
