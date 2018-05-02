@@ -7,9 +7,9 @@ const Parameters = use('App/Model/Parameters')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const parametersArray = [{
         "process_hash": "ph", "model_hash": "mh",
-        "app_hash": "ah", "parameter_link": "ml",
-        "parameter_text": "mt", "parameter_blob": "mb", "validation_hash": "vh",
-        "hash": "pah", "performance": 0.5
+        "app_hash": "ah", "parameter_link": null,
+        "parameter_text": null, "parameter_blob": null, "validation_hash": "vh",
+        "hash": "pah", "performance": -1500.01
     },
 ]
 /** 
