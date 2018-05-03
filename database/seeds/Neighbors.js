@@ -13,14 +13,23 @@ const neighborsArray = [{
         "distance": 2,
         "latency": 500,
         "selection_method": 0
-    },{
+    },
+    {
         "id": 2 ,
-        "app_hash": "ah2",
+        "app_hash": "ah1",
         "address": "http://192.168.0.242:3338",
         "distance": 2,
         "latency": 500,
         "selection_method": 0
     },
+    {
+        "id": 3 ,
+        "app_hash": "ah1",
+        "address": "http://192.168.0.243:3338",
+        "distance": 2,
+        "latency": 500,
+        "selection_method": 0
+    }
 ] 
 /** 
  @desc Database Seeder

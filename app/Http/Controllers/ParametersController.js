@@ -9,7 +9,6 @@ class ParametersController {
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         var result2 = yield Database.select('hash').from('parameters').where('id', param_id).limit(1);
         var param_hash = result2[0].hash;
-
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
         // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
@@ -171,10 +170,12 @@ class ParametersController {
         // Queries and result 
         const Database = use('Database');
         const parameter_hash = request.param('hash');
-        const result = yield Database.select('*').from('parameters').where('id', parameter_hash);
+        const parameter_id = request.param('id');
+        const result = yield Database.select('*').from('parameters').where('id', id);
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
     * createItemQuery(url_params) {
         // assign variables to url parameters
         const process_hash = url_params.process_hash;
