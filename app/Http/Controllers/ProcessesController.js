@@ -182,6 +182,12 @@ class ProcessesController {
         const validation_set_id = url_params.validation_id;
         const difficulty = url_params.difficulty;
         const format = url_params.format;
+        
+        const current_block_performance = url_params.current_block_performance;
+        const current_block_time = url_params.current_block_time;
+        const last_optimum_id = url_params.last_optimum_id;
+        const last_optimum_date = url_params.last_optimum_date;
+        
         const updated_by = url_params.username;
         const updated_at_d = new Date;
         const updated_at = updated_at_d.toISOString();
@@ -198,6 +204,11 @@ class ProcessesController {
                     , 'tags': tags, 'app_hash': app_hash, 'active': active, 'desired_block_time': desired_block_time
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
                     , 'model_id': model_id, 'training_set_id': training_set_id
+                    , 'current_block_performance':current_block_performance
+                    , 'current_block_time':current_block_time
+                    , 'last_optimum_id': last_optimum_id
+                    , 'last_optimum_date': last_optimum_date
+
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'updated_at': updated_at, 'validation_set_id': validation_set_id});
         const result = {"affected_rows": affected_rows};
