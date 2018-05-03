@@ -171,7 +171,7 @@ class ParametersController {
         const Database = use('Database');
         const parameter_hash = request.param('hash');
         const parameter_id = request.param('id');
-        const result = yield Database.select('*').from('parameters').where('id', id);
+        const result = yield Database.select('*').from('parameters').where('id', parameter_id);
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
