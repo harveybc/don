@@ -25,7 +25,7 @@ const neighborsArray = [{
     {
         "id": 3 ,
         "app_hash": "ah1",
-        "address": "http://192.168.0.243:3338",
+        "address": "http://192.168.0.243:3338", 
         "distance": 2,
         "latency": 500,
         "selection_method": 0
