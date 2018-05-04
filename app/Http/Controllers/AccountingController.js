@@ -54,8 +54,8 @@ class AccountingController {
 
         // convert result string to JSON
         var result_s = JSON.stringify(url_params.result_raw);
-        if (!result_s){
-            result_s="{}";
+        if (!result_s) {
+            result_s = "{}";
         }
         var result_r = result_s.replace(/"{/, "{");
         result_r = result_r.replace(/}"/, "}");
@@ -257,7 +257,7 @@ class AccountingController {
                 var a = new A();
                 if (m === 3) { // method: create
                     const auth_res = yield * a.createItemQuery(parameters_raw, hash);
-                    const c_vars= yield * a.GetConditionVariables(parameters_raw.process_hash,parameters_raw.performance, auth_res.id[0], d, username) 
+                    const c_vars = yield * a.GetConditionVariables(parameters_raw.process_hash, parameters_raw.performance, auth_res.id[0], d, username)
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
@@ -358,7 +358,7 @@ class AccountingController {
         params_r = params_r.replace(/\\/g, "");
         //params_r = params_r.substring(0, params_r.indexOf('}')) + "}";
         var url_params_string = params_r;
-        console.log("\nurl_params_string=",url_params_string);
+        console.log("\nurl_params_string=", url_params_string);
         var url_params_mod = JSON.parse(url_params_string);
         // convert result string to JSON
         var result_s = JSON.stringify(result_raw_s);
@@ -371,36 +371,44 @@ class AccountingController {
         // convierte a string los parámetros sin el pass_hash
         //var p = JSON.stringify(url_params_mod);
         // inicializa variables ret y result(de esta cunfión).
-        var ret = false;   
+        var ret = false;
         const Database = use('Database');
         // @TODO: test set the block of the regiser to the last one in blocks collection
-        var block_hash = "";        
+        var block_hash = "";
         // Read TTL from authentication
         var result = yield Database.select('*').from('authentications').where('username', username).limit(1);
         var TTL = 0;
         if (result) {
             TTL = result.max_ttl;
         }
-        // FLOOD      
-        if (do_flood === true) {
-            // SEND FLOODING REQUEST to neights
-            // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
-            // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-            result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
-        }
+        // busca acct repetidos
+        const num_found = yield Database.count('hash as counted').from('accountings').where('hash', hash_p);
+        // busca el hash en la colección accounting 
+        if (num_found[0].counted > 0) {
+            yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
+        } else
+        {
+            // FLOOD      
+            if (do_flood === true) {
+                // SEND FLOODING REQUEST to neights
+                // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
+                // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
+                result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
+            }
 
-        if (username && c && m) {
-            // generate parameters for query
-            const Database = use('Database');
-            const acc_id = yield Database
-                    .table('accountings')
-                    .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
-                        'parameters': url_params_string, 'result': r, 'created_by': username, 'updated_by': username,
-                        'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
-            const result_q = {"result": result};
-            return (result_q);
+            if (username && c && m) {
+                // generate parameters for query
+                const Database = use('Database');
+                const acc_id = yield Database
+                        .table('accountings')
+                        .insert({'username': username, 'process_hash': url_params_mod.process_hash, 'collection': c, 'method': m,
+                            'parameters': url_params_string, 'result': r, 'created_by': username, 'updated_by': username,
+                            'created_at': d, 'updated_at': d, 'block_hash': block_hash, 'hash': hash_p});
+                const result_q = {"result": result};
+                return (result_q);
+            }
+            // @TODO: si method=8, method=4 y perf>last, createNewBlock
         }
-        // @TODO: si method=8, method=4 y perf>last, createNewBlock
         return ret;
     }
 
