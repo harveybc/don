@@ -90,9 +90,9 @@ class AccountingController {
         } else
         {
             // SI NO EXISTIA ANTES EL MISMO HASH hace Flooding
-            var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL, id);
             // Adiciona el registro de accounting original 
             const account_res = yield * this.Account(collection, method, d, username, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, false);
+            var result = yield * this.flood(c, m, d, username, url_params.pass_hash, JSON.stringify(parameters_raw), JSON.stringify(result_raw), hash, TTL, id);
             if (!account_res) {
                 yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 10});
             }
