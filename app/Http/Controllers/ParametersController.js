@@ -69,7 +69,7 @@ class ParametersController {
             var contents = yield Database.select('hash').from('accountings').where('block_hash', "");
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
             if (c_vars.block_time > c_vars.desired_block_time){
-                c_vars.current_threshold=c_vars.current_threshold*0.8                
+                c_vars.current_threshold=c_vars.current_threshold*0.3                
             }
             else{
                 c_vars.current_threshold=c_vars.current_threshold*1.2                
