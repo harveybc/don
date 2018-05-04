@@ -256,7 +256,7 @@ class AccountingController {
                 var A = use('App/Http/Controllers/ParametersController');
                 var a = new A();
                 if (m === 3) { // method: create
-                    const auth_res = yield * a.createItemQuery(parameters_raw);
+                    const auth_res = yield * a.createItemQuery(parameters_raw, hash);
                     const c_vars= yield * a.GetConditionVariables(parameters_raw.process_hash, parameters_raw.performance, auth_res.id, d, username) 
                     if (!auth_res) {
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});

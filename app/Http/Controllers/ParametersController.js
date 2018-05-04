@@ -7,8 +7,6 @@ class ParametersController {
     * GetConditionVariables(process_hash, performance, param_id, date, user) {
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
-        var result2 = yield Database.select('hash').from('parameters').where('id', param_id).limit(1);
-        var param_hash = result2[0].hash;
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
         // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
@@ -35,7 +33,7 @@ class ParametersController {
         }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
-            process_hash: result[0].hash, param_hash: param_hash,
+            process_hash: result[0].hash, 
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
             last_threshold: parseFloat(result[0].last_threshold), desired_block_time: parseFloat(result[0].desired_block_time)
@@ -49,7 +47,7 @@ class ParametersController {
      * @param {type} response
      * @returns {Generator}
      */
-    * verifyBlockConditions(process_hash, performance, param_id, date, user) {
+    * verifyBlockConditions(process_hash, performance, param_id, param_hash, date, user) {
         // retrieve the variables for block generation conditions
         var c_vars = yield * this.GetConditionVariables(process_hash, performance, param_id, date, user);
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
@@ -81,7 +79,7 @@ class ParametersController {
                 process_hash: c_vars.process_hash,
                 hash: "", //Inicializado con el hash del bloque al final
                 prev_hash: prev_hash[0].hash,
-                param_hash: c_vars.param_hash,
+                param_hash: param_hash,
                 contents: contents,
                 threshold: c_vars.current_threshold,
                 block_time: c_vars.block_time,
@@ -176,7 +174,7 @@ class ParametersController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     
-    * createItemQuery(url_params) {
+    * createItemQuery(url_params,hash) {
         // assign variables to url parameters
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -184,9 +182,6 @@ class ParametersController {
         const parameter_text = url_params.parameter_text;
         const parameter_blob = url_params.parameter_blob;
         const validation_hash = url_params.validation_hash;
-        // TODO: HACER QUE HASH INCLUYA DATE
-        var sha256 = require('js-sha256');
-        var hash = sha256(JSON.stringify(url_params));
         const performance = url_params.performance;
         const created_by = url_params.created_by;
         const updated_by = url_params.updated_by;
@@ -214,7 +209,7 @@ class ParametersController {
         console.log("\nResultCreateItemQuery=", resq);
         // resultado de inserción de bloque
        
-        return ({"id": resq});
+        return ({"id": [resq,hash]});
     }
 
     /** @desc Returns the <id> of the created process */
@@ -252,11 +247,10 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
-       result = yield * this.createItemQuery(url_params);
+       result = yield * this.createItemQuery(url_params,hash_p);
        // Verify block creation conditions at the end so it can call block creation from this same machine
        console.log("\nresult_createItemQuery=",result);
-       console.log("\nresult_createItemQuery=", result.id[0]);
-       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
+       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], result.id[1], d, url_params.username);
        // send response
        yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
