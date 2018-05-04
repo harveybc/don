@@ -209,7 +209,7 @@ class ParametersController {
         console.log("\nResultCreateItemQuery=", resq);
         // resultado de inserción de bloque
        
-        return ({"id": [resq,hash]});
+        return ({"id": resq});
     }
 
     /** @desc Returns the <id> of the created process */
@@ -250,7 +250,7 @@ class ParametersController {
        result = yield * this.createItemQuery(url_params,hash_p);
        // Verify block creation conditions at the end so it can call block creation from this same machine
        console.log("\nresult_createItemQuery=",result);
-       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], result.id[1], d, url_params.username);
+       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
        // send response
        yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
