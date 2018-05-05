@@ -10,7 +10,7 @@ const neighborsArray = [{
         "id": 1 ,
         "app_hash": "ah1",
         "address": "http://192.168.0.241:3338",
-        "distance": 2,
+        "distance": 6,
         "latency": 500,
         "selection_method": 0
     },
@@ -18,7 +18,7 @@ const neighborsArray = [{
         "id": 2 ,
         "app_hash": "ah1",
         "address": "http://192.168.0.242:3338",
-        "distance": 2,
+        "distance": 6,
         "latency": 500,
         "selection_method": 0
     },
@@ -26,10 +26,37 @@ const neighborsArray = [{
         "id": 3 ,
         "app_hash": "ah1",
         "address": "http://192.168.0.243:3338", 
-        "distance": 2,
+        "distance": 6,
         "latency": 500,
         "selection_method": 0
-    }
+    },
+        {
+        "id": 4 ,
+        "app_hash": "ah1",
+        "address": "http://192.168.0.244:3338",
+        "distance": 6,
+        "latency": 500,
+        "selection_method": 0
+    },
+
+    {
+        "id": 5 ,
+        "app_hash": "ah1",
+        "address": "http://192.168.0.245:3338",
+        "distance": 6,
+        "latency": 500,
+        "selection_method": 0
+    },
+
+    {
+        "id": 6 ,
+        "app_hash": "ah1",
+        "address": "http://192.168.0.246:3338",
+        "distance": 6,
+        "latency": 500,
+        "selection_method": 0
+    },
+
 ] 
 /** 
  @desc Database Seeder
