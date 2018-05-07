@@ -126,57 +126,62 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputHash"  name="hash" placeholder="ph">
                     </div>
-
-                    <div class="form-group">
-                        <label for="inputThreshold" class="col-sm-2 control-label">threshold</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputThreshold"  name="threshold" placeholder="1">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastBlockHash" class="col-sm-2 control-label">last_block_hash</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputLastBlockHash"  name="last_block_hash" placeholder="last_block_hash">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastBlockDate" class="col-sm-2 control-label">last_block_date</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputLastBlockDate"  name="last_block_date" placeholder="last_block_date">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastBlockDifficulty" class="col-sm-2 control-label">last_block_difficulty</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputLastBlockDifficulty"  name="last_block_difficulty" placeholder="last_block_difficulty">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastBlockTime" class="col-sm-2 control-label">last_block_time</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputLastBlockTime"  name="last_block_time" placeholder="last_block_time">
-                        </div>
-                    </div>
-
-
-
                 </div>
-                <!-- /.box-footer -->
-            </div>
+                <div class="form-group">
+                    <label for="inputThreshold" class="col-sm-2 control-label">threshold</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputThreshold"  name="threshold" placeholder="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastBlockHash" class="col-sm-2 control-label">last_block_hash</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputLastBlockHash"  name="last_block_hash" placeholder="last_block_hash">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastBlockDate" class="col-sm-2 control-label">last_block_date</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputLastBlockDate"  name="last_block_date" placeholder="last_block_date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastBlockDifficulty" class="col-sm-2 control-label">last_block_difficulty</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputLastBlockDifficulty"  name="last_block_difficulty" placeholder="last_block_difficulty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastBlockTime" class="col-sm-2 control-label">last_block_time</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputLastBlockTime"  name="last_block_time" placeholder="last_block_time">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCurrentBlockPerformance" class="col-sm-2 control-label">current_block_performance</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputCurrentBlockPerformance"  name="current_block_performance" placeholder="current_block_performance">
+                    </div>
+                </div>
 
-            <!-- /.box-body 
-            <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Update</button>
+
             </div>
-            <!-- /.box-footer                 -->
+            <!-- /.box-footer -->
         </div>
-        <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
-        <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
-        <input type="hidden" name="redir" value="1">
-        <input type="hidden" name="username" value="{{username}}">
-        <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
-    </form>
+
+        <!-- /.box-body 
+        <div class="box-footer">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-info pull-right">Update</button>
+        </div>
+        <!-- /.box-footer                 -->
+    </div>
+    <button type="submit" class="btn btn-success pull-left"  style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+    <a class="btn btn-primary" style="position:relative;top:-5px; padding-top:3px; padding-bottom: 3px;margin-left:5px;" href="/processes/admin"><span class="glyphicon glyphicon-alert"></span> Cancel</a>
+    <input type="hidden" name="redir" value="1">
+    <input type="hidden" name="username" value="{{username}}">
+    <input type="hidden" name="pass_hash" value="{{pass_hash}}"><input type="hidden" name="process_hash" value="{{process_hash}}">
+</form>
 {% endblock %}
 {% block footer %}
     <div id="helpModal" class="modal fade" role="dialog" >
@@ -234,9 +239,10 @@
              $('#inputLastBlockPerformance').val(data[0].last_block_size);
              // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
              $('#inputLastOptimumId').val(data[0].last_optimum_id);
-             $('#inputLastOptimumDate').val(data[0].last_optimum_date);
              
              */
+            $('#inputCurrentBlockPerformance').val(data[0].current_block_performance);
+
             //TODO: QUITAR
             $('#inputHash').val(data[0].hash);
             $('#inputThreshold').val(data[0].threshold);
