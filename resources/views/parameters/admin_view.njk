@@ -136,9 +136,9 @@
 
                 {itemTemplate: function (_, item) {
                         return $('<a class="btn btn-primary" style="margin:0; padding:2px 2px 0 2px;" href="/parameters/update/' + item.id + '?username={{username}}&pass_hash={{pass_hash}}&process_hash={{process_hash}}"><span class="glyphicon glyphicon-pencil"></span> </a>');
-                    }, width: 15, align: "center", headercss: "header_color"
+                    }, width: 10, align: "center", headercss: "header_color"
                 },
-                {type: "control", editButton: false, width: 15, headercss: "header_color"}
+                {type: "control", editButton: false, width: 10, headercss: "header_color"}
             ],
             onItemDeleting: function (args) {
                 // send a request to the node

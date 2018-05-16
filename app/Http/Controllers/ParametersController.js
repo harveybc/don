@@ -412,10 +412,10 @@ class ParametersController {
             error: error,
             data: result,
             items: [
-                {attr: "id", title: "id", type: "number", width: 20},
+                {attr: "id", title: "id", type: "number", width: 5},
                 {attr: "performance", title: "performance", type: "text", width: 20},
                 {attr: "created_at", title: "created_at", type: "text", width: 20},
-                {attr: "parameter_text", title: "parameter_text", type: "text", width: 10},
+                {attr: "parameter_text", title: "parameter_text", type: "text", width: 5},
                 {attr: "parameter_link", title: "parameter_link", type: "text", width: 20}
 
             ]
