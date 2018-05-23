@@ -6,21 +6,21 @@ provide collaboration, scalability and fault-tolerance in an optimization proces
 
 ## Installation
 
-This process is described for ubuntiu 17.10 but it can be used also on Windows and other OS.
+This process is described for Ubuntu 17.10 but it can be used also on Windows and other OS.
 
 ### Step 1 - Setup Dependencies
 
-sudo apt-get install node.js npm
+sudo apt-get install node.js npm  
  
 ### Step 2 - Setup Singularity from GitHub
 
-git clone https://github.com/harveybc/singularity
-cd singularity
-npm install
+git clone https://github.com/harveybc/singularity  
+cd singularity  
+npm install  
 
 ### Step 3 - Configure your IP and port (For both Web Interface and API)
 
-nano .env
+nano .env  
 
 Configure your IP address or hostname in the field HOST and an available port 
 for listening connections in the field PORT. You can also configure an external 
@@ -29,31 +29,31 @@ database if not using the default sqlite 3.
 
 ### Step 4 - Configure a startup/restart script
 
-nano res
+nano res  
 
 For creating the test database and executing the program, make sure the file contains:
 
-git pull
-rm database/development.sqlite
-./ace migration:run
-./ace db:seed
-npm run serve:dev
+git pull  
+rm database/development.sqlite  
+./ace migration:run  
+./ace db:seed  
+npm run serve:dev  
 
 After editing, change the permission of the file to be executable:
 
-chmod 777 res
+chmod 777 res  
 
 ### Step 5 - Start your node
 
-./res
+./res  
 
 ### Step 6 - Verify its Working
 
 Access the web interface from a browser in the address and port you configured.
 Some default test processes and users are created and you can use them to configure
-your evolutionary algorithm as shown in the following section.
+your evolutionary algorithm as shown in the following section.  
 
-## Brief Description of Usage
+## Brief Description of Usage  
 
 More detailed documentation coming soon.
 
