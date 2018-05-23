@@ -32,14 +32,14 @@ database if not using the default sqlite 3.
 nano res  
 
 For creating the test database and executing the program, make sure the file contains:
-
+\#!/bin/bash
 git pull  
 rm database/development.sqlite  
 ./ace migration:run  
 ./ace db:seed  
 npm run serve:dev  
 
-After editing, change the permission of the file to be executable:
+After editing, change the permission of the file to be executable:  
 
 chmod 777 res  
 
