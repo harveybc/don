@@ -1,35 +1,87 @@
-# AdonisJs Application
+# singularity
 
-This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.
+The [singularity platform](https://github.com/harveybc/singularity) allows 
+extending existing evolutionary algorithms to a decentralized architecture to 
+provide collaboration, scalability and fault-tolerance in an optimization process. 
 
-> Make sure to star the official [framework repo](https://github.com/adonisjs/adonis-framework) or [tweet on twitter](https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I%20am%20using%20AdonisJs,%20a%20practical%20MVC%20framework%20for%20nodejs&hashtags=nodejs,adonisframework) :wave:
+## Installation
 
-## Story
+This process is described for ubuntiu 17.10 but it can be used also on Windows and other OS.
 
-One day a :boy: wanted to write a web application to slowly turn it into a business and make some :moneybag: for better living. Being a Javascript lover, he decided to go with Node.js. 
+### Step 1 - Setup Dependencies
 
-Hosting Node.js applications are cheap and offers lots of mordern programming concepts to build realtime data rich applications.
+sudo apt-get install node.js npm
+ 
+### Step 2 - Setup Singularity from GitHub
 
-He was so excited and full of energy to build this application and share it with the world. But soon his dreams started struggling with the amount of decisions he has to make, just to build an MVP of his idea. These decisions were not even related to the business and was about.
+git clone https://github.com/harveybc/singularity
+cd singularity
+npm install
 
-1. How should I structure my application?
-2. Why do I need to download 20 modules just to start an HTTP server, parse request body and upload files.
-3. How should I manage the authentication on website, and expose public API for others to interact with the data?
-4. What do I need to do to secure my application from web attacks and how to handle CORS?
-5. Why do I have ton of `require` statements everywhere?
-6. How the heck should I test my code? I am having hard time mocking dependencies.
-7. **WHY THE :fish:** there are no standards to write some code. Hell I am not going to write this application and going for a walk.
+### Step 3 - Configure your IP and port (For both Web Interface and API)
+
+nano .env
+
+Configure your IP address or hostname in the field HOST and an available port 
+for listening connections in the field PORT. You can also configure an external 
+database if not using the default sqlite 3.
 
 
-## Not Anymore
+### Step 4 - Configure a startup/restart script
 
-This is so frustating. Node.js is a beautiful language but all of the above questions have never been answered together. We all love writing small concise modules but business are not created by downloading 20 modules.
+nano res
 
-Developers needs productive tools, so that they can focus on what matters, and not on downloading & finding the best ways to combine these small modules. 
+For creating the test database and executing the program, make sure the file contains:
 
-## AdonisJs
+git pull
+rm database/development.sqlite
+./ace migration:run
+./ace db:seed
+npm run serve:dev
 
-AdonisJs is a beautiful framework with pre-configured answers to all of your questions. We not only created this framework, but validated the features of framework with realtime problems and still improving every bit, so that you have to write less and structured code.
+After editing, change the permission of the file to be executable:
 
-This time a :boy: will write his ambitious application and will set the world on :fire:. Don't hesitate to work on your ideas and we promise to improve the framework every :sunny: and :first_quarter_moon_with_face: and YESSSS do not forget to star us on [:octocat:](https://github.com/adonisjs/adonis-framework)
+chmod 777 res
 
+### Step 5 - Start your node
+
+./res
+
+### Step 6 - Verify its Working
+
+Access the web interface from a browser in the address and port you configured.
+Some default test processes and users are created and you can use them to configure
+your evolutionary algorithm as shown in the following section.
+
+## Brief Description of Usage
+
+More detailed documentation coming soon.
+
+### Step 1 - Configure a Process in Singularity.
+
+After installing singularity, access the web interface and create an optimization
+process with the required users and their authorizations if not enough with the default ones.
+Annotate the process hash, username and pass_hass
+
+### Step 2 - Configure Your Evolutionary Algorithm.
+
+Your evolutionary algoritm must perform the migration operator that you decide
+between iterations, for this you must make an HTTP GET request from your program
+with your process hash, username and pass_hass to check if a new optimum has been 
+found since the last one and if your algorithm
+has found some parameters with better fitness than the remote ones, you must 
+migrate the fittest specimens in a population or the representatives of 
+groups or species depending on your needs using an HTTP POST to report your new optimum.
+
+An example of usage and the parameters that the requests must have can be found on the [gym-forex environment](https://github.com/harveybc/gym-forex)
+
+### Step 3 - Monitor Your Optimization Process.
+
+Access the web interface and click on your process to access its detailed view
+with a graphic of the evolution of the performance in time.
+
+### Step 4 - Enjoy.
+
+Be good.
+
+Work In Progress. Proper documentation coming soon.
