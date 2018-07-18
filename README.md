@@ -59,9 +59,12 @@ More detailed documentation coming soon.
 
 ### Step 1 - Configure a Process in Singularity.
 
-After installing singularity, access the web interface and create an optimization
-process with the required users and their authorizations if not enough with the default ones.
-Annotate the process hash, username and pass_hass
+After installing singularity, access the web interface with your username, 
+pass_hash and process_hash as GET parameters. You can configure the initial user 
+database editing the file database/seeds/authentications and create an optimization
+process with the required users and their authorizations if not enough with the default ones. 
+Annotate the process hash, username and pass_hash of your new process, since they are required
+to access the web interface and the API.
 
 ### Step 2 - Configure Your Evolutionary Algorithm.
 
