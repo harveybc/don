@@ -4,6 +4,7 @@ The [singularity platform](https://github.com/harveybc/singularity) allows
 extending existing evolutionary algorithms to a decentralized architecture to 
 provide collaboration, scalability and fault-tolerance in an optimization process. 
 
+
 ## Installation
 
 This process is described for Ubuntu 17.10 but it can be used also on Windows and other OS.
@@ -87,4 +88,4 @@ with a graphic of the evolution of the performance in time.
 
 Be good.
 
-Work In Progress. Proper documentation coming soon.
+Work In Progress. Proper documentation coming soon. There is a poster and the contents of my MSE thesis (this project) in PDF format in the root folder.
