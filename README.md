@@ -84,8 +84,4 @@ An example of usage and the parameters that the requests must have can be found 
 Access the web interface and click on your process to access its detailed view
 with a graphic of the evolution of the performance in time.
 
-### Step 4 - Enjoy.
-
-Be good.
-
 Work In Progress. Proper documentation coming soon. There is a poster and the contents of my MSE thesis (this project) in PDF format in the root folder.
