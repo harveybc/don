@@ -32,7 +32,8 @@ database if not using the default sqlite 3.
 
 nano res  
 
-For creating the test database and executing the program, make sure the file contains:
+For creating the test database and executing the program, make sure the file contains:  
+
 \#!/bin/bash
 git pull  
 rm database/development.sqlite  
