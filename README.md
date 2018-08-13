@@ -61,7 +61,8 @@ More detailed documentation coming soon.
 
 ### Step 1 - Configure a Process in Singularity.
 
-After installing singularity, access the web interface with your username, 
+After installing singularity, access the web interface from the IP address or host 
+name and port (i.e. 192.168.0.241:3338) you configured in step 3 of the installation with your username, 
 pass_hash and process_hash as GET parameters. You can configure the initial user 
 database editing the file database/seeds/authentications and create an optimization
 process with the required users and their authorizations if not enough with the default ones. 

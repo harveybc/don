@@ -3,6 +3,8 @@
 */
 const Route = use('Route');
 // VIEWS
+Route.get('/', 'ProcessesController.AdminView')
+/** @desc AdminView: Deletes a process */
 Route.get('/processes/admin', 'ProcessesController.AdminView')
 /** @desc AdminView: Deletes a process */
 Route.get('/processes/detail/:id', 'ProcessesController.DetailView')
