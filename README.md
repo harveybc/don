@@ -34,7 +34,7 @@ nano res
 
 For creating the test database and executing the program, make sure the file contains:  
 
-\#!/bin/bash
+\#!/bin/bash  
 git pull  
 rm database/development.sqlite  
 ./ace migration:run  
