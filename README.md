@@ -62,14 +62,20 @@ More detailed documentation coming soon.
 ### Step 1 - Configure a Process in Singularity.
 
 After installing singularity, access the web interface from the IP address or host 
-name and port (i.e. 192.168.0.241:3338) you configured in step 3 of the installation with your username, 
-pass_hash and process_hash as GET parameters. You can configure the initial user 
-database editing the file database/seeds/authentications and create an optimization
-process with the required users and their authorizations if not enough with the default ones. 
-Annotate the process hash, username and pass_hash of your new process, since they are required
-to access the web interface and the API.
+name and port with the default credentials, you configured in step 3 for example:  
 
-### Step 2 - Configure Your Evolutionary Algorithm.
+http://192.168.0.241:3338/processes/admin?username=harveybc&pass_hash=$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q  
+
+You can change the initial credentials in the file database/seeds/Authentication.js,
+also you can configure the ip addresses for the devices in your network in the file 
+/database/seeds/Neighbors.js and executing the following commands to reset and populate the database:  
+
+rm database/development.sqlite  
+./ace migration:run  
+./ace db:seed   
+
+
+### Step 2 - Configure Your Evolutionary Algorithm.  
 
 Your evolutionary algoritm must perform the migration operator that you decide
 between iterations, for this you must make an HTTP GET request from your program
