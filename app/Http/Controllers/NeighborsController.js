@@ -285,9 +285,8 @@ class NeighborsController {
             data: result,
             items: [
                 {attr: "id", title: "id", type: "number", width: 20},
-                {attr: "address", title: "address", type: "text", width: 30},
-                {attr: "distance", title: "distance", type: "text", width: 30},
-                {attr: "latency", title: "latency", type: "text", width: 30}
+                {attr: "address", title: "address", type: "text", width: 30}
+                
             ]
         });
     }
