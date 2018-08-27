@@ -356,8 +356,25 @@ TEST
     <script>
         // Gets data from controller
         var data = {{data| dump | safe}};
-                // when page finishes loading, sets the values to the ones from data
-                $(document).ready(function () {
+        /* get performance and data pairs */
+        function getPerformanceData(){
+            var xmlhttp = new XMLHttpRequest();
+            var res = [];
+            var res_req = {};
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    res_req = JSON.parse(this.responseText);
+                    var myDiv = document.getElementById("testFrame");
+                    myDiv.innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "/parameters?username={{username}}&pass_hash={{pass_hash}}", true);
+            xmlhttp.send();
+        }
+        // when page finishes loading, sets the values to the ones from data
+        $(document).ready(function () {
+            // Calls getPerformanceData to get a JSON from singularity
+            getPerformanceData();
             // Shows Help When button clicked
             $('#btn-trig').click(function () {
                 $('#helpModal').modal('show');
@@ -392,8 +409,12 @@ TEST
             $('#inputLastOptimumId').val(data[0].last_optimum_id);
             $('#inputLastOptimumDate').val(data[0].last_optimum_date);
             $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);
-
         });
+        
+        
+
+        /**/
+
         $(function () {
             /*
              * Flot Interactive Chart
@@ -401,24 +422,7 @@ TEST
              */
             var data = [], totalPoints = 100
             
-            /* get performance and data pairs */
-            function getPerformanceData(){
-                var xmlhttp = new XMLHttpRequest();
-                var res = [];
-                var res_req = {};
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        res_req = JSON.parse(this.responseText);
-                        var myDiv = document.getElementById("testFrame");
-                        myDiv.innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "/parameters?username={{username}}&pass_hash={{pass_hash}}", true);
-                xmlhttp.send();
-                
-                return res_req;
-            }
-
+            
             /* QUITAR */
             function getRandomData() {
                 if (data.length > 0)

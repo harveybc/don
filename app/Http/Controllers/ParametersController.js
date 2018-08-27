@@ -33,7 +33,7 @@ class ParametersController {
         }
 
         var c_vars = {last_block_time: parseInt(result[0].last_block_time), block_time: parseInt(block_time),
-            process_hash: result[0].hash, 
+            process_hash: result[0].hash,
             block_time_control: parseInt(result[0].block_time_control), last_block_performance: parseFloat(result[0].last_block_performance),
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
             last_threshold: parseFloat(result[0].last_threshold), desired_block_time: parseFloat(result[0].desired_block_time)
@@ -66,13 +66,12 @@ class ParametersController {
             // lee los registros marcados para usar como contents
             var contents = yield Database.select('hash').from('accountings').where('block_hash', "");
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
-            if (c_vars.block_time > c_vars.desired_block_time){
-                c_vars.current_threshold=c_vars.current_threshold*0.3                
+            if (c_vars.block_time > c_vars.desired_block_time) {
+                c_vars.current_threshold = c_vars.current_threshold * 0.3
+            } else {
+                c_vars.current_threshold = c_vars.current_threshold * 1.2
             }
-            else{
-                c_vars.current_threshold=c_vars.current_threshold*1.2                
-            }
-                
+
             // compone la estructura url_params usada en creación de bloque
             var url_params = {
                 username: user,
@@ -173,8 +172,8 @@ class ParametersController {
         // send response
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
-    
-    * createItemQuery(url_params,hash) {
+
+    * createItemQuery(url_params, hash) {
         // assign variables to url parameters
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -208,7 +207,7 @@ class ParametersController {
         // Verify block creation conditions
         console.log("\nResultCreateItemQuery=", resq);
         // resultado de inserción de bloque
-       
+
         return ({"id": resq});
     }
 
@@ -247,12 +246,12 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
-       result = yield * this.createItemQuery(url_params,hash_p);
-       // Verify block creation conditions at the end so it can call block creation from this same machine
-       console.log("\nresult_createItemQuery=",result);
-       var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
-       // send response
-       yield response.sendView('master_JSON', {result: resp, request_id: 3112});
+        result = yield * this.createItemQuery(url_params, hash_p);
+        // Verify block creation conditions at the end so it can call block creation from this same machine
+        console.log("\nresult_createItemQuery=", result);
+        var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
+        // send response
+        yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
     /* Update sql query*/
     * updateItemQuery(url_params, id) {
