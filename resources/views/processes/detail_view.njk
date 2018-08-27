@@ -362,7 +362,7 @@ TEST
         function getPoints(res_text){   
             // JSON parse res_text as last response 
             last_response = JSON.parse(res_text);
-            var str = JSON.stringify(obj, last_response, 2); // spacing level = 2
+            var str = JSON.stringify(last_response, 2); // spacing level = 2
             // Zip the generated y values with the x values
             var res = []
             for (var i = 0; i < last_response.result.length; i++) {
