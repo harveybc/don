@@ -52,10 +52,9 @@
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
     <script src="/bower_components/Flot/jquery.flot.resize.js"></script>
     <script>
-        // Gets data from controller
         var data = {{data| dump | safe}};
-                // when page finishes loading, sets the values to the ones from data
-                $(document).ready(function () {
+        // when page finishes loading, sets the values to the ones from data
+        $(document).ready(function () {
                                 // initialize menu start active item
             document.getElementById("m_optimization").classList.add('menu-open');
             document.getElementById("m_optimization").classList.add('active');            
@@ -80,6 +79,8 @@
             // We use an inline data source in the example, usually data would
             // be fetched from a server
             var data = [], totalPoints = 100
+        
+            // Gets data from singularity parameters controller
             function getRandomData() {
                 if (data.length > 0)
                     data = data.slice(1)

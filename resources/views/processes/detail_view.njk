@@ -316,6 +316,9 @@
                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Performance">
                             </div>
                         </div>
+                        <div id = "test_frame">
+TEST
+                        </div>
                     </div>
                     <!-- /.box-body-->
                 </div>
@@ -401,14 +404,16 @@
             /* get performance and data pairs */
             function getPerformanceData(){
                 var xmlhttp = new XMLHttpRequest();
+                var res = [];
+                var res_req = {};
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        var myObj = JSON.parse(this.responseText);
-                        document.getElementById("demo").innerHTML = myObj.name;
+                        res_req = JSON.parse(this.responseText);
                     }
                 };
-                xmlhttp.open("GET", "json_demo.txt", true);
+                xmlhttp.open("GET", "/parameters?username={{username}}&pass_hash={{pass_hash}}", true);
                 xmlhttp.send();
+                return res_req;
             }
 
             /* QUITAR */
