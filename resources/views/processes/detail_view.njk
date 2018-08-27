@@ -356,20 +356,35 @@ TEST
     <script>
         // Gets data from controller
         var data = {{data| dump | safe}};
-        /* get performance and data pairs */
+        /* get the x,y data for plotting from a result of a request as JSON from a text resposne*/
+        var last_response;
+        var xy_points = [];
+        function getPoints(res_text){   
+            // JSON parse res_text as last response 
+            last_response = JSON.parse(res_text);
+            var str = JSON.stringify(obj, last_response, 2); // spacing level = 2
+            // Zip the generated y values with the x values
+            var res = []
+            for (var i = 0; i < last_response.result.length; i++) {
+                res.push([i, last_response.result[i]])
+            }
+            // show result on the page
+            var myDiv = document.getElementById("testFrame");
+            myDiv.innerHTML = xy_points.toString();
+            // return array of x,y points
+            return xy_points;
+        }
+        /* get performance and data pairs from remote host */
         function getPerformanceData(){
             var xmlhttp = new XMLHttpRequest();
-            var res = [];
-            var res_req = {};
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    res_req = JSON.parse(this.responseText);
-                    var myDiv = document.getElementById("testFrame");
-                    myDiv.innerHTML = this.responseText;
+                    xy_points = getPoints(this.responseText);
                 }
             };
             xmlhttp.open("GET", "/parameters?username={{username}}&pass_hash={{pass_hash}}", true);
             xmlhttp.send();
+            return xy_points;
         }
         // when page finishes loading, sets the values to the ones from data
         $(document).ready(function () {
@@ -476,11 +491,11 @@ TEST
             var updateInterval = 1000 //Fetch data ever x milliseconds
             var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
             function update() {
-                interactive_plot.setData([getPerformanceData()])
+                interactive_plot.setData([getPerformanceData()]);
                 // Since the axes don't change, we don't need to call plot.setupGrid()
-                interactive_plot.draw()
+                interactive_plot.draw();
                 if (realtime === 'on')
-                    setTimeout(update, updateInterval)
+                    setTimeout(update, updateInterval);
             }
             //INITIALIZE REALTIME DATA FETCHING
             if (realtime === 'on') {
