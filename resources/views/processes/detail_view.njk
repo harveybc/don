@@ -316,7 +316,7 @@
                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Performance">
                             </div>
                         </div>
-                        <div id = "test_frame">
+                        <div id = "testFrame">
 TEST
                         </div>
                     </div>
@@ -409,10 +409,13 @@ TEST
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         res_req = JSON.parse(this.responseText);
+                        var myDiv = document.getElementById("testFrame");
+                        myDiv.innerHTML = this.responseText;
                     }
                 };
                 xmlhttp.open("GET", "/parameters?username={{username}}&pass_hash={{pass_hash}}", true);
                 xmlhttp.send();
+                
                 return res_req;
             }
 
