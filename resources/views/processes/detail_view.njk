@@ -396,9 +396,22 @@
              * Flot Interactive Chart
              * -----------------------
              */
-            // We use an inline data source in the example, usually data would
-            // be fetched from a server
             var data = [], totalPoints = 100
+            
+            /* get performance and data pairs */
+            function getPerformanceData(){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var myObj = JSON.parse(this.responseText);
+                        document.getElementById("demo").innerHTML = myObj.name;
+                    }
+                };
+                xmlhttp.open("GET", "json_demo.txt", true);
+                xmlhttp.send();
+            }
+
+            /* QUITAR */
             function getRandomData() {
                 if (data.length > 0)
                     data = data.slice(1)
@@ -424,6 +437,32 @@
 
                 return res
             }
+            function getRandomData() {
+                if (data.length > 0)
+                    data = data.slice(1)
+                // Do a random walk
+                while (data.length < totalPoints) {
+
+                    var prev = data.length > 0 ? data[data.length - 1] : 50,
+                            y = prev + Math.random() * 10 - 5
+
+                    if (y < 0) {
+                        y = 0
+                    } else if (y > 100) {
+                        y = 100
+                    }
+
+                    data.push(y)
+                }
+                // Zip the generated y values with the x values
+                var res = []
+                for (var i = 0; i < data.length; ++i) {
+                    res.push([i, data[i]])
+                }
+
+                return res
+            }
+            // Interactive plot
             var interactive_plot = $.plot('#interactive', [getRandomData()], {
                 grid: {
                     borderColor: '#f3f3f3',
@@ -435,7 +474,7 @@
                     color: '#3c8dbc'
                 },
                 lines: {
-                    fill: true, //Converts the line chart to area chart
+                    fill: true, // Converts the line chart to area chart
                     color: '#3c8dbc'
                 },
                 yaxis: {
@@ -484,8 +523,7 @@
             }
             var line_data1 = {
                 data: sin,
-                color: '#3c8dbc'
-            }
+                color: '#3c8dbc'b
             var line_data2 = {
                 data: cos,
                 color: '#00c0ef'

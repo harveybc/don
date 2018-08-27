@@ -8,7 +8,7 @@ class ProcessesController {
     // lista de los hashes de los bloques generados, para que la fuente pueda 
     // o borrar las transacciones excedentes a esa lista(por fecha) o pueda adicionarlas al nuevo bloque(después de remoto) haciendo flooding.
             
-    
+   
     * GetLastBlockMetadata(process_hash) {
         const Database = use('Database');
         const result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
@@ -55,6 +55,7 @@ class ProcessesController {
         // end of AAA layers
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         var url_params = request.get();
