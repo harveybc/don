@@ -64,7 +64,7 @@ More detailed documentation coming soon.
 After installing singularity, access the web interface from the IP address or host 
 name and port with the default credentials, you configured in step 3 for example:  
 
-http://192.168.0.241:3338/processes/admin?username=harveybc&pass_hash=$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q  
+http://192.168.0.241:3338/processes/admin?username=harveybc&pass_hash=$2a$04$ntNHmofQoMoajG89mTEM2uSR66jKXBgRQJnCgqfNN38aq9UkN4Y6q&process_hash=ph  
 
 You can change the initial credentials in the file database/seeds/Authentication.js,
 also you can configure the ip addresses for the devices in your network in the file 
