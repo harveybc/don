@@ -342,9 +342,9 @@ TEST
             last_response = JSON.parse(res_text);
             var str = JSON.stringify(last_response, 2); // spacing level = 2
             // Zip the generated y values with the x values
-            var res = []
+            xy_points = [];
             for (var i = 0; i < last_response.result.length; i++) {
-                res.push([i, last_response.result[i]])
+                xy_points.push([i, last_response.result[i]])
             }
             // show result on the page
             var myDiv = document.getElementById("testFrame");
@@ -367,7 +367,7 @@ TEST
         // when page finishes loading, sets the values to the ones from data
         $(document).ready(function () {
             // Calls getPerformanceData to get a JSON from singularity
-            getPerformanceData();
+            xy_points=getPerformanceData();
             // Shows Help When button clicked
             $('#btn-trig').click(function () {
                 $('#helpModal').modal('show');
