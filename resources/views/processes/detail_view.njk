@@ -472,7 +472,7 @@ TESTOther
             function update() {
                 xy_points=getPerformanceData();
                 var tmp = getRandomData();
-                interactive_plot.setData([tmp]);
+                interactive_plot.setData([xy_points]);
                 
                 document.getElementById("testFrame").innerHTML = xy_points.toString();
                 document.getElementById("otherTestFrame").innerHTML = tmp.toString();
