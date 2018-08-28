@@ -297,6 +297,9 @@
                         <div id = "testFrame">
 TEST
                         </div>
+                                                <div id = "otherTestFrame">
+TESTOther
+                        </div>
                     </div>
                     <!-- /.box-body-->
                 </div>
@@ -466,8 +469,11 @@ TEST
             var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
             function update() {
                 xy_points=getPerformanceData();
+                var tmp = getRandomData();
                 interactive_plot.setData(xy_points);
+                
                 document.getElementById("testFrame").innerHTML = xy_points.toString();
+                document.getElementById("otherTestFrame").innerHTML = tmp.toString();
                 // Since the axes don't change, we don't need to call plot.setupGrid()
                 interactive_plot.draw();
                 if (realtime === 'on')
