@@ -414,7 +414,7 @@ TESTOther
              * Flot Interactive Chart
              * -----------------------
              */
-            var data = [], totalPoints = xy_points.length
+            var data = [], totalPoints = 35
             
             
             /* QUITAR */
@@ -471,6 +471,7 @@ TESTOther
             var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
             function update() {
                 xy_points=getPerformanceData();
+                total_points = xy_points.length;
                 var tmp = getRandomData();
                 interactive_plot.setData([xy_points]);
                 
