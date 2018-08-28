@@ -344,7 +344,7 @@ TEST
             // Zip the generated y values with the x values
             xy_points = [];
             for (var i = 0; i < last_response.result.length; i++) {
-                xy_points.push([i, last_response.result[i]])
+                xy_points.push([i, last_response.result[i].performance])
             }
             // show result on the page
             var myDiv = document.getElementById("testFrame");
