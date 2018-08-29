@@ -64,7 +64,7 @@ class ParametersController {
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             // lee los registros marcados para usar como contents
-            var contents = yield Database.select('hash').from('accountings').where('block_hash', "");
+            var contents = yield Database.select('hash').from('accountings').where('block_hash', "0");
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
             if (c_vars.block_time > c_vars.desired_block_time) {
                 c_vars.current_threshold = c_vars.current_threshold * 0.3
