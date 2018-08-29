@@ -9,7 +9,7 @@ const processArray=[
                         "hash":"ph", "app_hash": "ah", "created_at":"2017-09-02 05:22:30", "updated_at": "2017-09-03 05:22:31", 
                         "active":true, "desired_block_time": 1, "desired_block_size": 0, "block_time_control": 0, "model_id":1, "training_set_id":1, "validation_set_id":1,
                         "last_block_hash":"firsthash","last_block_date":"2017-09-03 05:22:31", "last_block_time": 1, 
-                        "current_threshold":0.01,"last_threshold":0.01,"current_block_time":100, // con cbp=0.898 se debería crear nuevo block.
+                        "current_threshold":0.01,"last_threshold":0.01,"current_block_time":1, // con cbp=0.898 se debería crear nuevo block.
                         "last_block_size": 0, "last_block_performance":0.0,"current_block_performance": 0.0,  "last_optimum_id": 1, "last_optimum_date": "2017-09-03 06:22:31"}, 
                     {"id": 2, "name": "Test process 2", "description": "Test process 2 -  stub testing", "creator_key": "THAKEY", "tags": ["p2p", "forex", "dqn"],
                         "hash":"p2h", "app_hash": "ah", "created_at":"2017-09-02 05:22:30", "updated_at": "2017-09-03 05:22:31", 
