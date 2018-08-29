@@ -524,7 +524,7 @@ class BlocksController {
                 {attr: "id", title: "id", type: "number", width: 20},
                 {attr: "performance", title: "performance", type: "number", width: 70},
                 {attr: "created_at", title: "Created At", type: "text", width: 60},
-                {attr: "threshold", title: "treshold", type: "number", width: 60},
+                {attr: "threshold", title: "threshold", type: "number", width: 60},
                 {attr: "prev_hash", title: "prev_hash", type: "text", width: 60}
                // {attr: "contents", title: "contents", type: "text", width: 60}
             ]
