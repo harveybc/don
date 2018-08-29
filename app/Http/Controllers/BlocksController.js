@@ -521,10 +521,12 @@ class BlocksController {
             data: result,
             user_id: user_id,
             items: [
-                {attr: "process_hash", title: "proc", type: "text", width: 70},
-                {attr: "difficulty", title: "diff", type: "text", width: 30},
-                {attr: "block_time", title: "time", type: "text", width: 30},
-                {attr: "created_at", title: "Created At", type: "text", width: 60}
+                {attr: "id", title: "id", type: "number", width: 20},
+                {attr: "performance", title: "performance", type: "number", width: 70},
+                {attr: "created_at", title: "Created At", type: "text", width: 60},
+                {attr: "threshold", title: "treshold", type: "number", width: 60},
+                {attr: "prev_hash", title: "prev_hash", type: "text", width: 60},
+                {attr: "contents", title: "contents", type: "text", width: 60}
             ]
         });
     }
