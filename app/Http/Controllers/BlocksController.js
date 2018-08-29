@@ -361,10 +361,11 @@ class BlocksController {
             data: result,
             items: [
                 {attr: "id", title: "id", type: "number", width: 20},
-                {attr: "process_hash", title: "proc", type: "text", width: 70},
-                {attr: "difficulty", title: "diff", type: "number", width: 30},
-                {attr: "block_time", title: "time", type: "number", width: 30},
+                {attr: "performance", title: "per", type: "number", width: 70},
+                {attr: "block_hash", title: "diff", type: "text", width: 30},
+                {attr: "prev_hash", title: "time", type: "text", width: 30},
                 {attr: "created_at", title: "Created At", type: "text", width: 60}
+                
             ]
         });
     }
