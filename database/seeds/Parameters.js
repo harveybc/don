@@ -9,7 +9,7 @@ const parametersArray = [{
         "process_hash": "ph", "model_hash": "mh",
         "app_hash": "ah", "parameter_link": null,
         "parameter_text": null, "parameter_blob": null, "validation_hash": "vh",
-        "hash": "pah", "performance": -1500.01
+        "hash": "pah", "performance": 0.0
     },
 ]
 /** 
