@@ -79,7 +79,7 @@ class ParametersController {
                 hash: "", //Inicializado con el hash del bloque al final
                 prev_hash: prev_hash[0].hash,
                 param_hash: param_hash,
-                contents: contents.toString(),
+                contents: contents,
                 threshold: c_vars.current_threshold,
                 block_time: c_vars.block_time,
                 block_size: contents.length,
