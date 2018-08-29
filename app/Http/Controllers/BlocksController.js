@@ -526,7 +526,7 @@ class BlocksController {
                 {attr: "created_at", title: "Created At", type: "text", width: 60},
                 {attr: "threshold", title: "treshold", type: "number", width: 60},
                 {attr: "prev_hash", title: "prev_hash", type: "text", width: 60},
-                {attr: "contents", title: "contents", type: "text", width: 60}
+ 
             ]
         });
     }
