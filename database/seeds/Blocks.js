@@ -5,7 +5,7 @@
 const Blocks = use('App/Model/Blocks')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const blocksArray = [
-    {"id": 1, "username": "harveybc", "process_hash": "ph", "param_hash":"pah" , "hash":"firsthash", "prev_hash":"firsthash", "contents":"{}","signature":"s","difficulty":0.01, "threshold":0.018, "performance":0.0,"block_time":1,"block_size":1},
+    {"id": 1, "username": "harveybc", "process_hash": "ph", "param_hash":"pah" , "hash":"firsthash", "prev_hash":"firsthash", "contents":"{}","signature":"s","difficulty":0.01, "threshold":0.018, "performance":0.01,"block_time":1,"block_size":1},
     ] 
 /** 
  @desc Database Seeder
