@@ -60,11 +60,14 @@ class ParametersController {
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (float(c_vars.last_block_performance) + float(c_vars.current_threshold))))
             cond = true;
         if (cond) {
+            console.log("\nBlock Creation Condition met:");
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             // lee los registros marcados para usar como contents
             var contents = yield Database.select('id').from('accountings').where('block_hash', "0");
+            console.log("\nContents:", contents);
+            
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
             if (c_vars.block_time > c_vars.desired_block_time) {
                 c_vars.current_threshold = c_vars.current_threshold * 0.3

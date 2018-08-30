@@ -82,10 +82,14 @@ class BlocksController {
         // EN BLOCK CREATE ITEMQUERY adicionar que se altere cada accounting de contents con block_hash =new_block_hash...
         for (var hash_p of contents) {
             result = yield Database.table('accountings')
-                    .where('hash', hash_p.hash)
+                    .where('id', hash_p.id)
                     .update({
                         "block_hash":hash});
         };
+        
+        // Consulta perf de ultimo bloque de ph
+        var last_block_performance = yield Database.select('performance').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
+            
 
         // Crea el registro de blocks
         const resq = yield Database
@@ -100,7 +104,7 @@ class BlocksController {
         var result2 = yield Database.table('processes')
                     .where('hash', process_hash)
                     .update({
-                        "last_block_performance":performance,
+                        "last_block_performance":last_block_performance,
                         "current_block_performance":performance,
                         "last_block_size": block_size,
                         "last_block_time": block_time,
