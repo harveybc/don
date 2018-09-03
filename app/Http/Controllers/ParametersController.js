@@ -55,14 +55,17 @@ class ParametersController {
         var cond = false;
         // ic collection=parameters and method=create
         console.log("\nc_vars.block_time_control=", c_vars.block_time_control,
-                " c_vars.current_block_performancen=", c_vars.current_block_performance, " c_vars.last_block_performance=", c_vars.last_block_performance, " c_vars.current_threshold=", c_vars.current_threshold);
+                " c_vars.current_block_performance=", c_vars.current_block_performance, " c_vars.last_block_performance=", c_vars.last_block_performance, " c_vars.current_threshold=", c_vars.current_threshold);
         // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (float(c_vars.last_block_performance) + float(c_vars.current_threshold))))
+        {
             cond = true;
-        else
-            console.log("\nBlock Creation Condition NOT met:");
+        }
+        else{
+            console.log("\nBlock Creation Condition NOT met.");
+        }
         if (cond) {
-            console.log("\nBlock Creation Condition met:");
+            console.log("\nBlock Creation Condition met.");
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
