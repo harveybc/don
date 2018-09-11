@@ -95,11 +95,13 @@
                 <!-- /.box -->
             </div>
             <div class="col-md-6">
-                <!-- new box -->
+                <!-- Line chart -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <i class="fa fa-list-alt"></i>
-                        <h3 class="box-title">Metadata</h3>
+                        <i class="fa fa-cube"></i>
+
+                        <h3 class="box-title">Process Configuration</h3>
+
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -107,45 +109,28 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <div id="bar-chart">
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" name="name">
-                                </div>
-                            </div>                
-                            <div class="form-group">
-                                <label for="inputDescription" class="col-sm-2 control-label">Description</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputDescription"  name="description" placeholder="Description">
-                                </div>
+                        <div class="form-group">
+                            <label for="inputDesiredBlockTime" class="col-sm-2 control-label">Desired Block Time</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2592000" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="Desired Block Time">
                             </div>
-                            <div class="form-group">
-                                <label for="inputCreatorKey" class="col-sm-2 control-label">Creator Key</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputCreatorKey"  name="creator_key" placeholder="Creator Key">
-                                </div>
+                        </div>                
+                        <div class="form-group">
+                            <label for="inputDesiredBlockSize" class="col-sm-2 control-label">Desired Block Size</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2147483648" class="form-control" id="inputDesiredBlockSize"  name="desired_block_size" placeholder="Desired Block Size">
                             </div>
-                            <div class="form-group">
-                                <label for="inputTags" class="col-sm-2 control-label">Tags</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputTags" name="tags"  placeholder="forex,dqn,dcn,neat">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputAppId" name="app_hash"  placeholder="1">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBlockTimeControl" class="col-sm-2 control-label">Block Time Control</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" max="2147483648" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="Block Time Control Method">
                             </div>
                         </div>
                     </div>
                     <!-- /.box-body-->
                 </div>
                 <!-- /.box -->
-
             </div>
         </div>
         <div class="row">
