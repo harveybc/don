@@ -105,7 +105,7 @@
                     <div class="box-header with-border">
                         <i class="fa fa-cube"></i>
 
-                        <h3 class="box-title">Metadata</h3>
+                        <h3 class="box-title">Block Data</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -115,21 +115,39 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputDesiredBlockTime" class="col-sm-2 control-label">Desired Block Time</label>
+                            <label for="inputCreatedAt" class="col-sm-2 control-label">created_at</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2592000" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="Desired Block Time">
+                                <input type="text" class="form-control" id="inputCreatedAt"  name="created_at" placeholder="created_at">
                             </div>
                         </div>                
                         <div class="form-group">
-                            <label for="inputDesiredBlockSize" class="col-sm-2 control-label">Desired Block Size</label>
+                            <label for="inputUpdatedAt" class="col-sm-2 control-label">updated_at</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2147483648" class="form-control" id="inputDesiredBlockSize"  name="desired_block_size" placeholder="Desired Block Size">
+                                <input type="text" class="form-control" id="inputUpdatedAt"  name="updated_at" placeholder="updated_at">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputBlockTimeControl" class="col-sm-2 control-label">Block Time Control</label>
+                            <label for="inputActive" class="col-sm-2 control-label">active</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2147483648" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="Block Time Control Method">
+                                <input type="text" class="form-control" id="inputActive"  name="active" placeholder="active">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDesiredBlockTime" class="col-sm-2 control-label">desired_block_time</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="desired_block_time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDesiredBlockSize" class="col-sm-2 control-label">desired_block_size</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDesiredBlockTime"  name="desired_block_size" placeholder="desired_block_size">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputBlockTimeControl" class="col-sm-2 control-label">block_time_control</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="block_time_control">
                             </div>
                         </div>
                     </div>
