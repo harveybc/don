@@ -88,9 +88,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputAppId" class="col-sm-2 control-label">Application ID</label>
+                                <label for="inputHash" class="col-sm-2 control-label">Hash</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputAppId" name="app_hash"  placeholder="1">
+                                    <input type="text" class="form-control" id="inputHash" name="hash"  placeholder="hash">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAppHash" class="col-sm-2 control-label">Application Hash</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputAppHash" name="app_hash"  placeholder="1">
                                 </div>
                             </div>
                         </div>
@@ -157,60 +163,69 @@
             </div>
         </div>
         <div class="row">
-
             <div class="col-md-6">
-                <!-- Bar chart -->
+                <!-- new box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <i class="fa fa-line-chart"></i>
+                        <i class="fa fa-cube"></i>
+
                         <h3 class="box-title">Optimization Configuration</h3>
+
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
-
                     <div class="box-body">
-                        <div id="bar-chart">
-                            <div class="form-group">
-                                <label for="inputModelId" class="col-sm-2 control-label">Model Id</label>
-                                <div class="col-sm-10">
-                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputModelId"  name="model_id" placeholder="Model Id">
-                                </div>
-                            </div>                
-                            <div class="form-group">
-                                <label for="inputTrainingSetId" class="col-sm-2 control-label">Training Set Id</label>
-                                <div class="col-sm-10">
-                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputTrainingSetId"  name="training_set_id" placeholder="Training Set Id">
-                                </div>
+                        <div class="form-group">
+                            <label for="inputModelId" class="col-sm-2 control-label">model_id</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputModelId"  name="model_id" placeholder="model_id">
                             </div>
-                            <div class="form-group">
-                                <label for="inputValidationSetId" class="col-sm-2 control-label">Validation Set Id</label>
-                                <div class="col-sm-10">
-                                    <input type="number" min="0" max="2147483648" class="form-control" id="inputValidationSetId"  name="validation_set_id" placeholder="Validation Set Id">
-                                </div>
+                        </div>                
+                        <div class="form-group">
+                            <label for="inputTrainingSetId" class="col-sm-2 control-label">training_set_id</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputTrainingSetId"  name="training_set_id" placeholder="training_set_id">
                             </div>
-                            
-                            
-                            
-                            
-                            
+                        </div>
+                        <div class="form-group">
+                            <label for="inputValidationSetId" class="col-sm-2 control-label">validation_set_id</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputValidationSetId"  name="validation_set_id" placeholder="validation_set_id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastBlockHash" class="col-sm-2 control-label">last_block_hash</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastBlockHash"  name="last_block_hash" placeholder="last_block_hash">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastBlockDate" class="col-sm-2 control-label">last_block_date</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastBlockDate"  name="last_block_date" placeholder="last_block_date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastBlockTime" class="col-sm-2 control-label">last_block_time</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastBlockTime"  name="last_block_time" placeholder="last_block_time">
+                            </div>
                         </div>
                     </div>
                     <!-- /.box-body-->
                 </div>
                 <!-- /.box -->
-
             </div>
-
             <div class="col-md-6">
                 <!-- Line chart -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <i class="fa fa-cube"></i>
 
-                        <h3 class="box-title">Process Configuration</h3>
+                        <h3 class="box-title">Block Performance</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -220,21 +235,39 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputDesiredBlockTime" class="col-sm-2 control-label">Desired Block Time</label>
+                            <label for="inputCurrentThreshold" class="col-sm-2 control-label">current_threshold</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2592000" class="form-control" id="inputDesiredBlockTime"  name="desired_block_time" placeholder="Desired Block Time">
+                                <input type="text" class="form-control" id="inputCurrentThreshold"  name="current_threshold" placeholder="current_threshold">
                             </div>
                         </div>                
                         <div class="form-group">
-                            <label for="inputDesiredBlockSize" class="col-sm-2 control-label">Desired Block Size</label>
+                            <label for="inputLastThreshold" class="col-sm-2 control-label">last_threshold</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2147483648" class="form-control" id="inputDesiredBlockSize"  name="desired_block_size" placeholder="Desired Block Size">
+                                <input type="text" class="form-control" id="inputLastThreshold"  name="last_threshold" placeholder="last_threshold">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputBlockTimeControl" class="col-sm-2 control-label">Block Time Control</label>
+                            <label for="inputCurrentBlockTime" class="col-sm-2 control-label">current_block_time</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" max="2147483648" class="form-control" id="inputBlockTimeControl"  name="block_time_control" placeholder="Block Time Control Method">
+                                <input type="text" class="form-control" id="inputCurrentBlockTime"  name="current_block_time" placeholder="current_block_time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastBlockSize" class="col-sm-2 control-label">last_block_size</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastBlockSize"  name="last_block_size" placeholder="last_block_size">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastBlockPerformance" class="col-sm-2 control-label">last_block_performance</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputLastBlockPerformance"  name="last_block_performance" placeholder="last_block_performance">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCurrentBlockPerformance" class="col-sm-2 control-label">current_block_performance</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputCurrentBlockPerformance"  name="current_block_performance" placeholder="current_block_performance">
                             </div>
                         </div>
                     </div>
@@ -242,81 +275,15 @@
                 </div>
                 <!-- /.box -->
             </div>
-            <!-- /.col -->
         </div>
-
-
         <div class="row">
-
             <div class="col-md-6">
-                <!-- Bar chart -->
+                <!-- new box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <i class="fa fa-linode"></i>
-                        <h3 class="box-title">Blockchain Status </h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div id="bar-chart">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Current Difficulty</label>
+                        <i class="fa fa-cube"></i>
 
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
-                                </div>
-                            </div>                
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Id</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Description">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Last Block Date</label>
-
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Creator Key">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Difficulty</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Tags">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Time</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Last Block Size</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Application ID">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.box-body-->
-                </div>
-                <!-- /.box -->
-
-            </div>
-
-            <div class="col-md-6">
-                <!-- Line chart -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <i class="fa fa-sliders"></i>
-
-                        <h3 class="box-title">Detailed Performance</h3>
+                        <h3 class="box-title">Optimization Configuration</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -326,46 +293,27 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Last Block Performance</label>
-
+                            <label for="inputLastOptimumId" class="col-sm-2 control-label">last_optimum_id</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Block Performance">
+                                <input type="text" class="form-control" id="inputLastOptimumId"  name="last_optimum_id" placeholder="last_optimum_id">
                             </div>
                         </div>                
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Parameters Id</label>
-
+                            <label for="inputLastOptimumDate" class="col-sm-2 control-label">last_optimum_date</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Parameters Id">
+                                <input type="text" class="form-control" id="inputLastOptimumDate"  name="last_optimum_date" placeholder="last_optimum_date">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label">Last Optimum Date</label>
-
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Last Optimum Date">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Last Optimum Performance</label>
-
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Optimum Performance">
-                            </div>
-                        </div>
-                        <div id = "testFrame">
-TEST
-                        </div>
-                                                <div id = "otherTestFrame">
-TESTOther
                         </div>
                     </div>
                     <!-- /.box-body-->
                 </div>
                 <!-- /.box -->
             </div>
-            <!-- /.col -->
+           
         </div>
+
+
+        
     </form>
 {% endblock %}
 {% block footer %}
@@ -434,34 +382,37 @@ TESTOther
             });
             // Initialize values of form
             // Metadata
+            $('#inputId').val(data[0].id);
             $('#inputName').val(data[0].name);
             $('#inputDescription').val(data[0].description);
             $('#inputCreatorKey').val(data[0].creator_key);
             $('#inputTags').val(data[0].tags);
+            $('#inputHash').val(data[0].hash);
             $('#inputAppId').val(data[0].app_hash);
-            // Control
+            // 
+            $('#inputCreatedAt').val(data[0].created_at);
+            $('#inputUpdatedAt').val(data[0].updated_at);
             $('#inputActive').val(data[0].active);
-            // Configuration
             $('#inputDesiredBlockTime').val(data[0].desired_block_time);
-            $('#inputDesiredBlockSize').val(data[0].desired_block_size);
-            $('#inputBlockTimeControl').val(data[0].block_time_control_id);// (0=OPoW,1=CPoW,2=block_size_det, 3=block_time_non_det, ,4=block_time_det, 5=block_size_non_det, 6= block_size_det)
-            // Optional configuration if using block_time_control>0 (!OPOW) for optimization/evaluation
+            $('#inputBlockTimeControl').val(data[0].block_time_control);
+            // 
             $('#inputModelId').val(data[0].model_id);
-            $('#inputTrainingSetId').val(data[0].training_set_id);
+            $('#inputtrainingSetId').val(data[0].training_set_id);
             $('#inputValidationSetId').val(data[0].validation_set_id);
-            // Status 
-            $('#inputDifficulty').val(data[0].difficulty);
-            $('#inputLastBlockId').val(data[0].last_block_hash);
+            $('#inputLastBlockHash').val(data[0].last_block_hash);
             $('#inputLastBlockDate').val(data[0].last_block_date);
-            $('#inputLastBlockDifficulty').val(data[0].last_block_difficulty);
             $('#inputLastBlockTime').val(data[0].last_block_time);
+            // 
+            $('#inputCurrentThreshold').val(data[0].current_threshold);
+            $('#inputLastThreshold').val(data[0].last_threshold);
+            $('#inputCurrentBlockTime').val(data[0].current_block_time);
             $('#inputLastBlockSize').val(data[0].last_block_size);
-            // Optional status for LAST BLOCK if using block_time_control>0 (!OPoW) 
-            $('#inputLastBlockPerformance').val(data[0].last_block_size);
-            // Optional status for LAST OPTIMUM in current block if using block_time_control>0 (!OPoW) 
+            $('#inputLastBlockPerformance').val(data[0].last_block_performance);
+            $('#inputCurrentBlockPerformance').val(data[0].current_block_performance);
+            // 
             $('#inputLastOptimumId').val(data[0].last_optimum_id);
             $('#inputLastOptimumDate').val(data[0].last_optimum_date);
-            $('#inputLastOptimumPerformance').val(data[0].last_optimum_date);
+
         });
         
         
