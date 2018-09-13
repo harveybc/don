@@ -9,7 +9,7 @@ const processArray=[
                         "name": "Test process 1", 
                         "description": "Test process 1 -  stub testing", 
                         "creator_key": "THAKEY", 
-                        "tags": ["p2p", "forex", "dqn"],
+                        "tags": "p2p,forex,dqn",
                         "hash":"ph", 
                         "app_hash": "ah", 
                         
