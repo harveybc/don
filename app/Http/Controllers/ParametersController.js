@@ -97,6 +97,7 @@ class ParametersController {
                 block_size: contents.length,
                 performance: performance,
                 rejects: 0,
+                
                 created_by: user,
                 created_at: date
             };
@@ -126,7 +127,6 @@ class ParametersController {
             } else {
                 return result;
             }
-
         } else {
             return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
         }

@@ -84,12 +84,26 @@ class BlocksController {
             result = yield Database.table('accountings')
                     .where('id', hash_p.id)
                     .update({
-                        "block_hash":hash});
-        };
-        
+                        "block_hash": hash});
+        }
+        ;
+
         // Consulta perf de ultimo bloque de ph
         var last_block_performance = yield Database.select('performance').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
-            
+
+
+        // altera registro de process con el nuevo 
+        var result2 = yield Database.table('processes')
+                .where('hash', process_hash)
+                .update({
+                    "last_block_performance": last_block_performance,
+                    "current_block_performance": performance,
+                    "last_block_size": block_size,
+                    "last_block_time": block_time,
+                    "last_block_hash": hash,
+                    "last_block_date": date,
+                    "current_threshold": threshold
+                });
         // Crea el registro de blocks
         const resq = yield Database
                 .table('blocks')
@@ -99,18 +113,6 @@ class BlocksController {
                     , "block_size": block_size, "performance": performance
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, "contents": contents});
-        // altera registro de process con el nuevo 
-        var result2 = yield Database.table('processes')
-                    .where('hash', process_hash)
-                    .update({
-                        "last_block_performance":last_block_performance,
-                        "current_block_performance":performance,
-                        "last_block_size": block_size,
-                        "last_block_time": block_time,
-                        "last_block_hash": hash,
-                        "last_block_date": date,
-                        "current_threshold": threshold
-            });
         const result3 = {"id": resq};
         return (result3);
     }
@@ -367,7 +369,7 @@ class BlocksController {
                 {attr: "performance", title: "perf", type: "number", width: 70},
                 {attr: "created_at", title: "Created At", type: "text", width: 60},
                 {attr: "prev_hash", title: "prev_hash", type: "text", width: 30}
-                
+
             ]
         });
     }
