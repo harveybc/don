@@ -73,7 +73,7 @@ class ParametersController {
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash_a = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
-            var prev_hash = prev_hash_a[0];
+            var prev_hash = prev_hash_a[0].hash;
             console.log("\nprev_hash:", prev_hash);
             
             // lee los registros marcados para usar como contents
