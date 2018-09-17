@@ -78,7 +78,7 @@ class ParametersController {
             
             // lee los registros marcados para usar como contents
             // var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
-            var contents_a = [{test}];
+            var contents_a = [{"test":"test"}];
             console.log("\nTest");
             
             var contents = contents_a.stringify();       
