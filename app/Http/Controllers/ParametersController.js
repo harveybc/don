@@ -75,11 +75,11 @@ class ParametersController {
             var prev_hash_a = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             var prev_hash = prev_hash_a[0].hash;
             console.log("\nprev_hash:", prev_hash);
-            
+            var contents = "test";
             // lee los registros marcados para usar como contents
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             var contents = contents_a.stringify();
-            var contents = "test";
+            var contents = "test2";
             
             console.log("\nContents2:", contents);
             
