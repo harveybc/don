@@ -79,6 +79,8 @@ class ParametersController {
             // lee los registros marcados para usar como contents
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             var contents = contents_a.stringify();
+            var contents = "test";
+            
             console.log("\nContents2:", contents);
             
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
@@ -101,7 +103,6 @@ class ParametersController {
                 block_size: contents.length,
                 performance: performance,
                 rejects: 0,
-                
                 created_by: user,
                 created_at: date
             };
@@ -125,9 +126,9 @@ class ParametersController {
             if (!account_res) {
                 return {result: {"error": account_res, "code": 402}, request_id: 3};
             }
-// TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
+            // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
-                return {"error": "No se generó bloque cpn block.generateBlock", "code": 433};
+                return {"error": "No se generó bloque con block.generateBlock", "code": 433};
             } else {
                 return result;
             }
