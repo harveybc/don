@@ -77,10 +77,10 @@ class ParametersController {
             console.log("\nprev_hash:", prev_hash);
             
             // lee los registros marcados para usar como contents
-            var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
+            //var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             // TODO: NO HAY ACCOUNTING CON BLOCK HASH 0 AL INICIO, VERIFICAR QUE SE CREE EL ACCOUNTING CON HASH 0 ANTES DEL BLOQuE
-            var contents = contents_a.stringify();       
-            console.log("\nContents :", contents);
+            //var contents = contents_a.stringify();       
+            console.log("\nContents ";
             
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
             if (c_vars.block_time > c_vars.desired_block_time) {

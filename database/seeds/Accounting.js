@@ -5,7 +5,7 @@
 const Accounting = use('App/Model/Accounting')
 /** Test data with 3 similar registers only differing in the name, description and id */
 const accountingArray = [
-    {"id": 1, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "firsthash", "hash":"h1"}
+    {"id": 1, "username": "harveybc", "process_hash": "ph", "collection": 1, "method": 1, "parameters":"", "result":"", "block_hash": "0", "hash":"h1"}
     ] 
 /** 
  @desc Database Seeder
