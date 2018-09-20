@@ -6,14 +6,7 @@
  **/
 const Neighbors = use('App/Model/Neighbors')
 /** Test data with 3 similar registers only differing in the name, description and id */
-const neighborsArray = [{
-        "id": 1 ,
-        "app_hash": "ah1",
-        "address": "http://192.168.0.241:3338",
-        "distance": 6,
-        "latency": 500,
-        "selection_method": 0
-    },
+const neighborsArray = [
 
 
 ] 
