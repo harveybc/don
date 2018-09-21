@@ -89,7 +89,7 @@ class BlocksController {
         
         // Consulta perf de ultimo bloque de ph
         var last_block_performance = yield Database.select('performance').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
-        console.log("\nLAST_BLOCK_PERFORMANCE = ", blast_block_performance);
+        console.log("\nLAST_BLOCK_PERFORMANCE = ", last_block_performance);
         // altera registro de process con el nuevo 
         var result2 = yield Database.table('processes')
                 .where('hash', process_hash)
