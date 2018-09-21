@@ -388,14 +388,7 @@ class AccountingController {
             yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
         } else
         {
-            // FLOOD      
-            if (do_flood === true) {
-                // SEND FLOODING REQUEST to neights
-                // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
-                // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
-                result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
-            }
-
+            // Add acountin Register
             if (username && c && m) {
                 // generate parameters for query
                 const Database = use('Database');
@@ -407,6 +400,14 @@ class AccountingController {
                 const result_q = {"result": result};
                 return (result_q);
             }
+            // FLOOD      
+            if (do_flood === true) {
+                // SEND FLOODING REQUEST to neights
+                // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
+                // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
+                result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
+            }
+
             // @TODO: si method=8, method=4 y perf>last, createNewBlock
         }
         return ret;

@@ -15,7 +15,7 @@ class ParametersController {
         var timeDiff = Math.abs(date_new.getTime() - date_old.getTime());
         var block_time = Math.ceil(timeDiff / 1000);
         console.log("\nprocess_result=", result);
-        // FALTA, si perf> current_perf, actualizar process y FLOOD
+        // FALTA, si perf > current_perf, actualizar process y FLOOD
         if (performance > parseFloat(result[0].current_block_performance)) {
             // actualiza con flood en processes current_block_performance, current block_time, last_optimum_hash,last_optimum_date, updated_by, updated_At
             result[0].current_block_performance = performance;
