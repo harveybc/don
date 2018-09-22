@@ -53,7 +53,7 @@ class ParametersController {
      * @returns {Generator}
      */
     * verifyBlockConditions(process_hash, performance, param_id, param_hash, date, user) {
-        console.log("\nParameters.verifyBlockConditions()");
+        console.log("Parameters.verifyBlockConditions()");
         // retrieve the variables for block generation conditions
         var c_vars = yield * this.GetConditionVariables(process_hash, performance, param_id, date, user);
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
