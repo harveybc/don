@@ -56,7 +56,7 @@ class ParametersController {
         // the conditions are: (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)
         var cond = false;
         // ic collection=parameters and method=create
-        console.log("\nc_vars.block_time_control=", c_vars.block_time_control,
+        console.log("Parameters.verifyBlockConditions() -> nc_vars.block_time_control=", c_vars.block_time_control,
                 " c_vars.current_block_performance=", c_vars.current_block_performance, 
                 " c_vars.last_block_performance=", c_vars.last_block_performance, 
                 " c_vars.current_threshold=", c_vars.current_threshold);
@@ -65,24 +65,25 @@ class ParametersController {
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_threshold)))
         {
             cond = true;
-            console.log("\nblock creation conditions met.");
+            console.log("Parameters.verifyBlockConditions() -> Block creation conditions met.");
         }
         else{
-            console.log("\nBlock Creation Condition NOT met.");
+            console.log("Parameters.verifyBlockConditions() -> Block Creation Condition NOT met.");
         }
         if (cond) {
-            console.log("\nBlock Creation Condition met.");
+            console.log("Parameters.verifyBlockConditions() -> Block Creation Condition met & tested.");
             // consulta campos para nuevo bloque
             const Database = use('Database');
             var prev_hash_a = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             var prev_hash = prev_hash_a[0].hash;
-            console.log("\nprev_hash:", prev_hash);
+            console.log("Parameters.verifyBlockConditions() -> prev_hash:", prev_hash);
             
             // lee los registros marcados para usar como contents
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             // TODO: NO HAY ACCOUNTING CON BLOCK HASH 0 AL INICIO, VERIFICAR QUE SE CREE EL ACCOUNTING CON HASH 0 ANTES DEL BLOQuE
+            console.log("Parameters.verifyBlockConditions() -> Contents_a: ", contents);
             var contents = contents_a.stringify();       
-            console.log("\nContents: ", contents);
+            console.log("Parameters.verifyBlockConditions() -> Contents: ", contents);
             
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
             if (c_vars.block_time > c_vars.desired_block_time) {
@@ -109,11 +110,13 @@ class ParametersController {
             };
             var sha256 = require('js-sha256');
             url_params.hash = sha256(JSON.stringify(url_params));
-            console.log('\nurl_params', url_params);
+            console.log('Parameters.verifyBlockConditions() -> url_params', url_params);
             
             // crea nuevo bloque
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block;
+            
+            console.log('Parameters.verifyBlockConditions() -> calling Block.createItemQuery');
             var result = yield * block.createItemQuery(url_params); // the new item includes a list of all accounting register hashes that were null +prev_block_hash and final hash
             
             // Hace nuevo accounting de block creation y flood
@@ -125,6 +128,8 @@ class ParametersController {
             var collection = 4;// blocks
             var method = 3; // blockCreation method
             var hash_p = sha256(JSON.stringify('' + collection + '' + method + '' + url_params + '' + d));
+            console.log('Parameters.verifyBlockConditions() -> calling Accounting.Account');
+            
             const account_res = yield * account.Account(collection, method, d, url_params.username, JSON.stringify(url_params), JSON.stringify(result), hash_p, true, 0);
             if (!account_res) {
                 return {result: {"error": account_res, "code": 402}, request_id: 3};
