@@ -116,6 +116,7 @@ class BlocksController {
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at, "contents": contents});
         const result3 = {"id": resq};
+        console.log("END Blocks.createItemQuery()");
         return (result3);
     }
     /** @desc Returns the <id> of the created process */

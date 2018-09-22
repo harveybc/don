@@ -8,6 +8,8 @@ class ParametersController {
         console.log("Parameters.GetConditionVariables()");
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
+        console.log("Parameters.GetConditionVariables() -> result: ", result);
+         
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
         // calcula block_time como el tiempo en segundos entre este creation date y el del último bloque en process 
