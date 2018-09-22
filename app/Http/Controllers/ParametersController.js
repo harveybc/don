@@ -238,6 +238,7 @@ class ParametersController {
 
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        console.log("\n**************************************************");
         console.log("\nParameters.CreateItem()");
         var url_params = request.post();
         // Authentication layer (401 Error)

@@ -57,6 +57,8 @@ class BlocksController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * createItemQuery(url_params) {
+        console.log("\n***********************");
+        
         console.log("\nBlocks.createItemQuery()");
         
         // generate parameters for query
@@ -118,6 +120,7 @@ class BlocksController {
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        console.log("\n**************************************************");
         console.log("\nBlocks.CreateItem()");
         var url_params = request.post();
         // Authentication layer (401 Error)
