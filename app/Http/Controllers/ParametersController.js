@@ -5,7 +5,7 @@
 class ParametersController {
     /** @desc saves the username, collection, method, date, parameters and result (string) */
     * GetConditionVariables(process_hash, performance, param_id, date, user) {
-        console.log("\nParameters.GetConditionVariables()");
+        console.log("Parameters.GetConditionVariables()");
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
@@ -27,8 +27,9 @@ class ParametersController {
             result[0].updated_at = date;
             var Proceso = use('App/Http/Controllers/ProcessesController');
             var proceso = new Proceso();
+            console.log("Parameters.UpdateItemQuery() -> calling Processes.UpdateItemQuery()");
             var res2 = yield * proceso.updateItemQuery(result[0], result[0].id);
-            console.log("\nres2=", res2);
+            // console.log("\nres2=", res2);
             // lee el nuevo registro de procesos en result para calcular las variables de new block.
             //result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         }
@@ -208,7 +209,7 @@ class ParametersController {
     }
 
     * createItemQuery(url_params, hash) {
-        console.log("\nParameters.createItemQuery()");
+        console.log("Parameters.createItemQuery()");
         
         // assign variables to url parameters
         const process_hash = url_params.process_hash;

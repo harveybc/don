@@ -165,7 +165,7 @@ class ProcessesController {
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
     * updateItemQuery(url_params,id) {
-        console.log("\nProcesses.updateItemQuery()");
+        console.log("Processes.updateItemQuery()");
         // generate parameters for query
         // console.log("\nURL_PARAMS_",url_params);
         const Database = use('Database');
