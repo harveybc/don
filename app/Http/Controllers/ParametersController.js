@@ -86,7 +86,7 @@ class ParametersController {
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             // TODO: NO HAY ACCOUNTING CON BLOCK HASH 0 AL INICIO, VERIFICAR QUE SE CREE EL ACCOUNTING CON HASH 0 ANTES DEL BLOQuE
             console.log("Parameters.verifyBlockConditions() -> Contents_a: ", contents_a);
-            var contents = contents_a.stringify();       
+            var contents = contents_a.toString();       
             console.log("Parameters.verifyBlockConditions() -> Contents: ", contents);
             
             // verifica si el block_time es mayor al desired, y ajusta nuevo threshold
