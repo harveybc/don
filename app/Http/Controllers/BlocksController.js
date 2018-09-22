@@ -84,7 +84,7 @@ class BlocksController {
         var result;
         console.log("Blocks.createItemQuery() -> updating block_hash of contents to the block hash");
         // EN BLOCK CREATE ITEMQUERY adicionar que se altere cada accounting de contents con block_hash =new_block_hash...
-        for (var hash_p of contents) {
+        for (var hash_p of JSON.parse(contents)) {
             result = yield Database.table('accountings')
                     .where('id', hash_p.id)
                     .update({
