@@ -82,6 +82,7 @@ class BlocksController {
         // TODO: cambia todas las accounting con block=mark_hash a block=block_hash 
         const Database = use('Database');
         var result;
+        console.log("Blocks.createItemQuery() -> updating block_hash of contents to the block hash");
         // EN BLOCK CREATE ITEMQUERY adicionar que se altere cada accounting de contents con block_hash =new_block_hash...
         for (var hash_p of contents) {
             result = yield Database.table('accountings')
