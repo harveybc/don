@@ -7,7 +7,7 @@
 class AccountingController {
     // Flood: this method is called from the method flooding
     * flood(c, m, d, username, pass_hash, parameters_raw, result_raw, hash, TTL, id) {
-        console.log("\nAccounting.flood()");
+        console.log("Accounting.flood()");
         
         // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
         var new_ttl = TTL - 1;
@@ -39,7 +39,7 @@ class AccountingController {
     }
     // Flooding: this method is called from the route /flooding and does AAA
     * Flooding(request, response) {
-        console.log("\nAccounting.Flooding()");
+        console.log("Accounting.Flooding()");
         
         var url_params = request.post();
         // c, m, d, username, parameters_raw, result_raw, hash, TTL, 
@@ -355,7 +355,7 @@ class AccountingController {
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_s, result_raw_s, hash_p, do_flood, id) {
-        console.log("\nAccounting.Account()");
+        console.log("Accounting.Account()");
         // filter url_params
         var params_s = JSON.stringify(url_params_s);
         var params_r = params_s.replace(/"{/, "{");
@@ -382,6 +382,8 @@ class AccountingController {
         var block_hash = "0";
         // Read TTL from authentication
         var result = yield Database.select('*').from('authentications').where('username', username).limit(1);
+        console.log("Accounting.Account() -> result =", result);
+        
         var TTL = 0;
         if (result) {
             TTL = result.max_ttl;
