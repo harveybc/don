@@ -58,7 +58,6 @@ class BlocksController {
     }
     * createItemQuery(url_params) {
         console.log("\n***********************");
-        
         console.log("Blocks.createItemQuery()");
         
         // generate parameters for query
