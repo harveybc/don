@@ -5,6 +5,7 @@
 class ParametersController {
     /** @desc saves the username, collection, method, date, parameters and result (string) */
     * GetConditionVariables(process_hash, performance, param_id, date, user) {
+        console.log("\nParameters.GetConditionVariables()");
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
@@ -48,6 +49,7 @@ class ParametersController {
      * @returns {Generator}
      */
     * verifyBlockConditions(process_hash, performance, param_id, param_hash, date, user) {
+        console.log("\nParameters.verifyBlockConditions()");
         // retrieve the variables for block generation conditions
         var c_vars = yield * this.GetConditionVariables(process_hash, performance, param_id, date, user);
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
@@ -108,10 +110,12 @@ class ParametersController {
             var sha256 = require('js-sha256');
             url_params.hash = sha256(JSON.stringify(url_params));
             console.log('\nurl_params', url_params);
+            
             // crea nuevo bloque
             var Block = use('App/Http/Controllers/BlocksController');
             var block = new Block;
             var result = yield * block.createItemQuery(url_params); // the new item includes a list of all accounting register hashes that were null +prev_block_hash and final hash
+            
             // Hace nuevo accounting de block creation y flood
             var Accounting = use('App/Http/Controllers/AccountingController');
             var account = new Accounting();
@@ -125,6 +129,7 @@ class ParametersController {
             if (!account_res) {
                 return {result: {"error": account_res, "code": 402}, request_id: 3};
             }
+            
             // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
                 return {"error": "No se generó bloque con block.generateBlock", "code": 433};
@@ -135,6 +140,7 @@ class ParametersController {
             return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
         }
     }
+    
     /** @desc Returns a list of parameters registers*/
     * GetList(request, response) {
         var url_params = request.get();
@@ -161,6 +167,7 @@ class ParametersController {
         // ** TODO: 3 es el request id, cambiarlo por el enviado por el cliente o generado al recibir el request */
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
+    
     /** @desc Returns the the <id> process */
     * GetItem(request, response) {
         var url_params = request.get();
@@ -190,6 +197,8 @@ class ParametersController {
     }
 
     * createItemQuery(url_params, hash) {
+        console.log("\nParameters.createItemQuery()");
+        
         // assign variables to url parameters
         const process_hash = url_params.process_hash;
         const app_hash = url_params.app_hash;
@@ -229,6 +238,7 @@ class ParametersController {
 
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        console.log("\nParameters.CreateItem()");
         var url_params = request.post();
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');

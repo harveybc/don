@@ -7,6 +7,8 @@
 class AccountingController {
     // Flood: this method is called from the method flooding
     * flood(c, m, d, username, pass_hash, parameters_raw, result_raw, hash, TTL, id) {
+        console.log("\nAccounting.flood()");
+        
         // Al recibir un request de FLOOD, se Decrementa el TTL, verifica TTL > 0  
         var new_ttl = TTL - 1;
         if (new_ttl < 1) {
@@ -37,6 +39,8 @@ class AccountingController {
     }
     // Flooding: this method is called from the route /flooding and does AAA
     * Flooding(request, response) {
+        console.log("\nAccounting.Flooding()");
+        
         var url_params = request.post();
         // c, m, d, username, parameters_raw, result_raw, hash, TTL, 
         const id = parseInt(url_params.id);
@@ -351,6 +355,7 @@ class AccountingController {
      * method=create, 
      * collections: 1=authent, 2=authoriz, 3=accounting, 4=blocks, 5=datasets, 6=evaluations, 7=inputs, 8=models, 9=parameters, 10=processes*/
     * Account(c, m, d, username, url_params_s, result_raw_s, hash_p, do_flood, id) {
+        console.log("\nAccounting.Account()");
         // filter url_params
         var params_s = JSON.stringify(url_params_s);
         var params_r = params_s.replace(/"{/, "{");
@@ -468,6 +473,8 @@ class AccountingController {
     }
 
     * createItemQuery(url_params) {
+        console.log("\nAccounting.CreateItemQuery()");
+        
         // generate parameters for query
         const Database = use('Database');
         const username = url_params.username;
@@ -499,6 +506,8 @@ class AccountingController {
     }
     /** @desc Returns the <id> of the created process */
     * CreateItem(request, response) {
+        console.log("\nAccounting.CreateItem()");
+        
         var url_params = request.post();
         // Authentication layer (401 Error)
         var Authe = use('App/Http/Controllers/AuthenticationController');
