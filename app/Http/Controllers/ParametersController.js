@@ -85,7 +85,7 @@ class ParametersController {
             // lee los registros marcados para usar como contents
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
             // TODO: NO HAY ACCOUNTING CON BLOCK HASH 0 AL INICIO, VERIFICAR QUE SE CREE EL ACCOUNTING CON HASH 0 ANTES DEL BLOQuE
-            console.log("Parameters.verifyBlockConditions() -> Contents_a: ", contents);
+            console.log("Parameters.verifyBlockConditions() -> Contents_a: ", contents_a);
             var contents = contents_a.stringify();       
             console.log("Parameters.verifyBlockConditions() -> Contents: ", contents);
             
