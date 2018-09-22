@@ -15,7 +15,7 @@ class ParametersController {
         var date_new = new Date(date);
         var timeDiff = Math.abs(date_new.getTime() - date_old.getTime());
         var block_time = Math.ceil(timeDiff / 1000);
-        console.log("\nprocess_result=", result);
+        // console.log("\nprocess_result=", result);
         // FALTA, si perf > current_perf, actualizar process y FLOOD
         if (performance > parseFloat(result[0].current_block_performance)) {
             // actualiza con flood en processes current_block_performance, current block_time, last_optimum_hash,last_optimum_date, updated_by, updated_At
@@ -230,7 +230,7 @@ class ParametersController {
                     , 'created_by': created_by, 'updated_by': updated_by
                     , 'created_at': created_at, 'updated_at': updated_at});
         // Verify block creation conditions
-        console.log("\nResultCreateItemQuery=", resq);
+        // console.log("\nResultCreateItemQuery=", resq);
         // resultado de inserción de bloque
 
         return ({"id": resq});
@@ -274,7 +274,7 @@ class ParametersController {
         // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
         result = yield * this.createItemQuery(url_params, hash_p);
         // Verify block creation conditions at the end so it can call block creation from this same machine
-        console.log("\nresult_createItemQuery=", result);
+        // console.log("\nresult_createItemQuery=", result);
         var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
         // send response
         yield response.sendView('master_JSON', {result: resp, request_id: 3112});
