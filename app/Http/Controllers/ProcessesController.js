@@ -218,6 +218,7 @@ class ProcessesController {
     }
     /** @desc Returns the <id> of the created process */
     * UpdateItem(request, response) {
+        console.log("Processes.UpdateItem()");
         var url_params = request.post();
         // Authentication layer (401 Error)
         var A = use('App/Http/Controllers/AuthenticationController');
@@ -252,6 +253,7 @@ class ProcessesController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // send response
+        console.log("END Processes.UpdateItem()");
         yield response.sendView('master_JSON', {result: result, request_id: 3});
     }
 

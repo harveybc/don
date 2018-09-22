@@ -39,6 +39,9 @@ class ParametersController {
             current_block_performance: parseFloat(result[0].current_block_performance), current_threshold: parseFloat(result[0].current_threshold),
             last_threshold: parseFloat(result[0].last_threshold), desired_block_time: parseFloat(result[0].desired_block_time)
         };
+        
+        console.log("END Parameters.GetConditionVariables()");
+            
         return c_vars;
     }
 
@@ -137,12 +140,15 @@ class ParametersController {
             
             // TODO: Actualiza process: Calcula el próximo threshold basado en el tiempo de bloque actual, el deseado y el último threshold, flood
             if (!result) {
+                console.log("END1 Parameters.verifyBlockConditions()");
                 return {"error": "No se generó bloque con block.generateBlock", "code": 433};
             } else {
+                console.log("END2 Parameters.verifyBlockConditions()");
                 return result;
             }
         } else {
             return {"error": "No se cumplieron las condiciones de creación de bloque", "code": 435};
+            console.log("END3 Parameters.verifyBlockConditions()");
         }
     }
     
@@ -237,7 +243,7 @@ class ParametersController {
         // Verify block creation conditions
         // console.log("\nResultCreateItemQuery=", resq);
         // resultado de inserción de bloque
-
+        console.log("END Parameters.createItemQuery()");
         return ({"id": resq});
     }
 
@@ -278,11 +284,14 @@ class ParametersController {
             yield response.sendView('master_JSON', {result: {"error": account_res, "code": 402}, request_id: 3});
         }
         // Queries and response DESPUES DE ACCT para que se incluya la transacción de creación de param en el bloque
+        console.log("Parameters.CreateItem() -> calling Parameters.createItemQuery()");
         result = yield * this.createItemQuery(url_params, hash_p);
         // Verify block creation conditions at the end so it can call block creation from this same machine
         // console.log("\nresult_createItemQuery=", result);
+        console.log("Parameters.CreateItem() -> calling Parameters.verifyBlockConditions()");
         var resp = yield * this.verifyBlockConditions(url_params.process_hash, parseFloat(url_params.performance), result.id[0], d, url_params.username);
         // send response
+        console.log("END Parameters.CreateItem()");
         yield response.sendView('master_JSON', {result: resp, request_id: 3112});
     }
     /* Update sql query*/

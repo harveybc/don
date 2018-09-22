@@ -35,6 +35,7 @@ class AccountingController {
             );
         }
         var res = {new_ttl: new_ttl, max_connections: max_c[0].max_connections, num_neighs: num_neighs, result: result, url: result[0].address + '/flooding', form: formData}
+        console.log("END Accounting.flood()");
         return res;
     }
     // Flooding: this method is called from the route /flooding and does AAA
@@ -152,6 +153,7 @@ class AccountingController {
                 if (m === 3) { // method: create
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
+                        console.log("END Accounting.Flooding(Accounting)");
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
@@ -174,6 +176,7 @@ class AccountingController {
                 if (m === 3) { // method: create
                     const auth_res = yield * a.createItemQuery(parameters_raw);
                     if (!auth_res) {
+                        console.log("END Accounting.Flooding(Blocks)");
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
@@ -263,6 +266,7 @@ class AccountingController {
                     const auth_res = yield * a.createItemQuery(parameters_raw, hash);
                     const c_vars = yield * a.GetConditionVariables(parameters_raw.process_hash, parameters_raw.performance, auth_res.id[0], d, username)
                     if (!auth_res) {
+                        console.log("END Accounting.Flooding(parameters)");
                         yield response.sendView('master_JSON', {result: {"error": auth_res, "code": 400}, request_id: 7});
                     }
                 }
@@ -392,6 +396,7 @@ class AccountingController {
         
         // busca el hash en la colección accounting 
         if (num_found[0].counted > 0) {
+            console.log("END Accounting.Account(error)");
             yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
         } else
         {
@@ -412,11 +417,13 @@ class AccountingController {
                 // SEND FLOODING REQUEST to neights
                 // FUNCIÓN FLOOD que solo hace el networking SEPARADA DE
                 // DE FUNCION FLOODING(llamada desde el request, con AA, Accounting de params y ejecucion de métodos(llama a flood)
+                console.log("Accounting.Account() -> calling Accounting.flood");
                 result = yield this.flood(c, m, d, url_params_mod.username, url_params_mod.pass_hash, url_params_mod, result_raw, hash_p, TTL, id);
             }
 
             // @TODO: si method=8, method=4 y perf>last, createNewBlock
         }
+        console.log("END Accounting.Account()");
         return ret;
     }
 
