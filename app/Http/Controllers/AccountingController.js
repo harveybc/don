@@ -381,15 +381,15 @@ class AccountingController {
         // @TODO: test set the block of the regiser to the last one in blocks collection
         var block_hash = "0";
         // Read TTL from authentication
-        var result = yield Database.select('*').from('authentications').where('username', username).limit(1);
-        console.log("Accounting.Account() -> result =", result);
-        
+        var result = yield Database.select('*').from('authentications').where('username', username).limit(1); 
         var TTL = 0;
         if (result) {
-            TTL = result.max_ttl;
+            TTL = result[0].max_ttl;
         }
         // busca acct repetidos
         const num_found = yield Database.count('hash as counted').from('accountings').where('hash', hash_p);
+        console.log("Accounting.Account() -> num_found =", num_found);
+        
         // busca el hash en la colección accounting 
         if (num_found[0].counted > 0) {
             yield response.sendView('master_JSON', {result: {"error": "Acounting register already exits", "code": 410}, request_id: 10});
