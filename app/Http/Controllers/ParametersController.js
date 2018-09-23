@@ -8,7 +8,7 @@ class ParametersController {
         console.log("Parameters.GetConditionVariables()");
         const Database = use('Database');
         var result = yield Database.select('*').from('processes').where('hash', process_hash).limit(1);
-        console.log("Parameters.GetConditionVariables() -> result: ", result);
+        console.log("Parameters.GetConditionVariables() -> process_result: ", result);
          
         // opowdet: Read last_block_time,block-time, block_time_control,Perf_last_block, 
         //   current_block_perf, last_block_threshold, last_block_ from processes collection
@@ -27,6 +27,14 @@ class ParametersController {
             result[0].last_optimum_date = date;
             result[0].updated_by = user;
             result[0].updated_at = date;
+            
+            // get last_block_performance as the performance of the last block
+            var last_block_a  = yield Database.select('performance').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
+            
+            console.log("Parameters.UpdateItemQuery() -> calling Processes.UpdateItemQuery()");
+            result[0].last_block_performance = last_block_a[0].performance;
+            
+            // update processes with  the new optimum
             var Proceso = use('App/Http/Controllers/ProcessesController');
             var proceso = new Proceso();
             console.log("Parameters.UpdateItemQuery() -> calling Processes.UpdateItemQuery()");

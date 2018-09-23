@@ -184,6 +184,7 @@ class ProcessesController {
         const validation_set_id = url_params.validation_id;
         const difficulty = url_params.difficulty;
         const format = url_params.format;
+        const last_block_performance = url_params.last_block_performance;
         
         const current_block_performance = url_params.current_block_performance;
         const current_block_time = url_params.current_block_time;
@@ -207,6 +208,7 @@ class ProcessesController {
                     , 'desired_block_size': desired_block_size, 'block_time_control': block_time_control
                     , 'model_id': model_id, 'training_set_id': training_set_id
                     , 'current_block_performance':current_block_performance
+                    , 'last_block_performance':last_block_performance
                     , 'current_block_time':current_block_time
                     , 'last_optimum_id': last_optimum_id
                     , 'last_optimum_date': last_optimum_date
