@@ -532,6 +532,7 @@ class BlocksController {
             user_id: user_id,
             items: [
                 {attr: "id", title: "id", type: "number", width: 20},
+                {attr: "hash", title: "block hash", type: "text", width: 70},
                 {attr: "performance", title: "performance", type: "number", width: 70},
                 {attr: "created_at", title: "Created At", type: "text", width: 60},
                 {attr: "threshold", title: "threshold", type: "number", width: 60},
