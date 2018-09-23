@@ -29,7 +29,7 @@ class ParametersController {
             result[0].updated_at = date;
             
             // get last_block_performance as the performance of the last block
-            var last_block_a  = yield Database.select('performance').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
+            var last_block_a  = yield Database.select('*').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             
             console.log("Parameters.UpdateItemQuery() -> calling Processes.UpdateItemQuery()");
             result[0].last_block_performance = last_block_a[0].performance;
@@ -69,13 +69,14 @@ class ParametersController {
         // if the block generation conditions are met, create a new block,set the new block_hash and flood the new block.
         // the conditions are: (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_thresold)
         var cond = false;
+        
         // ic collection=parameters and method=create
         console.log("Parameters.verifyBlockConditions() -> nc_vars.block_time_control=", c_vars.block_time_control,
                 " c_vars.current_block_performance=", c_vars.current_block_performance, 
                 " c_vars.last_block_performance=", c_vars.last_block_performance, 
                 " c_vars.current_threshold=", c_vars.current_threshold);
+                
         // If block time control method is OPoW (det-model) and Performance>Perf_anterior_bloque+Last_block_threshold
-        
         if ((c_vars.block_time_control === 0) && (c_vars.current_block_performance > (c_vars.last_block_performance + c_vars.current_threshold)))
         {
             cond = true;
@@ -90,7 +91,7 @@ class ParametersController {
             const Database = use('Database');
             var prev_hash_a = yield Database.select('hash').from('blocks').where('process_hash', process_hash).orderBy('id', 'desc').limit(1);
             var prev_hash = prev_hash_a[0].hash;
-            console.log("Parameters.verifyBlockConditions() -> prev_hash:", prev_hash);
+            console.log("Parameters.verifyBlockConditions() -> prev_hash: ", prev_hash);
             
             // lee los registros marcados para usar como contents
             var contents_a = yield Database.select('id').from('accountings').where('block_hash', "0");
@@ -111,7 +112,7 @@ class ParametersController {
                 username: user,
                 process_hash: c_vars.process_hash,
                 hash: "", //Inicializado con el hash del bloque al final
-                prev_hash: prev_hash[0].hash,
+                prev_hash: prev_hash,
                 param_hash: param_hash,
                 contents: contents,
                 threshold: c_vars.current_threshold,
