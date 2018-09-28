@@ -2,7 +2,10 @@
 
 The [singularity platform](https://github.com/harveybc/singularity) allows 
 extending existing evolutionary algorithms to a decentralized architecture to 
-provide collaboration, scalability and fault-tolerance in an optimization process. 
+provide collaboration, scalability and fault-tolerance in an optimization process.  
+
+
+It also allows external clients to make remote evaluations of data using the most optimized model parameters found by the optimizers.
 
 
 ## Installation
