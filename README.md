@@ -1,7 +1,7 @@
 # singularity
 
-The [singularity platform](https://github.com/harveybc/singularity) allows 
-extending existing evolutionary algorithms to a decentralized architecture to 
+The [singularity platform](https://github.com/harveybc/singularity) is a REST API
+that allows extending existing evolutionary algorithms to a decentralized architecture to 
 provide collaboration, scalability and fault-tolerance in an optimization process.  
 
 
