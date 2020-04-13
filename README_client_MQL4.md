@@ -127,6 +127,7 @@ The following parameters configure the contents of the market information inside
 * __prices__:(Def: true) if true, include high, low and close for each symbol
 * __volumes__:(Def: true) if true, include the volume for each symbol.
 * __tech_indicators__:(Def: "iMA,iRSI,iADX,iMACD,iOBV") list of technical indicators.
+* __timestamp__: (Def:true) include the current candle timestamp.
 
 
 
