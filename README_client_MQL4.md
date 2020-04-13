@@ -1,6 +1,6 @@
 # Singularity: MQL4 Client
 
-Periodically sends orders status, account status and market information as a pending evaluation request to a singularity node, and later request the evaluation result.
+Periodically sends orders status, account status and market information as a pending evaluation request to a singularity node, and later request the evaluation result containing the explicit actions the client must perform for a list of currency pairs (max one order per symbol for now). 
 
 [![Build Status](https://travis-ci.org/harveybc/singularity.svg?branch=master)](https://travis-ci.org/harveybc/singularity)
 [![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://harveybc-singularity.readthedocs.io/en/latest/)
@@ -23,7 +23,7 @@ The folowing are the _parameters_ of the request:
 The following are the JSON_contents fields:
 * __order_status__: The status (profit, buy_or_sell ,open_price, open_date, sl, tp) of all open orders for a configurable list of symbols.
 * __account_status__: The current balance and equity.
-* __market_info__: An array of price (high,low,open,close), volume, and a configurable list of technical indicators (TODO: List of numbered technical indicators) optionally for 3 configurable timeframes.
+* __market_info__: An array of price (high,low,open,close), volume, and a configurable list of technical indicators optionally for 3 configurable timeframes.
 
 The following are the _response_ fields if the request was successful:
 
@@ -44,7 +44,7 @@ The following are the _response_ fields if the request was successful:
 
 * __evaluation_id__: identification of the pending evaluation, to be used from the following request.
 
-After a successful request (HTTP code:200), after a period of time, the client should start querying if the evaluation hasbeen done using the following request.
+After a successful request (HTTP response code:200), after a period of time, the client should start querying if the evaluation hasbeen done using the following request.
 
 ### 3. Evaluation Status Request (GET /evaluations/<evaluation_id>)
 
@@ -97,44 +97,36 @@ The module is installed with the singularity package, the instructions are descr
 
 ### Execution
 
-The singularity_client MQL4 expert must be copied or linked from the clients folder in the singlarity repo, to the experts folder of Metatrader 4 where it can be loaded as any other expert.
+The singularity_client MQL4 expert must be copied or linked from the clients folder in the singlarity repo, to the experts folder of Metatrader 4 from where it can be loaded as any other expert.
 
 ### MQL4 Expert Parameters
 
-* __--input_file <filename>__: The only mandatory parameter, is the filename for the input dataset to be trimmed.
-* __--output_file <filename>__: (Optional) Filename for the output dataset. Defaults to the input dataset with the .output extension.
-* __--output_config_file <filename>__: (Optional) Filename for the output configuration containing rows trimmed in columns 0 and columns trimmed in column 1. Defaults to the input dataset with the .config extension.
-* __--input_config_file <filename>__: (Optional) Imports an existing configuration and trims a dataset with it.
-* __--from_start <val>__:(Optional) number of rows to remove from the start of the input dataset.
-* __--from_end <val>__: (Optional) number of rows to remove from the end of the input dataset.
-* __--remove_columns__: (Optional) Removes all constant columns.
-* __--no_auto_trim__: (Optional) Do not perform auto-trimming, useful if using the remove_columns, from_start or from_end options.
+The following are the expert's parameters:
 
-## Examples of usage
-The following examples show both the class method and command line uses.
+### General Expert Parameters
 
-### Usage via Class Methods
-```python
-from singularity.data_trimmer.data_trimmer import DataTrimmer
-# configure parameters (same vaiable names as command-line parameters)
-class Conf:
-    def __init__(self):
-        self.input_file = "tests/data/test_input.csv"
-conf = Conf()
-# instance trimmer class and loads dataset
-dt = DataTrimmer(conf)
-# do the trimming
-rows_t, cols_t = dt.trim_auto()
-# save output to output file
-dt.store()
-```
+These parameters configure the connectivity parameters and the main timeframe.
 
-### Usage via CLI
+* __node_url__: (Default: localhost) URL of a singularity node.
+* __api_key__: (Def: "test") string provided to a singularity client for authentication when created with the client role in a node of a singualrity network.
+* __period_main__: (Def: PERIOD_H1) period between request sequences in minutes, also is the timeframe for candles and tech indicators.
+* __period_status__: (Def: 5) period between evaluation status requests in seconds.
+* __window_size__: (Def: 15) sliding-window size, the number of previous values to the current one for each feature calculated (ie. for period_main+PERIOD_H1, prices for the latest 15 hours, tech indicators for the last 15 hours, volumes for the last 15 hours, etc..) 
 
-> data-trimmer --input_file "tests/data/test_input.csv"
+### json_content.market_info Related Expert Parameters
 
+The following parameters configure the contents of the market information inside json_contents that is going to be transmitted to the server via web requests to be used as observations by an agent (after being preprocessed in the server). 
 
-
+* __short_term__: (Def: false) if true, add technical indicators with period = tech_period/short_term_divisor
+* __long_term__: (Def: false)  if true, add technical indicators with period = tech_period*long_term_multiplier
+* __short_term_divisor__: (Def: 3)  see parameter __short_term__
+* __long_term_multiplier__: (Def: 3)  see parameter __long_term__
+* __symbols__: (Def: "EURUSD,USDJPY,GBPUSD") list of symbols.
+* __tech_period__: (Def: 15) main period for technical indicators (is not the same as the common timeframe parameter in technincal indicators which must be set to __period_main__)
+* __variation__: (Def: false) if true, include in market_info the variation of all values values (current-previous) additional to the current values in an adyacent column?.
+* __prices__:(Def: true) if true, include high, low and close for each symbol
+* __volumes__:(Def: true) if true, include the volume for each symbol.
+* __tech_indicators__:(Def: "iMA,iRSI,iADX,iMACD,iOBV") list of technical indicators.
 
 
 

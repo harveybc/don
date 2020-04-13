@@ -4,3 +4,5 @@ storage
 npm-debug.log
 /nbproject/private/
 Accelerating-OpenAPI-Design-Development-with-Next-Level-Mocking-2019_1.pdf
+*.db
+*.db
