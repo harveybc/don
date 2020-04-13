@@ -111,7 +111,7 @@ These parameters configure the connectivity parameters and the main timeframe.
 * __api_key__: (Def: "test") string provided to a singularity client for authentication when created with the client role in a node of a singualrity network.
 * __period_main__: (Def: PERIOD_H1) period between request sequences in minutes, also is the timeframe for candles and tech indicators.
 * __period_status__: (Def: 5) period between evaluation status requests in seconds.
-* __window_size__: (Def: 15) sliding-window size, the number of previous values to the current one for each feature calculated (ie. for period_main+PERIOD_H1, prices for the latest 15 hours, tech indicators for the last 15 hours, volumes for the last 15 hours, etc..) 
+* __window_size__: (Def: 15) sliding-window size, the number of previous values to the current one for each feature calculated (ie. for period_main = PERIOD_H1, window_size+15, includes prices for the latest 15 hours as adyacent columns to the current prices, tech indicators for the last 15 hours, volumes for the last 15 hours, etc..) 
 
 ### json_content.market_info Related Expert Parameters
 
