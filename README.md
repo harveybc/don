@@ -1,6 +1,8 @@
-# singularity
+# Descentralized Optimization Network (DON)
 
-The [singularity platform](https://github.com/harveybc/singularity) is a REST API
+WORK IN PROGRESS!
+
+The [don platform](https://github.com/harveybc/singularity) is a REST API
 that allows extending existing evolutionary algorithms to a decentralized architecture to 
 provide collaboration, scalability, event log and fault-tolerance in an optimization process.  
 
@@ -10,7 +12,7 @@ It also allows external clients to make remote evaluations of data using the mos
 
 ## Installation
 
-This process is described for Ubuntu 17.10 but it can be used also on Windows and other OS.
+This process is described for Ubuntu but it can be used also on Windows and other OS.
 
 ### Step 1 - Setup Dependencies
 
@@ -90,6 +92,7 @@ groups or species depending on your needs using an HTTP POST to report your new 
 
 An example of usage and the parameters that the requests must have can be found on:  
 The [gym-forex environment](https://github.com/harveybc/gym-forex)  
+
 
 ### Step 3 - Monitor Your Optimization Process.
 
