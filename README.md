@@ -91,7 +91,7 @@ migrate the fittest specimens in a population or the representatives of
 groups or species depending on your needs using an HTTP POST to report your new optimum.
 
 An example of usage and the parameters that the requests must have can be found on:  
-The [gym-forex environment](https://github.com/harveybc/gym-forex)  
+The [gym-forex environment](https://github.com/harveybc/gym-fx/blob/master/agents/agent_NEAT_p2p.py)  
 
 
 ### Step 3 - Monitor Your Optimization Process.
