@@ -20,8 +20,8 @@ sudo apt-get install node.js npm
  
 ### Step 2 - Setup Singularity from GitHub
 
-git clone https://github.com/harveybc/singularity  
-cd singularity  
+git clone https://github.com/harveybc/don  
+cd don  
 npm install  
 
 ### Step 3 - Configure your IP and port (For both Web Interface and API)
@@ -64,7 +64,7 @@ your evolutionary algorithm as shown in the following section.
 
 More detailed documentation coming soon.
 
-### Step 1 - Configure a Process in Singularity.
+### Step 1 - Configure a Process in Don.
 
 After installing singularity, access the web interface from the IP address or host 
 name and port with the default credentials, you configured in step 3 for example:  
