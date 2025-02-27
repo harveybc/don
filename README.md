@@ -18,7 +18,7 @@ This process is described for Ubuntu but it can be used also on Windows and othe
 
 sudo apt-get install node.js npm  
  
-### Step 2 - Setup Singularity from GitHub
+### Step 2 - Setup DON from GitHub
 
 git clone https://github.com/harveybc/don  
 cd don  
